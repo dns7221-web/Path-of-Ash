@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -13,12 +13,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerAttack
+  - EnemyAttack
+  - Wall
+  - Pickup
   - 
   - 
   - 
@@ -41,3 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 177868831
+    locked: 0
+  - name: Floor
+    uniqueID: 554669691
+    locked: 0
+  - name: Decal
+    uniqueID: 552602140
+    locked: 0
+  - name: Entity
+    uniqueID: 2135736148
+    locked: 0
+  - name: VFX
+    uniqueID: 591351
+    locked: 0
+  - name: UI
+    uniqueID: 19045
+    locked: 0
+  m_RenderingLayers:
+  - Default
