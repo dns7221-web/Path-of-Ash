@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 한 판(런)의 결과를 씬 너머로 전달하는 통로.
@@ -22,7 +23,16 @@ public class RunResultData : ScriptableObject
     [Header("이 값들은 실행 중에 RunManager가 채운다. 손으로 넣을 필요 없다.")]
     [SerializeField] private float survivedSeconds;
     [SerializeField] private int killCount;
-    [SerializeField] private int floorReached;
+
+    // 수정(무한 방 진행 도입): floorReached → roomsEntered로 이름을 바꿨다.
+    // "층"은 층 개념이 없던 시절의 임시 이름이었고, 실제로 세는 건 이번 판에 들어간 방 수다.
+    //
+    // FormerlySerializedAs를 붙인 이유: 이름만 바꾸면 유니티는 이걸 "옛 필드 삭제 + 새 필드 추가"로
+    // 보고 기존 에셋에 저장된 값을 버린다. 이 속성이 있으면 옛 이름으로 저장된 값을 새 필드로
+    // 그대로 읽어온다. 유니티가 이 상황을 위해 제공하는 기능이라 직접 마이그레이션 코드를 짜지 않는다.
+    [FormerlySerializedAs("floorReached")]
+    [SerializeField] private int roomsEntered;
+
     [SerializeField] private bool cleared;
 
     /// <summary>이번 판에서 버틴 시간(초).</summary>
@@ -31,8 +41,11 @@ public class RunResultData : ScriptableObject
     /// <summary>처치한 적 수.</summary>
     public int KillCount => killCount;
 
-    /// <summary>도달한 층. 아직 던전이 없어서 항상 1이다.</summary>
-    public int FloorReached => floorReached;
+    /// <summary>
+    /// 이번 판에 들어간 방 수. 첫 방에 들어간 시점이 1이다.
+    /// 방을 무한 반복하므로 "몇 번째 방까지 버텼는가"가 이 게임의 진행도 지표가 된다.
+    /// </summary>
+    public int RoomsEntered => roomsEntered;
 
     /// <summary>죽어서 끝났는지, 클리어해서 끝났는지.</summary>
     public bool Cleared => cleared;
@@ -44,7 +57,7 @@ public class RunResultData : ScriptableObject
     {
         survivedSeconds = 0f;
         killCount = 0;
-        floorReached = 1;
+        roomsEntered = 1;
         cleared = false;
     }
 
@@ -52,11 +65,11 @@ public class RunResultData : ScriptableObject
     /// 판이 끝날 때 호출한다. 값을 하나씩 대입하지 않고 한 번에 받는 이유는, 결과가 반쯤만
     /// 기록된 상태를 만들지 않기 위해서다.
     /// </summary>
-    public void Record(float survived, int kills, int floor, bool isCleared)
+    public void Record(float survived, int kills, int rooms, bool isCleared)
     {
         survivedSeconds = survived;
         killCount = kills;
-        floorReached = floor;
+        roomsEntered = rooms;
         cleared = isCleared;
     }
 
