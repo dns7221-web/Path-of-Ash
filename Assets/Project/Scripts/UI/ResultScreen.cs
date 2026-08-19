@@ -23,6 +23,11 @@ public class ResultScreen : MonoBehaviour
     [SerializeField] private TMP_Text survivedText;
     [SerializeField] private TMP_Text killText;
 
+    // 추가 생성 — 방을 무한 반복하는 구조라 "몇 번째 방까지 갔는가"가 곧 이번 판의 성적이다.
+    // 생존 시간만으로는 구석에서 버틴 판과 계속 전진한 판이 구분되지 않는다.
+    [Tooltip("도달한 방 수. 비워두면 표시하지 않는다.")]
+    [SerializeField] private TMP_Text roomText;
+
     // 추가 생성: 죽었을 때와 탈출했을 때 배경을 바꿔 끼우기 위한 자리.
     //
     // 씬을 둘로 나누지 않은 이유: 결과 화면의 구조(텍스트 위치, 키 입력, 흐름)가 완전히
@@ -72,11 +77,15 @@ public class ResultScreen : MonoBehaviour
         if (killText != null)
             killText.text = $"처치 {result.KillCount}";
 
+        // 추가 생성 — 도달한 방 수. 텍스트를 안 붙여뒀으면 조용히 넘어간다.
+        if (roomText != null)
+            roomText.text = $"{result.RoomsEntered}번째 방";
+
         ApplyBackground();
 
         // UI가 아직 없을 때도 값이 넘어왔는지 확인할 수 있게 남긴다. UI가 붙으면 지운다.
         Debug.Log($"[결과] 생존 {result.FormatSurvivedTime()} / 처치 {result.KillCount} / " +
-                  $"{(result.Cleared ? "클리어" : "사망")}");
+                  $"{result.RoomsEntered}번째 방 / {(result.Cleared ? "클리어" : "사망")}");
     }
 
     /// <summary>

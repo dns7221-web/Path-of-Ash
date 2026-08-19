@@ -23,15 +23,25 @@ public class RoomExitTrigger : MonoBehaviour
         exitTrigger.isTrigger = true;
     }
 
-    /// <summary>상자를 열기 전에는 출구 판정 자체를 끈다.</summary>
-    public void SetPassageEnabled(bool enabled)
+    /// <summary>
+    /// 상자를 열기 전에는 출구 판정 자체를 끈다.
+    ///
+    /// 수정(이름 가림): 파라미터 이름이 <c>enabled</c>였다. 컴파일은 되지만 MonoBehaviour가
+    /// 원래 갖고 있는 <c>Behaviour.enabled</c>(이 컴포넌트를 켜고 끄는 값)를 가려버려서,
+    /// 나중에 이 함수 안에서 컴포넌트를 끄려고 <c>enabled = false</c>라고 쓰면 파라미터에
+    /// 대입되고 아무 일도 일어나지 않는다. 에러도 경고도 안 뜬다.
+    /// </summary>
+    /// <param name="passable">true면 통과 판정을 켠다.</param>
+    public void SetPassageEnabled(bool passable)
     {
         consumed = false;
 
+        // Awake보다 먼저 불릴 수 있다 — 방 진행 관리자가 방이 꺼진 상태에서 초기화하기 때문이다.
+        // 비활성 오브젝트에서도 GetComponent는 동작하므로 여기서 한 번 더 확보한다.
         if (exitTrigger == null)
             exitTrigger = GetComponent<Collider2D>();
 
-        exitTrigger.enabled = enabled;
+        exitTrigger.enabled = passable;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

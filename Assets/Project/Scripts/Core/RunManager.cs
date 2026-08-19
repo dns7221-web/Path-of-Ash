@@ -47,6 +47,17 @@ public class RunManager : MonoBehaviour
     /// <summary>이번 판에서 처치한 적 수.</summary>
     public int KillCount { get; private set; }
 
+    /// <summary>
+    /// 추가 생성 — 이번 판에 들어간 방 수. 첫 방에 들어간 시점이 1이다.
+    ///
+    /// RoomSequenceController가 자기 카운터를 들고 있는데도 여기에 또 두는 이유:
+    /// <b>판의 기록은 RunManager가 소유한다</b>는 규칙을 깨지 않기 위해서다. 결과를 남기는
+    /// 시점(EndRun)에 던전 쪽 오브젝트를 찾아가 값을 물어보게 만들면, 방 시스템이 통째로
+    /// 교체될 때 EndRun도 같이 고쳐야 한다. 적 처치 수를 EnemySpawner가 AddKill로
+    /// 밀어 넣는 것과 똑같은 방향이다 — 아는 쪽이 알려주고, 기록은 여기 쌓인다.
+    /// </summary>
+    public int RoomsEntered { get; private set; } = 1;
+
     /// <summary>현재 판 상태. 다른 시스템이 "지금 조작을 받아도 되는지" 판단할 때 읽는다.</summary>
     public RunState State => state;
 
@@ -70,6 +81,9 @@ public class RunManager : MonoBehaviour
         state = RunState.Playing;
         KillCount = 0;
         ElapsedSeconds = 0f;
+
+        // 추가 생성 — 방 진행 시스템이 첫 방을 알려주기 전의 기본값. 방이 없는 씬에서도 1이다.
+        RoomsEntered = 1;
     }
 
     private void Update()
@@ -96,6 +110,22 @@ public class RunManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 추가 생성 — 새 방에 들어갔을 때 방 진행 시스템이 호출한다.
+    ///
+    /// 증가(++)가 아니라 <b>방 번호를 받아서 최댓값만 남기는</b> 이유가 두 가지 있다.
+    /// - 방 개수를 세는 주체는 RoomSequenceController다. 양쪽이 각자 세면 언젠가 어긋나고,
+    ///   어긋났을 때 어느 쪽이 맞는지 판단할 근거가 없다. 번호를 통째로 받으면 답이 하나다.
+    /// - Awake/Start 실행 순서는 오브젝트마다 보장되지 않는다. RunManager.Start가 나중에
+    ///   돌아 1로 초기화해도, 이미 더 큰 번호가 들어왔으면 그 값이 살아남는다.
+    /// </summary>
+    /// <param name="roomNumber">이번 판에서 몇 번째로 들어간 방인지. 첫 방이 1.</param>
+    public void ReportRoomEntered(int roomNumber)
+    {
+        if (state != RunState.Playing) return;
+        if (roomNumber > RoomsEntered) RoomsEntered = roomNumber;
+    }
+
+    /// <summary>
     /// 판을 끝낸다. 죽었으면 isCleared가 false, 최종 보스를 잡았으면 true.
     /// 두 번 호출되어도 한 번만 처리된다 — 여러 개의 데미지가 같은 프레임에 들어와
     /// 사망이 중복으로 발생하는 경우를 막는다.
@@ -107,8 +137,10 @@ public class RunManager : MonoBehaviour
         state = RunState.GameOver;
         ElapsedSeconds = Time.time - runStartTime;
 
+        // 수정(무한 방 진행 도입): 층 수를 1로 하드코딩하던 자리에 실제 방 수를 넣는다.
+        // 방을 열 개 돌아도 결과 화면에 항상 1이 뜨던 문제를 고친다.
         if (result != null)
-            result.Record(ElapsedSeconds, KillCount, 1, isCleared);
+            result.Record(ElapsedSeconds, KillCount, RoomsEntered, isCleared);
 
         StartCoroutine(GoToResultAfterDelay());
     }

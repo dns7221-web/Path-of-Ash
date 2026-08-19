@@ -23,12 +23,18 @@ public class RewardChest : MonoBehaviour
     [SerializeField] private Key interactionKey = Key.F;
 
     // 추가 생성 — 상자는 나중에 룬 아이템을 주더라도 방 사이 생존을 보조하는 회복을 함께 준다.
+    //
+    // 수정(밸런스): 최대 회복량을 3 → 2로 내렸다.
+    // 플레이어 최대 체력이 5인데 한 방에 최대 3을 돌려주면, 두 대 맞고 상자를 여는 것만으로
+    // 매번 만피가 된다. 그러면 방을 아무리 반복해도 체력이 깎이지 않아서 "무한 반복으로
+    // 밸런스를 확인한다"는 목적 자체가 성립하지 않는다. 1~2면 맞은 만큼을 다 돌려받지는
+    // 못하므로 판이 진행될수록 체력이 서서히 줄고, 그래야 판이 끝나는 지점이 생긴다.
     [Header("체력 회복 보너스")]
     [Tooltip("상자를 열 때 추첨할 최소 회복량.")]
     [SerializeField, Min(0)] private int minimumHeal = 1;
 
     [Tooltip("상자를 열 때 추첨할 최대 회복량. 정수 Random.Range의 상한을 포함하도록 처리한다.")]
-    [SerializeField, Min(0)] private int maximumHeal = 3;
+    [SerializeField, Min(0)] private int maximumHeal = 2;
 
     private readonly HashSet<Collider2D> playerColliders = new HashSet<Collider2D>();
     private Collider2D interactionTrigger;
