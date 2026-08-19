@@ -1,0 +1,389 @@
+fileFormatVersion: 2
+guid: 42f33dfac45a46d479fcd9fdc33e1989
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5703292466175951415
+    second: vfx_ember_arrow_impact_6frames_1536x256_0
+  - first:
+      213: 219840807811290339
+    second: vfx_ember_arrow_impact_6frames_1536x256_1
+  - first:
+      213: -5522330769913486344
+    second: vfx_ember_arrow_impact_6frames_1536x256_2
+  - first:
+      213: -372327458924488292
+    second: vfx_ember_arrow_impact_6frames_1536x256_3
+  - first:
+      213: -2777883672691746652
+    second: vfx_ember_arrow_impact_6frames_1536x256_4
+  - first:
+      213: -132266203805805772
+    second: vfx_ember_arrow_impact_6frames_1536x256_5
+  - first:
+      213: 3996753328292886945
+    second: vfx_ember_arrow_impact_6frames_1536x256_6
+  - first:
+      213: 4630089586632132298
+    second: vfx_ember_arrow_impact_6frames_1536x256_7
+  - first:
+      213: 8034862660652889626
+    second: vfx_ember_arrow_impact_6frames_1536x256_8
+  - first:
+      213: -5136622547584432761
+    second: vfx_ember_arrow_impact_6frames_1536x256_9
+  - first:
+      213: 7381526478466163486
+    second: vfx_ember_arrow_impact_6frames_1536x256_10
+  - first:
+      213: 4465617430869035195
+    second: vfx_ember_arrow_impact_6frames_1536x256_11
+  - first:
+      213: 2381657366260893951
+    second: vfx_ember_arrow_impact_6frames_1536x256_12
+  - first:
+      213: 7173175325734046928
+    second: vfx_ember_arrow_impact_6frames_1536x256_13
+  - first:
+      213: -6347427626985827165
+    second: vfx_ember_arrow_impact_6frames_1536x256_14
+  - first:
+      213: -7423455500840428142
+    second: vfx_ember_arrow_impact_6frames_1536x256_15
+  - first:
+      213: -6263705213896355172
+    second: vfx_ember_arrow_impact_6frames_1536x256_16
+  - first:
+      213: -8095895254040890833
+    second: vfx_ember_arrow_impact_6frames_1536x256_17
+  - first:
+      213: -7548590795437522530
+    second: vfx_ember_arrow_impact_6frames_1536x256_18
+  - first:
+      213: -4932166751063371480
+    second: vfx_ember_arrow_impact_6frames_1536x256_19
+  - first:
+      213: -3458594055490541097
+    second: vfx_ember_arrow_impact_6frames_1536x256_20
+  - first:
+      213: -5928258344916559857
+    second: vfx_ember_arrow_impact_6frames_1536x256_21
+  - first:
+      213: 6915707513904686244
+    second: vfx_ember_arrow_impact_6frames_1536x256_22
+  - first:
+      213: -7234124327676944411
+    second: vfx_ember_arrow_impact_6frames_1536x256_23
+  - first:
+      213: -4848217834492783165
+    second: vfx_ember_arrow_impact_6frames_1536x256_24
+  - first:
+      213: -8038674784671595721
+    second: vfx_ember_arrow_impact_6frames_1536x256_25
+  - first:
+      213: -1041586507802217230
+    second: vfx_ember_arrow_impact_6frames_1536x256_26
+  - first:
+      213: 2087013223285867204
+    second: vfx_ember_arrow_impact_6frames_1536x256_27
+  - first:
+      213: -3024024177711683502
+    second: vfx_ember_arrow_impact_6frames_1536x256_28
+  - first:
+      213: -3374761000527151204
+    second: vfx_ember_arrow_impact_6frames_1536x256_29
+  - first:
+      213: -8786411722396151951
+    second: vfx_ember_arrow_impact_6frames_1536x256_30
+  - first:
+      213: 4260934147997632325
+    second: vfx_ember_arrow_impact_6frames_1536x256_31
+  - first:
+      213: 8921620845284259990
+    second: vfx_ember_arrow_impact_6frames_1536x256_32
+  - first:
+      213: -524466645428168215
+    second: vfx_ember_arrow_impact_6frames_1536x256_33
+  - first:
+      213: -7268046846996975364
+    second: vfx_ember_arrow_impact_6frames_1536x256_34
+  - first:
+      213: -8386217059443515231
+    second: vfx_ember_arrow_impact_6frames_1536x256_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_arrow_impact_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0481fff33c712c849986e676144c1632
+      internalID: -1291964953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_arrow_impact_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81441d5990bd5f84994ce8370b070a5d
+      internalID: -1844545372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_arrow_impact_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6efbd1aea5fabc840bd2c05d84991633
+      internalID: -1391287668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_arrow_impact_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c04f28fcec3acd47a89901bee09b6f8
+      internalID: -1446770255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_arrow_impact_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d220e54e3b43a824782b2bf6c80daaee
+      internalID: -750236099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_arrow_impact_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c75a5af7e65e74db1cd9ab4cea475d
+      internalID: -1039095684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e372867f0bcdc2a4c834bc8f0077b3e2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_arrow_impact_00: -1291964953
+      vfx_arrow_impact_01: -1844545372
+      vfx_arrow_impact_02: -1391287668
+      vfx_arrow_impact_03: -1446770255
+      vfx_arrow_impact_04: -750236099
+      vfx_arrow_impact_05: -1039095684
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

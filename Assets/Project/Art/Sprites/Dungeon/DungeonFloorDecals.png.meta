@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 8aa6b2e1d5801d74e83b5edafc8c9f25
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4983960742465669948
+    second: DungeonFloorDecals_0
+  - first:
+      213: 4530910033138921478
+    second: DungeonFloorDecals_1
+  - first:
+      213: 3538683465304989535
+    second: DungeonFloorDecals_2
+  - first:
+      213: -5069834504849248801
+    second: DungeonFloorDecals_3
+  - first:
+      213: 2653737186398671764
+    second: DungeonFloorDecals_4
+  - first:
+      213: -4661479873946855531
+    second: DungeonFloorDecals_5
+  - first:
+      213: -7684925387788748912
+    second: DungeonFloorDecals_6
+  - first:
+      213: 5782297124692669281
+    second: DungeonFloorDecals_7
+  - first:
+      213: -9089864445501696667
+    second: DungeonFloorDecals_8
+  - first:
+      213: -6635988133015755352
+    second: DungeonFloorDecals_9
+  - first:
+      213: 6404296996513235932
+    second: DungeonFloorDecals_10
+  - first:
+      213: 8710337159728617579
+    second: DungeonFloorDecals_11
+  - first:
+      213: 7127717411168373004
+    second: DungeonFloorDecals_12
+  - first:
+      213: 4900600534211808862
+    second: DungeonFloorDecals_13
+  - first:
+      213: 5631022459449444970
+    second: DungeonFloorDecals_14
+  - first:
+      213: -2135415231657666109
+    second: DungeonFloorDecals_15
+  - first:
+      213: 4320062938803222409
+    second: DungeonFloorDecals_16
+  - first:
+      213: -8457515291853985923
+    second: DungeonFloorDecals_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DungeonFloorDecals_0
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 1005
+        width: 187
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b882d93e59a2540800000000000000
+      internalID: 4983960742465669948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_1
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 989
+        width: 326
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 600bf7a5ba601ee30800000000000000
+      internalID: 4530910033138921478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_2
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 943
+        width: 371
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5f5d0aecddeb1130800000000000000
+      internalID: 3538683465304989535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 601
+        width: 153
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd2174016454a9b0800000000000000
+      internalID: -5069834504849248801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 690
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 493998239e7f3d420800000000000000
+      internalID: 2653737186398671764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_5
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 542
+        width: 303
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597d3c190c81f4fb0800000000000000
+      internalID: -4661479873946855531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_6
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 523
+        width: 343
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09778778319a95590800000000000000
+      internalID: -7684925387788748912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_7
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 621
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 163b1175998de3050800000000000000
+      internalID: 5782297124692669281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_8
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 212
+        width: 160
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5651b6d62705ad180800000000000000
+      internalID: -9089864445501696667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_9
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 320
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a563e5b3fb38e3a0800000000000000
+      internalID: -6635988133015755352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_10
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 322
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3c549df22a0e850800000000000000
+      internalID: 6404296996513235932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_11
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 155
+        width: 274
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6852875f7551e870800000000000000
+      internalID: 8710337159728617579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_12
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 123
+        width: 385
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c09ce00a83dbae260800000000000000
+      internalID: 7127717411168373004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_13
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 281
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5ec8cba83e620440800000000000000
+      internalID: 4900600534211808862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_14
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 255
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a0bb9a719652e40800000000000000
+      internalID: 5631022459449444970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_15
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 209
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c91615292b7d52e0800000000000000
+      internalID: -2135415231657666109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_16
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 206
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98732baaa52f3fb30800000000000000
+      internalID: 4320062938803222409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungeonFloorDecals_17
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 112
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77eb92e6aed0aa80800000000000000
+      internalID: -8457515291853985923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DungeonFloorDecals_0: 4983960742465669948
+      DungeonFloorDecals_1: 4530910033138921478
+      DungeonFloorDecals_10: 6404296996513235932
+      DungeonFloorDecals_11: 8710337159728617579
+      DungeonFloorDecals_12: 7127717411168373004
+      DungeonFloorDecals_13: 4900600534211808862
+      DungeonFloorDecals_14: 5631022459449444970
+      DungeonFloorDecals_15: -2135415231657666109
+      DungeonFloorDecals_16: 4320062938803222409
+      DungeonFloorDecals_17: -8457515291853985923
+      DungeonFloorDecals_2: 3538683465304989535
+      DungeonFloorDecals_3: -5069834504849248801
+      DungeonFloorDecals_4: 2653737186398671764
+      DungeonFloorDecals_5: -4661479873946855531
+      DungeonFloorDecals_6: -7684925387788748912
+      DungeonFloorDecals_7: 5782297124692669281
+      DungeonFloorDecals_8: -9089864445501696667
+      DungeonFloorDecals_9: -6635988133015755352
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

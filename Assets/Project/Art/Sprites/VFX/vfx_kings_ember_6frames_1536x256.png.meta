@@ -1,0 +1,446 @@
+fileFormatVersion: 2
+guid: e6b49085cbecd76439f53d22f8e9373f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8951797685381158066
+    second: vfx_kings_ember_6frames_1536x256_0
+  - first:
+      213: -2234456690471094736
+    second: vfx_kings_ember_6frames_1536x256_1
+  - first:
+      213: -2011046303457255761
+    second: vfx_kings_ember_6frames_1536x256_2
+  - first:
+      213: -8788358709869085516
+    second: vfx_kings_ember_6frames_1536x256_3
+  - first:
+      213: 593667070163548324
+    second: vfx_kings_ember_6frames_1536x256_4
+  - first:
+      213: -5228511313974775621
+    second: vfx_kings_ember_6frames_1536x256_5
+  - first:
+      213: 4319838282378320323
+    second: vfx_kings_ember_6frames_1536x256_6
+  - first:
+      213: 5975463293502206893
+    second: vfx_kings_ember_6frames_1536x256_7
+  - first:
+      213: -8061329180981290072
+    second: vfx_kings_ember_6frames_1536x256_8
+  - first:
+      213: 5586119664790479160
+    second: vfx_kings_ember_6frames_1536x256_9
+  - first:
+      213: -3137630871937638572
+    second: vfx_kings_ember_6frames_1536x256_10
+  - first:
+      213: 5048320666048405134
+    second: vfx_kings_ember_6frames_1536x256_11
+  - first:
+      213: -7694632507854836199
+    second: vfx_kings_ember_6frames_1536x256_12
+  - first:
+      213: 4136246584630196331
+    second: vfx_kings_ember_6frames_1536x256_13
+  - first:
+      213: -1015984779935599971
+    second: vfx_kings_ember_6frames_1536x256_14
+  - first:
+      213: 2109474209885686852
+    second: vfx_kings_ember_6frames_1536x256_15
+  - first:
+      213: -114928940190331470
+    second: vfx_kings_ember_6frames_1536x256_16
+  - first:
+      213: 1760674464616240169
+    second: vfx_kings_ember_6frames_1536x256_17
+  - first:
+      213: 7957113845987575982
+    second: vfx_kings_ember_6frames_1536x256_18
+  - first:
+      213: 8634635029939944809
+    second: vfx_kings_ember_6frames_1536x256_19
+  - first:
+      213: -6557387211264961047
+    second: vfx_kings_ember_6frames_1536x256_20
+  - first:
+      213: 6355517912456158489
+    second: vfx_kings_ember_6frames_1536x256_21
+  - first:
+      213: -2064171326121279407
+    second: vfx_kings_ember_6frames_1536x256_22
+  - first:
+      213: 8830236927910880060
+    second: vfx_kings_ember_6frames_1536x256_23
+  - first:
+      213: 8355798718367111031
+    second: vfx_kings_ember_6frames_1536x256_24
+  - first:
+      213: -1212140061471148889
+    second: vfx_kings_ember_6frames_1536x256_25
+  - first:
+      213: -7925750172863453672
+    second: vfx_kings_ember_6frames_1536x256_26
+  - first:
+      213: -7689112505474339698
+    second: vfx_kings_ember_6frames_1536x256_27
+  - first:
+      213: 7727946181061901747
+    second: vfx_kings_ember_6frames_1536x256_28
+  - first:
+      213: 6565358845862861148
+    second: vfx_kings_ember_6frames_1536x256_29
+  - first:
+      213: 6393261600558957859
+    second: vfx_kings_ember_6frames_1536x256_30
+  - first:
+      213: 3276684241130467247
+    second: vfx_kings_ember_6frames_1536x256_31
+  - first:
+      213: 7119991951510144612
+    second: vfx_kings_ember_6frames_1536x256_32
+  - first:
+      213: -9201772566900224261
+    second: vfx_kings_ember_6frames_1536x256_33
+  - first:
+      213: 4199442449014119185
+    second: vfx_kings_ember_6frames_1536x256_34
+  - first:
+      213: -4416011582165205100
+    second: vfx_kings_ember_6frames_1536x256_35
+  - first:
+      213: 2370842614393241094
+    second: vfx_kings_ember_6frames_1536x256_36
+  - first:
+      213: 124349198871914024
+    second: vfx_kings_ember_6frames_1536x256_37
+  - first:
+      213: -3279643004270011311
+    second: vfx_kings_ember_6frames_1536x256_38
+  - first:
+      213: 249620843857809643
+    second: vfx_kings_ember_6frames_1536x256_39
+  - first:
+      213: 4919465114768947021
+    second: vfx_kings_ember_6frames_1536x256_40
+  - first:
+      213: -6553140950930780862
+    second: vfx_kings_ember_6frames_1536x256_41
+  - first:
+      213: 2211343231044936318
+    second: vfx_kings_ember_6frames_1536x256_42
+  - first:
+      213: 4097870156844493587
+    second: vfx_kings_ember_6frames_1536x256_43
+  - first:
+      213: 1886956569064503722
+    second: vfx_kings_ember_6frames_1536x256_44
+  - first:
+      213: -1992435576975331388
+    second: vfx_kings_ember_6frames_1536x256_45
+  - first:
+      213: -7747131842691152358
+    second: vfx_kings_ember_6frames_1536x256_46
+  - first:
+      213: -5758788406823530812
+    second: vfx_kings_ember_6frames_1536x256_47
+  - first:
+      213: 3082567412288086702
+    second: vfx_kings_ember_6frames_1536x256_48
+  - first:
+      213: 753849858161616035
+    second: vfx_kings_ember_6frames_1536x256_49
+  - first:
+      213: -4192831564590413909
+    second: vfx_kings_ember_6frames_1536x256_50
+  - first:
+      213: -8531134300632411740
+    second: vfx_kings_ember_6frames_1536x256_51
+  - first:
+      213: 1873800656723937603
+    second: vfx_kings_ember_6frames_1536x256_52
+  - first:
+      213: 6257262013825313080
+    second: vfx_kings_ember_6frames_1536x256_53
+  - first:
+      213: 9001117243741511712
+    second: vfx_kings_ember_6frames_1536x256_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_kings_ember_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc5aa7c813bbdc47ac16f6cc7663e5c
+      internalID: 247586970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_kings_ember_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df42b9adb1225e4f83e01e6518f890d
+      internalID: 998010561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_kings_ember_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b1cc1c498a5d74db2e8969aaa9d33c
+      internalID: 1743376408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_kings_ember_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c0002f72340800408ef75c14a79fde5
+      internalID: -300946417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_kings_ember_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d35fb9e910f5d46bb7ae06d37a5c34
+      internalID: -1548732006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_kings_ember_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6321a75eb53142742aa8a9ba71f7df41
+      internalID: -1337811664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4a4ef477ac1058141932f2660fbecd90
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_kings_ember_00: 247586970
+      vfx_kings_ember_01: 998010561
+      vfx_kings_ember_02: 1743376408
+      vfx_kings_ember_03: -300946417
+      vfx_kings_ember_04: -1548732006
+      vfx_kings_ember_05: -1337811664
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

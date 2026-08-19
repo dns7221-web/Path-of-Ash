@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9d30cd42ba82a41a2e543819759b05, type: 3}
+  m_Name: Skill_E_AshPillar
+  m_EditorClassIdentifier: Assembly-CSharp::AreaSkillData
+  displayName: "\uC7BF\uBD88 \uAE30\uB465"
+  description: "\uC55E\uCABD \uBC14\uB2E5\uC5D0 \uC7BF\uBD88\uC744 \uC2EC\uB294\uB2E4.
+    \uC7A0\uC2DC \uB4A4 \uAE30\uB465\uC774 \uC19F\uC544 \uADF8 \uC790\uB9AC\uB97C
+    \uB36E\uCE5C\uB2E4."
+  cooldownSeconds: 3
+  motionSeconds: 0.43
+  damage: 4
+  animatorTrigger: Staff
+  effectPrefab: {fileID: 2413951896586397748, guid: db289f81774497c45a488dcd2fbd5301, type: 3}
+  effectForwardOffset: 2
+  effectLifetime: 1
+  forwardDistance: 8
+  radius: 4
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  castDelay: 0.286
+  explodeDelay: 0.5

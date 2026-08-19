@@ -1,0 +1,467 @@
+fileFormatVersion: 2
+guid: 49d3ce91e9714914ba94e345e1c82104
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6361811755483143039
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_0
+  - first:
+      213: -8803167795870718755
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_1
+  - first:
+      213: 8807625875089319877
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_2
+  - first:
+      213: 5370294074535280482
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_3
+  - first:
+      213: 313143455418906359
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_4
+  - first:
+      213: 2992737203715093162
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_5
+  - first:
+      213: 8271790381056683922
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_6
+  - first:
+      213: 6852444870225166733
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_7
+  - first:
+      213: -4547665500785143806
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_8
+  - first:
+      213: 3954023922619755762
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_9
+  - first:
+      213: 247074701140475919
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_10
+  - first:
+      213: -3744698835253760488
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_11
+  - first:
+      213: -3894006344968629038
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_12
+  - first:
+      213: -44706248432156915
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_13
+  - first:
+      213: -7830533959926853718
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_14
+  - first:
+      213: 6578135513656560647
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_15
+  - first:
+      213: -857647194588427517
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_16
+  - first:
+      213: 1112827754184906388
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_17
+  - first:
+      213: -4978345957380846470
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_18
+  - first:
+      213: 7682733593999804616
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_19
+  - first:
+      213: 6355267538687236273
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_20
+  - first:
+      213: -535773070870803449
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_21
+  - first:
+      213: -176877877980180261
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_22
+  - first:
+      213: -7307477099519708789
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_23
+  - first:
+      213: 4688174002629609316
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_24
+  - first:
+      213: 3395506481402972162
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_25
+  - first:
+      213: -6456115451561178588
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_26
+  - first:
+      213: -6203965132345993904
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_27
+  - first:
+      213: 4520233761066035641
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_28
+  - first:
+      213: -8492417040604109860
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_29
+  - first:
+      213: -3353073352197908254
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_30
+  - first:
+      213: 5260043886334431850
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_31
+  - first:
+      213: -6297569534180556707
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_32
+  - first:
+      213: -3805531013739350771
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_33
+  - first:
+      213: -6536514219076827764
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_34
+  - first:
+      213: -6473265525300972539
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_35
+  - first:
+      213: 4650112782999419514
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_36
+  - first:
+      213: -1945472840664701379
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_37
+  - first:
+      213: 5352098878427167193
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_38
+  - first:
+      213: -5652961364155464265
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_39
+  - first:
+      213: -6367954261631686648
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_40
+  - first:
+      213: 6254506836992196081
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_41
+  - first:
+      213: -7923877858681381846
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_42
+  - first:
+      213: 5974074711626253432
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_43
+  - first:
+      213: 5781460022691593050
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_44
+  - first:
+      213: -3786765947503101598
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_45
+  - first:
+      213: -1120227498706234827
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_46
+  - first:
+      213: 3742995164430887023
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_47
+  - first:
+      213: -1300813472018707059
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_48
+  - first:
+      213: 2267699422170266509
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_49
+  - first:
+      213: -4221610370223105523
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_50
+  - first:
+      213: -7395171409622879777
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_51
+  - first:
+      213: -5584756435763119269
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_52
+  - first:
+      213: -6110231132277472463
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_53
+  - first:
+      213: -485482816180796232
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_54
+  - first:
+      213: -3522622084025921109
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_55
+  - first:
+      213: 3976300962406739116
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_56
+  - first:
+      213: -2024311074875350133
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_57
+  - first:
+      213: -468718251790464757
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_58
+  - first:
+      213: -5810827852333964790
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_59
+  - first:
+      213: -2704310783777804649
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_60
+  - first:
+      213: 3717371529098787335
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_staff_spell_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259ae1b3d38bf354ab42a9cea3701261
+      internalID: -1146429849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_staff_spell_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f5002577237284baeb25e7ba4f2057
+      internalID: -331988906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_staff_spell_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df81f7df4b5e8f045923becf6babb0e5
+      internalID: 1320230874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_staff_spell_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e310cd65bd4b16459251843e6df1eed
+      internalID: -926572631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_staff_spell_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 927d4dc774806c64b88196dfbef567db
+      internalID: -534531642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_staff_spell_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa3c67870381d949a3e71b2e10c19ed
+      internalID: 1071402932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 48869f92663fcf5478c47ead7b572ca6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_staff_spell_00: -1146429849
+      vfx_staff_spell_01: -331988906
+      vfx_staff_spell_02: 1320230874
+      vfx_staff_spell_03: -926572631
+      vfx_staff_spell_04: -534531642
+      vfx_staff_spell_05: 1071402932
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

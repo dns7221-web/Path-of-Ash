@@ -1,0 +1,380 @@
+fileFormatVersion: 2
+guid: 1f6dd4599cd0d874380dc5b0f92897b6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -158846823583328606
+    second: vfx_sword_slam_impact_6frames_1536x256_0
+  - first:
+      213: -5215191727793071676
+    second: vfx_sword_slam_impact_6frames_1536x256_1
+  - first:
+      213: -541594037094525246
+    second: vfx_sword_slam_impact_6frames_1536x256_2
+  - first:
+      213: -2492527750859876309
+    second: vfx_sword_slam_impact_6frames_1536x256_3
+  - first:
+      213: 9006854015025352446
+    second: vfx_sword_slam_impact_6frames_1536x256_4
+  - first:
+      213: 4362688251192658404
+    second: vfx_sword_slam_impact_6frames_1536x256_5
+  - first:
+      213: 1703629310029577970
+    second: vfx_sword_slam_impact_6frames_1536x256_6
+  - first:
+      213: -1524463613121282805
+    second: vfx_sword_slam_impact_6frames_1536x256_7
+  - first:
+      213: -7858712650264744330
+    second: vfx_sword_slam_impact_6frames_1536x256_8
+  - first:
+      213: 389068428604954591
+    second: vfx_sword_slam_impact_6frames_1536x256_9
+  - first:
+      213: -2962931174207153395
+    second: vfx_sword_slam_impact_6frames_1536x256_10
+  - first:
+      213: 2593556856028611396
+    second: vfx_sword_slam_impact_6frames_1536x256_11
+  - first:
+      213: -8803965936102355071
+    second: vfx_sword_slam_impact_6frames_1536x256_12
+  - first:
+      213: -5772318017344984878
+    second: vfx_sword_slam_impact_6frames_1536x256_13
+  - first:
+      213: -8341455220944375007
+    second: vfx_sword_slam_impact_6frames_1536x256_14
+  - first:
+      213: 408575315413564992
+    second: vfx_sword_slam_impact_6frames_1536x256_15
+  - first:
+      213: -915382135403969578
+    second: vfx_sword_slam_impact_6frames_1536x256_16
+  - first:
+      213: 4794592515798287843
+    second: vfx_sword_slam_impact_6frames_1536x256_17
+  - first:
+      213: 5263825511216528142
+    second: vfx_sword_slam_impact_6frames_1536x256_18
+  - first:
+      213: -8824035278220277779
+    second: vfx_sword_slam_impact_6frames_1536x256_19
+  - first:
+      213: 1894955757465102713
+    second: vfx_sword_slam_impact_6frames_1536x256_20
+  - first:
+      213: -6134251468920602926
+    second: vfx_sword_slam_impact_6frames_1536x256_21
+  - first:
+      213: -4282605189425555014
+    second: vfx_sword_slam_impact_6frames_1536x256_22
+  - first:
+      213: -2982902388971758833
+    second: vfx_sword_slam_impact_6frames_1536x256_23
+  - first:
+      213: -6068194749270838107
+    second: vfx_sword_slam_impact_6frames_1536x256_24
+  - first:
+      213: -3109683171480384562
+    second: vfx_sword_slam_impact_6frames_1536x256_25
+  - first:
+      213: 2476572293264573765
+    second: vfx_sword_slam_impact_6frames_1536x256_26
+  - first:
+      213: 8640762138729055030
+    second: vfx_sword_slam_impact_6frames_1536x256_27
+  - first:
+      213: 947202334237392156
+    second: vfx_sword_slam_impact_6frames_1536x256_28
+  - first:
+      213: 149579814068452699
+    second: vfx_sword_slam_impact_6frames_1536x256_29
+  - first:
+      213: -8553050802694486384
+    second: vfx_sword_slam_impact_6frames_1536x256_30
+  - first:
+      213: -8659622161796498510
+    second: vfx_sword_slam_impact_6frames_1536x256_31
+  - first:
+      213: -1401470160509313013
+    second: vfx_sword_slam_impact_6frames_1536x256_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_slam_impact_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 078c0d07500c6414b8ca35aa9d8594fd
+      internalID: 1981497899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_slam_impact_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97df222f381e49b4e835fa60b531ca3a
+      internalID: -321994821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_slam_impact_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4349953b69c51e4bbe9b105561c8784
+      internalID: -1183962936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_slam_impact_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daef6c9f155593c4a9c4a4ad7fd192cc
+      internalID: -311203123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_slam_impact_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad9659705e50394cb499b0bc78a7d1b
+      internalID: 1000135517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_slam_impact_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3263b40560650af4b986c0b5809b341a
+      internalID: -1325352362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6ed0fd8a1dfa0d04a9dc3393d6c53e13
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_slam_impact_00: 1981497899
+      vfx_slam_impact_01: -321994821
+      vfx_slam_impact_02: -1183962936
+      vfx_slam_impact_03: -311203123
+      vfx_slam_impact_04: 1000135517
+      vfx_slam_impact_05: -1325352362
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ecf220c54032a44b3a8dbf1e1c6c05, type: 3}
+  m_Name: Skill_Q_GroundSlam
+  m_EditorClassIdentifier: Assembly-CSharp::GroundSlamSkillData
+  displayName: "\uC7BF\uBD88 \uB300\uAC80 \uB0B4\uB824\uCC0D\uAE30"
+  description: "\uB300\uAC80\uC744 \uBC14\uB2E5\uC5D0 \uB0B4\uB824\uCC0D\uB294\uB2E4.
+    \uBC1C\uBC11\uC774 \uBA3C\uC800 \uD130\uC9C0\uACE0, \uC774\uC5B4\uC11C \uC55E\uC73C\uB85C
+    \uC7BF\uBD88\uC774 \uBC88\uC9C4\uB2E4. \uCF54\uC55E\uC5D0\uC11C \uC4F0\uBA74
+    \uB450 \uBC88 \uB2E4 \uB9DE\uB294\uB2E4."
+  cooldownSeconds: 3
+  motionSeconds: 0.43
+  damage: 0
+  animatorTrigger: SwordSlam
+  effectPrefab: {fileID: 0}
+  effectForwardOffset: 2
+  effectLifetime: 1
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  nearDelay: 0.214
+  nearSize: {x: 4, y: 3}
+  nearDamage: 2
+  nearEffect: {fileID: 2841151808545760901, guid: 5a7a62a896ef98244bc00c6dcd7fafd8, type: 3}
+  farDelay: 0.286
+  farDistance: 5
+  farSize: {x: 9, y: 4}
+  farDamage: 5
+  farEffect: {fileID: 8362842681738558021, guid: 6269c1b48820efc46999e636e3b56db9, type: 3}
