@@ -40,8 +40,9 @@ public class RoomDoorState : MonoBehaviour
 
     [Header("디버그 — 전투가 붙기 전까지 눈으로 확인하는 용도")]
     // 수정(전투 연결 시점): 기본값을 true → false로 바꿨다.
-    // 이제 EnemySpawner가 "적을 다 잡으면 문을 연다"를 담당한다. 디버그 키를 켜둔 채로 두면
-    // 사람이 누른 상태와 스포너가 정한 상태가 서로 덮어써서, 문이 왜 그 상태인지 알 수 없어진다.
+    // 수정(상자 보상 진행 도입): 이제 RoomController가 "상자를 열면 문을 연다"를 담당한다.
+    // 디버그 키를 켜둔 채로 두면 사람이 누른 상태와 방 진행 상태가 서로 덮어써서,
+    // 문이 왜 그 상태인지 알 수 없어진다.
     [Tooltip("켜두면 숫자키 1/2/3으로 상태를 강제 전환한다. 전투를 거치지 않고 그림만 " +
              "확인할 때만 켠다 — 스포너의 문 제어와 충돌한다.")]
     [SerializeField] private bool enableDebugKeys = false;
@@ -100,7 +101,7 @@ public class RoomDoorState : MonoBehaviour
     /// <summary>
     /// 문 상태를 바꾼다. 같은 상태로 다시 불러도 안전하다.
     ///
-    /// 전투 코드에서 부를 진입점이다. 예: 방의 마지막 적이 죽으면 SetState(Open),
+    /// 방 진행 코드에서 부를 진입점이다. 예: 보상 상자를 열면 SetState(Open),
     /// 보스가 등장하면 SetState(Broken).
     /// </summary>
     public void SetState(DoorState state)

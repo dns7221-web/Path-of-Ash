@@ -30,9 +30,9 @@ MonoBehaviour:
   nearDelay: 0.214
   nearSize: {x: 4, y: 3}
   nearDamage: 2
-  nearEffect: {fileID: 2841151808545760901, guid: 5a7a62a896ef98244bc00c6dcd7fafd8, type: 3}
+  nearEffect: {fileID: 3432516596608516316, guid: 5a7a62a896ef98244bc00c6dcd7fafd8, type: 3}
   farDelay: 0.286
   farDistance: 5
   farSize: {x: 9, y: 4}
   farDamage: 5
-  farEffect: {fileID: 8362842681738558021, guid: 6269c1b48820efc46999e636e3b56db9, type: 3}
+  farEffect: {fileID: 1884469369375435664, guid: 6269c1b48820efc46999e636e3b56db9, type: 3}

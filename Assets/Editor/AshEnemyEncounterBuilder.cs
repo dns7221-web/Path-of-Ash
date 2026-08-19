@@ -61,7 +61,7 @@ public static class AshEnemyEncounterBuilder
 
         EditorSceneManager.MarkSceneDirty(scene);
         Selection.activeGameObject = root;
-        Debug.Log("[망령 전투] 배치 완료 — 망령 3마리, 문 클리어 연결. 씬을 저장하세요.");
+        Debug.Log("[망령 전투] 배치 완료 — 망령 3마리 전투 구성. 씬을 저장하세요.");
     }
 
     /// <summary>방 중앙을 비워 두는 삼각형 형태의 기본 스폰 지점을 만든다.</summary>
@@ -79,7 +79,7 @@ public static class AshEnemyEncounterBuilder
         return points;
     }
 
-    /// <summary>프리팹, 스폰 지점, 기존 문과 런 매니저를 스포너에 연결한다.</summary>
+    /// <summary>프리팹, 스폰 지점과 런 매니저를 스포너에 연결한다.</summary>
     private static void LinkSpawner(
         EnemySpawner spawner,
         EnemyWraith enemyPrefab,
@@ -92,8 +92,6 @@ public static class AshEnemyEncounterBuilder
             serialized.FindProperty("spawnPoints").GetArrayElementAtIndex(i).objectReferenceValue = points[i];
 
         serialized.FindProperty("spawnCount").intValue = points.Length;
-        serialized.FindProperty("roomDoor").objectReferenceValue =
-            Object.FindFirstObjectByType<RoomDoorState>();
         serialized.FindProperty("runManager").objectReferenceValue =
             Object.FindFirstObjectByType<RunManager>();
         serialized.ApplyModifiedPropertiesWithoutUndo();
