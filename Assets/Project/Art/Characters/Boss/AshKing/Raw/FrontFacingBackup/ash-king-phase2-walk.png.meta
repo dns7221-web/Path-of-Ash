@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 81a7bccf7410b904cae0e0bd88e10256
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -565303236068041982
+    second: ash-king-phase2-walk_0
+  - first:
+      213: 6088523770793727831
+    second: ash-king-phase2-walk_1
+  - first:
+      213: 2744021234152074064
+    second: ash-king-phase2-walk_2
+  - first:
+      213: -8555033323364648522
+    second: ash-king-phase2-walk_3
+  - first:
+      213: 6113898049185559994
+    second: ash-king-phase2-walk_4
+  - first:
+      213: 6957518184950302821
+    second: ash-king-phase2-walk_5
+  - first:
+      213: -4149817307845629138
+    second: ash-king-phase2-walk_6
+  - first:
+      213: -1258517486749059369
+    second: ash-king-phase2-walk_7
+  - first:
+      213: -7204923091436438042
+    second: ash-king-phase2-walk_8
+  - first:
+      213: -5090770340650607654
+    second: ash-king-phase2-walk_9
+  - first:
+      213: -7357966309193854871
+    second: ash-king-phase2-walk_10
+  - first:
+      213: 2250659465544389331
+    second: ash-king-phase2-walk_11
+  - first:
+      213: 5629330653112396654
+    second: ash-king-phase2-walk_12
+  - first:
+      213: 4156955119313853771
+    second: ash-king-phase2-walk_13
+  - first:
+      213: -7498696392024121033
+    second: ash-king-phase2-walk_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 16
+        width: 103
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b19cfa3b3a728f0800000000000000
+      internalID: -565303236068041982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_1
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 17
+        width: 103
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7579ea47c18ce7450800000000000000
+      internalID: 6088523770793727831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_2
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 143
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05b63c526c8b41620800000000000000
+      internalID: 2744021234152074064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_3
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 16
+        width: 102
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b97837d48a664980800000000000000
+      internalID: -8555033323364648522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_4
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 16
+        width: 103
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab5b8a602ede8d450800000000000000
+      internalID: 6113898049185559994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_5
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 142
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568884c3de11e8060800000000000000
+      internalID: 6957518184950302821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_6
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 17
+        width: 103
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2be71b2523e866c0800000000000000
+      internalID: -4149817307845629138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_7
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 17
+        width: 103
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d674b28309d88ee0800000000000000
+      internalID: -1258517486749059369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_8
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 126
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6edfbe42f98f20c90800000000000000
+      internalID: -7204923091436438042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_9
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 113
+        width: 8
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adb1d64e853f959b0800000000000000
+      internalID: -5090770340650607654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_10
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 125
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 960553f30a043e990800000000000000
+      internalID: -7357966309193854871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_11
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 112
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2d4220cd2fb3f10800000000000000
+      internalID: 2250659465544389331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_12
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 113
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6b6bfd47666f1e40800000000000000
+      internalID: 5629330653112396654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 103
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4d91f118a870b930800000000000000
+      internalID: 4156955119313853771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-walk_14
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 103
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73126ea7c574fe790800000000000000
+      internalID: -7498696392024121033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-phase2-walk_0: -565303236068041982
+      ash-king-phase2-walk_1: 6088523770793727831
+      ash-king-phase2-walk_10: -7357966309193854871
+      ash-king-phase2-walk_11: 2250659465544389331
+      ash-king-phase2-walk_12: 5629330653112396654
+      ash-king-phase2-walk_13: 4156955119313853771
+      ash-king-phase2-walk_14: -7498696392024121033
+      ash-king-phase2-walk_2: 2744021234152074064
+      ash-king-phase2-walk_3: -8555033323364648522
+      ash-king-phase2-walk_4: 6113898049185559994
+      ash-king-phase2-walk_5: 6957518184950302821
+      ash-king-phase2-walk_6: -4149817307845629138
+      ash-king-phase2-walk_7: -1258517486749059369
+      ash-king-phase2-walk_8: -7204923091436438042
+      ash-king-phase2-walk_9: -5090770340650607654
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

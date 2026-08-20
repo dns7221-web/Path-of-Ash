@@ -19,6 +19,9 @@ public class Health : MonoBehaviour
     [Tooltip("최대 체력. 플레이어 5, 잿불 망령 3, 재 무리 1이 기획 수치다.")]
     [SerializeField] private int maxHealth = 3;
 
+    // 유물로 얻은 보정. 장착이 바뀔 때마다 통째로 다시 정해진다(SetBonusMax).
+    private int bonusMax;
+
     [Header("무적")]
     [Tooltip("피격 직후 무적 시간(초). 0이면 한 번의 돌진에 여러 프레임 연속으로 맞는다. " +
              "플레이어 피격 경직(0.2초)보다 살짝 길어야 경직이 풀리는 순간 또 맞지 않는다.")]
@@ -31,7 +34,7 @@ public class Health : MonoBehaviour
     public int Current { get; private set; }
 
     /// <summary>최대 체력. UI가 하트 개수를 그릴 때 읽는다.</summary>
-    public int Max => maxHealth;
+    public int Max => maxHealth + bonusMax;
 
     /// <summary>죽었는가. 죽은 뒤에는 더 이상 데미지를 받지 않는다.</summary>
     public bool IsDead => Current <= 0;
@@ -47,8 +50,22 @@ public class Health : MonoBehaviour
     /// <summary>지금 데미지를 받을 수 없는 상태인가.</summary>
     public bool IsInvulnerable => IsDead || IsInvulnerableExternally || invulnerableTimer > 0f;
 
-    /// <summary>데미지를 받았을 때. 인자는 (남은 체력, 최대 체력).</summary>
+    /// <summary>
+    /// <b>실제로 데미지를 받았을 때만</b> 불린다. 인자는 (남은 체력, 최대 체력).
+    ///
+    /// 피격 연출(움찔, 넉백, 무적 점멸)을 붙이는 자리다. 회복은 여기로 오지 않는다 —
+    /// 처음에는 회복도 이 이벤트를 쐈는데, 상자를 열어 체력을 받을 때마다 플레이어가
+    /// 피격 모션을 재생했다. 데미지가 0인데도 맞은 것처럼 보였다.
+    /// </summary>
     public event Action<int, int> Damaged;
+
+    /// <summary>
+    /// 체력 값이 바뀔 때마다 불린다. 데미지든 회복이든. 인자는 (남은 체력, 최대 체력).
+    ///
+    /// <b>UI는 이쪽을 봐야 한다.</b> 게이지는 "왜 바뀌었는가"와 무관하게 현재 값만 그리면 된다.
+    /// 반대로 연출은 이유를 구분해야 하므로 Damaged를 본다. 두 요구가 달라서 이벤트를 나눴다.
+    /// </summary>
+    public event Action<int, int> Changed;
 
     /// <summary>체력이 0이 됐을 때. 한 번만 불린다.</summary>
     public event Action Died;
@@ -65,7 +82,7 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        Current = maxHealth;
+        Current = Max;
     }
 
     private void Update()
@@ -82,7 +99,7 @@ public class Health : MonoBehaviour
     /// </summary>
     public void RestoreFull()
     {
-        Current = maxHealth;
+        Current = Max;
         invulnerableTimer = 0f;
         IsInvulnerableExternally = false;
     }
@@ -119,7 +136,8 @@ public class Health : MonoBehaviour
         Current = Mathf.Max(0, Current - amount);
         invulnerableTimer = invulnerableSecondsAfterHit;
 
-        Damaged?.Invoke(Current, maxHealth);
+        Damaged?.Invoke(Current, Max);
+        Changed?.Invoke(Current, Max);
 
         if (Current <= 0)
             Died?.Invoke();
@@ -127,12 +145,44 @@ public class Health : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 추가 생성 — 유물로 얻은 최대 체력 보정. 장착한 유물이 바뀔 때마다 통째로 다시 정해진다.
+    ///
+    /// <b>더하고 빼는 대신 "지금 몇인지"를 통째로 넣게 한 이유:</b>
+    /// 유물은 이제 장착·해제가 된다. 더하기·빼기로 관리하면 해제할 때 정확히 얼마를 빼야 하는지를
+    /// 이쪽이 기억하고 있어야 하고, 한 번이라도 어긋나면 <b>최대 체력이 슬금슬금 늘거나 준다.</b>
+    /// 에러 없이 숫자만 틀어지는 종류라 나중에 원인을 찾기 어렵다.
+    /// 장착 목록을 아는 쪽이 매번 합계를 내서 넣으면 그런 어긋남 자체가 생기지 않는다.
+    ///
+    /// 올린 만큼 현재 체력도 같이 올린다. 최대치만 올리고 현재값을 그대로 두면 유물을 꼈는데
+    /// 게이지의 <b>빈 칸이 늘어난다.</b> 강해진 게 아니라 약해진 것처럼 보인다.
+    /// </summary>
+    public void SetBonusMax(int value)
+    {
+        value = Mathf.Max(0, value);
+        if (bonusMax == value) return;
+
+        int before = Max;
+        bonusMax = value;
+        int delta = Max - before;
+
+        // 올랐으면 그만큼 채워주고, 내렸으면 넘치는 만큼만 깎는다.
+        // 내릴 때 delta만큼 빼면 안 된다 — 이미 체력이 닳아 있으면 두 번 깎이는 셈이 된다.
+        Current = delta > 0
+            ? Mathf.Min(Max, Current + delta)
+            : Mathf.Min(Current, Max);
+
+        Changed?.Invoke(Current, Max);
+    }
+
     /// <summary>회복. 최대치를 넘지 않는다. 죽은 뒤에는 살아나지 않는다.</summary>
     public void Heal(int amount)
     {
         if (amount <= 0 || IsDead) return;
 
-        Current = Mathf.Min(maxHealth, Current + amount);
-        Damaged?.Invoke(Current, maxHealth); // UI 갱신 경로가 하나뿐이라 회복도 같은 이벤트를 쓴다
+        Current = Mathf.Min(Max, Current + amount);
+
+        // 회복은 Changed만 쏜다. Damaged를 쏘면 상자를 열 때 플레이어가 피격 모션을 낸다.
+        Changed?.Invoke(Current, Max);
     }
 }

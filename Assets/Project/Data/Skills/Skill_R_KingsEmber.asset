@@ -16,10 +16,12 @@ MonoBehaviour:
   description: "\uB300\uAC80\uC744 \uBC14\uB2E5\uC5D0 \uAF42\uC544 \uC7BF\uB354\uBBF8\uC758
     \uC655\uC758 \uD798\uC744 \uC7A0\uAE50 \uBE4C\uB9B0\uB2E4. \uC8FC\uBCC0 \uBAA8\uB4E0
     \uAC83\uC774 \uC7AC\uAC00 \uB41C\uB2E4."
-  cooldownSeconds: 20
+  icon: {fileID: -1408756098, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
+  cooldownSeconds: 0
   motionSeconds: 0.6
   damage: 8
   animatorTrigger: Ultimate
+  requiresFullAshGauge: 1
   effectPrefab: {fileID: 8670208565340853328, guid: 525c98481831e624d8958e93af64a930, type: 3}
   effectForwardOffset: 2
   effectLifetime: 1

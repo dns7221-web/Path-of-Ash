@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 6805998064296671731}
   - component: {fileID: 758290942635252304}
   - component: {fileID: 36393597399815050}
+  - component: {fileID: 2639018860020226696}
+  - component: {fileID: 206091923732273496}
   - component: {fileID: 6910044889210517486}
   - component: {fileID: 1211769067937263836}
   - component: {fileID: 7226679298851804760}
@@ -298,6 +300,35 @@ MonoBehaviour:
   regenPerSecond: 18
   regenDelaySeconds: 0.7
   exhaustedReleaseRatio: 0.3
+--- !u!114 &2639018860020226696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287329469376772141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061e43d5f34cfff4ba5f96d70c95f8ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AshGauge
+  maxCharge: 100
+  chargePerKill: 10
+--- !u!114 &206091923732273496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287329469376772141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63fbb480e35fba845a0e6533b3b41720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RelicInventory
+  health: {fileID: 0}
+  stamina: {fileID: 0}
+  skills: {fileID: 0}
 --- !u!114 &6910044889210517486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080ed9e904063054e9f8a4e68e0f76a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 5
+  maxHealth: 3
   invulnerableSecondsAfterHit: 0.35
 --- !u!114 &1211769067937263836
 MonoBehaviour:
@@ -332,12 +363,12 @@ MonoBehaviour:
     m_Name: Move
     m_Type: 0
     m_ExpectedControlType: Vector2
-    m_Id: 4f791413-380c-4de8-8f3f-cba6b29da88f
+    m_Id: bdc9a5ce-e8b4-4528-afb8-68afccc8ae2d
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 2DVector
-      m_Id: e2c3ebc1-5e00-4c76-b20d-2d0f3fb11477
+      m_Id: d7c7f5c4-e3f9-4cac-ab89-69f5b9ab4783
       m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
@@ -345,7 +376,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 4
     - m_Name: Up
-      m_Id: cc9a6de5-ccc6-43ec-88bb-d1ba4746118f
+      m_Id: 3422fd66-ba3f-4c0a-b514-b3e405590ac7
       m_Path: <Keyboard>/upArrow
       m_Interactions: 
       m_Processors: 
@@ -353,7 +384,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: Down
-      m_Id: 6c6fc365-a66c-41d4-af10-9ccc948d8404
+      m_Id: cc05d9d6-1d46-420f-b8b1-ad1005408e7d
       m_Path: <Keyboard>/downArrow
       m_Interactions: 
       m_Processors: 
@@ -361,7 +392,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: Left
-      m_Id: 78cdda58-f9fe-4e28-9580-794ed24125a2
+      m_Id: 5a5b74a0-c321-4099-a184-fd8e045853f5
       m_Path: <Keyboard>/leftArrow
       m_Interactions: 
       m_Processors: 
@@ -369,7 +400,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: Right
-      m_Id: 3e526be4-5ea1-4f6e-887f-99b1f60657b7
+      m_Id: 9030ac22-8c64-435d-93e9-7f8480179d53
       m_Path: <Keyboard>/rightArrow
       m_Interactions: 
       m_Processors: 
@@ -377,7 +408,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     - m_Name: 
-      m_Id: aed49003-bbef-4dca-bbb7-fde4c2dcff6d
+      m_Id: 838c9685-dfed-440b-af70-74a6d67ea8ee
       m_Path: <Gamepad>/leftStick
       m_Interactions: 
       m_Processors: 
@@ -389,12 +420,12 @@ MonoBehaviour:
     m_Name: Dash
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 4eac378a-7b25-478c-9657-3ec854354598
+    m_Id: d22b1a40-5194-4619-8b92-40f581f53bf6
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 783879bb-4f2b-4ac6-a649-226d0d69f48a
+      m_Id: cc3698c2-e3be-49ed-900f-2ecfdd9ffcf0
       m_Path: <Keyboard>/leftShift
       m_Interactions: 
       m_Processors: 
@@ -402,7 +433,7 @@ MonoBehaviour:
       m_Action: Dash
       m_Flags: 0
     - m_Name: 
-      m_Id: 95210f2c-378d-4fc9-b98e-2fce0741665c
+      m_Id: 57401918-2ced-450c-b3e4-13473e438eb6
       m_Path: <Keyboard>/rightShift
       m_Interactions: 
       m_Processors: 
@@ -410,7 +441,7 @@ MonoBehaviour:
       m_Action: Dash
       m_Flags: 0
     - m_Name: 
-      m_Id: fe42f9aa-ba39-4f28-80dc-103d9ae61880
+      m_Id: 5611ec86-f50b-4b0f-a56f-aee34e2b9886
       m_Path: <Gamepad>/buttonSouth
       m_Interactions: 
       m_Processors: 
@@ -446,12 +477,12 @@ MonoBehaviour:
   - m_Name: BasicAttack
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 765562c9-6d60-461b-b3cf-055401112db9
+    m_Id: bcdbe389-0889-47c1-a216-f67322bdf8a9
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 5b42e83f-db9e-4db9-b185-46fc426058e1
+      m_Id: d718b0c9-8a27-48f2-be4c-aa33f89b28a0
       m_Path: <Keyboard>/leftCtrl
       m_Interactions: 
       m_Processors: 
@@ -459,7 +490,7 @@ MonoBehaviour:
       m_Action: BasicAttack
       m_Flags: 0
     - m_Name: 
-      m_Id: 2b1b9163-972a-4923-8fd2-07cb0bc74ceb
+      m_Id: 19f49505-43a3-4c70-8449-24ff72d27f06
       m_Path: <Keyboard>/rightCtrl
       m_Interactions: 
       m_Processors: 
@@ -467,7 +498,7 @@ MonoBehaviour:
       m_Action: BasicAttack
       m_Flags: 0
     - m_Name: 
-      m_Id: 7d1c0d7d-da3a-4dfc-bc93-931e6a1654fb
+      m_Id: 9ed089f6-576e-467c-ba39-a2e499d8eec3
       m_Path: <Gamepad>/buttonWest
       m_Interactions: 
       m_Processors: 
@@ -478,12 +509,12 @@ MonoBehaviour:
   - m_Name: Skill_Q
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: c2f83113-d8a8-4632-9c8d-cc3aa2a6bc37
+    m_Id: c1a87590-be61-41ae-b41f-b641946b55c3
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 4dcb65be-eede-4447-8187-93771eda7a33
+      m_Id: 872c155c-4123-4834-bf46-24b08e74309c
       m_Path: <Keyboard>/q
       m_Interactions: 
       m_Processors: 
@@ -491,7 +522,7 @@ MonoBehaviour:
       m_Action: Skill_Q
       m_Flags: 0
     - m_Name: 
-      m_Id: e841a2ab-a4cf-4581-a0d4-7550a5edc27a
+      m_Id: b315368e-1671-4abb-8657-cbd4a20c302c
       m_Path: <Gamepad>/buttonNorth
       m_Interactions: 
       m_Processors: 
@@ -502,12 +533,12 @@ MonoBehaviour:
   - m_Name: Skill_W
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: ef10578a-4990-4448-ada7-5f5aa9c68a4c
+    m_Id: 1fb6752b-c507-4f61-8e73-0f34993c1d03
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: a4f48146-5ea9-4d4a-841f-66afa646584d
+      m_Id: 74939f67-442d-4097-9e20-e651fe36391c
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
@@ -515,7 +546,7 @@ MonoBehaviour:
       m_Action: Skill_W
       m_Flags: 0
     - m_Name: 
-      m_Id: c6113f9a-a09f-479e-8f7f-d5f0f3ee4443
+      m_Id: 609d4f9a-95a3-42b6-b537-f10640ac381b
       m_Path: <Gamepad>/buttonEast
       m_Interactions: 
       m_Processors: 
@@ -526,12 +557,12 @@ MonoBehaviour:
   - m_Name: Skill_E
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 9d28c6ec-e296-48e4-8870-49cf30d77a84
+    m_Id: cadf8a23-7aeb-4683-99be-1a638f3c7183
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 826465c2-58f8-4767-a5ff-3060fc246ef2
+      m_Id: 23a99e56-1235-4753-a8bd-6640b58d1fe0
       m_Path: <Keyboard>/e
       m_Interactions: 
       m_Processors: 
@@ -539,7 +570,7 @@ MonoBehaviour:
       m_Action: Skill_E
       m_Flags: 0
     - m_Name: 
-      m_Id: 285cbf90-9451-4b48-b929-eda828c48c25
+      m_Id: 407ebf2d-c031-40a5-8f77-faaa50f2f625
       m_Path: <Gamepad>/leftShoulder
       m_Interactions: 
       m_Processors: 
@@ -550,12 +581,12 @@ MonoBehaviour:
   - m_Name: Skill_R
     m_Type: 1
     m_ExpectedControlType: 
-    m_Id: 7656fa16-577d-4902-b152-aee57b027510
+    m_Id: 6d0c3b24-9ae0-46e8-a3b6-f48397b6f168
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 51eb2f72-7822-4109-91fe-bfbe27a19a4e
+      m_Id: 6af80b5d-a80f-4457-a4e3-f3a94cb02a97
       m_Path: <Keyboard>/r
       m_Interactions: 
       m_Processors: 
@@ -563,7 +594,7 @@ MonoBehaviour:
       m_Action: Skill_R
       m_Flags: 0
     - m_Name: 
-      m_Id: b9fa2d49-e730-4468-9309-b561c36ac48d
+      m_Id: fb1b3880-df21-4229-abad-fa555d354593
       m_Path: <Gamepad>/rightShoulder
       m_Interactions: 
       m_Processors: 
@@ -572,4 +603,5 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   meleeHitbox: {fileID: 9199690728552902439}
+  ashGauge: {fileID: 0}
   globalCooldownSeconds: 0.4

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: "\uC55E\uCABD \uBC14\uB2E5\uC5D0 \uC7BF\uBD88\uC744 \uC2EC\uB294\uB2E4.
     \uC7A0\uC2DC \uB4A4 \uAE30\uB465\uC774 \uC19F\uC544 \uADF8 \uC790\uB9AC\uB97C
     \uB36E\uCE5C\uB2E4."
+  icon: {fileID: 854722827, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
   cooldownSeconds: 3
   motionSeconds: 0.43
   damage: 4

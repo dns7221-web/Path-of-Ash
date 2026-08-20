@@ -169,6 +169,15 @@ public class PlayerController : MonoBehaviour
     public bool FacingRight => facingRight;
 
     /// <summary>
+    /// 추가 생성 — 유물로 얻은 이동 속도 보정. moveSpeed에 더해진다.
+    ///
+    /// moveSpeed를 직접 올리지 않고 따로 둔 이유: moveSpeed는 인스펙터에서 손으로 맞춘
+    /// 기본값이라, 유물이 그걸 덮어쓰면 <b>원래 값이 뭐였는지 알 수 없게 된다.</b>
+    /// 나중에 "속도가 왜 이렇지"를 볼 때 기본값과 보정치가 나뉘어 있어야 셈이 보인다.
+    /// </summary>
+    public float BonusMoveSpeed { get; set; }
+
+    /// <summary>
     /// 추가 생성 — 스킬 시전 모션을 시작한다. 시전할 수 있는 상태였으면 true.
     ///
     /// <b>이 함수가 PlayerController와 SkillController의 경계다.</b>
@@ -345,7 +354,7 @@ public class PlayerController : MonoBehaviour
         switch (actionState)
         {
             case ActionState.Normal:
-                rb.linearVelocity = moveInput * moveSpeed;
+                rb.linearVelocity = moveInput * (moveSpeed + BonusMoveSpeed);
                 break;
 
             case ActionState.Dashing:

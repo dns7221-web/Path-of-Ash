@@ -50,6 +50,9 @@ public abstract class SkillData : ScriptableObject
     [TextArea(2, 4)]
     [SerializeField] private string description = "";
 
+    [Tooltip("스킬 바에 보일 아이콘. 비어 있으면 키 글자만 보인다.")]
+    [SerializeField] private Sprite icon;
+
     [Header("공통 수치")]
     [Tooltip("이 스킬만의 재사용 대기시간(초). 스킬마다 따로 돈다.")]
     [SerializeField, Min(0f)] private float cooldownSeconds = 1f;
@@ -70,6 +73,14 @@ public abstract class SkillData : ScriptableObject
     [Tooltip("시전할 때 켤 Animator 트리거 이름. AshPlayerAnimationBuilder의 상수와 같아야 한다.")]
     [SerializeField] private string animatorTrigger = "Attack";
 
+    // 추가 생성 — 필살기용.
+    //
+    // "R 슬롯이면 게이지를 쓴다"로 하드코딩하지 않은 이유: 슬롯 번호는 배치일 뿐이고,
+    // 나중에 스킬을 다른 칸으로 옮기거나 게이지를 쓰는 스킬이 둘이 될 수 있다.
+    // 조건을 스킬 자신이 들고 있으면 SkillController는 슬롯이 몇 번인지 몰라도 된다.
+    [Tooltip("켜면 재 게이지가 가득 찼을 때만 쓸 수 있고, 쓰면 게이지를 전부 소모한다.")]
+    [SerializeField] private bool requiresFullAshGauge;
+
     [Header("연출 (없어도 동작한다)")]
     [Tooltip("시전할 때 생성할 이펙트. 베기 궤적 스프라이트나 파티클을 여기 넣는다.")]
     [SerializeField] private GameObject effectPrefab;
@@ -82,12 +93,18 @@ public abstract class SkillData : ScriptableObject
 
     public string DisplayName => displayName;
     public string Description => description;
+
+    /// <summary>스킬 바 아이콘. 없으면 null.</summary>
+    public Sprite Icon => icon;
     public float CooldownSeconds => cooldownSeconds;
     public float MotionSeconds => motionSeconds;
     public int Damage => damage;
 
     /// <summary>시전할 때 켤 Animator 트리거 이름.</summary>
     public string AnimatorTrigger => animatorTrigger;
+
+    /// <summary>재 게이지를 가득 채워야 쓸 수 있는가.</summary>
+    public bool RequiresFullAshGauge => requiresFullAshGauge;
 
     /// <summary>
     /// 이펙트 프리팹. 하위 클래스가 직접 위치를 정해 만들 때 쓴다.

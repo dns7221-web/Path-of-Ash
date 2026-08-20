@@ -44,7 +44,26 @@ public static class AshGaugeArtProcessor
     {
         ("HealthGaugeFrame_raw.png", "HealthGaugeFrame.png"),
         ("HealthGaugeFill_raw.png", "HealthGaugeFill.png"),
+
+        // 재 게이지. 이건 초록 배경으로 뽑았다 — 아래 배경 판정이 코너를 보고 알아서 가른다.
+        ("hud-gauge-frame-ash-king.png", "AshGaugeFrame.png"),
+        ("hud-gauge-fill-ash.png", "AshGaugeFill.png"),
+
+        // 인벤토리. 게이지는 아니지만 하는 일이 똑같다 — 초록을 지우고 그림 있는 곳만 잘라낸다.
+        ("inventory-relic-panel-empty.png", "InventoryPanel.png"),
+        ("inventory-slot.png", "InventorySlot.png"),
     };
+
+    /// <summary>
+    /// 초록 배경 판정 기준. G가 R·B보다 이만큼 크면 배경이다.
+    ///
+    /// 흰 배경만 처리하던 도구에 초록을 더한 이유: 프롬프트를 "순수 초록 배경"으로 바꾼 뒤
+    /// 새로 뽑은 이미지는 전부 초록으로 온다. 파일마다 어느 쪽인지 표에 적게 하면 한 번은
+    /// 잘못 적는다. 코너 픽셀을 보고 코드가 판단하는 편이 확실하다.
+    /// </summary>
+    private const int GreenBackgroundThreshold = 110;
+
+    private const int GreenOpaqueThreshold = 45;
 
     [MenuItem("Tools/재의 길/게이지 원본 이미지 다듬기")]
     public static void ProcessAll()
@@ -80,9 +99,17 @@ public static class AshGaugeArtProcessor
         int height = texture.height;
         Color32[] pixels = texture.GetPixels32();
 
-        // ── 1단계: 흰 배경을 알파로 바꾼다 ──
+        // ── 1단계: 배경을 알파로 바꾼다 ──
+        // 코너 픽셀로 흰 배경인지 초록 배경인지 판단한다. 네 귀퉁이 중 하나만 봐도 되지만
+        // 모서리에 그림이 걸쳐 있을 수 있어 왼쪽 위를 쓴다(여백이 가장 확실한 자리다).
+        bool greenBackground = IsGreen(pixels[0]);
+
         for (int i = 0; i < pixels.Length; i++)
-            pixels[i] = RemoveWhiteBackground(pixels[i]);
+        {
+            pixels[i] = greenBackground
+                ? RemoveGreenBackground(pixels[i])
+                : RemoveWhiteBackground(pixels[i]);
+        }
 
         // ── 2단계: 남은 불투명 영역의 사각형을 구한다 ──
         if (!TryGetOpaqueBounds(pixels, width, height,
@@ -156,6 +183,32 @@ public static class AshGaugeArtProcessor
         byte b = (byte)Mathf.Clamp((pixel.b - inverse) / alpha, 0f, 255f);
 
         return new Color32(r, g, b, (byte)Mathf.RoundToInt(alpha * 255f));
+    }
+
+    /// <summary>초록 배경 픽셀인가.</summary>
+    private static bool IsGreen(Color32 pixel)
+        => pixel.g - Mathf.Max(pixel.r, pixel.b) >= GreenBackgroundThreshold;
+
+    /// <summary>
+    /// 초록 배경을 투명으로 바꾼다. 시트 정규화 도구와 같은 방식이다.
+    ///
+    /// 가장자리에서 섞인 초록을 역산하는 이유: 경계 픽셀은 그림 색이 초록과 섞인 상태라,
+    /// 그대로 두면 어두운 HUD 배경 위에서 외곽에 초록 테두리가 남는다.
+    /// </summary>
+    private static Color32 RemoveGreenBackground(Color32 pixel)
+    {
+        int greenness = pixel.g - Mathf.Max(pixel.r, pixel.b);
+
+        if (greenness >= GreenBackgroundThreshold) return new Color32(0, 0, 0, 0);
+        if (greenness <= GreenOpaqueThreshold) return new Color32(pixel.r, pixel.g, pixel.b, 255);
+
+        float alpha = (GreenBackgroundThreshold - greenness) /
+                      (float)(GreenBackgroundThreshold - GreenOpaqueThreshold);
+
+        float bleed = (1f - alpha) * pixel.g;
+        byte g = (byte)Mathf.Clamp((pixel.g - bleed) / alpha, 0f, 255f);
+
+        return new Color32(pixel.r, g, pixel.b, (byte)Mathf.RoundToInt(alpha * 255f));
     }
 
     /// <summary>알파가 남아 있는 영역의 바운딩 박스를 구한다.</summary>

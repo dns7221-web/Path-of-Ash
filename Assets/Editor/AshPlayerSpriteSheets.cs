@@ -114,7 +114,7 @@ public static class AshPlayerSpriteSheets
     /// <summary>
     /// 플레이어 시트 목록.
     ///
-    /// Fps 근거: idle 4(숨쉬기라 느려야 한다 — 8은 움찔거림이 심했다), walk 10, run 12,
+    /// Fps 근거: idle 4(숨쉬기라 느려야 한다 — 8은 움찔거림이 심했다), walk 10,
     /// attack 14(타격감은 프레임이 빨리 넘어갈 때 생긴다), dash 16, hit 10, death 8.
     /// </summary>
     public static readonly CharacterSet Player = new CharacterSet(
@@ -127,7 +127,6 @@ public static class AshPlayerSpriteSheets
         {
             new Sheet("player_idle_6frames_1536x256", 6, new Segment("idle", 0, 6, 4, true)),
             new Sheet("player_walk_8frames_2048x256", 8, new Segment("walk", 0, 8, 10, true)),
-            new Sheet("player_run_6frames_1536x256", 6, new Segment("run", 0, 6, 12, true)),
             // 기본 공격(마우스 우클릭). 스킬이 아니라 항상 쓰는 평타다.
             new Sheet("player_attack_6frames_1536x256", 6,
                 new Segment("attack", 0, 6, 14, false)),
@@ -154,6 +153,66 @@ public static class AshPlayerSpriteSheets
                 new Segment("dash", 0, 4, 16, false),
                 new Segment("hit", 4, 2, 10, false)),
             new Sheet("player_death_6frames_1536x256", 6, new Segment("death", 0, 6, 8, false)),
+        });
+
+    /// <summary>보스의 픽셀 키(정규화 목표 200px). 플레이어 160의 1.25배다.</summary>
+    public const int BossPixelHeight = 200;
+
+    /// <summary>
+    /// 재의 왕 1페이즈.
+    ///
+    /// <b>페이즈를 세트 두 개로 나눈 이유:</b> 그림이 완전히 다른 캐릭터다(갑옷이 부서지고
+    /// 잉걸이 터져 나온다). 한 세트에 몰아넣으면 상태 이름이 idle/idle2처럼 번호가 붙고,
+    /// Animator 하나에 상태 12개가 들어가 전이가 격자처럼 얽힌다.
+    /// 세트를 나누면 컨트롤러도 둘이 되고, 페이즈 전환은 <b>컨트롤러를 갈아 끼우는 한 줄</b>이 된다.
+    ///
+    /// Fps 근거: idle 6(거대한 몸이라 느리게 숨쉰다), walk 8(육중하게),
+    /// slam 12(예비동작이 읽혀야 하므로 플레이어의 14보다 느리다),
+    /// ember_wave 12, hit 10, death 8, transition 8(연출이라 천천히 봐야 한다).
+    /// </summary>
+    public static readonly CharacterSet AshKingPhase1 = new CharacterSet(
+        "재의 왕 1페이즈",
+        "Assets/Project/Art/Characters/Boss/AshKing",
+        "ashking_",
+        "Assets/Project/Animations/Boss",
+        "AshKingPhase1",
+        new[]
+        {
+            new Sheet("ash-king-idle", 6, new Segment("idle", 0, 6, 6, true)),
+            new Sheet("ash-king-walk", 6, new Segment("walk", 0, 6, 8, true)),
+            new Sheet("ash-king-slam", 6, new Segment("slam", 0, 6, 12, false)),
+            new Sheet("ash-king-ember-wave", 6, new Segment("wave", 0, 6, 12, false)),
+
+            // 한 장에 피격 2프레임(0~1) + 사망 4프레임(2~5). 망령과 같은 구성이다.
+            new Sheet("ash-king-hit-death", 6,
+                new Segment("hit", 0, 2, 10, false),
+                new Segment("death", 2, 4, 8, false)),
+
+            // 페이즈 전환. 1페이즈 컨트롤러에만 둔다 — 이 모션이 끝나는 순간
+            // 2페이즈 컨트롤러로 갈아 끼우기 때문이다.
+            new Sheet("ash-king-phase-transition", 6,
+                new Segment("transition", 0, 6, 8, false)),
+        });
+
+    /// <summary>재의 왕 2페이즈. 전환 시트만 없고 나머지는 1페이즈와 같은 구성이다.</summary>
+    public static readonly CharacterSet AshKingPhase2 = new CharacterSet(
+        "재의 왕 2페이즈",
+        "Assets/Project/Art/Characters/Boss/AshKing",
+        "ashking2_",
+        "Assets/Project/Animations/Boss",
+        "AshKingPhase2",
+        new[]
+        {
+            new Sheet("ash-king-phase2-idle", 6, new Segment("idle", 0, 6, 6, true)),
+            new Sheet("ash-king-phase2-walk", 6, new Segment("walk", 0, 6, 10, true)),
+
+            // 2페이즈는 같은 동작을 더 빠르게 재생한다. 그림을 새로 안 뽑고도
+            // "확실히 사나워졌다"가 읽히는 가장 싼 방법이다.
+            new Sheet("ash-king-phase2-slam", 6, new Segment("slam", 0, 6, 15, false)),
+            new Sheet("ash-king-phase2-ember-wave", 6, new Segment("wave", 0, 6, 15, false)),
+            new Sheet("ash-king-phase2-hit-death", 6,
+                new Segment("hit", 0, 2, 10, false),
+                new Segment("death", 2, 4, 8, false)),
         });
 
     /// <summary>
@@ -188,7 +247,7 @@ public static class AshPlayerSpriteSheets
         });
 
     /// <summary>도구가 순회할 전체 세트.</summary>
-    public static readonly CharacterSet[] AllSets = { Player, Wraith };
+    public static readonly CharacterSet[] AllSets = { Player, Wraith, AshKingPhase1, AshKingPhase2 };
 
     /// <summary>셀 하나가 텍스처 안에서 차지하는 사각형. 유니티 텍스처 좌표라 아래가 y=0이다.</summary>
     public static Rect CellRect(int cellIndex)

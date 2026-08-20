@@ -23,14 +23,19 @@ public static class AshVfxSpriteSlicer
     /// groundPivot이 true면 피벗이 지면선(캐릭터 발끝과 같은 높이)이고, false면 셀 정중앙이다.
     /// 정규화 도구가 그림을 그 기준으로 배치해뒀으므로 여기 값이 그것과 맞아야 한다.
     /// </summary>
-    private static readonly (string file, string prefix, int frames, bool groundPivot)[] Sheets =
+    private static readonly (string folder, string file, string prefix, int frames, bool groundPivot)[] Sheets =
     {
-        ("vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, false),
-        ("vfx_ember_arrow_impact_6frames_1536x256", "vfx_arrow_impact", 6, false),
-        ("vfx_kings_ember_6frames_1536x256", "vfx_kings_ember", 6, true),
-        ("vfx_ash_staff_ground_spell_6frames_1536x256", "vfx_staff_spell", 6, true),
-        ("vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, true),
-        ("vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, true),
+        (Folder, "vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, false),
+        (Folder, "vfx_ember_arrow_impact_6frames_1536x256", "vfx_arrow_impact", 6, false),
+        (Folder, "vfx_kings_ember_6frames_1536x256", "vfx_kings_ember", 6, true),
+        (Folder, "vfx_ash_staff_ground_spell_6frames_1536x256", "vfx_staff_spell", 6, true),
+        (Folder, "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, true),
+        (Folder, "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, true),
+
+        // 스킬 아이콘. VFX는 아니지만 자르는 방식이 같아서 여기서 같이 처리한다.
+        // UI라 바닥 개념이 없으므로 피벗은 정중앙이다.
+        ("Assets/Art/Generated", "skill_icons_5frames_1280x256", "skill_icon", 5, false),
+        ("Assets/Project/Art/UI", "relic_icons_3frames_768x256", "relic_icon", 3, false),
     };
 
     [MenuItem("Tools/재의 길/VFX 스프라이트 슬라이스")]
@@ -41,8 +46,8 @@ public static class AshVfxSpriteSlicer
         AssetDatabase.StartAssetEditing();
         try
         {
-            foreach (var (file, prefix, frames, groundPivot) in Sheets)
-                total += Slice(file, prefix, frames, groundPivot);
+            foreach (var (folder, file, prefix, frames, groundPivot) in Sheets)
+                total += Slice(folder, file, prefix, frames, groundPivot);
         }
         finally
         {
@@ -53,9 +58,9 @@ public static class AshVfxSpriteSlicer
         Debug.Log($"[VFX 슬라이스] 스프라이트 {total}개 생성 완료.");
     }
 
-    private static int Slice(string file, string prefix, int frames, bool groundPivot)
+    private static int Slice(string folder, string file, string prefix, int frames, bool groundPivot)
     {
-        string path = $"{Folder}/{file}.png";
+        string path = $"{folder}/{file}.png";
 
         var importer = AssetImporter.GetAtPath(path) as TextureImporter;
         if (importer == null)

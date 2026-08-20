@@ -41,6 +41,24 @@ public class AshSpriteImportRules : AssetPostprocessor
     /// </summary>
     private const string FontRoot = "Assets/Project/Art/UI/Fonts/";
 
+    /// <summary>
+    /// 추가 생성 — 캐릭터 그림을 담는 또 하나의 뿌리.
+    ///
+    /// 보스 그림을 여기에 넣으면서 생겼다(Art/Characters/Boss/AshKing). 원래 뿌리인
+    /// Art/Sprites 아래로 옮기지 않고 규칙을 넓힌 이유: 폴더를 옮기면 GUID는 남아도
+    /// <b>이미 잘라둔 스프라이트의 경로 참조가 전부 갱신 대상이 된다.</b> 규칙 한 줄을 넓히는
+    /// 쪽이 건드리는 곳이 훨씬 적다.
+    /// </summary>
+    private const string CharacterRoot = "Assets/Project/Art/Characters/";
+
+    /// <summary>
+    /// 추가 생성 — 방 배경 그림 폴더(로비, 보스방).
+    ///
+    /// 배경은 캐릭터와 PPU가 다르다. 캐릭터는 24로 잘게 잡아 화면에 크게 나오지만,
+    /// 배경까지 그 값으로 넣으면 방 하나가 화면을 수십 배로 넘어간다.
+    /// </summary>
+    private const string EnvironmentRoot = "Assets/Project/Art/Environment/";
+
     /// <summary>플레이어 스프라이트 폴더. 경로에 이 조각이 들어 있으면 캐릭터 규칙을 쓴다.</summary>
     private const string PlayerFolder = "/Player/";
 
@@ -130,6 +148,14 @@ public class AshSpriteImportRules : AssetPostprocessor
     // ── 훅 ────────────────────────────────────────────────────────────────
 
     /// <summary>
+    /// 추가 생성 — 한 장에 여러 칸이 든 시트인가.
+    ///
+    /// 정규화 도구가 결과 파일에 "_3frames_", "_6frames_" 같은 이름을 붙인다.
+    /// 그 규칙을 그대로 판별에 쓴다.
+    /// </summary>
+    private static bool IsMultiFrameSheet(string path) => path.Contains("frames_");
+
+    /// <summary>
     /// 추가 생성 — 던전 소품 시트인가.
     ///
     /// 폴더가 아니라 파일 이름으로 가르는 이유: Dungeon 폴더 안에 방 배경(Room_raw)과
@@ -152,22 +178,36 @@ public class AshSpriteImportRules : AssetPostprocessor
         // 추가 생성 — 폰트 아틀라스는 다른 도구의 담당이다. 다른 판정보다 먼저 빠져나간다.
         if (assetPath.StartsWith(FontRoot, System.StringComparison.Ordinal)) return;
 
+        // 추가 생성 — Raw 폴더는 손대지 않는다.
+        //
+        // 정규화 전 원본이 들어 있는 자리다. 여기까지 Multiple로 잡으면 쓰지도 않을 원본이
+        // 전부 스프라이트로 임포트되어 메모리와 임포트 시간만 먹는다.
+        if (assetPath.Contains("/Raw/")) return;
+
         // 우리 스프라이트 폴더 밖이면 아무것도 하지 않는다. 패키지 샘플이나 TMP 아틀라스까지
         // 건드리면 남의 에셋을 망가뜨린다.
         //
         // 수정(게이지 프레임 추가 시점): 화면 UI 스프라이트도 대상에 넣었다.
         bool isSpriteFolder = assetPath.StartsWith(SpriteRoot, System.StringComparison.Ordinal);
         bool isUiFolder = assetPath.StartsWith(UiRoot, System.StringComparison.Ordinal);
-        if (!isSpriteFolder && !isUiFolder) return;
+
+        // 추가 생성(보스 작업 시점) — 캐릭터와 방 배경의 새 뿌리.
+        bool isCharacterFolder = assetPath.StartsWith(CharacterRoot, System.StringComparison.Ordinal);
+        bool isEnvironmentFolder = assetPath.StartsWith(EnvironmentRoot, System.StringComparison.Ordinal);
+
+        if (!isSpriteFolder && !isUiFolder && !isCharacterFolder && !isEnvironmentFolder) return;
 
         // assetImporter는 AssetPostprocessor가 제공하는 "지금 임포트 중인 에셋의 임포터"다.
         // 텍스처 임포트 훅 안이므로 TextureImporter인 것이 보장된다.
         var importer = (TextureImporter)assetImporter;
 
-        bool isCharacter = isSpriteFolder &&
-                           (assetPath.Contains(PlayerFolder) ||
-                            assetPath.Contains(BossFolder) ||
-                            assetPath.Contains(EnemyFolder));
+        // Art/Characters 아래는 전부 캐릭터다. Art/Sprites 쪽은 던전 소품도 같이 있어서
+        // 폴더 이름으로 한 번 더 가른다.
+        bool isCharacter = isCharacterFolder ||
+                           (isSpriteFolder &&
+                            (assetPath.Contains(PlayerFolder) ||
+                             assetPath.Contains(BossFolder) ||
+                             assetPath.Contains(EnemyFolder)));
 
         importer.textureType = TextureImporterType.Sprite;
 
@@ -217,9 +257,36 @@ public class AshSpriteImportRules : AssetPostprocessor
             // 인스펙터에 "RGBA Compressed DXT5"로 잡혀 있던 걸 여기서 되돌린다.
             importer.textureCompression = TextureImporterCompression.Uncompressed;
 
-            // UI 프레임은 통짜 한 장이다. Multiple로 두면 잘린 영역이 하나도 없어서
+            // UI 프레임은 대개 통짜 한 장이다. Multiple로 두면 잘린 영역이 하나도 없어서
             // Sprite 에셋 자체가 생성되지 않고, Image에 넣을 수가 없다.
-            // (실제로 이 파일이 spriteMode: 2로 들어와 있었다.)
+            // (실제로 게이지 프레임이 spriteMode: 2로 들어와 문제가 됐다.)
+            //
+            // <b>다만 여러 칸이 든 시트는 예외다.</b> 유물 아이콘처럼 한 장에 여러 개가
+            // 들어 있는 파일까지 Single로 강제하면, 슬라이서가 Multiple로 바꿔도 임포트할
+            // 때마다 되돌아가서 잘린 스프라이트가 영영 안 생긴다. 실제로 그렇게 막혔다.
+            //
+            // 파일 이름으로 가르는 이유: 임포트 시점에는 이미 잘려 있는지 알 수 없고
+            // (이 콜백이 그 설정을 정하는 자리다), 우리 시트는 정규화 도구가
+            // "..._3frames_768x256" 형태로 이름을 붙여주므로 규칙이 확실하다.
+            if (!IsMultiFrameSheet(assetPath))
+                importer.spriteImportMode = SpriteImportMode.Single;
+        }
+        else if (isEnvironmentFolder)
+        {
+            // 추가 생성 — 방 배경(로비, 보스방).
+            //
+            // 32는 기존 던전 방(Room_v2)과 같은 값이다. 픽셀 밀도를 맞춰야 방을 오갈 때
+            // 바닥 무늬의 굵기가 달라 보이지 않는다.
+            //
+            // 주의: 같은 PPU라도 <b>방 크기는 다르다.</b> 기존 방은 1678x937(52x29유닛)인데
+            // 새 방들은 1254x1254(39x39유닛)라 모양부터 정사각형이다. 벽 위치를 그대로
+            // 물려받을 수 없고 방마다 따로 잡아야 한다.
+            importer.spritePixelsPerUnit = 32f;
+
+            // 배경은 화면에서 축소되어 그려진다. Point로 두면 바닥 균열이 계단처럼 끊긴다.
+            importer.filterMode = FilterMode.Bilinear;
+
+            // 배경 한 장은 통짜다. 잘라 쓸 것이 없다.
             importer.spriteImportMode = SpriteImportMode.Single;
         }
         else if (IsPropSheet(assetPath))

@@ -18,6 +18,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField, Min(1)] private int maxPoolSize = 12;
     [SerializeField] private RunManager runManager;
 
+    // 추가 생성 — 처치 시 채울 재 게이지. 플레이어가 프리팹 인스턴스라 미리 못 걸어둔다.
+    private AshGauge ashGauge;
+
     private ObjectPool<EnemyWraith> pool;
     private readonly HashSet<EnemyWraith> activeEnemies = new HashSet<EnemyWraith>();
     private int nextSpawnPoint;
@@ -103,6 +106,14 @@ public class EnemySpawner : MonoBehaviour
         if (!activeEnemies.Remove(enemy)) return;
 
         runManager?.AddKill();
+
+        // 추가 생성 — 처치할 때마다 재 게이지가 찬다. 열 마리면 필살기 한 번.
+        //
+        // 여기서 부르는 이유: 적이 죽는 순간을 이미 이 자리에서 잡고 있다. 적 쪽에
+        // 게이지 참조를 들려주면 적 프리팹마다 그걸 연결해야 하고, 하나 빠뜨리면
+        // 그 적만 게이지를 안 채우는 버그가 된다.
+        if (ashGauge == null) ashGauge = FindFirstObjectByType<AshGauge>();
+        if (ashGauge != null) ashGauge.AddKillCharge();
         pool.Release(enemy);
 
         if (activeEnemies.Count == 0)

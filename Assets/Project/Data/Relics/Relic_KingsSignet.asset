@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035e357db809e8e48af7e487e4d798ad, type: 3}
+  m_Name: Relic_KingsSignet
+  m_EditorClassIdentifier: Assembly-CSharp::RelicData
+  displayName: "\uC655\uC758 \uC778\uC7A5"
+  description: "\uBB34\uC5C7\uC744 \uBD09\uC778\uD588\uB294\uC9C0\uB294 \uC544\uBB34\uB3C4
+    \uAE30\uC5B5\uD558\uC9C0 \uBABB\uD55C\uB2E4. \uC655\uC758 \uC720\uD488 \uC911
+    \uD558\uB098."
+  icon: {fileID: 21300000, guid: 835a5d6bd4a790a4b84235c7f571efce, type: 3}
+  effect: 7
+  role: 1
+  amount: 0
+  amountMax: 0

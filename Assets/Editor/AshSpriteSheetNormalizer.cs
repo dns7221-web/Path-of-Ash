@@ -23,6 +23,27 @@ public static class AshSpriteSheetNormalizer
     private const string PlayerFolder = "Assets/Project/Art/Sprites/Player";
     private const string VfxFolder = "Assets/Project/Art/Sprites/VFX";
 
+    /// <summary>추가 생성 — 보스(재의 왕) 시트 폴더. 원본은 그 아래 Raw/에 있다.</summary>
+    private const string AshKingFolder = "Assets/Project/Art/Characters/Boss/AshKing";
+
+    /// <summary>
+    /// 프레임 나누기를 빈 구간이 아니라 <b>균등 분할</b>로 강제할 시트들.
+    ///
+    /// 빈 구간 순위로 나누는 방식은 프레임마다 그림이 충분히 있을 때만 맞는다.
+    /// 보스 2페이즈 사망 시트는 뒤쪽 프레임이 <b>거의 비어 있어서</b>(왕이 재로 흩어진다)
+    /// 칸 사이 빈 구간과 그림 안의 빈 구간이 구별되지 않는다. 실제로 두 칸이 하나로 합쳐지고
+    /// 나머지가 폭 1~5px짜리 부스러기가 됐다.
+    ///
+    /// 원본이 같은 간격으로 그려져 있으면 균등 분할이 더 정확하다. 판정을 똑똑하게 만드는
+    /// 대신 "이 시트는 균등이다"라고 적어두는 쪽이 확실하다 — 빈 프레임을 자동으로 알아보는
+    /// 판정은 만들 수는 있어도 다른 시트를 망가뜨릴 위험이 더 크다.
+    /// </summary>
+    private static readonly System.Collections.Generic.HashSet<string> ForceEqualSplit =
+        new System.Collections.Generic.HashSet<string>
+        {
+            "ash-king-phase2-hit-death.png",
+        };
+
     /// <summary>
     /// 배치 방식. 기준점이 서로 다르다.
     ///
@@ -58,6 +79,46 @@ public static class AshSpriteSheetNormalizer
     private static readonly (string folder, string source, string output,
                              int frames, Mode mode, int targetHeight)[] Jobs =
     {
+        // ── 재의 왕(보스) ──
+        //
+        // 원본이 이미 1536x256 격자에 들어와 있지만 그래도 정규화를 태운다.
+        // 격자만 맞고 <b>칸 안에서의 위치와 키는 안 맞기</b> 때문이다. 발끝 높이가 프레임마다
+        // 몇 픽셀씩 달라서, 그대로 쓰면 대기 동작 중에 보스가 바닥에서 위아래로 떤다.
+        //
+        // 목표 키 200: 플레이어가 160이므로 1.25배다. 한 화면에 같이 놓았을 때 확실히 크되,
+        // 셀(256) 위쪽에 왕관과 치켜든 검이 들어갈 여유를 남긴다.
+        //
+        // 내려찍기(slam)와 페이즈 전환만 214로 올린다. 검을 머리 위로 드는 프레임이 있어서
+        // 200에 맞추면 <b>몸이 200 안에 들어가려고 작아진다</b> — 플레이어 sword_slam에서 겪은
+        // 것과 같은 문제다.
+        //
+        // 214가 상한이다. 발끝이 y=216이므로 위로 쓸 수 있는 것이 216px뿐이고, 그보다 크게
+        // 잡으면 <b>셀 위쪽에서 검 끝이 잘린다.</b> 처음에 240으로 잡았다가 실제로 잘렸다
+        // (실측 로그에 "세로 0~216"으로 찍혀서 알았다). 여유 2px은 슬라이스 경계용이다.
+        (AshKingFolder, "Raw/PlayerLike/ash-king-idle-raw.png",
+                        "ash-king-idle.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-walk-raw.png",
+                        "ash-king-walk.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-slam-raw.png",
+                        "ash-king-slam.png", 6, Mode.Character, 214),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-ember-wave-raw.png",
+                        "ash-king-ember-wave.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-hit-death-raw.png",
+                        "ash-king-hit-death.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-phase-transition-raw.png",
+                        "ash-king-phase-transition.png", 6, Mode.Character, 214),
+
+        (AshKingFolder, "Raw/PlayerLike/ash-king-phase2-idle-raw.png",
+                        "ash-king-phase2-idle.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-phase2-walk-raw.png",
+                        "ash-king-phase2-walk.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-phase2-slam-raw.png",
+                        "ash-king-phase2-slam.png", 6, Mode.Character, 214),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-phase2-ember-wave-raw.png",
+                        "ash-king-phase2-ember-wave.png", 6, Mode.Character, 200),
+        (AshKingFolder, "Raw/PlayerLike/ash-king-phase2-hit-death-raw.png",
+                        "ash-king-phase2-hit-death.png", 6, Mode.Character, 200),
+
         (PlayerFolder, "player_bow_6frames_raw.png",
                        "player_bow_6frames_1536x256.png", 6, Mode.Character, 0),
 
@@ -68,6 +129,15 @@ public static class AshSpriteSheetNormalizer
         // 지팡이도 머리 위로 치켜드는 프레임이 가장 높다. 내려찍기와 같은 이유로 목표를 키운다.
         (PlayerFolder, "player_staff_6frames_raw.png",
                        "player_staff_6frames_1536x256.png", 6, Mode.Character, 200),
+
+        // 유물 아이콘 3개.
+        ("Assets/Project/Art/UI", "relic-icons-ember-set.png",
+                                  "relic_icons_3frames_768x256.png", 3, Mode.FloatCenter, 0),
+
+        // 스킬 아이콘 5개. 캐릭터도 이펙트도 아니지만 처리는 같다 — 초록 배경을 걷고
+        // 균등한 칸에 가운데 정렬해서 담는다. 아이콘은 바닥 개념이 없으므로 FloatCenter.
+        ("Assets/Art/Generated", "skill-icons-ember-set.png",
+                                 "skill_icons_5frames_1280x256.png", 5, Mode.FloatCenter, 0),
 
         // R 필살기. 검을 머리 위로 치켜드는 프레임이 있어 목표를 키운다.
         (PlayerFolder, "player_ultimate_kings_ember_execution_6poses_v3_raw.png",
@@ -178,7 +248,8 @@ public static class AshSpriteSheetNormalizer
 
         RemoveBackground(pixels);
 
-        var figures = FindFigures(pixels, width, height, expectedFrames);
+        var figures = FindFigures(pixels, width, height, expectedFrames,
+                                  ForceEqualSplit.Contains(outputName));
         if (figures.Count != expectedFrames)
         {
             Debug.LogError($"[시트 정규화] {sourceName}에서 프레임을 {figures.Count}개 만들었는데 " +
@@ -242,7 +313,7 @@ public static class AshSpriteSheetNormalizer
     /// 원하는 프레임 수가 N이면 경계는 N-1개다. 빈 구간을 넓은 순서로 정렬해 위쪽 N-1개를 쓴다.
     /// </summary>
     private static List<Figure> FindFigures(
-        Color32[] pixels, int width, int height, int expectedFrames)
+        Color32[] pixels, int width, int height, int expectedFrames, bool forceEqualSplit)
     {
         var columnCounts = new int[width];
         for (int y = 0; y < height; y++)
@@ -287,12 +358,15 @@ public static class AshSpriteSheetNormalizer
 
         int needed = expectedFrames - 1;
 
-        if (gaps.Count < needed)
+        if (gaps.Count < needed || forceEqualSplit)
         {
             // 프레임끼리 붙어 있어 나눌 틈이 없다. 대개 같은 간격으로 그려주므로
             // 내용 범위를 균등 분할하는 추정이 잘 맞고, 아무것도 못 하는 것보다 낫다.
-            Debug.LogWarning($"[시트 정규화] 빈 구간이 {gaps.Count}개뿐이라 {expectedFrames}개로 " +
-                             "나눌 수 없다. 내용 범위를 균등 분할한다.");
+            if (!forceEqualSplit)
+            {
+                Debug.LogWarning($"[시트 정규화] 빈 구간이 {gaps.Count}개뿐이라 {expectedFrames}개로 " +
+                                 "나눌 수 없다. 내용 범위를 균등 분할한다.");
+            }
 
             float span = (contentEnd - contentStart + 1) / (float)expectedFrames;
             for (int i = 0; i < expectedFrames; i++)

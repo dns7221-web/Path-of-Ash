@@ -124,6 +124,9 @@ public static class AshGameHudBuilder
         var canvasObject = CreateCanvas();
         var bar = CreateBar(canvasObject.transform);
         CreateHealthBar(canvasObject.transform);
+        CreateSkillBar(canvasObject.transform);
+        CreateAshGauge(canvasObject.transform);
+        CreateRelicToast(canvasObject.transform);
 
         // 씬 변경을 유니티에 알린다. 이걸 안 하면 저장 없이 씬을 닫았을 때 조용히 사라진다.
         EditorSceneManager.MarkSceneDirty(scene);
@@ -338,6 +341,324 @@ public static class AshGameHudBuilder
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
         return barObject;
+    }
+
+    // ── 유물 획득 알림 ─────────────────────────────────────────────────────
+
+    private const string RelicToastName = "RelicToast";
+    private static readonly Vector2 ToastSize = new Vector2(520f, 96f);
+
+    /// <summary>
+    /// 유물 획득 알림을 만든다.
+    ///
+    /// 화면 아래 가운데, 스킬 바 위에 둔다. 시선이 이미 그 근처에 있고(쿨타임을 보러 가는
+    /// 자리) 캐릭터가 있는 화면 중앙은 가리지 않는다.
+    /// </summary>
+    private static GameObject CreateRelicToast(Transform parent)
+    {
+        var existing = GameObject.Find(RelicToastName);
+        if (existing != null) Object.DestroyImmediate(existing);
+
+        var toastObject = new GameObject(RelicToastName, typeof(RectTransform), typeof(CanvasGroup));
+        toastObject.layer = parent.gameObject.layer;
+        var rect = toastObject.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+
+        rect.anchorMin = new Vector2(0.5f, 0f);
+        rect.anchorMax = new Vector2(0.5f, 0f);
+        rect.pivot = new Vector2(0.5f, 0f);
+        rect.anchoredPosition = new Vector2(0f, 150f); // 스킬 바(40 + 72) 바로 위
+        rect.sizeDelta = ToastSize;
+
+        CreateStretchedImage("Background", rect, new Color(0.06f, 0.05f, 0.05f, 0.85f));
+
+        // 아이콘은 왼쪽 정사각형 자리.
+        var icon = CreateStretchedImage("Icon", rect, Color.white);
+        icon.rectTransform.anchorMin = new Vector2(0f, 0.5f);
+        icon.rectTransform.anchorMax = new Vector2(0f, 0.5f);
+        icon.rectTransform.pivot = new Vector2(0f, 0.5f);
+        icon.rectTransform.sizeDelta = new Vector2(72f, 72f);
+        icon.rectTransform.anchoredPosition = new Vector2(12f, 0f);
+        icon.enabled = false; // 그림이 들어오면 RelicToast가 켠다
+
+        var nameText = CreateToastLabel(rect, "NameText", 28f, new Vector2(0f, 20f),
+            TMPro.TextAlignmentOptions.Left, new Color(1f, 0.72f, 0.4f));
+
+        var descriptionText = CreateToastLabel(rect, "DescriptionText", 18f, new Vector2(0f, -14f),
+            TMPro.TextAlignmentOptions.TopLeft, new Color(0.82f, 0.8f, 0.78f));
+
+        var toast = toastObject.AddComponent<RelicToast>();
+        var serialized = new SerializedObject(toast);
+        serialized.FindProperty("group").objectReferenceValue = toastObject.GetComponent<CanvasGroup>();
+        serialized.FindProperty("iconImage").objectReferenceValue = icon;
+        serialized.FindProperty("nameText").objectReferenceValue = nameText;
+        serialized.FindProperty("descriptionText").objectReferenceValue = descriptionText;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        return toastObject;
+    }
+
+    /// <summary>알림 안의 글자. 아이콘 오른쪽 영역을 쓴다.</summary>
+    private static TMPro.TMP_Text CreateToastLabel(RectTransform parent, string name,
+        float fontSize, Vector2 position, TMPro.TextAlignmentOptions alignment, Color color)
+    {
+        var labelObject = new GameObject(name, typeof(RectTransform));
+        labelObject.layer = parent.gameObject.layer;
+
+        var rect = labelObject.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+        rect.anchorMin = new Vector2(0f, 0.5f);
+        rect.anchorMax = new Vector2(0f, 0.5f);
+        rect.pivot = new Vector2(0f, 0.5f);
+        rect.sizeDelta = new Vector2(ToastSize.x - 110f, 40f);
+        rect.anchoredPosition = new Vector2(96f, 0f) + position;
+
+        var label = labelObject.AddComponent<TMPro.TextMeshProUGUI>();
+        label.fontSize = fontSize;
+        label.alignment = alignment;
+        label.color = color;
+        label.raycastTarget = false;
+        label.text = string.Empty;
+
+        return label;
+    }
+
+    // ── 재 게이지 ──────────────────────────────────────────────────────────
+
+    private const string AshBarName = "AshGaugeBar";
+    private const string AshFramePath = "Assets/Project/Art/UI/AshGaugeFrame.png";
+    private const string AshFillPath = "Assets/Project/Art/UI/AshGaugeFill.png";
+
+    private const float AshFrameWidth = 1803f;
+    private const float AshFrameHeight = 253f;
+
+    // 프레임 안쪽 빈 공간(px). 알파를 열 단위로 훑어 구한 값이다.
+    // 대부분의 열에서 세로 58~196이 비어 있고, 가운데 마름모 장식이 있는 자리만 좁아진다.
+    // 채움이 프레임 <b>뒤에</b> 깔리므로 그 자리는 장식이 덮어주면 된다.
+    private const float AshInteriorLeft = 240f;
+    private const float AshInteriorRight = 272f;
+    private const float AshInteriorTop = 58f;
+    private const float AshInteriorBottom = 56f;
+
+    /// <summary>재 게이지 크기. 원본 비율 1803:253 = 7.13:1을 지킨다.</summary>
+    private static readonly Vector2 AshBarSize = new Vector2(428f, 60f);
+
+    /// <summary>스태미나 바 아래. 세 게이지가 왼쪽 아래에 세로로 쌓인다.</summary>
+    private static readonly Vector2 AshBarMargin = new Vector2(48f, -18f);
+
+    /// <summary>
+    /// 재 게이지를 만든다. 체력 게이지와 같은 구조 — 속이 빈 액자라 채움이 프레임 뒤에 깔린다.
+    /// </summary>
+    private static GameObject CreateAshGauge(Transform parent)
+    {
+        var existing = GameObject.Find(AshBarName);
+        if (existing != null) Object.DestroyImmediate(existing);
+
+        var barObject = new GameObject(AshBarName, typeof(RectTransform));
+        barObject.layer = parent.gameObject.layer;
+        var barRect = barObject.GetComponent<RectTransform>();
+        barRect.SetParent(parent, false);
+
+        barRect.anchorMin = Vector2.zero;
+        barRect.anchorMax = Vector2.zero;
+        barRect.pivot = Vector2.zero;
+        barRect.anchoredPosition = AshBarMargin;
+        barRect.sizeDelta = AshBarSize;
+
+        // 채움을 먼저 = 뒤에 깔린다.
+        var fillArea = new GameObject("FillArea", typeof(RectTransform));
+        fillArea.layer = barObject.layer;
+        var fillAreaRect = fillArea.GetComponent<RectTransform>();
+        fillAreaRect.SetParent(barRect, false);
+
+        fillAreaRect.anchorMin = new Vector2(
+            AshInteriorLeft / AshFrameWidth, AshInteriorBottom / AshFrameHeight);
+        fillAreaRect.anchorMax = new Vector2(
+            1f - (AshInteriorRight / AshFrameWidth), 1f - (AshInteriorTop / AshFrameHeight));
+        fillAreaRect.offsetMin = Vector2.zero;
+        fillAreaRect.offsetMax = Vector2.zero;
+
+        var fill = CreateStretchedImage("Fill", fillAreaRect, Color.white);
+        var fillSprite = AssetDatabase.LoadAssetAtPath<Sprite>(AshFillPath);
+        if (fillSprite != null)
+        {
+            fill.sprite = fillSprite;
+            fill.type = Image.Type.Filled;
+            fill.fillMethod = Image.FillMethod.Horizontal;
+            fill.fillOrigin = (int)Image.OriginHorizontal.Left;
+            fill.fillAmount = 0f;
+            fill.preserveAspect = false;
+        }
+        else
+        {
+            Debug.LogWarning($"[게임 HUD] 재 게이지 채움을 못 읽었다: {AshFillPath}\n" +
+                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.");
+        }
+
+        // 프레임을 나중에 = 위에 얹힌다.
+        var frame = CreateStretchedImage("Frame", barRect, Color.white);
+        var frameSprite = AssetDatabase.LoadAssetAtPath<Sprite>(AshFramePath);
+        if (frameSprite != null)
+        {
+            frame.sprite = frameSprite;
+            frame.type = Image.Type.Simple;
+        }
+        else
+        {
+            frame.enabled = false;
+            Debug.LogWarning($"[게임 HUD] 재 게이지 프레임을 못 읽었다: {AshFramePath}");
+        }
+
+        var bar = barObject.AddComponent<AshGaugeBar>();
+        var serialized = new SerializedObject(bar);
+        serialized.FindProperty("fillRect").objectReferenceValue = fill.rectTransform;
+        serialized.FindProperty("fillImage").objectReferenceValue = fill;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        return barObject;
+    }
+
+    // ── 스킬 바 ────────────────────────────────────────────────────────────
+
+    private const string SkillBarName = "SkillBar";
+    private static readonly string[] SkillKeyLabels = { "Ctrl", "Q", "W", "E", "R" };
+
+    private const float SlotSize = 72f;
+    private const float SlotGap = 10f;
+
+    /// <summary>
+    /// 화면 아래 가운데에 스킬 슬롯 5개를 만든다.
+    ///
+    /// 게이지(왼쪽 아래)와 떨어뜨려 가운데에 둔 이유: 체력·스태미나는 "지금 상태"라 곁눈으로
+    /// 보는 정보지만, 스킬 쿨타임은 "다음에 뭘 쓸까"를 정할 때 <b>보러 가는</b> 정보다.
+    /// 시선이 가는 자리가 달라서 붙여두면 서로 방해한다.
+    /// </summary>
+    private static GameObject CreateSkillBar(Transform parent)
+    {
+        var existing = GameObject.Find(SkillBarName);
+        if (existing != null) Object.DestroyImmediate(existing);
+
+        var barObject = new GameObject(SkillBarName, typeof(RectTransform));
+        barObject.layer = parent.gameObject.layer;
+        var barRect = barObject.GetComponent<RectTransform>();
+        barRect.SetParent(parent, false);
+
+        // 화면 아래 가운데 기준. 해상도가 바뀌어도 가운데에 남는다.
+        barRect.anchorMin = new Vector2(0.5f, 0f);
+        barRect.anchorMax = new Vector2(0.5f, 0f);
+        barRect.pivot = new Vector2(0.5f, 0f);
+        barRect.anchoredPosition = new Vector2(0f, 40f);
+
+        int count = SkillKeyLabels.Length;
+        float totalWidth = count * SlotSize + (count - 1) * SlotGap;
+        barRect.sizeDelta = new Vector2(totalWidth, SlotSize);
+
+        var icons = new Image[count];
+        var overlays = new Image[count];
+        var labels = new TMPro.TMP_Text[count];
+
+        // 플레이어 프리팹의 스킬 슬롯을 읽어 아이콘을 <b>만들 때 바로</b> 넣는다.
+        //
+        // 처음에는 SkillBar가 실행 시점에 넣게 했는데, 그러면 에디터에서 슬롯이 빈 사각형으로
+        // 보여서 "아이콘이 안 들어갔다"고 오해하게 된다. 화면에 나올 그림은 만들 때 보이는
+        // 편이 낫다 — 배치를 눈으로 맞출 수 있고, 잘못 끼운 것도 바로 드러난다.
+        var playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(
+            "Assets/Project/Prefabs/Player/Player.prefab");
+        var prefabSkills = playerPrefab != null ? playerPrefab.GetComponent<SkillController>() : null;
+
+        if (prefabSkills == null)
+            Debug.LogWarning("[게임 HUD] 플레이어 프리팹의 SkillController를 못 찾았다. " +
+                             "아이콘은 실행할 때 채워진다.");
+
+        for (int i = 0; i < count; i++)
+        {
+            float x = -totalWidth * 0.5f + SlotSize * 0.5f + i * (SlotSize + SlotGap);
+            CreateSkillSlot(barRect, i, x, out icons[i], out overlays[i], out labels[i]);
+
+            SkillData skill = prefabSkills != null ? prefabSkills.GetSlot(i) : null;
+            if (skill == null || skill.Icon == null) continue;
+
+            icons[i].sprite = skill.Icon;
+            icons[i].enabled = true;
+        }
+
+        var skillBar = barObject.AddComponent<SkillBar>();
+        var serialized = new SerializedObject(skillBar);
+        AssignArray(serialized.FindProperty("icons"), icons);
+        AssignArray(serialized.FindProperty("cooldownOverlays"), overlays);
+        AssignArray(serialized.FindProperty("cooldownLabels"), labels);
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        return barObject;
+    }
+
+    private static void AssignArray(SerializedProperty property, Object[] values)
+    {
+        property.arraySize = values.Length;
+        for (int i = 0; i < values.Length; i++)
+            property.GetArrayElementAtIndex(i).objectReferenceValue = values[i];
+    }
+
+    /// <summary>슬롯 하나. 배경 → 아이콘 → 쿨타임 덮개 → 숫자 → 키 글자 순으로 쌓는다.</summary>
+    private static void CreateSkillSlot(RectTransform parent, int index, float x,
+        out Image icon, out Image overlay, out TMPro.TMP_Text cooldownLabel)
+    {
+        var slot = new GameObject($"Slot_{SkillKeyLabels[index]}", typeof(RectTransform));
+        slot.layer = parent.gameObject.layer;
+        var rect = slot.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(SlotSize, SlotSize);
+        rect.anchoredPosition = new Vector2(x, 0f);
+
+        CreateStretchedImage("Background", rect, new Color(0.07f, 0.06f, 0.06f, 0.8f));
+
+        icon = CreateStretchedImage("Icon", rect, Color.white);
+        icon.rectTransform.offsetMin = new Vector2(6f, 6f);
+        icon.rectTransform.offsetMax = new Vector2(-6f, -6f);
+        icon.enabled = false; // 아이콘 그림이 들어오면 SkillBar가 켠다
+
+        // 쿨타임 덮개. 시계 방향으로 걷힌다.
+        overlay = CreateStretchedImage("Cooldown", rect, new Color(0f, 0f, 0f, 0.68f));
+        overlay.sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+        overlay.type = Image.Type.Filled;
+        overlay.fillMethod = Image.FillMethod.Radial360;
+        overlay.fillOrigin = (int)Image.Origin360.Top;
+
+        // 시계 방향으로 걷히게 한다. 시계가 도는 방향과 같아야 "시간이 간다"로 읽힌다.
+        overlay.fillClockwise = true;
+        overlay.fillAmount = 0f;
+
+        cooldownLabel = CreateLabel(rect, "CooldownText", string.Empty, 26f,
+            new Vector2(0f, 0f), TMPro.TextAlignmentOptions.Center);
+
+        // 키 글자. 슬롯 아래에 붙인다 — 아이콘을 가리면 안 된다.
+        CreateLabel(rect, "KeyText", SkillKeyLabels[index], 18f,
+            new Vector2(0f, -SlotSize * 0.5f - 12f), TMPro.TextAlignmentOptions.Center);
+    }
+
+    private static TMPro.TMP_Text CreateLabel(RectTransform parent, string name, string text,
+        float fontSize, Vector2 position, TMPro.TextAlignmentOptions alignment)
+    {
+        var labelObject = new GameObject(name, typeof(RectTransform));
+        labelObject.layer = parent.gameObject.layer;
+
+        var rect = labelObject.GetComponent<RectTransform>();
+        rect.SetParent(parent, false);
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(SlotSize + 20f, 30f);
+        rect.anchoredPosition = position;
+
+        var label = labelObject.AddComponent<TMPro.TextMeshProUGUI>();
+        label.text = text;
+        label.fontSize = fontSize;
+        label.alignment = alignment;
+        label.color = Color.white;
+        label.raycastTarget = false;
+
+        return label;
     }
 
     /// <summary>부모에 꽉 차는 단색 이미지를 만든다.</summary>

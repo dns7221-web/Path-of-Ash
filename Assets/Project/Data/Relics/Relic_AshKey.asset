@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035e357db809e8e48af7e487e4d798ad, type: 3}
+  m_Name: Relic_AshKey
+  m_EditorClassIdentifier: Assembly-CSharp::RelicData
+  displayName: "\uC7AC\uC758 \uC5F4\uC1E0"
+  description: "\uC950\uBA74 \uC190\uC5D0\uC11C \uBD80\uC2A4\uB7EC\uC9C0\uB294\uB370,
+    \uB2E4\uC74C \uC21C\uAC04 \uB2E4\uC2DC \uAD73\uB294\uB2E4. \uC655\uC758 \uC720\uD488
+    \uC911 \uD558\uB098."
+  icon: {fileID: 21300000, guid: f609d59088240c746bcfb4489aa36942, type: 3}
+  effect: 7
+  role: 1
+  amount: 0
+  amountMax: 0

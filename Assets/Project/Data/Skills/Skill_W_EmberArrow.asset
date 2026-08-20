@@ -15,6 +15,7 @@ MonoBehaviour:
   displayName: "\uC7BF\uAC00\uB8E8 \uD654\uC0B4"
   description: "\uC7AC\uB85C \uB9CC\uB4E0 \uD65C\uC744 \uBD88\uB7EC\uB0B4 \uC789\uAC78
     \uD654\uC0B4\uC744 \uC3DC\uB2E4. \uBD99\uAE30 \uC804\uC5D0 \uAE4E\uB294 \uACAC\uC81C\uAE30\uB2E4."
+  icon: {fileID: -1555885319, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
   cooldownSeconds: 1.2
   motionSeconds: 0.43
   damage: 2

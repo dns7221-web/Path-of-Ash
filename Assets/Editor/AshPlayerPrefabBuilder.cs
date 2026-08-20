@@ -77,6 +77,8 @@ public static class AshPlayerPrefabBuilder
             // 컴포넌트를 먼저 다 붙인 뒤에 참조를 연결한다. PlayerController가 Reset에서
             // GetComponentInChildren으로 자기 참조를 채우기 때문에, 순서가 반대면 못 찾는다.
             var stamina = root.AddComponent<PlayerStamina>();
+            root.AddComponent<AshGauge>(); // 필살기용. SkillController가 Awake에서 찾아 쓴다
+            root.AddComponent<RelicInventory>(); // 유물 보관·적용. 참조는 Awake에서 스스로 찾는다
             var health = root.AddComponent<Health>();
             var attackHitbox = CreateAttackHitbox(root);
             var playerController = root.AddComponent<PlayerController>();
@@ -188,6 +190,10 @@ public static class AshPlayerPrefabBuilder
         slots.GetArrayElementAtIndex(2).objectReferenceValue = CreateOrLoadBowSkill();
         slots.GetArrayElementAtIndex(3).objectReferenceValue = CreateOrLoadStaffSkill();
         slots.GetArrayElementAtIndex(4).objectReferenceValue = CreateOrLoadUltimateSkill();
+
+        // 아이콘은 에셋을 만든 뒤에 붙인다. 스킬 에셋이 이미 있어도(밸런스 조정 때문에
+        // 새로 안 만드는 경우) 아이콘만 따로 채워야 하기 때문이다.
+        AssignSkillIcons(slots);
 
         serialized.FindProperty("meleeHitbox").objectReferenceValue = meleeHitbox;
         serialized.ApplyModifiedPropertiesWithoutUndo();
@@ -432,6 +438,40 @@ public static class AshPlayerPrefabBuilder
         }
     }
 
+    /// <summary>
+    /// 추가 생성 — 슬롯 순서대로 스킬 아이콘을 채운다.
+    ///
+    /// 아이콘 시트의 5칸 순서가 곧 슬롯 순서(기본공격/Q/W/E/R)라, 인덱스를 그대로 쓴다.
+    /// 이미 채워져 있으면 건드리지 않는다 — 손으로 다른 아이콘을 끼웠을 수 있다.
+    /// </summary>
+    private static void AssignSkillIcons(SerializedProperty slots)
+    {
+        const string sheet = "skill_icons_5frames_1280x256";
+        const string folder = "Assets/Art/Generated";
+
+        for (int i = 0; i < slots.arraySize; i++)
+        {
+            var skill = slots.GetArrayElementAtIndex(i).objectReferenceValue as SkillData;
+            if (skill == null) continue;
+
+            var serialized = new SerializedObject(skill);
+            var iconProperty = serialized.FindProperty("icon");
+            if (iconProperty == null || iconProperty.objectReferenceValue != null) continue;
+
+            var sprite = FindSprite(folder, sheet, $"skill_icon_{i:00}");
+            if (sprite == null)
+            {
+                Debug.LogWarning($"[플레이어 프리팹] skill_icon_{i:00}을 못 찾았다. " +
+                                 "원본 시트 정규화 → VFX 스프라이트 슬라이스 순으로 먼저 실행해라.");
+                continue;
+            }
+
+            iconProperty.objectReferenceValue = sprite;
+            serialized.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(skill);
+        }
+    }
+
     /// <summary>비어 있는 이펙트 참조를 다시 만들어 채운다. 채웠으면 true.</summary>
     private static bool RepairEffect(SerializedObject target, string propertyName,
         string prefabName, string sheet, string spritePrefix, float scale)
@@ -585,13 +625,31 @@ public static class AshPlayerPrefabBuilder
         if (existing != null)
         {
             var repair = new SerializedObject(existing);
-            var effectProperty = repair.FindProperty("effectPrefab");
+            bool changed = false;
 
+            var effectProperty = repair.FindProperty("effectPrefab");
             if (effectProperty != null && effectProperty.objectReferenceValue == null)
             {
                 effectProperty.objectReferenceValue = CreateOrLoadUltimateEffectPrefab();
+                changed = true;
+            }
+
+            // 재 게이지 도입: 쿨다운 대신 게이지를 쓰도록 기존 에셋도 고친다.
+            // 이건 밸런스 조정이 아니라 규칙 변경이라 덮어쓰는 게 맞다 —
+            // 안 고치면 쿨다운 20초와 게이지 조건이 동시에 걸려 R이 거의 안 나간다.
+            var gaugeProperty = repair.FindProperty("requiresFullAshGauge");
+            if (gaugeProperty != null && !gaugeProperty.boolValue)
+            {
+                gaugeProperty.boolValue = true;
+                repair.FindProperty("cooldownSeconds").floatValue = 0f;
+                changed = true;
+            }
+
+            if (changed)
+            {
                 repair.ApplyModifiedPropertiesWithoutUndo();
                 EditorUtility.SetDirty(existing);
+                Debug.Log("[플레이어 프리팹] R 스킬을 재 게이지 방식으로 바꿨다(쿨다운 제거).");
             }
 
             return existing;
@@ -604,7 +662,9 @@ public static class AshPlayerPrefabBuilder
         serialized.FindProperty("displayName").stringValue = "왕의 잿불";
         serialized.FindProperty("description").stringValue =
             "대검을 바닥에 꽂아 잿더미의 왕의 힘을 잠깐 빌린다. 주변 모든 것이 재가 된다.";
-        serialized.FindProperty("cooldownSeconds").floatValue = 20f;
+        // 쿨다운이 아니라 재 게이지가 사용 조건이다. 적 10마리를 잡아야 한 번 쓴다.
+        serialized.FindProperty("cooldownSeconds").floatValue = 0f;
+        serialized.FindProperty("requiresFullAshGauge").boolValue = true;
 
         // ultimate 클립이 6프레임 / 10fps = 0.6초다.
         serialized.FindProperty("motionSeconds").floatValue = 0.6f;

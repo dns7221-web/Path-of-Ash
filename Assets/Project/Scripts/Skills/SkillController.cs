@@ -42,6 +42,9 @@ public class SkillController : MonoBehaviour
     [Tooltip("근접 스킬이 켜고 끌 히트박스. 비우면 근접 스킬이 동작하지 않는다.")]
     [SerializeField] private DamageHitbox meleeHitbox;
 
+    [Tooltip("필살기가 쓰는 재 게이지. 비우면 게이지가 필요한 스킬이 나가지 않는다.")]
+    [SerializeField] private AshGauge ashGauge;
+
     [Header("공용 대기시간")]
     [Tooltip("스킬 하나를 쓴 뒤 다른 스킬까지 잠기는 시간(초).\n" +
              "이게 없으면 Q→W→E를 0.1초 안에 쏟아붓고 도망가는 게 최적해가 되어, " +
@@ -64,6 +67,15 @@ public class SkillController : MonoBehaviour
     /// </summary>
     public int BonusDamage { get; set; }
 
+    /// <summary>
+    /// 추가 생성 — 쿨타임 배율. 1이 기본이고, 유물이 이 값을 곱해서 줄인다.
+    ///
+    /// 뺄셈이 아니라 곱셈인 이유: 초를 직접 빼면 쿨타임이 짧은 기본 공격이 먼저 0이 되어
+    /// <b>무한 연타가 된다.</b> 배율은 아무리 쌓아도 0에 가까워질 뿐 넘지 않고,
+    /// 긴 스킬일수록 더 많이 줄어서 체감도 자연스럽다.
+    /// </summary>
+    public float CooldownScale { get; set; } = 1f;
+
     /// <summary>슬롯에 끼워진 스킬. 인벤토리 화면이 읽는다.</summary>
     public SkillData GetSlot(int index)
         => index >= 0 && index < SlotCount ? slots[index] : null;
@@ -71,6 +83,19 @@ public class SkillController : MonoBehaviour
     /// <summary>남은 대기시간(초). 인벤토리 화면과 HUD가 읽는다.</summary>
     public float GetCooldownRemaining(int index)
         => index >= 0 && index < SlotCount ? Mathf.Max(0f, cooldownTimers[index]) : 0f;
+
+    /// <summary>
+    /// 추가 생성 — 그 슬롯 쿨타임의 전체 길이. UI가 남은 비율을 낼 때 나눌 값이다.
+    ///
+    /// UI가 SkillData.CooldownSeconds를 직접 나누면 안 되는 이유: 유물이 <see cref="CooldownScale"/>로
+    /// 실제 길이를 줄여놨는데 UI만 원래 길이로 나누면, 쿨타임 표시가 <b>가득 찬 상태에서 시작하지 않고</b>
+    /// 중간부터 줄어든다. 실제로 얼마나 남았는지를 아는 건 이쪽뿐이라 여기서 알려준다.
+    /// </summary>
+    public float GetCooldownTotal(int index)
+    {
+        var skill = GetSlot(index);
+        return skill == null ? 0f : skill.CooldownSeconds * CooldownScale;
+    }
 
     private void Reset()
     {
@@ -104,6 +129,7 @@ public class SkillController : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        if (ashGauge == null) ashGauge = GetComponent<AshGauge>();
 
         // 인스펙터에서 배열 길이가 어긋났을 때를 대비한다. 길이가 다르면 인덱스 접근이 예외를 낸다.
         slots = FitLength(slots);
@@ -167,11 +193,19 @@ public class SkillController : MonoBehaviour
 
         if (cooldownTimers[slot] > 0f || globalCooldownTimer > 0f) return;
 
+        // 재 게이지가 필요한 스킬은 가득 찼는지 먼저 본다.
+        // 아직 소모하지는 않는다 — 아래에서 시전이 거절될 수 있어서, 여기서 비우면
+        // 모아둔 게이지가 아무 일도 없이 사라진다.
+        if (skill.RequiresFullAshGauge && (ashGauge == null || !ashGauge.IsFull)) return;
+
         // 이동이나 시전이 가능한 상태인지는 PlayerController가 판단한다.
         // 대시 중이거나 죽었을 때 스킬이 나가면 안 된다.
         if (!playerController.TryBeginSkillMotion(skill.MotionSeconds, skill.AnimatorTrigger)) return;
 
-        cooldownTimers[slot] = skill.CooldownSeconds;
+        // 시전이 확정된 뒤에 소모한다.
+        if (skill.RequiresFullAshGauge) ashGauge.TryConsumeAll();
+
+        cooldownTimers[slot] = skill.CooldownSeconds * CooldownScale;
         globalCooldownTimer = globalCooldownSeconds;
 
         StartCoroutine(Run(skill));

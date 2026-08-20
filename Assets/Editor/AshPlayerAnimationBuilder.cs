@@ -31,7 +31,6 @@ public static class AshPlayerAnimationBuilder
     // Animator.StringToHash로 해시를 떠서 쓴다.
 
     public const string ParamSpeed = "Speed";
-    public const string ParamIsRunning = "IsRunning";
     public const string ParamAttack = "Attack";
 
     // 추가 생성 — 스킬마다 다른 모션을 쓰게 되면서 트리거가 늘었다.
@@ -43,6 +42,15 @@ public static class AshPlayerAnimationBuilder
     public const string ParamDash = "Dash";
     public const string ParamHit = "Hit";
     public const string ParamDie = "Die";
+
+    /// <summary>추가 생성 — 보스 전용. 대검 내려찍기.</summary>
+    public const string ParamSlam = "Slam";
+
+    /// <summary>추가 생성 — 보스 전용. 잿불 파도.</summary>
+    public const string ParamWave = "Wave";
+
+    /// <summary>추가 생성 — 보스 전용. 2페이즈 전환 연출.</summary>
+    public const string ParamTransition = "Transition";
 
     /// <summary>
     /// "움직이는 중"으로 볼 최소 속도(유닛/초).
@@ -93,9 +101,14 @@ public static class AshPlayerAnimationBuilder
 
         var controller = LoadOrCreateController(set.ControllerPath);
 
-        // 상태 머신 구조는 캐릭터마다 다르다. 플레이어는 이동 3단계 + 액션 4개, 적은
-        // 배회 → 예비동작 → 돌진의 한 줄기다. 한 함수로 억지로 합치면 조건문 범벅이 된다.
-        if (clips.ContainsKey("idle")) BuildPlayerController(controller, clips);
+        // 상태 머신 구조는 캐릭터마다 다르다. 플레이어는 이동 2단계 + 액션 여럿, 망령은
+        // 배회 → 예비동작 → 돌진의 한 줄기, 보스는 그 중간이다.
+        // 한 함수로 억지로 합치면 조건문 범벅이 된다.
+        //
+        // 보스를 먼저 가르는 이유: 보스도 idle 클립을 가지고 있어서, 아래 순서를 바꾸면
+        // 플레이어용 함수로 들어가 clips["attack"]에서 터진다.
+        if (clips.ContainsKey("slam")) BuildBossController(controller, clips);
+        else if (clips.ContainsKey("idle")) BuildPlayerController(controller, clips);
         else BuildWraithController(controller, clips);
 
         EditorUtility.SetDirty(controller);
@@ -217,17 +230,16 @@ public static class AshPlayerAnimationBuilder
     /// 상태 머신을 구성한다.
     ///
     /// 구조:
-    ///   Idle ↔ Walk ↔ Run          (이동 계열. Speed와 IsRunning으로 오간다)
+    ///   Idle ↔ Walk                (이동 계열. Speed로 오간다)
     ///   Any State → Attack/Dash/Hit/Death   (액션 계열. 트리거로 끼어든다)
     ///   Attack/Dash/Hit → Idle     (재생이 끝나면 자동 복귀)
     ///   Death → 없음               (죽으면 그 상태로 멈춘다)
     ///
-    /// 이동을 Blend Tree가 아니라 상태 3개로 나눈 이유: Walk와 Run이 서로 다른 프레임 수(8/6)와
-    /// 다른 재생 속도(10/12fps)를 가진 별개의 그림이고, 둘 사이를 스프라이트로 섞는 건 불가능하다.
-    /// Blend Tree는 값을 섞을 수 있는 애니메이션(3D 본, 파라미터)에서 의미가 있다.
+    /// 원래 Run 상태가 Walk 옆에 있었으나 달리기를 없애면서 같이 뺐다. 대시가 있는데 달리기까지
+    /// 있으면 이동 수단이 과했고, 스태미나를 두 곳에서 나눠 쓰니 대시를 쓸 타이밍이 흐려졌다.
     ///
     /// 액션에 Any State를 쓴 이유: 걷다가도 서 있다가도 공격이 나가야 하는데, 상태마다 전이를
-    /// 하나씩 그으면 이동 상태 3개 x 액션 4개 = 12개를 관리해야 한다. Any State는 그걸 4개로 줄인다.
+    /// 하나씩 그으면 이동 상태마다 액션 수만큼 전이를 관리해야 한다. Any State는 그걸 하나로 줄인다.
     /// </summary>
     private static AnimatorController LoadOrCreateController(string path)
     {
@@ -252,10 +264,66 @@ public static class AshPlayerAnimationBuilder
     /// Exit Time 전이를 쓰면 <b>애니메이션이 끝나는 순간이 곧 돌진 시작</b>이라 두 값이
     /// 하나가 된다. fps를 바꿔도 저절로 맞는다.
     /// </summary>
+    /// <summary>
+    /// 재의 왕(보스) 컨트롤러.
+    ///
+    /// 플레이어·망령과 따로 만든 이유: 보스는 <b>둘의 중간</b>이다. 망령처럼 사건이 전부
+    /// 트리거지만, 플레이어처럼 걷기와 서기를 Speed로 오간다. 어느 한쪽에 끼워 넣으면
+    /// 그쪽 함수가 "보스일 때만" 분기를 달게 되어 읽기 어려워진다.
+    ///
+    /// 페이즈 전환 상태는 1페이즈에만 있다. 그래서 클립이 있을 때만 만든다 —
+    /// 두 페이즈가 같은 함수를 쓰면서도 각자 맞는 상태를 갖게 하는 가장 단순한 방법이다.
+    /// </summary>
+    private static void BuildBossController(
+        AnimatorController controller, Dictionary<string, AnimationClip> clips)
+    {
+        controller.AddParameter(ParamSpeed, AnimatorControllerParameterType.Float);
+        controller.AddParameter(ParamSlam, AnimatorControllerParameterType.Trigger);
+        controller.AddParameter(ParamWave, AnimatorControllerParameterType.Trigger);
+        controller.AddParameter(ParamHit, AnimatorControllerParameterType.Trigger);
+        controller.AddParameter(ParamDie, AnimatorControllerParameterType.Trigger);
+        controller.AddParameter(ParamTransition, AnimatorControllerParameterType.Trigger);
+
+        var machine = controller.layers[0].stateMachine;
+
+        var idle = AddState(machine, "Idle", clips["idle"], new Vector3(300f, 0f, 0f));
+        var walk = AddState(machine, "Walk", clips["walk"], new Vector3(300f, 100f, 0f));
+        var slam = AddState(machine, "Slam", clips["slam"], new Vector3(600f, 0f, 0f));
+        var wave = AddState(machine, "Wave", clips["wave"], new Vector3(600f, 100f, 0f));
+        var hit = AddState(machine, "Hit", clips["hit"], new Vector3(600f, 200f, 0f));
+        var death = AddState(machine, "Death", clips["death"], new Vector3(600f, 300f, 0f));
+
+        machine.defaultState = idle;
+
+        AddFloatTransition(idle, walk, AnimatorConditionMode.Greater, MoveSpeedThreshold);
+        AddFloatTransition(walk, idle, AnimatorConditionMode.Less, MoveSpeedThreshold);
+
+        AddTriggerFromAnyState(machine, slam, ParamSlam);
+        AddTriggerFromAnyState(machine, wave, ParamWave);
+        AddTriggerFromAnyState(machine, hit, ParamHit);
+        AddTriggerFromAnyState(machine, death, ParamDie);
+
+        // 공격과 경직이 끝나면 서기로 돌아간다. 죽으면 안 돌아온다.
+        AddExitTimeTransition(slam, idle);
+        AddExitTimeTransition(wave, idle);
+        AddExitTimeTransition(hit, idle);
+
+        // 페이즈 전환은 1페이즈 컨트롤러에만 있다.
+        //
+        // Idle로 돌아가는 전이를 안 거는 이유: 이 모션이 끝나는 순간 코드가 컨트롤러를
+        // 2페이즈로 갈아 끼운다. 돌아갈 곳이 아예 사라지므로 전이를 걸 이유가 없다.
+        if (clips.TryGetValue("transition", out AnimationClip transitionClip))
+        {
+            var transition = AddState(machine, "Transition", transitionClip,
+                                      new Vector3(860f, 0f, 0f));
+            AddTriggerFromAnyState(machine, transition, ParamTransition);
+        }
+    }
+
     private static void BuildWraithController(
         AnimatorController controller, Dictionary<string, AnimationClip> clips)
     {
-        // 적은 Speed도 IsRunning도 필요 없다. 배회는 기본 상태이고 나머지는 사건이라 전부 트리거다.
+        // 적은 Speed가 필요 없다. 배회는 기본 상태이고 나머지는 사건이라 전부 트리거다.
         controller.AddParameter(ParamAttack, AnimatorControllerParameterType.Trigger);
         controller.AddParameter(ParamHit, AnimatorControllerParameterType.Trigger);
         controller.AddParameter(ParamDie, AnimatorControllerParameterType.Trigger);
@@ -292,7 +360,6 @@ public static class AshPlayerAnimationBuilder
         AnimatorController controller, Dictionary<string, AnimationClip> clips)
     {
         controller.AddParameter(ParamSpeed, AnimatorControllerParameterType.Float);
-        controller.AddParameter(ParamIsRunning, AnimatorControllerParameterType.Bool);
         controller.AddParameter(ParamAttack, AnimatorControllerParameterType.Trigger);
         controller.AddParameter(ParamSwordSlam, AnimatorControllerParameterType.Trigger);
         controller.AddParameter(ParamBow, AnimatorControllerParameterType.Trigger);
@@ -308,7 +375,6 @@ public static class AshPlayerAnimationBuilder
         // Animator 창을 열었을 때 사람이 읽을 수가 없다.
         var idle = AddState(machine, "Idle", clips["idle"], new Vector3(300f, 0f, 0f));
         var walk = AddState(machine, "Walk", clips["walk"], new Vector3(300f, 80f, 0f));
-        var run = AddState(machine, "Run", clips["run"], new Vector3(300f, 160f, 0f));
         var attack = AddState(machine, "Attack", clips["attack"], new Vector3(600f, 0f, 0f));
         var dash = AddState(machine, "Dash", clips["dash"], new Vector3(600f, 80f, 0f));
         var hit = AddState(machine, "Hit", clips["hit"], new Vector3(600f, 160f, 0f));
@@ -322,16 +388,6 @@ public static class AshPlayerAnimationBuilder
 
         // Walk → Idle: 멈추면
         AddFloatTransition(walk, idle, AnimatorConditionMode.Less, MoveSpeedThreshold);
-
-        // Walk → Run: 달리기가 켜지면
-        AddBoolTransition(walk, run, true);
-
-        // Run → Walk: 달리기가 꺼지면 (스태미나가 바닥나는 경우가 여기로 온다)
-        AddBoolTransition(run, walk, false);
-
-        // Run → Idle: 달리는 도중에 그대로 멈춘 경우. 이 전이가 없으면 Run에서 Walk를 거쳐야만
-        // Idle로 갈 수 있어서, 달리다 키를 놓으면 걷는 모션이 한 번 스쳐 지나간다.
-        AddFloatTransition(run, idle, AnimatorConditionMode.Less, MoveSpeedThreshold);
 
         // ── 액션 계열 전이 (Any State에서 트리거로 진입) ──
         // 추가 생성 — 스킬마다 다른 모션. 기본 공격과 같은 방식으로 Any State에서 들어온다.
@@ -419,15 +475,6 @@ public static class AshPlayerAnimationBuilder
         var transition = from.AddTransition(to);
         ApplyInstantTransition(transition);
         transition.AddCondition(mode, threshold, ParamSpeed);
-    }
-
-    /// <summary>IsRunning 값을 조건으로 하는 즉시 전이.</summary>
-    private static void AddBoolTransition(AnimatorState from, AnimatorState to, bool value)
-    {
-        var transition = from.AddTransition(to);
-        ApplyInstantTransition(transition);
-        transition.AddCondition(
-            value ? AnimatorConditionMode.If : AnimatorConditionMode.IfNot, 0f, ParamIsRunning);
     }
 
     /// <summary>

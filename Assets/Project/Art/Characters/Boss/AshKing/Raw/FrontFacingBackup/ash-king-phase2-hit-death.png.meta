@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: ae9ae51743636c9418a7ad94d6e5b03f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8232574158404705801
+    second: ash-king-phase2-hit-death_0
+  - first:
+      213: -7975421549688630048
+    second: ash-king-phase2-hit-death_1
+  - first:
+      213: -2747555639493285368
+    second: ash-king-phase2-hit-death_2
+  - first:
+      213: 6891873857713556214
+    second: ash-king-phase2-hit-death_3
+  - first:
+      213: 5564589338741003502
+    second: ash-king-phase2-hit-death_4
+  - first:
+      213: 4149223116235606003
+    second: ash-king-phase2-hit-death_5
+  - first:
+      213: 1379443903762555051
+    second: ash-king-phase2-hit-death_6
+  - first:
+      213: 2186385547944931887
+    second: ash-king-phase2-hit-death_7
+  - first:
+      213: -5294427498557228217
+    second: ash-king-phase2-hit-death_8
+  - first:
+      213: -1792802553774166322
+    second: ash-king-phase2-hit-death_9
+  - first:
+      213: 21467682783167859
+    second: ash-king-phase2-hit-death_10
+  - first:
+      213: -2956406256116008171
+    second: ash-king-phase2-hit-death_11
+  - first:
+      213: 1639509258646408113
+    second: ash-king-phase2-hit-death_12
+  - first:
+      213: 3249824717087359988
+    second: ash-king-phase2-hit-death_13
+  - first:
+      213: 2347027805165263140
+    second: ash-king-phase2-hit-death_14
+  - first:
+      213: -3683006805521372059
+    second: ash-king-phase2-hit-death_15
+  - first:
+      213: 615730661264884701
+    second: ash-king-phase2-hit-death_16
+  - first:
+      213: -8628852699680283561
+    second: ash-king-phase2-hit-death_17
+  - first:
+      213: -2680977011984535659
+    second: ash-king-phase2-hit-death_18
+  - first:
+      213: -6971908545467912578
+    second: ash-king-phase2-hit-death_19
+  - first:
+      213: 5691145191220048309
+    second: ash-king-phase2-hit-death_20
+  - first:
+      213: -2619238189101816965
+    second: ash-king-phase2-hit-death_21
+  - first:
+      213: -1811909809896758001
+    second: ash-king-phase2-hit-death_22
+  - first:
+      213: 5238049130518569515
+    second: ash-king-phase2-hit-death_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_0
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 185
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f12a35cb6500cd80800000000000000
+      internalID: -8232574158404705801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 190
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e450dc2b5c915190800000000000000
+      internalID: -7975421549688630048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_2
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 195
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80aa16bf3b8bed9d0800000000000000
+      internalID: -2747555639493285368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_3
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 194
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa41d542cad4af50800000000000000
+      internalID: 6891873857713556214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 192
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee455986584693d40800000000000000
+      internalID: 5564589338741003502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 183
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f70011d070059930800000000000000
+      internalID: 4149223116235606003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_6
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 25
+        width: 135
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0685ffbe4c42310800000000000000
+      internalID: 1379443903762555051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_7
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 187
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f223e47621a975e10800000000000000
+      internalID: 2186385547944931887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_8
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 193
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bbf6bbd3a6686b0800000000000000
+      internalID: -5294427498557228217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_9
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 193
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecea0e5739fae17e0800000000000000
+      internalID: -1792802553774166322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_10
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 193
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37501766eb44c4000800000000000000
+      internalID: 21467682783167859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_11
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 67
+        width: 135
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b767c7c2cb8f6d0800000000000000
+      internalID: -2956406256116008171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_12
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 75
+        width: 134
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb4597fbf4b0c610800000000000000
+      internalID: 1639509258646408113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_13
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 79
+        width: 135
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3c644ac52b91d20800000000000000
+      internalID: 3249824717087359988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_14
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 164
+        width: 110
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42917dc8a51529020800000000000000
+      internalID: 2347027805165263140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_15
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 188
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56c6d83e2d453ecc0800000000000000
+      internalID: -3683006805521372059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_16
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 196
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd3820e26c38b8800800000000000000
+      internalID: 615730661264884701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_17
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 199
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754e260ff28204880800000000000000
+      internalID: -8628852699680283561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_18
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 190
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f6cadac914bcad0800000000000000
+      internalID: -2680977011984535659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_19
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 16
+        width: 135
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7eefdcdd1ece3f90800000000000000
+      internalID: -6971908545467912578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_20
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 179
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1f7dff5620bfe40800000000000000
+      internalID: 5691145191220048309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_21
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 168
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b73e27c8eb896abd0800000000000000
+      internalID: -2619238189101816965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_22
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 183
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f05ee08b0adcad6e0800000000000000
+      internalID: -1811909809896758001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-hit-death_23
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 168
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b226a9c8ee941b840800000000000000
+      internalID: 5238049130518569515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-phase2-hit-death_0: -8232574158404705801
+      ash-king-phase2-hit-death_1: -7975421549688630048
+      ash-king-phase2-hit-death_10: 21467682783167859
+      ash-king-phase2-hit-death_11: -2956406256116008171
+      ash-king-phase2-hit-death_12: 1639509258646408113
+      ash-king-phase2-hit-death_13: 3249824717087359988
+      ash-king-phase2-hit-death_14: 2347027805165263140
+      ash-king-phase2-hit-death_15: -3683006805521372059
+      ash-king-phase2-hit-death_16: 615730661264884701
+      ash-king-phase2-hit-death_17: -8628852699680283561
+      ash-king-phase2-hit-death_18: -2680977011984535659
+      ash-king-phase2-hit-death_19: -6971908545467912578
+      ash-king-phase2-hit-death_2: -2747555639493285368
+      ash-king-phase2-hit-death_20: 5691145191220048309
+      ash-king-phase2-hit-death_21: -2619238189101816965
+      ash-king-phase2-hit-death_22: -1811909809896758001
+      ash-king-phase2-hit-death_23: 5238049130518569515
+      ash-king-phase2-hit-death_3: 6891873857713556214
+      ash-king-phase2-hit-death_4: 5564589338741003502
+      ash-king-phase2-hit-death_5: 4149223116235606003
+      ash-king-phase2-hit-death_6: 1379443903762555051
+      ash-king-phase2-hit-death_7: 2186385547944931887
+      ash-king-phase2-hit-death_8: -5294427498557228217
+      ash-king-phase2-hit-death_9: -1792802553774166322
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -99,7 +99,7 @@ public class HealthBar : MonoBehaviour
     {
         if (health == null) return;
 
-        health.Damaged += OnHealthChanged;
+        health.Changed += OnHealthChanged;
 
         // 구독 사이에 값이 바뀌었을 수 있으므로 현재값으로 한 번 맞춘다.
         OnHealthChanged(health.Current, health.Max);
@@ -109,7 +109,7 @@ public class HealthBar : MonoBehaviour
     {
         if (health == null) return;
 
-        health.Damaged -= OnHealthChanged;
+        health.Changed -= OnHealthChanged;
     }
 
     /// <summary>체력이 바뀔 때마다 불린다. 회복도 같은 이벤트로 온다.</summary>

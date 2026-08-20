@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: 6d38347566fed2945ab84d22cfdd2c79
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9188123054062252891
+    second: ash-king-phase2-slam_0
+  - first:
+      213: 1863743002713183703
+    second: ash-king-phase2-slam_1
+  - first:
+      213: 6394697274357507984
+    second: ash-king-phase2-slam_2
+  - first:
+      213: -3929968609382296490
+    second: ash-king-phase2-slam_3
+  - first:
+      213: 8368738215592099730
+    second: ash-king-phase2-slam_4
+  - first:
+      213: -3435391275466573425
+    second: ash-king-phase2-slam_5
+  - first:
+      213: -727125665388495
+    second: ash-king-phase2-slam_6
+  - first:
+      213: -5811044391011096908
+    second: ash-king-phase2-slam_7
+  - first:
+      213: 245257586973844733
+    second: ash-king-phase2-slam_8
+  - first:
+      213: -209252806391918967
+    second: ash-king-phase2-slam_9
+  - first:
+      213: 8709236233297461246
+    second: ash-king-phase2-slam_10
+  - first:
+      213: 4246763137010945021
+    second: ash-king-phase2-slam_11
+  - first:
+      213: 110486298748125696
+    second: ash-king-phase2-slam_12
+  - first:
+      213: -3821912495462969490
+    second: ash-king-phase2-slam_13
+  - first:
+      213: 1202324609257308196
+    second: ash-king-phase2-slam_14
+  - first:
+      213: -6476566377724330497
+    second: ash-king-phase2-slam_15
+  - first:
+      213: 461538727563083968
+    second: ash-king-phase2-slam_16
+  - first:
+      213: 6502857344721746512
+    second: ash-king-phase2-slam_17
+  - first:
+      213: -6689355911091599848
+    second: ash-king-phase2-slam_18
+  - first:
+      213: 2450346481911411889
+    second: ash-king-phase2-slam_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_0
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 72
+        width: 112
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5335f5ac35c28f70800000000000000
+      internalID: 9188123054062252891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 135
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d5d65de2685dd910800000000000000
+      internalID: 1863743002713183703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_2
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 17
+        width: 101
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 097ec3c5a478eb850800000000000000
+      internalID: 6394697274357507984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_3
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 2
+        width: 97
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65415532f52f579c0800000000000000
+      internalID: -3929968609382296490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_4
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 90
+        width: 100
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f7a9e411bb32470800000000000000
+      internalID: 8368738215592099730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_5
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 92
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89b65126d90350d0800000000000000
+      internalID: -3435391275466573425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_6
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 128
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 138e10ddeaa6dfff0800000000000000
+      internalID: -727125665388495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_7
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 66
+        width: 127
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b6e1c32ae50b5fa0800000000000000
+      internalID: -5811044391011096908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_8
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 118
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df4ab06d974576300800000000000000
+      internalID: 245257586973844733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_9
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 107
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98e81c66ea5981df0800000000000000
+      internalID: -209252806391918967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_10
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 91
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efff7aee53c6dd870800000000000000
+      internalID: 8709236233297461246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_11
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 75
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfbc2c2a2988fea30800000000000000
+      internalID: 4246763137010945021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_12
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 64
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0020e6d04b6888100800000000000000
+      internalID: 110486298748125696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_13
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 65
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6f8d41b5d6d5fac0800000000000000
+      internalID: -3821912495462969490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_14
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 43
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4200e77acd38fa010800000000000000
+      internalID: 1202324609257308196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_15
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 47
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffdb08b913d9e16a0800000000000000
+      internalID: -6476566377724330497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_16
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 49
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0cb720707b76600800000000000000
+      internalID: 461538727563083968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_17
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 35
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05afd292d4ace3a50800000000000000
+      internalID: 6502857344721746512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_18
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 22
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 816c9379d32aa23a0800000000000000
+      internalID: -6689355911091599848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-slam_19
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 21
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b435fe8421610220800000000000000
+      internalID: 2450346481911411889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-phase2-slam_0: 9188123054062252891
+      ash-king-phase2-slam_1: 1863743002713183703
+      ash-king-phase2-slam_10: 8709236233297461246
+      ash-king-phase2-slam_11: 4246763137010945021
+      ash-king-phase2-slam_12: 110486298748125696
+      ash-king-phase2-slam_13: -3821912495462969490
+      ash-king-phase2-slam_14: 1202324609257308196
+      ash-king-phase2-slam_15: -6476566377724330497
+      ash-king-phase2-slam_16: 461538727563083968
+      ash-king-phase2-slam_17: 6502857344721746512
+      ash-king-phase2-slam_18: -6689355911091599848
+      ash-king-phase2-slam_19: 2450346481911411889
+      ash-king-phase2-slam_2: 6394697274357507984
+      ash-king-phase2-slam_3: -3929968609382296490
+      ash-king-phase2-slam_4: 8368738215592099730
+      ash-king-phase2-slam_5: -3435391275466573425
+      ash-king-phase2-slam_6: -727125665388495
+      ash-king-phase2-slam_7: -5811044391011096908
+      ash-king-phase2-slam_8: 245257586973844733
+      ash-king-phase2-slam_9: -209252806391918967
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
