@@ -1,0 +1,1287 @@
+fileFormatVersion: 2
+guid: 63be9c926c589aa47978ab56869d076a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -851023227127208486
+    second: player_sword_slam_up_left_0
+  - first:
+      213: 6850253942520557784
+    second: player_sword_slam_up_left_1
+  - first:
+      213: -361950078073339572
+    second: player_sword_slam_up_left_2
+  - first:
+      213: 1150906523337292291
+    second: player_sword_slam_up_left_3
+  - first:
+      213: -502581779422371850
+    second: player_sword_slam_up_left_4
+  - first:
+      213: 5988276575617114267
+    second: player_sword_slam_up_left_5
+  - first:
+      213: -931763118739617033
+    second: player_sword_slam_up_left_6
+  - first:
+      213: 5466244414205979268
+    second: player_sword_slam_up_left_7
+  - first:
+      213: 7038993290770749147
+    second: player_sword_slam_up_left_8
+  - first:
+      213: 8554713860676071600
+    second: player_sword_slam_up_left_9
+  - first:
+      213: 963654137430013466
+    second: player_sword_slam_up_left_10
+  - first:
+      213: 1773945033681501532
+    second: player_sword_slam_up_left_11
+  - first:
+      213: 6553810301845821169
+    second: player_sword_slam_up_left_12
+  - first:
+      213: -5860618684720770975
+    second: player_sword_slam_up_left_13
+  - first:
+      213: -1067860239160292623
+    second: player_sword_slam_up_left_14
+  - first:
+      213: 4634803789258986372
+    second: player_sword_slam_up_left_15
+  - first:
+      213: -6786869622582629898
+    second: player_sword_slam_up_left_16
+  - first:
+      213: 6837224551625395626
+    second: player_sword_slam_up_left_17
+  - first:
+      213: -3328394931622583487
+    second: player_sword_slam_up_left_18
+  - first:
+      213: 2041454243968694701
+    second: player_sword_slam_up_left_19
+  - first:
+      213: 7204890289112137717
+    second: player_sword_slam_up_left_20
+  - first:
+      213: 4005357374375471764
+    second: player_sword_slam_up_left_21
+  - first:
+      213: -7610154456504626532
+    second: player_sword_slam_up_left_22
+  - first:
+      213: -8587129603117018022
+    second: player_sword_slam_up_left_23
+  - first:
+      213: -666739250967001049
+    second: player_sword_slam_up_left_24
+  - first:
+      213: 7970718944144172455
+    second: player_sword_slam_up_left_25
+  - first:
+      213: 7493864663592655792
+    second: player_sword_slam_up_left_26
+  - first:
+      213: -93041890680164238
+    second: player_sword_slam_up_left_27
+  - first:
+      213: 1200428872665453039
+    second: player_sword_slam_up_left_28
+  - first:
+      213: -8393767567054612300
+    second: player_sword_slam_up_left_29
+  - first:
+      213: -593663558422357277
+    second: player_sword_slam_up_left_30
+  - first:
+      213: -3214987139993269515
+    second: player_sword_slam_up_left_31
+  - first:
+      213: 6398287238772724393
+    second: player_sword_slam_up_left_32
+  - first:
+      213: -1389529800553062959
+    second: player_sword_slam_up_left_33
+  - first:
+      213: 7586527034744544079
+    second: player_sword_slam_up_left_34
+  - first:
+      213: 7557566517593108400
+    second: player_sword_slam_up_left_35
+  - first:
+      213: 1437412536506980026
+    second: player_sword_slam_up_left_36
+  - first:
+      213: -154016499123647725
+    second: player_sword_slam_up_left_37
+  - first:
+      213: -3608187933227232563
+    second: player_sword_slam_up_left_38
+  - first:
+      213: 4337605911462854523
+    second: player_sword_slam_up_left_39
+  - first:
+      213: -2489760501322085134
+    second: player_sword_slam_up_left_40
+  - first:
+      213: 4319246017416850666
+    second: player_sword_slam_up_left_41
+  - first:
+      213: -2770836149393403350
+    second: player_sword_slam_up_left_42
+  - first:
+      213: -3895249675291460129
+    second: player_sword_slam_up_left_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 145
+        width: 43
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad5e97342ee8034f0800000000000000
+      internalID: -851023227127208486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_1
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 141
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d03821aaadf01f50800000000000000
+      internalID: 6850253942520557784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 190
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41830a52581afaf0800000000000000
+      internalID: -361950078073339572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_3
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 34
+        width: 154
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30af23d9267d8ff00800000000000000
+      internalID: 1150906523337292291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_4
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 13
+        width: 152
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff12fec8887609f0800000000000000
+      internalID: -502581779422371850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_5
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 47
+        width: 126
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b90637a71d1aa1350800000000000000
+      internalID: 5988276575617114267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_6
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 31
+        width: 108
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa07b45166b113f0800000000000000
+      internalID: -931763118739617033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 29
+        width: 68
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48ae53455500cdb40800000000000000
+      internalID: 5466244414205979268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_8
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 77
+        width: 59
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd69fb09a178fa160800000000000000
+      internalID: 7038993290770749147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_9
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 21
+        width: 80
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b035b47ee278b670800000000000000
+      internalID: 8554713860676071600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_10
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 52
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16f9d315569f5d00800000000000000
+      internalID: 963654137430013466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_11
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 90
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5d77affb915e9810800000000000000
+      internalID: 1773945033681501532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_12
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 17
+        width: 43
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f6d0d6febfc3fa50800000000000000
+      internalID: 6553810301845821169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_13
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 67
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 160933d6b56eaaea0800000000000000
+      internalID: -5860618684720770975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_14
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 59
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fa461f25c23e21f0800000000000000
+      internalID: -1067860239160292623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_15
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 13
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4839a667d71225040800000000000000
+      internalID: 4634803789258986372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_16
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 60
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f9a211690230d1a0800000000000000
+      internalID: -6786869622582629898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_17
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 13
+        width: 42
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad06392183b2ee50800000000000000
+      internalID: 6837224551625395626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_18
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 38
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143ec6cb17a2fc1d0800000000000000
+      internalID: -3328394931622583487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_19
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 32
+        width: 21
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da9b7fc91d3b45c10800000000000000
+      internalID: 2041454243968694701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_20
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 39
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ffb0387b89ecf360800000000000000
+      internalID: 7204890289112137717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_21
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 41
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a242a8f43e59730800000000000000
+      internalID: 4005357374375471764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_22
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 24
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c929f2697dc436690800000000000000
+      internalID: -7610154456504626532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_23
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 43
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5418fd5f1364d880800000000000000
+      internalID: -8587129603117018022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_24
+      rect:
+        serializedVersion: 2
+        x: 1144
+        y: 22
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7284d4c0f244fb6f0800000000000000
+      internalID: -666739250967001049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_25
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 35
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a5a03626aead9e60800000000000000
+      internalID: 7970718944144172455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_26
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 20
+        width: 11
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bbda44153e8ff760800000000000000
+      internalID: 7493864663592655792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_27
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 23
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27037c4b4e275bef0800000000000000
+      internalID: -93041890680164238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_28
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 27
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe1d85513b7c8a010800000000000000
+      internalID: 1200428872665453039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_29
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 19
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b8d38eaed8538b80800000000000000
+      internalID: -8393767567054612300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_30
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 15
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ea14249322e2c7f0800000000000000
+      internalID: -593663558422357277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_31
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 29
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fa804bda321263d0800000000000000
+      internalID: -3214987139993269515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_32
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 21
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a296f518584bc850800000000000000
+      internalID: 6398287238772724393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_33
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 25
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dd1739220667bce0800000000000000
+      internalID: -1389529800553062959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_34
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 32
+        width: 20
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b98d89422c84960800000000000000
+      internalID: 7586527034744544079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_35
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 19
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bfe58fb4bed1e860800000000000000
+      internalID: 7557566517593108400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_36
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 26
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab611321617b2f310800000000000000
+      internalID: 1437412536506980026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_37
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 28
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b8f206fc2dcddf0800000000000000
+      internalID: -154016499123647725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_38
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 13
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc2d32511342dedc0800000000000000
+      internalID: -3608187933227232563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_39
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 13
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7fb0684895423c30800000000000000
+      internalID: 4337605911462854523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_40
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 16
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc06eee308927dd0800000000000000
+      internalID: -2489760501322085134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_41
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 18
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aece6a55e5b01fb30800000000000000
+      internalID: 4319246017416850666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_42
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 23
+        width: 21
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a225890e3330c89d0800000000000000
+      internalID: -2770836149393403350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_up_left_43
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 13
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fddfbc8ee0b41f9c0800000000000000
+      internalID: -3895249675291460129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_sword_slam_up_left_0: -851023227127208486
+      player_sword_slam_up_left_1: 6850253942520557784
+      player_sword_slam_up_left_10: 963654137430013466
+      player_sword_slam_up_left_11: 1773945033681501532
+      player_sword_slam_up_left_12: 6553810301845821169
+      player_sword_slam_up_left_13: -5860618684720770975
+      player_sword_slam_up_left_14: -1067860239160292623
+      player_sword_slam_up_left_15: 4634803789258986372
+      player_sword_slam_up_left_16: -6786869622582629898
+      player_sword_slam_up_left_17: 6837224551625395626
+      player_sword_slam_up_left_18: -3328394931622583487
+      player_sword_slam_up_left_19: 2041454243968694701
+      player_sword_slam_up_left_2: -361950078073339572
+      player_sword_slam_up_left_20: 7204890289112137717
+      player_sword_slam_up_left_21: 4005357374375471764
+      player_sword_slam_up_left_22: -7610154456504626532
+      player_sword_slam_up_left_23: -8587129603117018022
+      player_sword_slam_up_left_24: -666739250967001049
+      player_sword_slam_up_left_25: 7970718944144172455
+      player_sword_slam_up_left_26: 7493864663592655792
+      player_sword_slam_up_left_27: -93041890680164238
+      player_sword_slam_up_left_28: 1200428872665453039
+      player_sword_slam_up_left_29: -8393767567054612300
+      player_sword_slam_up_left_3: 1150906523337292291
+      player_sword_slam_up_left_30: -593663558422357277
+      player_sword_slam_up_left_31: -3214987139993269515
+      player_sword_slam_up_left_32: 6398287238772724393
+      player_sword_slam_up_left_33: -1389529800553062959
+      player_sword_slam_up_left_34: 7586527034744544079
+      player_sword_slam_up_left_35: 7557566517593108400
+      player_sword_slam_up_left_36: 1437412536506980026
+      player_sword_slam_up_left_37: -154016499123647725
+      player_sword_slam_up_left_38: -3608187933227232563
+      player_sword_slam_up_left_39: 4337605911462854523
+      player_sword_slam_up_left_4: -502581779422371850
+      player_sword_slam_up_left_40: -2489760501322085134
+      player_sword_slam_up_left_41: 4319246017416850666
+      player_sword_slam_up_left_42: -2770836149393403350
+      player_sword_slam_up_left_43: -3895249675291460129
+      player_sword_slam_up_left_5: 5988276575617114267
+      player_sword_slam_up_left_6: -931763118739617033
+      player_sword_slam_up_left_7: 5466244414205979268
+      player_sword_slam_up_left_8: 7038993290770749147
+      player_sword_slam_up_left_9: 8554713860676071600
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -49,12 +49,12 @@ public class ChestRelicReward : MonoBehaviour
 
     private void OnEnable()
     {
-        if (chest != null) chest.Opened += OnChestOpened;
+        if (chest != null) chest.Claimed += OnChestOpened;
     }
 
     private void OnDisable()
     {
-        if (chest != null) chest.Opened -= OnChestOpened;
+        if (chest != null) chest.Claimed -= OnChestOpened;
     }
 
     private void OnChestOpened()

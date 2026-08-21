@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -7,9 +6,14 @@ using UnityEngine.Pool;
 /// 추가 생성 — 잿불 망령을 Unity 내장 <see cref="ObjectPool{T}"/>로 재사용한다.
 /// 방의 모든 적이 죽으면 전투 종료 이벤트를 보내고 RunManager 처치 수를 갱신한다.
 /// 문과 보상은 <see cref="RoomController"/>가 순서대로 처리한다.
+///
+/// 수정(보스 방 추가): 이 클래스가 EnemyWraith 전용이라 보스를 꽂을 수 없었다.
+/// 방 진행이 기대하는 "전투 시작 / 전투 종료" 규약을 <see cref="RoomEncounter"/>로 올리고
+/// 이 클래스는 그 구현 중 하나가 됐다. 보스 방은 <see cref="BossEncounter"/>가 맡는다.
+/// 풀링·처치 기록 같은 잡몹 전용 로직은 그대로 여기 남는다.
 /// </summary>
 [DisallowMultipleComponent]
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : RoomEncounter
 {
     [SerializeField] private EnemyWraith enemyPrefab;
     [SerializeField] private Transform[] spawnPoints;
@@ -26,8 +30,8 @@ public class EnemySpawner : MonoBehaviour
     private int nextSpawnPoint;
     private bool encounterStarted;
 
-    // 추가 생성 — 문을 직접 열지 않고 방 진행 담당자에게 전투 종료만 알린다.
-    public event Action EncounterCleared;
+    // 수정(보스 방 추가) — 전투 종료 이벤트는 RoomEncounter로 올라갔다.
+    // 문을 직접 열지 않고 방 진행 담당자에게 알리기만 한다는 원칙은 그대로다.
 
     private void Awake()
     {
@@ -52,7 +56,7 @@ public class EnemySpawner : MonoBehaviour
     /// 추가 생성 — 이 방의 적을 배치하고 전투를 시작한다.
     /// 같은 전투가 진행 중일 때 다시 호출해도 적이 중복 생성되지 않는다.
     /// </summary>
-    public void BeginEncounter()
+    public override void BeginEncounter()
     {
         if (encounterStarted || activeEnemies.Count > 0) return;
 
@@ -119,7 +123,7 @@ public class EnemySpawner : MonoBehaviour
         if (activeEnemies.Count == 0)
         {
             encounterStarted = false;
-            EncounterCleared?.Invoke();
+            RaiseEncounterCleared();
         }
     }
 }

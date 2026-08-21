@@ -47,7 +47,10 @@ public class Projectile : MonoBehaviour
             : Vector2.right;
 
         // 화살 그림이 오른쪽을 향해 그려져 있으므로, 왼쪽으로 쏠 때는 뒤집는다.
-        transform.localScale = new Vector3(direction.x < 0f ? -1f : 1f, 1f, 1f);
+        // 수정(8방향) — 좌우 반전 대신 날아가는 방향으로 회전시킨다.
+        // 반전은 위아래를 표현할 수 없어서, 위로 쏜 화살이 옆으로 누워 날아갔다.
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         if (hitbox != null)
         {

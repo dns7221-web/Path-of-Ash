@@ -142,10 +142,17 @@ public class PlayerController : MonoBehaviour
     // 마지막으로 바라본 방향이 오른쪽인가. 입력이 없을 때 대시 방향을 정하는 데 쓴다.
     private bool facingRight = true;
 
+    // 추가 생성 — 8방향 애니메이션이 쓰는 실제 방향. 아래(정면)에서 시작한다.
+    private Vector2 facingDirection = Vector2.down;
+
 
     // 애니메이터 파라미터 이름을 매 프레임 문자열로 넘기면 내부에서 해시를 다시 계산한다.
     // 미리 해시로 만들어두면 그 비용과 문자열 할당이 사라진다.
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
+
+    // 추가 생성(8방향) — 블렌드 트리가 방향을 고르는 데 쓰는 두 값.
+    private static readonly int MoveXHash = Animator.StringToHash("MoveX");
+    private static readonly int MoveYHash = Animator.StringToHash("MoveY");
 
     // 추가 생성 — 나머지 파라미터도 같은 이유로 해시를 미리 떠둔다.
     // 이름 문자열은 AshPlayerAnimationBuilder의 상수와 같아야 한다. 한쪽만 바꾸면 컴파일은
@@ -165,8 +172,11 @@ public class PlayerController : MonoBehaviour
     /// <summary>추가 생성 — 죽었는가. 적 AI가 추격을 멈출 때 읽을 값이다.</summary>
     public bool IsDead => actionState == ActionState.Dead;
 
-    /// <summary>추가 생성 — 오른쪽을 보고 있는가. SkillController가 시전 방향으로 쓴다.</summary>
+    /// <summary>추가 생성 — 오른쪽을 보고 있는가. 대시 기본 방향에만 쓴다(스킬은 FacingDirection).</summary>
     public bool FacingRight => facingRight;
+
+    /// <summary>추가 생성(8방향) — 바라보는 방향 벡터. 스킬을 8방향으로 옮길 때 쓴다.</summary>
+    public Vector2 FacingDirection => facingDirection;
 
     /// <summary>
     /// 추가 생성 — 유물로 얻은 이동 속도 보정. moveSpeed에 더해진다.
@@ -330,6 +340,16 @@ public class PlayerController : MonoBehaviour
         // 아래 액션 입력 처리보다 앞에 있어야 한다.
         if (Mathf.Abs(moveInput.x) > 0.01f)
             facingRight = moveInput.x > 0f;
+
+        // 수정(8방향 전환) — 좌우 bool과 별개로 실제 방향 벡터를 들고 있는다.
+        //
+        // bool을 남겨둔 이유: 대시 방향을 정할 때 "입력이 없으면 마지막 좌우"라는 기존 규칙이
+        // 아직 그 값을 쓴다. 스킬 쪽은 전부 방향 벡터로 옮겼다.
+        //
+        // 입력이 0일 때 갱신하지 않는 이유: 멈춘 순간 마지막으로 보던 방향이 유지돼야
+        // 그 방향 idle이 나온다. 안 그러면 손을 떼는 순간 정면으로 홱 돌아간다.
+        if (moveInput.sqrMagnitude > 0.0001f)
+            facingDirection = moveInput.normalized;
 
 
         // 추가 생성
@@ -510,25 +530,34 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat(SpeedHash, rb.linearVelocity.magnitude);
 
-            // 추가 생성 — 걷기/달리기 전환용. 상태 머신이 이 값으로 Walk와 Run을 오간다.
+            // 추가 생성(8방향) — 블렌드 트리가 이 두 값으로 방향을 고른다.
+            // 정규화한 값을 넣는 이유: 블렌드 트리의 방향 좌표가 단위원 위에 놓여 있어서
+            // 크기가 작으면 어느 방향에도 온전히 도달하지 못하고 섞인 그림이 나온다.
+            animator.SetFloat(MoveXHash, facingDirection.x);
+            animator.SetFloat(MoveYHash, facingDirection.y);
         }
 
-        // 입력이 0에 가까울 때는 반전하지 않는다. 그래야 멈춘 순간 마지막으로 보던 방향이
-        // 유지된다. 0.01은 스틱이 중앙에서 미세하게 떨리는 걸 무시하기 위한 값이다.
+        // 수정(8방향 전환) — 스프라이트 반전을 없앴다.
         //
-        // 수정(애니메이션 작업 시점): moveInput 대신 facingRight를 본다. 대시나 공격 중에는
-        // moveInput이 0이라 예전 코드로는 반전이 멈추는데, facingRight는 마지막 방향을
-        // 계속 들고 있어서 대시 중에도 향한 방향이 유지된다.
+        // 왜 없애야 하는가: 이제 왼쪽 방향 그림이 시트에 따로 들어 있다. 거기에 반전까지 걸면
+        // 왼쪽을 볼 때 두 번 뒤집혀 오른쪽 그림이 나온다. 게다가 반전은 검을 반대 손으로
+        // 옮겨버려서, 방향을 바꿀 때마다 무기가 손을 갈아타는 것처럼 보인다.
         if (spriteRenderer != null)
-            spriteRenderer.flipX = !facingRight;
+            spriteRenderer.flipX = false;
 
-        // 추가 생성 — 그림만 반전하면 공격 판정은 계속 오른쪽에 남는다.
-        // 히트박스 자식의 X축을 함께 뒤집어 Collider2D 오프셋까지 진행 방향에 맞춘다.
+        // 수정(8방향 전환) — 히트박스를 좌우 반전이 아니라 방향으로 배치한다.
+        //
+        // 예전에는 X 스케일을 뒤집어 오프셋을 반대편으로 보냈다. 그 방법은 위아래를 표현할 수
+        // 없어서, 위를 보고 공격해도 판정은 옆에 생겼다. 이제 바라보는 방향으로 회전시켜
+        // 여덟 방향 모두 그림과 판정이 같은 곳에 놓인다.
         if (attackHitbox != null)
         {
-            Vector3 hitboxScale = attackHitbox.transform.localScale;
-            hitboxScale.x = Mathf.Abs(hitboxScale.x) * (facingRight ? 1f : -1f);
-            attackHitbox.transform.localScale = hitboxScale;
+            Vector3 scale = attackHitbox.transform.localScale;
+            scale.x = Mathf.Abs(scale.x);
+            attackHitbox.transform.localScale = scale;
+
+            float angle = Mathf.Atan2(facingDirection.y, facingDirection.x) * Mathf.Rad2Deg;
+            attackHitbox.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,7 +8,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Collider2D))]
-public class RewardChest : MonoBehaviour
+public class RewardChest : RoomReward
 {
     [Header("상자 모습")]
     [Tooltip("닫힌 상자 오브젝트.")]
@@ -39,8 +38,8 @@ public class RewardChest : MonoBehaviour
     private readonly HashSet<Collider2D> playerColliders = new HashSet<Collider2D>();
     private Collider2D interactionTrigger;
 
-    /// <summary>상자가 실제로 열렸을 때 한 번 발생한다.</summary>
-    public event Action Opened;
+    // 수정(보스 방 보상 추가) — 열림 이벤트는 RoomReward.Claimed로 올라갔다.
+    // 상자는 "열렸다", 보스 방은 "유물을 주웠다"지만 방이 받는 신호는 하나면 된다.
 
     /// <summary>이미 열린 상자인가.</summary>
     public bool IsOpened { get; private set; }
@@ -70,7 +69,7 @@ public class RewardChest : MonoBehaviour
     /// 방 진행 상태에 맞춰 상자를 보이거나 숨긴다.
     /// 다시 숨길 때 닫힌 상태로 초기화하므로 재사용해도 안전하다.
     /// </summary>
-    public void SetAvailable(bool available)
+    public override void SetAvailable(bool available)
     {
         if (!available)
         {
@@ -102,7 +101,7 @@ public class RewardChest : MonoBehaviour
         ApplyVisual();
         ApplyRandomHealing(player);
         Debug.Log("[보상 상자] F 상호작용 — 상자를 열었다.", this);
-        Opened?.Invoke();
+        RaiseClaimed();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

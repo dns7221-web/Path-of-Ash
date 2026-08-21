@@ -1,0 +1,2647 @@
+fileFormatVersion: 2
+guid: 75d8c5510d1a01b46ad9eb542c022751
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6691499294618478852
+    second: player_ultimate_0
+  - first:
+      213: 5788709199773950389
+    second: player_ultimate_1
+  - first:
+      213: 1688020015318657496
+    second: player_ultimate_2
+  - first:
+      213: 5705866412705632893
+    second: player_ultimate_3
+  - first:
+      213: -1754642748795386091
+    second: player_ultimate_4
+  - first:
+      213: 5824364619105938395
+    second: player_ultimate_5
+  - first:
+      213: -934217040174961723
+    second: player_ultimate_6
+  - first:
+      213: -3012235520225046465
+    second: player_ultimate_7
+  - first:
+      213: 378661741546895311
+    second: player_ultimate_8
+  - first:
+      213: 6691156406150162251
+    second: player_ultimate_9
+  - first:
+      213: 2942638298720106873
+    second: player_ultimate_10
+  - first:
+      213: -2188199611685209807
+    second: player_ultimate_11
+  - first:
+      213: -6392955993911774669
+    second: player_ultimate_12
+  - first:
+      213: -4598449966388022479
+    second: player_ultimate_13
+  - first:
+      213: -2794777282813605284
+    second: player_ultimate_14
+  - first:
+      213: 6891322050422329487
+    second: player_ultimate_15
+  - first:
+      213: 3529811327382509861
+    second: player_ultimate_16
+  - first:
+      213: -7550352020629439826
+    second: player_ultimate_17
+  - first:
+      213: -4636487579039316015
+    second: player_ultimate_18
+  - first:
+      213: 572555935910022635
+    second: player_ultimate_19
+  - first:
+      213: 6676456270635066935
+    second: player_ultimate_20
+  - first:
+      213: 9208097439845283817
+    second: player_ultimate_21
+  - first:
+      213: 6482412136412516381
+    second: player_ultimate_22
+  - first:
+      213: -5991667125391817460
+    second: player_ultimate_23
+  - first:
+      213: 3749804827619285201
+    second: player_ultimate_24
+  - first:
+      213: 1961170443008410710
+    second: player_ultimate_25
+  - first:
+      213: -6523187343985549353
+    second: player_ultimate_26
+  - first:
+      213: 355246764742696162
+    second: player_ultimate_27
+  - first:
+      213: 837073838794567425
+    second: player_ultimate_28
+  - first:
+      213: 8787293515017091973
+    second: player_ultimate_29
+  - first:
+      213: -8410854421603870350
+    second: player_ultimate_30
+  - first:
+      213: -7785182998647949773
+    second: player_ultimate_31
+  - first:
+      213: -8360981518236970162
+    second: player_ultimate_32
+  - first:
+      213: -7012692730144429040
+    second: player_ultimate_33
+  - first:
+      213: -8940859042901061235
+    second: player_ultimate_34
+  - first:
+      213: 80333519560734790
+    second: player_ultimate_35
+  - first:
+      213: -7210256894033000300
+    second: player_ultimate_36
+  - first:
+      213: -1252412249922542612
+    second: player_ultimate_37
+  - first:
+      213: -373068001163396385
+    second: player_ultimate_38
+  - first:
+      213: -5104871166893939758
+    second: player_ultimate_39
+  - first:
+      213: 5708089707978225171
+    second: player_ultimate_40
+  - first:
+      213: -4563860842504865983
+    second: player_ultimate_41
+  - first:
+      213: 365620015260308281
+    second: player_ultimate_42
+  - first:
+      213: 3983204916659680714
+    second: player_ultimate_43
+  - first:
+      213: -4737701933790700742
+    second: player_ultimate_44
+  - first:
+      213: -7805034403095390267
+    second: player_ultimate_45
+  - first:
+      213: 2085021599403780968
+    second: player_ultimate_46
+  - first:
+      213: -8117739063312422037
+    second: player_ultimate_47
+  - first:
+      213: 860180251136373275
+    second: player_ultimate_48
+  - first:
+      213: 7191986553296111831
+    second: player_ultimate_49
+  - first:
+      213: 3413553659872557526
+    second: player_ultimate_50
+  - first:
+      213: -6213889536953828155
+    second: player_ultimate_51
+  - first:
+      213: -2254434423677177186
+    second: player_ultimate_52
+  - first:
+      213: 6260867128276493248
+    second: player_ultimate_53
+  - first:
+      213: -7705190481436966296
+    second: player_ultimate_54
+  - first:
+      213: 6787030067755236053
+    second: player_ultimate_55
+  - first:
+      213: 6121469165795339566
+    second: player_ultimate_56
+  - first:
+      213: -742495545106803912
+    second: player_ultimate_57
+  - first:
+      213: -1571808301392206145
+    second: player_ultimate_58
+  - first:
+      213: -2986930069661633797
+    second: player_ultimate_59
+  - first:
+      213: 5771705286128605937
+    second: player_ultimate_60
+  - first:
+      213: -1571444468664896799
+    second: player_ultimate_61
+  - first:
+      213: 2115052677395388376
+    second: player_ultimate_62
+  - first:
+      213: 6482280383492359654
+    second: player_ultimate_63
+  - first:
+      213: -9055532661887964672
+    second: player_ultimate_64
+  - first:
+      213: 6887755914019638518
+    second: player_ultimate_65
+  - first:
+      213: -6621992680209043343
+    second: player_ultimate_66
+  - first:
+      213: -2865494820780761250
+    second: player_ultimate_67
+  - first:
+      213: -5076857049203175005
+    second: player_ultimate_68
+  - first:
+      213: 6733348155841140712
+    second: player_ultimate_69
+  - first:
+      213: 5734375291075769011
+    second: player_ultimate_70
+  - first:
+      213: 9221242729682742868
+    second: player_ultimate_71
+  - first:
+      213: -5535110145541487025
+    second: player_ultimate_72
+  - first:
+      213: 8869360243655454277
+    second: player_ultimate_73
+  - first:
+      213: 6850680282362298582
+    second: player_ultimate_74
+  - first:
+      213: 3706873387366562360
+    second: player_ultimate_75
+  - first:
+      213: -5549581263006191125
+    second: player_ultimate_76
+  - first:
+      213: -2844659310314909971
+    second: player_ultimate_77
+  - first:
+      213: 4993819394947719196
+    second: player_ultimate_78
+  - first:
+      213: -8910548367012510252
+    second: player_ultimate_79
+  - first:
+      213: -7925973434529345463
+    second: player_ultimate_80
+  - first:
+      213: 3161171310072158433
+    second: player_ultimate_81
+  - first:
+      213: -2394101290140723911
+    second: player_ultimate_82
+  - first:
+      213: -8383955913345997164
+    second: player_ultimate_83
+  - first:
+      213: 1510530269554729201
+    second: player_ultimate_84
+  - first:
+      213: -4793983247234542562
+    second: player_ultimate_85
+  - first:
+      213: 6666522422054634611
+    second: player_ultimate_86
+  - first:
+      213: -9106851228094209945
+    second: player_ultimate_87
+  - first:
+      213: -6783026476167151160
+    second: player_ultimate_88
+  - first:
+      213: 2818535665650652509
+    second: player_ultimate_89
+  - first:
+      213: -1030489425119233136
+    second: player_ultimate_90
+  - first:
+      213: -518682756458473232
+    second: player_ultimate_91
+  - first:
+      213: -4193186822847175705
+    second: player_ultimate_92
+  - first:
+      213: -1084111819524343318
+    second: player_ultimate_93
+  - first:
+      213: 2227537659453262978
+    second: player_ultimate_94
+  - first:
+      213: 2089446080072411130
+    second: player_ultimate_95
+  - first:
+      213: -2032693209242184833
+    second: player_ultimate_96
+  - first:
+      213: -1274641854776376943
+    second: player_ultimate_97
+  - first:
+      213: -7607932720371742902
+    second: player_ultimate_98
+  - first:
+      213: 1581062407016693765
+    second: player_ultimate_99
+  - first:
+      213: 8230465474041393953
+    second: player_ultimate_100
+  - first:
+      213: -4464804605326034996
+    second: player_ultimate_101
+  - first:
+      213: 498975740702368027
+    second: player_ultimate_102
+  - first:
+      213: -8104741916491029680
+    second: player_ultimate_103
+  - first:
+      213: -2323819929614956257
+    second: player_ultimate_104
+  - first:
+      213: -3729410995741954064
+    second: player_ultimate_105
+  - first:
+      213: 3525964165080815146
+    second: player_ultimate_106
+  - first:
+      213: 4908812983693446245
+    second: player_ultimate_107
+  - first:
+      213: 8273041760107811254
+    second: player_ultimate_108
+  - first:
+      213: -8691156604018553389
+    second: player_ultimate_109
+  - first:
+      213: -1578790887146026586
+    second: player_ultimate_110
+  - first:
+      213: -7637359594319763878
+    second: player_ultimate_111
+  - first:
+      213: -6734307360319319317
+    second: player_ultimate_112
+  - first:
+      213: 4524240432785900802
+    second: player_ultimate_113
+  - first:
+      213: -5118857535504564808
+    second: player_ultimate_114
+  - first:
+      213: 7396053390338532457
+    second: player_ultimate_115
+  - first:
+      213: -6550421344237051467
+    second: player_ultimate_116
+  - first:
+      213: 3607805959689139152
+    second: player_ultimate_117
+  - first:
+      213: -6682411510485618278
+    second: player_ultimate_118
+  - first:
+      213: -6335576272038552446
+    second: player_ultimate_119
+  - first:
+      213: 8909707928214955948
+    second: player_ultimate_120
+  - first:
+      213: -3653261928290959441
+    second: player_ultimate_121
+  - first:
+      213: 4418159756063571632
+    second: player_ultimate_122
+  - first:
+      213: -8160814275815546883
+    second: player_ultimate_123
+  - first:
+      213: -9090726014476376617
+    second: player_ultimate_124
+  - first:
+      213: -7174260364969202403
+    second: player_ultimate_125
+  - first:
+      213: 7598507684965023176
+    second: player_ultimate_126
+  - first:
+      213: 320903980594047632
+    second: player_ultimate_127
+  - first:
+      213: 2073800437811915943
+    second: player_ultimate_128
+  - first:
+      213: -6973335955641505633
+    second: player_ultimate_129
+  - first:
+      213: 3680389309589075847
+    second: player_ultimate_130
+  - first:
+      213: -7592178429534316705
+    second: player_ultimate_131
+  - first:
+      213: -3380950797788632057
+    second: player_ultimate_132
+  - first:
+      213: 3791600898477380559
+    second: player_ultimate_133
+  - first:
+      213: 2081320389588917495
+    second: player_ultimate_134
+  - first:
+      213: 224553859274108829
+    second: player_ultimate_135
+  - first:
+      213: 7718228641345689420
+    second: player_ultimate_136
+  - first:
+      213: -3083605368306680698
+    second: player_ultimate_137
+  - first:
+      213: -5187382516715338844
+    second: player_ultimate_138
+  - first:
+      213: 7914377217602825818
+    second: player_ultimate_139
+  - first:
+      213: -354355988122633840
+    second: player_ultimate_140
+  - first:
+      213: -6981804906213001342
+    second: player_ultimate_141
+  - first:
+      213: -8544821288226007774
+    second: player_ultimate_142
+  - first:
+      213: -6101887358190315974
+    second: player_ultimate_143
+  - first:
+      213: -467799163721504443
+    second: player_ultimate_144
+  - first:
+      213: -4181277079642835538
+    second: player_ultimate_145
+  - first:
+      213: 4198055038323576722
+    second: player_ultimate_146
+  - first:
+      213: 2337241088829555204
+    second: player_ultimate_147
+  - first:
+      213: -4263907063323034004
+    second: player_ultimate_148
+  - first:
+      213: -3192675231584746646
+    second: player_ultimate_149
+  - first:
+      213: 9115829848071589836
+    second: player_ultimate_150
+  - first:
+      213: -7216793765307040647
+    second: player_ultimate_151
+  - first:
+      213: 4506917594979944134
+    second: player_ultimate_152
+  - first:
+      213: -7794917064026670608
+    second: player_ultimate_153
+  - first:
+      213: -4431232839842852682
+    second: player_ultimate_154
+  - first:
+      213: 7863643998862791078
+    second: player_ultimate_155
+  - first:
+      213: 4005295572465577191
+    second: player_ultimate_156
+  - first:
+      213: 2734321954827978432
+    second: player_ultimate_157
+  - first:
+      213: -815618587926593223
+    second: player_ultimate_158
+  - first:
+      213: 8178642758667763034
+    second: player_ultimate_159
+  - first:
+      213: -8495641507670797324
+    second: player_ultimate_160
+  - first:
+      213: -6203814688097294229
+    second: player_ultimate_161
+  - first:
+      213: -8324045533717095214
+    second: player_ultimate_162
+  - first:
+      213: 8727706832461939428
+    second: player_ultimate_163
+  - first:
+      213: -3359636674088775791
+    second: player_ultimate_164
+  - first:
+      213: 8721794649129981628
+    second: player_ultimate_165
+  - first:
+      213: 1902483497439862965
+    second: player_ultimate_166
+  - first:
+      213: 4616855896076245826
+    second: player_ultimate_167
+  - first:
+      213: -4383057022929651857
+    second: player_ultimate_168
+  - first:
+      213: -5189495883484334383
+    second: player_ultimate_169
+  - first:
+      213: 4855847301929406558
+    second: player_ultimate_170
+  - first:
+      213: 1603166394574323287
+    second: player_ultimate_171
+  - first:
+      213: 8444151287176443751
+    second: player_ultimate_172
+  - first:
+      213: -4242698855983478462
+    second: player_ultimate_173
+  - first:
+      213: -2672673255352534832
+    second: player_ultimate_174
+  - first:
+      213: -2225056333616758146
+    second: player_ultimate_175
+  - first:
+      213: 7702758314130759296
+    second: player_ultimate_176
+  - first:
+      213: -7395838834418369901
+    second: player_ultimate_177
+  - first:
+      213: 790587802652837583
+    second: player_ultimate_178
+  - first:
+      213: -8171395031015118478
+    second: player_ultimate_179
+  - first:
+      213: 1202567824071598387
+    second: player_ultimate_180
+  - first:
+      213: 2677136871115529215
+    second: player_ultimate_181
+  - first:
+      213: -3919097291897212801
+    second: player_ultimate_182
+  - first:
+      213: -9036793081470461217
+    second: player_ultimate_183
+  - first:
+      213: 8934031417530958528
+    second: player_ultimate_184
+  - first:
+      213: -2695890320416311193
+    second: player_ultimate_185
+  - first:
+      213: -980832274726376335
+    second: player_ultimate_186
+  - first:
+      213: -821414378781643371
+    second: player_ultimate_187
+  - first:
+      213: -8998204776719113998
+    second: player_ultimate_188
+  - first:
+      213: -4408195468719634885
+    second: player_ultimate_189
+  - first:
+      213: 8941564218502781745
+    second: player_ultimate_190
+  - first:
+      213: 7571601014520977264
+    second: player_ultimate_191
+  - first:
+      213: 7066184142743875145
+    second: player_ultimate_192
+  - first:
+      213: -7989895298361178709
+    second: player_ultimate_193
+  - first:
+      213: 208156249885038703
+    second: player_ultimate_194
+  - first:
+      213: 7756593918244281616
+    second: player_ultimate_195
+  - first:
+      213: -3509421331365122719
+    second: player_ultimate_196
+  - first:
+      213: -2778935678030374381
+    second: player_ultimate_197
+  - first:
+      213: 3066223711336436473
+    second: player_ultimate_198
+  - first:
+      213: -1632505151549156709
+    second: player_ultimate_199
+  - first:
+      213: -3246819510652492146
+    second: player_ultimate_200
+  - first:
+      213: 5023667911199080498
+    second: player_ultimate_201
+  - first:
+      213: 8832700663672542633
+    second: player_ultimate_202
+  - first:
+      213: 2540451464180333502
+    second: player_ultimate_203
+  - first:
+      213: -4934838865437332872
+    second: player_ultimate_204
+  - first:
+      213: 5721355497301028284
+    second: player_ultimate_205
+  - first:
+      213: 4211423644137458099
+    second: player_ultimate_206
+  - first:
+      213: -8474121867368559811
+    second: player_ultimate_207
+  - first:
+      213: 7149561493949560599
+    second: player_ultimate_208
+  - first:
+      213: 1051747085421392278
+    second: player_ultimate_209
+  - first:
+      213: -8831005745239415830
+    second: player_ultimate_210
+  - first:
+      213: 7412216962825725728
+    second: player_ultimate_211
+  - first:
+      213: 2767284750610969480
+    second: player_ultimate_212
+  - first:
+      213: 2984417429549117903
+    second: player_ultimate_213
+  - first:
+      213: -8014972263267404093
+    second: player_ultimate_214
+  - first:
+      213: -6573799804745252660
+    second: player_ultimate_215
+  - first:
+      213: 3703076441025154399
+    second: player_ultimate_216
+  - first:
+      213: 3608196276304307403
+    second: player_ultimate_217
+  - first:
+      213: 2019573416583999772
+    second: player_ultimate_218
+  - first:
+      213: 226012438559434419
+    second: player_ultimate_219
+  - first:
+      213: 4757261250848923179
+    second: player_ultimate_220
+  - first:
+      213: 2905232405814252011
+    second: player_ultimate_221
+  - first:
+      213: 3802346176515689733
+    second: player_ultimate_222
+  - first:
+      213: 2086277158485856893
+    second: player_ultimate_223
+  - first:
+      213: -4093766807298177973
+    second: player_ultimate_224
+  - first:
+      213: 2620840240079158454
+    second: player_ultimate_225
+  - first:
+      213: 745166042133300181
+    second: player_ultimate_226
+  - first:
+      213: 8984701227619918787
+    second: player_ultimate_227
+  - first:
+      213: -911370871058696444
+    second: player_ultimate_228
+  - first:
+      213: 43544602366199582
+    second: player_ultimate_229
+  - first:
+      213: -6017548687925602101
+    second: player_ultimate_230
+  - first:
+      213: 5516152810847102464
+    second: player_ultimate_231
+  - first:
+      213: 5976833261493128612
+    second: player_ultimate_232
+  - first:
+      213: -3684132684943001104
+    second: player_ultimate_233
+  - first:
+      213: 2183179278609887157
+    second: player_ultimate_234
+  - first:
+      213: -8578570875131012573
+    second: player_ultimate_235
+  - first:
+      213: -6283537987414181131
+    second: player_ultimate_236
+  - first:
+      213: 3613382817924261632
+    second: player_ultimate_237
+  - first:
+      213: 1376749673205775322
+    second: player_ultimate_238
+  - first:
+      213: -1687907259018915431
+    second: player_ultimate_239
+  - first:
+      213: -9018464606536769815
+    second: player_ultimate_240
+  - first:
+      213: -2784589233538350689
+    second: player_ultimate_241
+  - first:
+      213: 4599622379917828681
+    second: player_ultimate_242
+  - first:
+      213: 7117412364887453066
+    second: player_ultimate_243
+  - first:
+      213: 8408216424412147058
+    second: player_ultimate_244
+  - first:
+      213: 3355966015016787649
+    second: player_ultimate_245
+  - first:
+      213: 5537114807465331537
+    second: player_ultimate_246
+  - first:
+      213: -4006671816843617840
+    second: player_ultimate_247
+  - first:
+      213: -4663596985430646459
+    second: player_ultimate_248
+  - first:
+      213: -5554978899285075559
+    second: player_ultimate_249
+  - first:
+      213: -8611932814899203546
+    second: player_ultimate_250
+  - first:
+      213: 2840495384527849277
+    second: player_ultimate_251
+  - first:
+      213: 2926124557950757621
+    second: player_ultimate_252
+  - first:
+      213: -4057250432424124522
+    second: player_ultimate_253
+  - first:
+      213: -8644557908729938585
+    second: player_ultimate_254
+  - first:
+      213: 402100255331824929
+    second: player_ultimate_255
+  - first:
+      213: -4381754450261598929
+    second: player_ultimate_256
+  - first:
+      213: 8493809045744790161
+    second: player_ultimate_257
+  - first:
+      213: 2795381266479379457
+    second: player_ultimate_258
+  - first:
+      213: -8292708245396264156
+    second: player_ultimate_259
+  - first:
+      213: 8704650183743192082
+    second: player_ultimate_260
+  - first:
+      213: -1164266651123438287
+    second: player_ultimate_261
+  - first:
+      213: -8431244218736982441
+    second: player_ultimate_262
+  - first:
+      213: -2713550442774270669
+    second: player_ultimate_263
+  - first:
+      213: 2097908668677208461
+    second: player_ultimate_264
+  - first:
+      213: -7314458732864188457
+    second: player_ultimate_265
+  - first:
+      213: -6251341398071084672
+    second: player_ultimate_266
+  - first:
+      213: 5146776519092836666
+    second: player_ultimate_267
+  - first:
+      213: -1289770570562990705
+    second: player_ultimate_268
+  - first:
+      213: 4297972831446166626
+    second: player_ultimate_269
+  - first:
+      213: 5354503277132531594
+    second: player_ultimate_270
+  - first:
+      213: 417940619023638357
+    second: player_ultimate_271
+  - first:
+      213: 2000962098190196831
+    second: player_ultimate_272
+  - first:
+      213: 7400472423168592580
+    second: player_ultimate_273
+  - first:
+      213: 5244660825807044008
+    second: player_ultimate_274
+  - first:
+      213: 7177575366210664952
+    second: player_ultimate_275
+  - first:
+      213: 8884522634137036913
+    second: player_ultimate_276
+  - first:
+      213: 2448095675585424808
+    second: player_ultimate_277
+  - first:
+      213: -8402067878821526836
+    second: player_ultimate_278
+  - first:
+      213: 5001527453622123800
+    second: player_ultimate_279
+  - first:
+      213: -7765653005465429666
+    second: player_ultimate_280
+  - first:
+      213: 8935535569322787542
+    second: player_ultimate_281
+  - first:
+      213: -6341153502081807557
+    second: player_ultimate_282
+  - first:
+      213: 6039460374015999879
+    second: player_ultimate_283
+  - first:
+      213: -6490597759852640728
+    second: player_ultimate_284
+  - first:
+      213: 1687120632446607802
+    second: player_ultimate_285
+  - first:
+      213: -5114027423609074308
+    second: player_ultimate_286
+  - first:
+      213: 2342060750760808979
+    second: player_ultimate_287
+  - first:
+      213: 1704055788072111527
+    second: player_ultimate_288
+  - first:
+      213: -3096490890312747545
+    second: player_ultimate_289
+  - first:
+      213: -3257254550620170151
+    second: player_ultimate_290
+  - first:
+      213: -1132933847988151722
+    second: player_ultimate_291
+  - first:
+      213: 1598256678488244505
+    second: player_ultimate_292
+  - first:
+      213: -6027111796497814583
+    second: player_ultimate_293
+  - first:
+      213: 8958261253737718454
+    second: player_ultimate_294
+  - first:
+      213: -614135858060241824
+    second: player_ultimate_295
+  - first:
+      213: 7703059141549632102
+    second: player_ultimate_296
+  - first:
+      213: 4344721901783017965
+    second: player_ultimate_297
+  - first:
+      213: 1416979525719868249
+    second: player_ultimate_298
+  - first:
+      213: 4523597120130711143
+    second: player_ultimate_299
+  - first:
+      213: -576987540531707486
+    second: player_ultimate_300
+  - first:
+      213: -4275143845315048235
+    second: player_ultimate_301
+  - first:
+      213: -7780271390918202025
+    second: player_ultimate_302
+  - first:
+      213: 4599803632440068819
+    second: player_ultimate_303
+  - first:
+      213: -2042064048675859028
+    second: player_ultimate_304
+  - first:
+      213: 8384096953496829829
+    second: player_ultimate_305
+  - first:
+      213: -5804980606425835632
+    second: player_ultimate_306
+  - first:
+      213: 8495752012260427532
+    second: player_ultimate_307
+  - first:
+      213: 801126422105178504
+    second: player_ultimate_308
+  - first:
+      213: -2003973757887991031
+    second: player_ultimate_309
+  - first:
+      213: -9202243230193200465
+    second: player_ultimate_310
+  - first:
+      213: -3034866110613546420
+    second: player_ultimate_311
+  - first:
+      213: 4670346404931199595
+    second: player_ultimate_312
+  - first:
+      213: -6378651268214980802
+    second: player_ultimate_313
+  - first:
+      213: 8896633175257011650
+    second: player_ultimate_S_00
+  - first:
+      213: -933828836435106707
+    second: player_ultimate_S_01
+  - first:
+      213: 1026046401719940087
+    second: player_ultimate_S_02
+  - first:
+      213: -5892929677272532505
+    second: player_ultimate_S_03
+  - first:
+      213: -473423827240380321
+    second: player_ultimate_S_04
+  - first:
+      213: 1765823141382284423
+    second: player_ultimate_S_05
+  - first:
+      213: -1294304387113567656
+    second: player_ultimate_SW_00
+  - first:
+      213: -8415225275062741596
+    second: player_ultimate_SW_01
+  - first:
+      213: 8864714692601921978
+    second: player_ultimate_SW_02
+  - first:
+      213: 2237468787937310883
+    second: player_ultimate_SW_03
+  - first:
+      213: -6966334255717313490
+    second: player_ultimate_SW_04
+  - first:
+      213: 1123127930667594081
+    second: player_ultimate_SW_05
+  - first:
+      213: -8006377744140615759
+    second: player_ultimate_W_00
+  - first:
+      213: -4700553268242057802
+    second: player_ultimate_W_01
+  - first:
+      213: 4121877401897758776
+    second: player_ultimate_W_02
+  - first:
+      213: 1101390819605758769
+    second: player_ultimate_W_03
+  - first:
+      213: -3056079325025865999
+    second: player_ultimate_W_04
+  - first:
+      213: 3813922350399690487
+    second: player_ultimate_W_05
+  - first:
+      213: 8561560384276173593
+    second: player_ultimate_NW_00
+  - first:
+      213: 5328663932466012128
+    second: player_ultimate_NW_01
+  - first:
+      213: 5825425521372716793
+    second: player_ultimate_NW_02
+  - first:
+      213: -1486951952152138727
+    second: player_ultimate_NW_03
+  - first:
+      213: -2052931594279459549
+    second: player_ultimate_NW_04
+  - first:
+      213: 2156884529939858736
+    second: player_ultimate_NW_05
+  - first:
+      213: 353843113326708154
+    second: player_ultimate_N_00
+  - first:
+      213: 1997564806265338328
+    second: player_ultimate_N_01
+  - first:
+      213: 5127993862505835132
+    second: player_ultimate_N_02
+  - first:
+      213: 8164124917528630531
+    second: player_ultimate_N_03
+  - first:
+      213: 7102508558763908926
+    second: player_ultimate_N_04
+  - first:
+      213: 3518711857164372533
+    second: player_ultimate_N_05
+  - first:
+      213: 4490765057049280400
+    second: player_ultimate_NE_00
+  - first:
+      213: -8467648714148658484
+    second: player_ultimate_NE_01
+  - first:
+      213: 4489182890117924593
+    second: player_ultimate_NE_02
+  - first:
+      213: 7432870793407919293
+    second: player_ultimate_NE_03
+  - first:
+      213: 8479475676837803390
+    second: player_ultimate_NE_04
+  - first:
+      213: -4042009312324021104
+    second: player_ultimate_NE_05
+  - first:
+      213: -1573926466773499797
+    second: player_ultimate_E_00
+  - first:
+      213: -1157455563223102010
+    second: player_ultimate_E_01
+  - first:
+      213: -1211822660257065061
+    second: player_ultimate_E_02
+  - first:
+      213: -8702642866162075377
+    second: player_ultimate_E_03
+  - first:
+      213: -2733493925289377848
+    second: player_ultimate_E_04
+  - first:
+      213: 458099603053339464
+    second: player_ultimate_E_05
+  - first:
+      213: 207270910008400427
+    second: player_ultimate_SE_00
+  - first:
+      213: -8314713949183580803
+    second: player_ultimate_SE_01
+  - first:
+      213: -4718943948938649345
+    second: player_ultimate_SE_02
+  - first:
+      213: -8477865057719153797
+    second: player_ultimate_SE_03
+  - first:
+      213: -7749349543845919932
+    second: player_ultimate_SE_04
+  - first:
+      213: -5466173817097634355
+    second: player_ultimate_SE_05
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_ultimate_S_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5562c8cb0377b70800000000000000
+      internalID: 8896633175257011650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_S_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d64e443fe9f5a03f0800000000000000
+      internalID: -933828836435106707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_S_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f3b59124cf3d3e00800000000000000
+      internalID: 1026046401719940087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_S_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e930db3eab183ea0800000000000000
+      internalID: -5892929677272532505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_S_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f589125998f0e69f0800000000000000
+      internalID: -473423827240380321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_S_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78461469ac6718810800000000000000
+      internalID: 1765823141382284423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85abdd67405b90ee0800000000000000
+      internalID: -1294304387113567656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a51ff6b23d173b80800000000000000
+      internalID: -8415225275062741596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab149bfab0bc50b70800000000000000
+      internalID: 8864714692601921978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a8f60d02061d0f10800000000000000
+      internalID: 2237468787937310883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24955557eb925f90800000000000000
+      internalID: -6966334255717313490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161f2c007e6269f00800000000000000
+      internalID: 1123127930667594081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_W_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bfb7ee7cd1a3e090800000000000000
+      internalID: -8006377744140615759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_W_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b571a605b744ceb0800000000000000
+      internalID: -4700553268242057802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_W_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83073db88a9d33930800000000000000
+      internalID: 4121877401897758776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_W_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1334a717d1de84f00800000000000000
+      internalID: 1101390819605758769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_W_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1feea62bb00a695d0800000000000000
+      internalID: -3056079325025865999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_W_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f61f70bb26cde430800000000000000
+      internalID: 3813922350399690487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91396d3fec5c0d670800000000000000
+      internalID: 8561560384276173593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef92163d9733f940800000000000000
+      internalID: 5328663932466012128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe5ae2b5a118d050800000000000000
+      internalID: 5825425521372716793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91ce5e5e3194d5be0800000000000000
+      internalID: -1486951952152138727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 325ebc687958283e0800000000000000
+      internalID: -2052931594279459549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 035c9946d0bceed10800000000000000
+      internalID: 2156884529939858736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_N_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab58e04df6a19e400800000000000000
+      internalID: 353843113326708154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_N_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d974459b96c8bb10800000000000000
+      internalID: 1997564806265338328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_N_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a2b09af3b4a2740800000000000000
+      internalID: 5127993862505835132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_N_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 305953b6b5ccc4170800000000000000
+      internalID: 8164124917528630531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_N_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f5b4b47ed219260800000000000000
+      internalID: 7102508558763908926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_N_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53acc398ac9f4d030800000000000000
+      internalID: 3518711857164372533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09fb82bb607625e30800000000000000
+      internalID: 4490765057049280400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc24066ab5edc7a80800000000000000
+      internalID: -8467648714148658484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f68d39cd08cc4e30800000000000000
+      internalID: 4489182890117924593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db474760b9cd62760800000000000000
+      internalID: 7432870793407919293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e757b7fa3362da570800000000000000
+      internalID: 8479475676837803390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_NE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0941b1822f5e7e7c0800000000000000
+      internalID: -4042009312324021104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_E_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b60416da73a482ae0800000000000000
+      internalID: -1573926466773499797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_E_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd89c63c44efefe0800000000000000
+      internalID: -1157455563223102010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_E_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97db9406bdbe2fe0800000000000000
+      internalID: -1211822660257065061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_E_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f09725bfb600a3780800000000000000
+      internalID: -8702642866162075377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_E_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf3073f1cda01ad0800000000000000
+      internalID: -2733493925289377848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_E_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843edbf692f7b5600800000000000000
+      internalID: 458099603053339464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2a92536bcf50e200800000000000000
+      internalID: 207270910008400427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d756de967b33c9c80800000000000000
+      internalID: -8314713949183580803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff068800b71f28eb0800000000000000
+      internalID: -4718943948938649345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b04fcc5a2985a80800000000000000
+      internalID: -8477865057719153797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4438abec5a7c47490800000000000000
+      internalID: -7749349543845919932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_ultimate_SE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcdba57dfdf3424b0800000000000000
+      internalID: -5466173817097634355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_ultimate_0: -6691499294618478852
+      player_ultimate_1: 5788709199773950389
+      player_ultimate_10: 2942638298720106873
+      player_ultimate_100: 8230465474041393953
+      player_ultimate_101: -4464804605326034996
+      player_ultimate_102: 498975740702368027
+      player_ultimate_103: -8104741916491029680
+      player_ultimate_104: -2323819929614956257
+      player_ultimate_105: -3729410995741954064
+      player_ultimate_106: 3525964165080815146
+      player_ultimate_107: 4908812983693446245
+      player_ultimate_108: 8273041760107811254
+      player_ultimate_109: -8691156604018553389
+      player_ultimate_11: -2188199611685209807
+      player_ultimate_110: -1578790887146026586
+      player_ultimate_111: -7637359594319763878
+      player_ultimate_112: -6734307360319319317
+      player_ultimate_113: 4524240432785900802
+      player_ultimate_114: -5118857535504564808
+      player_ultimate_115: 7396053390338532457
+      player_ultimate_116: -6550421344237051467
+      player_ultimate_117: 3607805959689139152
+      player_ultimate_118: -6682411510485618278
+      player_ultimate_119: -6335576272038552446
+      player_ultimate_12: -6392955993911774669
+      player_ultimate_120: 8909707928214955948
+      player_ultimate_121: -3653261928290959441
+      player_ultimate_122: 4418159756063571632
+      player_ultimate_123: -8160814275815546883
+      player_ultimate_124: -9090726014476376617
+      player_ultimate_125: -7174260364969202403
+      player_ultimate_126: 7598507684965023176
+      player_ultimate_127: 320903980594047632
+      player_ultimate_128: 2073800437811915943
+      player_ultimate_129: -6973335955641505633
+      player_ultimate_13: -4598449966388022479
+      player_ultimate_130: 3680389309589075847
+      player_ultimate_131: -7592178429534316705
+      player_ultimate_132: -3380950797788632057
+      player_ultimate_133: 3791600898477380559
+      player_ultimate_134: 2081320389588917495
+      player_ultimate_135: 224553859274108829
+      player_ultimate_136: 7718228641345689420
+      player_ultimate_137: -3083605368306680698
+      player_ultimate_138: -5187382516715338844
+      player_ultimate_139: 7914377217602825818
+      player_ultimate_14: -2794777282813605284
+      player_ultimate_140: -354355988122633840
+      player_ultimate_141: -6981804906213001342
+      player_ultimate_142: -8544821288226007774
+      player_ultimate_143: -6101887358190315974
+      player_ultimate_144: -467799163721504443
+      player_ultimate_145: -4181277079642835538
+      player_ultimate_146: 4198055038323576722
+      player_ultimate_147: 2337241088829555204
+      player_ultimate_148: -4263907063323034004
+      player_ultimate_149: -3192675231584746646
+      player_ultimate_15: 6891322050422329487
+      player_ultimate_150: 9115829848071589836
+      player_ultimate_151: -7216793765307040647
+      player_ultimate_152: 4506917594979944134
+      player_ultimate_153: -7794917064026670608
+      player_ultimate_154: -4431232839842852682
+      player_ultimate_155: 7863643998862791078
+      player_ultimate_156: 4005295572465577191
+      player_ultimate_157: 2734321954827978432
+      player_ultimate_158: -815618587926593223
+      player_ultimate_159: 8178642758667763034
+      player_ultimate_16: 3529811327382509861
+      player_ultimate_160: -8495641507670797324
+      player_ultimate_161: -6203814688097294229
+      player_ultimate_162: -8324045533717095214
+      player_ultimate_163: 8727706832461939428
+      player_ultimate_164: -3359636674088775791
+      player_ultimate_165: 8721794649129981628
+      player_ultimate_166: 1902483497439862965
+      player_ultimate_167: 4616855896076245826
+      player_ultimate_168: -4383057022929651857
+      player_ultimate_169: -5189495883484334383
+      player_ultimate_17: -7550352020629439826
+      player_ultimate_170: 4855847301929406558
+      player_ultimate_171: 1603166394574323287
+      player_ultimate_172: 8444151287176443751
+      player_ultimate_173: -4242698855983478462
+      player_ultimate_174: -2672673255352534832
+      player_ultimate_175: -2225056333616758146
+      player_ultimate_176: 7702758314130759296
+      player_ultimate_177: -7395838834418369901
+      player_ultimate_178: 790587802652837583
+      player_ultimate_179: -8171395031015118478
+      player_ultimate_18: -4636487579039316015
+      player_ultimate_180: 1202567824071598387
+      player_ultimate_181: 2677136871115529215
+      player_ultimate_182: -3919097291897212801
+      player_ultimate_183: -9036793081470461217
+      player_ultimate_184: 8934031417530958528
+      player_ultimate_185: -2695890320416311193
+      player_ultimate_186: -980832274726376335
+      player_ultimate_187: -821414378781643371
+      player_ultimate_188: -8998204776719113998
+      player_ultimate_189: -4408195468719634885
+      player_ultimate_19: 572555935910022635
+      player_ultimate_190: 8941564218502781745
+      player_ultimate_191: 7571601014520977264
+      player_ultimate_192: 7066184142743875145
+      player_ultimate_193: -7989895298361178709
+      player_ultimate_194: 208156249885038703
+      player_ultimate_195: 7756593918244281616
+      player_ultimate_196: -3509421331365122719
+      player_ultimate_197: -2778935678030374381
+      player_ultimate_198: 3066223711336436473
+      player_ultimate_199: -1632505151549156709
+      player_ultimate_2: 1688020015318657496
+      player_ultimate_20: 6676456270635066935
+      player_ultimate_200: -3246819510652492146
+      player_ultimate_201: 5023667911199080498
+      player_ultimate_202: 8832700663672542633
+      player_ultimate_203: 2540451464180333502
+      player_ultimate_204: -4934838865437332872
+      player_ultimate_205: 5721355497301028284
+      player_ultimate_206: 4211423644137458099
+      player_ultimate_207: -8474121867368559811
+      player_ultimate_208: 7149561493949560599
+      player_ultimate_209: 1051747085421392278
+      player_ultimate_21: 9208097439845283817
+      player_ultimate_210: -8831005745239415830
+      player_ultimate_211: 7412216962825725728
+      player_ultimate_212: 2767284750610969480
+      player_ultimate_213: 2984417429549117903
+      player_ultimate_214: -8014972263267404093
+      player_ultimate_215: -6573799804745252660
+      player_ultimate_216: 3703076441025154399
+      player_ultimate_217: 3608196276304307403
+      player_ultimate_218: 2019573416583999772
+      player_ultimate_219: 226012438559434419
+      player_ultimate_22: 6482412136412516381
+      player_ultimate_220: 4757261250848923179
+      player_ultimate_221: 2905232405814252011
+      player_ultimate_222: 3802346176515689733
+      player_ultimate_223: 2086277158485856893
+      player_ultimate_224: -4093766807298177973
+      player_ultimate_225: 2620840240079158454
+      player_ultimate_226: 745166042133300181
+      player_ultimate_227: 8984701227619918787
+      player_ultimate_228: -911370871058696444
+      player_ultimate_229: 43544602366199582
+      player_ultimate_23: -5991667125391817460
+      player_ultimate_230: -6017548687925602101
+      player_ultimate_231: 5516152810847102464
+      player_ultimate_232: 5976833261493128612
+      player_ultimate_233: -3684132684943001104
+      player_ultimate_234: 2183179278609887157
+      player_ultimate_235: -8578570875131012573
+      player_ultimate_236: -6283537987414181131
+      player_ultimate_237: 3613382817924261632
+      player_ultimate_238: 1376749673205775322
+      player_ultimate_239: -1687907259018915431
+      player_ultimate_24: 3749804827619285201
+      player_ultimate_240: -9018464606536769815
+      player_ultimate_241: -2784589233538350689
+      player_ultimate_242: 4599622379917828681
+      player_ultimate_243: 7117412364887453066
+      player_ultimate_244: 8408216424412147058
+      player_ultimate_245: 3355966015016787649
+      player_ultimate_246: 5537114807465331537
+      player_ultimate_247: -4006671816843617840
+      player_ultimate_248: -4663596985430646459
+      player_ultimate_249: -5554978899285075559
+      player_ultimate_25: 1961170443008410710
+      player_ultimate_250: -8611932814899203546
+      player_ultimate_251: 2840495384527849277
+      player_ultimate_252: 2926124557950757621
+      player_ultimate_253: -4057250432424124522
+      player_ultimate_254: -8644557908729938585
+      player_ultimate_255: 402100255331824929
+      player_ultimate_256: -4381754450261598929
+      player_ultimate_257: 8493809045744790161
+      player_ultimate_258: 2795381266479379457
+      player_ultimate_259: -8292708245396264156
+      player_ultimate_26: -6523187343985549353
+      player_ultimate_260: 8704650183743192082
+      player_ultimate_261: -1164266651123438287
+      player_ultimate_262: -8431244218736982441
+      player_ultimate_263: -2713550442774270669
+      player_ultimate_264: 2097908668677208461
+      player_ultimate_265: -7314458732864188457
+      player_ultimate_266: -6251341398071084672
+      player_ultimate_267: 5146776519092836666
+      player_ultimate_268: -1289770570562990705
+      player_ultimate_269: 4297972831446166626
+      player_ultimate_27: 355246764742696162
+      player_ultimate_270: 5354503277132531594
+      player_ultimate_271: 417940619023638357
+      player_ultimate_272: 2000962098190196831
+      player_ultimate_273: 7400472423168592580
+      player_ultimate_274: 5244660825807044008
+      player_ultimate_275: 7177575366210664952
+      player_ultimate_276: 8884522634137036913
+      player_ultimate_277: 2448095675585424808
+      player_ultimate_278: -8402067878821526836
+      player_ultimate_279: 5001527453622123800
+      player_ultimate_28: 837073838794567425
+      player_ultimate_280: -7765653005465429666
+      player_ultimate_281: 8935535569322787542
+      player_ultimate_282: -6341153502081807557
+      player_ultimate_283: 6039460374015999879
+      player_ultimate_284: -6490597759852640728
+      player_ultimate_285: 1687120632446607802
+      player_ultimate_286: -5114027423609074308
+      player_ultimate_287: 2342060750760808979
+      player_ultimate_288: 1704055788072111527
+      player_ultimate_289: -3096490890312747545
+      player_ultimate_29: 8787293515017091973
+      player_ultimate_290: -3257254550620170151
+      player_ultimate_291: -1132933847988151722
+      player_ultimate_292: 1598256678488244505
+      player_ultimate_293: -6027111796497814583
+      player_ultimate_294: 8958261253737718454
+      player_ultimate_295: -614135858060241824
+      player_ultimate_296: 7703059141549632102
+      player_ultimate_297: 4344721901783017965
+      player_ultimate_298: 1416979525719868249
+      player_ultimate_299: 4523597120130711143
+      player_ultimate_3: 5705866412705632893
+      player_ultimate_30: -8410854421603870350
+      player_ultimate_300: -576987540531707486
+      player_ultimate_301: -4275143845315048235
+      player_ultimate_302: -7780271390918202025
+      player_ultimate_303: 4599803632440068819
+      player_ultimate_304: -2042064048675859028
+      player_ultimate_305: 8384096953496829829
+      player_ultimate_306: -5804980606425835632
+      player_ultimate_307: 8495752012260427532
+      player_ultimate_308: 801126422105178504
+      player_ultimate_309: -2003973757887991031
+      player_ultimate_31: -7785182998647949773
+      player_ultimate_310: -9202243230193200465
+      player_ultimate_311: -3034866110613546420
+      player_ultimate_312: 4670346404931199595
+      player_ultimate_313: -6378651268214980802
+      player_ultimate_32: -8360981518236970162
+      player_ultimate_33: -7012692730144429040
+      player_ultimate_34: -8940859042901061235
+      player_ultimate_35: 80333519560734790
+      player_ultimate_36: -7210256894033000300
+      player_ultimate_37: -1252412249922542612
+      player_ultimate_38: -373068001163396385
+      player_ultimate_39: -5104871166893939758
+      player_ultimate_4: -1754642748795386091
+      player_ultimate_40: 5708089707978225171
+      player_ultimate_41: -4563860842504865983
+      player_ultimate_42: 365620015260308281
+      player_ultimate_43: 3983204916659680714
+      player_ultimate_44: -4737701933790700742
+      player_ultimate_45: -7805034403095390267
+      player_ultimate_46: 2085021599403780968
+      player_ultimate_47: -8117739063312422037
+      player_ultimate_48: 860180251136373275
+      player_ultimate_49: 7191986553296111831
+      player_ultimate_5: 5824364619105938395
+      player_ultimate_50: 3413553659872557526
+      player_ultimate_51: -6213889536953828155
+      player_ultimate_52: -2254434423677177186
+      player_ultimate_53: 6260867128276493248
+      player_ultimate_54: -7705190481436966296
+      player_ultimate_55: 6787030067755236053
+      player_ultimate_56: 6121469165795339566
+      player_ultimate_57: -742495545106803912
+      player_ultimate_58: -1571808301392206145
+      player_ultimate_59: -2986930069661633797
+      player_ultimate_6: -934217040174961723
+      player_ultimate_60: 5771705286128605937
+      player_ultimate_61: -1571444468664896799
+      player_ultimate_62: 2115052677395388376
+      player_ultimate_63: 6482280383492359654
+      player_ultimate_64: -9055532661887964672
+      player_ultimate_65: 6887755914019638518
+      player_ultimate_66: -6621992680209043343
+      player_ultimate_67: -2865494820780761250
+      player_ultimate_68: -5076857049203175005
+      player_ultimate_69: 6733348155841140712
+      player_ultimate_7: -3012235520225046465
+      player_ultimate_70: 5734375291075769011
+      player_ultimate_71: 9221242729682742868
+      player_ultimate_72: -5535110145541487025
+      player_ultimate_73: 8869360243655454277
+      player_ultimate_74: 6850680282362298582
+      player_ultimate_75: 3706873387366562360
+      player_ultimate_76: -5549581263006191125
+      player_ultimate_77: -2844659310314909971
+      player_ultimate_78: 4993819394947719196
+      player_ultimate_79: -8910548367012510252
+      player_ultimate_8: 378661741546895311
+      player_ultimate_80: -7925973434529345463
+      player_ultimate_81: 3161171310072158433
+      player_ultimate_82: -2394101290140723911
+      player_ultimate_83: -8383955913345997164
+      player_ultimate_84: 1510530269554729201
+      player_ultimate_85: -4793983247234542562
+      player_ultimate_86: 6666522422054634611
+      player_ultimate_87: -9106851228094209945
+      player_ultimate_88: -6783026476167151160
+      player_ultimate_89: 2818535665650652509
+      player_ultimate_9: 6691156406150162251
+      player_ultimate_90: -1030489425119233136
+      player_ultimate_91: -518682756458473232
+      player_ultimate_92: -4193186822847175705
+      player_ultimate_93: -1084111819524343318
+      player_ultimate_94: 2227537659453262978
+      player_ultimate_95: 2089446080072411130
+      player_ultimate_96: -2032693209242184833
+      player_ultimate_97: -1274641854776376943
+      player_ultimate_98: -7607932720371742902
+      player_ultimate_99: 1581062407016693765
+      player_ultimate_E_00: -1573926466773499797
+      player_ultimate_E_01: -1157455563223102010
+      player_ultimate_E_02: -1211822660257065061
+      player_ultimate_E_03: -8702642866162075377
+      player_ultimate_E_04: -2733493925289377848
+      player_ultimate_E_05: 458099603053339464
+      player_ultimate_NE_00: 4490765057049280400
+      player_ultimate_NE_01: -8467648714148658484
+      player_ultimate_NE_02: 4489182890117924593
+      player_ultimate_NE_03: 7432870793407919293
+      player_ultimate_NE_04: 8479475676837803390
+      player_ultimate_NE_05: -4042009312324021104
+      player_ultimate_NW_00: 8561560384276173593
+      player_ultimate_NW_01: 5328663932466012128
+      player_ultimate_NW_02: 5825425521372716793
+      player_ultimate_NW_03: -1486951952152138727
+      player_ultimate_NW_04: -2052931594279459549
+      player_ultimate_NW_05: 2156884529939858736
+      player_ultimate_N_00: 353843113326708154
+      player_ultimate_N_01: 1997564806265338328
+      player_ultimate_N_02: 5127993862505835132
+      player_ultimate_N_03: 8164124917528630531
+      player_ultimate_N_04: 7102508558763908926
+      player_ultimate_N_05: 3518711857164372533
+      player_ultimate_SE_00: 207270910008400427
+      player_ultimate_SE_01: -8314713949183580803
+      player_ultimate_SE_02: -4718943948938649345
+      player_ultimate_SE_03: -8477865057719153797
+      player_ultimate_SE_04: -7749349543845919932
+      player_ultimate_SE_05: -5466173817097634355
+      player_ultimate_SW_00: -1294304387113567656
+      player_ultimate_SW_01: -8415225275062741596
+      player_ultimate_SW_02: 8864714692601921978
+      player_ultimate_SW_03: 2237468787937310883
+      player_ultimate_SW_04: -6966334255717313490
+      player_ultimate_SW_05: 1123127930667594081
+      player_ultimate_S_00: 8896633175257011650
+      player_ultimate_S_01: -933828836435106707
+      player_ultimate_S_02: 1026046401719940087
+      player_ultimate_S_03: -5892929677272532505
+      player_ultimate_S_04: -473423827240380321
+      player_ultimate_S_05: 1765823141382284423
+      player_ultimate_W_00: -8006377744140615759
+      player_ultimate_W_01: -4700553268242057802
+      player_ultimate_W_02: 4121877401897758776
+      player_ultimate_W_03: 1101390819605758769
+      player_ultimate_W_04: -3056079325025865999
+      player_ultimate_W_05: 3813922350399690487
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

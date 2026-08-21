@@ -225,7 +225,9 @@ public static class AshRoomProgressionBuilder
 
         var controller = Undo.AddComponent<RoomController>(roomRoot);
         var serialized = new SerializedObject(controller);
-        serialized.FindProperty("enemySpawner").objectReferenceValue = enemySpawner;
+        // 수정(보스 방 추가): RoomController의 필드가 enemySpawner → encounter로 바뀌었다.
+        // 이름을 안 고치면 FindProperty가 null을 돌려주고 이 줄에서 NullReference로 죽는다.
+        serialized.FindProperty("encounter").objectReferenceValue = enemySpawner;
         serialized.FindProperty("rewardChest").objectReferenceValue = chest;
         serialized.FindProperty("roomDoor").objectReferenceValue = roomDoor;
         serialized.FindProperty("exitTrigger").objectReferenceValue = exit;

@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: f3158e4dcc44a364e82cb5cc7bc2f11b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7596506551281203728
+    second: player_sword_slam_6frames_1536x256_0
+  - first:
+      213: 6489596989988493193
+    second: player_sword_slam_6frames_1536x256_1
+  - first:
+      213: 8553627692283326585
+    second: player_sword_slam_6frames_1536x256_2
+  - first:
+      213: -1436112900309370419
+    second: player_sword_slam_6frames_1536x256_3
+  - first:
+      213: -7606468447192788851
+    second: player_sword_slam_6frames_1536x256_4
+  - first:
+      213: -2650497956425075147
+    second: player_sword_slam_6frames_1536x256_5
+  - first:
+      213: 7416784858426006209
+    second: player_sword_slam_6frames_1536x256_6
+  - first:
+      213: -2028197777141383376
+    second: player_sword_slam_6frames_1536x256_7
+  - first:
+      213: 7650544992155775545
+    second: player_sword_slam_6frames_1536x256_8
+  - first:
+      213: -8638852014528294253
+    second: player_sword_slam_6frames_1536x256_9
+  - first:
+      213: 5648459337144182053
+    second: player_sword_slam_6frames_1536x256_10
+  - first:
+      213: -2053884193725556676
+    second: player_sword_slam_6frames_1536x256_11
+  - first:
+      213: -121033340474964705
+    second: player_sword_slam_6frames_1536x256_12
+  - first:
+      213: -4992710722836278257
+    second: player_sword_slam_6frames_1536x256_13
+  - first:
+      213: 8364422544465835770
+    second: player_sword_slam_6frames_1536x256_14
+  - first:
+      213: 1349183297467216716
+    second: player_sword_slam_6frames_1536x256_15
+  - first:
+      213: 8720626389784855207
+    second: player_sword_slam_6frames_1536x256_16
+  - first:
+      213: -8636177180405728214
+    second: player_sword_slam_6frames_1536x256_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 91
+        width: 146
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f5c4f42a89c39690800000000000000
+      internalID: -7596506551281203728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 6
+        width: 117
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98755bb341eaf0a50800000000000000
+      internalID: 6489596989988493193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 60
+        width: 148
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970fd7b211794b670800000000000000
+      internalID: 8553627692283326585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 83
+        width: 121
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc934bf0de6e11ce0800000000000000
+      internalID: -1436112900309370419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 83
+        width: 213
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d805bd18f35607690800000000000000
+      internalID: -7606468447192788851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 150
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536726dc62a873bd0800000000000000
+      internalID: -2650497956425075147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 101
+        width: 127
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ca5afd6886bde660800000000000000
+      internalID: 7416784858426006209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 1443
+        y: 136
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f30471ed46ad3e0800000000000000
+      internalID: -2028197777141383376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 122
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 932b693d2223c2a60800000000000000
+      internalID: 7650544992155775545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 122
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3929fd60dd1ac1880800000000000000
+      internalID: -8638852014528294253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 113
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 525a7be17db536e40800000000000000
+      internalID: 5648459337144182053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 121
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c38d23f25332f73e0800000000000000
+      internalID: -2053884193725556676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 99
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f15c20f61d0025ef0800000000000000
+      internalID: -121033340474964705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 101
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f045f03dc0456bab0800000000000000
+      internalID: -4992710722836278257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 102
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6b722dcf5641470800000000000000
+      internalID: 8364422544465835770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 101
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c437c6e8f0349b210800000000000000
+      internalID: 1349183297467216716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_16
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 88
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a206066f73e50970800000000000000
+      internalID: 8720626389784855207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_sword_slam_6frames_1536x256_17
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 90
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2cf4906c92262880800000000000000
+      internalID: -8636177180405728214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_sword_slam_6frames_1536x256_0: -7596506551281203728
+      player_sword_slam_6frames_1536x256_1: 6489596989988493193
+      player_sword_slam_6frames_1536x256_10: 5648459337144182053
+      player_sword_slam_6frames_1536x256_11: -2053884193725556676
+      player_sword_slam_6frames_1536x256_12: -121033340474964705
+      player_sword_slam_6frames_1536x256_13: -4992710722836278257
+      player_sword_slam_6frames_1536x256_14: 8364422544465835770
+      player_sword_slam_6frames_1536x256_15: 1349183297467216716
+      player_sword_slam_6frames_1536x256_16: 8720626389784855207
+      player_sword_slam_6frames_1536x256_17: -8636177180405728214
+      player_sword_slam_6frames_1536x256_2: 8553627692283326585
+      player_sword_slam_6frames_1536x256_3: -1436112900309370419
+      player_sword_slam_6frames_1536x256_4: -7606468447192788851
+      player_sword_slam_6frames_1536x256_5: -2650497956425075147
+      player_sword_slam_6frames_1536x256_6: 7416784858426006209
+      player_sword_slam_6frames_1536x256_7: -2028197777141383376
+      player_sword_slam_6frames_1536x256_8: 7650544992155775545
+      player_sword_slam_6frames_1536x256_9: -8638852014528294253
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -123,6 +123,27 @@ public class AshSpriteImportRules : AssetPostprocessor
     public const float CharacterPixelsPerUnit = 24f;
 
     /// <summary>
+    /// 추가 생성 — 플레이어만 쓰는 PPU.
+    ///
+    /// 왜 플레이어만 다른가:
+    /// 같은 PPU 24로 실측했더니 플레이어가 5.88 x 7.92유닛, 망령이 4.96 x 5.83유닛이었다.
+    /// 플레이어가 잡몹보다 36% 크고, 보스(6.25 x 8.33)와도 거의 같아서 <b>보스가 커 보이지
+    /// 않았다.</b> 방(세로 29유닛)에 비해서도 커서 전투 공간이 좁게 느껴졌다.
+    ///
+    /// 왜 프리팹 스케일이 아니라 PPU로 줄이는가:
+    /// localScale로 0.736배를 하면 픽셀이 비정수 배율로 늘어나 픽셀아트가 뭉개지고,
+    /// 움직일 때 가장자리가 아른거린다. PPU를 올리면 픽셀 격자는 그대로 두고 유닛 환산만
+    /// 바뀌므로 그림이 깨지지 않는다.
+    ///
+    /// 32를 고른 이유: 190px / 32 = 5.94유닛으로 망령(5.83)과 거의 같아지고,
+    /// 방 타일 규격(<see cref="AshProjectSetup.PixelsPerUnit"/> = 32)과도 숫자가 통일된다.
+    ///
+    /// 주의 — 이 값을 바꾸면 플레이어 콜라이더와 히트박스 크기도 같이 맞춰야 한다.
+    /// 그림만 줄면 판정은 예전 크기로 남아 "안 맞았는데 맞는" 상태가 된다.
+    /// </summary>
+    public const float PlayerPixelsPerUnit = 32f;
+
+    /// <summary>
     /// 캐릭터 스프라이트의 필터 모드가 Point가 아니라 Bilinear인 이유.
     ///
     /// 이 시트를 실측했더니 한 프레임의 불투명 픽셀 고유 색이 8,243개였고, 색 경계가 4px
@@ -224,7 +245,9 @@ public class AshSpriteImportRules : AssetPostprocessor
 
         if (isCharacter)
         {
-            importer.spritePixelsPerUnit = CharacterPixelsPerUnit;
+            // 추가 생성 — 플레이어만 PPU가 다르다. 잡몹과 키를 맞추려고 32로 올렸다.
+            bool isPlayer = assetPath.Contains(PlayerFolder);
+            importer.spritePixelsPerUnit = isPlayer ? PlayerPixelsPerUnit : CharacterPixelsPerUnit;
             importer.filterMode = CharacterFilterMode;
             importer.maxTextureSize = CharacterMaxTextureSize;
 

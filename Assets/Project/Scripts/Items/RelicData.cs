@@ -55,7 +55,7 @@ public class RelicData : ScriptableObject
     {
         Normal,   // 평범한 유물
         BossKey,  // 보스방 열쇠. 다 모으면 문이 부서진 방이 열린다
-        RunEnd,   // 이걸 주우면 판이 끝난다(클리어)
+        RunEnd,   // 보스 클리어 유물. 주우면 보스 방 문이 열리고, 그 문으로 나가면 판이 끝난다
     }
 
     [Header("표시")]

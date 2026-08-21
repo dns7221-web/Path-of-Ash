@@ -1,0 +1,3341 @@
+fileFormatVersion: 2
+guid: 434b7dd82e93cc94590ae19b1dbbcd8e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3364970013053673021
+    second: player_dash_hit_0
+  - first:
+      213: 8743848749606703723
+    second: player_dash_hit_1
+  - first:
+      213: 8231226147562118862
+    second: player_dash_hit_2
+  - first:
+      213: -7558510799000504464
+    second: player_dash_hit_3
+  - first:
+      213: -4029310391619441532
+    second: player_dash_hit_4
+  - first:
+      213: 8681280116695339248
+    second: player_dash_hit_5
+  - first:
+      213: 491156398292942880
+    second: player_dash_hit_6
+  - first:
+      213: 6546454241180107518
+    second: player_dash_hit_7
+  - first:
+      213: 3426492993383172253
+    second: player_dash_hit_8
+  - first:
+      213: -8195872258926086314
+    second: player_dash_hit_9
+  - first:
+      213: -6488593429385041275
+    second: player_dash_hit_10
+  - first:
+      213: 5658558661952458287
+    second: player_dash_hit_11
+  - first:
+      213: -2176577680095939112
+    second: player_dash_hit_12
+  - first:
+      213: -7214689178637788569
+    second: player_dash_hit_13
+  - first:
+      213: 2473324836920838327
+    second: player_dash_hit_14
+  - first:
+      213: 5218984381106854426
+    second: player_dash_hit_15
+  - first:
+      213: -8362460160969493931
+    second: player_dash_hit_16
+  - first:
+      213: 6576058597470288246
+    second: player_dash_hit_17
+  - first:
+      213: -8857367265987227325
+    second: player_dash_hit_18
+  - first:
+      213: 4603919533590886317
+    second: player_dash_hit_19
+  - first:
+      213: 6607744191094408763
+    second: player_dash_hit_20
+  - first:
+      213: 9108994305849138708
+    second: player_dash_hit_21
+  - first:
+      213: 5758083420655265245
+    second: player_dash_hit_22
+  - first:
+      213: 9106872028069764788
+    second: player_dash_hit_23
+  - first:
+      213: -840572364501343677
+    second: player_dash_hit_24
+  - first:
+      213: -4468458756074520209
+    second: player_dash_hit_25
+  - first:
+      213: -3432333350241504948
+    second: player_dash_hit_26
+  - first:
+      213: -7206820484471435799
+    second: player_dash_hit_27
+  - first:
+      213: 7088513993036981892
+    second: player_dash_hit_28
+  - first:
+      213: 5862072749846088478
+    second: player_dash_hit_29
+  - first:
+      213: 9018516520190623063
+    second: player_dash_hit_30
+  - first:
+      213: 979016483671496078
+    second: player_dash_hit_31
+  - first:
+      213: 6162478169903275472
+    second: player_dash_hit_32
+  - first:
+      213: 3354823493745312274
+    second: player_dash_hit_33
+  - first:
+      213: -1393574167137767869
+    second: player_dash_hit_34
+  - first:
+      213: 848822281993957222
+    second: player_dash_hit_35
+  - first:
+      213: 4317490690534245921
+    second: player_dash_hit_36
+  - first:
+      213: 7557354800494742699
+    second: player_dash_hit_37
+  - first:
+      213: -7919626450476814400
+    second: player_dash_hit_38
+  - first:
+      213: -3131214136819390661
+    second: player_dash_hit_39
+  - first:
+      213: 2098358282219166494
+    second: player_dash_hit_40
+  - first:
+      213: 1137244858103972022
+    second: player_dash_hit_41
+  - first:
+      213: 4034231169502305731
+    second: player_dash_hit_42
+  - first:
+      213: 8384223689958673698
+    second: player_dash_hit_43
+  - first:
+      213: 6609905231871621496
+    second: player_dash_hit_44
+  - first:
+      213: -8715849496472188397
+    second: player_dash_hit_45
+  - first:
+      213: 6509380483650759762
+    second: player_dash_hit_46
+  - first:
+      213: -4391372654608971046
+    second: player_dash_hit_47
+  - first:
+      213: -6146747610120934410
+    second: player_dash_hit_48
+  - first:
+      213: -3077537458832774579
+    second: player_dash_hit_49
+  - first:
+      213: 558855478541640371
+    second: player_dash_hit_50
+  - first:
+      213: -8714851528450284746
+    second: player_dash_hit_51
+  - first:
+      213: 2381755857434570773
+    second: player_dash_hit_52
+  - first:
+      213: 5695976862661814240
+    second: player_dash_hit_53
+  - first:
+      213: -8289005346485073944
+    second: player_dash_hit_54
+  - first:
+      213: 134478837744607963
+    second: player_dash_hit_55
+  - first:
+      213: 4909126878274003531
+    second: player_dash_hit_56
+  - first:
+      213: 8620892855311614941
+    second: player_dash_hit_57
+  - first:
+      213: 7019851156932856310
+    second: player_dash_hit_58
+  - first:
+      213: 6902634022619167056
+    second: player_dash_hit_59
+  - first:
+      213: -1304208692798439561
+    second: player_dash_hit_60
+  - first:
+      213: -2481346399352237704
+    second: player_dash_hit_61
+  - first:
+      213: 2106204090059973918
+    second: player_dash_hit_62
+  - first:
+      213: -3654866525315272945
+    second: player_dash_hit_63
+  - first:
+      213: -2641162261541786360
+    second: player_dash_hit_64
+  - first:
+      213: -3293574618709661109
+    second: player_dash_hit_65
+  - first:
+      213: -7689479037448350600
+    second: player_dash_hit_66
+  - first:
+      213: 3790814290669460440
+    second: player_dash_hit_67
+  - first:
+      213: 7753009369075683440
+    second: player_dash_hit_68
+  - first:
+      213: -7923111802163248172
+    second: player_dash_hit_69
+  - first:
+      213: -3587245546413587371
+    second: player_dash_hit_70
+  - first:
+      213: -6702564018171198619
+    second: player_dash_hit_71
+  - first:
+      213: -5226273734735690105
+    second: player_dash_hit_72
+  - first:
+      213: 3214894845911588132
+    second: player_dash_hit_73
+  - first:
+      213: 408681315496270602
+    second: player_dash_hit_74
+  - first:
+      213: 4780503082249592940
+    second: player_dash_hit_75
+  - first:
+      213: 9046587626505634402
+    second: player_dash_hit_76
+  - first:
+      213: 8829130485867326946
+    second: player_dash_hit_77
+  - first:
+      213: -2280489483905733064
+    second: player_dash_hit_78
+  - first:
+      213: -3656608231726554598
+    second: player_dash_hit_79
+  - first:
+      213: -3153363893851223839
+    second: player_dash_hit_80
+  - first:
+      213: -3210086503203976837
+    second: player_dash_hit_81
+  - first:
+      213: -6240087969854652383
+    second: player_dash_hit_82
+  - first:
+      213: 1597049398087350539
+    second: player_dash_hit_83
+  - first:
+      213: -1122034302661657423
+    second: player_dash_hit_84
+  - first:
+      213: -5199250953174373705
+    second: player_dash_hit_85
+  - first:
+      213: -1143679148216107623
+    second: player_dash_hit_86
+  - first:
+      213: -5806733277699176340
+    second: player_dash_hit_87
+  - first:
+      213: 38479499430070618
+    second: player_dash_hit_88
+  - first:
+      213: -5205394219102853524
+    second: player_dash_hit_89
+  - first:
+      213: 1091842995479603868
+    second: player_dash_hit_90
+  - first:
+      213: 9129308692131752449
+    second: player_dash_hit_91
+  - first:
+      213: -1846538785528180924
+    second: player_dash_hit_92
+  - first:
+      213: 606617413324975754
+    second: player_dash_hit_93
+  - first:
+      213: 493997785536748332
+    second: player_dash_hit_94
+  - first:
+      213: -8687518150636160527
+    second: player_dash_hit_95
+  - first:
+      213: 2155000439006501101
+    second: player_dash_hit_96
+  - first:
+      213: -952719620911187866
+    second: player_dash_hit_97
+  - first:
+      213: -6721919594104151619
+    second: player_dash_hit_98
+  - first:
+      213: 4383308601993380486
+    second: player_dash_hit_99
+  - first:
+      213: 2452262601708495129
+    second: player_dash_hit_100
+  - first:
+      213: 6702204214518229041
+    second: player_dash_hit_101
+  - first:
+      213: 4806284579485640072
+    second: player_dash_hit_102
+  - first:
+      213: -4539335296391610908
+    second: player_dash_hit_103
+  - first:
+      213: -2181985232239935416
+    second: player_dash_hit_104
+  - first:
+      213: 755697292634257452
+    second: player_dash_hit_105
+  - first:
+      213: -1702844199750996141
+    second: player_dash_hit_106
+  - first:
+      213: 8419335808122108241
+    second: player_dash_hit_107
+  - first:
+      213: -7955030771043296430
+    second: player_dash_hit_108
+  - first:
+      213: -1734778348200644151
+    second: player_dash_hit_109
+  - first:
+      213: -4545734187277702152
+    second: player_dash_hit_110
+  - first:
+      213: -3400827432156784137
+    second: player_dash_hit_111
+  - first:
+      213: 4314739232207874396
+    second: player_dash_hit_112
+  - first:
+      213: 2235668577153435308
+    second: player_dash_hit_113
+  - first:
+      213: 9141274887198535492
+    second: player_dash_hit_114
+  - first:
+      213: -112958085534695345
+    second: player_dash_hit_115
+  - first:
+      213: 9104246993080497584
+    second: player_dash_hit_116
+  - first:
+      213: -5951298526531319307
+    second: player_dash_hit_117
+  - first:
+      213: -3706681571245314834
+    second: player_dash_hit_118
+  - first:
+      213: -9189114735421050711
+    second: player_dash_hit_119
+  - first:
+      213: 1403615129084089450
+    second: player_dash_hit_120
+  - first:
+      213: -6057698991907211788
+    second: player_dash_hit_121
+  - first:
+      213: -5647718813549079594
+    second: player_dash_hit_122
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_dash_hit_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 1825
+        width: 191
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1281cf9993d41d0800000000000000
+      internalID: -3364970013053673021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_1
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1818
+        width: 179
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b621d026c14685970800000000000000
+      internalID: 8743848749606703723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_2
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1842
+        width: 222
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eced85ff1903b3270800000000000000
+      internalID: 8231226147562118862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_3
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1803
+        width: 240
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 077fe9a9976ca1790800000000000000
+      internalID: -7558510799000504464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_4
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 1797
+        width: 185
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48cabb90c830518c0800000000000000
+      internalID: -4029310391619441532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_5
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 1820
+        width: 147
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f0994f454a1a7870800000000000000
+      internalID: 8681280116695339248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_6
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1549
+        width: 186
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02049695420f0d600800000000000000
+      internalID: 491156398292942880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_7
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1549
+        width: 174
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2c3ef927da9da50800000000000000
+      internalID: 6546454241180107518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_8
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1711
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9808ff19395d8f20800000000000000
+      internalID: 3426492993383172253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_9
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1734
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6577b36aa99624e80800000000000000
+      internalID: -8195872258926086314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_10
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 1633
+        width: 23
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58a229d67a2e3f5a0800000000000000
+      internalID: -6488593429385041275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_11
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 1549
+        width: 158
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2ec26a6f1d378e40800000000000000
+      internalID: 5658558661952458287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_12
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1549
+        width: 156
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d576d7c12e3bc1e0800000000000000
+      internalID: -2176577680095939112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_13
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1643
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a9076ca6640eb90800000000000000
+      internalID: -7214689178637788569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_14
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1626
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b841deb5d3035220800000000000000
+      internalID: 2473324836920838327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_15
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 1549
+        width: 138
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a9f2ca4ae8d6840800000000000000
+      internalID: 5218984381106854426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_16
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 1594
+        width: 8
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 552be013ac292fb80800000000000000
+      internalID: -8362460160969493931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_17
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1549
+        width: 164
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679be54f37ad24b50800000000000000
+      internalID: 6576058597470288246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_18
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1622
+        width: 14
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34198a1666f441580800000000000000
+      internalID: -8857367265987227325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_19
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1620
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da7ba265c6864ef30800000000000000
+      internalID: 4603919533590886317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_20
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1606
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3645dc155c63bb50800000000000000
+      internalID: 6607744191094408763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_21
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1593
+        width: 12
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41e91354f06a96e70800000000000000
+      internalID: 9108994305849138708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_22
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1293
+        width: 182
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd5293b0d52d8ef40800000000000000
+      internalID: 5758083420655265245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_23
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 1293
+        width: 269
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4be1a08fbdb126e70800000000000000
+      internalID: 9106872028069764788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_24
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1293
+        width: 196
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34223e553efa554f0800000000000000
+      internalID: -840572364501343677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_25
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1293
+        width: 209
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61c1beaf68dcf1c0800000000000000
+      internalID: -4468458756074520209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_26
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 1293
+        width: 183
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41f024d007ed50d0800000000000000
+      internalID: -3432333350241504948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_27
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 1293
+        width: 126
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ed4217e3fa3cfb90800000000000000
+      internalID: -7206820484471435799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_28
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1037
+        width: 147
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 486ea5c8be57f5260800000000000000
+      internalID: 7088513993036981892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_29
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1043
+        width: 144
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1bc21e7b144a5150800000000000000
+      internalID: 5862072749846088478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_30
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1143
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75d34f23ef4382d70800000000000000
+      internalID: 9018516520190623063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_31
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1049
+        width: 133
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85dd7a0e4a269d00800000000000000
+      internalID: 979016483671496078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_32
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1037
+        width: 129
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dd1f2dce35858550800000000000000
+      internalID: 6162478169903275472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_33
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 1037
+        width: 205
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21203d4613abe8e20800000000000000
+      internalID: 3354823493745312274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_34
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 1037
+        width: 147
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ea79fada709ace0800000000000000
+      internalID: -1393574167137767869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_35
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1125
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66fafa34e5f97cb00800000000000000
+      internalID: 848822281993957222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_36
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1098
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 126895278eecaeb30800000000000000
+      internalID: 4317490690534245921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_37
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1076
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bac0515862e11e860800000000000000
+      internalID: 7557354800494742699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_38
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1062
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cfaa8904b5d71290800000000000000
+      internalID: -7919626450476814400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_39
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1048
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b37e23b1551bb84d0800000000000000
+      internalID: -3131214136819390661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_40
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1037
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b1c277dbdde1d10800000000000000
+      internalID: 2098358282219166494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_41
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1037
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b04ded4c2e48cf00800000000000000
+      internalID: 1137244858103972022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_42
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 785
+        width: 107
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cd5ef7dfd77cf730800000000000000
+      internalID: 4034231169502305731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_43
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 781
+        width: 96
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22dc665460fba5470800000000000000
+      internalID: 8384223689958673698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_44
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 860
+        width: 74
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87934b0a9c91bbb50800000000000000
+      internalID: 6609905231871621496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_45
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 856
+        width: 92
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31a020fbf051b0780800000000000000
+      internalID: -8715849496472188397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_46
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 885
+        width: 21
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c2ddbcf07f55a50800000000000000
+      internalID: 6509380483650759762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_47
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 796
+        width: 100
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ada0bad46d5be03c0800000000000000
+      internalID: -4391372654608971046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_48
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 900
+        width: 66
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fba2ce8d9d52baa0800000000000000
+      internalID: -6146747610120934410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_49
+      rect:
+        serializedVersion: 2
+        x: 1194
+        y: 904
+        width: 28
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4a60579cf36a45d0800000000000000
+      internalID: -3077537458832774579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_50
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 794
+        width: 108
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b26147c81471c700800000000000000
+      internalID: 558855478541640371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_51
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 899
+        width: 68
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 633637845b0ae0780800000000000000
+      internalID: -8714851528450284746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_52
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 908
+        width: 23
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510f7105552bd0120800000000000000
+      internalID: 2381755857434570773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_53
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 860
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e72dcb27cc2c0f40800000000000000
+      internalID: 5695976862661814240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_54
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 856
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7817ded8987fc80800000000000000
+      internalID: -8289005346485073944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_55
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 879
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd223995ac3cdd100800000000000000
+      internalID: 134478837744607963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_56
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 861
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4228d8d2e8b02440800000000000000
+      internalID: 4909126878274003531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_57
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 862
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd34d8f506093a770800000000000000
+      internalID: 8620892855311614941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_58
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 836
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f909193f658b6160800000000000000
+      internalID: 7019851156932856310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_59
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 842
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 059bdb462151bcf50800000000000000
+      internalID: 6902634022619167056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_60
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 838
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77fb5c89a1586ede0800000000000000
+      internalID: -1304208692798439561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_61
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 842
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8715ae5b89c709dd0800000000000000
+      internalID: -2481346399352237704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_62
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 852
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e15ef74f57dba3d10800000000000000
+      internalID: 2106204090059973918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_63
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 852
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0fed11724e474dc0800000000000000
+      internalID: -3654866525315272945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_64
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 838
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80d62a6aae4b85bd0800000000000000
+      internalID: -2641162261541786360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_65
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 837
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4a619a955fda42d0800000000000000
+      internalID: -3293574618709661109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_66
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 837
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87414195e8b794590800000000000000
+      internalID: -7689479037448350600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_67
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 783
+        width: 45
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dbd3d4438dab9430800000000000000
+      internalID: 3790814290669460440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_68
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 826
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0701808a1f8389b60800000000000000
+      internalID: 7753009369075683440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_69
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 827
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d3ca5c5bc37b0290800000000000000
+      internalID: -7923111802163248172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_70
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 817
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5548aeb7e2b873ec0800000000000000
+      internalID: -3587245546413587371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_71
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 809
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56347948985bbf2a0800000000000000
+      internalID: -6702564018171198619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_72
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 784
+        width: 46
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 786002e6abb8877b0800000000000000
+      internalID: -5226273734735690105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_73
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 784
+        width: 40
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42d5bc044d99d9c20800000000000000
+      internalID: 3214894845911588132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_74
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 800
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b9e7cbd7deba500800000000000000
+      internalID: 408681315496270602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_75
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 798
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c60a521a932c75240800000000000000
+      internalID: 4780503082249592940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_76
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 800
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2620053f38feb8d70800000000000000
+      internalID: 9046587626505634402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_77
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 798
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eda1bde56f578a70800000000000000
+      internalID: 8829130485867326946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_78
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 783
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83ee8cd95e21a50e0800000000000000
+      internalID: -2280489483905733064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_79
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 782
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a126b21df2e114dc0800000000000000
+      internalID: -3656608231726554598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_80
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 784
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8847bee300d34d0800000000000000
+      internalID: -3153363893851223839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_81
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 782
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b794046455b7373d0800000000000000
+      internalID: -3210086503203976837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_82
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 781
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12000a58d01c669a0800000000000000
+      internalID: -6240087969854652383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_83
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 781
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b097fbd47fbd92610800000000000000
+      internalID: 1597049398087350539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_84
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 786
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc7c0c1fbbbd60f0800000000000000
+      internalID: -1122034302661657423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_85
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 781
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba2eed0ecc88d7b0800000000000000
+      internalID: -5199250953174373705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_86
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 785
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99dbe89cfd5d020f0800000000000000
+      internalID: -1143679148216107623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_87
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 781
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c680d4d69d65a6fa0800000000000000
+      internalID: -5806733277699176340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_88
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 784
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a590aae96e4b88000800000000000000
+      internalID: 38479499430070618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_89
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 781
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c66a08e7989b2c7b0800000000000000
+      internalID: -5205394219102853524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_90
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 781
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9a6f086b61072f00800000000000000
+      internalID: 1091842995479603868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_91
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 781
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a2667e2e1d1be70800000000000000
+      internalID: 9129308692131752449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_92
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 525
+        width: 168
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f8c9802c6cf56e0800000000000000
+      internalID: -1846538785528180924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_93
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 525
+        width: 173
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e2dcbc2532b6800800000000000000
+      internalID: 606617413324975754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_94
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 559
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2b5fbe5e580bd600800000000000000
+      internalID: 493997785536748332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_95
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 569
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9b29b354cbf6780800000000000000
+      internalID: -8687518150636160527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_96
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 538
+        width: 175
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de81bc94b7918ed10800000000000000
+      internalID: 2155000439006501101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_97
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 526
+        width: 209
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6683b017d8247c2f0800000000000000
+      internalID: -952719620911187866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_98
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 530
+        width: 228
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db12fa05eb1f6b2a0800000000000000
+      internalID: -6721919594104151619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_99
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 525
+        width: 148
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 682cab223f3a4dc30800000000000000
+      internalID: 4383308601993380486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_100
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 528
+        width: 37
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9116fc6f7df280220800000000000000
+      internalID: 2452262601708495129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_101
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 543
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1382c7a2933030d50800000000000000
+      internalID: 6702204214518229041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_102
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 546
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885eda93c5a53b240800000000000000
+      internalID: 4806284579485640072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_103
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 525
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed7f2e299a0101c0800000000000000
+      internalID: -4539335296391610908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_104
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 525
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 840c03fedf708b1e0800000000000000
+      internalID: -2181985232239935416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_105
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 269
+        width: 208
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c28703d0fa6cc7a00800000000000000
+      internalID: 755697292634257452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_106
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 269
+        width: 254
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35fe10ee8384e58e0800000000000000
+      internalID: -1702844199750996141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_107
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 269
+        width: 251
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15938d75f4d77d470800000000000000
+      internalID: 8419335808122108241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_108
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 388
+        width: 16
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b99aa49ad0a9190800000000000000
+      internalID: -7955030771043296430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_109
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 269
+        width: 216
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c136779844dce7e0800000000000000
+      internalID: -1734778348200644151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_110
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 404
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fba6fb47de4ae0c0800000000000000
+      internalID: -4545734187277702152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_111
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 269
+        width: 195
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f914e30875ddc0d0800000000000000
+      internalID: -3400827432156784137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_112
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 269
+        width: 168
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c592132a87801eb30800000000000000
+      internalID: 4314739232207874396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_113
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 13
+        width: 178
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca6cbb0d9b0b60f10800000000000000
+      internalID: 2235668577153435308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_114
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 199
+        width: 57
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44feaadc3155cde70800000000000000
+      internalID: 9141274887198535492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_115
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 193
+        width: 66
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f40423d3831be6ef0800000000000000
+      internalID: -112958085534695345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_116
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 13
+        width: 271
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b53bf16768c85e70800000000000000
+      internalID: 9104246993080497584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_117
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 13
+        width: 231
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f98bcd758db86da0800000000000000
+      internalID: -5951298526531319307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_118
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 13
+        width: 174
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eecaf62ffb83f8cc0800000000000000
+      internalID: -3706681571245314834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_119
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 13
+        width: 161
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0bbea85d4b97080800000000000000
+      internalID: -9189114735421050711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_120
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 169
+        width: 183
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64db62f584aa7310800000000000000
+      internalID: 1403615129084089450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_121
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 182
+        width: 159
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5f027acdabeeba0800000000000000
+      internalID: -6057698991907211788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_122
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 13
+        width: 254
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d3dd1779a54f91b0800000000000000
+      internalID: -5647718813549079594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_dash_hit_0: -3364970013053673021
+      player_dash_hit_1: 8743848749606703723
+      player_dash_hit_10: -6488593429385041275
+      player_dash_hit_100: 2452262601708495129
+      player_dash_hit_101: 6702204214518229041
+      player_dash_hit_102: 4806284579485640072
+      player_dash_hit_103: -4539335296391610908
+      player_dash_hit_104: -2181985232239935416
+      player_dash_hit_105: 755697292634257452
+      player_dash_hit_106: -1702844199750996141
+      player_dash_hit_107: 8419335808122108241
+      player_dash_hit_108: -7955030771043296430
+      player_dash_hit_109: -1734778348200644151
+      player_dash_hit_11: 5658558661952458287
+      player_dash_hit_110: -4545734187277702152
+      player_dash_hit_111: -3400827432156784137
+      player_dash_hit_112: 4314739232207874396
+      player_dash_hit_113: 2235668577153435308
+      player_dash_hit_114: 9141274887198535492
+      player_dash_hit_115: -112958085534695345
+      player_dash_hit_116: 9104246993080497584
+      player_dash_hit_117: -5951298526531319307
+      player_dash_hit_118: -3706681571245314834
+      player_dash_hit_119: -9189114735421050711
+      player_dash_hit_12: -2176577680095939112
+      player_dash_hit_120: 1403615129084089450
+      player_dash_hit_121: -6057698991907211788
+      player_dash_hit_122: -5647718813549079594
+      player_dash_hit_13: -7214689178637788569
+      player_dash_hit_14: 2473324836920838327
+      player_dash_hit_15: 5218984381106854426
+      player_dash_hit_16: -8362460160969493931
+      player_dash_hit_17: 6576058597470288246
+      player_dash_hit_18: -8857367265987227325
+      player_dash_hit_19: 4603919533590886317
+      player_dash_hit_2: 8231226147562118862
+      player_dash_hit_20: 6607744191094408763
+      player_dash_hit_21: 9108994305849138708
+      player_dash_hit_22: 5758083420655265245
+      player_dash_hit_23: 9106872028069764788
+      player_dash_hit_24: -840572364501343677
+      player_dash_hit_25: -4468458756074520209
+      player_dash_hit_26: -3432333350241504948
+      player_dash_hit_27: -7206820484471435799
+      player_dash_hit_28: 7088513993036981892
+      player_dash_hit_29: 5862072749846088478
+      player_dash_hit_3: -7558510799000504464
+      player_dash_hit_30: 9018516520190623063
+      player_dash_hit_31: 979016483671496078
+      player_dash_hit_32: 6162478169903275472
+      player_dash_hit_33: 3354823493745312274
+      player_dash_hit_34: -1393574167137767869
+      player_dash_hit_35: 848822281993957222
+      player_dash_hit_36: 4317490690534245921
+      player_dash_hit_37: 7557354800494742699
+      player_dash_hit_38: -7919626450476814400
+      player_dash_hit_39: -3131214136819390661
+      player_dash_hit_4: -4029310391619441532
+      player_dash_hit_40: 2098358282219166494
+      player_dash_hit_41: 1137244858103972022
+      player_dash_hit_42: 4034231169502305731
+      player_dash_hit_43: 8384223689958673698
+      player_dash_hit_44: 6609905231871621496
+      player_dash_hit_45: -8715849496472188397
+      player_dash_hit_46: 6509380483650759762
+      player_dash_hit_47: -4391372654608971046
+      player_dash_hit_48: -6146747610120934410
+      player_dash_hit_49: -3077537458832774579
+      player_dash_hit_5: 8681280116695339248
+      player_dash_hit_50: 558855478541640371
+      player_dash_hit_51: -8714851528450284746
+      player_dash_hit_52: 2381755857434570773
+      player_dash_hit_53: 5695976862661814240
+      player_dash_hit_54: -8289005346485073944
+      player_dash_hit_55: 134478837744607963
+      player_dash_hit_56: 4909126878274003531
+      player_dash_hit_57: 8620892855311614941
+      player_dash_hit_58: 7019851156932856310
+      player_dash_hit_59: 6902634022619167056
+      player_dash_hit_6: 491156398292942880
+      player_dash_hit_60: -1304208692798439561
+      player_dash_hit_61: -2481346399352237704
+      player_dash_hit_62: 2106204090059973918
+      player_dash_hit_63: -3654866525315272945
+      player_dash_hit_64: -2641162261541786360
+      player_dash_hit_65: -3293574618709661109
+      player_dash_hit_66: -7689479037448350600
+      player_dash_hit_67: 3790814290669460440
+      player_dash_hit_68: 7753009369075683440
+      player_dash_hit_69: -7923111802163248172
+      player_dash_hit_7: 6546454241180107518
+      player_dash_hit_70: -3587245546413587371
+      player_dash_hit_71: -6702564018171198619
+      player_dash_hit_72: -5226273734735690105
+      player_dash_hit_73: 3214894845911588132
+      player_dash_hit_74: 408681315496270602
+      player_dash_hit_75: 4780503082249592940
+      player_dash_hit_76: 9046587626505634402
+      player_dash_hit_77: 8829130485867326946
+      player_dash_hit_78: -2280489483905733064
+      player_dash_hit_79: -3656608231726554598
+      player_dash_hit_8: 3426492993383172253
+      player_dash_hit_80: -3153363893851223839
+      player_dash_hit_81: -3210086503203976837
+      player_dash_hit_82: -6240087969854652383
+      player_dash_hit_83: 1597049398087350539
+      player_dash_hit_84: -1122034302661657423
+      player_dash_hit_85: -5199250953174373705
+      player_dash_hit_86: -1143679148216107623
+      player_dash_hit_87: -5806733277699176340
+      player_dash_hit_88: 38479499430070618
+      player_dash_hit_89: -5205394219102853524
+      player_dash_hit_9: -8195872258926086314
+      player_dash_hit_90: 1091842995479603868
+      player_dash_hit_91: 9129308692131752449
+      player_dash_hit_92: -1846538785528180924
+      player_dash_hit_93: 606617413324975754
+      player_dash_hit_94: 493997785536748332
+      player_dash_hit_95: -8687518150636160527
+      player_dash_hit_96: 2155000439006501101
+      player_dash_hit_97: -952719620911187866
+      player_dash_hit_98: -6721919594104151619
+      player_dash_hit_99: 4383308601993380486
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

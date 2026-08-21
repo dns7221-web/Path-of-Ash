@@ -39,13 +39,18 @@ public class ProjectileSkillData : SkillData
         // "맞고 쓰러졌는데 화살은 날아가는" 그림이 된다.
         if (context.Owner == null) yield break;
 
-        float facing = context.FacingRight ? 1f : -1f;
+        // 수정(8방향) — 발사 지점과 날아가는 방향을 모두 바라보는 방향에서 구한다.
+        //
+        // launchHeight를 방향과 따로 더하는 이유: 그건 "앞으로 얼마"가 아니라 "손 높이"다.
+        // 탑다운에서 높이는 그림상의 위쪽이므로 방향과 무관하게 항상 +y여야 한다.
+        Vector2 facing = context.FacingDirection;
         Vector3 spawn = context.Owner.position +
-                        new Vector3(forwardOffset * facing, launchHeight, 0f);
+                        (Vector3)(facing * forwardOffset) +
+                        new Vector3(0f, launchHeight, 0f);
 
         SpawnEffect(context);
 
         var projectile = Object.Instantiate(projectilePrefab, spawn, Quaternion.identity);
-        projectile.Launch(new Vector2(facing, 0f), Damage + context.BonusDamage);
+        projectile.Launch(facing, Damage + context.BonusDamage);
     }
 }

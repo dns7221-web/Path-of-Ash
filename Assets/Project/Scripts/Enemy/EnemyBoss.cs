@@ -64,6 +64,24 @@ public class EnemyBoss : MonoBehaviour
     [Tooltip("멀리 있을 때 쓴다. 비어 있으면 이 패턴을 건너뛴다.")]
     [SerializeField] private Projectile wavePrefab;
 
+    // 추가 생성 — 잿불 파도를 쓸 수 있는 최대 거리.
+    //
+    // 왜 필요한가: 예전에는 "내려찍기 사거리 밖"이 곧 파도 조건이었다. 그런데 쿨다운 중에
+    // 보스가 계속 다가오기 때문에, 쿨다운이 끝나는 순간에는 거의 항상 사거리 안이었다.
+    // 그래서 파도는 사실상 한 번도 나오지 않았다. 이제 두 패턴의 사거리를 겹쳐두고
+    // 겹치는 구간에서는 번갈아 쓴다.
+    [Tooltip("잿불 파도를 쓸 수 있는 최대 거리. 내려찍기 사거리보다 커야 두 패턴이 섞인다.")]
+    [SerializeField] private float waveRange = 20f;
+
+    // 추가 생성 — 파도 전용 쿨다운.
+    //
+    // 왜 공용 쿨다운으로는 부족한가: 공용 쿨다운(attackCooldown)은 "공격 후 쉬는 시간"이라
+    // 1.1초로 짧다. 두 패턴을 번갈아 쓰게 하면 파도가 2.2초마다 나오는데, 화면을 가로지르는
+    // 광역 패턴이 그 빈도로 나오면 <b>평타처럼 보인다.</b> 보스 패턴은 가끔 나와서 예비동작을
+    // 읽고 대비하는 맛이 있어야 한다. 그래서 파도만 따로 훨씬 긴 쿨다운을 둔다.
+    [Tooltip("잿불 파도를 다시 쓰기까지의 시간(초). 이 값이 파도 빈도를 정한다.")]
+    [SerializeField, Min(0f)] private float waveCooldown = 6f;
+
     [SerializeField] private float waveFireDelay = 0.4f;
     [SerializeField] private float waveMotionSeconds = 0.7f;
 
@@ -97,6 +115,9 @@ public class EnemyBoss : MonoBehaviour
     private State state = State.Idle;
     private bool isPhase2;
     private float cooldownTimer;
+
+    // 추가 생성 — 파도를 다시 쓸 수 있을 때까지 남은 시간.
+    private float waveCooldownTimer;
 
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int SlamHash = Animator.StringToHash("Slam");
@@ -145,6 +166,10 @@ public class EnemyBoss : MonoBehaviour
 
         if (cooldownTimer > 0f) cooldownTimer -= Time.deltaTime;
 
+        // 추가 생성 — 파도 쿨다운은 공격 중에도 계속 흐른다.
+        // Update 앞부분에서 공격 상태면 return하므로, 여기까지 왔다는 건 쉬는 중이라는 뜻이다.
+        if (waveCooldownTimer > 0f) waveCooldownTimer -= Time.deltaTime;
+
         Vector2 toPlayer = player.position - transform.position;
         float distance = toPlayer.magnitude;
 
@@ -153,9 +178,46 @@ public class EnemyBoss : MonoBehaviour
         // 쉬는 동안은 자리를 다시 잡는다. 이 틈이 없으면 플레이어가 반격할 자리가 사라진다.
         if (cooldownTimer > 0f) { Reposition(toPlayer, distance); return; }
 
-        if (distance <= slamRange) StartCoroutine(Slam());
-        else if (wavePrefab != null) StartCoroutine(Wave(toPlayer));
-        else Chase(toPlayer, distance);
+        ChoosePattern(toPlayer, distance);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 이번에 쓸 패턴을 고른다.
+    ///
+    /// 수정(패턴 편중): 예전에는 거리 하나로만 갈랐다.
+    /// <c>if (거리 &lt;= 내려찍기 사거리) 내려찍기; else 파도;</c>
+    /// 그런데 쉬는 동안 <see cref="Reposition"/>이 계속 다가오기 때문에 쿨다운이 끝나는
+    /// 시점에는 거의 항상 사거리 안이었다. 결과적으로 <b>내려찍기만 무한 반복</b>했고
+    /// 파도 애니메이션은 한 번도 재생된 적이 없다.
+    ///
+    /// 두 사거리를 겹쳐두고, 겹치는 구간에서는 <b>직전과 다른 패턴</b>을 쓴다.
+    /// 무작위 대신 번갈아 쓰는 이유: 무작위는 운 나쁘면 같은 패턴이 서너 번 이어져
+    /// 똑같은 문제가 다시 보인다. 번갈아 쓰면 플레이어가 다음을 읽을 수 있어
+    /// "패턴을 외워서 공략한다"는 보스전의 재미도 같이 생긴다.
+    /// </summary>
+    private void ChoosePattern(Vector2 toPlayer, float distance)
+    {
+        // 파도는 자기 쿨다운이 돌아왔을 때만 쓴다. 빈도를 이 하나로 통제하므로
+        // "직전에 무엇을 썼는지" 같은 기억이 따로 필요 없다.
+        bool canWave = wavePrefab != null && distance <= waveRange && waveCooldownTimer <= 0f;
+        if (canWave) { StartWave(toPlayer); return; }
+
+        if (distance <= slamRange) { StartCoroutine(Slam()); return; }
+
+        Chase(toPlayer, distance);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 잿불 파도를 시작하고 전용 쿨다운을 건다.
+    ///
+    /// 쿨다운을 시전이 끝난 뒤가 아니라 <b>시작할 때</b> 거는 이유:
+    /// 끝난 뒤에 걸면 모션 길이(0.7초)만큼 간격이 더 늘어나, 인스펙터에 적은 숫자와
+    /// 실제 체감 주기가 어긋난다. 시작 시점 기준이라야 "6초마다 한 번"이 그대로 지켜진다.
+    /// </summary>
+    private void StartWave(Vector2 toPlayer)
+    {
+        waveCooldownTimer = waveCooldown * (isPhase2 ? phase2CooldownScale : 1f);
+        StartCoroutine(Wave(toPlayer));
     }
 
     /// <summary>

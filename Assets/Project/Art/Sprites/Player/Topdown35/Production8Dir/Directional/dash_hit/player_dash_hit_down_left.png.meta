@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: c58265de47e0a62488a2d977384bf710
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1501620238238495941
+    second: player_dash_hit_down_left_0
+  - first:
+      213: 2832230692834993201
+    second: player_dash_hit_down_left_1
+  - first:
+      213: 1285546284978822525
+    second: player_dash_hit_down_left_2
+  - first:
+      213: 2763110714246698710
+    second: player_dash_hit_down_left_3
+  - first:
+      213: -1791352318381976250
+    second: player_dash_hit_down_left_4
+  - first:
+      213: 7909881311226277082
+    second: player_dash_hit_down_left_5
+  - first:
+      213: -6366540753383378634
+    second: player_dash_hit_down_left_6
+  - first:
+      213: -7508606858312544954
+    second: player_dash_hit_down_left_7
+  - first:
+      213: 8384821815849947221
+    second: player_dash_hit_down_left_8
+  - first:
+      213: 2785280282541414055
+    second: player_dash_hit_down_left_9
+  - first:
+      213: -3945106891691619183
+    second: player_dash_hit_down_left_10
+  - first:
+      213: 1959957845625293628
+    second: player_dash_hit_down_left_11
+  - first:
+      213: 71260855632660115
+    second: player_dash_hit_down_left_12
+  - first:
+      213: 3233779007869840622
+    second: player_dash_hit_down_left_13
+  - first:
+      213: -3529201194650120622
+    second: player_dash_hit_down_left_14
+  - first:
+      213: 6531296485538135293
+    second: player_dash_hit_down_left_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 13
+        width: 186
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c43eb796a3d6d410800000000000000
+      internalID: 1501620238238495941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_1
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 13
+        width: 174
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13463603fca1e4720800000000000000
+      internalID: 2832230692834993201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_2
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 175
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d5c7af88d27d110800000000000000
+      internalID: 1285546284978822525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_3
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 198
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d610c51e8a885620800000000000000
+      internalID: 2763110714246698710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_4
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 97
+        width: 23
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6451543be86d327e0800000000000000
+      internalID: -1791352318381976250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_5
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 13
+        width: 158
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adca42be42b85cd60800000000000000
+      internalID: 7909881311226277082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_6
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 13
+        width: 156
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 631398a8ae085a7a0800000000000000
+      internalID: -6366540753383378634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_7
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 107
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d083c38d11cc790800000000000000
+      internalID: -7508606858312544954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_8
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 90
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5509eae440fdc5470800000000000000
+      internalID: 8384821815849947221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_9
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 13
+        width: 138
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a6d7c0f8ad47a620800000000000000
+      internalID: 2785280282541414055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_10
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 58
+        width: 8
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19c86cf1f2a2049c0800000000000000
+      internalID: -3945106891691619183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_11
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 13
+        width: 164
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b4c3bb64b233b10800000000000000
+      internalID: 1959957845625293628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_12
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 86
+        width: 14
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3960062ee5b2df000800000000000000
+      internalID: 71260855632660115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_13
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 84
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eec6236dfd0b0ec20800000000000000
+      internalID: 3233779007869840622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_14
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 70
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ecef34632c50fc0800000000000000
+      internalID: -3529201194650120622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_down_left_15
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 57
+        width: 12
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfcf14f9c83d3aa50800000000000000
+      internalID: 6531296485538135293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_dash_hit_down_left_0: 1501620238238495941
+      player_dash_hit_down_left_1: 2832230692834993201
+      player_dash_hit_down_left_10: -3945106891691619183
+      player_dash_hit_down_left_11: 1959957845625293628
+      player_dash_hit_down_left_12: 71260855632660115
+      player_dash_hit_down_left_13: 3233779007869840622
+      player_dash_hit_down_left_14: -3529201194650120622
+      player_dash_hit_down_left_15: 6531296485538135293
+      player_dash_hit_down_left_2: 1285546284978822525
+      player_dash_hit_down_left_3: 2763110714246698710
+      player_dash_hit_down_left_4: -1791352318381976250
+      player_dash_hit_down_left_5: 7909881311226277082
+      player_dash_hit_down_left_6: -6366540753383378634
+      player_dash_hit_down_left_7: -7508606858312544954
+      player_dash_hit_down_left_8: 8384821815849947221
+      player_dash_hit_down_left_9: 2785280282541414055
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

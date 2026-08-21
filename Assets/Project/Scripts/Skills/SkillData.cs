@@ -15,8 +15,14 @@ public struct SkillContext
     /// <summary>시전자의 위치. 투사체와 장판이 여기서 나간다.</summary>
     public Transform Owner;
 
-    /// <summary>오른쪽을 보고 있는가. 근접 판정과 투사체 방향에 쓴다.</summary>
-    public bool FacingRight;
+    /// <summary>
+    /// 바라보는 방향. 근접 판정과 투사체 방향에 쓴다.
+    ///
+    /// 수정(8방향 전환): bool FacingRight였다. 좌우만 표현할 수 있어서 위를 보고 스킬을 써도
+    /// 판정과 이펙트가 옆으로 나갔다. 8방향 애니메이션이 붙은 뒤로는 <b>그림과 판정이
+    /// 서로 다른 곳을 가리키는</b> 상태가 되어 반드시 벡터로 바뀌어야 했다.
+    /// </summary>
+    public Vector2 FacingDirection;
 
     /// <summary>근접 스킬이 켜고 끌 히트박스. 없으면 근접 스킬은 아무 일도 안 한다.</summary>
     public DamageHitbox MeleeHitbox;
@@ -130,19 +136,21 @@ public abstract class SkillData : ScriptableObject
     {
         if (effectPrefab == null || context.Owner == null) return;
 
-        float direction = context.FacingRight ? 1f : -1f;
-        Vector3 position = context.Owner.position +
-                           new Vector3(effectForwardOffset * direction, 0f, 0f);
+        // 수정(8방향) — 이펙트가 놓일 자리도 바라보는 방향으로 민다.
+        Vector2 forward = context.FacingDirection;
+        Vector3 position = context.Owner.position + (Vector3)(forward * effectForwardOffset);
 
         var effect = Object.Instantiate(effectPrefab, position, Quaternion.identity);
 
-        // 왼쪽을 볼 때는 이펙트도 뒤집는다. 궤적 그림은 방향이 있는 그림이라
-        // 그대로 두면 검은 왼쪽을 베는데 궤적만 오른쪽으로 뻗는다.
-        if (!context.FacingRight)
+        // 수정(8방향) — 좌우 반전 대신 바라보는 방향으로 회전시킨다.
+        //
+        // 반전으로는 위아래를 표현할 수 없다. 예전에는 위를 보고 베어도 궤적만 옆으로 뻗었다.
+        // 궤적 그림이 오른쪽을 향해 그려져 있으므로, 방향의 각도만큼 돌리면 여덟 방향 모두 맞는다.
+        Vector2 facing = context.FacingDirection;
+        if (facing.sqrMagnitude > 0.0001f)
         {
-            Vector3 scale = effect.transform.localScale;
-            scale.x = -Mathf.Abs(scale.x);
-            effect.transform.localScale = scale;
+            float angle = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
+            effect.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
         // 파티클이 스스로 끝나든 안 끝나든 일정 시간 뒤에는 반드시 지운다.

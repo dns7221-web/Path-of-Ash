@@ -52,7 +52,8 @@ public class GroundSlamSkillData : SkillData
         yield return new WaitForSeconds(nearDelay);
         if (context.Owner == null) yield break;
 
-        float facing = context.FacingRight ? 1f : -1f;
+        // 수정(8방향) — 2단 판정이 나가는 곳을 바라보는 방향으로 잡는다.
+        Vector2 facing = context.FacingDirection;
         Vector2 feet = context.Owner.position;
 
         // 1단 — 발밑. 판정 중심을 몸 높이 절반쯤으로 올린다. 피벗이 발밑이라
@@ -65,7 +66,7 @@ public class GroundSlamSkillData : SkillData
         if (context.Owner == null) yield break;
 
         // 2단 — 앞으로. 이펙트는 발밑 높이에 놓고(바닥에서 솟는 그림이라) 판정만 띄운다.
-        Vector2 farGround = feet + new Vector2(farDistance * facing, 0f);
+        Vector2 farGround = feet + facing * farDistance;
         Vector2 farCenter = farGround + new Vector2(0f, farSize.y * 0.5f);
         Spawn(farEffect, farGround, facing);
         ApplyDamage(farCenter, farSize, farDamage + context.BonusDamage);
@@ -86,18 +87,19 @@ public class GroundSlamSkillData : SkillData
         }
     }
 
-    /// <summary>이펙트를 지정 지점에 만든다. 왼쪽을 볼 때는 뒤집는다.</summary>
-    private static void Spawn(GameObject prefab, Vector2 position, float facing)
+    /// <summary>이펙트를 지정 지점에 만들고 바라보는 방향으로 돌린다.</summary>
+    private static void Spawn(GameObject prefab, Vector2 position, Vector2 facing)
     {
         if (prefab == null) return;
 
         var effect = Object.Instantiate(prefab, position, Quaternion.identity);
 
-        if (facing < 0f)
+        // 수정(8방향) — 좌우 반전에서 회전으로 바꿨다. 반전으로는 위아래를 표현할 수 없어서
+        // 위를 보고 내려찍어도 균열이 옆으로 뻗었다.
+        if (facing.sqrMagnitude > 0.0001f)
         {
-            Vector3 scale = effect.transform.localScale;
-            scale.x = -Mathf.Abs(scale.x);
-            effect.transform.localScale = scale;
+            float angle = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
+            effect.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 }

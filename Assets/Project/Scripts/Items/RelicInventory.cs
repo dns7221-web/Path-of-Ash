@@ -128,23 +128,13 @@ public class RelicInventory : MonoBehaviour
 
         Gained?.Invoke(relic);
 
-        // 클리어 유물은 줍는 순간 판이 끝난다. 알림이 나간 뒤에 끝내야
-        // "무엇을 주웠는지"가 화면에 한 번은 뜬다.
-        if (relic.Role == RelicData.RelicRole.RunEnd) EndRun();
-    }
-
-    /// <summary>클리어 유물을 주웠다. 판을 끝내고 결과 화면으로 넘긴다.</summary>
-    private void EndRun()
-    {
-        var run = FindFirstObjectByType<RunManager>(FindObjectsInactive.Include);
-        if (run == null)
-        {
-            Debug.LogWarning("[유물] RunManager를 못 찾아 판을 끝내지 못했다.", this);
-            return;
-        }
-
-        Debug.Log("[유물] 클리어 유물을 획득했다. 판을 종료한다.", this);
-        run.EndRun(true);
+        // 수정(보스 방 클리어 흐름): 클리어 유물을 줍는 순간 판을 끝내던 처리를 뺐다.
+        //
+        // 즉시 끝내면 무엇을 받았는지 볼 시간이 없이 결과 화면으로 넘어간다. 이제 이 유물은
+        // 보스 방 문을 여는 열쇠 역할만 하고, 판은 그 문으로 <b>제 발로 나갈 때</b> 끝난다.
+        // 문을 여는 쪽은 BossRelicReward, 판을 끝내는 쪽은 RoomSequenceController다.
+        //
+        // 여기서 역할을 보지 않아도 되는 이유: 위의 Gained 알림에 이미 어떤 유물인지 실려 나간다.
     }
 
     /// <summary>

@@ -1,0 +1,1883 @@
+fileFormatVersion: 2
+guid: 1de8be727d6f6184386aa7eebaa3fae2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3364970013053673021
+    second: player_dash_hit_0
+  - first:
+      213: 8743848749606703723
+    second: player_dash_hit_1
+  - first:
+      213: 8231226147562118862
+    second: player_dash_hit_2
+  - first:
+      213: -7558510799000504464
+    second: player_dash_hit_3
+  - first:
+      213: -4029310391619441532
+    second: player_dash_hit_4
+  - first:
+      213: 8681280116695339248
+    second: player_dash_hit_5
+  - first:
+      213: 491156398292942880
+    second: player_dash_hit_6
+  - first:
+      213: 6546454241180107518
+    second: player_dash_hit_7
+  - first:
+      213: 3426492993383172253
+    second: player_dash_hit_8
+  - first:
+      213: -8195872258926086314
+    second: player_dash_hit_9
+  - first:
+      213: -6488593429385041275
+    second: player_dash_hit_10
+  - first:
+      213: 5658558661952458287
+    second: player_dash_hit_11
+  - first:
+      213: -2176577680095939112
+    second: player_dash_hit_12
+  - first:
+      213: -7214689178637788569
+    second: player_dash_hit_13
+  - first:
+      213: 2473324836920838327
+    second: player_dash_hit_14
+  - first:
+      213: 5218984381106854426
+    second: player_dash_hit_15
+  - first:
+      213: -8362460160969493931
+    second: player_dash_hit_16
+  - first:
+      213: 6576058597470288246
+    second: player_dash_hit_17
+  - first:
+      213: -8857367265987227325
+    second: player_dash_hit_18
+  - first:
+      213: 4603919533590886317
+    second: player_dash_hit_19
+  - first:
+      213: 6607744191094408763
+    second: player_dash_hit_20
+  - first:
+      213: 9108994305849138708
+    second: player_dash_hit_21
+  - first:
+      213: 5758083420655265245
+    second: player_dash_hit_22
+  - first:
+      213: 9106872028069764788
+    second: player_dash_hit_23
+  - first:
+      213: -840572364501343677
+    second: player_dash_hit_24
+  - first:
+      213: -4468458756074520209
+    second: player_dash_hit_25
+  - first:
+      213: -3432333350241504948
+    second: player_dash_hit_26
+  - first:
+      213: -7206820484471435799
+    second: player_dash_hit_27
+  - first:
+      213: 7088513993036981892
+    second: player_dash_hit_28
+  - first:
+      213: 5862072749846088478
+    second: player_dash_hit_29
+  - first:
+      213: 9018516520190623063
+    second: player_dash_hit_30
+  - first:
+      213: 979016483671496078
+    second: player_dash_hit_31
+  - first:
+      213: 6162478169903275472
+    second: player_dash_hit_32
+  - first:
+      213: 3354823493745312274
+    second: player_dash_hit_33
+  - first:
+      213: -1393574167137767869
+    second: player_dash_hit_34
+  - first:
+      213: 848822281993957222
+    second: player_dash_hit_35
+  - first:
+      213: 4317490690534245921
+    second: player_dash_hit_36
+  - first:
+      213: 7557354800494742699
+    second: player_dash_hit_37
+  - first:
+      213: -7919626450476814400
+    second: player_dash_hit_38
+  - first:
+      213: -3131214136819390661
+    second: player_dash_hit_39
+  - first:
+      213: 2098358282219166494
+    second: player_dash_hit_40
+  - first:
+      213: 1137244858103972022
+    second: player_dash_hit_41
+  - first:
+      213: 4034231169502305731
+    second: player_dash_hit_42
+  - first:
+      213: 8384223689958673698
+    second: player_dash_hit_43
+  - first:
+      213: 6609905231871621496
+    second: player_dash_hit_44
+  - first:
+      213: -8715849496472188397
+    second: player_dash_hit_45
+  - first:
+      213: 6509380483650759762
+    second: player_dash_hit_46
+  - first:
+      213: -4391372654608971046
+    second: player_dash_hit_47
+  - first:
+      213: -6146747610120934410
+    second: player_dash_hit_48
+  - first:
+      213: -3077537458832774579
+    second: player_dash_hit_49
+  - first:
+      213: 558855478541640371
+    second: player_dash_hit_50
+  - first:
+      213: -8714851528450284746
+    second: player_dash_hit_51
+  - first:
+      213: 2381755857434570773
+    second: player_dash_hit_52
+  - first:
+      213: 5695976862661814240
+    second: player_dash_hit_53
+  - first:
+      213: -8289005346485073944
+    second: player_dash_hit_54
+  - first:
+      213: 134478837744607963
+    second: player_dash_hit_55
+  - first:
+      213: 4909126878274003531
+    second: player_dash_hit_56
+  - first:
+      213: 8620892855311614941
+    second: player_dash_hit_57
+  - first:
+      213: 7019851156932856310
+    second: player_dash_hit_58
+  - first:
+      213: 6902634022619167056
+    second: player_dash_hit_59
+  - first:
+      213: -1304208692798439561
+    second: player_dash_hit_60
+  - first:
+      213: -2481346399352237704
+    second: player_dash_hit_61
+  - first:
+      213: 2106204090059973918
+    second: player_dash_hit_62
+  - first:
+      213: -3654866525315272945
+    second: player_dash_hit_63
+  - first:
+      213: -2641162261541786360
+    second: player_dash_hit_64
+  - first:
+      213: -3293574618709661109
+    second: player_dash_hit_65
+  - first:
+      213: -7689479037448350600
+    second: player_dash_hit_66
+  - first:
+      213: 3790814290669460440
+    second: player_dash_hit_67
+  - first:
+      213: 7753009369075683440
+    second: player_dash_hit_68
+  - first:
+      213: -7923111802163248172
+    second: player_dash_hit_69
+  - first:
+      213: -3587245546413587371
+    second: player_dash_hit_70
+  - first:
+      213: -6702564018171198619
+    second: player_dash_hit_71
+  - first:
+      213: -5226273734735690105
+    second: player_dash_hit_72
+  - first:
+      213: 3214894845911588132
+    second: player_dash_hit_73
+  - first:
+      213: 408681315496270602
+    second: player_dash_hit_74
+  - first:
+      213: 4780503082249592940
+    second: player_dash_hit_75
+  - first:
+      213: 9046587626505634402
+    second: player_dash_hit_76
+  - first:
+      213: 8829130485867326946
+    second: player_dash_hit_77
+  - first:
+      213: -2280489483905733064
+    second: player_dash_hit_78
+  - first:
+      213: -3656608231726554598
+    second: player_dash_hit_79
+  - first:
+      213: -3153363893851223839
+    second: player_dash_hit_80
+  - first:
+      213: -3210086503203976837
+    second: player_dash_hit_81
+  - first:
+      213: -6240087969854652383
+    second: player_dash_hit_82
+  - first:
+      213: 1597049398087350539
+    second: player_dash_hit_83
+  - first:
+      213: -1122034302661657423
+    second: player_dash_hit_84
+  - first:
+      213: -5199250953174373705
+    second: player_dash_hit_85
+  - first:
+      213: -1143679148216107623
+    second: player_dash_hit_86
+  - first:
+      213: -5806733277699176340
+    second: player_dash_hit_87
+  - first:
+      213: 38479499430070618
+    second: player_dash_hit_88
+  - first:
+      213: -5205394219102853524
+    second: player_dash_hit_89
+  - first:
+      213: 1091842995479603868
+    second: player_dash_hit_90
+  - first:
+      213: 9129308692131752449
+    second: player_dash_hit_91
+  - first:
+      213: -1846538785528180924
+    second: player_dash_hit_92
+  - first:
+      213: 606617413324975754
+    second: player_dash_hit_93
+  - first:
+      213: 493997785536748332
+    second: player_dash_hit_94
+  - first:
+      213: -8687518150636160527
+    second: player_dash_hit_95
+  - first:
+      213: 2155000439006501101
+    second: player_dash_hit_96
+  - first:
+      213: -952719620911187866
+    second: player_dash_hit_97
+  - first:
+      213: -6721919594104151619
+    second: player_dash_hit_98
+  - first:
+      213: 4383308601993380486
+    second: player_dash_hit_99
+  - first:
+      213: 2452262601708495129
+    second: player_dash_hit_100
+  - first:
+      213: 6702204214518229041
+    second: player_dash_hit_101
+  - first:
+      213: 4806284579485640072
+    second: player_dash_hit_102
+  - first:
+      213: -4539335296391610908
+    second: player_dash_hit_103
+  - first:
+      213: -2181985232239935416
+    second: player_dash_hit_104
+  - first:
+      213: 755697292634257452
+    second: player_dash_hit_105
+  - first:
+      213: -1702844199750996141
+    second: player_dash_hit_106
+  - first:
+      213: 8419335808122108241
+    second: player_dash_hit_107
+  - first:
+      213: -7955030771043296430
+    second: player_dash_hit_108
+  - first:
+      213: -1734778348200644151
+    second: player_dash_hit_109
+  - first:
+      213: -4545734187277702152
+    second: player_dash_hit_110
+  - first:
+      213: -3400827432156784137
+    second: player_dash_hit_111
+  - first:
+      213: 4314739232207874396
+    second: player_dash_hit_112
+  - first:
+      213: 2235668577153435308
+    second: player_dash_hit_113
+  - first:
+      213: 9141274887198535492
+    second: player_dash_hit_114
+  - first:
+      213: -112958085534695345
+    second: player_dash_hit_115
+  - first:
+      213: 9104246993080497584
+    second: player_dash_hit_116
+  - first:
+      213: -5951298526531319307
+    second: player_dash_hit_117
+  - first:
+      213: -3706681571245314834
+    second: player_dash_hit_118
+  - first:
+      213: -9189114735421050711
+    second: player_dash_hit_119
+  - first:
+      213: 1403615129084089450
+    second: player_dash_hit_120
+  - first:
+      213: -6057698991907211788
+    second: player_dash_hit_121
+  - first:
+      213: -5647718813549079594
+    second: player_dash_hit_122
+  - first:
+      213: -8667263300874305009
+    second: player_dash_hit_S_00
+  - first:
+      213: -9027592919902702369
+    second: player_dash_hit_S_01
+  - first:
+      213: 7884929368160234602
+    second: player_dash_hit_S_02
+  - first:
+      213: 8954913821911411050
+    second: player_dash_hit_S_03
+  - first:
+      213: -1233555442565605861
+    second: player_dash_hit_S_04
+  - first:
+      213: 4251421196095637523
+    second: player_dash_hit_S_05
+  - first:
+      213: -879812205838696327
+    second: player_dash_hit_SW_00
+  - first:
+      213: -1705035587734649522
+    second: player_dash_hit_SW_01
+  - first:
+      213: -474337985689154624
+    second: player_dash_hit_SW_02
+  - first:
+      213: -3618530523706667493
+    second: player_dash_hit_SW_03
+  - first:
+      213: 3525769363061826686
+    second: player_dash_hit_SW_04
+  - first:
+      213: 8508772576278760249
+    second: player_dash_hit_SW_05
+  - first:
+      213: 9161421839395657927
+    second: player_dash_hit_W_00
+  - first:
+      213: 899054366184147689
+    second: player_dash_hit_W_01
+  - first:
+      213: -1639144729372502003
+    second: player_dash_hit_W_02
+  - first:
+      213: 3250808450767562743
+    second: player_dash_hit_W_03
+  - first:
+      213: -1913005439012550214
+    second: player_dash_hit_W_04
+  - first:
+      213: -7651881618116762527
+    second: player_dash_hit_W_05
+  - first:
+      213: -7879075324458243019
+    second: player_dash_hit_NW_00
+  - first:
+      213: -8276228281648192355
+    second: player_dash_hit_NW_01
+  - first:
+      213: 6996289784581982814
+    second: player_dash_hit_NW_02
+  - first:
+      213: 2352731659000888501
+    second: player_dash_hit_NW_03
+  - first:
+      213: 5300758248184320646
+    second: player_dash_hit_NW_04
+  - first:
+      213: 5283135237971882388
+    second: player_dash_hit_NW_05
+  - first:
+      213: 1288037263126134881
+    second: player_dash_hit_N_00
+  - first:
+      213: 970938283169780089
+    second: player_dash_hit_N_01
+  - first:
+      213: 2090256583361872842
+    second: player_dash_hit_N_02
+  - first:
+      213: -6497317577854771031
+    second: player_dash_hit_N_03
+  - first:
+      213: 6285787455776771946
+    second: player_dash_hit_N_04
+  - first:
+      213: 7729012310780413586
+    second: player_dash_hit_N_05
+  - first:
+      213: -4611940251703817517
+    second: player_dash_hit_NE_00
+  - first:
+      213: 7603408956438039602
+    second: player_dash_hit_NE_01
+  - first:
+      213: -3263369264679942109
+    second: player_dash_hit_NE_02
+  - first:
+      213: -2480450534927115701
+    second: player_dash_hit_NE_03
+  - first:
+      213: 3597476572781934451
+    second: player_dash_hit_NE_04
+  - first:
+      213: -3846243376240145179
+    second: player_dash_hit_NE_05
+  - first:
+      213: 4837952121547887366
+    second: player_dash_hit_E_00
+  - first:
+      213: -6775181096875989813
+    second: player_dash_hit_E_01
+  - first:
+      213: -4051652720187011440
+    second: player_dash_hit_E_02
+  - first:
+      213: 5887333667404677712
+    second: player_dash_hit_E_03
+  - first:
+      213: 292375468505273601
+    second: player_dash_hit_E_04
+  - first:
+      213: 8162623226731528497
+    second: player_dash_hit_E_05
+  - first:
+      213: -6612992214318635896
+    second: player_dash_hit_SE_00
+  - first:
+      213: -7559289455824695741
+    second: player_dash_hit_SE_01
+  - first:
+      213: 7254883578859672279
+    second: player_dash_hit_SE_02
+  - first:
+      213: -589439772122618124
+    second: player_dash_hit_SE_03
+  - first:
+      213: -3566547179050187339
+    second: player_dash_hit_SE_04
+  - first:
+      213: 4751307529838579168
+    second: player_dash_hit_SE_05
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_dash_hit_S_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f028b90f2f1b7b780800000000000000
+      internalID: -8667263300874305009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_S_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd43e50d11c87b280800000000000000
+      internalID: -9027592919902702369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_S_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c6c34fb75ec6d60800000000000000
+      internalID: 7884929368160234602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_S_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69e3450dae364c70800000000000000
+      internalID: 8954913821911411050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_S_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1690235cd781eee0800000000000000
+      internalID: -1233555442565605861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_S_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318c8d78d05100b30800000000000000
+      internalID: 4251421196095637523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9708ee1d5774ac3f0800000000000000
+      internalID: -879812205838696327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e454da7aa2f7658e0800000000000000
+      internalID: -1705035587734649522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb068b7d10da69f0800000000000000
+      internalID: -474337985689154624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1e4e8519a568cdc0800000000000000
+      internalID: -3618530523706667493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e74614d2e8c0ee030800000000000000
+      internalID: 3525769363061826686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b4ea3a39b351670800000000000000
+      internalID: 8508772576278760249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_W_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c81fa6af98e32f70800000000000000
+      internalID: 9161421839395657927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_W_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea8b22ce251a7c00800000000000000
+      internalID: 899054366184147689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_W_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d085c4e9d869049e0800000000000000
+      internalID: -1639144729372502003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_W_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f7a6dcff013d1d20800000000000000
+      internalID: 3250808450767562743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_W_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab9444250b3a375e0800000000000000
+      internalID: -1913005439012550214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_W_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1642fc0b53e0fc590800000000000000
+      internalID: -7651881618116762527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53cee1fccb6e7a290800000000000000
+      internalID: -7879075324458243019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9461582a3ee42d80800000000000000
+      internalID: -8276228281648192355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5a04bbbd70d71160800000000000000
+      internalID: 6996289784581982814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bc30928af496a020800000000000000
+      internalID: 2352731659000888501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6829f37ca83109940800000000000000
+      internalID: 5300758248184320646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 491b9a7f187715940800000000000000
+      internalID: 5283135237971882388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_N_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1608916011700e110800000000000000
+      internalID: 1288037263126134881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_N_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 971992b6937797d00800000000000000
+      internalID: 970938283169780089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_N_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac3c4b4b945120d10800000000000000
+      internalID: 2090256583361872842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_N_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0a0135614e4d5a0800000000000000
+      internalID: -6497317577854771031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_N_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f4e23336a9b3750800000000000000
+      internalID: 6285787455776771946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_N_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29600b02fb7f24b60800000000000000
+      internalID: 7729012310780413586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3da4ed3b6c81fffb0800000000000000
+      internalID: -4611940251703817517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23c438a492cb48960800000000000000
+      internalID: 7603408956438039602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32803df91fe26b2d0800000000000000
+      internalID: -3263369264679942109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4addb6616ba39dd0800000000000000
+      internalID: -2480450534927115701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377f478f1edcce130800000000000000
+      internalID: 3597476572781934451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_NE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ecc18f07066f9ac0800000000000000
+      internalID: -3846243376240145179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_E_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 603953d62dbd32340800000000000000
+      internalID: 4837952121547887366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_E_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc4e3c750b8b9f1a0800000000000000
+      internalID: -6775181096875989813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_E_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e020c4153a5c7c0800000000000000
+      internalID: -4051652720187011440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_E_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0528adf27c204b150800000000000000
+      internalID: 5887333667404677712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_E_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1059b4580f9be0400800000000000000
+      internalID: 292375468505273601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_E_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1318fa8c396774170800000000000000
+      internalID: 8162623226731528497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8842d134e9ee934a0800000000000000
+      internalID: -6612992214318635896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34e863f6a42081790800000000000000
+      internalID: -7559289455824695741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2debc4d268ea460800000000000000
+      internalID: 7254883578859672279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f6e42676a3e1d7f0800000000000000
+      internalID: -589439772122618124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5ca0eac34118ec0800000000000000
+      internalID: -3566547179050187339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dash_hit_SE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0edcaae560900f140800000000000000
+      internalID: 4751307529838579168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_dash_hit_0: -3364970013053673021
+      player_dash_hit_1: 8743848749606703723
+      player_dash_hit_10: -6488593429385041275
+      player_dash_hit_100: 2452262601708495129
+      player_dash_hit_101: 6702204214518229041
+      player_dash_hit_102: 4806284579485640072
+      player_dash_hit_103: -4539335296391610908
+      player_dash_hit_104: -2181985232239935416
+      player_dash_hit_105: 755697292634257452
+      player_dash_hit_106: -1702844199750996141
+      player_dash_hit_107: 8419335808122108241
+      player_dash_hit_108: -7955030771043296430
+      player_dash_hit_109: -1734778348200644151
+      player_dash_hit_11: 5658558661952458287
+      player_dash_hit_110: -4545734187277702152
+      player_dash_hit_111: -3400827432156784137
+      player_dash_hit_112: 4314739232207874396
+      player_dash_hit_113: 2235668577153435308
+      player_dash_hit_114: 9141274887198535492
+      player_dash_hit_115: -112958085534695345
+      player_dash_hit_116: 9104246993080497584
+      player_dash_hit_117: -5951298526531319307
+      player_dash_hit_118: -3706681571245314834
+      player_dash_hit_119: -9189114735421050711
+      player_dash_hit_12: -2176577680095939112
+      player_dash_hit_120: 1403615129084089450
+      player_dash_hit_121: -6057698991907211788
+      player_dash_hit_122: -5647718813549079594
+      player_dash_hit_13: -7214689178637788569
+      player_dash_hit_14: 2473324836920838327
+      player_dash_hit_15: 5218984381106854426
+      player_dash_hit_16: -8362460160969493931
+      player_dash_hit_17: 6576058597470288246
+      player_dash_hit_18: -8857367265987227325
+      player_dash_hit_19: 4603919533590886317
+      player_dash_hit_2: 8231226147562118862
+      player_dash_hit_20: 6607744191094408763
+      player_dash_hit_21: 9108994305849138708
+      player_dash_hit_22: 5758083420655265245
+      player_dash_hit_23: 9106872028069764788
+      player_dash_hit_24: -840572364501343677
+      player_dash_hit_25: -4468458756074520209
+      player_dash_hit_26: -3432333350241504948
+      player_dash_hit_27: -7206820484471435799
+      player_dash_hit_28: 7088513993036981892
+      player_dash_hit_29: 5862072749846088478
+      player_dash_hit_3: -7558510799000504464
+      player_dash_hit_30: 9018516520190623063
+      player_dash_hit_31: 979016483671496078
+      player_dash_hit_32: 6162478169903275472
+      player_dash_hit_33: 3354823493745312274
+      player_dash_hit_34: -1393574167137767869
+      player_dash_hit_35: 848822281993957222
+      player_dash_hit_36: 4317490690534245921
+      player_dash_hit_37: 7557354800494742699
+      player_dash_hit_38: -7919626450476814400
+      player_dash_hit_39: -3131214136819390661
+      player_dash_hit_4: -4029310391619441532
+      player_dash_hit_40: 2098358282219166494
+      player_dash_hit_41: 1137244858103972022
+      player_dash_hit_42: 4034231169502305731
+      player_dash_hit_43: 8384223689958673698
+      player_dash_hit_44: 6609905231871621496
+      player_dash_hit_45: -8715849496472188397
+      player_dash_hit_46: 6509380483650759762
+      player_dash_hit_47: -4391372654608971046
+      player_dash_hit_48: -6146747610120934410
+      player_dash_hit_49: -3077537458832774579
+      player_dash_hit_5: 8681280116695339248
+      player_dash_hit_50: 558855478541640371
+      player_dash_hit_51: -8714851528450284746
+      player_dash_hit_52: 2381755857434570773
+      player_dash_hit_53: 5695976862661814240
+      player_dash_hit_54: -8289005346485073944
+      player_dash_hit_55: 134478837744607963
+      player_dash_hit_56: 4909126878274003531
+      player_dash_hit_57: 8620892855311614941
+      player_dash_hit_58: 7019851156932856310
+      player_dash_hit_59: 6902634022619167056
+      player_dash_hit_6: 491156398292942880
+      player_dash_hit_60: -1304208692798439561
+      player_dash_hit_61: -2481346399352237704
+      player_dash_hit_62: 2106204090059973918
+      player_dash_hit_63: -3654866525315272945
+      player_dash_hit_64: -2641162261541786360
+      player_dash_hit_65: -3293574618709661109
+      player_dash_hit_66: -7689479037448350600
+      player_dash_hit_67: 3790814290669460440
+      player_dash_hit_68: 7753009369075683440
+      player_dash_hit_69: -7923111802163248172
+      player_dash_hit_7: 6546454241180107518
+      player_dash_hit_70: -3587245546413587371
+      player_dash_hit_71: -6702564018171198619
+      player_dash_hit_72: -5226273734735690105
+      player_dash_hit_73: 3214894845911588132
+      player_dash_hit_74: 408681315496270602
+      player_dash_hit_75: 4780503082249592940
+      player_dash_hit_76: 9046587626505634402
+      player_dash_hit_77: 8829130485867326946
+      player_dash_hit_78: -2280489483905733064
+      player_dash_hit_79: -3656608231726554598
+      player_dash_hit_8: 3426492993383172253
+      player_dash_hit_80: -3153363893851223839
+      player_dash_hit_81: -3210086503203976837
+      player_dash_hit_82: -6240087969854652383
+      player_dash_hit_83: 1597049398087350539
+      player_dash_hit_84: -1122034302661657423
+      player_dash_hit_85: -5199250953174373705
+      player_dash_hit_86: -1143679148216107623
+      player_dash_hit_87: -5806733277699176340
+      player_dash_hit_88: 38479499430070618
+      player_dash_hit_89: -5205394219102853524
+      player_dash_hit_9: -8195872258926086314
+      player_dash_hit_90: 1091842995479603868
+      player_dash_hit_91: 9129308692131752449
+      player_dash_hit_92: -1846538785528180924
+      player_dash_hit_93: 606617413324975754
+      player_dash_hit_94: 493997785536748332
+      player_dash_hit_95: -8687518150636160527
+      player_dash_hit_96: 2155000439006501101
+      player_dash_hit_97: -952719620911187866
+      player_dash_hit_98: -6721919594104151619
+      player_dash_hit_99: 4383308601993380486
+      player_dash_hit_E_00: 4837952121547887366
+      player_dash_hit_E_01: -6775181096875989813
+      player_dash_hit_E_02: -4051652720187011440
+      player_dash_hit_E_03: 5887333667404677712
+      player_dash_hit_E_04: 292375468505273601
+      player_dash_hit_E_05: 8162623226731528497
+      player_dash_hit_NE_00: -4611940251703817517
+      player_dash_hit_NE_01: 7603408956438039602
+      player_dash_hit_NE_02: -3263369264679942109
+      player_dash_hit_NE_03: -2480450534927115701
+      player_dash_hit_NE_04: 3597476572781934451
+      player_dash_hit_NE_05: -3846243376240145179
+      player_dash_hit_NW_00: -7879075324458243019
+      player_dash_hit_NW_01: -8276228281648192355
+      player_dash_hit_NW_02: 6996289784581982814
+      player_dash_hit_NW_03: 2352731659000888501
+      player_dash_hit_NW_04: 5300758248184320646
+      player_dash_hit_NW_05: 5283135237971882388
+      player_dash_hit_N_00: 1288037263126134881
+      player_dash_hit_N_01: 970938283169780089
+      player_dash_hit_N_02: 2090256583361872842
+      player_dash_hit_N_03: -6497317577854771031
+      player_dash_hit_N_04: 6285787455776771946
+      player_dash_hit_N_05: 7729012310780413586
+      player_dash_hit_SE_00: -6612992214318635896
+      player_dash_hit_SE_01: -7559289455824695741
+      player_dash_hit_SE_02: 7254883578859672279
+      player_dash_hit_SE_03: -589439772122618124
+      player_dash_hit_SE_04: -3566547179050187339
+      player_dash_hit_SE_05: 4751307529838579168
+      player_dash_hit_SW_00: -879812205838696327
+      player_dash_hit_SW_01: -1705035587734649522
+      player_dash_hit_SW_02: -474337985689154624
+      player_dash_hit_SW_03: -3618530523706667493
+      player_dash_hit_SW_04: 3525769363061826686
+      player_dash_hit_SW_05: 8508772576278760249
+      player_dash_hit_S_00: -8667263300874305009
+      player_dash_hit_S_01: -9027592919902702369
+      player_dash_hit_S_02: 7884929368160234602
+      player_dash_hit_S_03: 8954913821911411050
+      player_dash_hit_S_04: -1233555442565605861
+      player_dash_hit_S_05: 4251421196095637523
+      player_dash_hit_W_00: 9161421839395657927
+      player_dash_hit_W_01: 899054366184147689
+      player_dash_hit_W_02: -1639144729372502003
+      player_dash_hit_W_03: 3250808450767562743
+      player_dash_hit_W_04: -1913005439012550214
+      player_dash_hit_W_05: -7651881618116762527
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

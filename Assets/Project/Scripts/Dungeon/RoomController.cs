@@ -1,16 +1,27 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 추가 생성 — 한 방 안의 전투, 보상 상자, 문, 출구 순서를 관리한다.
 /// 각 시스템은 자기 역할만 수행하고 이 컴포넌트가 진행 순서를 연결한다.
+///
+/// 수정(보스 방 추가): 전투 참조의 타입이 EnemySpawner에서 <see cref="RoomEncounter"/>로 넓어졌다.
+/// 이 클래스는 "전투가 끝나면 상자, 상자를 열면 문"만 알면 되고 그 전투가 잡몹 떼인지
+/// 보스 한 마리인지는 알 필요가 없다.
 /// </summary>
 [DisallowMultipleComponent]
 public class RoomController : MonoBehaviour
 {
     [Header("방 구성")]
-    [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private RewardChest rewardChest;
+    // FormerlySerializedAs가 필요한 이유: 필드 이름을 바꾸면 유니티는 다른 필드로 보고
+    // 씬에 이미 꽂혀 있던 참조를 버린다. 옛 이름을 적어두면 그대로 이어받는다.
+    [FormerlySerializedAs("enemySpawner")]
+    [SerializeField] private RoomEncounter encounter;
+    // 수정(보스 방 보상 추가): 타입을 RewardChest → RoomReward로 넓혔다.
+    // 잡몹 방은 상자, 보스 방은 클리어 유물이지만 방은 "보상을 챙겼다"만 알면 된다.
+    [FormerlySerializedAs("rewardChest")]
+    [SerializeField] private RoomReward reward;
     [SerializeField] private RoomDoorState roomDoor;
     [SerializeField] private RoomExitTrigger exitTrigger;
     [SerializeField] private Transform playerEntryPoint;
@@ -33,21 +44,21 @@ public class RoomController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (enemySpawner != null) enemySpawner.EncounterCleared += OnEncounterCleared;
-        if (rewardChest != null) rewardChest.Opened += OnChestOpened;
+        if (encounter != null) encounter.EncounterCleared += OnEncounterCleared;
+        if (reward != null) reward.Claimed += OnRewardClaimed;
         if (exitTrigger != null) exitTrigger.Entered += OnExitEntered;
     }
 
     private void OnDisable()
     {
-        if (enemySpawner != null) enemySpawner.EncounterCleared -= OnEncounterCleared;
-        if (rewardChest != null) rewardChest.Opened -= OnChestOpened;
+        if (encounter != null) encounter.EncounterCleared -= OnEncounterCleared;
+        if (reward != null) reward.Claimed -= OnRewardClaimed;
         if (exitTrigger != null) exitTrigger.Entered -= OnExitEntered;
     }
 
     /// <summary>
     /// 추가 생성 — 방을 처음 입장할 상태로 되돌린다.
-    /// 닫힌 문과 숨은 상자로 시작하고 EnemySpawner의 Start가 전투를 시작한다.
+    /// 닫힌 문과 숨은 보상으로 시작하고 진행 관리자가 전투를 시작한다.
     /// </summary>
     public void PrepareForEntry()
     {
@@ -60,18 +71,18 @@ public class RoomController : MonoBehaviour
     /// </summary>
     public void BeginEncounter()
     {
-        enemySpawner?.BeginEncounter();
+        encounter?.BeginEncounter();
     }
 
-    /// <summary>적을 모두 잡으면 문 대신 보상 상자를 먼저 보여준다.</summary>
+    /// <summary>적을 모두 잡으면 문 대신 보상을 먼저 내놓는다. 잡몹 방은 상자, 보스 방은 클리어 유물이다.</summary>
     private void OnEncounterCleared()
     {
-        Debug.Log($"[방 진행] {name} 전투 종료 — 보상 상자 등장.", this);
-        rewardChest?.SetAvailable(true);
+        Debug.Log($"[방 진행] {name} 전투 종료 — 보상 등장.", this);
+        reward?.SetAvailable(true);
     }
 
-    /// <summary>상자를 연 뒤에만 열린 방 그림과 출구 판정을 함께 활성화한다.</summary>
-    private void OnChestOpened()
+    /// <summary>보상을 챙긴 뒤에만 열린 방 그림과 출구 판정을 함께 활성화한다.</summary>
+    private void OnRewardClaimed()
     {
         if (roomDoor == null)
         {
@@ -81,7 +92,7 @@ public class RoomController : MonoBehaviour
 
         roomDoor.SetState(RoomDoorState.DoorState.Open);
         exitTrigger?.SetPassageEnabled(true);
-        Debug.Log($"[방 진행] {name} 상자 개봉 — 문 개방.", this);
+        Debug.Log($"[방 진행] {name} 보상 획득 — 문 개방.", this);
     }
 
     /// <summary>방 순서 관리자에게 다음 방 이동을 요청한다.</summary>
@@ -93,7 +104,7 @@ public class RoomController : MonoBehaviour
     private void ResetRoomState()
     {
         roomDoor?.SetState(RoomDoorState.DoorState.Closed);
-        rewardChest?.SetAvailable(false);
+        reward?.SetAvailable(false);
         exitTrigger?.SetPassageEnabled(false);
     }
 }

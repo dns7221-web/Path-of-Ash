@@ -1,0 +1,1671 @@
+fileFormatVersion: 2
+guid: c3c1e7031e85a204d82f951c7d10f8b9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5039585999740885567
+    second: player_bow_0
+  - first:
+      213: -2981297463881958663
+    second: player_bow_1
+  - first:
+      213: -5492728129488165966
+    second: player_bow_2
+  - first:
+      213: -9085581748226152961
+    second: player_bow_3
+  - first:
+      213: 8089570402486842016
+    second: player_bow_4
+  - first:
+      213: 7736185999298407722
+    second: player_bow_5
+  - first:
+      213: -711489054400874346
+    second: player_bow_6
+  - first:
+      213: -8414026637345555685
+    second: player_bow_7
+  - first:
+      213: 7606720192301896682
+    second: player_bow_8
+  - first:
+      213: -1233309343116218714
+    second: player_bow_9
+  - first:
+      213: -1017023947277866665
+    second: player_bow_10
+  - first:
+      213: -6651252655367795177
+    second: player_bow_11
+  - first:
+      213: -1131978159576601396
+    second: player_bow_12
+  - first:
+      213: 2239105358605401465
+    second: player_bow_13
+  - first:
+      213: 1918686434622158525
+    second: player_bow_14
+  - first:
+      213: -8417246524781844335
+    second: player_bow_15
+  - first:
+      213: 555671282258424731
+    second: player_bow_16
+  - first:
+      213: 2491644333880030138
+    second: player_bow_17
+  - first:
+      213: -2063129176692864521
+    second: player_bow_18
+  - first:
+      213: -6416644066302793069
+    second: player_bow_19
+  - first:
+      213: 4093608612200657477
+    second: player_bow_20
+  - first:
+      213: -6761864932817016926
+    second: player_bow_21
+  - first:
+      213: -2033414475549726430
+    second: player_bow_22
+  - first:
+      213: -1592035686518793503
+    second: player_bow_23
+  - first:
+      213: 2715086860946712095
+    second: player_bow_24
+  - first:
+      213: -4391070407835739443
+    second: player_bow_25
+  - first:
+      213: -8720369241228926277
+    second: player_bow_26
+  - first:
+      213: 1680726201776554576
+    second: player_bow_27
+  - first:
+      213: -2887249721768595581
+    second: player_bow_28
+  - first:
+      213: -1058976186552490099
+    second: player_bow_29
+  - first:
+      213: -2874878637041125176
+    second: player_bow_30
+  - first:
+      213: 630168847351564286
+    second: player_bow_31
+  - first:
+      213: -3420483307990680344
+    second: player_bow_32
+  - first:
+      213: 5341518328921128241
+    second: player_bow_33
+  - first:
+      213: 2820646452739822480
+    second: player_bow_34
+  - first:
+      213: 8488166942434760221
+    second: player_bow_35
+  - first:
+      213: -1554446678454854690
+    second: player_bow_36
+  - first:
+      213: 2190184813687366879
+    second: player_bow_37
+  - first:
+      213: 1540686610519085808
+    second: player_bow_38
+  - first:
+      213: 8238235845308128100
+    second: player_bow_39
+  - first:
+      213: 5302344380754598300
+    second: player_bow_40
+  - first:
+      213: -9214831177200147183
+    second: player_bow_41
+  - first:
+      213: 4706155680260385423
+    second: player_bow_42
+  - first:
+      213: -6110777692924759020
+    second: player_bow_43
+  - first:
+      213: 667046413481340154
+    second: player_bow_44
+  - first:
+      213: 8964207595156983322
+    second: player_bow_45
+  - first:
+      213: -1847690020480214474
+    second: player_bow_46
+  - first:
+      213: -6302718893543006491
+    second: player_bow_47
+  - first:
+      213: -8984881804106882360
+    second: player_bow_48
+  - first:
+      213: 5447370203128532410
+    second: player_bow_49
+  - first:
+      213: 7608011834716897777
+    second: player_bow_50
+  - first:
+      213: -8173777195121394768
+    second: player_bow_51
+  - first:
+      213: 16365736150744317
+    second: player_bow_52
+  - first:
+      213: 2645477415386501816
+    second: player_bow_53
+  - first:
+      213: 90518278129759927
+    second: player_bow_54
+  - first:
+      213: -1875894710252186386
+    second: player_bow_55
+  - first:
+      213: -4593854045461505739
+    second: player_bow_56
+  - first:
+      213: -2650946076850660086
+    second: player_bow_57
+  - first:
+      213: 6914426305074394100
+    second: player_bow_58
+  - first:
+      213: 3345117736020180580
+    second: player_bow_59
+  - first:
+      213: -7461544729476664520
+    second: player_bow_60
+  - first:
+      213: 7606146640185444077
+    second: player_bow_61
+  - first:
+      213: -7400389424564427773
+    second: player_bow_62
+  - first:
+      213: -8482720677694661937
+    second: player_bow_63
+  - first:
+      213: 4774354069085986746
+    second: player_bow_64
+  - first:
+      213: 1823547772766741109
+    second: player_bow_65
+  - first:
+      213: 7115081093542700330
+    second: player_bow_66
+  - first:
+      213: 6835066109762233923
+    second: player_bow_67
+  - first:
+      213: -280265657217445197
+    second: player_bow_68
+  - first:
+      213: 2997542858136547347
+    second: player_bow_69
+  - first:
+      213: 6268661909684758740
+    second: player_bow_S_00
+  - first:
+      213: 4128958501250188342
+    second: player_bow_S_01
+  - first:
+      213: 530601533205931069
+    second: player_bow_S_02
+  - first:
+      213: -6050820049123386224
+    second: player_bow_S_03
+  - first:
+      213: -737594115013015164
+    second: player_bow_S_04
+  - first:
+      213: 6127548835945622204
+    second: player_bow_S_05
+  - first:
+      213: 8072717263771597802
+    second: player_bow_SW_00
+  - first:
+      213: -8778446489831846477
+    second: player_bow_SW_01
+  - first:
+      213: -7198278713542178409
+    second: player_bow_SW_02
+  - first:
+      213: -6404918546779545297
+    second: player_bow_SW_03
+  - first:
+      213: 362206287433856449
+    second: player_bow_SW_04
+  - first:
+      213: -1042076249333263275
+    second: player_bow_SW_05
+  - first:
+      213: 2824822546729597202
+    second: player_bow_W_00
+  - first:
+      213: 1428132438379343750
+    second: player_bow_W_01
+  - first:
+      213: 3978446758117918402
+    second: player_bow_W_02
+  - first:
+      213: 7123962915525155451
+    second: player_bow_W_03
+  - first:
+      213: 153342260190463685
+    second: player_bow_W_04
+  - first:
+      213: 6374100558268920458
+    second: player_bow_W_05
+  - first:
+      213: 1285879164743446474
+    second: player_bow_NW_00
+  - first:
+      213: -6147791364606079974
+    second: player_bow_NW_01
+  - first:
+      213: -7773080129346900720
+    second: player_bow_NW_02
+  - first:
+      213: 7018190571940512826
+    second: player_bow_NW_03
+  - first:
+      213: -2554588332075994982
+    second: player_bow_NW_04
+  - first:
+      213: 6069639519212584435
+    second: player_bow_NW_05
+  - first:
+      213: -8042136951949933399
+    second: player_bow_N_00
+  - first:
+      213: -750376249604421577
+    second: player_bow_N_01
+  - first:
+      213: 3239519314423556669
+    second: player_bow_N_02
+  - first:
+      213: -6673833322967727950
+    second: player_bow_N_03
+  - first:
+      213: 3135646961790248478
+    second: player_bow_N_04
+  - first:
+      213: -9010672042134906419
+    second: player_bow_N_05
+  - first:
+      213: 7842880470582595399
+    second: player_bow_NE_00
+  - first:
+      213: -3055026705170526971
+    second: player_bow_NE_01
+  - first:
+      213: 3192558440521986231
+    second: player_bow_NE_02
+  - first:
+      213: 6780798689798028445
+    second: player_bow_NE_03
+  - first:
+      213: 1421393891884572931
+    second: player_bow_NE_04
+  - first:
+      213: -7223224192372894301
+    second: player_bow_NE_05
+  - first:
+      213: -1875678074802336777
+    second: player_bow_E_00
+  - first:
+      213: 5899597683214273819
+    second: player_bow_E_01
+  - first:
+      213: 5312052570658163209
+    second: player_bow_E_02
+  - first:
+      213: -6962939934915223146
+    second: player_bow_E_03
+  - first:
+      213: -3533156491568610695
+    second: player_bow_E_04
+  - first:
+      213: -2921143289214571943
+    second: player_bow_E_05
+  - first:
+      213: 8245989750666725263
+    second: player_bow_SE_00
+  - first:
+      213: 8150422164002923025
+    second: player_bow_SE_01
+  - first:
+      213: -7898710319918841443
+    second: player_bow_SE_02
+  - first:
+      213: -7121088005359209394
+    second: player_bow_SE_03
+  - first:
+      213: 1879711851367229656
+    second: player_bow_SE_04
+  - first:
+      213: -1606802766713814194
+    second: player_bow_SE_05
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_bow_S_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d828c74bc2cef650800000000000000
+      internalID: 6268661909684758740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_S_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 634c85771e10d4930800000000000000
+      internalID: 4128958501250188342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_S_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d34640088431d5700800000000000000
+      internalID: 530601533205931069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_S_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09c5034593b270ca0800000000000000
+      internalID: -6050820049123386224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_S_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4890b327f0a83c5f0800000000000000
+      internalID: -737594115013015164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_S_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbaa56e733d690550800000000000000
+      internalID: 6127548835945622204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebf44f849d080070800000000000000
+      internalID: 8072717263771597802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bd4ccd7d61bc2680800000000000000
+      internalID: -8778446489831846477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 799001de5a39a1c90800000000000000
+      internalID: -7198278713542178409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f21e4e334882d17a0800000000000000
+      internalID: -6404918546779545297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c578e903b0d60500800000000000000
+      internalID: 362206287433856449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5549e912c2dc981f0800000000000000
+      internalID: -1042076249333263275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_W_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 219f453c329c33720800000000000000
+      internalID: 2824822546729597202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_W_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f20d9d2eeb1d310800000000000000
+      internalID: 1428132438379343750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_W_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c64c6f6f38463730800000000000000
+      internalID: 3978446758117918402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_W_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7adeecf6866dd260800000000000000
+      internalID: 7123962915525155451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_W_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c645b329f7c02200800000000000000
+      internalID: 153342260190463685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_W_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82fc32bfaa557850800000000000000
+      internalID: 6374100558268920458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acfeb96994c58d110800000000000000
+      internalID: 1285879164743446474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1cc0778358aeaaa0800000000000000
+      internalID: -6147791364606079974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d61af4ec8702490800000000000000
+      internalID: -7773080129346900720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a348286242f956160800000000000000
+      internalID: 7018190571940512826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a90b04f52774c8cd0800000000000000
+      internalID: -2554588332075994982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fdb6510cf0bb3450800000000000000
+      internalID: 6069639519212584435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_N_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a44bff1d07946090800000000000000
+      internalID: -8042136951949933399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_N_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7384072d6c02695f0800000000000000
+      internalID: -750376249604421577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_N_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3aab3b17a515fc20800000000000000
+      internalID: 3239519314423556669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_N_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b00856c3f7c163a0800000000000000
+      internalID: -6673833322967727950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_N_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e166a826c4e048b20800000000000000
+      internalID: 3135646961790248478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_N_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc9510da489a3f280800000000000000
+      internalID: -9010672042134906419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f8ce01c3287dc60800000000000000
+      internalID: 7842880470582595399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50d8afad56d5a95d0800000000000000
+      internalID: -3055026705170526971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b0fcfb9cfe3e4c20800000000000000
+      internalID: 3192558440521986231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c78de6b7c3a1e50800000000000000
+      internalID: 6780798689798028445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 301a0bbb63ec9b310800000000000000
+      internalID: 1421393891884572931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_NE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a51b980ed3f1cb90800000000000000
+      internalID: -7223224192372894301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_E_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb0b6e8ab048f5e0800000000000000
+      internalID: -1875678074802336777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_E_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1d44b1e5d49fd150800000000000000
+      internalID: 5899597683214273819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_E_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90ac7462ba338b940800000000000000
+      internalID: 5312052570658163209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_E_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6912ffa350bae5f90800000000000000
+      internalID: -6962939934915223146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_E_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9720030f3e4b7fec0800000000000000
+      internalID: -3533156491568610695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_E_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95a6954c7a30677d0800000000000000
+      internalID: -2921143289214571943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8780063df3af6270800000000000000
+      internalID: 8245989750666725263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1126dde76cd1c1170800000000000000
+      internalID: 8150422164002923025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d91868d20d4226290800000000000000
+      internalID: -7898710319918841443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e44f4423030dc2d90800000000000000
+      internalID: -7121088005359209394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d8e5dc38f3161a10800000000000000
+      internalID: 1879711851367229656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_bow_SE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4388e9956d73b9e0800000000000000
+      internalID: -1606802766713814194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_bow_0: 5039585999740885567
+      player_bow_1: -2981297463881958663
+      player_bow_10: -1017023947277866665
+      player_bow_11: -6651252655367795177
+      player_bow_12: -1131978159576601396
+      player_bow_13: 2239105358605401465
+      player_bow_14: 1918686434622158525
+      player_bow_15: -8417246524781844335
+      player_bow_16: 555671282258424731
+      player_bow_17: 2491644333880030138
+      player_bow_18: -2063129176692864521
+      player_bow_19: -6416644066302793069
+      player_bow_2: -5492728129488165966
+      player_bow_20: 4093608612200657477
+      player_bow_21: -6761864932817016926
+      player_bow_22: -2033414475549726430
+      player_bow_23: -1592035686518793503
+      player_bow_24: 2715086860946712095
+      player_bow_25: -4391070407835739443
+      player_bow_26: -8720369241228926277
+      player_bow_27: 1680726201776554576
+      player_bow_28: -2887249721768595581
+      player_bow_29: -1058976186552490099
+      player_bow_3: -9085581748226152961
+      player_bow_30: -2874878637041125176
+      player_bow_31: 630168847351564286
+      player_bow_32: -3420483307990680344
+      player_bow_33: 5341518328921128241
+      player_bow_34: 2820646452739822480
+      player_bow_35: 8488166942434760221
+      player_bow_36: -1554446678454854690
+      player_bow_37: 2190184813687366879
+      player_bow_38: 1540686610519085808
+      player_bow_39: 8238235845308128100
+      player_bow_4: 8089570402486842016
+      player_bow_40: 5302344380754598300
+      player_bow_41: -9214831177200147183
+      player_bow_42: 4706155680260385423
+      player_bow_43: -6110777692924759020
+      player_bow_44: 667046413481340154
+      player_bow_45: 8964207595156983322
+      player_bow_46: -1847690020480214474
+      player_bow_47: -6302718893543006491
+      player_bow_48: -8984881804106882360
+      player_bow_49: 5447370203128532410
+      player_bow_5: 7736185999298407722
+      player_bow_50: 7608011834716897777
+      player_bow_51: -8173777195121394768
+      player_bow_52: 16365736150744317
+      player_bow_53: 2645477415386501816
+      player_bow_54: 90518278129759927
+      player_bow_55: -1875894710252186386
+      player_bow_56: -4593854045461505739
+      player_bow_57: -2650946076850660086
+      player_bow_58: 6914426305074394100
+      player_bow_59: 3345117736020180580
+      player_bow_6: -711489054400874346
+      player_bow_60: -7461544729476664520
+      player_bow_61: 7606146640185444077
+      player_bow_62: -7400389424564427773
+      player_bow_63: -8482720677694661937
+      player_bow_64: 4774354069085986746
+      player_bow_65: 1823547772766741109
+      player_bow_66: 7115081093542700330
+      player_bow_67: 6835066109762233923
+      player_bow_68: -280265657217445197
+      player_bow_69: 2997542858136547347
+      player_bow_7: -8414026637345555685
+      player_bow_8: 7606720192301896682
+      player_bow_9: -1233309343116218714
+      player_bow_E_00: -1875678074802336777
+      player_bow_E_01: 5899597683214273819
+      player_bow_E_02: 5312052570658163209
+      player_bow_E_03: -6962939934915223146
+      player_bow_E_04: -3533156491568610695
+      player_bow_E_05: -2921143289214571943
+      player_bow_NE_00: 7842880470582595399
+      player_bow_NE_01: -3055026705170526971
+      player_bow_NE_02: 3192558440521986231
+      player_bow_NE_03: 6780798689798028445
+      player_bow_NE_04: 1421393891884572931
+      player_bow_NE_05: -7223224192372894301
+      player_bow_NW_00: 1285879164743446474
+      player_bow_NW_01: -6147791364606079974
+      player_bow_NW_02: -7773080129346900720
+      player_bow_NW_03: 7018190571940512826
+      player_bow_NW_04: -2554588332075994982
+      player_bow_NW_05: 6069639519212584435
+      player_bow_N_00: -8042136951949933399
+      player_bow_N_01: -750376249604421577
+      player_bow_N_02: 3239519314423556669
+      player_bow_N_03: -6673833322967727950
+      player_bow_N_04: 3135646961790248478
+      player_bow_N_05: -9010672042134906419
+      player_bow_SE_00: 8245989750666725263
+      player_bow_SE_01: 8150422164002923025
+      player_bow_SE_02: -7898710319918841443
+      player_bow_SE_03: -7121088005359209394
+      player_bow_SE_04: 1879711851367229656
+      player_bow_SE_05: -1606802766713814194
+      player_bow_SW_00: 8072717263771597802
+      player_bow_SW_01: -8778446489831846477
+      player_bow_SW_02: -7198278713542178409
+      player_bow_SW_03: -6404918546779545297
+      player_bow_SW_04: 362206287433856449
+      player_bow_SW_05: -1042076249333263275
+      player_bow_S_00: 6268661909684758740
+      player_bow_S_01: 4128958501250188342
+      player_bow_S_02: 530601533205931069
+      player_bow_S_03: -6050820049123386224
+      player_bow_S_04: -737594115013015164
+      player_bow_S_05: 6127548835945622204
+      player_bow_W_00: 2824822546729597202
+      player_bow_W_01: 1428132438379343750
+      player_bow_W_02: 3978446758117918402
+      player_bow_W_03: 7123962915525155451
+      player_bow_W_04: 153342260190463685
+      player_bow_W_05: 6374100558268920458
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

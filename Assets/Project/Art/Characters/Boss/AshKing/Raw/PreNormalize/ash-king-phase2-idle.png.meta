@@ -1,0 +1,1053 @@
+fileFormatVersion: 2
+guid: fc2922be2f6261742943743071e4e798
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6743252135125273777
+    second: ash-king-phase2-idle_0
+  - first:
+      213: -242355601353258570
+    second: ash-king-phase2-idle_1
+  - first:
+      213: 6619142818901196535
+    second: ash-king-phase2-idle_2
+  - first:
+      213: 7360921112897924868
+    second: ash-king-phase2-idle_3
+  - first:
+      213: -5605581738256024662
+    second: ash-king-phase2-idle_4
+  - first:
+      213: -7732085731602012209
+    second: ash-king-phase2-idle_5
+  - first:
+      213: 1250278671005190138
+    second: ash-king-phase2-idle_6
+  - first:
+      213: -7334330290665130077
+    second: ash-king-phase2-idle_7
+  - first:
+      213: -5459787412883347546
+    second: ash-king-phase2-idle_8
+  - first:
+      213: -4099206518011191091
+    second: ash-king-phase2-idle_9
+  - first:
+      213: 8576175973199525474
+    second: ash-king-phase2-idle_10
+  - first:
+      213: 4818710384392144001
+    second: ash-king-phase2-idle_11
+  - first:
+      213: -4647080004615427470
+    second: ash-king-phase2-idle_12
+  - first:
+      213: 843838572844362478
+    second: ash-king-phase2-idle_13
+  - first:
+      213: 2787533175538672225
+    second: ash-king-phase2-idle_14
+  - first:
+      213: -430520666318136502
+    second: ash-king-phase2-idle_15
+  - first:
+      213: -5411230750834102341
+    second: ash-king-phase2-idle_16
+  - first:
+      213: -4957901569157781873
+    second: ash-king-phase2-idle_17
+  - first:
+      213: 5905763352932078262
+    second: ash-king-phase2-idle_18
+  - first:
+      213: 6334601346062654701
+    second: ash-king-phase2-idle_19
+  - first:
+      213: 3024945228929352513
+    second: ash-king-phase2-idle_20
+  - first:
+      213: 2724616043839629578
+    second: ash-king-phase2-idle_21
+  - first:
+      213: 8479445945226496055
+    second: ash-king-phase2-idle_22
+  - first:
+      213: 8349834167046567578
+    second: ash-king-phase2-idle_23
+  - first:
+      213: 884915872190365172
+    second: ash-king-phase2-idle_24
+  - first:
+      213: -6917584493110839647
+    second: ash-king-phase2-idle_25
+  - first:
+      213: 8745122153176801697
+    second: ash-king-phase2-idle_26
+  - first:
+      213: 1031483153367301552
+    second: ash-king-phase2-idle_27
+  - first:
+      213: 6131869480108009867
+    second: ash-king-phase2-idle_28
+  - first:
+      213: 2230170421889321588
+    second: ash-king-phase2-idle_29
+  - first:
+      213: -4155126590841386858
+    second: ash-king-phase2-idle_30
+  - first:
+      213: 2632593438867282983
+    second: ash-king-phase2-idle_31
+  - first:
+      213: 5194976811343996235
+    second: ash-king-phase2-idle_32
+  - first:
+      213: -4072155446783354222
+    second: ash-king-phase2-idle_33
+  - first:
+      213: 4760440475579559985
+    second: ash-king-phase2-idle_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 178
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f43b6fe09e72b62a0800000000000000
+      internalID: -6743252135125273777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_1
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 191
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b943085ddaf2acf0800000000000000
+      internalID: -242355601353258570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_2
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 193
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fefe26f25bebdb50800000000000000
+      internalID: 6619142818901196535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 189
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f24f990ce372660800000000000000
+      internalID: 7360921112897924868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_4
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 176
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aab35d3db19f432b0800000000000000
+      internalID: -5605581738256024662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_5
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 188
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc7eef25efc12b490800000000000000
+      internalID: -7732085731602012209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_6
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 193
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af70387b3d1e95110800000000000000
+      internalID: 1250278671005190138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_7
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 192
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a77487a579373a90800000000000000
+      internalID: -7334330290665130077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_8
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 178
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a760f17640fa34b0800000000000000
+      internalID: -5459787412883347546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_9
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 174
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc02af0f361bc17c0800000000000000
+      internalID: -4099206518011191091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_10
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 188
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2663ccdeb92b40770800000000000000
+      internalID: 8576175973199525474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_11
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 193
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1840e21609f7fd240800000000000000
+      internalID: 4818710384392144001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_12
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 191
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27aa31a6b51428fb0800000000000000
+      internalID: -4647080004615427470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_13
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 176
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eea292e06bae5bb00800000000000000
+      internalID: 843838572844362478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_14
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 188
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 162699777ae4fa620800000000000000
+      internalID: 2787533175538672225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_15
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 193
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4b94a72cbb760af0800000000000000
+      internalID: -430520666318136502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_16
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 193
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbfecd25d4277e4b0800000000000000
+      internalID: -5411230750834102341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_17
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 178
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86affa7acef13bb0800000000000000
+      internalID: -4957901569157781873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_18
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 175
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2590bba7c75f150800000000000000
+      internalID: 5905763352932078262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_19
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 189
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec96c1bc5609e750800000000000000
+      internalID: 6334601346062654701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_20
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 193
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143c85ba8a3caf920800000000000000
+      internalID: 3024945228929352513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_21
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 193
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0924623bd7cfc520800000000000000
+      internalID: 2724616043839629578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_22
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 178
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7380a51492b0da570800000000000000
+      internalID: 8479445945226496055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_23
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 175
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a96fa348fe190e370800000000000000
+      internalID: 8349834167046567578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_24
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 190
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fdf20a1c4ad74c00800000000000000
+      internalID: 884915872190365172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_25
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 193
+        width: 10
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a6b060fd8dcfff90800000000000000
+      internalID: -6917584493110839647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_26
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 191
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a1a081c34aec5970800000000000000
+      internalID: 8745122153176801697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_27
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 177
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bdf1448670905e00800000000000000
+      internalID: 1031483153367301552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_28
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 16
+        width: 131
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b89a5eaddc6c81550800000000000000
+      internalID: 6131869480108009867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_29
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 16
+        width: 133
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47acb49ce2823fe10800000000000000
+      internalID: 2230170421889321588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_30
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 17
+        width: 134
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6988e1461660656c0800000000000000
+      internalID: -4155126590841386858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_31
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 177
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c55b9d8c9d88420800000000000000
+      internalID: 2632593438867282983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_32
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 16
+        width: 133
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b45ec80c2e3481840800000000000000
+      internalID: 5194976811343996235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_33
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 16
+        width: 133
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29a5e44423ccc77c0800000000000000
+      internalID: -4072155446783354222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase2-idle_34
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 16
+        width: 136
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 130bf41046b701240800000000000000
+      internalID: 4760440475579559985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-phase2-idle_0: -6743252135125273777
+      ash-king-phase2-idle_1: -242355601353258570
+      ash-king-phase2-idle_10: 8576175973199525474
+      ash-king-phase2-idle_11: 4818710384392144001
+      ash-king-phase2-idle_12: -4647080004615427470
+      ash-king-phase2-idle_13: 843838572844362478
+      ash-king-phase2-idle_14: 2787533175538672225
+      ash-king-phase2-idle_15: -430520666318136502
+      ash-king-phase2-idle_16: -5411230750834102341
+      ash-king-phase2-idle_17: -4957901569157781873
+      ash-king-phase2-idle_18: 5905763352932078262
+      ash-king-phase2-idle_19: 6334601346062654701
+      ash-king-phase2-idle_2: 6619142818901196535
+      ash-king-phase2-idle_20: 3024945228929352513
+      ash-king-phase2-idle_21: 2724616043839629578
+      ash-king-phase2-idle_22: 8479445945226496055
+      ash-king-phase2-idle_23: 8349834167046567578
+      ash-king-phase2-idle_24: 884915872190365172
+      ash-king-phase2-idle_25: -6917584493110839647
+      ash-king-phase2-idle_26: 8745122153176801697
+      ash-king-phase2-idle_27: 1031483153367301552
+      ash-king-phase2-idle_28: 6131869480108009867
+      ash-king-phase2-idle_29: 2230170421889321588
+      ash-king-phase2-idle_3: 7360921112897924868
+      ash-king-phase2-idle_30: -4155126590841386858
+      ash-king-phase2-idle_31: 2632593438867282983
+      ash-king-phase2-idle_32: 5194976811343996235
+      ash-king-phase2-idle_33: -4072155446783354222
+      ash-king-phase2-idle_34: 4760440475579559985
+      ash-king-phase2-idle_4: -5605581738256024662
+      ash-king-phase2-idle_5: -7732085731602012209
+      ash-king-phase2-idle_6: 1250278671005190138
+      ash-king-phase2-idle_7: -7334330290665130077
+      ash-king-phase2-idle_8: -5459787412883347546
+      ash-king-phase2-idle_9: -4099206518011191091
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

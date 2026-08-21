@@ -217,7 +217,7 @@ public class SkillController : MonoBehaviour
         {
             Runner = this,
             Owner = transform,
-            FacingRight = playerController.FacingRight,
+            FacingDirection = playerController.FacingDirection,
             MeleeHitbox = meleeHitbox,
             BonusDamage = BonusDamage,
         };

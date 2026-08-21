@@ -1,0 +1,1887 @@
+fileFormatVersion: 2
+guid: 1a28809892af61d428c2b9d686477129
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7577168174706008411
+    second: player_staff_0
+  - first:
+      213: 1048642881823194251
+    second: player_staff_1
+  - first:
+      213: -6665882862357852787
+    second: player_staff_2
+  - first:
+      213: 3334654647495920955
+    second: player_staff_3
+  - first:
+      213: 5561707231371463098
+    second: player_staff_4
+  - first:
+      213: 8782987768137563326
+    second: player_staff_5
+  - first:
+      213: -6639763293635954833
+    second: player_staff_6
+  - first:
+      213: -7860223870817608730
+    second: player_staff_7
+  - first:
+      213: 3634926243608282157
+    second: player_staff_8
+  - first:
+      213: -8356904989528082179
+    second: player_staff_9
+  - first:
+      213: -5649075915405666436
+    second: player_staff_10
+  - first:
+      213: 8409898414236625737
+    second: player_staff_11
+  - first:
+      213: 5842656603561526211
+    second: player_staff_12
+  - first:
+      213: 3489563351299913853
+    second: player_staff_13
+  - first:
+      213: -1295857943842186401
+    second: player_staff_14
+  - first:
+      213: -8432506022756329655
+    second: player_staff_15
+  - first:
+      213: 786825626279766541
+    second: player_staff_16
+  - first:
+      213: -5667925677737819913
+    second: player_staff_17
+  - first:
+      213: 6516598391828557133
+    second: player_staff_18
+  - first:
+      213: -3440870822712779336
+    second: player_staff_19
+  - first:
+      213: 197953352152485144
+    second: player_staff_20
+  - first:
+      213: 26367765780173375
+    second: player_staff_21
+  - first:
+      213: -6625242674420715819
+    second: player_staff_22
+  - first:
+      213: -2664997808372024765
+    second: player_staff_23
+  - first:
+      213: -3395498092482500582
+    second: player_staff_24
+  - first:
+      213: -4256440705747096382
+    second: player_staff_25
+  - first:
+      213: -7152437341335805649
+    second: player_staff_26
+  - first:
+      213: 2649430298019160550
+    second: player_staff_27
+  - first:
+      213: -8217372132707087667
+    second: player_staff_28
+  - first:
+      213: -3482866887773446841
+    second: player_staff_29
+  - first:
+      213: 3821588129498332866
+    second: player_staff_30
+  - first:
+      213: 3505598235507252595
+    second: player_staff_31
+  - first:
+      213: 2179263298101994435
+    second: player_staff_32
+  - first:
+      213: 1705271503923396401
+    second: player_staff_33
+  - first:
+      213: -6823560100197775163
+    second: player_staff_34
+  - first:
+      213: 5616510622363129563
+    second: player_staff_35
+  - first:
+      213: -7179213633906236349
+    second: player_staff_36
+  - first:
+      213: -3185775860301113577
+    second: player_staff_37
+  - first:
+      213: 1871959252110837179
+    second: player_staff_38
+  - first:
+      213: 3622657737997308990
+    second: player_staff_39
+  - first:
+      213: -6264099555997437181
+    second: player_staff_40
+  - first:
+      213: 6606968614857783887
+    second: player_staff_41
+  - first:
+      213: -6035144131446039121
+    second: player_staff_42
+  - first:
+      213: 7208331939072550398
+    second: player_staff_43
+  - first:
+      213: -5059330348910371894
+    second: player_staff_44
+  - first:
+      213: 8731469418552721631
+    second: player_staff_45
+  - first:
+      213: -4617577221122366033
+    second: player_staff_46
+  - first:
+      213: 7876127686114176915
+    second: player_staff_47
+  - first:
+      213: 8215761339507647758
+    second: player_staff_48
+  - first:
+      213: -5555695040555839651
+    second: player_staff_49
+  - first:
+      213: 2791211219534119720
+    second: player_staff_50
+  - first:
+      213: -8840640367550054189
+    second: player_staff_51
+  - first:
+      213: 781110224014333725
+    second: player_staff_52
+  - first:
+      213: -1651860381031198150
+    second: player_staff_53
+  - first:
+      213: 556491998468543835
+    second: player_staff_54
+  - first:
+      213: -6935001896340407196
+    second: player_staff_55
+  - first:
+      213: -1753858939095176355
+    second: player_staff_56
+  - first:
+      213: 8573207068841240813
+    second: player_staff_57
+  - first:
+      213: -7581981775045464436
+    second: player_staff_58
+  - first:
+      213: -931388097220331343
+    second: player_staff_59
+  - first:
+      213: 2919530099429250626
+    second: player_staff_60
+  - first:
+      213: 4268458455205857853
+    second: player_staff_61
+  - first:
+      213: -1840839298375694232
+    second: player_staff_62
+  - first:
+      213: 4290050318412894714
+    second: player_staff_63
+  - first:
+      213: -6018388018618867615
+    second: player_staff_64
+  - first:
+      213: 7730870743806732146
+    second: player_staff_65
+  - first:
+      213: 2893150217726201141
+    second: player_staff_66
+  - first:
+      213: -1862587572871045174
+    second: player_staff_67
+  - first:
+      213: 1239314737794483096
+    second: player_staff_68
+  - first:
+      213: 3945357579357106986
+    second: player_staff_69
+  - first:
+      213: -8802407461023846755
+    second: player_staff_70
+  - first:
+      213: 2088473849470541735
+    second: player_staff_71
+  - first:
+      213: -3922699286396750846
+    second: player_staff_72
+  - first:
+      213: 7140985378520871033
+    second: player_staff_73
+  - first:
+      213: 6952678717483015641
+    second: player_staff_74
+  - first:
+      213: 1987231728833290442
+    second: player_staff_75
+  - first:
+      213: -424566424073022125
+    second: player_staff_76
+  - first:
+      213: -1880236061530976068
+    second: player_staff_77
+  - first:
+      213: -1100406338226796979
+    second: player_staff_78
+  - first:
+      213: 8821692000656165948
+    second: player_staff_79
+  - first:
+      213: -478632314516932978
+    second: player_staff_80
+  - first:
+      213: 3269133013079798100
+    second: player_staff_81
+  - first:
+      213: 8102402012561064665
+    second: player_staff_82
+  - first:
+      213: -2200732954435901091
+    second: player_staff_83
+  - first:
+      213: 4082129416501277611
+    second: player_staff_84
+  - first:
+      213: -3294813198082129301
+    second: player_staff_85
+  - first:
+      213: -6511954177257947248
+    second: player_staff_86
+  - first:
+      213: -7049069351631787454
+    second: player_staff_87
+  - first:
+      213: 7357767295558634608
+    second: player_staff_88
+  - first:
+      213: 5859798908360995112
+    second: player_staff_89
+  - first:
+      213: -3625861545998613000
+    second: player_staff_90
+  - first:
+      213: -4380543488072511196
+    second: player_staff_91
+  - first:
+      213: -720423636174748284
+    second: player_staff_92
+  - first:
+      213: -1221001339447979199
+    second: player_staff_93
+  - first:
+      213: 2844619245349428050
+    second: player_staff_94
+  - first:
+      213: -6673021357122769026
+    second: player_staff_95
+  - first:
+      213: 8722027176909960761
+    second: player_staff_96
+  - first:
+      213: 6789535477500164761
+    second: player_staff_97
+  - first:
+      213: 3198781593828244236
+    second: player_staff_98
+  - first:
+      213: -8031816145470627242
+    second: player_staff_99
+  - first:
+      213: 1627326612975754025
+    second: player_staff_100
+  - first:
+      213: 14777551058046113
+    second: player_staff_101
+  - first:
+      213: -5461869150363824848
+    second: player_staff_102
+  - first:
+      213: 6214335433247420378
+    second: player_staff_103
+  - first:
+      213: -5549317220797762445
+    second: player_staff_104
+  - first:
+      213: -6139496178937939423
+    second: player_staff_105
+  - first:
+      213: 3906855101495589824
+    second: player_staff_106
+  - first:
+      213: -4818121936351390743
+    second: player_staff_107
+  - first:
+      213: 8941327938860783801
+    second: player_staff_108
+  - first:
+      213: -8701315426289948779
+    second: player_staff_109
+  - first:
+      213: 8410473929612446766
+    second: player_staff_110
+  - first:
+      213: -7591158406949996920
+    second: player_staff_111
+  - first:
+      213: -6223024396185835821
+    second: player_staff_112
+  - first:
+      213: -1711619430893502064
+    second: player_staff_113
+  - first:
+      213: 9145062659619216680
+    second: player_staff_114
+  - first:
+      213: -4737465642790745393
+    second: player_staff_115
+  - first:
+      213: -7698040078593419616
+    second: player_staff_116
+  - first:
+      213: -8515995411446565382
+    second: player_staff_117
+  - first:
+      213: -34689673558945479
+    second: player_staff_118
+  - first:
+      213: -5698050510029938658
+    second: player_staff_119
+  - first:
+      213: 3278165583134380795
+    second: player_staff_120
+  - first:
+      213: 1000156529524625492
+    second: player_staff_121
+  - first:
+      213: -2940641554052960980
+    second: player_staff_122
+  - first:
+      213: 3650389593526432826
+    second: player_staff_123
+  - first:
+      213: -8833783610615307810
+    second: player_staff_S_00
+  - first:
+      213: 6418210433533103028
+    second: player_staff_S_01
+  - first:
+      213: -5365753521243355211
+    second: player_staff_S_02
+  - first:
+      213: -8355718048879395653
+    second: player_staff_S_03
+  - first:
+      213: -5759088676209582701
+    second: player_staff_S_04
+  - first:
+      213: 8746936177365018332
+    second: player_staff_S_05
+  - first:
+      213: -2379907428053042283
+    second: player_staff_SW_00
+  - first:
+      213: -3932306401757231162
+    second: player_staff_SW_01
+  - first:
+      213: -2453522646873340024
+    second: player_staff_SW_02
+  - first:
+      213: 4772637322400562703
+    second: player_staff_SW_03
+  - first:
+      213: -6093242054510577973
+    second: player_staff_SW_04
+  - first:
+      213: -2214342859910959929
+    second: player_staff_SW_05
+  - first:
+      213: -2064050373468236829
+    second: player_staff_W_00
+  - first:
+      213: 1393106820655015494
+    second: player_staff_W_01
+  - first:
+      213: 4972521557303285343
+    second: player_staff_W_02
+  - first:
+      213: 4919905486267249809
+    second: player_staff_W_03
+  - first:
+      213: -2128578285613567283
+    second: player_staff_W_04
+  - first:
+      213: -5245175177500177393
+    second: player_staff_W_05
+  - first:
+      213: -4450579225931231867
+    second: player_staff_NW_00
+  - first:
+      213: 3280347169617117789
+    second: player_staff_NW_01
+  - first:
+      213: -5858824069834727477
+    second: player_staff_NW_02
+  - first:
+      213: -2535950572450801238
+    second: player_staff_NW_03
+  - first:
+      213: 6215363475821622996
+    second: player_staff_NW_04
+  - first:
+      213: 4103673789935394718
+    second: player_staff_NW_05
+  - first:
+      213: 2962812798885060603
+    second: player_staff_N_00
+  - first:
+      213: -7088466408964186811
+    second: player_staff_N_01
+  - first:
+      213: 6832933761414597616
+    second: player_staff_N_02
+  - first:
+      213: 3827077762526548011
+    second: player_staff_N_03
+  - first:
+      213: -6354109588685486771
+    second: player_staff_N_04
+  - first:
+      213: -3199846201144263625
+    second: player_staff_N_05
+  - first:
+      213: 199445425884361645
+    second: player_staff_NE_00
+  - first:
+      213: 8272361274974497858
+    second: player_staff_NE_01
+  - first:
+      213: -5816104897871343516
+    second: player_staff_NE_02
+  - first:
+      213: -4037655012209231102
+    second: player_staff_NE_03
+  - first:
+      213: -3986924149204284802
+    second: player_staff_NE_04
+  - first:
+      213: -7318832332560585717
+    second: player_staff_NE_05
+  - first:
+      213: 4952206391035890387
+    second: player_staff_E_00
+  - first:
+      213: 1874469953583332863
+    second: player_staff_E_01
+  - first:
+      213: -3476564414263672312
+    second: player_staff_E_02
+  - first:
+      213: 1041265597090349982
+    second: player_staff_E_03
+  - first:
+      213: -7035958429687212405
+    second: player_staff_E_04
+  - first:
+      213: -8007566813572378248
+    second: player_staff_E_05
+  - first:
+      213: 2378633676448253550
+    second: player_staff_SE_00
+  - first:
+      213: 1428070730749037260
+    second: player_staff_SE_01
+  - first:
+      213: -5259157412641952535
+    second: player_staff_SE_02
+  - first:
+      213: -8343002763834057939
+    second: player_staff_SE_03
+  - first:
+      213: -6377678092539600081
+    second: player_staff_SE_04
+  - first:
+      213: -6089111182774768886
+    second: player_staff_SE_05
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_staff_S_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed16b9a0c98186580800000000000000
+      internalID: -8833783610615307810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_S_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bb42785260121950800000000000000
+      internalID: 6418210433533103028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_S_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b70df5f9930985b0800000000000000
+      internalID: -5365753521243355211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_S_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc393d74b68a0c80800000000000000
+      internalID: -8355718048879395653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_S_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39d9d88ac5b9310b0800000000000000
+      internalID: -5759088676209582701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_S_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd6eadc2c1c536970800000000000000
+      internalID: 8746936177365018332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59bb590bdced8fed0800000000000000
+      internalID: -2379907428053042283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7044f6924ad69c0800000000000000
+      internalID: -3932306401757231162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8870db8e62653fdd0800000000000000
+      internalID: -2453522646873340024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0ef473bb50db3240800000000000000
+      internalID: 4772637322400562703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc6fc6282a4707ba0800000000000000
+      internalID: -6093242054510577973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cca518a6e21541e0800000000000000
+      internalID: -2214342859910959929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_W_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e3d9e20f150b53e0800000000000000
+      internalID: -2064050373468236829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_W_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 646e05bb54f455310800000000000000
+      internalID: 1393106820655015494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_W_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f56d805c202f10540800000000000000
+      internalID: 4972521557303285343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_W_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 194747519f3074440800000000000000
+      internalID: 4919905486267249809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_W_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc2b461b355c572e0800000000000000
+      internalID: -2128578285613567283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_W_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0cc76857f46537b0800000000000000
+      internalID: -5245175177500177393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58dc2a136cd5c32c0800000000000000
+      internalID: -4450579225931231867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d528cf8ee52268d20800000000000000
+      internalID: 3280347169617117789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf1ef3cc8641bea0800000000000000
+      internalID: -5858824069834727477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa91f11f36e7eccd0800000000000000
+      internalID: -2535950572450801238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d6f84e9628614650800000000000000
+      internalID: 6215363475821622996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9f1e2bd19d23f830800000000000000
+      internalID: 4103673789935394718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_N_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bff568dfa860e1920800000000000000
+      internalID: 2962812798885060603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_N_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54d966b7b55b0ad90800000000000000
+      internalID: -7088466408964186811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_N_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fb04e6bd0573de50800000000000000
+      internalID: 6832933761414597616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_N_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b201133c2f28c1530800000000000000
+      internalID: 3827077762526548011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_N_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d458f7e9efaa1d7a0800000000000000
+      internalID: -6354109588685486771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_N_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73cb9e465dcd793d0800000000000000
+      internalID: -3199846201144263625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da3f9e1ee8294c200800000000000000
+      internalID: 199445425884361645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24c6d8030c45dc270800000000000000
+      internalID: 8272361274974497858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46018f1196b094fa0800000000000000
+      internalID: -5816104897871343516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20b71b7a82e57f7c0800000000000000
+      internalID: -4037655012209231102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a80442c999ba8c0800000000000000
+      internalID: -3986924149204284802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_NE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c251735c84e6a90800000000000000
+      internalID: -7318832332560585717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_E_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3da0d188975c9b440800000000000000
+      internalID: 4952206391035890387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_E_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd3a7dcd74730a10800000000000000
+      internalID: 1874469953583332863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_E_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802cc09b513c0cfc0800000000000000
+      internalID: -3476564414263672312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_E_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e93c76f2b81537e00800000000000000
+      internalID: 1041265597090349982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_E_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b86141816114b5e90800000000000000
+      internalID: -7035958429687212405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_E_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 871dfc1b8686fd090800000000000000
+      internalID: -8007566813572378248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66ca77e9ba920120800000000000000
+      internalID: 2378633676448253550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccacd6c63c681d310800000000000000
+      internalID: 1428070730749037260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ec2d998238b307b0800000000000000
+      internalID: -5259157412641952535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b919d7033b73c80800000000000000
+      internalID: -8343002763834057939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f23e262b09fed77a0800000000000000
+      internalID: -6377678092539600081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_staff_SE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0be9d804a12f7ba0800000000000000
+      internalID: -6089111182774768886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_staff_0: -7577168174706008411
+      player_staff_1: 1048642881823194251
+      player_staff_10: -5649075915405666436
+      player_staff_100: 1627326612975754025
+      player_staff_101: 14777551058046113
+      player_staff_102: -5461869150363824848
+      player_staff_103: 6214335433247420378
+      player_staff_104: -5549317220797762445
+      player_staff_105: -6139496178937939423
+      player_staff_106: 3906855101495589824
+      player_staff_107: -4818121936351390743
+      player_staff_108: 8941327938860783801
+      player_staff_109: -8701315426289948779
+      player_staff_11: 8409898414236625737
+      player_staff_110: 8410473929612446766
+      player_staff_111: -7591158406949996920
+      player_staff_112: -6223024396185835821
+      player_staff_113: -1711619430893502064
+      player_staff_114: 9145062659619216680
+      player_staff_115: -4737465642790745393
+      player_staff_116: -7698040078593419616
+      player_staff_117: -8515995411446565382
+      player_staff_118: -34689673558945479
+      player_staff_119: -5698050510029938658
+      player_staff_12: 5842656603561526211
+      player_staff_120: 3278165583134380795
+      player_staff_121: 1000156529524625492
+      player_staff_122: -2940641554052960980
+      player_staff_123: 3650389593526432826
+      player_staff_13: 3489563351299913853
+      player_staff_14: -1295857943842186401
+      player_staff_15: -8432506022756329655
+      player_staff_16: 786825626279766541
+      player_staff_17: -5667925677737819913
+      player_staff_18: 6516598391828557133
+      player_staff_19: -3440870822712779336
+      player_staff_2: -6665882862357852787
+      player_staff_20: 197953352152485144
+      player_staff_21: 26367765780173375
+      player_staff_22: -6625242674420715819
+      player_staff_23: -2664997808372024765
+      player_staff_24: -3395498092482500582
+      player_staff_25: -4256440705747096382
+      player_staff_26: -7152437341335805649
+      player_staff_27: 2649430298019160550
+      player_staff_28: -8217372132707087667
+      player_staff_29: -3482866887773446841
+      player_staff_3: 3334654647495920955
+      player_staff_30: 3821588129498332866
+      player_staff_31: 3505598235507252595
+      player_staff_32: 2179263298101994435
+      player_staff_33: 1705271503923396401
+      player_staff_34: -6823560100197775163
+      player_staff_35: 5616510622363129563
+      player_staff_36: -7179213633906236349
+      player_staff_37: -3185775860301113577
+      player_staff_38: 1871959252110837179
+      player_staff_39: 3622657737997308990
+      player_staff_4: 5561707231371463098
+      player_staff_40: -6264099555997437181
+      player_staff_41: 6606968614857783887
+      player_staff_42: -6035144131446039121
+      player_staff_43: 7208331939072550398
+      player_staff_44: -5059330348910371894
+      player_staff_45: 8731469418552721631
+      player_staff_46: -4617577221122366033
+      player_staff_47: 7876127686114176915
+      player_staff_48: 8215761339507647758
+      player_staff_49: -5555695040555839651
+      player_staff_5: 8782987768137563326
+      player_staff_50: 2791211219534119720
+      player_staff_51: -8840640367550054189
+      player_staff_52: 781110224014333725
+      player_staff_53: -1651860381031198150
+      player_staff_54: 556491998468543835
+      player_staff_55: -6935001896340407196
+      player_staff_56: -1753858939095176355
+      player_staff_57: 8573207068841240813
+      player_staff_58: -7581981775045464436
+      player_staff_59: -931388097220331343
+      player_staff_6: -6639763293635954833
+      player_staff_60: 2919530099429250626
+      player_staff_61: 4268458455205857853
+      player_staff_62: -1840839298375694232
+      player_staff_63: 4290050318412894714
+      player_staff_64: -6018388018618867615
+      player_staff_65: 7730870743806732146
+      player_staff_66: 2893150217726201141
+      player_staff_67: -1862587572871045174
+      player_staff_68: 1239314737794483096
+      player_staff_69: 3945357579357106986
+      player_staff_7: -7860223870817608730
+      player_staff_70: -8802407461023846755
+      player_staff_71: 2088473849470541735
+      player_staff_72: -3922699286396750846
+      player_staff_73: 7140985378520871033
+      player_staff_74: 6952678717483015641
+      player_staff_75: 1987231728833290442
+      player_staff_76: -424566424073022125
+      player_staff_77: -1880236061530976068
+      player_staff_78: -1100406338226796979
+      player_staff_79: 8821692000656165948
+      player_staff_8: 3634926243608282157
+      player_staff_80: -478632314516932978
+      player_staff_81: 3269133013079798100
+      player_staff_82: 8102402012561064665
+      player_staff_83: -2200732954435901091
+      player_staff_84: 4082129416501277611
+      player_staff_85: -3294813198082129301
+      player_staff_86: -6511954177257947248
+      player_staff_87: -7049069351631787454
+      player_staff_88: 7357767295558634608
+      player_staff_89: 5859798908360995112
+      player_staff_9: -8356904989528082179
+      player_staff_90: -3625861545998613000
+      player_staff_91: -4380543488072511196
+      player_staff_92: -720423636174748284
+      player_staff_93: -1221001339447979199
+      player_staff_94: 2844619245349428050
+      player_staff_95: -6673021357122769026
+      player_staff_96: 8722027176909960761
+      player_staff_97: 6789535477500164761
+      player_staff_98: 3198781593828244236
+      player_staff_99: -8031816145470627242
+      player_staff_E_00: 4952206391035890387
+      player_staff_E_01: 1874469953583332863
+      player_staff_E_02: -3476564414263672312
+      player_staff_E_03: 1041265597090349982
+      player_staff_E_04: -7035958429687212405
+      player_staff_E_05: -8007566813572378248
+      player_staff_NE_00: 199445425884361645
+      player_staff_NE_01: 8272361274974497858
+      player_staff_NE_02: -5816104897871343516
+      player_staff_NE_03: -4037655012209231102
+      player_staff_NE_04: -3986924149204284802
+      player_staff_NE_05: -7318832332560585717
+      player_staff_NW_00: -4450579225931231867
+      player_staff_NW_01: 3280347169617117789
+      player_staff_NW_02: -5858824069834727477
+      player_staff_NW_03: -2535950572450801238
+      player_staff_NW_04: 6215363475821622996
+      player_staff_NW_05: 4103673789935394718
+      player_staff_N_00: 2962812798885060603
+      player_staff_N_01: -7088466408964186811
+      player_staff_N_02: 6832933761414597616
+      player_staff_N_03: 3827077762526548011
+      player_staff_N_04: -6354109588685486771
+      player_staff_N_05: -3199846201144263625
+      player_staff_SE_00: 2378633676448253550
+      player_staff_SE_01: 1428070730749037260
+      player_staff_SE_02: -5259157412641952535
+      player_staff_SE_03: -8343002763834057939
+      player_staff_SE_04: -6377678092539600081
+      player_staff_SE_05: -6089111182774768886
+      player_staff_SW_00: -2379907428053042283
+      player_staff_SW_01: -3932306401757231162
+      player_staff_SW_02: -2453522646873340024
+      player_staff_SW_03: 4772637322400562703
+      player_staff_SW_04: -6093242054510577973
+      player_staff_SW_05: -2214342859910959929
+      player_staff_S_00: -8833783610615307810
+      player_staff_S_01: 6418210433533103028
+      player_staff_S_02: -5365753521243355211
+      player_staff_S_03: -8355718048879395653
+      player_staff_S_04: -5759088676209582701
+      player_staff_S_05: 8746936177365018332
+      player_staff_W_00: -2064050373468236829
+      player_staff_W_01: 1393106820655015494
+      player_staff_W_02: 4972521557303285343
+      player_staff_W_03: 4919905486267249809
+      player_staff_W_04: -2128578285613567283
+      player_staff_W_05: -5245175177500177393
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

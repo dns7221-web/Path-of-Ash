@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: cf18239aae16b274fb631a19cd08d485
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2919908792409588372
+    second: ash-king-ember-wave_0
+  - first:
+      213: -1167308457117732501
+    second: ash-king-ember-wave_1
+  - first:
+      213: -8707991171226435896
+    second: ash-king-ember-wave_2
+  - first:
+      213: -2760562496702928345
+    second: ash-king-ember-wave_3
+  - first:
+      213: 7770090743171734708
+    second: ash-king-ember-wave_4
+  - first:
+      213: -1531683962939128303
+    second: ash-king-ember-wave_5
+  - first:
+      213: -150655336694864678
+    second: ash-king-ember-wave_6
+  - first:
+      213: -5372405386392026521
+    second: ash-king-ember-wave_7
+  - first:
+      213: 1885150094952454033
+    second: ash-king-ember-wave_8
+  - first:
+      213: 5307673838777354508
+    second: ash-king-ember-wave_9
+  - first:
+      213: 5910595598310760685
+    second: ash-king-ember-wave_10
+  - first:
+      213: -4798910737954061188
+    second: ash-king-ember-wave_11
+  - first:
+      213: -5361023587118860869
+    second: ash-king-ember-wave_12
+  - first:
+      213: 1377402511870019800
+    second: ash-king-ember-wave_13
+  - first:
+      213: -7752107717461945322
+    second: ash-king-ember-wave_14
+  - first:
+      213: -8136034126693543765
+    second: ash-king-ember-wave_15
+  - first:
+      213: 6448897419439237172
+    second: ash-king-ember-wave_16
+  - first:
+      213: 2531835682866409983
+    second: ash-king-ember-wave_17
+  - first:
+      213: -3698273672686632544
+    second: ash-king-ember-wave_18
+  - first:
+      213: -7931602505634477210
+    second: ash-king-ember-wave_19
+  - first:
+      213: 1277921257675740936
+    second: ash-king-ember-wave_20
+  - first:
+      213: -2589493029795138514
+    second: ash-king-ember-wave_21
+  - first:
+      213: 7206409412430014567
+    second: ash-king-ember-wave_22
+  - first:
+      213: -1005085266667923931
+    second: ash-king-ember-wave_23
+  - first:
+      213: 6304291739506224092
+    second: ash-king-ember-wave_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-ember-wave_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 21
+        width: 199
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4920d1c8399958820800000000000000
+      internalID: 2919908792409588372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_1
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 209
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6130369423eccfe0800000000000000
+      internalID: -1167308457117732501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_2
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 25
+        width: 177
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce7fcbaa20072780800000000000000
+      internalID: -8707991171226435896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_3
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 209
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72aa1cb090380b9d0800000000000000
+      internalID: -2760562496702928345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_4
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 21
+        width: 226
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc5d4bfc58e4db60800000000000000
+      internalID: 7770090743171734708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_5
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 208
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 116c9d80d8d5ebae0800000000000000
+      internalID: -1531683962939128303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_6
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 209
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad429ccf4c3c8edf0800000000000000
+      internalID: -150655336694864678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_7
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 16
+        width: 200
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76245bae3c16175b0800000000000000
+      internalID: -5372405386392026521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_8
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 208
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1975fedf506692a10800000000000000
+      internalID: 1885150094952454033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_9
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 27
+        width: 202
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0945ff2c35a8a940800000000000000
+      internalID: 5307673838777354508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_10
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 29
+        width: 199
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de0ec488167a60250800000000000000
+      internalID: 5910595598310760685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_11
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 209
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c74c07b0c18d66db0800000000000000
+      internalID: -4798910737954061188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_12
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 169
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb53a419371d995b0800000000000000
+      internalID: -5361023587118860869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_13
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 99
+        width: 47
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d84eb869448d1310800000000000000
+      internalID: 1377402511870019800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_14
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 146
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 614dd187a1bfa6490800000000000000
+      internalID: -7752107717461945322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_15
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 140
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0d9fd7110071f80800000000000000
+      internalID: -8136034126693543765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_16
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 118
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 438eb9609061f7950800000000000000
+      internalID: 6448897419439237172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_17
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 134
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff139eaa323e22320800000000000000
+      internalID: 2531835682866409983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_18
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 84
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a1855160b71dacc0800000000000000
+      internalID: -3698273672686632544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_19
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 93
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b0f086b894de190800000000000000
+      internalID: -7931602505634477210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_20
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 89
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 807dea6fc961cb110800000000000000
+      internalID: 1277921257675740936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_21
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 41
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24f5b22fc5401cd0800000000000000
+      internalID: -2589493029795138514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_22
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 16
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7682ceded2f420460800000000000000
+      internalID: 7206409412430014567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_23
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 63
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 526974f66483d02f0800000000000000
+      internalID: -1005085266667923931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-ember-wave_24
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 21
+        width: 12
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdba2bd7fe75d7750800000000000000
+      internalID: 6304291739506224092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-ember-wave_0: 2919908792409588372
+      ash-king-ember-wave_1: -1167308457117732501
+      ash-king-ember-wave_10: 5910595598310760685
+      ash-king-ember-wave_11: -4798910737954061188
+      ash-king-ember-wave_12: -5361023587118860869
+      ash-king-ember-wave_13: 1377402511870019800
+      ash-king-ember-wave_14: -7752107717461945322
+      ash-king-ember-wave_15: -8136034126693543765
+      ash-king-ember-wave_16: 6448897419439237172
+      ash-king-ember-wave_17: 2531835682866409983
+      ash-king-ember-wave_18: -3698273672686632544
+      ash-king-ember-wave_19: -7931602505634477210
+      ash-king-ember-wave_2: -8707991171226435896
+      ash-king-ember-wave_20: 1277921257675740936
+      ash-king-ember-wave_21: -2589493029795138514
+      ash-king-ember-wave_22: 7206409412430014567
+      ash-king-ember-wave_23: -1005085266667923931
+      ash-king-ember-wave_24: 6304291739506224092
+      ash-king-ember-wave_3: -2760562496702928345
+      ash-king-ember-wave_4: 7770090743171734708
+      ash-king-ember-wave_5: -1531683962939128303
+      ash-king-ember-wave_6: -150655336694864678
+      ash-king-ember-wave_7: -5372405386392026521
+      ash-king-ember-wave_8: 1885150094952454033
+      ash-king-ember-wave_9: 5307673838777354508
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

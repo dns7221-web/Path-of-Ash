@@ -1,0 +1,1079 @@
+fileFormatVersion: 2
+guid: f34dd6e84bc743c4980fd9b380d17926
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1842544007219986171
+    second: ash-king-phase-transition_0
+  - first:
+      213: -2367964684297043400
+    second: ash-king-phase-transition_1
+  - first:
+      213: 5239498972663608899
+    second: ash-king-phase-transition_2
+  - first:
+      213: 6957945421653315156
+    second: ash-king-phase-transition_3
+  - first:
+      213: 7543834766203461661
+    second: ash-king-phase-transition_4
+  - first:
+      213: -2576246537931197443
+    second: ash-king-phase-transition_5
+  - first:
+      213: -4868118438856481562
+    second: ash-king-phase-transition_6
+  - first:
+      213: 4897594495768973605
+    second: ash-king-phase-transition_7
+  - first:
+      213: -7890602335599217504
+    second: ash-king-phase-transition_8
+  - first:
+      213: 7629637551012836017
+    second: ash-king-phase-transition_9
+  - first:
+      213: 6714173178804051737
+    second: ash-king-phase-transition_10
+  - first:
+      213: -3472082929056509139
+    second: ash-king-phase-transition_11
+  - first:
+      213: 4590049163448864662
+    second: ash-king-phase-transition_12
+  - first:
+      213: -6238620683978862947
+    second: ash-king-phase-transition_13
+  - first:
+      213: 4862083361696727032
+    second: ash-king-phase-transition_14
+  - first:
+      213: 3046864944355491866
+    second: ash-king-phase-transition_15
+  - first:
+      213: -362832935274567554
+    second: ash-king-phase-transition_16
+  - first:
+      213: -5358889632205161541
+    second: ash-king-phase-transition_17
+  - first:
+      213: -5195930816414456737
+    second: ash-king-phase-transition_18
+  - first:
+      213: -6097830110582208745
+    second: ash-king-phase-transition_19
+  - first:
+      213: -7501737055975537382
+    second: ash-king-phase-transition_20
+  - first:
+      213: -2467719218822863204
+    second: ash-king-phase-transition_21
+  - first:
+      213: 7544857559469502804
+    second: ash-king-phase-transition_22
+  - first:
+      213: -2621592202661174442
+    second: ash-king-phase-transition_23
+  - first:
+      213: 3019323348127406946
+    second: ash-king-phase-transition_24
+  - first:
+      213: 2347961479659075026
+    second: ash-king-phase-transition_25
+  - first:
+      213: 1573366643875652345
+    second: ash-king-phase-transition_26
+  - first:
+      213: -357407257328516492
+    second: ash-king-phase-transition_27
+  - first:
+      213: -8744369007049155224
+    second: ash-king-phase-transition_28
+  - first:
+      213: 6646980390282538658
+    second: ash-king-phase-transition_29
+  - first:
+      213: -4431426975272495700
+    second: ash-king-phase-transition_30
+  - first:
+      213: 5997424987494879851
+    second: ash-king-phase-transition_31
+  - first:
+      213: -3208048385478913269
+    second: ash-king-phase-transition_32
+  - first:
+      213: -5338184086315627406
+    second: ash-king-phase-transition_33
+  - first:
+      213: -7378731783619932521
+    second: ash-king-phase-transition_34
+  - first:
+      213: -6508364044131589641
+    second: ash-king-phase-transition_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-phase-transition_0
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 57
+        width: 143
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 501c0a6dcf7fd66e0800000000000000
+      internalID: -1842544007219986171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_1
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 185
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8320ec76aac432fd0800000000000000
+      internalID: -2367964684297043400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_2
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 201
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34673aa3e8076b840800000000000000
+      internalID: 5239498972663608899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_3
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 176
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45e83380f769f8060800000000000000
+      internalID: 6957945421653315156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_4
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 208
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d10accb30c511b860800000000000000
+      internalID: 7543834766203461661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_5
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 194
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3f7cc5c655f3cd0800000000000000
+      internalID: -2576246537931197443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_6
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 186
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e42e6f7218f07cb0800000000000000
+      internalID: -4868118438856481562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_7
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 193
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521d73ece30c7f340800000000000000
+      internalID: 4897594495768973605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_8
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 188
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a4bdb26bf2fe7290800000000000000
+      internalID: -7890602335599217504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_9
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 192
+        width: 10
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b2f919ddeae1e960800000000000000
+      internalID: 7629637551012836017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_10
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 189
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f1213dee88d2d50800000000000000
+      internalID: 6714173178804051737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_11
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 48
+        width: 150
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2393eec8fea0dfc0800000000000000
+      internalID: -3472082929056509139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_12
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 191
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fc2f0256123bf30800000000000000
+      internalID: 4590049163448864662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_13
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 188
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9e0903aa87fb69a0800000000000000
+      internalID: -6238620683978862947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_14
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 191
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff354a9e07997340800000000000000
+      internalID: 4862083361696727032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_15
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 194
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1046ee1683a84a20800000000000000
+      internalID: 3046864944355491866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_16
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 191
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78a5242e55f6faf0800000000000000
+      internalID: -362832935274567554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_17
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 179
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbb33e9a54661a5b0800000000000000
+      internalID: -5358889632205161541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_18
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 187
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f546c12a37854e7b0800000000000000
+      internalID: -5195930816414456737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_19
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 190
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717011672d7206ba0800000000000000
+      internalID: -6097830110582208745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_20
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 188
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15813cb4e974e790800000000000000
+      internalID: -7501737055975537382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_21
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 32
+        width: 165
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c96a8ace176e0cdd0800000000000000
+      internalID: -2467719218822863204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_22
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 5
+        width: 122
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451b919d9f7b4b860800000000000000
+      internalID: 7544857559469502804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_23
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 159
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 653627e08cb3e9bd0800000000000000
+      internalID: -2621592202661174442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_24
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 173
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26b5d2b869ac6e920800000000000000
+      internalID: 3019323348127406946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_25
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 171
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d531659682a59020800000000000000
+      internalID: 2347961479659075026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_26
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 7
+        width: 143
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f228a560a8b5d510800000000000000
+      internalID: 1573366643875652345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_27
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 174
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47289ca3efb3a0bf0800000000000000
+      internalID: -357407257328516492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_28
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 176
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86d56edb7b2c5a680800000000000000
+      internalID: -8744369007049155224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_29
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 2
+        width: 166
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae27cf9271de3c50800000000000000
+      internalID: 6646980390282538658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_30
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 174
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca59cca05a86082c0800000000000000
+      internalID: -4431426975272495700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_31
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 135
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b621faa10422b3350800000000000000
+      internalID: 5997424987494879851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_32
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 112
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0393498df8ba73d0800000000000000
+      internalID: -3208048385478913269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_33
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 121
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27c838d3bd5fae5b0800000000000000
+      internalID: -5338184086315627406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_34
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 85
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e0378798a799990800000000000000
+      internalID: -7378731783619932521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-phase-transition_35
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 94
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f1ac987265ada5a0800000000000000
+      internalID: -6508364044131589641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-phase-transition_0: -1842544007219986171
+      ash-king-phase-transition_1: -2367964684297043400
+      ash-king-phase-transition_10: 6714173178804051737
+      ash-king-phase-transition_11: -3472082929056509139
+      ash-king-phase-transition_12: 4590049163448864662
+      ash-king-phase-transition_13: -6238620683978862947
+      ash-king-phase-transition_14: 4862083361696727032
+      ash-king-phase-transition_15: 3046864944355491866
+      ash-king-phase-transition_16: -362832935274567554
+      ash-king-phase-transition_17: -5358889632205161541
+      ash-king-phase-transition_18: -5195930816414456737
+      ash-king-phase-transition_19: -6097830110582208745
+      ash-king-phase-transition_2: 5239498972663608899
+      ash-king-phase-transition_20: -7501737055975537382
+      ash-king-phase-transition_21: -2467719218822863204
+      ash-king-phase-transition_22: 7544857559469502804
+      ash-king-phase-transition_23: -2621592202661174442
+      ash-king-phase-transition_24: 3019323348127406946
+      ash-king-phase-transition_25: 2347961479659075026
+      ash-king-phase-transition_26: 1573366643875652345
+      ash-king-phase-transition_27: -357407257328516492
+      ash-king-phase-transition_28: -8744369007049155224
+      ash-king-phase-transition_29: 6646980390282538658
+      ash-king-phase-transition_3: 6957945421653315156
+      ash-king-phase-transition_30: -4431426975272495700
+      ash-king-phase-transition_31: 5997424987494879851
+      ash-king-phase-transition_32: -3208048385478913269
+      ash-king-phase-transition_33: -5338184086315627406
+      ash-king-phase-transition_34: -7378731783619932521
+      ash-king-phase-transition_35: -6508364044131589641
+      ash-king-phase-transition_4: 7543834766203461661
+      ash-king-phase-transition_5: -2576246537931197443
+      ash-king-phase-transition_6: -4868118438856481562
+      ash-king-phase-transition_7: 4897594495768973605
+      ash-king-phase-transition_8: -7890602335599217504
+      ash-king-phase-transition_9: 7629637551012836017
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
