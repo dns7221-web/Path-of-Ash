@@ -17,15 +17,15 @@ MonoBehaviour:
     \uC7A0\uC2DC \uB4A4 \uAE30\uB465\uC774 \uC19F\uC544 \uADF8 \uC790\uB9AC\uB97C
     \uB36E\uCE5C\uB2E4."
   icon: {fileID: 854722827, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
-  cooldownSeconds: 3
+  cooldownSeconds: 5
   motionSeconds: 0.43
   damage: 4
   animatorTrigger: Staff
   effectPrefab: {fileID: 2413951896586397748, guid: db289f81774497c45a488dcd2fbd5301, type: 3}
   effectForwardOffset: 2
   effectLifetime: 1
-  forwardDistance: 8
-  radius: 4
+  forwardDistance: 10
+  radius: 12
   targetLayers:
     serializedVersion: 2
     m_Bits: 512

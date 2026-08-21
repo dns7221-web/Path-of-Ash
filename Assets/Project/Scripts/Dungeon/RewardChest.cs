@@ -35,6 +35,17 @@ public class RewardChest : RoomReward
     [Tooltip("상자를 열 때 추첨할 최대 회복량. 정수 Random.Range의 상한을 포함하도록 처리한다.")]
     [SerializeField, Min(0)] private int maximumHeal = 2;
 
+    [Header("연 뒤 정리")]
+    // 추가 생성 — 튜토리얼 방처럼 오래 머무는 곳에서 빈 상자가 계속 남아 있으면 지저분하다.
+    //
+    // 오브젝트를 파괴하지 않고 그림만 감추는 이유: 이 컴포넌트가 살아 있어야 방을 다시 열 때
+    // SetAvailable로 처음 상태로 되돌릴 수 있다. 파괴하면 방 재사용이 깨진다.
+    [Tooltip("상자를 연 뒤 이 시간이 지나면 상자를 감춘다(초). 0이면 계속 남는다.")]
+    [SerializeField, Min(0f)] private float hideAfterOpenSeconds;
+
+    // 감춰진 상태인가. ApplyVisual이 이 값을 존중해야 감춘 뒤 다시 나타나지 않는다.
+    private bool hidden;
+
     private readonly HashSet<Collider2D> playerColliders = new HashSet<Collider2D>();
     private Collider2D interactionTrigger;
 
@@ -49,6 +60,14 @@ public class RewardChest : RoomReward
         interactionTrigger = GetComponent<Collider2D>();
         interactionTrigger.isTrigger = true;
         ApplyVisual();
+    }
+
+    /// <summary>추가 생성 — 상자를 감춘다. 오브젝트는 남겨서 방 재사용이 깨지지 않게 한다.</summary>
+    private void HideChest()
+    {
+        hidden = true;
+        ApplyVisual();
+        Debug.Log("[보상 상자] 연 상자를 정리했다.", this);
     }
 
     private void OnDisable()
@@ -75,6 +94,12 @@ public class RewardChest : RoomReward
         {
             IsOpened = false;
             playerColliders.Clear();
+
+            // 추가 생성 — 예약된 정리를 취소하고 감춤도 푼다.
+            // 안 풀면 방을 다시 열었을 때 상자가 처음부터 안 보이거나, 열자마자 사라진다.
+            CancelInvoke(nameof(HideChest));
+            hidden = false;
+
             ApplyVisual();
         }
 
@@ -102,6 +127,10 @@ public class RewardChest : RoomReward
         ApplyRandomHealing(player);
         Debug.Log("[보상 상자] F 상호작용 — 상자를 열었다.", this);
         RaiseClaimed();
+
+        // 추가 생성 — 설정돼 있으면 잠시 뒤 상자를 치운다.
+        // 코루틴 대신 Invoke를 쓴 이유: 대기가 한 번뿐이고 CancelInvoke로 한 줄에 정리된다.
+        if (hideAfterOpenSeconds > 0f) Invoke(nameof(HideChest), hideAfterOpenSeconds);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -194,7 +223,9 @@ public class RewardChest : RoomReward
     /// <summary>닫힘/열림 두 오브젝트 중 현재 상태에 맞는 하나만 표시한다.</summary>
     private void ApplyVisual()
     {
-        if (closedVisual != null) closedVisual.SetActive(!IsOpened);
-        if (openVisual != null) openVisual.SetActive(IsOpened);
+        // 수정(연 뒤 정리): hidden이면 둘 다 끈다. 이 조건이 없으면 감춘 뒤에도
+        // ApplyVisual이 다시 불릴 때 상자가 되살아난다.
+        if (closedVisual != null) closedVisual.SetActive(!hidden && !IsOpened);
+        if (openVisual != null) openVisual.SetActive(!hidden && IsOpened);
     }
 }

@@ -26,6 +26,17 @@ public class RoomController : MonoBehaviour
     [SerializeField] private RoomExitTrigger exitTrigger;
     [SerializeField] private Transform playerEntryPoint;
 
+    // 추가 생성 — 전투 없이 처음부터 문이 열려 있는 방.
+    //
+    // 왜 필요한가: 이 클래스는 "전투가 끝나야 보상, 보상을 챙겨야 문"이라는 한 줄기로만
+    // 문을 연다. 튜토리얼처럼 적도 상자도 없는 방은 그 줄기를 탈 수 없어서
+    // <b>문이 영영 안 열리고 플레이어가 갇힌다.</b>
+    //
+    // 예외를 여기 한 곳에 두는 이유: 방마다 다른 규칙을 스크립트로 흩뿌리면 나중에
+    // "이 방은 왜 문이 열려 있지"의 답을 찾을 수 없다. 체크박스 하나면 인스펙터에서 바로 보인다.
+    [Tooltip("켜면 입장 순간부터 문이 열려 있다. 전투도 보상도 없는 튜토리얼·휴식 방에 쓴다.")]
+    [SerializeField] private bool startUnlocked;
+
     /// <summary>이 방의 열린 문으로 플레이어가 나갔을 때 발생한다.</summary>
     public event Action<RoomController> ExitRequested;
 
@@ -63,6 +74,14 @@ public class RoomController : MonoBehaviour
     public void PrepareForEntry()
     {
         ResetRoomState();
+
+        // 추가 생성 — 처음부터 열린 방은 초기화 직후에 바로 문을 연다.
+        // ResetRoomState가 문을 닫으므로 반드시 그 뒤에 와야 한다.
+        if (startUnlocked)
+        {
+            roomDoor?.SetState(RoomDoorState.DoorState.Open);
+            exitTrigger?.SetPassageEnabled(true);
+        }
     }
 
     /// <summary>

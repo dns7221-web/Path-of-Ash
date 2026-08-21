@@ -38,9 +38,9 @@ public class AreaSkillData : SkillData
 
         if (context.Owner == null) yield break;
 
-        // 수정(8방향) — 앞으로 나가는 거리를 좌우가 아니라 바라보는 방향으로 잰다.
+        // 수정(8방향) — 앞으로 나가는 거리를 바라보는 방향으로 재되, 화면 원근에 맞게 누른다.
         Vector2 facing = context.FacingDirection;
-        Vector2 center = (Vector2)context.Owner.position + facing * forwardDistance;
+        Vector2 center = (Vector2)context.Owner.position + Forward(facing) * forwardDistance;
 
         // 이펙트를 먼저 깐다. 이게 "여기가 터진다"는 예고이므로 폭발보다 앞서야 한다.
         SpawnEffectAt(center);

@@ -94,6 +94,17 @@ public abstract class SkillData : ScriptableObject
     [Tooltip("이펙트를 시전자 앞 얼마에 놓을지(유닛). 바라보는 방향으로 이만큼 떨어진다.")]
     [SerializeField] private float effectForwardOffset = 2f;
 
+    // 추가 생성(8방향) — 세로 방향 거리 배율.
+    //
+    // 왜 필요한가: 이 게임은 위에서 비스듬히 내려다보는 시점이다. 배경 기둥의 윗면이 보이는
+    // 각도다. 그런 화면에서는 <b>위아래로 1유닛 간 것이 좌우로 1유닛 간 것보다 짧아 보인다.</b>
+    // 여덟 방향에 같은 거리를 쓰면 위/아래 방향만 유독 멀리 떨어진 것처럼 보인다.
+    //
+    // 0.55는 배경이 그려진 각도(대략 30~40도 내려다봄)에서 나온 어림값이다.
+    // 정답이 있는 숫자가 아니라 눈으로 맞추는 값이라 인스펙터에 열어둔다.
+    [Tooltip("세로 방향 거리 배율. 탑다운 시점이라 위아래로 간 거리는 짧아 보인다. 눈으로 맞춘다.")]
+    [SerializeField, Range(0.2f, 1f)] private float verticalSquash = 0.55f;
+
     [Tooltip("이펙트가 스스로 사라지지 않을 때 강제로 지우기까지의 시간(초).")]
     [SerializeField, Min(0.1f)] private float effectLifetime = 1f;
 
@@ -121,6 +132,17 @@ public abstract class SkillData : ScriptableObject
     protected GameObject EffectPrefab => effectPrefab;
 
     /// <summary>
+    /// 추가 생성 — 바라보는 방향을 화면 원근에 맞게 눌러서 돌려준다.
+    ///
+    /// 하위 스킬이 "앞으로 N유닛"을 계산할 때 반드시 이 값을 곱해야 한다.
+    /// 방향 벡터를 그대로 쓰면 위/아래로 쓸 때만 판정과 이펙트가 멀리 떨어진다.
+    /// </summary>
+    protected Vector2 Forward(Vector2 facing)
+    {
+        return new Vector2(facing.x, facing.y * verticalSquash);
+    }
+
+    /// <summary>
     /// 스킬을 실행한다. 시전 모션과 이동 잠금은 <see cref="SkillController"/>가 이미 걸어둔 뒤다.
     /// 여기서는 "이 스킬이 하는 일"만 한다.
     /// </summary>
@@ -137,8 +159,8 @@ public abstract class SkillData : ScriptableObject
         if (effectPrefab == null || context.Owner == null) return;
 
         // 수정(8방향) — 이펙트가 놓일 자리도 바라보는 방향으로 민다.
-        Vector2 forward = context.FacingDirection;
-        Vector3 position = context.Owner.position + (Vector3)(forward * effectForwardOffset);
+        Vector3 position = context.Owner.position +
+                           (Vector3)(Forward(context.FacingDirection) * effectForwardOffset);
 
         var effect = Object.Instantiate(effectPrefab, position, Quaternion.identity);
 

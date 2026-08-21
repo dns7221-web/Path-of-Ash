@@ -45,7 +45,7 @@ public class ProjectileSkillData : SkillData
         // 탑다운에서 높이는 그림상의 위쪽이므로 방향과 무관하게 항상 +y여야 한다.
         Vector2 facing = context.FacingDirection;
         Vector3 spawn = context.Owner.position +
-                        (Vector3)(facing * forwardOffset) +
+                        (Vector3)(Forward(facing) * forwardOffset) +
                         new Vector3(0f, launchHeight, 0f);
 
         SpawnEffect(context);

@@ -19,7 +19,7 @@ MonoBehaviour:
     \uB450 \uBC88 \uB2E4 \uB9DE\uB294\uB2E4."
   icon: {fileID: -94398619, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
   cooldownSeconds: 3
-  motionSeconds: 0.43
+  motionSeconds: 0.55
   damage: 0
   animatorTrigger: SwordSlam
   effectPrefab: {fileID: 0}
@@ -28,12 +28,13 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 512
-  nearDelay: 0.214
-  nearSize: {x: 4, y: 3}
+  nearDelay: 0.25
+  nearDistance: 4
+  nearSize: {x: 8.4, y: 6.3}
   nearDamage: 2
   nearEffect: {fileID: 3432516596608516316, guid: 5a7a62a896ef98244bc00c6dcd7fafd8, type: 3}
-  farDelay: 0.286
-  farDistance: 5
-  farSize: {x: 9, y: 4}
+  farDelay: 0.42
+  farDistance: 8.1
+  farSize: {x: 18.9, y: 8.4}
   farDamage: 5
   farEffect: {fileID: 1884469369375435664, guid: 6269c1b48820efc46999e636e3b56db9, type: 3}
