@@ -25,6 +25,16 @@ public class RoomSequenceController : MonoBehaviour
     [Tooltip("방 진행도를 기록할 RunManager. 비우면 씬에서 찾는다.")]
     [SerializeField] private RunManager runManager;
 
+    [Header("튜토리얼 방")]
+    // 추가 생성 — 판을 시작하면 던전이 아니라 여기부터 들어간다.
+    //
+    // 별도 씬으로 만들지 않은 이유: 튜토리얼은 <b>진짜 플레이어와 진짜 HUD</b>로 가르쳐야
+    // 의미가 있다. 씬을 나누면 플레이어·체력바·스태미나·스킬바를 전부 복제해야 하고,
+    // 복제본이 원본과 조금이라도 달라지면 "튜토리얼에서 배운 게 본편에서 안 통하는"
+    // 가장 나쁜 상황이 된다. 방으로 두면 그 위험이 구조적으로 없다.
+    [Tooltip("판 시작 시 한 번만 들어가는 튜토리얼 방. 비우면 바로 던전부터 시작한다.")]
+    [SerializeField] private RoomController tutorialRoom;
+
     [Header("보스 방")]
     // 추가 생성 — 일반 방 순환과 따로 관리하는 보스 방. 비워두면 보스가 안 나온다.
     [Tooltip("보스 방. 비우면 일반 방만 반복한다.")]
@@ -91,6 +101,13 @@ public class RoomSequenceController : MonoBehaviour
             bossRoom.ExitRequested += OnRoomExitRequested;
             bossRoom.gameObject.SetActive(false);
         }
+
+        // 추가 생성 — 튜토리얼 방도 같은 규칙으로 등록하고 꺼둔다.
+        if (tutorialRoom != null)
+        {
+            tutorialRoom.ExitRequested += OnRoomExitRequested;
+            tutorialRoom.gameObject.SetActive(false);
+        }
     }
 
     private void Start()
@@ -103,13 +120,24 @@ public class RoomSequenceController : MonoBehaviour
             return;
         }
 
+        enteredRoomCount = 0;
+
+        // 추가 생성 — 튜토리얼 방이 있으면 던전보다 먼저 들어간다.
+        //
+        // 방 수에 포함하지 않는 이유: 결과 화면의 "몇 번째 방까지 갔는가"는 던전 진행도다.
+        // 튜토리얼을 세면 아무것도 안 하고 죽어도 1방을 간 것으로 기록된다.
+        if (tutorialRoom != null)
+        {
+            EnterRoom(tutorialRoom, countAsProgress: false);
+            return;
+        }
+
         if (rooms == null || rooms.Length == 0)
         {
             Debug.LogError("[방 진행] 반복할 방이 등록되지 않았다.", this);
             return;
         }
 
-        enteredRoomCount = 0;
         ActivateRoom(0);
     }
 
@@ -168,6 +196,7 @@ public class RoomSequenceController : MonoBehaviour
         }
 
         if (bossRoom != null) bossRoom.ExitRequested -= OnRoomExitRequested;
+        if (tutorialRoom != null) tutorialRoom.ExitRequested -= OnRoomExitRequested;
     }
 
     /// <summary>
@@ -179,6 +208,25 @@ public class RoomSequenceController : MonoBehaviour
     private void OnRoomExitRequested(RoomController room)
     {
         if (currentRoom == null || currentRoom != room) return;
+
+        // 추가 생성 — 튜토리얼을 나가면 던전 첫 방부터 시작한다.
+        //
+        // 튜토리얼은 rooms 배열 밖에 있어서 순환에 끼지 않는다. 그래서 한 번 나가면
+        // 이 판에서 다시 나오지 않는다 — 무한 순환 중에 튜토리얼이 또 나오면 흐름이 끊긴다.
+        if (room == tutorialRoom)
+        {
+            tutorialRoom.gameObject.SetActive(false);
+
+            if (rooms == null || rooms.Length == 0)
+            {
+                Debug.LogError("[방 진행] 튜토리얼을 나왔는데 던전 방이 등록되지 않았다.", this);
+                return;
+            }
+
+            Debug.Log("[방 진행] 튜토리얼 종료 — 던전 시작.", this);
+            ActivateRoom(0);
+            return;
+        }
 
         // 추가 생성 — 보스 방 문을 나가면 판이 끝난다(클리어).
         //
@@ -264,12 +312,12 @@ public class RoomSequenceController : MonoBehaviour
     /// 일반 방과 보스 방이 입장할 때 해야 할 일(초기화 → 활성화 → 전투 시작 → 플레이어 이동 →
     /// 기록)이 완전히 같아서 한 곳으로 모았다. 다른 점은 "어느 방을 고르느냐"뿐이다.
     /// </summary>
-    private void EnterRoom(RoomController room)
+    private void EnterRoom(RoomController room, bool countAsProgress = true)
     {
         if (room == null) return;
 
         currentRoom = room;
-        enteredRoomCount++;
+        if (countAsProgress) enteredRoomCount++;
 
         room.PrepareForEntry();
         room.gameObject.SetActive(true);
