@@ -167,6 +167,26 @@ public class InventoryScreen : MonoBehaviour
     {
         if (inventory == null) return;
 
+        // 추가 생성 — 열쇠는 일반 칸이 아니라 보스 칸으로 간다.
+        //
+        // 여기서 갈라주는 이유: 플레이어는 "보관함에 있는 유물을 누르면 끼워진다"만 알면 된다.
+        // 열쇠라고 다른 조작을 요구하면(예: T 화면에서만 끼우기) 왜 안 끼워지는지 알 수 없다.
+        // 누르는 동작은 하나로 두고 <b>어디로 갈지는 코드가 판단한다.</b>
+        RelicInstance clicked = GetBag(index);
+        if (clicked.Data != null && clicked.Data.Role == RelicData.RelicRole.BossKey)
+        {
+            if (inventory.FindEmptyBossSlot() < 0)
+            {
+                ShowInfo(clicked, "보스 칸이 가득 찼다. T 화면에서 하나를 빼라.");
+                return;
+            }
+
+            inventory.EquipBossKey(index);
+            Redraw();
+            ShowInfo(RelicInstance.None);
+            return;
+        }
+
         int empty = inventory.FindEmptySlot();
         if (empty < 0)
         {
