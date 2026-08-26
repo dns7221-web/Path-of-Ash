@@ -302,28 +302,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBoss
   phase2Controller: {fileID: 9100000, guid: 7af818d3419707c4bb88946e5faffc24, type: 2}
   phase2HealthRatio: 0.5
-  transitionSeconds: 0.75
+  transitionSeconds: 0.875
+  phase2MotionScale: 0.8
   moveSpeed: 4.5
   phase2SpeedScale: 1.4
   retreatDistance: 3.5
   retreatSpeedScale: 0.55
   slamRange: 5
   slamHitDelay: 0.33
-  slamMotionSeconds: 0.6
+  slamMotionSeconds: 0.583
   slamHitSize: {x: 7, y: 5}
   slamDamage: 2
   wavePrefab: {fileID: 1746557871272930878, guid: 0fbb4d97f1e788248a0a402767283205, type: 3}
   waveRange: 20
   waveCooldown: 6
   waveFireDelay: 0.4
-  waveMotionSeconds: 0.7
+  waveMotionSeconds: 0.583
   waveCount: 3
   waveSpreadDegrees: 18
   waveDamage: 1
   waveSpawnHeight: 1.6
   attackCooldown: 1.1
   phase2CooldownScale: 0.6
-  hitStunSeconds: 0.12
+  hitStunSeconds: 0.125
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
