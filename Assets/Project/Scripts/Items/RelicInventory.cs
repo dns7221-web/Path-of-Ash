@@ -28,6 +28,15 @@ public class RelicInventory : MonoBehaviour
     /// <summary>장착 칸 개수. 인벤토리 패널 그림의 팔각형 칸 수와 같아야 한다.</summary>
     public const int SlotCount = 3;
 
+    /// <summary>
+    /// 추가 생성 — 보스 열쇠 전용 칸 개수.
+    ///
+    /// 일반 장착 칸과 나눈 이유: 열쇠는 능력치를 하나도 올리지 않는 표식이다.
+    /// 같은 칸을 쓰게 두면 <b>열쇠를 모을수록 실제 유물을 못 껴서 약해진 채 보스를 만난다.</b>
+    /// 진행 조건과 전투 강화는 서로 자리를 뺏으면 안 되는 다른 축이다.
+    /// </summary>
+    public const int BossSlotCount = 4;
+
     [Header("참조 (비어 있으면 같은 오브젝트에서 찾는다)")]
     [SerializeField] private Health health;
     [SerializeField] private PlayerStamina stamina;
@@ -41,12 +50,19 @@ public class RelicInventory : MonoBehaviour
     // 장착 칸. 빈 칸은 RelicInstance.None이다.
     private readonly RelicInstance[] equipped = new RelicInstance[SlotCount];
 
+    // 추가 생성 — 보스 열쇠 칸. 보관함과 장착 칸 어느 쪽에도 들어가지 않는다.
+    private readonly RelicInstance[] bossKeys = new RelicInstance[BossSlotCount];
+
     [Header("보스")]
     [Tooltip("보스방이 열리는 데 필요한 열쇠 개수.")]
     [SerializeField, Min(1)] private int bossKeysRequired = 4;
 
     /// <summary>보관함. 인벤토리 화면이 읽는다.</summary>
     public IReadOnlyList<RelicInstance> Bag => bag;
+
+    /// <summary>보스 열쇠 칸 하나. 비어 있으면 <see cref="RelicInstance.None"/>.</summary>
+    public RelicInstance GetBossKey(int slot)
+        => slot >= 0 && slot < BossSlotCount ? bossKeys[slot] : RelicInstance.None;
 
     /// <summary>
     /// 지금까지 모은 보스 열쇠 개수. 장착 여부는 상관없다.
@@ -55,7 +71,24 @@ public class RelicInventory : MonoBehaviour
     /// 장착 칸 3개를 그대로 차지해서, 열쇠를 다 모은 순간 <b>유물 효과가 하나도 없는 상태로</b>
     /// 보스를 만나게 된다. 모으는 행위가 플레이어를 약하게 만들면 안 된다.
     /// </summary>
-    public int BossKeyCount { get; private set; }
+    /// <summary>
+    /// 지금 보스 칸에 <b>끼워져 있는</b> 열쇠 수.
+    ///
+    /// 세어둔 값을 들고 있지 않고 매번 세는 이유: 열쇠는 뺐다 꼈다 할 수 있다.
+    /// 획득할 때 +1 하는 방식이면 빼는 경로마다 -1을 잊지 않아야 하는데, 그런 코드는
+    /// 반드시 한 군데를 빠뜨린다. 칸이 곧 진실이므로 칸을 보고 센다.
+    /// </summary>
+    public int BossKeyCount
+    {
+        get
+        {
+            int count = 0;
+            foreach (RelicInstance item in bossKeys)
+                if (!item.IsEmpty) count++;
+
+            return count;
+        }
+    }
 
     /// <summary>보스방을 열 수 있는가.</summary>
     public bool HasAllBossKeys => BossKeyCount >= bossKeysRequired;
@@ -72,6 +105,14 @@ public class RelicInventory : MonoBehaviour
             if (item.Data == relic) return true;
 
         foreach (RelicInstance item in equipped)
+            if (item.Data == relic) return true;
+
+        // 추가 생성 — 보스 칸도 본다.
+        //
+        // 빠뜨리면 <b>같은 열쇠가 또 떨어진다.</b> 상자는 ChestRelicReward.TryPickKey에서
+        // 이 함수로 "이미 가졌나"를 판단하는데, 열쇠가 보관함이 아닌 전용 칸에 있으므로
+        // 여기서 안 세면 영영 못 가진 것으로 취급된다.
+        foreach (RelicInstance item in bossKeys)
             if (item.Data == relic) return true;
 
         return false;
@@ -96,6 +137,7 @@ public class RelicInventory : MonoBehaviour
         if (ashGauge == null) ashGauge = GetComponent<AshGauge>();
 
         for (int i = 0; i < SlotCount; i++) equipped[i] = RelicInstance.None;
+        for (int i = 0; i < BossSlotCount; i++) bossKeys[i] = RelicInstance.None;
     }
 
     /// <summary>
@@ -110,12 +152,40 @@ public class RelicInventory : MonoBehaviour
 
         // 무작위 유물은 바로 여기서 딱 한 번 굴린다. 장착할 때 굴리면 뺐다 꼈다로 다시 굴릴 수 있다.
         var instance = RelicInstance.Roll(relic);
-        bag.Add(instance);
 
-        if (relic.Role == RelicData.RelicRole.BossKey) BossKeyCount++;
+        // 추가 생성 — 열쇠는 보관함을 거치지 않고 전용 칸으로 바로 간다.
+        //
+        // 보관함에 넣지 않는 이유: 열쇠는 끼울 수도 팔 수도 없는 진행 표식이라 보관함에 있으면
+        // 목록만 채우고 실제 유물을 찾기 어렵게 만든다. 들어갈 곳이 한 군데뿐이면
+        // "몇 개 모았나"를 칸만 보고 셀 수 있다.
+        if (relic.Role == RelicData.RelicRole.BossKey)
+        {
+            int keySlot = FindEmptyBossSlot();
+            if (keySlot >= 0)
+            {
+                bossKeys[keySlot] = instance;
+            }
+            else
+            {
+                // 칸보다 열쇠가 많은 구성이면 보관함으로 흘려보낸다.
+                // 조용히 사라지면 "분명 주웠는데 없다"가 된다. 보관함에 있으면
+                // 칸을 비운 뒤 다시 끼울 수 있다.
+                bag.Add(instance);
+                Debug.LogWarning($"[유물] 보스 칸이 가득 차 {relic.DisplayName}을 보관함으로 보냈다.", this);
+            }
+
+            Debug.Log($"[유물 획득] {relic.DisplayName} (보스 열쇠) — {BossKeyCount}/{bossKeysRequired}", this);
+            Changed?.Invoke();
+            Gained?.Invoke(relic);
+            return;
+        }
+
+        bag.Add(instance);
 
         // 표식 유물(효과 없음)은 자동 장착에서 뺀다. 끼워봐야 아무 일도 안 일어나는데
         // 칸만 차지해서, 열쇠를 모을수록 오히려 약해진 채 보스를 만나게 된다.
+        // 표식 유물(효과 없음)은 자동 장착에서 뺀다. 위에서 열쇠는 이미 걸러졌지만,
+        // 열쇠가 아닌 표식이 생길 수 있으므로 이 판단은 남겨둔다.
         int emptySlot = relic.IsMarker ? -1 : FindEmptySlot();
         if (emptySlot >= 0) Equip(bag.Count - 1, emptySlot);
         else Changed?.Invoke();
@@ -149,6 +219,18 @@ public class RelicInventory : MonoBehaviour
         if (slot < 0 || slot >= SlotCount) return;
 
         RelicInstance incoming = bag[bagIndex];
+
+        // 추가 생성 — 열쇠는 일반 칸에 들어가지 않는다.
+        //
+        // 막지 않으면 능력치를 하나도 안 올리는 표식이 전투용 칸 셋 중 하나를 차지한다.
+        // 보관함에서 누르는 경로는 화면이 EquipBossKey로 돌려보내지만, 이 함수는
+        // 다른 곳에서도 부를 수 있으므로 여기서도 막아둔다.
+        if (incoming.Data != null && incoming.Data.Role == RelicData.RelicRole.BossKey)
+        {
+            Debug.LogWarning($"[유물] {incoming.Data.DisplayName}은 보스 열쇠라 일반 칸에 못 넣는다.", this);
+            return;
+        }
+
         RelicInstance outgoing = equipped[slot];
 
         bag.RemoveAt(bagIndex);
@@ -171,6 +253,52 @@ public class RelicInventory : MonoBehaviour
 
         Recalculate();
         Changed?.Invoke();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 보관함의 열쇠를 보스 칸에 끼운다. 열쇠가 아니면 아무 일도 하지 않는다.
+    /// </summary>
+    public void EquipBossKey(int bagIndex)
+    {
+        if (bagIndex < 0 || bagIndex >= bag.Count) return;
+
+        RelicInstance incoming = bag[bagIndex];
+        if (incoming.Data == null || incoming.Data.Role != RelicData.RelicRole.BossKey) return;
+
+        int slot = FindEmptyBossSlot();
+        if (slot < 0)
+        {
+            Debug.LogWarning("[유물] 보스 칸이 가득 찼다.", this);
+            return;
+        }
+
+        bag.RemoveAt(bagIndex);
+        bossKeys[slot] = incoming;
+
+        // 열쇠는 능력치를 안 올리므로 Recalculate가 필요 없다.
+        // 그래도 Changed는 알려야 화면이 다시 그려진다.
+        Changed?.Invoke();
+    }
+
+    /// <summary>추가 생성 — 보스 칸을 비우고 보관함으로 돌려보낸다.</summary>
+    public void UnequipBossKey(int slot)
+    {
+        if (slot < 0 || slot >= BossSlotCount) return;
+        if (bossKeys[slot].IsEmpty) return;
+
+        bag.Add(bossKeys[slot]);
+        bossKeys[slot] = RelicInstance.None;
+
+        Changed?.Invoke();
+    }
+
+    /// <summary>추가 생성 — 비어 있는 보스 열쇠 칸 번호. 없으면 -1.</summary>
+    public int FindEmptyBossSlot()
+    {
+        for (int i = 0; i < BossSlotCount; i++)
+            if (bossKeys[i].IsEmpty) return i;
+
+        return -1;
     }
 
     /// <summary>비어 있는 장착 칸 번호. 없으면 -1.</summary>
