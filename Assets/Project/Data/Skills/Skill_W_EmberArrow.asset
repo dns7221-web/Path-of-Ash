@@ -17,7 +17,7 @@ MonoBehaviour:
     \uD654\uC0B4\uC744 \uC3DC\uB2E4. \uBD99\uAE30 \uC804\uC5D0 \uAE4E\uB294 \uACAC\uC81C\uAE30\uB2E4."
   icon: {fileID: -1555885319, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
   cooldownSeconds: 1.2
-  motionSeconds: 0.43
+  motionSeconds: 0.5
   damage: 2
   animatorTrigger: Bow
   effectPrefab: {fileID: 0}

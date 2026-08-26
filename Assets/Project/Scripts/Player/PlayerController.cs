@@ -90,8 +90,13 @@ public class PlayerController : MonoBehaviour
     // 공격 모션 길이와 재사용 대기시간은 이제 스킬마다 다르므로 SkillData 에셋이 들고 있다.
     // 전투 리듬(공격 주기 약 1.08초 vs 적 회복 0.9초)에 대한 판단은 그대로 유효하고,
     // 그 숫자는 Q 스킬 에셋의 Cooldown Seconds에 들어간다.
-    [Tooltip("피격 경직 시간(초). hit 클립 2프레임 / 10fps = 0.2초.")]
-    [SerializeField] private float hitDuration = 0.2f;
+    // 수정(8방향 전환 후 길이 어긋남): 0.2 -> 0.43.
+    // 옛 시트에서는 피격이 dash_hit 6칸 중 2칸이라 2/10 = 0.2초였다. 8방향에는 player_hit
+    // 시트가 따로 있고 6칸을 전부 쓰므로 6/14 = 0.429초다. 0.2초로 두면 클립의 절반 이상이
+    // 잘려서 <b>맞았다는 게 화면에서 읽히지 않는다.</b> 대시와 달리 피격은 느껴져야 하는
+    // 연출이라 클립을 줄이지 않고 경직을 늘리는 쪽으로 맞췄다.
+    [Tooltip("피격 경직 시간(초). hit 클립 6프레임 / 14fps = 0.429초.")]
+    [SerializeField] private float hitDuration = 0.43f;
 
     [Header("입력")]
     [Tooltip("이동 입력. 컴포넌트를 처음 붙일 때 WASD / 방향키 / 게임패드 스틱이 자동으로 채워진다.")]

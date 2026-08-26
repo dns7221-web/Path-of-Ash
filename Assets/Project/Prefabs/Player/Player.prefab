@@ -362,7 +362,7 @@ MonoBehaviour:
   moveSpeed: 14
   dashSpeed: 44
   dashDuration: 0.25
-  hitDuration: 0.2
+  hitDuration: 0.43
   moveAction:
     m_Name: Move
     m_Type: 0

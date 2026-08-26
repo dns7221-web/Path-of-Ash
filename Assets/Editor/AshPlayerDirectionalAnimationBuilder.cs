@@ -73,7 +73,12 @@ public static class AshPlayerDirectionalAnimationBuilder
         new ActionDef { Sheet = "player_staff",      State = "Staff",     Trigger = "Staff",      Fps = 12f, Loop = false },
         new ActionDef { Sheet = "player_sword_slam", State = "SwordSlam", Trigger = "SwordSlam",  Fps = 12f, Loop = false },
         new ActionDef { Sheet = "player_ultimate",   State = "Ultimate",  Trigger = "Ultimate",   Fps = 10f, Loop = false },
-        new ActionDef { Sheet = "player_dash_hit",   State = "Dash",      Trigger = "Dash",       Fps = 16f, Loop = false },
+        // 수정(8방향 전환 후 길이 어긋남): 16 -> 24.
+        // 옛 시트에서는 dash가 6칸 중 4칸이라 4/16 = 0.25초였고 PlayerController의
+        // dashDuration도 그 값이다. 8방향 시트는 6칸을 전부 대시로 쓰므로 16fps면 0.375초가 되어
+        // 코드가 0.125초 먼저 상태를 풀어 <b>마지막 두 프레임이 잘렸다.</b>
+        // 대시는 회피기라 빨라야 읽히므로 잠금을 늘리는 대신 클립을 6/24 = 0.25초로 맞췄다.
+        new ActionDef { Sheet = "player_dash_hit",   State = "Dash",      Trigger = "Dash",       Fps = 24f, Loop = false },
         new ActionDef { Sheet = "player_hit",        State = "Hit",       Trigger = "Hit",        Fps = 14f, Loop = false },
         new ActionDef { Sheet = "player_death",      State = "Die",       Trigger = "Die",        Fps = 8f,  Loop = false },
     };

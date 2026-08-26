@@ -18,7 +18,7 @@ MonoBehaviour:
     \uB36E\uCE5C\uB2E4."
   icon: {fileID: 854722827, guid: 64bdcb7f7db43634496eb4fad6d954bf, type: 3}
   cooldownSeconds: 5
-  motionSeconds: 0.43
+  motionSeconds: 0.5
   damage: 4
   animatorTrigger: Staff
   effectPrefab: {fileID: 2413951896586397748, guid: db289f81774497c45a488dcd2fbd5301, type: 3}
