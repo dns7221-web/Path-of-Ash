@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 /// 추가 생성 — Game 씬 안에 등록된 방들을 순서대로 무한 반복한다.
 /// 씬 전환 없이 방 루트 활성화만 바꾸며, Result 이동은 플레이어 사망 흐름이 담당한다.
 ///
-/// 수정(보스 방 추가): 일반 방 배열과 별개로 보스 방을 하나 두고 <see cref="bossRoomInterval"/>번째
-/// 방마다 그 자리에 끼워 넣는다.
+/// 수정(보스 진입을 열쇠로 전환): 보스 방은 <see cref="rooms"/> 배열 밖에 따로 둔다.
 ///
-/// 보스 방을 <see cref="rooms"/> 배열에 그냥 한 칸으로 넣지 않은 이유:
-/// 배열은 "일반 방 순환"이라는 하나의 뜻만 가져야 등장 주기를 숫자 하나로 조절할 수 있다.
-/// 배열에 섞어 넣으면 주기를 바꿀 때마다 배열을 다시 짜야 하고, 방을 추가하면 보스 등장
-/// 간격이 같이 밀린다.
+/// 예전에는 N번째 방마다 무조건 보스가 나왔다. 지금은 <b>보스 열쇠를 다 모아 부서진 문을
+/// 여는 것</b>이 보스로 가는 유일한 길이다. 방 번호로도 가고 열쇠로도 가게 두면, 열쇠를
+/// 다 모았는데 방 번호가 먼저 걸려 보스가 나오는 일이 생기고, 어느 쪽으로 갔는지도 알 수 없다.
+///
+/// 보스 방을 배열에 섞지 않는 이유: 배열은 "일반 방 순환"이라는 하나의 뜻만 가져야 한다.
+/// 섞어 넣으면 방을 추가할 때마다 보스 자리가 같이 밀린다.
 /// </summary>
 [DisallowMultipleComponent]
 public class RoomSequenceController : MonoBehaviour
@@ -40,13 +41,11 @@ public class RoomSequenceController : MonoBehaviour
     [Tooltip("보스 방. 비우면 일반 방만 반복한다.")]
     [SerializeField] private RoomController bossRoom;
 
-    [Tooltip("몇 번째 방마다 보스 방을 넣을지. 3이면 3, 6, 9번째 방이 보스 방이다.")]
-    [SerializeField, Min(1)] private int bossRoomInterval = 3;
 
     // 추가 생성 — 보스 방 문을 나가는 것이 이 게임의 승리 조건이다.
     //
-    // 끌 수 있게 둔 이유: 이걸 켜면 판 길이가 bossRoomInterval에 그대로 묶인다(3이면 3방에서 끝).
-    // 보스를 중간 관문으로 쓰고 무한 런을 유지하고 싶어지면 여기만 끄면 된다.
+    // 끌 수 있게 둔 이유: 보스를 판의 끝이 아니라 중간 관문으로 쓰고 싶어질 수 있다.
+    // 그때는 여기만 끄면 보스를 잡고도 일반 방 순환으로 돌아간다.
     [Tooltip("켜면 보스 방 문을 나갈 때 판이 클리어로 끝난다. 끄면 다음 방으로 계속 이어진다.")]
     [SerializeField] private bool bossClearEndsRun = true;
 
@@ -250,24 +249,38 @@ public class RoomSequenceController : MonoBehaviour
             return;
         }
 
-        currentRoom.gameObject.SetActive(false);
-        AdvanceToNextRoom();
-    }
+        // 추가 생성 — 부서진 문으로 나갔으면 보스 방으로 간다.
+        //
+        // 방 번호로 보스를 부르던 방식을 이걸로 <b>대체했다.</b> 예전에는 3번째 방마다
+        // 무조건 보스가 나와서, 열쇠를 몇 개 모았든 상관없이 판이 흘러갔다.
+        // 이제 보스로 가는 유일한 길은 열쇠를 다 모아 부서진 문을 여는 것이다.
+        //
+        // 문 상태를 여기서 다시 판단하지 않고 방에게 묻는 이유: 문을 연 것은 방이다.
+        // 두 곳에서 같은 조건을 각자 판단하면 반드시 어긋난다.
+        bool toBoss = bossRoom != null && room.IsBossGateOpen;
 
-    /// <summary>
-    /// 추가 생성 — 다음에 들어갈 방이 보스 방인지 일반 방인지 정한다.
-    ///
-    /// 보스 방에 들어가도 <see cref="currentRoomIndex"/>는 건드리지 않는다.
-    /// 그래야 보스를 잡고 나왔을 때 일반 방 순환이 끊긴 자리에서 이어진다.
-    /// </summary>
-    private void AdvanceToNextRoom()
-    {
-        if (IsBossRoomTurn(enteredRoomCount + 1))
+        currentRoom.gameObject.SetActive(false);
+
+        if (toBoss)
         {
+            Debug.Log("[방 진행] 부서진 문을 지났다 — 보스 방으로.", this);
             EnterRoom(bossRoom);
             return;
         }
 
+        AdvanceToNextRoom();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 다음 일반 방을 연다.
+    ///
+    /// 수정(열쇠 진입으로 전환): 여기 있던 "N번째 방마다 보스" 판정을 걷어냈다.
+    /// 보스로 가는 길은 <see cref="OnRoomExitRequested"/>의 부서진 문 하나뿐이다.
+    /// 방 번호와 열쇠라는 두 조건이 같이 있으면 어느 쪽으로 보스에 갔는지 알 수 없고,
+    /// 열쇠를 다 모아도 방 번호가 먼저 걸려 보스가 나오는 일이 생긴다.
+    /// </summary>
+    private void AdvanceToNextRoom()
+    {
         if (rooms == null || rooms.Length == 0)
         {
             // 테스트 모드로 보스 방만 돌릴 때 여기로 온다. 보스 방을 다시 연다.
@@ -279,11 +292,6 @@ public class RoomSequenceController : MonoBehaviour
         ActivateRoom((currentRoomIndex + 1) % rooms.Length);
     }
 
-    /// <summary>추가 생성 — 이번 차례가 보스 방인지 판정한다.</summary>
-    private bool IsBossRoomTurn(int roomNumber)
-    {
-        return bossRoom != null && roomNumber % bossRoomInterval == 0;
-    }
 
     /// <summary>
     /// 배열의 방 하나를 초기화하고 전투를 다시 시작한다.
@@ -319,8 +327,21 @@ public class RoomSequenceController : MonoBehaviour
         currentRoom = room;
         if (countAsProgress) enteredRoomCount++;
 
-        room.PrepareForEntry();
+        // 수정(튜토리얼 진행 정지 버그): SetActive를 PrepareForEntry보다 먼저 부른다.
+        //
+        // 예전 순서는 PrepareForEntry() → SetActive(true)였다. 방은 전부 씬에 비활성으로
+        // 저장돼 있는데, 유니티는 비활성 오브젝트의 Awake를 <b>첫 SetActive(true) 때까지 미룬다.</b>
+        // 그래서 PrepareForEntry가 문을 열어놔도 바로 뒤 SetActive에서 그제서야 깨어난
+        // RoomController.Awake가 ResetRoomState를 돌려 문을 도로 닫아버렸다.
+        //
+        // 던전·보스 방은 문이 보상 획득 시점에 열려서 이 덮어쓰기를 피해 갔지만,
+        // 전투도 보상도 없는 튜토리얼 방은 PrepareForEntry의 startUnlocked가 문을 여는
+        // 유일한 경로라 그대로 <b>갇혔다.</b>
+        //
+        // 두 호출 사이에 프레임 경계가 없어서(SetActive는 Awake/OnEnable을 그 자리에서 돌린다)
+        // 지난 판의 열린 문이 한 프레임이라도 보이는 일은 없다.
         room.gameObject.SetActive(true);
+        room.PrepareForEntry();
         room.BeginEncounter();
         MovePlayerTo(room.PlayerEntryPoint);
 

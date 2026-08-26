@@ -55,6 +55,15 @@ public class RoomDoorState : MonoBehaviour
     /// <summary>지금 방을 나갈 수 있는가. 부서진 문도 통로로는 열려 있다.</summary>
     public bool IsPassable => State != DoorState.Closed;
 
+    /// <summary>
+    /// 추가 생성 — 부서진 문 그림을 가지고 있는가.
+    ///
+    /// 왜 필요한가: 보스 방에는 이 그림이 없다. 그림 없이 Broken으로 바꾸면 Apply가
+    /// 경고만 남기고 <b>닫힌 그림을 그대로 둔다.</b> 통과는 되는데 화면은 닫혀 있어서
+    /// 플레이어가 나갈 수 있다는 걸 모른다. 그 상태를 애초에 만들지 않으려고 미리 묻는다.
+    /// </summary>
+    public bool HasBrokenRoom => brokenRoom != null;
+
 #if UNITY_EDITOR
     /// <summary>
     /// 컴포넌트를 처음 붙일 때 배경 세 장을 자동으로 채운다(에디터 전용).

@@ -40,6 +40,18 @@ public class RoomController : MonoBehaviour
     /// <summary>이 방의 열린 문으로 플레이어가 나갔을 때 발생한다.</summary>
     public event Action<RoomController> ExitRequested;
 
+    // 추가 생성 — 보스 열쇠를 다 모았는지 물어볼 상대. 플레이어가 프리팹이라 미리 못 꽂는다.
+    private RelicInventory relicInventory;
+
+    /// <summary>
+    /// 추가 생성 — 이 방의 문이 <b>보스로 가는 부서진 문</b>인가.
+    ///
+    /// 진행 관리자가 출구를 받았을 때 어디로 보낼지 정하는 근거다.
+    /// 방은 "어떤 문을 열었는가"만 알고, 그 문이 어디로 이어지는지는 모른다.
+    /// </summary>
+    public bool IsBossGateOpen =>
+        roomDoor != null && roomDoor.State == RoomDoorState.DoorState.Broken;
+
     /// <summary>다음 방 입장 시 플레이어를 놓을 위치다.</summary>
     public Transform PlayerEntryPoint => playerEntryPoint;
 
@@ -70,9 +82,23 @@ public class RoomController : MonoBehaviour
     /// <summary>
     /// 추가 생성 — 방을 처음 입장할 상태로 되돌린다.
     /// 닫힌 문과 숨은 보상으로 시작하고 진행 관리자가 전투를 시작한다.
+    ///
+    /// <b>반드시 이 방을 활성화한 뒤에 부른다.</b> 방은 씬에 비활성으로 저장돼 있어서
+    /// 유니티가 <c>Awake</c>를 첫 활성화까지 미룬다. 비활성 상태에서 먼저 부르면
+    /// 여기서 맞춰놓은 문·출구 상태를 뒤늦게 깨어난 <see cref="Awake"/>의
+    /// <see cref="ResetRoomState"/>가 덮어쓴다. 튜토리얼 방이 이것 때문에 문이
+    /// 영영 안 열려 갇혔었다.
     /// </summary>
     public void PrepareForEntry()
     {
+        // 추가 생성 — 위 순서를 어기면 증상이 "문이 안 열린다"로만 나타나서 원인을 찾기 어렵다.
+        // 조용히 잘못 동작하느니 그 자리에서 이유를 남긴다.
+        if (!gameObject.activeInHierarchy)
+        {
+            Debug.LogError($"[방 진행] {name}이 비활성인 채로 PrepareForEntry가 불렸다. " +
+                           "활성화한 뒤에 불러야 문 상태가 Awake에 덮어써지지 않는다.", this);
+        }
+
         ResetRoomState();
 
         // 추가 생성 — 처음부터 열린 방은 초기화 직후에 바로 문을 연다.
@@ -109,15 +135,37 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        roomDoor.SetState(RoomDoorState.DoorState.Open);
+        // 추가 생성 — 보스 열쇠를 다 모았으면 부서진 문이 열린다.
+        //
+        // 부서진 그림이 있는 방에서만 그렇게 한다. 보스 방에는 그 그림이 없어서
+        // 억지로 바꾸면 통과는 되는데 닫힌 그림이 남는다. 그리고 보스 방에서 또
+        // 부서진 문이 열리면 보스를 잡고도 보스 방으로 되돌아가게 된다.
+        bool bossGate = roomDoor.HasBrokenRoom && HasAllBossKeys();
+
+        roomDoor.SetState(bossGate
+            ? RoomDoorState.DoorState.Broken
+            : RoomDoorState.DoorState.Open);
+
         exitTrigger?.SetPassageEnabled(true);
-        Debug.Log($"[방 진행] {name} 보상 획득 — 문 개방.", this);
+        Debug.Log($"[방 진행] {name} 보상 획득 — {(bossGate ? "부서진 문 개방(보스로)" : "문 개방")}.", this);
     }
 
     /// <summary>방 순서 관리자에게 다음 방 이동을 요청한다.</summary>
     private void OnExitEntered()
     {
         ExitRequested?.Invoke(this);
+    }
+
+    /// <summary>추가 생성 — 보스 열쇠가 다 모였는가. 인벤토리가 없으면 아니라고 본다.</summary>
+    private bool HasAllBossKeys()
+    {
+        if (relicInventory == null)
+        {
+            // 꺼져 있는 순간에도 찾아야 한다. 기본값은 비활성 오브젝트를 건너뛴다.
+            relicInventory = FindFirstObjectByType<RelicInventory>(FindObjectsInactive.Include);
+        }
+
+        return relicInventory != null && relicInventory.HasAllBossKeys;
     }
 
     private void ResetRoomState()
