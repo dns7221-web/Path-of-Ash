@@ -1,0 +1,910 @@
+fileFormatVersion: 2
+guid: 90e706e228479094aaf8e72946003479
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4134112233021683732
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_0
+  - first:
+      213: -95524651881982661
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_1
+  - first:
+      213: 6461889070759466145
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_2
+  - first:
+      213: 52500139452539934
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_3
+  - first:
+      213: -5764101479231013406
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_4
+  - first:
+      213: -934704965743071849
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_5
+  - first:
+      213: 3806778609983959383
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_6
+  - first:
+      213: 3900606977638473570
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_7
+  - first:
+      213: -1027581751407716114
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_8
+  - first:
+      213: 1479406523025359583
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_9
+  - first:
+      213: 1105421479759202056
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_10
+  - first:
+      213: -3921818400175993694
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_11
+  - first:
+      213: -8167030359867389363
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_12
+  - first:
+      213: -8269960234085233001
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_13
+  - first:
+      213: 6412705597933631162
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_14
+  - first:
+      213: -4185619508292227424
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_15
+  - first:
+      213: -7326467970972665017
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_16
+  - first:
+      213: -2573131985962133444
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_17
+  - first:
+      213: 3935995802715053904
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_18
+  - first:
+      213: -2999987030113099025
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_19
+  - first:
+      213: 649304470098848324
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_20
+  - first:
+      213: -2105701776482451406
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_21
+  - first:
+      213: -2808207471083826765
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_22
+  - first:
+      213: 8822621291719920610
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_23
+  - first:
+      213: 1893020472911699332
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_24
+  - first:
+      213: -819621563526383072
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_25
+  - first:
+      213: 1068076995617592171
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_26
+  - first:
+      213: 7123208542490550870
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_27
+  - first:
+      213: 226907023427687386
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_28
+  - first:
+      213: -456085532081163633
+    second: vfx_sword_slam_forward_burst_6frames_1536x256_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 172
+        width: 193
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce74529d3dea0a6c0800000000000000
+      internalID: -4134112233021683732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 209
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b351841d5d0acaef0800000000000000
+      internalID: -95524651881982661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 204
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a4d8909fdd3da950800000000000000
+      internalID: 6461889070759466145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 202
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e142ab249948ab000800000000000000
+      internalID: 52500139452539934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 204
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2edb1218e3cc100b0800000000000000
+      internalID: -5764101479231013406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 130
+        width: 198
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d271339c24703f0800000000000000
+      internalID: -934704965743071849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 86
+        width: 200
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75136a20af464d430800000000000000
+      internalID: 3806778609983959383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 195
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f1d8e316db12630800000000000000
+      internalID: 3900606977638473570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 204
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee85ba967db4db1f0800000000000000
+      internalID: -1027581751407716114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 199
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd2825bf468e78410800000000000000
+      internalID: 1479406523025359583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 186
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8074224aafe375f00800000000000000
+      internalID: 1105421479759202056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 203
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ac4be791f6e299c0800000000000000
+      internalID: -3921818400175993694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 201
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4a06429821e8ae80800000000000000
+      internalID: -8167030359867389363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 206
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e4eb4bbf23b3d80800000000000000
+      internalID: -8269960234085233001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 204
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab63efde3c18ef850800000000000000
+      internalID: 6412705597933631162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 205
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aeeb4bcb31b9e5c0800000000000000
+      internalID: -4185619508292227424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_16
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 209
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bb5eb9238235a90800000000000000
+      internalID: -7326467970972665017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_17
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 203
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c38188087166a4cd0800000000000000
+      internalID: -2573131985962133444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_18
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 187
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f524a24577f9630800000000000000
+      internalID: 3935995802715053904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_19
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 162
+        width: 194
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe26453d0b7ed56d0800000000000000
+      internalID: -2999987030113099025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_20
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 194
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44aa053b9fac20900800000000000000
+      internalID: 649304470098848324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_21
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 167
+        width: 189
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230cad9046b07c2e0800000000000000
+      internalID: -2105701776482451406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_22
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 199
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b1537efe2e3709d0800000000000000
+      internalID: -2808207471083826765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_23
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 104
+        width: 202
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eb83c0125f307a70800000000000000
+      internalID: 8822621291719920610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_24
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 179
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48d9178271c554a10800000000000000
+      internalID: 1893020472911699332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_25
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 181
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02a72cfc78e10a4f0800000000000000
+      internalID: -819621563526383072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_26
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 182
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b639d8c5e5292de00800000000000000
+      internalID: 1068076995617592171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_27
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 179
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6526d24dd68bad260800000000000000
+      internalID: 7123208542490550870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_28
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 169
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad3d2705cb2262300800000000000000
+      internalID: 226907023427687386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_sword_slam_forward_burst_6frames_1536x256_29
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 181
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f827b1100a8aba9f0800000000000000
+      internalID: -456085532081163633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_sword_slam_forward_burst_6frames_1536x256_0: -4134112233021683732
+      vfx_sword_slam_forward_burst_6frames_1536x256_1: -95524651881982661
+      vfx_sword_slam_forward_burst_6frames_1536x256_10: 1105421479759202056
+      vfx_sword_slam_forward_burst_6frames_1536x256_11: -3921818400175993694
+      vfx_sword_slam_forward_burst_6frames_1536x256_12: -8167030359867389363
+      vfx_sword_slam_forward_burst_6frames_1536x256_13: -8269960234085233001
+      vfx_sword_slam_forward_burst_6frames_1536x256_14: 6412705597933631162
+      vfx_sword_slam_forward_burst_6frames_1536x256_15: -4185619508292227424
+      vfx_sword_slam_forward_burst_6frames_1536x256_16: -7326467970972665017
+      vfx_sword_slam_forward_burst_6frames_1536x256_17: -2573131985962133444
+      vfx_sword_slam_forward_burst_6frames_1536x256_18: 3935995802715053904
+      vfx_sword_slam_forward_burst_6frames_1536x256_19: -2999987030113099025
+      vfx_sword_slam_forward_burst_6frames_1536x256_2: 6461889070759466145
+      vfx_sword_slam_forward_burst_6frames_1536x256_20: 649304470098848324
+      vfx_sword_slam_forward_burst_6frames_1536x256_21: -2105701776482451406
+      vfx_sword_slam_forward_burst_6frames_1536x256_22: -2808207471083826765
+      vfx_sword_slam_forward_burst_6frames_1536x256_23: 8822621291719920610
+      vfx_sword_slam_forward_burst_6frames_1536x256_24: 1893020472911699332
+      vfx_sword_slam_forward_burst_6frames_1536x256_25: -819621563526383072
+      vfx_sword_slam_forward_burst_6frames_1536x256_26: 1068076995617592171
+      vfx_sword_slam_forward_burst_6frames_1536x256_27: 7123208542490550870
+      vfx_sword_slam_forward_burst_6frames_1536x256_28: 226907023427687386
+      vfx_sword_slam_forward_burst_6frames_1536x256_29: -456085532081163633
+      vfx_sword_slam_forward_burst_6frames_1536x256_3: 52500139452539934
+      vfx_sword_slam_forward_burst_6frames_1536x256_4: -5764101479231013406
+      vfx_sword_slam_forward_burst_6frames_1536x256_5: -934704965743071849
+      vfx_sword_slam_forward_burst_6frames_1536x256_6: 3806778609983959383
+      vfx_sword_slam_forward_burst_6frames_1536x256_7: 3900606977638473570
+      vfx_sword_slam_forward_burst_6frames_1536x256_8: -1027581751407716114
+      vfx_sword_slam_forward_burst_6frames_1536x256_9: 1479406523025359583
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

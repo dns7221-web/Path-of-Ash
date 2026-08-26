@@ -143,6 +143,14 @@ public abstract class SkillData : ScriptableObject
     }
 
     /// <summary>
+    /// 추가 생성 — 세로 압축 비율. 하위 스킬이 거리 말고 <b>그림 자체</b>를 원근에 맞출 때 쓴다.
+    ///
+    /// 왜 여는가: 같은 화면 각도를 두 곳에서 각자 상수로 들고 있으면 인스펙터에서 이 값을
+    /// 조절했을 때 거리만 따라오고 그림은 안 따라와서 서로 어긋난다. 기준은 하나여야 한다.
+    /// </summary>
+    protected float VerticalSquash => verticalSquash;
+
+    /// <summary>
     /// 스킬을 실행한다. 시전 모션과 이동 잠금은 <see cref="SkillController"/>가 이미 걸어둔 뒤다.
     /// 여기서는 "이 스킬이 하는 일"만 한다.
     /// </summary>
