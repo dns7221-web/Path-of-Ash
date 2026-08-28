@@ -57,10 +57,38 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private float phase2MotionScale = 0.8f;
 
     [Header("이동")]
-    [SerializeField] private float moveSpeed = 4.5f;
+    // 수정(보스가 플레이어에게 못 붙음): 4.5 → 7.
+    //
+    // 2페이즈에서 거리를 1초마다 찍어보니 5.3~12.5에서만 놀았다. 근접 패턴 사거리가
+    // 내려찍기 5, 재 폭발 5인데 <b>거리가 한 번도 5 아래로 안 내려갔다.</b>
+    // 그래서 실제로 나오는 패턴이 사거리 20짜리 파도 하나뿐이었다.
+    //
+    // 원인은 단순하다. 보스 4.5 × 2페이즈 1.4 = 6.3인데 플레이어는 14다. 두 배 넘게 빠르니
+    // 쫓아가는 것 자체가 성립하지 않는다. 사거리를 늘려서 맞추는 방법도 있지만, 그러면
+    // "붙어서 싸우는 보스"가 "멀리서도 때리는 보스"로 바뀌어 그림과 어긋난다.
+    //
+    // 7이면 2페이즈에서 9.8이다. 여전히 플레이어보다 느려서 <b>도망은 갈 수 있다.</b>
+    // 대신 플레이어가 공격하려고 멈추는 순간에는 붙는다. 그 창을 만드는 것이 목적이다.
+    [Tooltip("이동 속도. 플레이어(14)보다 느려야 도망갈 수 있지만, 너무 느리면 근접 패턴이 " +
+             "영영 사거리에 못 들어온다.")]
+    [SerializeField] private float moveSpeed = 7f;
 
     [Tooltip("2페이즈에서 이동 속도에 곱할 값.")]
     [SerializeField] private float phase2SpeedScale = 1.4f;
+
+    // 추가 생성 — 2페이즈에서 몸통 콜라이더 가로에 곱할 값.
+    //
+    // 숫자의 근거는 그림이다. 시트의 불투명 픽셀을 재보면 1페이즈 idle이 폭 150px,
+    // 2페이즈 idle이 131px로 <b>131 ÷ 150 ≒ 0.87</b>이다.
+    //
+    // 세로를 안 줄이는 이유도 같은 측정에서 나왔다. 두 페이즈 모두 몸 높이가 200px로 같다.
+    // "거체가 무너지고 작아진다"는 기획 문장을 콜라이더 전체 축소로 옮기면 그림과 어긋나서,
+    // 2페이즈에서 <b>머리 쪽을 때렸는데 안 맞는</b> 반대 문제가 생긴다. 실제로 줄어든 것은
+    // 폭이므로 폭만 줄인다.
+    [Tooltip("2페이즈에서 몸통 콜라이더 가로에 곱할 값. 시트에서 잰 폭 비(131÷150)다. " +
+             "세로는 두 페이즈의 몸 높이가 같아서 건드리지 않는다.")]
+    [Range(0.3f, 1f)]
+    [SerializeField] private float phase2ColliderWidthScale = 0.87f;
 
     [Tooltip("이 거리보다 가까우면 공격 사이에 뒤로 물러난다. 내려찍기 사거리보다 작아야 한다.")]
     [SerializeField] private float retreatDistance = 3.5f;
@@ -124,6 +152,108 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private int waveDamage = 1;
     [SerializeField] private float waveSpawnHeight = 1.6f;
 
+    // 추가 생성 — 2페이즈 전용 궁극기. 기획 4패턴 중 "재 폭발"이다.
+    //
+    // <b>세 번째 회피 축을 만드는 것이 이 패턴의 목적이다.</b>
+    // 내려찍기는 조준한 방향으로 상자가 나가므로 <b>옆으로</b> 빠져서 피한다.
+    // 잿불 파도는 날아오는 것이라 <b>사이로</b> 피한다.
+    // 재 폭발은 보스를 중심으로 사방에 나가서 방향으로는 못 피한다 — <b>멀어져야</b> 피한다.
+    // 셋이 같은 회피법을 공유하면 패턴을 늘려도 플레이어가 하는 일은 안 늘어난다.
+    //
+    // 판정을 조준하지 않는 것이 핵심이라, 이 패턴에는 AimFrom도 slamAim도 쓰지 않는다.
+    [Header("재 폭발 (2페이즈 궁극기)")]
+    // 수정(화면 전체 판정으로 변경): 9 → 12. 판정 반경과 같은 값이다.
+    //
+    // 이 값이 걸어온 길을 남겨둔다. 처음 4는 물러나는 거리 3.5와의 0.5유닛 창을 노리는 셈이라
+    // 한 번도 안 걸렸다. 9로 늘리고 <b>달려들어 거리를 좁히는</b> 방식으로 맞췄다.
+    // 지금은 판정이 화면 전체라 좁힐 거리가 없다 — 어디서 걸리든 닿으므로 반경과 같게 둔다.
+    [Tooltip("2페이즈에서 이 거리 안에 플레이어가 있을 때 고른다. " +
+             "판정이 화면 전체라 반경과 같은 값이면 된다.")]
+    [SerializeField] private float ultimateRange = 12f;
+
+    // 추가 생성 — 예비동작 동안 플레이어 쪽으로 달려드는 속도.
+    //
+    // 수정(화면 전체 판정으로 변경): 14 → 0. <b>달려들 이유가 사라졌다.</b>
+    //
+    // 반경 5이던 시절에는 이 값이 회피 규칙 자체였다. 플레이어 이동 속도와 같은 14로 두면
+    // "예비동작 보고 반대로 뛰면 거리가 유지되어 산다"가 성립했다. 판정이 화면을 덮는 지금은
+    // 뛰어봐야 범위 안이라 달려드는 것이 연출도 규칙도 아니게 됐다. 남겨두면 <b>이유 없이
+    // 플레이어를 덮치는 움직임</b>만 남는다.
+    //
+    // 0이 아닌 값을 다시 넣으려면 반경을 근접 크기로 되돌리는 것이 먼저다. 둘은 한 쌍이다.
+    [Tooltip("예비동작 동안 플레이어 쪽으로 달려드는 속도(유닛/초). 0이면 제자리에서 터뜨린다. " +
+             "판정이 화면 전체면 좁힐 거리가 없으므로 0이 맞다.")]
+    [SerializeField, Min(0f)] private float ultimateLungeSpeed = 0f;
+
+    // 수정(화면 전체 판정): 5 → 12.
+    //
+    // 근거는 카메라다. orthographic size 5.625에 16:9라 화면에 보이는 범위가 20 × 11.25유닛이고,
+    // 그 <b>반쪽 대각선이 11.5</b>다. 12면 화면 구석까지 닿는다.
+    // (보스 방 바닥은 21.5 × 23.1유닛이라 방 전체를 덮으려면 16이 필요하지만, 그건 화면 밖까지
+    // 때리는 것이라 플레이어가 무엇에 맞았는지 알 수 없다.)
+    //
+    // <b>시트 그림보다 훨씬 크다는 점을 알고 쓴다.</b> 폭발 프레임의 그림 폭은 9.6유닛(반경 4.8)이라
+    // 판정의 절반도 안 된다. 그래서 <see cref="ultimateEffectPrefab"/>이 필수가 됐다 —
+    // 이제 이펙트가 "어디까지 맞는지"를 알려주는 유일한 수단이다. 비워두면 플레이어는
+    // 화면 밖에서 날아온 것처럼 느낀다.
+    [Tooltip("보스를 중심으로 한 판정 반경(유닛). 12면 화면(20 × 11.25) 구석까지 닿는다. " +
+             "시트 그림보다 크므로 이펙트로 범위를 보여줘야 한다.")]
+    [SerializeField] private float ultimateRadius = 12f;
+
+    // 수정(화면 전체 판정): 0.3 → 0.5. 클립을 10fps에서 6fps로 늦춘 것과 한 쌍이다.
+    //
+    // 판정이 화면을 덮으면서 <b>회피 수단이 대시 무적 0.25초 하나</b>로 줄었다. 0.3초
+    // 예비동작으로는 보고 나서 누를 시간이 없다. 0.5면 무적 시간의 두 배라 여유가 생긴다.
+    [Tooltip("모션 시작부터 판정까지(초). ashking2_ultimate의 4번째 프레임(3 ÷ 6fps = 0.5)에서 " +
+             "발밑이 터진다. 이 시간 안에 대시를 눌러야 산다.")]
+    [SerializeField] private float ultimateHitDelay = 0.5f;
+
+    [Tooltip("모션 전체 길이(초). ashking2_ultimate 클립 길이(6프레임 ÷ 6fps = 1.0)와 맞춘다.")]
+    [SerializeField] private float ultimateMotionSeconds = 1f;
+
+    [Tooltip("맞았을 때 피해량. 내려찍기(2)보다 크다 — 예비동작이 길고 피할 수 있는 대신 아프다.")]
+    [SerializeField] private int ultimateDamage = 3;
+
+    [Tooltip("다시 쓰기까지의 시간(초). 파도(6초)보다 훨씬 길어야 '가끔 나오는 큰 것'이 된다.")]
+    [SerializeField, Min(0f)] private float ultimateCooldown = 12f;
+
+    // 추가 생성 — 판정 순간에 터뜨릴 이펙트 프리팹.
+    //
+    // 왜 시트 그림만으로는 부족한가: 궁극기 클립은 10fps라 <b>폭발 프레임이 0.1초</b>다.
+    // 그 사이에 화면에서 무슨 일이 있었는지 읽을 수가 없다. fps를 낮춰도 한 프레임은
+    // 0.15초 남짓이라 한계가 같다.
+    //
+    // 더 큰 문제는 크기다. 시트의 폭발은 256px 셀 안에 그려져 있어서 아무리 커도 셀을 못 넘는데,
+    // 실제 판정은 반경 5(지름 10유닛)다. <b>맞은 범위와 보이는 범위가 다르면</b> 플레이어는
+    // 이 패턴을 배울 수 없다. 문서에 적어둔 "큰 궤적은 별도 VFX로 분리한다"가 이 경우다.
+    //
+    // 프리팹 쪽에 수명·프레임이 다 들어 있어서(SpriteFrameAnimator + destroyWhenFinished)
+    // 여기서는 만들어 놓기만 하면 된다. Q 스킬 이펙트와 같은 구조다.
+    [Tooltip("판정 순간에 터뜨릴 이펙트. 비우면 시트의 폭발 프레임만 0.1초 보인다.")]
+    [SerializeField] private GameObject ultimateEffectPrefab;
+
+    [Tooltip("이펙트 크기 배율. 씬 뷰의 진한 주황 원(판정 반경)과 눈으로 맞춘다. " +
+             "이펙트가 판정보다 작으면 '안 맞을 줄 알았는데 맞는' 패턴이 된다.")]
+    [SerializeField, Min(0.05f)] private float ultimateEffectScale = 1f;
+
+    // 추가 생성 — 2페이즈에 들어선 뒤 첫 재 폭발까지의 유예.
+    //
+    // 왜 필요한가: 전환 연출 동안 보스는 무적이라 플레이어는 대개 <b>바로 옆에 붙어 있다.</b>
+    // 유예 없이 쿨다운을 0으로 두면 변신 직후에 회피 불가능한 3피해가 꽂힌다.
+    //
+    // 수정(궁극기가 안 나옴): 4 → 1.5.
+    //
+    // 4초로 뒀더니 <b>한 번도 못 보고 보스가 죽었다.</b> 2페이즈 체력은 20인데(보스 40의 절반)
+    // 평타만 3.1DPS(2딜 ÷ 0.65초)라 6.5초, R(8)과 E(4)를 먼저 꽂으면 3초도 안 걸린다.
+    // 유예가 2페이즈 길이와 비슷하면 "가끔 나오는 큰 것"이 아니라 "안 나오는 것"이 된다.
+    //
+    // 1.5초의 근거: 전환 연출 0.875초가 끝난 시점부터 세는 값이고, 예비동작이 0.3초 더 있다.
+    // 붙어 있던 플레이어도 1.8초면 반경 밖으로 나갈 거리(이동속도 14면 4.2유닛 이상)를
+    // 충분히 움직인 뒤다. 회피 불가를 막는다는 원래 목적은 그대로 지켜진다.
+    [Tooltip("2페이즈 시작 후 첫 재 폭발까지의 유예(초). 변신 직후 회피 불가 피해를 막되, " +
+             "2페이즈가 짧아서 한 번도 안 나오는 일이 없을 만큼만 짧게 둔다.")]
+    [SerializeField, Min(0f)] private float ultimateFirstDelay = 1.5f;
+
     [Header("공통")]
     [Tooltip("공격이 끝난 뒤 다음 공격까지 쉬는 시간(초). 없으면 쉴 틈 없이 맞는다.")]
     [SerializeField] private float attackCooldown = 1.1f;
@@ -153,6 +283,9 @@ public class EnemyBoss : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform player;
 
+    // 추가 생성 — 몸통(피격받는) 콜라이더. 2페이즈에서 폭을 줄이려고 들고 있는다.
+    private CapsuleCollider2D bodyCollider;
+
     // 추가 생성 — 조준할 때 겨눌 플레이어 콜라이더. 발밑(Transform)이 아니라 이쪽을 노린다.
     //
     // 왜 필요한가: 이 게임은 발바닥을 원점으로 쓴다. 그래서 Transform 위치는 <b>맞아야 할 몸이
@@ -165,6 +298,14 @@ public class EnemyBoss : MonoBehaviour
 
     // 추가 생성 — 파도를 다시 쓸 수 있을 때까지 남은 시간.
     private float waveCooldownTimer;
+
+    // 추가 생성 — 재 폭발을 다시 쓸 수 있을 때까지 남은 시간.
+    private float ultimateCooldownTimer;
+
+#if UNITY_EDITOR
+    // 임시 진단용. 다음 로그를 찍을 시각(실행 시간 기준). 원인을 잡으면 지운다.
+    private float nextDiagnosticTime;
+#endif
 
     // 추가 생성 — 이번 내려찍기가 노리는 방향. 예비동작이 시작될 때 고정하고 판정 때 그대로 쓴다.
     //
@@ -179,12 +320,18 @@ public class EnemyBoss : MonoBehaviour
     private static readonly int DieHash = Animator.StringToHash("Die");
     private static readonly int TransitionHash = Animator.StringToHash("Transition");
 
+    // 추가 생성 — 재 폭발 트리거. 이 상태는 2페이즈 컨트롤러에만 있다.
+    private static readonly int UltimateHash = Animator.StringToHash("Ultimate");
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        // 추가 생성 — 몸통 콜라이더. 없어도 동작하지만 2페이즈에서 몸이 안 줄어든다.
+        bodyCollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void OnEnable()
@@ -235,6 +382,10 @@ public class EnemyBoss : MonoBehaviour
         // 정면으로 어긋나던 자리다.
         if (waveCooldownTimer > 0f) waveCooldownTimer -= Time.deltaTime;
 
+        // 추가 생성 — 재 폭발 쿨다운도 같은 자리에서 흐른다.
+        // 파도와 같은 이유다. 상태와 무관하게 흘러야 인스펙터에 적은 초가 실제 주기와 맞는다.
+        if (ultimateCooldownTimer > 0f) ultimateCooldownTimer -= Time.deltaTime;
+
         if (state == State.Dead || state == State.Attack ||
             state == State.Transition || state == State.Hit) return;
 
@@ -248,6 +399,23 @@ public class EnemyBoss : MonoBehaviour
         float distance = toPlayer.magnitude;
 
         FaceTowards(toPlayer.x);
+
+#if UNITY_EDITOR
+        // 임시 진단(재 폭발이 안 나오는 원인 추적) — 2페이즈에서 1초에 한 번 조건 셋을 찍는다.
+        //
+        // ChoosePattern 안이 아니라 여기 두는 이유: 저 함수는 공격 쿨다운이 끝났을 때만 불린다.
+        // 만약 쿨다운이 계속 안 끝나서 못 고르는 것이라면 저 안에 로그를 두면 <b>아무것도 안 찍혀서</b>
+        // 원인을 알 수 없다. 여기라면 세 값이 매번 보인다.
+        //
+        // 원인을 잡으면 지운다.
+        if (isPhase2 && Time.time >= nextDiagnosticTime)
+        {
+            nextDiagnosticTime = Time.time + 1f;
+            Debug.Log($"[보스/진단] 거리 {distance:0.0} (궁 사거리 {ultimateRange}) / " +
+                      $"궁 쿨 {ultimateCooldownTimer:0.00} / 공격 쿨 {cooldownTimer:0.00} / " +
+                      $"상태 {state}", this);
+        }
+#endif
 
         // 쉬는 동안은 자리를 다시 잡는다. 이 틈이 없으면 플레이어가 반격할 자리가 사라진다.
         if (cooldownTimer > 0f) { Reposition(toPlayer, distance); return; }
@@ -271,6 +439,15 @@ public class EnemyBoss : MonoBehaviour
     /// </summary>
     private void ChoosePattern(Vector2 toPlayer, float distance)
     {
+        // 추가 생성 — 재 폭발이 가장 먼저다.
+        //
+        // 쿨다운이 12초라 자주 나오지 않는데, 순서를 뒤로 두면 그 긴 쿨다운이 돌아온 순간에
+        // 마침 파도 쿨다운도 돌아와 있거나 사거리 안이라는 이유로 계속 밀린다. 그러면 실제
+        // 주기는 12초가 아니라 "12초 + 다른 패턴이 안 걸릴 때까지"가 되어 인스펙터 숫자가
+        // 뜻을 잃는다. 드물게 나오는 패턴일수록 나올 차례가 됐을 때는 반드시 나와야 한다.
+        bool canUltimate = isPhase2 && ultimateCooldownTimer <= 0f && distance <= ultimateRange;
+        if (canUltimate) { StartUltimate(toPlayer); return; }
+
         // 파도는 자기 쿨다운이 돌아왔을 때만 쓴다. 빈도를 이 하나로 통제하므로
         // "직전에 무엇을 썼는지" 같은 기억이 따로 필요 없다.
         bool canWave = wavePrefab != null && distance <= waveRange && waveCooldownTimer <= 0f;
@@ -292,6 +469,28 @@ public class EnemyBoss : MonoBehaviour
     {
         waveCooldownTimer = waveCooldown * (isPhase2 ? phase2CooldownScale : 1f);
         StartCoroutine(Wave(toPlayer));
+    }
+
+    /// <summary>
+    /// 추가 생성 — 재 폭발을 시작하고 전용 쿨다운을 건다.
+    ///
+    /// 파도와 같이 <b>시작할 때</b> 건다. 끝난 뒤에 걸면 모션 길이(0.6초)만큼 간격이 늘어
+    /// 인스펙터의 12초와 체감 주기가 어긋난다.
+    ///
+    /// 파도와 달리 phase2CooldownScale을 곱하지 않는다. 이 패턴은 2페이즈에만 있어서
+    /// "2페이즈라서 더 빨라진다"는 비교 대상이 없다. 곱하면 인스펙터의 12초가 실제로는
+    /// 7.2초라는 뜻이 되어, 숫자를 읽고 조정할 수 없게 된다.
+    /// </summary>
+    private void StartUltimate(Vector2 toPlayer)
+    {
+        ultimateCooldownTimer = ultimateCooldown;
+
+        // 추가 생성 — 이 패턴은 12초에 한 번이라 "안 나온다"와 "못 봤다"를 눈으로 구별할 수 없다.
+        // 로그가 있으면 콘솔만 보고 판단이 끝난다.
+        Debug.Log($"[보스] 재 폭발 시전 — 거리 {toPlayer.magnitude:0.0}에서 달려든다. " +
+                  $"{ultimateHitDelay}초 뒤 반경 {ultimateRadius} 판정.", this);
+
+        StartCoroutine(Ultimate(toPlayer));
     }
 
     /// <summary>
@@ -469,6 +668,97 @@ public class EnemyBoss : MonoBehaviour
     }
 
     /// <summary>
+    /// 추가 생성 — 재 폭발. 보스를 중심으로 사방에 판정이 나간다.
+    ///
+    /// <b>조준하지 않는 유일한 패턴이다.</b> 내려찍기는 조준 방향으로 상자를 돌리고 파도는
+    /// 발사 직전에 방향을 다시 잡지만, 여기서는 방향이라는 개념 자체가 없다. 그래서
+    /// <see cref="AimFrom"/>도 <see cref="slamAim"/>도 쓰지 않는다. 회피는 옆으로 빠지는 것이
+    /// 아니라 <b>반경 밖으로 나가는 것</b>이다.
+    ///
+    /// <see cref="MotionTime"/>을 안 거치는 것이 중요하다. 그 함수는 "1페이즈 클립에 맞춰
+    /// 적은 값을 2페이즈 클립 길이로 환산"하는 도구인데, 이 패턴은 2페이즈에만 있어서
+    /// <b>환산할 1페이즈 값이 없다.</b> 아래 두 숫자는 처음부터 2페이즈 클립(10fps)의 실제
+    /// 길이다. 여기에 0.8을 곱하면 판정이 폭발 그림보다 0.06초 먼저 나가서, 아무것도 안
+    /// 터졌는데 맞는 프레임이 생긴다.
+    /// </summary>
+    private IEnumerator Ultimate(Vector2 toPlayer)
+    {
+        state = State.Attack;
+        Stop();
+        state = State.Attack; // Stop이 Idle로 되돌리므로 다시 잠근다
+
+        // 추가 생성 — 달려들 방향을 시작 시점에 고정한다.
+        //
+        // 내려찍기와 같은 이유다. 예비동작 도중에 방향을 다시 잡으면 어디로 도망쳐도 따라와서,
+        // "예비동작을 보고 반대로 뛴다"는 회피가 성립하지 않는다. 판정이 사방으로 나가는
+        // 패턴이라 <b>거리를 벌리는 것 말고는 피할 방법이 없어서</b> 더 중요하다.
+        Vector2 aim = AimFrom(toPlayer);
+
+        if (animator != null) animator.SetTrigger(UltimateHash);
+
+        // 예비동작 동안 달려든다. Stop()이 속도를 0으로 만든 뒤라 여기서 다시 넣는다.
+        body.linearVelocity = aim * ultimateLungeSpeed;
+
+        yield return new WaitForSeconds(ultimateHitDelay);
+
+        // 터지는 순간 멈춘다. 안 멈추면 폭발 그림이 뜬 채로 미끄러져서 판정 위치와 그림이 어긋난다.
+        body.linearVelocity = Vector2.zero;
+
+        // 추가 생성 — 이펙트를 판정과 <b>같은 자리, 같은 순간에</b> 만든다.
+        //
+        // 순서가 중요하다. 아래 OverlapCircle보다 먼저 두는 이유는, 맞은 쪽이 죽으면서
+        // 무슨 연출을 하든 이펙트는 이미 나와 있어야 하기 때문이다. 판정 결과에 따라
+        // 이펙트가 달라지면 플레이어는 "맞았을 때만 터지는" 것으로 배운다.
+        SpawnUltimateEffect();
+
+        // 원 하나로 판정한다. 상자를 돌려 쓰는 내려찍기와 달리 회전이 필요 없어서
+        // OverlapCircle이 그대로 맞는 도구다.
+        var hit = Physics2D.OverlapCircle(transform.position, ultimateRadius, playerLayer);
+        if (hit != null)
+        {
+            var target = hit.GetComponentInParent<Health>();
+            if (target != null) target.TakeDamage(ultimateDamage, transform.position);
+        }
+
+        yield return new WaitForSeconds(Mathf.Max(0f, ultimateMotionSeconds - ultimateHitDelay));
+
+        EndAttack();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 재 폭발 이펙트를 보스 발밑에 만든다.
+    ///
+    /// 보스의 자식으로 붙이지 않는 이유: 붙이면 보스가 죽거나 다음 패턴으로 움직일 때
+    /// 이펙트가 같이 따라다닌다. 폭발은 <b>그 자리에서 일어난 사건</b>이라 보스와 함께
+    /// 움직이면 안 된다. 수명은 프리팹의 SpriteFrameAnimator가 알아서 끝낸다.
+    /// </summary>
+    private void SpawnUltimateEffect()
+    {
+        // 수정(이펙트가 안 나옴): 조용히 넘어가지 않고 이유를 남긴다.
+        //
+        // 비어 있어도 패턴 자체는 멀쩡히 돌아간다 — 모션도 나오고 피해도 들어간다.
+        // 그래서 화면만 보면 "이펙트를 넣었는데 안 보인다"와 "안 넣었다"가 똑같아 보인다.
+        // 실제로 그 둘을 구별하지 못해 한 번 헤맸다.
+        if (ultimateEffectPrefab == null)
+        {
+            Debug.LogWarning("[보스] 재 폭발 이펙트 프리팹이 비어 있다. 보스 프리팹 인스펙터의 " +
+                             "Ultimate Effect Prefab에 KingsEmber를 꽂아라. " +
+                             "지금은 시트의 폭발 프레임(0.1초)만 보인다.", this);
+            return;
+        }
+
+        var effect = Instantiate(ultimateEffectPrefab, transform.position, Quaternion.identity);
+
+        // 프리팹에 이미 들어 있는 크기에 배율을 곱한다. 절대값으로 덮으면 프리팹마다
+        // 다른 기준 크기를 여기서 다시 외워야 한다.
+        if (!Mathf.Approximately(ultimateEffectScale, 1f))
+            effect.transform.localScale *= ultimateEffectScale;
+
+        Debug.Log($"[보스] 재 폭발 이펙트 생성 — {ultimateEffectPrefab.name}, " +
+                  $"배율 {ultimateEffectScale}, 최종 크기 {effect.transform.localScale.x:0.00}", this);
+    }
+
+    /// <summary>
     /// 추가 생성 — 페이즈에 맞춘 동작 시간. 1페이즈는 그대로, 2페이즈는 클립 길이 비만큼 줄인다.
     ///
     /// 곱하는 자리를 한 함수로 모은 이유: 곱해야 할 곳이 네 군데(내려찍기 판정·모션,
@@ -538,6 +828,14 @@ public class EnemyBoss : MonoBehaviour
 
         isPhase2 = true;
 
+        // 추가 생성 — 몸이 줄었으니 맞는 자리도 줄인다.
+        ShrinkColliderForPhase2();
+
+        // 추가 생성 — 첫 재 폭발까지 유예를 준다.
+        // 전환 연출 내내 무적이라 플레이어는 대개 코앞에 서 있다. 여기서 0이면
+        // 변신하자마자 회피 불가능한 한 방이 나간다.
+        ultimateCooldownTimer = ultimateFirstDelay;
+
         if (animator != null)
         {
             animator.runtimeAnimatorController = phase2Controller;
@@ -551,7 +849,32 @@ public class EnemyBoss : MonoBehaviour
         cooldownTimer = 0.4f;
         state = State.Idle;
 
-        Debug.Log("[보스] 2페이즈로 넘어갔다.", this);
+        // 수정(궁극기 확인): 언제부터 재 폭발이 나올 수 있는지 같이 남긴다.
+        // 이 줄과 "재 폭발 시전" 로그의 시간 차가 곧 유예 + 다음 공격까지의 대기다.
+        Debug.Log($"[보스] 2페이즈로 넘어갔다. 재 폭발은 {ultimateFirstDelay}초 뒤부터, " +
+                  $"거리 {ultimateRange} 안에서 나온다.", this);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 2페이즈 몸통 콜라이더를 그림에 맞춰 좁힌다.
+    ///
+    /// 폭만 줄이고 세로와 오프셋은 그대로 두는 이유는 필드 주석에 적어뒀다 —
+    /// 시트를 재보면 두 페이즈의 몸 높이가 200px로 같고 폭만 150 → 131로 줄었다.
+    ///
+    /// 프리팹 값을 코드에서 덮는 대신 <b>곱하는</b> 이유: 콜라이더의 기준 크기는
+    /// AshBossPrefabBuilder가 보스 키에서 계산해 넣는다. 여기에 절대값을 적으면 그 계산을
+    /// 두 곳에서 하게 되고, 나중에 보스 키를 바꿨을 때 2페이즈만 옛 크기로 남는다.
+    /// 배율이면 기준이 무엇으로 바뀌든 따라간다.
+    ///
+    /// 되돌리는 코드를 두지 않은 이유: 2페이즈에서 1페이즈로 돌아가는 길이 없다. 판을 다시
+    /// 하면 씬을 새로 로드하므로 프리팹 값 그대로 시작한다.
+    /// </summary>
+    private void ShrinkColliderForPhase2()
+    {
+        if (bodyCollider == null) return;
+
+        Vector2 size = bodyCollider.size;
+        bodyCollider.size = new Vector2(size.x * phase2ColliderWidthScale, size.y);
     }
 
     private void OnDied()
@@ -566,6 +889,52 @@ public class EnemyBoss : MonoBehaviour
         // 시체를 밟고 지나가지 않게 충돌만 끈다. 오브젝트는 남겨서 사망 모션이 끝까지 보인다.
         foreach (var collider in GetComponentsInChildren<Collider2D>()) collider.enabled = false;
     }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// 추가 생성 — 인스펙터 값이 서로 모순되면 그 자리에서 알려준다.
+    ///
+    /// 왜 필요한가: 재 폭발이 안 나오길래 한참을 찾았는데, 원인이 시전 사거리를 1.5로 적어둔
+    /// 것이었다. 보스는 <see cref="retreatDistance"/>(3.5)보다 가까워지면 <b>뒤로 물러나므로</b>
+    /// 그보다 작은 사거리는 영영 충족되지 않는다. 그런데 인스펙터에서 두 값은 서로 다른
+    /// 항목에 떨어져 있어서, 나란히 놓고 보지 않는 한 모순이 보이지 않는다.
+    ///
+    /// 잘못된 값을 코드가 조용히 고치지 않고 <b>경고만 하는</b> 이유: 밸런스 수치는 사람이
+    /// 정하는 것이다. 자동으로 바로잡으면 인스펙터에 적은 숫자와 실제로 도는 숫자가 달라져서
+    /// 더 헷갈린다. 무엇이 왜 모순인지만 알려주고 판단은 남긴다.
+    /// </summary>
+    private void OnValidate()
+    {
+        if (ultimateRange < retreatDistance)
+        {
+            Debug.LogWarning(
+                $"[보스] 재 폭발 시전 사거리({ultimateRange})가 물러나는 거리({retreatDistance})보다 " +
+                "작다. 보스는 그 거리 안으로 안 붙으므로 이 패턴은 나오지 않는다. " +
+                "사거리를 물러나는 거리보다 크게 잡아라.", this);
+        }
+
+        // 수정(달려들기 도입): "사거리 ≤ 반경"이던 규칙을 <b>달려들어 좁히는 거리까지 포함</b>해
+        // 다시 잡았다. 예전 규칙이면 제자리에서 터뜨리는 경우만 맞았다.
+        //
+        // 닿을 수 있는 최대 거리 = 판정 반경 + (달려드는 속도 × 예비동작 시간).
+        // 이걸 넘는 사거리는 "시전은 하는데 도착을 못 해서 헛치는" 구간이 된다.
+        float reach = ultimateRadius + ultimateLungeSpeed * ultimateHitDelay;
+        if (ultimateRange > reach)
+        {
+            Debug.LogWarning(
+                $"[보스] 재 폭발 시전 사거리({ultimateRange})가 닿을 수 있는 거리({reach:0.0})보다 크다. " +
+                $"반경({ultimateRadius}) + 달려들기({ultimateLungeSpeed} × {ultimateHitDelay}초)로는 " +
+                "그 거리에서 시전해도 못 닿는다. 사거리를 줄이거나 달려드는 속도를 올려라.", this);
+        }
+
+        if (slamRange > waveRange)
+        {
+            Debug.LogWarning(
+                $"[보스] 내려찍기 사거리({slamRange})가 파도 사거리({waveRange})보다 크다. " +
+                "두 사거리가 겹치지 않으면 패턴이 한쪽으로 편중된다.", this);
+        }
+    }
+#endif
 
     /// <summary>바라보는 방향(오른쪽 +1). 스프라이트가 원래 오른쪽을 본다고 가정한다.</summary>
     private float FacingSign() => spriteRenderer != null && spriteRenderer.flipX ? -1f : 1f;
@@ -607,5 +976,16 @@ public class EnemyBoss : MonoBehaviour
         Gizmos.DrawWireCube(Vector3.zero, slamHitSize);
 
         Gizmos.matrix = saved;
+
+        // 추가 생성 — 재 폭발의 판정 반경(진한 주황)과 시전 사거리(연한 주황).
+        //
+        // 두 개를 같이 그리는 이유: 바깥 원에서 시전을 시작해 달려들어 안쪽 원으로 좁힌다는
+        // 관계가 숫자 두 개로는 안 보인다. 바깥 원이 <b>너무 크면</b> 달려들어도 못 닿아
+        // 헛치는데, 그 경계는 OnValidate가 경고로 알려준다.
+        Gizmos.color = new Color(1f, 0.5f, 0.1f);
+        Gizmos.DrawWireSphere(transform.position, ultimateRadius);
+
+        Gizmos.color = new Color(1f, 0.5f, 0.1f, 0.4f);
+        Gizmos.DrawWireSphere(transform.position, ultimateRange);
     }
 }

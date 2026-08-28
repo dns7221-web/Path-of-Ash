@@ -304,8 +304,9 @@ MonoBehaviour:
   phase2HealthRatio: 0.5
   transitionSeconds: 0.875
   phase2MotionScale: 0.8
-  moveSpeed: 4.5
+  moveSpeed: 7
   phase2SpeedScale: 1.4
+  phase2ColliderWidthScale: 0.87
   retreatDistance: 3.5
   retreatSpeedScale: 0.55
   slamRange: 5
@@ -322,6 +323,16 @@ MonoBehaviour:
   waveSpreadDegrees: 18
   waveDamage: 1
   waveSpawnHeight: 1.6
+  ultimateRange: 9
+  ultimateLungeSpeed: 14
+  ultimateRadius: 5
+  ultimateHitDelay: 0.3
+  ultimateMotionSeconds: 0.6
+  ultimateDamage: 3
+  ultimateCooldown: 12
+  ultimateEffectPrefab: {fileID: 8670208565340853328, guid: 525c98481831e624d8958e93af64a930, type: 3}
+  ultimateEffectScale: 0.5
+  ultimateFirstDelay: 1.5
   attackCooldown: 1.1
   phase2CooldownScale: 0.6
   hitStunSeconds: 0.125

@@ -284,6 +284,11 @@ public static class AshPlayerAnimationBuilder
         controller.AddParameter(ParamDie, AnimatorControllerParameterType.Trigger);
         controller.AddParameter(ParamTransition, AnimatorControllerParameterType.Trigger);
 
+        // 추가 생성 — 궁극기 트리거. 상태는 클립이 있는 페이즈에만 생기지만 파라미터는
+        // 양쪽에 둔다. 없는 파라미터에 SetTrigger를 부르면 유니티가 경고를 남기는데,
+        // 1페이즈에서 실수로 불렸을 때 그 경고가 보이는 편이 조용히 넘어가는 것보다 낫다.
+        controller.AddParameter(ParamUltimate, AnimatorControllerParameterType.Trigger);
+
         var machine = controller.layers[0].stateMachine;
 
         var idle = AddState(machine, "Idle", clips["idle"], new Vector3(300f, 0f, 0f));
@@ -317,6 +322,21 @@ public static class AshPlayerAnimationBuilder
             var transition = AddState(machine, "Transition", transitionClip,
                                       new Vector3(860f, 0f, 0f));
             AddTriggerFromAnyState(machine, transition, ParamTransition);
+        }
+
+        // 추가 생성 — 궁극기는 2페이즈 컨트롤러에만 있다.
+        //
+        // 전환 상태와 같은 방식(클립이 있을 때만 만든다)을 쓴 이유: 두 페이즈가 이 함수
+        // 하나를 같이 쓰는데, 페이즈를 인자로 받아 if로 가르면 <b>"어느 페이즈냐"를 시트 정의와
+        // 여기 두 곳에서 관리</b>하게 된다. 클립의 존재를 근거로 삼으면 진실이 한 곳에만 있다.
+        // 시트 목록(AshPlayerSpriteSheets)에 ultimate를 넣은 세트만 이 상태를 갖는다.
+        if (clips.TryGetValue("ultimate", out AnimationClip ultimateClip))
+        {
+            var ultimate = AddState(machine, "Ultimate", ultimateClip, new Vector3(860f, 120f, 0f));
+            AddTriggerFromAnyState(machine, ultimate, ParamUltimate);
+
+            // 다른 공격과 같이 재생이 끝나면 서기로 돌아간다.
+            AddExitTimeTransition(ultimate, idle);
         }
     }
 

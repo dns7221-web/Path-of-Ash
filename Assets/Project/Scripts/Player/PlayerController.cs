@@ -169,8 +169,14 @@ public class PlayerController : MonoBehaviour
 
     /// <summary>
     /// 추가 생성 — 지금 무적인가. 대시 중에는 공격을 통과한다.
-    /// 아직 데미지 시스템이 없어서 읽는 쪽이 없지만, 무적 판정의 주인이 누구인지를 여기로
-    /// 못 박아두려고 먼저 노출한다. 나중에 피격 판정이 이 값을 보고 데미지를 무시한다.
+    ///
+    /// 수정(주석 최신화): "아직 읽는 쪽이 없다"고 적혀 있었으나 지금은 <see cref="Update"/>가
+    /// 매 프레임 이 값을 <see cref="Health.IsInvulnerableExternally"/>에 밀어 넣는다.
+    /// 대시 0.25초 <b>전체</b>가 무적이라, 보스의 재 폭발처럼 방향으로 못 피하는 패턴도
+    /// 판정 순간에 대시가 걸려 있으면 통과한다.
+    ///
+    /// 무적 구간을 대시보다 짧게(앞부분만) 두지 않은 이유: 스태미나 25(회복 18/초)가 이미
+    /// 남발을 막고 있다. 여기서 또 조이면 대시가 이동에도 회피에도 쓰기 애매해진다.
     /// </summary>
     public bool IsInvincible => actionState == ActionState.Dashing;
 
