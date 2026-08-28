@@ -40,7 +40,8 @@ public class BossKeyScreen : MonoBehaviour
     [Header("참조 (비어 있으면 씬에서 찾는다)")]
     [SerializeField] private RelicInventory inventory;
 
-    [Tooltip("인벤토리 화면. 둘이 동시에 열리지 않게 서로 확인한다.")]
+    // 수정(화면 전환): 역할이 "동시에 열리는지 감시"에서 "전환할 상대"로 바뀌었다.
+    [Tooltip("인벤토리 화면. T를 누르면 저 화면에서 이 화면으로 전환된다.")]
     [SerializeField] private InventoryScreen inventoryScreen;
 
     private InputAction toggleAction;
@@ -99,35 +100,52 @@ public class BossKeyScreen : MonoBehaviour
 
     private void OnDestroy() => toggleAction?.Dispose();
 
+    // 수정(화면 전환): 인벤토리를 감시하다 스스로 닫던 코드를 걷어냈다.
+    //
+    // 그 방식에는 두 가지 문제가 있었다.
+    // - 닫으면서 timeScale을 1로 되돌려, 인벤토리를 연 채로 시간이 다시 흘렀다.
+    //   막으려던 상황("멈춘 화면 뒤에서 적이 움직인다")이 전환 경로로 그대로 일어났다.
+    // - 인벤토리가 열려 있으면 여기서 return해버려 T 입력이 검사되지도 않았다.
+    //   그래서 T→I는 되는데 I→T는 안 되는 한쪽만 되는 전환이 됐다.
+    //
+    // 이제는 <b>여는 쪽이 상대를 닫는다</b>는 규칙 하나로 양쪽이 같게 동작한다.
     private void Update()
     {
-        // 인벤토리가 열려 있으면 이 화면은 열리지 않는다.
-        //
-        // 왜 막는가: 둘 다 Time.timeScale을 만진다. 겹쳐서 열리면 하나를 닫는 순간
-        // 다른 하나가 열려 있는데도 시간이 다시 흘러서, 멈춘 화면 뒤에서 적이 움직인다.
-        bool blocked = inventoryScreen != null && inventoryScreen.IsOpen;
-
-        if (blocked)
-        {
-            if (isOpen) SetOpen(false);
-            return;
-        }
-
         // timeScale이 0이어도 입력은 실제 시간으로 들어온다. 그래서 멈춘 상태에서도 닫을 수 있다.
         if (toggleAction.WasPressedThisFrame()) SetOpen(!isOpen);
     }
 
     private void SetOpen(bool open)
     {
+        // 추가 생성 — 인벤토리가 열려 있으면 닫고 이 화면으로 바꾼다.
+        // 시간은 건드리지 않고 화면만 닫으므로 전환 중에 한 프레임도 안 흐른다.
+        if (open && inventoryScreen != null) inventoryScreen.CloseForSwitch();
+
         isOpen = open;
 
         if (root != null) root.SetActive(open);
 
         // 시간을 멈춘다. 인벤토리와 같은 규칙이라 조작감이 어긋나지 않는다.
+        // 닫을 때 1로 되돌려도 되는 이유: 한 번에 하나만 열리므로 이 시점에 열린 화면은 없다.
         Time.timeScale = open ? 0f : 1f;
 
         if (open) Redraw();
         else ShowInfo(RelicInstance.None);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 인벤토리로 전환하느라 이 화면을 닫는다.
+    ///
+    /// <b>Time.timeScale을 건드리지 않는다.</b> 전환은 멈춘 상태를 유지한 채 보는 것만
+    /// 바꾸는 동작이라, 닫는 쪽이 시간을 풀면 여는 쪽이 다시 멈추기 전까지 게임이 흐른다.
+    /// </summary>
+    public void CloseForSwitch()
+    {
+        if (!isOpen) return;
+
+        isOpen = false;
+        if (root != null) root.SetActive(false);
+        ShowInfo(RelicInstance.None);
     }
 
     /// <summary>열쇠 칸을 화면에 다시 그린다.</summary>

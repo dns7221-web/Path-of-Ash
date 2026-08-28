@@ -39,6 +39,10 @@ public class InventoryScreen : MonoBehaviour
     [Header("대상 (비어 있으면 실행 시 찾는다)")]
     [SerializeField] private RelicInventory inventory;
 
+    // 추가 생성 — 보스 열쇠 화면. 이 화면을 열 때 저쪽을 닫아 한 번에 하나만 열리게 한다.
+    [Tooltip("보스 열쇠 화면. I/Tab을 누르면 저 화면에서 이 화면으로 전환된다.")]
+    [SerializeField] private BossKeyScreen bossKeyScreen;
+
     // 실행 중에 만든 보관함 칸들. 다시 그릴 때 재사용한다.
     private readonly System.Collections.Generic.List<RelicSlotView> bagSlots =
         new System.Collections.Generic.List<RelicSlotView>();
@@ -60,6 +64,14 @@ public class InventoryScreen : MonoBehaviour
         {
             // 꺼져 있는 순간에도 찾아야 한다. 기본값은 비활성 오브젝트를 건너뛴다.
             inventory = FindFirstObjectByType<RelicInventory>(FindObjectsInactive.Include);
+        }
+
+        // 추가 생성 — 인스펙터에 안 꽂혀 있어도 스스로 찾는다.
+        // 서로를 찾는 구조지만 Awake에서 필드만 채우고 상대의 상태를 읽지는 않으므로
+        // 어느 쪽이 먼저 깨어나도 상관없다.
+        if (bossKeyScreen == null)
+        {
+            bossKeyScreen = FindFirstObjectByType<BossKeyScreen>(FindObjectsInactive.Include);
         }
 
         if (bagSlotTemplate != null) bagSlotTemplate.gameObject.SetActive(false);
@@ -109,15 +121,41 @@ public class InventoryScreen : MonoBehaviour
 
     private void SetOpen(bool open)
     {
+        // 추가 생성 — 여는 쪽이 상대 화면을 닫는다.
+        //
+        // 이렇게 여는 쪽에 책임을 두면 "한 번에 하나만 열린다"가 두 화면 어디서 열든 지켜진다.
+        // 예전에는 보스 열쇠 화면이 매 프레임 인벤토리를 감시하다가 스스로 닫았는데,
+        // 그때 닫으면서 timeScale까지 1로 되돌려서 <b>인벤토리를 연 채로 시간이 흘렀다.</b>
+        // CloseForSwitch는 시간을 건드리지 않고, 시간은 바로 아래에서 이 화면이 0으로 잡는다.
+        if (open && bossKeyScreen != null) bossKeyScreen.CloseForSwitch();
+
         isOpen = open;
 
         if (root != null) root.SetActive(open);
 
         // 시간을 멈춘다. 물리가 멈추므로 적의 이동도 피격 판정도 같이 멈춘다.
+        // 닫을 때 그냥 1로 되돌려도 되는 이유: 위 규칙 때문에 이 시점에 열린 화면은 없다.
         Time.timeScale = open ? 0f : 1f;
 
         if (open) Redraw();
         else ShowInfo(RelicInstance.None);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 보스 열쇠 화면으로 전환하느라 이 화면을 닫는다.
+    ///
+    /// <b>Time.timeScale을 건드리지 않는 것이 핵심이다.</b> 전환은 "멈춘 상태를 유지한 채
+    /// 보는 것만 바꾸는" 동작이라, 닫는 쪽이 시간을 풀면 여는 쪽이 다시 멈추기 전까지
+    /// 한 프레임 동안 게임이 흘러버린다. 화면 뒤에서 적이 한 걸음 움직이는 그 한 프레임이
+    /// 실제로는 피격으로 이어진다.
+    /// </summary>
+    public void CloseForSwitch()
+    {
+        if (!isOpen) return;
+
+        isOpen = false;
+        if (root != null) root.SetActive(false);
+        ShowInfo(RelicInstance.None);
     }
 
     /// <summary>보관함과 장착 칸을 화면에 다시 그린다.</summary>

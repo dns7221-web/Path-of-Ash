@@ -31,9 +31,19 @@ public class RunManager : MonoBehaviour
     [Tooltip("죽고 나서 결과 화면으로 넘어가기까지의 시간(초). 사망 연출이 들어갈 자리다.")]
     [SerializeField] private float resultDelaySeconds = 0.6f;
 
-    [Header("임시 — 플레이어가 생기면 지운다")]
-    [Tooltip("사망을 강제로 발생시키는 키. 아직 적도 체력도 없어서 죽을 방법이 없다.")]
+#if UNITY_EDITOR
+    // 수정(빌드 유출): 조사용 사망 키를 에디터에서만 컴파일되게 감쌌다.
+    //
+    // 예전에는 이 필드와 아래 Update의 입력 확인이 그대로 빌드에 들어가서, 완성된 게임에서
+    // K를 누르면 즉사했다. 인스펙터 체크박스로 끄는 방식은 <b>켜둔 채로 빌드하는 실수</b>가
+    // 언젠가 반드시 나오므로, BossKeyDebugGrant와 같이 아예 컴파일에서 빼는 쪽을 택했다.
+    //
+    // 직렬화 필드가 조건부가 되면 빌드에서 이 값은 저장되지 않지만, 빌드에는 쓰는 곳도
+    // 없으므로 상관없다.
+    [Header("조사용 — 에디터 전용")]
+    [Tooltip("사망을 강제로 발생시키는 키. 에디터에서만 동작하며 빌드에는 포함되지 않는다.")]
     [SerializeField] private Key debugDeathKey = Key.K;
+#endif
 
     // 판이 시작된 시각. Time.time은 timeScale의 영향을 받으므로, 나중에 일시정지나
     // 히트스톱으로 timeScale을 0으로 만들면 생존 시간도 같이 멈춘다. 그게 맞는 동작이다.
@@ -93,13 +103,15 @@ public class RunManager : MonoBehaviour
 
         ElapsedSeconds = Time.time - runStartTime;
 
-        // 임시: 적과 체력이 생기기 전까지 사망을 확인할 방법이 이것뿐이다.
+#if UNITY_EDITOR
+        // 조사용: 보스전이나 결과 화면을 확인할 때 죽는 과정을 건너뛰기 위해 남겨둔 키다.
         // 키보드가 없는 환경(패드만 연결)에서 Keyboard.current가 null일 수 있어 먼저 확인한다.
         Keyboard keyboard = Keyboard.current;
         if (keyboard != null && keyboard[debugDeathKey].wasPressedThisFrame)
         {
             EndRun(false);
         }
+#endif
     }
 
     /// <summary>적을 처치했을 때 호출한다. 나중에 적의 사망 처리에서 부른다.</summary>
