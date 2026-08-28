@@ -323,15 +323,15 @@ MonoBehaviour:
   waveSpreadDegrees: 18
   waveDamage: 1
   waveSpawnHeight: 1.6
-  ultimateRange: 9
-  ultimateLungeSpeed: 14
-  ultimateRadius: 5
-  ultimateHitDelay: 0.3
-  ultimateMotionSeconds: 0.6
+  ultimateRange: 12
+  ultimateLungeSpeed: 0
+  ultimateRadius: 12
+  ultimateHitDelay: 0.5
+  ultimateMotionSeconds: 1
   ultimateDamage: 3
   ultimateCooldown: 12
   ultimateEffectPrefab: {fileID: 8670208565340853328, guid: 525c98481831e624d8958e93af64a930, type: 3}
-  ultimateEffectScale: 0.5
+  ultimateEffectScale: 1.08
   ultimateFirstDelay: 1.5
   attackCooldown: 1.1
   phase2CooldownScale: 0.6

@@ -185,19 +185,28 @@ public class EnemyBoss : MonoBehaviour
              "판정이 화면 전체면 좁힐 거리가 없으므로 0이 맞다.")]
     [SerializeField, Min(0f)] private float ultimateLungeSpeed = 0f;
 
-    // 수정(화면 전체 판정): 5 → 12.
+    // 수정(방 대부분을 덮는 판정): 5 → 12.
     //
-    // 근거는 카메라다. orthographic size 5.625에 16:9라 화면에 보이는 범위가 20 × 11.25유닛이고,
-    // 그 <b>반쪽 대각선이 11.5</b>다. 12면 화면 구석까지 닿는다.
-    // (보스 방 바닥은 21.5 × 23.1유닛이라 방 전체를 덮으려면 16이 필요하지만, 그건 화면 밖까지
-    // 때리는 것이라 플레이어가 무엇에 맞았는지 알 수 없다.)
+    // 근거는 <b>화면이 아니라 방 바닥</b>이다. 보스 방 바닥은 21.5 × 23.1유닛이라
+    // 중앙에서 좌우 끝이 10.75, 상하 끝이 11.55, <b>모서리가 15.8</b>이다.
+    // 12는 그 사이 값이라 상하좌우 끝은 덮으면서 <b>네 모서리는 안전지대로 남는다.</b>
+    //
+    // 모서리를 일부러 남기는 이유: 다 덮으면(반경 16) 회피 수단이 대시 무적 0.25초 하나뿐이다.
+    // 대시는 이동에도 쓰는 자원이라 스태미나가 비어 있는 순간이 자주 오고, 그때는 회피 불가
+    // 3피해가 된다(최대 체력 5). 모서리가 살아 있으면 <b>보스에게서 멀어진다</b>는 답이 하나 더 생기고,
+    // 보스가 구석에 설수록 반대편이 넓게 안전해져서 위치 싸움도 같이 생긴다.
+    //
+    // 카메라로 재지 않는 이유: 씬의 orthographic size가 14라 화면은 49.8 × 28유닛이다.
+    // 방보다 훨씬 넓어서 방 전체가 한 화면에 들어온다. 즉 이 게임에서 "화면 전체"는
+    // 판정 기준이 될 수 없다 — 기준은 <b>플레이어가 실제로 서 있을 수 있는 바닥</b>이다.
+    // (AshProjectSetup의 상수는 5.625인데 씬은 14다. 그 도구를 다시 돌리면 카메라가
+    // 확 당겨지므로, 보스 방 구도를 확인하고 나서 돌려야 한다.)
     //
     // <b>시트 그림보다 훨씬 크다는 점을 알고 쓴다.</b> 폭발 프레임의 그림 폭은 9.6유닛(반경 4.8)이라
     // 판정의 절반도 안 된다. 그래서 <see cref="ultimateEffectPrefab"/>이 필수가 됐다 —
-    // 이제 이펙트가 "어디까지 맞는지"를 알려주는 유일한 수단이다. 비워두면 플레이어는
-    // 화면 밖에서 날아온 것처럼 느낀다.
-    [Tooltip("보스를 중심으로 한 판정 반경(유닛). 12면 화면(20 × 11.25) 구석까지 닿는다. " +
-             "시트 그림보다 크므로 이펙트로 범위를 보여줘야 한다.")]
+    // 이제 이펙트가 "어디까지 맞는지"를 알려주는 유일한 수단이다.
+    [Tooltip("보스를 중심으로 한 판정 반경(유닛). 12면 방 바닥(21.5 × 23.1)의 상하좌우 끝까지 " +
+             "닿고 네 모서리만 안전하게 남는다. 시트 그림보다 크므로 이펙트로 범위를 보여줘야 한다.")]
     [SerializeField] private float ultimateRadius = 12f;
 
     // 수정(화면 전체 판정): 0.3 → 0.5. 클립을 10fps에서 6fps로 늦춘 것과 한 쌍이다.
@@ -232,9 +241,20 @@ public class EnemyBoss : MonoBehaviour
     [Tooltip("판정 순간에 터뜨릴 이펙트. 비우면 시트의 폭발 프레임만 0.1초 보인다.")]
     [SerializeField] private GameObject ultimateEffectPrefab;
 
-    [Tooltip("이펙트 크기 배율. 씬 뷰의 진한 주황 원(판정 반경)과 눈으로 맞춘다. " +
-             "이펙트가 판정보다 작으면 '안 맞을 줄 알았는데 맞는' 패턴이 된다.")]
-    [SerializeField, Min(0.05f)] private float ultimateEffectScale = 1f;
+    // 배율을 눈대중이 아니라 계산으로 잡을 수 있게 근거를 남긴다.
+    //
+    // KingsEmber 기준: 시트 셀은 256px(PPU 32 = 8유닛)인데 <b>그림은 셀을 다 안 채운다.</b>
+    // 가장 큰 프레임이 158px = 4.94유닛이다. 프리팹 자체 스케일이 4.5이므로
+    // 배율 1에서 실제로 보이는 지름은 4.94 × 4.5 ≈ <b>22.2유닛</b>이다.
+    //
+    //     필요한 배율 = (판정 반경 × 2) ÷ 22.2
+    //
+    // 반경 12면 24 ÷ 22.2 ≈ 1.08, 반경 16이면 32 ÷ 22.2 ≈ 1.44다.
+    // 셀 크기(8유닛)로 계산하면 배율이 1.6배 작게 나온다 — 안 보이는 여백까지 그림으로 세는 셈이라
+    // 이펙트가 판정보다 한참 작아진다. 처음에 그렇게 계산해서 한 번 틀렸다.
+    [Tooltip("이펙트 크기 배율. (판정 반경 × 2) ÷ 22.2 이 계산값이고, 씬 뷰의 진한 주황 원과 " +
+             "눈으로 확인한다. 이펙트가 판정보다 작으면 '안 맞을 줄 알았는데 맞는' 패턴이 된다.")]
+    [SerializeField, Min(0.05f)] private float ultimateEffectScale = 1.08f;
 
     // 추가 생성 — 2페이즈에 들어선 뒤 첫 재 폭발까지의 유예.
     //
@@ -301,11 +321,6 @@ public class EnemyBoss : MonoBehaviour
 
     // 추가 생성 — 재 폭발을 다시 쓸 수 있을 때까지 남은 시간.
     private float ultimateCooldownTimer;
-
-#if UNITY_EDITOR
-    // 임시 진단용. 다음 로그를 찍을 시각(실행 시간 기준). 원인을 잡으면 지운다.
-    private float nextDiagnosticTime;
-#endif
 
     // 추가 생성 — 이번 내려찍기가 노리는 방향. 예비동작이 시작될 때 고정하고 판정 때 그대로 쓴다.
     //
@@ -400,23 +415,6 @@ public class EnemyBoss : MonoBehaviour
 
         FaceTowards(toPlayer.x);
 
-#if UNITY_EDITOR
-        // 임시 진단(재 폭발이 안 나오는 원인 추적) — 2페이즈에서 1초에 한 번 조건 셋을 찍는다.
-        //
-        // ChoosePattern 안이 아니라 여기 두는 이유: 저 함수는 공격 쿨다운이 끝났을 때만 불린다.
-        // 만약 쿨다운이 계속 안 끝나서 못 고르는 것이라면 저 안에 로그를 두면 <b>아무것도 안 찍혀서</b>
-        // 원인을 알 수 없다. 여기라면 세 값이 매번 보인다.
-        //
-        // 원인을 잡으면 지운다.
-        if (isPhase2 && Time.time >= nextDiagnosticTime)
-        {
-            nextDiagnosticTime = Time.time + 1f;
-            Debug.Log($"[보스/진단] 거리 {distance:0.0} (궁 사거리 {ultimateRange}) / " +
-                      $"궁 쿨 {ultimateCooldownTimer:0.00} / 공격 쿨 {cooldownTimer:0.00} / " +
-                      $"상태 {state}", this);
-        }
-#endif
-
         // 쉬는 동안은 자리를 다시 잡는다. 이 틈이 없으면 플레이어가 반격할 자리가 사라진다.
         if (cooldownTimer > 0f) { Reposition(toPlayer, distance); return; }
 
@@ -487,7 +485,7 @@ public class EnemyBoss : MonoBehaviour
 
         // 추가 생성 — 이 패턴은 12초에 한 번이라 "안 나온다"와 "못 봤다"를 눈으로 구별할 수 없다.
         // 로그가 있으면 콘솔만 보고 판단이 끝난다.
-        Debug.Log($"[보스] 재 폭발 시전 — 거리 {toPlayer.magnitude:0.0}에서 달려든다. " +
+        Debug.Log($"[보스] 재 폭발 시전 — 거리 {toPlayer.magnitude:0.0}, " +
                   $"{ultimateHitDelay}초 뒤 반경 {ultimateRadius} 판정.", this);
 
         StartCoroutine(Ultimate(toPlayer));
@@ -753,9 +751,6 @@ public class EnemyBoss : MonoBehaviour
         // 다른 기준 크기를 여기서 다시 외워야 한다.
         if (!Mathf.Approximately(ultimateEffectScale, 1f))
             effect.transform.localScale *= ultimateEffectScale;
-
-        Debug.Log($"[보스] 재 폭발 이펙트 생성 — {ultimateEffectPrefab.name}, " +
-                  $"배율 {ultimateEffectScale}, 최종 크기 {effect.transform.localScale.x:0.00}", this);
     }
 
     /// <summary>
