@@ -19,9 +19,15 @@ public class RewardChest : RoomReward
     [Tooltip("열린 상자 오브젝트.")]
     [SerializeField] private GameObject openVisual;
 
-    [Header("상호작용")]
-    [Tooltip("상자를 여는 키. E는 플레이어 스킬이므로 기본값은 F다.")]
-    [SerializeField] private Key interactionKey = Key.F;
+    // 수정(입력 중앙화): 인스펙터의 Key 필드를 걷어내고 InputBindings의 액션을 읽는다.
+    //
+    // 왜 바꿨나: Keyboard를 직접 읽으면 <b>키를 바꿀 방법이 영영 없다.</b> 설정 화면에
+    // 조작 항목을 올리려면 대상이 InputAction이어야 한다(리바인딩 API가 그것만 다룬다).
+    //
+    // 왜 상자마다 안 두는가: 상자는 방마다 하나씩 있어서 씬에 여러 개다. 상자마다 액션을
+    // 따로 두면 키를 바꿀 때 <b>상자 개수만큼 따로 덮어써야</b> 하고, 방을 늘리면 그만큼
+    // 늘어난다. 게다가 상자마다 인스펙터 값이 달라질 수 있어서 "지금 어느 키가 맞는지"를
+    // 알 수 없게 된다. 조작 하나에는 액션 하나가 맞고, 그 하나는 InputBindings에 있다.
 
     // 추가 생성 — 상자는 나중에 룬 아이템을 주더라도 방 사이 생존을 보조하는 회복을 함께 준다.
     //
@@ -107,9 +113,7 @@ public class RewardChest : RoomReward
     {
         if (IsOpened || playerColliders.Count == 0) return;
 
-        Keyboard keyboard = Keyboard.current;
-        if (keyboard != null && keyboard[interactionKey].wasPressedThisFrame)
-            Open();
+        if (InputBindings.OpenChestAction.WasPressedThisFrame()) Open();
     }
 
     /// <summary>

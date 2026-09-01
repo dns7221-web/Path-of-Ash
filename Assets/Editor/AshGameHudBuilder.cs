@@ -29,6 +29,18 @@ public static class AshGameHudBuilder
 
     // ── 프레임 스프라이트 ──────────────────────────────────────────────────
 
+    /// <summary>
+    /// HUD 글자에 쓸 한글 폰트.
+    ///
+    /// <b>이걸 안 넣으면 한글이 통째로 깨진다.</b> 폰트를 지정하지 않은 TMP 텍스트는
+    /// 기본값인 LiberationSans로 떨어지는데, 거기엔 한글 글립이 없어서 전부 두부(□)가 된다.
+    /// 에러도 경고도 없이 화면에서만 깨지는 종류라, 유물 알림의 이름과 설명이 그렇게 나왔다.
+    ///
+    /// 다른 UI 빌더(설정 화면·보스 열쇠)와 같은 96pt 아틀라스를 쓴다. 화면마다 폰트가
+    /// 다르면 같은 게임 안에서 글자 모양이 달라 보인다.
+    /// </summary>
+    private const string FontPath = "Assets/Project/Art/UI/Fonts/NeoDunggeunmoPro-Regular96.asset";
+
     private const string FramePath = "Assets/Project/Art/UI/StaminaGaugeFrame.png";
     private const string FillPath = "Assets/Project/Art/UI/StaminaGaugeFill.png";
 
@@ -414,6 +426,11 @@ public static class AshGameHudBuilder
         rect.anchoredPosition = new Vector2(96f, 0f) + position;
 
         var label = labelObject.AddComponent<TMPro.TextMeshProUGUI>();
+
+        // 유물 이름과 설명이 들어오는 자리라 한글이 반드시 나온다.
+        TMPro.TMP_FontAsset font = GetFont();
+        if (font != null) label.font = font;
+
         label.fontSize = fontSize;
         label.alignment = alignment;
         label.color = color;
@@ -521,6 +538,13 @@ public static class AshGameHudBuilder
     // ── 스킬 바 ────────────────────────────────────────────────────────────
 
     private const string SkillBarName = "SkillBar";
+    /// <summary>
+    /// 슬롯 이름과 에디터에서 보일 초기 키 글자.
+    ///
+    /// 실행 중 표기는 여기가 아니라 <see cref="InputBindings"/>에서 온다. 이 배열은
+    /// 오브젝트 이름(Slot_Q 등)과 에디터 미리보기에만 쓴다 — 씬을 열었을 때 칸이
+    /// 비어 보이면 배치를 눈으로 맞출 수 없다.
+    /// </summary>
     private static readonly string[] SkillKeyLabels = { "Ctrl", "Q", "W", "E", "R" };
 
     private const float SlotSize = 72f;
@@ -556,6 +580,7 @@ public static class AshGameHudBuilder
         var icons = new Image[count];
         var overlays = new Image[count];
         var labels = new TMPro.TMP_Text[count];
+        var keyLabels = new TMPro.TMP_Text[count];
 
         // 플레이어 프리팹의 스킬 슬롯을 읽어 아이콘을 <b>만들 때 바로</b> 넣는다.
         //
@@ -573,7 +598,8 @@ public static class AshGameHudBuilder
         for (int i = 0; i < count; i++)
         {
             float x = -totalWidth * 0.5f + SlotSize * 0.5f + i * (SlotSize + SlotGap);
-            CreateSkillSlot(barRect, i, x, out icons[i], out overlays[i], out labels[i]);
+            CreateSkillSlot(barRect, i, x, out icons[i], out overlays[i], out labels[i],
+                            out keyLabels[i]);
 
             SkillData skill = prefabSkills != null ? prefabSkills.GetSlot(i) : null;
             if (skill == null || skill.Icon == null) continue;
@@ -587,9 +613,31 @@ public static class AshGameHudBuilder
         AssignArray(serialized.FindProperty("icons"), icons);
         AssignArray(serialized.FindProperty("cooldownOverlays"), overlays);
         AssignArray(serialized.FindProperty("cooldownLabels"), labels);
+        AssignArray(serialized.FindProperty("keyLabels"), keyLabels);
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
         return barObject;
+    }
+
+    /// <summary>
+    /// 한글 폰트를 한 번만 읽어 재사용한다.
+    ///
+    /// 라벨을 만들 때마다 읽지 않는 이유: HUD 하나에 글자가 열 개 넘게 들어가는데,
+    /// AssetDatabase 조회는 그때마다 디스크를 건드린다. 값이 변하지 않는 것은 한 번만 읽는다.
+    /// </summary>
+    private static TMPro.TMP_FontAsset koreanFont;
+
+    private static TMPro.TMP_FontAsset GetFont()
+    {
+        if (koreanFont != null) return koreanFont;
+
+        koreanFont = AssetDatabase.LoadAssetAtPath<TMPro.TMP_FontAsset>(FontPath);
+
+        // 폰트 하나 때문에 HUD 전체가 안 만들어지는 편이 더 나쁘다. 경고만 남기고 진행한다.
+        if (koreanFont == null)
+            Debug.LogWarning("[게임 HUD] 한글 폰트를 못 찾았다. 한글이 깨질 수 있다: " + FontPath);
+
+        return koreanFont;
     }
 
     private static void AssignArray(SerializedProperty property, Object[] values)
@@ -601,7 +649,8 @@ public static class AshGameHudBuilder
 
     /// <summary>슬롯 하나. 배경 → 아이콘 → 쿨타임 덮개 → 숫자 → 키 글자 순으로 쌓는다.</summary>
     private static void CreateSkillSlot(RectTransform parent, int index, float x,
-        out Image icon, out Image overlay, out TMPro.TMP_Text cooldownLabel)
+        out Image icon, out Image overlay, out TMPro.TMP_Text cooldownLabel,
+        out TMPro.TMP_Text keyLabel)
     {
         var slot = new GameObject($"Slot_{SkillKeyLabels[index]}", typeof(RectTransform));
         slot.layer = parent.gameObject.layer;
@@ -634,7 +683,10 @@ public static class AshGameHudBuilder
             new Vector2(0f, 0f), TMPro.TextAlignmentOptions.Center);
 
         // 키 글자. 슬롯 아래에 붙인다 — 아이콘을 가리면 안 된다.
-        CreateLabel(rect, "KeyText", SkillKeyLabels[index], 18f,
+        //
+        // 여기 적는 글자는 <b>에디터에서 보이는 초기값일 뿐</b>이다. 실행하면 SkillBar가
+        // 실제 바인딩에서 다시 읽어 덮어쓴다. 플레이어가 Q를 A로 바꾸면 이 칸도 A가 된다.
+        keyLabel = CreateLabel(rect, "KeyText", SkillKeyLabels[index], 18f,
             new Vector2(0f, -SlotSize * 0.5f - 12f), TMPro.TextAlignmentOptions.Center);
     }
 
@@ -652,6 +704,13 @@ public static class AshGameHudBuilder
         rect.anchoredPosition = position;
 
         var label = labelObject.AddComponent<TMPro.TextMeshProUGUI>();
+
+        // 지금 들어오는 글자는 숫자와 키 이름뿐이라 기본 폰트로도 보이긴 한다.
+        // 그래도 같은 폰트를 쓰는 이유: 나중에 한글을 한 글자라도 넣는 순간 깨지는데,
+        // 그때 원인이 "이 라벨만 폰트가 다르다"라는 걸 알아채기 어렵다.
+        TMPro.TMP_FontAsset font = GetFont();
+        if (font != null) label.font = font;
+
         label.text = text;
         label.fontSize = fontSize;
         label.alignment = alignment;

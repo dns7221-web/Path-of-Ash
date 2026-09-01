@@ -41,9 +41,57 @@ public class ResultScreen : MonoBehaviour
     [Tooltip("클리어했을 때의 배경. 아직 없으면 비워둔다 — 그러면 사망 배경을 그대로 쓴다.")]
     [SerializeField] private Sprite clearedBackground;
 
+    // 추가 생성 — 아래쪽 안내 문구("R 다시 내려간다  ESC 타이틀").
+    //
+    // 키를 글자로 적어두면 플레이어가 재시작 키를 바꿨을 때 이 문구만 옛 키를 말한다.
+    // 실제 바인딩에서 읽어 채운다.
+    [Tooltip("아래쪽 조작 안내. 비워두면 이름으로 찾는다(PressKeyText).")]
+    [SerializeField] private TMP_Text pressKeyText;
+
     [Header("키 입력 — UI 버튼이 없어도 흐름을 확인할 수 있게")]
-    [SerializeField] private Key restartKey = Key.R;
+
+    // 수정(입력 중앙화): 재시작 액션도 InputBindings로 옮겼다. 설정의 조작 탭에서
+    // '결과 화면 - 다시 시작'으로 바꿀 수 있다. 스킬 4와 같은 R이지만 쓰이는 화면이 달라
+    // 겹침 검사에서 서로를 지우지 않는다.
+    //
+    // 재시작만 옮기고 타이틀(ESC)은 그대로 둔 이유: ESC는 <b>바꿀 수 없는 키</b>다. 이 게임에서 ESC는 화면을
+    // 닫고 빠져나오는 키라, 그걸 다른 데로 옮길 수 있게 하면 창에서 못 나오는 상태를
+    // 플레이어가 스스로 만들 수 있다. 바꿀 수 없는 키를 리바인딩 목록에 올리는 것은
+    // 고를 수 없는 선택지를 보여주는 것과 같아서, 아예 성격이 다른 입력으로 남긴다.
+    [Tooltip("타이틀로 나가는 키. 설정에서 바꾸지 않는 고정 키다.")]
     [SerializeField] private Key titleKey = Key.Escape;
+
+    private void Awake()
+    {
+        // 인스펙터에 안 꽂혀 있어도 찾는다. 이 문구는 씬에 이미 놓여 있고, 새로 만든
+        // 필드라 연결이 비어 있을 수밖에 없다. 이름으로 찾는 것은 타이틀 연출 도구와 같은 방식이다.
+        if (pressKeyText == null)
+        {
+            var found = GameObject.Find("PressKeyText");
+            if (found != null) pressKeyText = found.GetComponent<TMP_Text>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        // 설정에서 재시작 키를 바꾸면 안내 문구도 따라가야 한다.
+        InputBindings.BindingsChanged += RefreshHint;
+        RefreshHint();
+    }
+
+    private void OnDisable()
+    {
+        InputBindings.BindingsChanged -= RefreshHint;
+    }
+
+    /// <summary>아래쪽 조작 안내를 지금 바인딩으로 다시 쓴다.</summary>
+    private void RefreshHint()
+    {
+        if (pressKeyText == null) return;
+
+        // ESC는 바꿀 수 없는 고정 키라 글자로 적어도 어긋나지 않는다.
+        pressKeyText.text = ControlHintLabel.Fill("{Restart} 다시 내려간다   ESC 타이틀", true);
+    }
 
     private void Start()
     {
@@ -52,11 +100,16 @@ public class ResultScreen : MonoBehaviour
 
     private void Update()
     {
-        Keyboard keyboard = Keyboard.current;
-        if (keyboard == null) return;
+        if (InputBindings.RestartAction.WasPressedThisFrame())
+        {
+            OnRestart();
+            return;
+        }
 
-        if (keyboard[restartKey].wasPressedThisFrame) OnRestart();
-        else if (keyboard[titleKey].wasPressedThisFrame) OnTitle();
+        // 타이틀은 고정 키라 예전처럼 키보드를 직접 읽는다.
+        // 키보드가 없는 환경(패드만 연결)에서 Keyboard.current가 null일 수 있어 먼저 확인한다.
+        Keyboard keyboard = Keyboard.current;
+        if (keyboard != null && keyboard[titleKey].wasPressedThisFrame) OnTitle();
     }
 
     /// <summary>결과 값을 화면에 반영한다.</summary>

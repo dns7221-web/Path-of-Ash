@@ -9,9 +9,12 @@ using UnityEngine.InputSystem;
 /// 물리 엔진을 거쳐야 콜라이더가 이동을 막아주고, AshProjectSetup에서 짜둔 충돌 매트릭스
 /// (Player x Wall)가 실제로 의미를 갖는다.
 ///
-/// 입력을 .inputactions 에셋이 아니라 InputAction 필드로 둔 이유: 지금 액션이 이동 하나라
-/// 에셋 + 자동생성 클래스는 과하다. [SerializeField]로 두면 에셋 없이도 인스펙터에서
-/// 바인딩이 보이고 수정된다. 공격/대시가 붙어 액션이 늘어나면 그때 에셋으로 옮긴다.
+/// 수정(입력 중앙화): 입력은 더 이상 이 스크립트가 소유하지 않는다.
+/// 이동·대시 액션은 <see cref="InputBindings"/>가 만들고 이 컴포넌트는 꺼내 읽기만 한다.
+/// 옛 주석이 예고한 "리바인딩 UI를 만들 때 옮긴다"가 실행된 것인데, 옮긴 곳은
+/// .inputactions 에셋이 아니라 코드로 만든 액션 맵이다 — 에셋으로 가면 바인딩이 프로젝트
+/// 창 안으로 숨어서 <b>어느 키가 무슨 조작인지 코드만 읽어서는 알 수 없게</b> 된다.
+/// InputBindings.Build 한 함수에 모아두면 그 장점을 유지하면서 한 곳에서 바꿀 수 있다.
 ///
 /// gravityScale을 코드에서 건드리지 않는 이유: 2D 중력은 AshProjectSetup이 전역에서
 /// (0,0)으로 꺼뒀다. gravityScale은 전역 중력에 곱해지는 값이라 전역이 0이면 여기가
@@ -25,9 +28,6 @@ using UnityEngine.InputSystem;
 /// 전이 조건과 블렌딩 때문에 "지금 어느 상태인지"의 답이 한 프레임씩 늦고, 그 값으로 이동을
 /// 막으면 공격 첫 프레임에 미끄러진다. 게임 규칙은 코드가, 보여줄 그림은 Animator가 정한다.
 ///
-/// 위 주석의 "액션이 늘어나면 에셋으로 옮긴다"는 아직 실행하지 않았다. 액션이 4개까지는
-/// 인스펙터에서 한눈에 보이고, .inputactions로 옮기면 키 바인딩이 이 파일 밖으로 나가서
-/// "이 스크립트만 읽으면 조작을 다 안다"는 장점이 사라진다. 리바인딩 UI를 만들 때 옮긴다.
 /// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -98,14 +98,15 @@ public class PlayerController : MonoBehaviour
     [Tooltip("피격 경직 시간(초). hit 클립 6프레임 / 14fps = 0.429초.")]
     [SerializeField] private float hitDuration = 0.43f;
 
-    [Header("입력")]
-    [Tooltip("이동 입력. 컴포넌트를 처음 붙일 때 WASD / 방향키 / 게임패드 스틱이 자동으로 채워진다.")]
-    [SerializeField] private InputAction moveAction;
-
-
-
-    [Tooltip("대시. 스태미나를 목돈으로 쓴다.")]
-    [SerializeField] private InputAction dashAction;
+    // 수정(입력 중앙화): moveAction / dashAction 필드를 걷어내고 InputBindings에서 꺼내 쓴다.
+    //
+    // 왜 옮겼나: 액션이 이 컴포넌트 안에 있으면 설정 화면이 키를 바꿀 방법이 없다.
+    // 씬에 있는 이 컴포넌트를 찾아내야 하는데, 컴포넌트는 씬과 함께 생겼다 사라진다.
+    //
+    // 잃은 것: 인스펙터에서 키를 바꾸는 기능. 그 자리는 설정 화면이 가져간다. 두 곳에서
+    // 바꿀 수 있으면 "지금 어느 키가 맞는지"를 프리팹과 저장값 중 무엇으로 볼지 정할 수 없다.
+    //
+    // 프리팹에 남아 있는 옛 바인딩 데이터는 읽는 곳이 없어져서 다음 저장 때 사라진다.
 
     [Header("참조 (비어 있어도 동작한다)")]
     [Tooltip("사망 후 입력을 끊기 위해 상태를 읽는다. 비우면 항상 조작 가능한 상태로 본다.")]
@@ -219,10 +220,10 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 컴포넌트를 처음 붙였을 때 참조와 기본 키 바인딩을 자동으로 채운다(에디터 전용 콜백).
+    /// 컴포넌트를 처음 붙였을 때 참조를 자동으로 채운다(에디터 전용 콜백).
     ///
-    /// 바인딩을 여기서 만드는 이유: Reset은 컴포넌트를 추가할 때 딱 한 번만 불린다.
-    /// Awake에서 만들면 인스펙터에서 키를 바꿔놔도 실행할 때마다 덮어써진다.
+    /// 수정(입력 중앙화): 여기서 키 바인딩도 만들었는데 그 부분을 걷어냈다.
+    /// 바인딩은 이제 <see cref="InputBindings"/>가 만든다.
     /// </summary>
     private void Reset()
     {
@@ -233,33 +234,8 @@ public class PlayerController : MonoBehaviour
         // 추가 생성
         stamina = GetComponent<PlayerStamina>();
 
-        moveAction = new InputAction("Move", InputActionType.Value, expectedControlType: "Vector2");
-
-        // 2DVector 컴포지트는 키 네 개를 Vector2 하나로 묶어주는 유니티 내장 바인딩이다.
-        // 키를 하나씩 읽어서 직접 벡터를 조립하지 않는 이유가 이거다.
-        // 수정(QWER 스킬 확정): WASD 바인딩을 뺐다.
-        //
-        // 스킬을 Q/W/E/R에 두기로 하면서 W가 "위로 이동"과 정면으로 겹쳤다. 둘 다 남기면
-        // 위로 걸을 때마다 스킬이 나간다. 스킬 배치는 기획이 정한 것이고 이동은 방향키로도
-        // 충분하므로 이동을 옮겼다.
-        //
-        // 되돌리려면 여기에 WASD 컴포지트를 다시 넣고 스킬 키를 1/2/3/4로 옮기면 된다.
-        moveAction.AddCompositeBinding("2DVector")
-            .With("Up", "<Keyboard>/upArrow")
-            .With("Down", "<Keyboard>/downArrow")
-            .With("Left", "<Keyboard>/leftArrow")
-            .With("Right", "<Keyboard>/rightArrow");
-
-        // 게임패드는 스틱 하나가 이미 Vector2라 컴포지트가 필요 없다.
-        moveAction.AddBinding("<Gamepad>/leftStick");
-
-        // 대시는 눌린 순간에만 반응하면 되므로 Button이다.
-        // 수정(달리기 삭제): 비워진 Shift로 대시를 옮겼다. Space보다 방향키를 쥔 왼손에서
-        // 누르기 쉬워서, 이동하다 즉시 회피하는 동작이 자연스럽다.
-        dashAction = new InputAction("Dash", InputActionType.Button);
-        dashAction.AddBinding("<Keyboard>/leftShift");
-        dashAction.AddBinding("<Keyboard>/rightShift");
-        dashAction.AddBinding("<Gamepad>/buttonSouth");
+        // 수정(입력 중앙화): 여기 있던 이동·대시 바인딩 생성은 InputBindings.Build로 옮겼다.
+        // 그쪽 주석에 왜 이동이 방향키인지(W가 스킬 2와 겹친다), 왜 대시가 Shift인지가 남아 있다.
     }
 
     private void Awake()
@@ -281,14 +257,11 @@ public class PlayerController : MonoBehaviour
         if (runManager == null) runManager = FindFirstObjectByType<RunManager>();
     }
 
-    /// <summary>InputAction은 켜야 값을 읽을 수 있다. 오브젝트가 꺼지면 같이 꺼져야 한다.</summary>
+    // 수정(입력 중앙화): 액션을 켜고 끄던 코드를 걷어냈다.
+    // 맵은 InputBindings가 부팅 때 켜고 끄지 않는다 — 켜져 있어도 읽는 쪽이 없으면
+    // 아무 일도 안 일어나고, 이 컴포넌트가 꺼지면 Update가 안 돌아서 읽는 쪽도 없다.
     private void OnEnable()
     {
-        moveAction?.Enable();
-
-        // 추가 생성
-        dashAction?.Enable();
-
         // 추가 생성 — Health가 게임 규칙을 소유하고 컨트롤러는 연출에만 반응한다.
         if (health != null)
         {
@@ -299,10 +272,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        moveAction?.Disable();
-
-        // 추가 생성
-        dashAction?.Disable();
         attackHitbox?.Deactivate();
 
         if (health != null)
@@ -312,14 +281,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary>코드로 만든 InputAction은 내부 리소스를 잡고 있어 직접 해제해야 한다.</summary>
-    private void OnDestroy()
-    {
-        moveAction?.Dispose();
-
-        // 추가 생성
-        dashAction?.Dispose();
-    }
+    // 수정(입력 중앙화): OnDestroy가 하던 액션 해제를 걷어냈다.
+    // 액션의 주인이 InputBindings로 바뀌었으므로, 여기서 해제하면 이 오브젝트가 죽을 때
+    // 다른 곳이 쓰는 액션까지 같이 죽는다.
 
     private void Update()
     {
@@ -344,7 +308,7 @@ public class PlayerController : MonoBehaviour
         // ClampMagnitude는 1을 넘을 때만 깎으므로, 키보드 대각선(길이 1.41)은 1로 줄이면서
         // 스틱의 아날로그 세기는 그대로 살린다.
         moveInput = canMove
-            ? Vector2.ClampMagnitude(moveAction.ReadValue<Vector2>(), 1f)
+            ? Vector2.ClampMagnitude(InputBindings.MoveAction.ReadValue<Vector2>(), 1f)
             : Vector2.zero;
 
         // 추가 생성 — 바라보는 방향을 먼저 갱신한다. 대시 방향이 이 값을 쓰므로
@@ -413,7 +377,7 @@ public class PlayerController : MonoBehaviour
 
         // 대시를 공격보다 먼저 보는 이유: 같은 프레임에 둘 다 눌렸다면 회피가 우선이어야
         // 플레이어가 손해를 안 본다.
-        if (dashAction.WasPressedThisFrame() && (stamina == null || stamina.TryConsumeDash()))
+        if (InputBindings.DashAction.WasPressedThisFrame() && (stamina == null || stamina.TryConsumeDash()))
         {
             StartCoroutine(DashRoutine());
             return;
