@@ -266,8 +266,74 @@ public static class AshPlayerSpriteSheets
                 new Segment("death", 2, 4, 8, false)),
         });
 
+    /// <summary>
+    /// 잿불 사수(원거리 일반 적).
+    ///
+    /// Fps 근거: walk 8(망령과 같다 — 같은 바닥을 걷는 적이라 발놀림 속도가 다르면
+    /// 한 화면에 있을 때 어느 한쪽이 어색해 보인다), aim 8(조준은 천천히 당겨야 "지금 온다"가
+    /// 읽힌다), shoot 14(놓는 순간은 빨라야 튕기는 맛이 난다), hit 10, death 8.
+    ///
+    /// hit와 death가 한 장에 같이 있는 것은 망령과 같은 구성이다. 시트 단위로만 다루면
+    /// "피격 뒤에 죽는 그림이 이어서 재생되는" 상태가 되므로 구간을 둘로 나눈다.
+    /// </summary>
+    public static readonly CharacterSet Marksman = new CharacterSet(
+        "잿불 사수",
+        "Assets/Project/Art/Sprites/Enemy",
+        "marksman_",
+        "Assets/Project/Animations/Enemy",
+        "Marksman",
+        new[]
+        {
+            new Sheet("ash_marksman_walk_6frames_1536x256", 6,
+                new Segment("walk", 0, 6, 8, true)),
+            new Sheet("ash_marksman_aim_4frames_1024x256", 4,
+                new Segment("aim", 0, 4, 8, false)),
+            new Sheet("ash_marksman_shoot_4frames_1024x256", 4,
+                new Segment("shoot", 0, 4, 14, false)),
+            // 한 장에 피격 2프레임(0~1) + 사망 4프레임(2~5)이 들어 있다.
+            new Sheet("ash_marksman_hit_death_6frames_1536x256", 6,
+                new Segment("hit", 0, 2, 10, false),
+                new Segment("death", 2, 4, 8, false)),
+        });
+
+    /// <summary>
+    /// 잿불 자폭병(근접 자폭 적).
+    ///
+    /// Fps 근거: walk 8(망령·사수와 같다 — 같은 바닥을 걷는 적이라 발놀림 속도가 다르면
+    /// 한 화면에 있을 때 어느 한쪽이 어색해 보인다), fuse 6(4프레임 / 6 = <b>0.667초</b>.
+    /// 망령의 예비동작 0.4초보다 길다 — 저쪽의 회피는 옆으로 한 걸음이지만 이쪽은
+    /// 폭발 반경 밖으로 나가는 것이라 더 긴 시간이 필요하다), hit 10, death 8.
+    ///
+    /// <b>폭발 시트가 없다.</b> 터지는 그림은 별도 VFX(vfx_bomber_blast)가 맡는다.
+    /// 재의 왕 궁극기에서 배운 것과 같은 이유다 — 폭발을 256 셀 안에 그리면 판정 반경을
+    /// 전달할 방법이 없다. 이 적은 터지는 순간 자기도 죽으므로 셀 안의 몸은 사라지기만
+    /// 하면 되고, 그건 <see cref="EnemyBomber"/>가 그림을 감추는 것으로 처리한다.
+    ///
+    /// death 시트가 따로 있는 이유: <b>터지기 전에 잡혔을 때</b>의 그림이다. 자폭과 사망은
+    /// 다른 사건이라 그림도 달라야 한다 — 잡았는데 폭발이 나오면 "잡는 것"과 "맞는 것"이
+    /// 같아 보인다.
+    /// </summary>
+    public static readonly CharacterSet Bomber = new CharacterSet(
+        "잿불 자폭병",
+        "Assets/Project/Art/Sprites/Enemy",
+        "bomber_",
+        "Assets/Project/Animations/Enemy",
+        "Bomber",
+        new[]
+        {
+            new Sheet("ash_bomber_walk_6frames_1536x256", 6,
+                new Segment("walk", 0, 6, 8, true)),
+            new Sheet("ash_bomber_fuse_4frames_1024x256", 4,
+                new Segment("fuse", 0, 4, 6, false)),
+            // 한 장에 피격 2프레임(0~1) + 사망 4프레임(2~5)이 들어 있다. 망령·사수와 같은 구성.
+            new Sheet("ash_bomber_hit_death_6frames_1536x256", 6,
+                new Segment("hit", 0, 2, 10, false),
+                new Segment("death", 2, 4, 8, false)),
+        });
+
     /// <summary>도구가 순회할 전체 세트.</summary>
-    public static readonly CharacterSet[] AllSets = { Player, Wraith, AshKingPhase1, AshKingPhase2 };
+    public static readonly CharacterSet[] AllSets =
+        { Player, Wraith, Marksman, Bomber, AshKingPhase1, AshKingPhase2 };
 
     /// <summary>셀 하나가 텍스처 안에서 차지하는 사각형. 유니티 텍스처 좌표라 아래가 y=0이다.</summary>
     public static Rect CellRect(int cellIndex)
