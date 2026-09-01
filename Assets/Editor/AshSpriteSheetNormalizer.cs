@@ -22,6 +22,7 @@ public static class AshSpriteSheetNormalizer
 {
     private const string PlayerFolder = "Assets/Project/Art/Sprites/Player";
     private const string VfxFolder = "Assets/Project/Art/Sprites/VFX";
+    private const string EnemyFolder = "Assets/Project/Art/Sprites/Enemy";
 
     /// <summary>추가 생성 — 보스(재의 왕) 시트 폴더. 원본은 그 아래 Raw/에 있다.</summary>
     private const string AshKingFolder = "Assets/Project/Art/Characters/Boss/AshKing";
@@ -63,6 +64,7 @@ public static class AshSpriteSheetNormalizer
         GroundCenter,  // 바닥 y=216, 가로 중앙 — 그 자리에서 사방으로 퍼지는 것
         GroundForward, // 바닥 y=216, 왼쪽 끝 고정 — 바닥을 따라 앞으로 자라는 것
         FloatCenter,   // 셀 정중앙 — 공중에 뜬 것(투사체, 공중 폭발)
+        TipRight,      // 오른쪽 끝(촉)을 고정 x에, 세로는 중앙 — 앞으로 날아가는 화살
     }
 
     /// <summary>
@@ -139,6 +141,69 @@ public static class AshSpriteSheetNormalizer
         ("Assets/Art/Generated", "skill-icons-ember-set.png",
                                  "skill_icons_5frames_1280x256.png", 5, Mode.FloatCenter, 0),
 
+        // ── 잿불 사수(원거리 일반 적) ──
+        //
+        // 원본이 1536x1024로 왔다. 가로는 맞지만(256x6) 세로가 네 배고, 인물은 위아래
+        // 가운데 띠에만 있다. 이 도구를 만든 이유가 정확히 이것이다 — 이미지 생성 모델은
+        // 정해진 몇 가지 비율만 낼 수 있어서 6:1 캔버스를 애초에 못 맞춘다.
+        // 규격은 코드가 맞추고, 그림에는 초록 배경·같은 키·같은 바닥선만 요구한다.
+        //
+        // 목표 키는 기본값(160)을 쓴다. 플레이어와 같은 크기다 — 활을 든 인간형이라
+        // 덩치로 위협하는 적이 아니고, 크기 차이는 보스가 맡는다(200).
+        // 원본이 1536x1024, 1881x836처럼 제각각으로 온다. 가로세로 6:1(또는 4:1) 캔버스를
+        // 이미지 생성 모델이 못 맞추기 때문인데, 이 도구가 있는 이유가 정확히 그것이다.
+        // 그림에는 초록 배경·같은 키·같은 바닥선만 요구하고 나머지는 코드가 맞춘다.
+        //
+        // 목표 키는 기본값(160)을 쓴다. 플레이어와 같은 크기다 — 활을 든 인간형이라
+        // 덩치로 위협하는 적이 아니고, 크기 차이는 보스가 맡는다(200).
+        (EnemyFolder, "ash_marksman_walk_6frames_raw.png",
+                      "ash_marksman_walk_6frames_1536x256.png", 6, Mode.Character, 0),
+        (EnemyFolder, "ash_marksman_aim_4frames_raw.png",
+                      "ash_marksman_aim_4frames_1024x256.png", 4, Mode.Character, 0),
+
+        // 발사 3번째 프레임에 화살이 그려져 있다. 그 화살이 프레임 사이 빈 구간에 걸쳐 있어서
+        // 경계 판정이 한 칸 밀릴 수 있다. 프레임 수가 안 맞으면 도구가 에러로 알려주므로
+        // 그때 ForceEqualSplit에 넣으면 된다.
+        (EnemyFolder, "ash_marksman_shoot_4frames_raw.png",
+                      "ash_marksman_shoot_4frames_1024x256.png", 4, Mode.Character, 0),
+
+        // 한 장에 피격 2프레임 + 사망 4프레임. 마지막 칸은 재 무더기라 거의 비어 있는데,
+        // 프레임 사이 간격이 넓어서 빈 구간 순위로도 갈린다. 망령 시트와 같은 구성이다.
+        (EnemyFolder, "ash_marksman_hit_death_6frames_raw.png",
+                      "ash_marksman_hit_death_6frames_1536x256.png", 6, Mode.Character, 0),
+
+        // ── 잿불 자폭병 ──
+        //
+        // 목표 키를 사수(160)가 아니라 <b>141</b>로 잡는다. 세 시트의 배율을 하나로 묶기 위해서다.
+        //
+        // 점화 시트는 프레임마다 몸이 부풀어 마지막이 첫 프레임의 1.48배(383 → 566px)다.
+        // 배율은 시트 안에서 하나이므로 가장 큰 프레임이 셀에 들어가는지가 상한을 정하는데,
+        // 발끝이 y=216이라 위로 쓸 수 있는 것이 216px뿐이고 안전값은 214다. 그 214를 맞추면
+        // 점화 첫 프레임은 145px이 된다. 걷기를 160으로 두면 점화가 시작될 때 몸이 9% 작아져
+        // <b>쪼그라들었다가 부푸는</b> 그림이 된다 — 예비동작이 가장 크게 읽혀야 하는 적에게
+        // 정반대의 신호다.
+        //
+        // 그래서 점화 첫 프레임(383px)을 145px로 만드는 배율 0.379를 세 시트에 공통으로 적용한다.
+        // 걷기의 가장 큰 프레임 373 x 0.379 = 141, 피격·사망은 393 x 0.379 = 149다.
+        // 결과적으로 망령(141)과 같은 키가 되는데, 항아리를 끌어안은 뭉툭한 잡몹이라 사수보다
+        // 작은 편이 오히려 맞다. 덩치로 위협하는 적이 아니고, 위협은 부푸는 순간에만 나온다.
+        (EnemyFolder, "ash_bomber_walk_6frames_raw.png",
+                      "ash_bomber_walk_6frames_1536x256.png", 6, Mode.Character, 141),
+
+        // 점화. 214는 셀 상한이다 — 더 키우면 마지막 프레임의 불꽃이 셀 위에서 잘린다.
+        (EnemyFolder, "ash_bomber_fuse_4frames_raw.png",
+                      "ash_bomber_fuse_4frames_1024x256.png", 4, Mode.Character, 214),
+
+        // 한 장에 피격 2프레임 + 사망 4프레임. 뒤로 갈수록 재 무더기로 낮아진다.
+        (EnemyFolder, "ash_bomber_hit_death_6frames_raw.png",
+                      "ash_bomber_hit_death_6frames_1536x256.png", 6, Mode.Character, 149),
+
+        // 자폭병의 폭발. 발밑에서 사방으로 퍼진다 — 왕의 잿불과 같은 성격이라 같은 방식이다.
+        // 실제 크기는 EnemyBomber의 Explosion Effect Scale이 정한다. 여기서는 셀에 꽉 차지
+        // 않게만 두고, 판정 반경(6유닛)에 맞추는 일은 프리팹 쪽 배율 한 곳에서만 한다.
+        (VfxFolder, "vfx_bomber_blast_6frames_raw.png",
+                    "vfx_bomber_blast_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
+
         // R 필살기. 검을 머리 위로 치켜드는 프레임이 있어 목표를 키운다.
         (PlayerFolder, "player_ultimate_kings_ember_execution_6poses_v3_raw.png",
                        "player_ultimate_6frames_1536x256.png", 6, Mode.Character, 210),
@@ -166,11 +231,75 @@ public static class AshSpriteSheetNormalizer
         (VfxFolder, "vfx_ember_arrow_impact_6frames_raw.png",
                     "vfx_ember_arrow_impact_6frames_1536x256.png", 6, Mode.FloatCenter, 0),
 
+        // 사수가 쏘는 화살. 한 장짜리라 프레임이 1개다.
+        // 촉 끝을 기준으로 놓아야 맞는 지점과 눈에 보이는 촉이 일치한다.
+        (VfxFolder, "ash_marksman_ember_arrow_raw.png",
+                    "ash_marksman_ember_arrow_1frame_256x256.png", 1, Mode.TipRight, 0),
+
         // vfx_ember_slash_A/B는 검 스킬이 내려찍기로 바뀌면서 쓰지 않는다. 목록에서 뺐다.
     };
 
+    /// <summary>
+    /// 결과 PNG를 파일로 쓴다. 실패하면 false.
+    ///
+    /// <b>왜 그냥 WriteAllBytes를 안 쓰나.</b> 이미 임포트된 텍스처를 덮어쓰려 하면
+    /// 윈도우가 <c>IOException: Win32 IO returned 1224</c>로 거절한다. 1224는
+    /// ERROR_USER_MAPPED_FILE — <b>유니티가 그 파일을 메모리에 매핑해 들고 있다</b>는 뜻이다.
+    /// 처음 만들 때는 안 나고, 같은 시트를 두 번째로 정규화할 때부터 난다.
+    ///
+    /// 그리고 이 예외가 나면 <b>정규화 전체가 그 자리에서 멈춘다.</b> 뒤에 남은 시트들은
+    /// 손도 못 대는데, 로그만 보면 "몇 장은 됐고 몇 장은 안 됐다"가 한눈에 안 들어온다.
+    ///
+    /// 그래서 두 가지를 한다 — 쓰기 전에 유니티가 쥔 파일 핸들을 놓게 하고,
+    /// 그래도 실패하면 <b>예외를 밖으로 던지지 않고</b> 그 시트만 건너뛴다.
+    /// 한 장 때문에 나머지 스물여덟 장을 못 만드는 것이 더 나쁘다.
+    /// </summary>
+    private static bool WritePng(string outputPath, byte[] png)
+    {
+        // 유니티가 쥐고 있는 파일 핸들을 놓게 한다. 대부분 이 한 줄로 풀린다.
+        AssetDatabase.ReleaseCachedFileHandles();
+
+        for (int attempt = 0; attempt < 3; attempt++)
+        {
+            try
+            {
+                File.WriteAllBytes(outputPath, png);
+                return true;
+            }
+            catch (IOException e)
+            {
+                // 마지막 시도까지 실패하면 포기하고 알린다.
+                if (attempt == 2)
+                {
+                    Debug.LogError($"[시트 정규화] 파일을 못 썼다: {outputPath} — {e.Message} " +
+                                   "유니티가 이 텍스처를 쓰는 중이다. 인스펙터에서 다른 것을 고르거나 " +
+                                   "에디터를 껐다 켠 뒤 다시 실행해라. 나머지 시트는 계속 처리한다.");
+                    return false;
+                }
+
+                // 짧게 기다렸다 다시 시도한다. 임포트가 끝나는 순간을 노린다.
+                System.Threading.Thread.Sleep(120);
+                AssetDatabase.ReleaseCachedFileHandles();
+            }
+        }
+
+        return false;
+    }
+
     /// <summary>앞으로 자라는 이펙트의 시작점(셀 왼쪽에서의 거리, px).</summary>
     private const int ForwardEffectLeftInset = 28;
+
+    /// <summary>
+    /// 화살촉 끝을 놓을 자리(셀 왼쪽에서의 거리, px).
+    ///
+    /// <b>화살은 한가운데가 아니라 촉이 기준이어야 한다.</b> 정중앙에 두면 그림의 절반이
+    /// 진행 방향 앞에 남는데, 맞는 지점은 오브젝트 위치라서 <b>촉이 아직 안 닿았는데 맞거나
+    /// 이미 지나갔는데 안 맞는다.</b> 꼬리 불씨가 뒤로 길게 붙을수록 그 어긋남이 커진다.
+    ///
+    /// 오른쪽에 28px을 남기는 것은 다른 이펙트와 같은 이유다 — 셀 경계에 딱 붙으면
+    /// 슬라이스한 뒤 옆 칸 픽셀이 한 줄 비쳐 보인다.
+    /// </summary>
+    private const int TipRightInset = 228;
 
     /// <summary>
     /// 이펙트가 셀 안에서 차지할 최대 크기(px). 256 셀에 양옆 28px씩 여유를 둔 값이다.
@@ -220,6 +349,49 @@ public static class AshSpriteSheetNormalizer
             Normalize(folder, source, output, frames, mode, targetHeight);
 
         AssetDatabase.Refresh();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 프로젝트 창에서 고른 원본 PNG만 정규화한다.
+    ///
+    /// 전체 실행과 나눈 이유: 위 메뉴는 목록의 시트를 <b>전부 다시 만든다.</b> 시트 한 장을
+    /// 새로 넣었을 때도 보스와 플레이어까지 같이 바뀌어서, 그날 한 일과 상관없는 것까지
+    /// 확인해야 한다. 정렬 규칙을 고친 직후에는 특히 나쁘다 — 무엇이 왜 달라진 건지
+    /// 구별할 수 없다. PowerShell 정규화 도구에 -Only를 넣었던 것과 같은 판단이다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/원본 시트 정규화 (고른 것만)")]
+    public static void NormalizeSelected()
+    {
+        var picked = new HashSet<string>();
+        foreach (UnityEngine.Object obj in Selection.objects)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(obj);
+            if (!string.IsNullOrEmpty(assetPath)) picked.Add(Path.GetFileName(assetPath));
+        }
+
+        if (picked.Count == 0)
+        {
+            Debug.LogError("[시트 정규화] 프로젝트 창에서 원본 PNG(..._raw.png)를 고르고 실행해라.");
+            return;
+        }
+
+        int done = 0;
+        foreach (var (folder, source, output, frames, mode, targetHeight) in Jobs)
+        {
+            if (!picked.Contains(Path.GetFileName(source))) continue;
+
+            Normalize(folder, source, output, frames, mode, targetHeight);
+            done++;
+        }
+
+        if (done == 0)
+        {
+            Debug.LogError("[시트 정규화] 고른 파일이 정규화 목록에 없다. Jobs 표에 줄을 먼저 추가해라.");
+            return;
+        }
+
+        AssetDatabase.Refresh();
+        Debug.Log($"[시트 정규화] 고른 {done}장을 다시 만들었다.");
     }
 
     private static void Normalize(string folder, string sourceName, string outputName,
@@ -415,11 +587,15 @@ public static class AshSpriteSheetNormalizer
             }
         }
 
-        int bandTop = maxY - Mathf.RoundToInt((maxY - minY) * LegBandRatio);
+        // 수정(발이 아니라 머리를 재던 문제) — 여기 y도 아래에서 센 값이다(Compose 참고).
+        // 다리는 <b>작은 y</b> 쪽에 있으므로 minY에서 위로 LegBandRatio만큼만 훑는다.
+        // 예전에는 maxY에서 아래로 훑어서 머리·후드 폭의 중심을 다리 중심으로 삼았고,
+        // 그래서 어깨나 들어올린 팔이 한쪽으로 쏠린 프레임에서 몸이 옆으로 밀렸다.
+        int bandTop = minY + Mathf.RoundToInt((maxY - minY) * LegBandRatio);
         int legMinX = maxX;
         int legMaxX = minX;
 
-        for (int y = bandTop; y <= maxY; y++)
+        for (int y = minY; y <= bandTop; y++)
         {
             int row = y * width;
             for (int x = minX; x <= maxX; x++)
@@ -483,9 +659,28 @@ public static class AshSpriteSheetNormalizer
             int drawWidth = Mathf.Max(1, Mathf.RoundToInt(figure.Width * scale));
             int drawHeight = Mathf.Max(1, Mathf.RoundToInt(figure.Height * scale));
 
-            int destTop = mode == Mode.FloatCenter
+            // 수정(발이 아니라 머리가 맞춰지던 문제) — 아래 좌표는 <b>위아래가 뒤집혀 있다.</b>
+            //
+            // Texture2D.GetPixels32는 <b>아래쪽 줄부터</b> 담아준다. 이 배열을 그대로
+            // y * width + x로 읽고 쓰기 때문에, 이 함수의 모든 y는 "위에서 몇 번째"가 아니라
+            // <b>"아래에서 몇 번째"</b>다. 읽기와 쓰기가 같은 규칙이라 그림이 뒤집혀 나오지는
+            // 않지만, 세로 기준점을 잡는 계산만은 뜻이 정반대가 된다.
+            //
+            // 그래서 예전 식(groundY - drawHeight + 1)은 <b>그림의 꼭대기</b>를 지면선에
+            // 맞추고 있었다. 실측하면 프레임마다 위쪽 여백이 39px로 똑같았다 — 키 46px짜리
+            // 재 무더기까지 같은 자리에 놓였다. 발이 바닥에서 최대 1.2유닛 떠 보이던 원인이다.
+            // 보스 시트에서 "위쪽 기준으로 정렬돼 발이 62px 떴다"며 PowerShell 도구를 따로
+            // 만들었던 그 문제와 같은 것이고, 그때는 결과를 고쳤지 원인을 고치지 않았다.
+            //
+            // 뒤집힌 좌표계에서 발은 아래쪽, 즉 <b>작은 y</b>다. 지면선(위에서 217번째)은
+            // 아래에서 세면 cell - GroundLineY = 39이고, 그리기는 destTop에서 위로 올라가며
+            // 채우므로 발을 그 자리에 두면 된다. 키와 무관하게 상수인 것이 맞다.
+            int groundFromBottom = cell - AshPlayerSpriteSheets.GroundLineY;
+
+            // TipRight도 공중에 뜬 것이라 세로는 가운데다.
+            int destTop = mode == Mode.FloatCenter || mode == Mode.TipRight
                 ? (cell - drawHeight) / 2
-                : groundY - drawHeight + 1;
+                : groundFromBottom;
 
             int destLeft;
             if (mode == Mode.Character)
@@ -495,6 +690,12 @@ public static class AshSpriteSheetNormalizer
             else if (mode == Mode.GroundForward)
             {
                 destLeft = ForwardEffectLeftInset;
+            }
+            else if (mode == Mode.TipRight)
+            {
+                // 오른쪽 끝이 TipRightInset에 오도록 왼쪽 시작점을 뒤로 민다.
+                // 프레임마다 길이가 달라도 촉 위치는 늘 같은 자리에 온다.
+                destLeft = TipRightInset - drawWidth;
             }
             else
             {
@@ -510,8 +711,10 @@ public static class AshSpriteSheetNormalizer
         result.Apply();
 
         string outputPath = $"{folder}/{outputName}";
-        File.WriteAllBytes(outputPath, result.EncodeToPNG());
+        byte[] png = result.EncodeToPNG();
         Object.DestroyImmediate(result);
+
+        if (!WritePng(outputPath, png)) return;
 
         AssetDatabase.ImportAsset(outputPath, ImportAssetOptions.ForceUpdate);
 
@@ -520,6 +723,7 @@ public static class AshSpriteSheetNormalizer
             Mode.Character => $"발끝 y={groundY}, 다리 중심 x={cell / 2}",
             Mode.GroundForward => $"바닥 y={groundY}, 왼쪽 끝 x={ForwardEffectLeftInset} 고정",
             Mode.FloatCenter => $"공중 — 셀 정중앙 ({cell / 2}, {cell / 2})",
+            Mode.TipRight => $"촉 끝 x={TipRightInset}, 세로 중앙 y={cell / 2}",
             _ => $"바닥 y={groundY}, 가로 중앙 x={cell / 2}",
         };
 

@@ -18,24 +18,49 @@ public static class AshVfxSpriteSlicer
     private const string Folder = "Assets/Project/Art/Sprites/VFX";
 
     /// <summary>
-    /// 자를 시트 목록.
+    /// 피벗을 어디에 둘지.
     ///
-    /// groundPivot이 true면 피벗이 지면선(캐릭터 발끝과 같은 높이)이고, false면 셀 정중앙이다.
-    /// 정규화 도구가 그림을 그 기준으로 배치해뒀으므로 여기 값이 그것과 맞아야 한다.
+    /// <b>정규화 도구가 그림을 놓은 기준과 반드시 같아야 한다.</b> 도구는 바닥 이펙트를
+    /// 지면선에, 공중 이펙트를 정중앙에, 화살을 촉 끝에 맞춰 그린다. 여기서 다른 곳을
+    /// 피벗으로 잡으면 그림은 맞는데 <b>붙는 위치만 어긋난다.</b>
     /// </summary>
-    private static readonly (string folder, string file, string prefix, int frames, bool groundPivot)[] Sheets =
+    private enum PivotKind
     {
-        (Folder, "vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, false),
-        (Folder, "vfx_ember_arrow_impact_6frames_1536x256", "vfx_arrow_impact", 6, false),
-        (Folder, "vfx_kings_ember_6frames_1536x256", "vfx_kings_ember", 6, true),
-        (Folder, "vfx_ash_staff_ground_spell_6frames_1536x256", "vfx_staff_spell", 6, true),
-        (Folder, "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, true),
-        (Folder, "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, true),
+        Ground,   // 지면선 — 캐릭터 발끝과 같은 높이
+        Center,   // 셀 정중앙 — 공중에 뜬 것
+        Tip,      // 촉 끝 — 앞으로 날아가는 화살
+    }
+
+    /// <summary>
+    /// 화살촉이 놓인 자리. 정규화 도구의 TipRightInset과 같은 값이어야 한다.
+    ///
+    /// 두 곳에 같은 숫자가 있는 것이 마음에 걸리지만, 도구끼리 참조하게 만들면 슬라이서가
+    /// 정규화 도구를 알아야 한다. 둘은 따로 돌 수 있어야 하므로 값을 복사하고
+    /// 여기 주석으로 묶어둔다 — 한쪽을 바꾸면 다른 쪽도 바꿔야 한다.
+    /// </summary>
+    private const float TipPivotX = 228f / 256f;
+
+    /// <summary>자를 시트 목록.</summary>
+    private static readonly (string folder, string file, string prefix, int frames, PivotKind pivot)[] Sheets =
+    {
+        (Folder, "vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, PivotKind.Center),
+        (Folder, "vfx_ember_arrow_impact_6frames_1536x256", "vfx_arrow_impact", 6, PivotKind.Center),
+        (Folder, "vfx_kings_ember_6frames_1536x256", "vfx_kings_ember", 6, PivotKind.Ground),
+        (Folder, "vfx_ash_staff_ground_spell_6frames_1536x256", "vfx_staff_spell", 6, PivotKind.Ground),
+        (Folder, "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, PivotKind.Ground),
+        (Folder, "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, PivotKind.Ground),
+
+        // 자폭병의 폭발. 바닥에서 터지므로 피벗이 지면선이다 — 자폭병의 발끝 높이에서
+        // 원이 퍼져야 판정 원(발밑 기준)과 그림이 같은 자리에 놓인다.
+        (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Ground),
+
+        // 사수의 화살. 촉 끝이 피벗이라 오브젝트 위치가 곧 촉 위치가 된다.
+        (Folder, "ash_marksman_ember_arrow_1frame_256x256", "marksman_arrow", 1, PivotKind.Tip),
 
         // 스킬 아이콘. VFX는 아니지만 자르는 방식이 같아서 여기서 같이 처리한다.
         // UI라 바닥 개념이 없으므로 피벗은 정중앙이다.
-        ("Assets/Art/Generated", "skill_icons_5frames_1280x256", "skill_icon", 5, false),
-        ("Assets/Project/Art/UI", "relic_icons_3frames_768x256", "relic_icon", 3, false),
+        ("Assets/Art/Generated", "skill_icons_5frames_1280x256", "skill_icon", 5, PivotKind.Center),
+        ("Assets/Project/Art/UI", "relic_icons_3frames_768x256", "relic_icon", 3, PivotKind.Center),
     };
 
     [MenuItem("Tools/재의 길/VFX 스프라이트 슬라이스")]
@@ -46,8 +71,8 @@ public static class AshVfxSpriteSlicer
         AssetDatabase.StartAssetEditing();
         try
         {
-            foreach (var (folder, file, prefix, frames, groundPivot) in Sheets)
-                total += Slice(folder, file, prefix, frames, groundPivot);
+            foreach (var (folder, file, prefix, frames, pivotKind) in Sheets)
+                total += Slice(folder, file, prefix, frames, pivotKind);
         }
         finally
         {
@@ -58,7 +83,7 @@ public static class AshVfxSpriteSlicer
         Debug.Log($"[VFX 슬라이스] 스프라이트 {total}개 생성 완료.");
     }
 
-    private static int Slice(string folder, string file, string prefix, int frames, bool groundPivot)
+    private static int Slice(string folder, string file, string prefix, int frames, PivotKind pivotKind)
     {
         string path = $"{folder}/{file}.png";
 
@@ -89,10 +114,14 @@ public static class AshVfxSpriteSlicer
         }
 
         // 바닥 이펙트는 캐릭터 발끝과 같은 높이가 피벗이라, 플레이어 발 위치에 그냥
-        // 겹쳐 놓으면 바닥이 맞는다. 공중 이펙트는 그림 한가운데가 기준이다.
-        Vector2 pivot = groundPivot
-            ? AshPlayerSpriteSheets.Pivot
-            : new Vector2(0.5f, 0.5f);
+        // 겹쳐 놓으면 바닥이 맞는다. 공중 이펙트는 그림 한가운데가 기준이고,
+        // 화살은 촉 끝이 기준이라 오브젝트 위치가 곧 맞는 지점이 된다.
+        Vector2 pivot = pivotKind switch
+        {
+            PivotKind.Ground => AshPlayerSpriteSheets.Pivot,
+            PivotKind.Tip => new Vector2(TipPivotX, 0.5f),
+            _ => new Vector2(0.5f, 0.5f),
+        };
 
         var rects = new List<SpriteRect>();
         for (int i = 0; i < frames; i++)
