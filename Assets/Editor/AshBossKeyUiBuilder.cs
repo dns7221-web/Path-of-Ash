@@ -187,7 +187,7 @@ public static class AshBossKeyUiBuilder
 
         // 설명이 길면 한 줄에 안 들어간다. 줄바꿈을 허용하고 넘치면 줄여서라도 보이게 한다.
         // 잘려서 안 보이는 것보다 작게라도 읽히는 편이 낫다.
-        text.enableWordWrapping = true;
+        text.textWrappingMode = TMPro.TextWrappingModes.Normal;
         text.overflowMode = TMPro.TextOverflowModes.Ellipsis;
         text.fontStyle = style;
         text.alignment = TMPro.TextAlignmentOptions.Center;
