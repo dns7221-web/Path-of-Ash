@@ -54,6 +54,22 @@ public static class AshVfxSpriteSlicer
         // 원이 퍼져야 판정 원(발밑 기준)과 그림이 같은 자리에 놓인다.
         (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Ground),
 
+        // 추가 생성 — 재의 왕 2페이즈 전환 연출 3장.
+        //
+        // 피벗이 지면선인 이유: 셋 다 보스의 <b>발밑</b>에서 일어나는 일이다. 재가 발밑으로
+        // 모여들고, 그 자리에 알이 서고, 같은 자리에서 껍질이 깨진다. 정중앙으로 잡으면
+        // 그림 크기를 키울 때마다 알이 공중으로 떠오른다 — 크기와 높이가 같이 움직여서
+        // 배율을 눈으로 맞출 수가 없게 된다.
+        //
+        // 정규화 도구에 Mode.GroundCenter로 등록한 것과 <b>반드시 같은 기준</b>이다.
+        // 한쪽만 바꾸면 그림은 맞는데 붙는 높이만 어긋난다.
+        (Folder, "vfx_ashking_transition_gather_6frames_1536x256",
+                 "vfx_boss_transition_gather", 6, PivotKind.Ground),
+        (Folder, "vfx_ashking_transition_egg_6frames_1536x256",
+                 "vfx_boss_transition_egg", 6, PivotKind.Ground),
+        (Folder, "vfx_ashking_transition_shatter_6frames_1536x256",
+                 "vfx_boss_transition_shatter", 6, PivotKind.Ground),
+
         // 사수의 화살. 촉 끝이 피벗이라 오브젝트 위치가 곧 촉 위치가 된다.
         (Folder, "ash_marksman_ember_arrow_1frame_256x256", "marksman_arrow", 1, PivotKind.Tip),
 
