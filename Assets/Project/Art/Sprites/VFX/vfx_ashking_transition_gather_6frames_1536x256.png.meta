@@ -1,0 +1,1664 @@
+fileFormatVersion: 2
+guid: 12fa5f782792aed4da3dada4c930a444
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3380604443756805935
+    second: vfx_ashking_transition_gather_6frames_1536x256_0
+  - first:
+      213: 5598107920411803318
+    second: vfx_ashking_transition_gather_6frames_1536x256_1
+  - first:
+      213: -5786069349647890425
+    second: vfx_ashking_transition_gather_6frames_1536x256_2
+  - first:
+      213: 4448108294858454533
+    second: vfx_ashking_transition_gather_6frames_1536x256_3
+  - first:
+      213: -1338411577117039231
+    second: vfx_ashking_transition_gather_6frames_1536x256_4
+  - first:
+      213: 6741197663076736189
+    second: vfx_ashking_transition_gather_6frames_1536x256_5
+  - first:
+      213: -3077648887047145422
+    second: vfx_ashking_transition_gather_6frames_1536x256_6
+  - first:
+      213: -4175570169310049357
+    second: vfx_ashking_transition_gather_6frames_1536x256_7
+  - first:
+      213: -7400492440876202016
+    second: vfx_ashking_transition_gather_6frames_1536x256_8
+  - first:
+      213: 6600256256545299743
+    second: vfx_ashking_transition_gather_6frames_1536x256_9
+  - first:
+      213: 6215375781399501865
+    second: vfx_ashking_transition_gather_6frames_1536x256_10
+  - first:
+      213: 2492020661890404892
+    second: vfx_ashking_transition_gather_6frames_1536x256_11
+  - first:
+      213: 7562319847855429066
+    second: vfx_ashking_transition_gather_6frames_1536x256_12
+  - first:
+      213: 4361877776561765014
+    second: vfx_ashking_transition_gather_6frames_1536x256_13
+  - first:
+      213: -517907523082630412
+    second: vfx_ashking_transition_gather_6frames_1536x256_14
+  - first:
+      213: 7202618414523053831
+    second: vfx_ashking_transition_gather_6frames_1536x256_15
+  - first:
+      213: -6815536743634953938
+    second: vfx_ashking_transition_gather_6frames_1536x256_16
+  - first:
+      213: -5866687856991917716
+    second: vfx_ashking_transition_gather_6frames_1536x256_17
+  - first:
+      213: 5239077780970812944
+    second: vfx_ashking_transition_gather_6frames_1536x256_18
+  - first:
+      213: -4536873142227619468
+    second: vfx_ashking_transition_gather_6frames_1536x256_19
+  - first:
+      213: 5083629897441317425
+    second: vfx_ashking_transition_gather_6frames_1536x256_20
+  - first:
+      213: -5565644792878768754
+    second: vfx_ashking_transition_gather_6frames_1536x256_21
+  - first:
+      213: 5042801152632482889
+    second: vfx_ashking_transition_gather_6frames_1536x256_22
+  - first:
+      213: -3244998848612514094
+    second: vfx_ashking_transition_gather_6frames_1536x256_23
+  - first:
+      213: 5877492096781447452
+    second: vfx_ashking_transition_gather_6frames_1536x256_24
+  - first:
+      213: -8654853173727407305
+    second: vfx_ashking_transition_gather_6frames_1536x256_25
+  - first:
+      213: 4206653258619463137
+    second: vfx_ashking_transition_gather_6frames_1536x256_26
+  - first:
+      213: -8928327731666781905
+    second: vfx_ashking_transition_gather_6frames_1536x256_27
+  - first:
+      213: -7147578243499826753
+    second: vfx_ashking_transition_gather_6frames_1536x256_28
+  - first:
+      213: -7232761527097365551
+    second: vfx_ashking_transition_gather_6frames_1536x256_29
+  - first:
+      213: 778052634303643961
+    second: vfx_ashking_transition_gather_6frames_1536x256_30
+  - first:
+      213: -4085138215743173990
+    second: vfx_ashking_transition_gather_6frames_1536x256_31
+  - first:
+      213: 8658897675513039692
+    second: vfx_ashking_transition_gather_6frames_1536x256_32
+  - first:
+      213: 8377981637804689540
+    second: vfx_ashking_transition_gather_6frames_1536x256_33
+  - first:
+      213: -1287871046475602755
+    second: vfx_ashking_transition_gather_6frames_1536x256_34
+  - first:
+      213: 9006333382934543067
+    second: vfx_ashking_transition_gather_6frames_1536x256_35
+  - first:
+      213: -5149903882988470540
+    second: vfx_ashking_transition_gather_6frames_1536x256_36
+  - first:
+      213: -2623409820351600436
+    second: vfx_ashking_transition_gather_6frames_1536x256_37
+  - first:
+      213: 4876345663819931300
+    second: vfx_ashking_transition_gather_6frames_1536x256_38
+  - first:
+      213: -6990587654456951560
+    second: vfx_ashking_transition_gather_6frames_1536x256_39
+  - first:
+      213: 924505797332736482
+    second: vfx_ashking_transition_gather_6frames_1536x256_40
+  - first:
+      213: 5957473540095621500
+    second: vfx_ashking_transition_gather_6frames_1536x256_41
+  - first:
+      213: 5286848773386976451
+    second: vfx_ashking_transition_gather_6frames_1536x256_42
+  - first:
+      213: -6465472175691715704
+    second: vfx_ashking_transition_gather_6frames_1536x256_43
+  - first:
+      213: 1230516272984650307
+    second: vfx_ashking_transition_gather_6frames_1536x256_44
+  - first:
+      213: 5584260854104614728
+    second: vfx_ashking_transition_gather_6frames_1536x256_45
+  - first:
+      213: -667721885862617631
+    second: vfx_ashking_transition_gather_6frames_1536x256_46
+  - first:
+      213: 1714492790449456621
+    second: vfx_ashking_transition_gather_6frames_1536x256_47
+  - first:
+      213: 8897588927548306468
+    second: vfx_ashking_transition_gather_6frames_1536x256_48
+  - first:
+      213: 7796300358778452297
+    second: vfx_ashking_transition_gather_6frames_1536x256_49
+  - first:
+      213: 1870020978252479763
+    second: vfx_ashking_transition_gather_6frames_1536x256_50
+  - first:
+      213: -1397265237029861509
+    second: vfx_ashking_transition_gather_6frames_1536x256_51
+  - first:
+      213: -9128351021770220703
+    second: vfx_ashking_transition_gather_6frames_1536x256_52
+  - first:
+      213: -4280183460289039149
+    second: vfx_ashking_transition_gather_6frames_1536x256_53
+  - first:
+      213: -5818807606229934409
+    second: vfx_ashking_transition_gather_6frames_1536x256_54
+  - first:
+      213: -5898288667258195040
+    second: vfx_ashking_transition_gather_6frames_1536x256_55
+  - first:
+      213: -8600242263538843405
+    second: vfx_ashking_transition_gather_6frames_1536x256_56
+  - first:
+      213: 153190483061412150
+    second: vfx_ashking_transition_gather_6frames_1536x256_57
+  - first:
+      213: 1146628052835622869
+    second: vfx_ashking_transition_gather_6frames_1536x256_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 217
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d0c4cb6b2ea511d0800000000000000
+      internalID: -3380604443756805935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 218
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be327a5e7970bd40800000000000000
+      internalID: 5598107920411803318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 224
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70846781590c3bfa0800000000000000
+      internalID: -5786069349647890425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 46
+        width: 165
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 506b1855deadabd30800000000000000
+      internalID: 4448108294858454533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 222
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1852ba603c10d6de0800000000000000
+      internalID: -1338411577117039231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 215
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbcd164ee8b8d8d50800000000000000
+      internalID: 6741197663076736189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 211
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 238bd20b4aef945d0800000000000000
+      internalID: -3077648887047145422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 191
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bb8e8bdd056d06c0800000000000000
+      internalID: -4175570169310049357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 114
+        width: 71
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e74c92a55b2c4990800000000000000
+      internalID: -7400492440876202016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 184
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1d9eed7812d89b50800000000000000
+      internalID: 6600256256545299743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 179
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92c12ebb753714650800000000000000
+      internalID: 6215375781399501865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 174
+        width: 40
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1259e4b69f659220800000000000000
+      internalID: 2492020661890404892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 140
+        width: 10
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac51f41b5d1c2f860800000000000000
+      internalID: 7562319847855429066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 169
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69a72a14ab0888c30800000000000000
+      internalID: 4361877776561765014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 176
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa482c0ad500d8f0800000000000000
+      internalID: -517907523082630412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 51
+        width: 134
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70775527947d4f360800000000000000
+      internalID: 7202618414523053831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_16
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 180
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29140221795a61a0800000000000000
+      internalID: -6815536743634953938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_17
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 178
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6926e32a76559ea0800000000000000
+      internalID: -5866687856991917716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_18
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 153
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0163865eb71f4b840800000000000000
+      internalID: 5239077780970812944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_19
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 127
+        width: 45
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 471338e1ae9c901c0800000000000000
+      internalID: -4536873142227619468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_20
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 47
+        width: 84
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1329b8e157eac8640800000000000000
+      internalID: 5083629897441317425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_21
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 152
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d55768c8bd2c2b0800000000000000
+      internalID: -5565644792878768754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_22
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 124
+        width: 14
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ce69f2ee0abf540800000000000000
+      internalID: 5042801152632482889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_23
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 148
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d646eb6db277f2d0800000000000000
+      internalID: -3244998848612514094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_24
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 149
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c11f2d6fbeb019150800000000000000
+      internalID: 5877492096781447452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_25
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 43
+        width: 123
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 733d0d4d4e8c3e780800000000000000
+      internalID: -8654853173727407305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_26
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 38
+        width: 131
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e5a045d9d8016a30800000000000000
+      internalID: 4206653258619463137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_27
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 121
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f297bbb7b35381480800000000000000
+      internalID: -8928327731666781905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_28
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 95
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb1e1eff473becc90800000000000000
+      internalID: -7147578243499826753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_29
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 111
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dbef3046b110ab90800000000000000
+      internalID: -7232761527097365551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_30
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 120
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931c934afb23cca00800000000000000
+      internalID: 778052634303643961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_31
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 119
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9a4140df6cae47c0800000000000000
+      internalID: -4085138215743173990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_32
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 116
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4b096f1f859a2870800000000000000
+      internalID: 8658897675513039692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_33
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 126
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488081049e1944470800000000000000
+      internalID: 8377981637804689540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_34
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 115
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4af4e4b10902ee0800000000000000
+      internalID: -1287871046475602755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_35
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 88
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bda3e828e7cecfc70800000000000000
+      internalID: 9006333382934543067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_36
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 88
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fe311b24bdd788b0800000000000000
+      internalID: -5149903882988470540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_37
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 101
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc8eba5faa6c79bd0800000000000000
+      internalID: -2623409820351600436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_38
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 94
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aed0069b824ca340800000000000000
+      internalID: 4876345663819931300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_39
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 84
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fcbcd4e0917cfe90800000000000000
+      internalID: -6990587654456951560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_40
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 95
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e99ecadf1184dc00800000000000000
+      internalID: 924505797332736482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_41
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 88
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c793034ee923da250800000000000000
+      internalID: 5957473540095621500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_42
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 81
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ccb0fec2f8ae5940800000000000000
+      internalID: 5286848773386976451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_43
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 91
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b29becf470646a0800000000000000
+      internalID: -6465472175691715704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_44
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 79
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 342769dd70ca31110800000000000000
+      internalID: 1230516272984650307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_45
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 83
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 847660ef8a74f7d40800000000000000
+      internalID: 5584260854104614728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_46
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 52
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed97688b76cbb6f0800000000000000
+      internalID: -667721885862617631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_47
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 72
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de545b0fb1a1bc710800000000000000
+      internalID: 1714492790449456621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_48
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 62
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42437f7fcf59a7b70800000000000000
+      internalID: 8897588927548306468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_49
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 38
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9497d37aed5023c60800000000000000
+      internalID: 7796300358778452297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_50
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 39
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d74430c26a3f910800000000000000
+      internalID: 1870020978252479763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_51
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 43
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7745d18baaeb9ce0800000000000000
+      internalID: -1397265237029861509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_52
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 44
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16bdf4a1c15915180800000000000000
+      internalID: -9128351021770220703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_53
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 47
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d438fbf1dbb994c0800000000000000
+      internalID: -4280183460289039149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_54
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 38
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bed25ebf417f3fa0800000000000000
+      internalID: -5818807606229934409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_55
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 41
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a3fc5525b1152ea0800000000000000
+      internalID: -5898288667258195040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_56
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 38
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f047733a3dc5a880800000000000000
+      internalID: -8600242263538843405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_57
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 38
+        width: 19
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63198d5ceed302200800000000000000
+      internalID: 153190483061412150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_gather_6frames_1536x256_58
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 38
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dfd3c29324a9ef00800000000000000
+      internalID: 1146628052835622869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_ashking_transition_gather_6frames_1536x256_0: -3380604443756805935
+      vfx_ashking_transition_gather_6frames_1536x256_1: 5598107920411803318
+      vfx_ashking_transition_gather_6frames_1536x256_10: 6215375781399501865
+      vfx_ashking_transition_gather_6frames_1536x256_11: 2492020661890404892
+      vfx_ashking_transition_gather_6frames_1536x256_12: 7562319847855429066
+      vfx_ashking_transition_gather_6frames_1536x256_13: 4361877776561765014
+      vfx_ashking_transition_gather_6frames_1536x256_14: -517907523082630412
+      vfx_ashking_transition_gather_6frames_1536x256_15: 7202618414523053831
+      vfx_ashking_transition_gather_6frames_1536x256_16: -6815536743634953938
+      vfx_ashking_transition_gather_6frames_1536x256_17: -5866687856991917716
+      vfx_ashking_transition_gather_6frames_1536x256_18: 5239077780970812944
+      vfx_ashking_transition_gather_6frames_1536x256_19: -4536873142227619468
+      vfx_ashking_transition_gather_6frames_1536x256_2: -5786069349647890425
+      vfx_ashking_transition_gather_6frames_1536x256_20: 5083629897441317425
+      vfx_ashking_transition_gather_6frames_1536x256_21: -5565644792878768754
+      vfx_ashking_transition_gather_6frames_1536x256_22: 5042801152632482889
+      vfx_ashking_transition_gather_6frames_1536x256_23: -3244998848612514094
+      vfx_ashking_transition_gather_6frames_1536x256_24: 5877492096781447452
+      vfx_ashking_transition_gather_6frames_1536x256_25: -8654853173727407305
+      vfx_ashking_transition_gather_6frames_1536x256_26: 4206653258619463137
+      vfx_ashking_transition_gather_6frames_1536x256_27: -8928327731666781905
+      vfx_ashking_transition_gather_6frames_1536x256_28: -7147578243499826753
+      vfx_ashking_transition_gather_6frames_1536x256_29: -7232761527097365551
+      vfx_ashking_transition_gather_6frames_1536x256_3: 4448108294858454533
+      vfx_ashking_transition_gather_6frames_1536x256_30: 778052634303643961
+      vfx_ashking_transition_gather_6frames_1536x256_31: -4085138215743173990
+      vfx_ashking_transition_gather_6frames_1536x256_32: 8658897675513039692
+      vfx_ashking_transition_gather_6frames_1536x256_33: 8377981637804689540
+      vfx_ashking_transition_gather_6frames_1536x256_34: -1287871046475602755
+      vfx_ashking_transition_gather_6frames_1536x256_35: 9006333382934543067
+      vfx_ashking_transition_gather_6frames_1536x256_36: -5149903882988470540
+      vfx_ashking_transition_gather_6frames_1536x256_37: -2623409820351600436
+      vfx_ashking_transition_gather_6frames_1536x256_38: 4876345663819931300
+      vfx_ashking_transition_gather_6frames_1536x256_39: -6990587654456951560
+      vfx_ashking_transition_gather_6frames_1536x256_4: -1338411577117039231
+      vfx_ashking_transition_gather_6frames_1536x256_40: 924505797332736482
+      vfx_ashking_transition_gather_6frames_1536x256_41: 5957473540095621500
+      vfx_ashking_transition_gather_6frames_1536x256_42: 5286848773386976451
+      vfx_ashking_transition_gather_6frames_1536x256_43: -6465472175691715704
+      vfx_ashking_transition_gather_6frames_1536x256_44: 1230516272984650307
+      vfx_ashking_transition_gather_6frames_1536x256_45: 5584260854104614728
+      vfx_ashking_transition_gather_6frames_1536x256_46: -667721885862617631
+      vfx_ashking_transition_gather_6frames_1536x256_47: 1714492790449456621
+      vfx_ashking_transition_gather_6frames_1536x256_48: 8897588927548306468
+      vfx_ashking_transition_gather_6frames_1536x256_49: 7796300358778452297
+      vfx_ashking_transition_gather_6frames_1536x256_5: 6741197663076736189
+      vfx_ashking_transition_gather_6frames_1536x256_50: 1870020978252479763
+      vfx_ashking_transition_gather_6frames_1536x256_51: -1397265237029861509
+      vfx_ashking_transition_gather_6frames_1536x256_52: -9128351021770220703
+      vfx_ashking_transition_gather_6frames_1536x256_53: -4280183460289039149
+      vfx_ashking_transition_gather_6frames_1536x256_54: -5818807606229934409
+      vfx_ashking_transition_gather_6frames_1536x256_55: -5898288667258195040
+      vfx_ashking_transition_gather_6frames_1536x256_56: -8600242263538843405
+      vfx_ashking_transition_gather_6frames_1536x256_57: 153190483061412150
+      vfx_ashking_transition_gather_6frames_1536x256_58: 1146628052835622869
+      vfx_ashking_transition_gather_6frames_1536x256_6: -3077648887047145422
+      vfx_ashking_transition_gather_6frames_1536x256_7: -4175570169310049357
+      vfx_ashking_transition_gather_6frames_1536x256_8: -7400492440876202016
+      vfx_ashking_transition_gather_6frames_1536x256_9: 6600256256545299743
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

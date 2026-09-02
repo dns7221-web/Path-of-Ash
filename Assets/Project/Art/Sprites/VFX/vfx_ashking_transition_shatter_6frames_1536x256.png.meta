@@ -1,0 +1,2106 @@
+fileFormatVersion: 2
+guid: 90d4b000739a024438c3a9709ad18048
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2968079845931185196
+    second: vfx_ashking_transition_shatter_6frames_1536x256_0
+  - first:
+      213: 1096774823379718051
+    second: vfx_ashking_transition_shatter_6frames_1536x256_1
+  - first:
+      213: -168538365230166930
+    second: vfx_ashking_transition_shatter_6frames_1536x256_2
+  - first:
+      213: -4388625779312521376
+    second: vfx_ashking_transition_shatter_6frames_1536x256_3
+  - first:
+      213: -4054587837358053664
+    second: vfx_ashking_transition_shatter_6frames_1536x256_4
+  - first:
+      213: 2588408375682083676
+    second: vfx_ashking_transition_shatter_6frames_1536x256_5
+  - first:
+      213: -8805110026001438752
+    second: vfx_ashking_transition_shatter_6frames_1536x256_6
+  - first:
+      213: 4916838746206608578
+    second: vfx_ashking_transition_shatter_6frames_1536x256_7
+  - first:
+      213: -7573319670192363467
+    second: vfx_ashking_transition_shatter_6frames_1536x256_8
+  - first:
+      213: -2872470260154118264
+    second: vfx_ashking_transition_shatter_6frames_1536x256_9
+  - first:
+      213: 207937195360677770
+    second: vfx_ashking_transition_shatter_6frames_1536x256_10
+  - first:
+      213: 5785385977986390299
+    second: vfx_ashking_transition_shatter_6frames_1536x256_11
+  - first:
+      213: -4205586921705511029
+    second: vfx_ashking_transition_shatter_6frames_1536x256_12
+  - first:
+      213: -2129313474836955556
+    second: vfx_ashking_transition_shatter_6frames_1536x256_13
+  - first:
+      213: 3581132929768477518
+    second: vfx_ashking_transition_shatter_6frames_1536x256_14
+  - first:
+      213: -2610488087874402181
+    second: vfx_ashking_transition_shatter_6frames_1536x256_15
+  - first:
+      213: -2007723399419101169
+    second: vfx_ashking_transition_shatter_6frames_1536x256_16
+  - first:
+      213: 2712649428762119047
+    second: vfx_ashking_transition_shatter_6frames_1536x256_17
+  - first:
+      213: 7550664649209398206
+    second: vfx_ashking_transition_shatter_6frames_1536x256_18
+  - first:
+      213: -3921463292879299102
+    second: vfx_ashking_transition_shatter_6frames_1536x256_19
+  - first:
+      213: 8395588477985843194
+    second: vfx_ashking_transition_shatter_6frames_1536x256_20
+  - first:
+      213: 5421822860012301066
+    second: vfx_ashking_transition_shatter_6frames_1536x256_21
+  - first:
+      213: 64283085024858252
+    second: vfx_ashking_transition_shatter_6frames_1536x256_22
+  - first:
+      213: 5824417793419716005
+    second: vfx_ashking_transition_shatter_6frames_1536x256_23
+  - first:
+      213: -4507771449356363578
+    second: vfx_ashking_transition_shatter_6frames_1536x256_24
+  - first:
+      213: 6649955482691428803
+    second: vfx_ashking_transition_shatter_6frames_1536x256_25
+  - first:
+      213: 2732132203966268564
+    second: vfx_ashking_transition_shatter_6frames_1536x256_26
+  - first:
+      213: -5295422307915186044
+    second: vfx_ashking_transition_shatter_6frames_1536x256_27
+  - first:
+      213: -3867027989950509667
+    second: vfx_ashking_transition_shatter_6frames_1536x256_28
+  - first:
+      213: 8665475421191576027
+    second: vfx_ashking_transition_shatter_6frames_1536x256_29
+  - first:
+      213: -2219741579909314241
+    second: vfx_ashking_transition_shatter_6frames_1536x256_30
+  - first:
+      213: 7968152166844588101
+    second: vfx_ashking_transition_shatter_6frames_1536x256_31
+  - first:
+      213: -5827270296173788327
+    second: vfx_ashking_transition_shatter_6frames_1536x256_32
+  - first:
+      213: -4457947213813840517
+    second: vfx_ashking_transition_shatter_6frames_1536x256_33
+  - first:
+      213: 6499895568215371272
+    second: vfx_ashking_transition_shatter_6frames_1536x256_34
+  - first:
+      213: 1820911920981010805
+    second: vfx_ashking_transition_shatter_6frames_1536x256_35
+  - first:
+      213: 7590736144879594542
+    second: vfx_ashking_transition_shatter_6frames_1536x256_36
+  - first:
+      213: -6715766912173049780
+    second: vfx_ashking_transition_shatter_6frames_1536x256_37
+  - first:
+      213: -8542990980632321674
+    second: vfx_ashking_transition_shatter_6frames_1536x256_38
+  - first:
+      213: -9066784345866594981
+    second: vfx_ashking_transition_shatter_6frames_1536x256_39
+  - first:
+      213: -435619470432289150
+    second: vfx_ashking_transition_shatter_6frames_1536x256_40
+  - first:
+      213: 1174183565178908268
+    second: vfx_ashking_transition_shatter_6frames_1536x256_41
+  - first:
+      213: -699010442111452238
+    second: vfx_ashking_transition_shatter_6frames_1536x256_42
+  - first:
+      213: 5920034172247213592
+    second: vfx_ashking_transition_shatter_6frames_1536x256_43
+  - first:
+      213: -7376473127980847383
+    second: vfx_ashking_transition_shatter_6frames_1536x256_44
+  - first:
+      213: 8927948662118023340
+    second: vfx_ashking_transition_shatter_6frames_1536x256_45
+  - first:
+      213: 1697234932817984181
+    second: vfx_ashking_transition_shatter_6frames_1536x256_46
+  - first:
+      213: -7848837419317406355
+    second: vfx_ashking_transition_shatter_6frames_1536x256_47
+  - first:
+      213: 9096627254518705509
+    second: vfx_ashking_transition_shatter_6frames_1536x256_48
+  - first:
+      213: 1304438645563848613
+    second: vfx_ashking_transition_shatter_6frames_1536x256_49
+  - first:
+      213: 225965008068386214
+    second: vfx_ashking_transition_shatter_6frames_1536x256_50
+  - first:
+      213: -4479346187652102798
+    second: vfx_ashking_transition_shatter_6frames_1536x256_51
+  - first:
+      213: -244110670888266290
+    second: vfx_ashking_transition_shatter_6frames_1536x256_52
+  - first:
+      213: -5345076920434759717
+    second: vfx_ashking_transition_shatter_6frames_1536x256_53
+  - first:
+      213: 4878399128413943031
+    second: vfx_ashking_transition_shatter_6frames_1536x256_54
+  - first:
+      213: -7435176581265204002
+    second: vfx_ashking_transition_shatter_6frames_1536x256_55
+  - first:
+      213: 5990284559712805599
+    second: vfx_ashking_transition_shatter_6frames_1536x256_56
+  - first:
+      213: -5542030869127135670
+    second: vfx_ashking_transition_shatter_6frames_1536x256_57
+  - first:
+      213: -2212171621435160831
+    second: vfx_ashking_transition_shatter_6frames_1536x256_58
+  - first:
+      213: 5942864245223859421
+    second: vfx_ashking_transition_shatter_6frames_1536x256_59
+  - first:
+      213: 1198035559320692975
+    second: vfx_ashking_transition_shatter_6frames_1536x256_60
+  - first:
+      213: 53855404266426526
+    second: vfx_ashking_transition_shatter_6frames_1536x256_61
+  - first:
+      213: 5132141038364469937
+    second: vfx_ashking_transition_shatter_6frames_1536x256_62
+  - first:
+      213: -72451816875102281
+    second: vfx_ashking_transition_shatter_6frames_1536x256_63
+  - first:
+      213: 7810717657775306661
+    second: vfx_ashking_transition_shatter_6frames_1536x256_64
+  - first:
+      213: -3947798652050913376
+    second: vfx_ashking_transition_shatter_6frames_1536x256_65
+  - first:
+      213: -4566502517413101407
+    second: vfx_ashking_transition_shatter_6frames_1536x256_66
+  - first:
+      213: 5761151118563980466
+    second: vfx_ashking_transition_shatter_6frames_1536x256_67
+  - first:
+      213: 645116274907752550
+    second: vfx_ashking_transition_shatter_6frames_1536x256_68
+  - first:
+      213: -4613870108648474251
+    second: vfx_ashking_transition_shatter_6frames_1536x256_69
+  - first:
+      213: -3895059807844073604
+    second: vfx_ashking_transition_shatter_6frames_1536x256_70
+  - first:
+      213: -5257437210777791394
+    second: vfx_ashking_transition_shatter_6frames_1536x256_71
+  - first:
+      213: 4982543920660295294
+    second: vfx_ashking_transition_shatter_6frames_1536x256_72
+  - first:
+      213: 6838218320550432548
+    second: vfx_ashking_transition_shatter_6frames_1536x256_73
+  - first:
+      213: 6295912326843657691
+    second: vfx_ashking_transition_shatter_6frames_1536x256_74
+  - first:
+      213: -3959766765307117417
+    second: vfx_ashking_transition_shatter_6frames_1536x256_75
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 228
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4db864e0b134fc6d0800000000000000
+      internalID: -2968079845931185196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 233
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3afc32214e6883f00800000000000000
+      internalID: 1096774823379718051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 55
+        width: 164
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c4e61ff3b39adf0800000000000000
+      internalID: -168538365230166930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 213
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06f84fb0b187813c0800000000000000
+      internalID: -4388625779312521376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 218
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e667a318d53bb7c0800000000000000
+      internalID: -4054587837358053664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 173
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b2d2624bfdbe320800000000000000
+      internalID: 2588408375682083676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 200
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e724f33517fdc580800000000000000
+      internalID: -8805110026001438752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 191
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc95850ace1c3440800000000000000
+      internalID: 4916838746206608578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 189
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538a4b792e926e690800000000000000
+      internalID: -7573319670192363467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 38
+        width: 109
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88fc3a3748fe228d0800000000000000
+      internalID: -2872470260154118264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 53
+        width: 22
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f601907cdb2e200800000000000000
+      internalID: 207937195360677770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 38
+        width: 114
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19976a05e1d94050800000000000000
+      internalID: 5785385977986390299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 77
+        width: 27
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b87e6b31af0c2a5c0800000000000000
+      internalID: -4205586921705511029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 155
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ef3ec1da82372e0800000000000000
+      internalID: -2129313474836955556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 119
+        width: 9
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e43dd4c0d6db2b130800000000000000
+      internalID: 3581132929768477518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 38
+        width: 136
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b788bdf3aeea5cbd0800000000000000
+      internalID: -2610488087874402181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_16
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 186
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f008262a4322324e0800000000000000
+      internalID: -2007723399419101169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_17
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 151
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b4881884445a520800000000000000
+      internalID: 2712649428762119047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_18
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 113
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb3c93a4e7959c860800000000000000
+      internalID: 7550664649209398206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_19
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 104
+        width: 13
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ed123479e92499c0800000000000000
+      internalID: -3921463292879299102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_20
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 171
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af765be2d3f138470800000000000000
+      internalID: 8395588477985843194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_21
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 177
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b20264a2f2e3b40800000000000000
+      internalID: 5421822860012301066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_22
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 119
+        width: 19
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8019ff002164e000800000000000000
+      internalID: 64283085024858252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_23
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 173
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a52f30cf1d74d050800000000000000
+      internalID: 5824417793419716005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_24
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 151
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c8577000cd2171c0800000000000000
+      internalID: -4507771449356363578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_25
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 118
+        width: 30
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1ebfd4743694c50800000000000000
+      internalID: 6649955482691428803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_26
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 88
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49480d893cb7ae520800000000000000
+      internalID: 2732132203966268564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_27
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 151
+        width: 56
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4804901a771e286b0800000000000000
+      internalID: -5295422307915186044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_28
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 177
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9dc182188e855ac0800000000000000
+      internalID: -3867027989950509667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_29
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 121
+        width: 20
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd99002ebf3f14870800000000000000
+      internalID: 8665475421191576027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_30
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 171
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3947543bc4e131e0800000000000000
+      internalID: -2219741579909314241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_31
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 168
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540e70dbd20949e60800000000000000
+      internalID: 7968152166844588101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_32
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 150
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95340623a80612fa0800000000000000
+      internalID: -5827270296173788327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_33
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 153
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b750f25d0a03222c0800000000000000
+      internalID: -4457947213813840517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_34
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 150
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80eec94d494443a50800000000000000
+      internalID: 6499895568215371272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_35
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 185
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579e8599ebd254910800000000000000
+      internalID: 1820911920981010805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_36
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 117
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2c244b6e46b75960800000000000000
+      internalID: 7590736144879594542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_37
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 141
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c487a95339dccc2a0800000000000000
+      internalID: -6715766912173049780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_38
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 113
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6716b0047f2317980800000000000000
+      internalID: -8542990980632321674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_39
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 147
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b559c81ecaf4c2280800000000000000
+      internalID: -9066784345866594981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_40
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 139
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28eb3af466e54f9f0800000000000000
+      internalID: -435619470432289150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_41
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 119
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6e279f3bb98b4010800000000000000
+      internalID: 1174183565178908268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_42
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 133
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb78a7d4bd9c46f0800000000000000
+      internalID: -699010442111452238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_43
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 136
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81608f6c6bf282250800000000000000
+      internalID: 5920034172247213592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_44
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 118
+        width: 96
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eeac77b5c081a990800000000000000
+      internalID: -7376473127980847383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_45
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 153
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca00872810276eb70800000000000000
+      internalID: 8927948662118023340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_46
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 143
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bafff6dd2acd8710800000000000000
+      internalID: 1697234932817984181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_47
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 112
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65dac9b3f3531390800000000000000
+      internalID: -7848837419317406355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_48
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 107
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d69bfba46bd3e70800000000000000
+      internalID: 9096627254518705509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_49
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 91
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a7ff14790c4a1210800000000000000
+      internalID: 1304438645563848613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_50
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 38
+        width: 110
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ad95954af9c22300800000000000000
+      internalID: 225965008068386214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_51
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 89
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2750ffaff5a26d1c0800000000000000
+      internalID: -4479346187652102798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_52
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 71
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec592df53aebc9cf0800000000000000
+      internalID: -244110670888266290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_53
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 93
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd7e85c3cd872d5b0800000000000000
+      internalID: -5345076920434759717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_54
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 63
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f430b1192e83b340800000000000000
+      internalID: 4878399128413943031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_55
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 92
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc5267ea42f0d890800000000000000
+      internalID: -7435176581265204002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_56
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 76
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd26035b114c12350800000000000000
+      internalID: 5990284559712805599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_57
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 88
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e7d679940c613b0800000000000000
+      internalID: -5542030869127135670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_58
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 38
+        width: 144
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107482281a9cc41e0800000000000000
+      internalID: -2212171621435160831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_59
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 91
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd420fc5b8b497250800000000000000
+      internalID: 5942864245223859421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_60
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 72
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe8a8956ef640a010800000000000000
+      internalID: 1198035559320692975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_61
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 61
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90198074355fb000800000000000000
+      internalID: 53855404266426526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_62
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 59
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba2be84517093740800000000000000
+      internalID: 5132141038364469937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_63
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 55
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bfe3d7d4799efef0800000000000000
+      internalID: -72451816875102281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_64
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 47
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a77198a35e356c60800000000000000
+      internalID: 7810717657775306661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_65
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 52
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a74db3da0a9639c0800000000000000
+      internalID: -3947798652050913376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_66
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 53
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a04aaf972680a0c0800000000000000
+      internalID: -4566502517413101407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_67
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 53
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4b95f1b68b3ff40800000000000000
+      internalID: 5761151118563980466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_68
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 53
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66823b485d9e3f800800000000000000
+      internalID: 645116274907752550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_69
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 48
+        width: 34
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579f63ed49d38ffb0800000000000000
+      internalID: -4613870108648474251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_70
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 54
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7f7d8eddb7f1f9c0800000000000000
+      internalID: -3895059807844073604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_71
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 43
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e545bae36b4d907b0800000000000000
+      internalID: -5257437210777791394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_72
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 42
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7e2db41c4d852540800000000000000
+      internalID: 4982543920660295294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_73
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 38
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42f0af4055b36ee50800000000000000
+      internalID: 6838218320550432548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_74
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 41
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdde48277e29f5750800000000000000
+      internalID: 6295912326843657691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ashking_transition_shatter_6frames_1536x256_75
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 39
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 790c8705b151c09c0800000000000000
+      internalID: -3959766765307117417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_ashking_transition_shatter_6frames_1536x256_0: -2968079845931185196
+      vfx_ashking_transition_shatter_6frames_1536x256_1: 1096774823379718051
+      vfx_ashking_transition_shatter_6frames_1536x256_10: 207937195360677770
+      vfx_ashking_transition_shatter_6frames_1536x256_11: 5785385977986390299
+      vfx_ashking_transition_shatter_6frames_1536x256_12: -4205586921705511029
+      vfx_ashking_transition_shatter_6frames_1536x256_13: -2129313474836955556
+      vfx_ashking_transition_shatter_6frames_1536x256_14: 3581132929768477518
+      vfx_ashking_transition_shatter_6frames_1536x256_15: -2610488087874402181
+      vfx_ashking_transition_shatter_6frames_1536x256_16: -2007723399419101169
+      vfx_ashking_transition_shatter_6frames_1536x256_17: 2712649428762119047
+      vfx_ashking_transition_shatter_6frames_1536x256_18: 7550664649209398206
+      vfx_ashking_transition_shatter_6frames_1536x256_19: -3921463292879299102
+      vfx_ashking_transition_shatter_6frames_1536x256_2: -168538365230166930
+      vfx_ashking_transition_shatter_6frames_1536x256_20: 8395588477985843194
+      vfx_ashking_transition_shatter_6frames_1536x256_21: 5421822860012301066
+      vfx_ashking_transition_shatter_6frames_1536x256_22: 64283085024858252
+      vfx_ashking_transition_shatter_6frames_1536x256_23: 5824417793419716005
+      vfx_ashking_transition_shatter_6frames_1536x256_24: -4507771449356363578
+      vfx_ashking_transition_shatter_6frames_1536x256_25: 6649955482691428803
+      vfx_ashking_transition_shatter_6frames_1536x256_26: 2732132203966268564
+      vfx_ashking_transition_shatter_6frames_1536x256_27: -5295422307915186044
+      vfx_ashking_transition_shatter_6frames_1536x256_28: -3867027989950509667
+      vfx_ashking_transition_shatter_6frames_1536x256_29: 8665475421191576027
+      vfx_ashking_transition_shatter_6frames_1536x256_3: -4388625779312521376
+      vfx_ashking_transition_shatter_6frames_1536x256_30: -2219741579909314241
+      vfx_ashking_transition_shatter_6frames_1536x256_31: 7968152166844588101
+      vfx_ashking_transition_shatter_6frames_1536x256_32: -5827270296173788327
+      vfx_ashking_transition_shatter_6frames_1536x256_33: -4457947213813840517
+      vfx_ashking_transition_shatter_6frames_1536x256_34: 6499895568215371272
+      vfx_ashking_transition_shatter_6frames_1536x256_35: 1820911920981010805
+      vfx_ashking_transition_shatter_6frames_1536x256_36: 7590736144879594542
+      vfx_ashking_transition_shatter_6frames_1536x256_37: -6715766912173049780
+      vfx_ashking_transition_shatter_6frames_1536x256_38: -8542990980632321674
+      vfx_ashking_transition_shatter_6frames_1536x256_39: -9066784345866594981
+      vfx_ashking_transition_shatter_6frames_1536x256_4: -4054587837358053664
+      vfx_ashking_transition_shatter_6frames_1536x256_40: -435619470432289150
+      vfx_ashking_transition_shatter_6frames_1536x256_41: 1174183565178908268
+      vfx_ashking_transition_shatter_6frames_1536x256_42: -699010442111452238
+      vfx_ashking_transition_shatter_6frames_1536x256_43: 5920034172247213592
+      vfx_ashking_transition_shatter_6frames_1536x256_44: -7376473127980847383
+      vfx_ashking_transition_shatter_6frames_1536x256_45: 8927948662118023340
+      vfx_ashking_transition_shatter_6frames_1536x256_46: 1697234932817984181
+      vfx_ashking_transition_shatter_6frames_1536x256_47: -7848837419317406355
+      vfx_ashking_transition_shatter_6frames_1536x256_48: 9096627254518705509
+      vfx_ashking_transition_shatter_6frames_1536x256_49: 1304438645563848613
+      vfx_ashking_transition_shatter_6frames_1536x256_5: 2588408375682083676
+      vfx_ashking_transition_shatter_6frames_1536x256_50: 225965008068386214
+      vfx_ashking_transition_shatter_6frames_1536x256_51: -4479346187652102798
+      vfx_ashking_transition_shatter_6frames_1536x256_52: -244110670888266290
+      vfx_ashking_transition_shatter_6frames_1536x256_53: -5345076920434759717
+      vfx_ashking_transition_shatter_6frames_1536x256_54: 4878399128413943031
+      vfx_ashking_transition_shatter_6frames_1536x256_55: -7435176581265204002
+      vfx_ashking_transition_shatter_6frames_1536x256_56: 5990284559712805599
+      vfx_ashking_transition_shatter_6frames_1536x256_57: -5542030869127135670
+      vfx_ashking_transition_shatter_6frames_1536x256_58: -2212171621435160831
+      vfx_ashking_transition_shatter_6frames_1536x256_59: 5942864245223859421
+      vfx_ashking_transition_shatter_6frames_1536x256_6: -8805110026001438752
+      vfx_ashking_transition_shatter_6frames_1536x256_60: 1198035559320692975
+      vfx_ashking_transition_shatter_6frames_1536x256_61: 53855404266426526
+      vfx_ashking_transition_shatter_6frames_1536x256_62: 5132141038364469937
+      vfx_ashking_transition_shatter_6frames_1536x256_63: -72451816875102281
+      vfx_ashking_transition_shatter_6frames_1536x256_64: 7810717657775306661
+      vfx_ashking_transition_shatter_6frames_1536x256_65: -3947798652050913376
+      vfx_ashking_transition_shatter_6frames_1536x256_66: -4566502517413101407
+      vfx_ashking_transition_shatter_6frames_1536x256_67: 5761151118563980466
+      vfx_ashking_transition_shatter_6frames_1536x256_68: 645116274907752550
+      vfx_ashking_transition_shatter_6frames_1536x256_69: -4613870108648474251
+      vfx_ashking_transition_shatter_6frames_1536x256_7: 4916838746206608578
+      vfx_ashking_transition_shatter_6frames_1536x256_70: -3895059807844073604
+      vfx_ashking_transition_shatter_6frames_1536x256_71: -5257437210777791394
+      vfx_ashking_transition_shatter_6frames_1536x256_72: 4982543920660295294
+      vfx_ashking_transition_shatter_6frames_1536x256_73: 6838218320550432548
+      vfx_ashking_transition_shatter_6frames_1536x256_74: 6295912326843657691
+      vfx_ashking_transition_shatter_6frames_1536x256_75: -3959766765307117417
+      vfx_ashking_transition_shatter_6frames_1536x256_8: -7573319670192363467
+      vfx_ashking_transition_shatter_6frames_1536x256_9: -2872470260154118264
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
