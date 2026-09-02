@@ -181,10 +181,6 @@ public static class AshGameHudBuilder
     /// 항상 "생각보다 낮다"가 된다.
     private static readonly Vector2 BossBarMargin = new Vector2(0f, -28f);
 
-    /// <summary>2페이즈 눈금의 두께(px)와 색.</summary>
-    private const float BossPhaseMarkerWidth = 5f;
-    private static readonly Color BossPhaseMarkerColor = new Color(0.1f, 0.08f, 0.08f, 0.85f);
-
     /// <summary>
     /// 보스 이름표. 프레임 <b>아래</b>에 둔다.
     ///
@@ -564,27 +560,10 @@ public static class AshGameHudBuilder
                              "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
         }
 
-        // ── 2페이즈 눈금 (채움 위, 프레임 아래) ──
+        // 수정(눈금을 걷어냈다) — 여기에 2페이즈 전환 지점을 알리는 눈금이 있었다.
         //
-        // 채움 영역의 자식으로 둔다. 그래야 BossHealthBar가 넣는 비율(0~1)이 곧 게이지
-        // 안에서의 위치가 된다. 바 전체의 자식으로 두면 프레임 장식만큼 어긋난다.
-        var marker = CreateStretchedImage("PhaseMarker", fillAreaRect, BossPhaseMarkerColor);
-        var markerRect = marker.rectTransform;
-
-        // 세로는 늘린 채로, 가로는 한 점에 모은다.
-        //
-        // CreateStretchedImage가 잡아준 (0,0)~(1,1) 앵커를 그대로 두면 안 된다. 가로가
-        // 늘어난 상태에서는 sizeDelta.x가 <b>폭이 아니라 부모 폭에 더할 양</b>이라,
-        // 5를 넣으면 게이지 전체를 덮는 띠가 된다. 실행 중에는 BossHealthBar가 앵커를
-        // 다시 잡지만, 그전까지 씬에서 보이는 모습이 실제와 달라 확인할 수가 없다.
-        //
-        // 가운데(0.5)에 세워두는 이유: 보스의 기본 전환 비율이 0.5라 대체로 맞는 자리이고,
-        // 실제 값은 실행할 때 보스에게 물어서 넣는다.
-        markerRect.anchorMin = new Vector2(0.5f, 0f);
-        markerRect.anchorMax = new Vector2(0.5f, 1f);
-        markerRect.pivot = new Vector2(0.5f, 0.5f);
-        markerRect.anchoredPosition = Vector2.zero;
-        markerRect.sizeDelta = new Vector2(BossPhaseMarkerWidth, 0f);
+        // 바가 페이즈마다 새로 채워지도록 바꾸면서 눈금이 설 자리가 없어졌다. 이제 전환
+        // 지점은 곧 <b>바의 0</b>이라, 눈금을 남기면 언제나 틀린 자리를 가리키는 장식이 된다.
 
         // ── 프레임 (나중에 = 위에 얹힘) ──
         var frame = CreateStretchedImage("Frame", barRect, Color.white);
@@ -641,7 +620,6 @@ public static class AshGameHudBuilder
         serialized.FindProperty("group").objectReferenceValue = barObject.GetComponent<CanvasGroup>();
         serialized.FindProperty("fillImage").objectReferenceValue = fill;
         serialized.FindProperty("fillRect").objectReferenceValue = fill.rectTransform;
-        serialized.FindProperty("phaseMarker").objectReferenceValue = markerRect;
         serialized.FindProperty("nameLabel").objectReferenceValue = nameLabel;
         serialized.ApplyModifiedPropertiesWithoutUndo();
 

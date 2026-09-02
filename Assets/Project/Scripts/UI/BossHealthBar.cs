@@ -15,9 +15,16 @@ using UnityEngine.UI;
 /// 밖에서 대상을 받는다. 공통 부모로 묶으면 "대상을 어떻게 얻는가"가 추상화 뒤로 숨어서,
 /// 바가 안 움직일 때 어디를 봐야 하는지 알기 어려워진다.
 ///
-/// <b>왜 필요한가.</b> 이게 없으면 보스를 얼마나 깎았는지 화면에서 알 수 없고, 2페이즈
-/// 전환이 언제 오는지도 못 읽는다. 보스전의 유일한 절정이 <b>예고 없이</b> 터지는 셈이다.
-/// 그래서 눈금(<see cref="phaseMarker"/>)으로 전환 지점을 미리 보여준다.
+/// <b>수정(페이즈마다 바를 새로 쓴다) — 이 바는 체력 전체가 아니라 지금 페이즈의 몫만
+/// 보여준다.</b> 전환 비율이 0.5라면 1페이즈는 체력 100~50%를 바 100~0%로, 2페이즈는
+/// 체력 50~0%를 다시 바 100~0%로 그린다. 그래서 전환 직전에 바가 <b>완전히 비고</b>,
+/// 전환이 끝나면 <b>다시 가득 찬다.</b>
+///
+/// 예전에는 체력 전체를 바 하나에 담고 전환 지점에 눈금을 세워 예고했다. 바꾼 이유는
+/// <b>"다 깎았다"가 예고보다 강하기 때문이다.</b> 눈금은 "곧 뭔가 온다"까지만 말하지만,
+/// 바가 0이 되는 것은 <b>이겼다고 믿게 만든다.</b> 그 믿음이 뒤집히는 것이 2페이즈다.
+/// 눈금은 같이 걷어냈다 — 이 방식에서는 전환 지점이 곧 바의 0이라 눈금이 설 자리가 없고,
+/// 남겨두면 언제나 틀린 자리를 가리키는 장식이 된다.
 /// </summary>
 [DisallowMultipleComponent]
 public class BossHealthBar : MonoBehaviour
@@ -31,9 +38,6 @@ public class BossHealthBar : MonoBehaviour
 
     [Tooltip("채움 사각형. fillAmount를 못 쓸 때(스프라이트가 없을 때)의 대비책이다.")]
     [SerializeField] private RectTransform fillRect;
-
-    [Tooltip("2페이즈 전환 지점을 알리는 눈금. 채움 영역의 자식이어야 위치가 맞는다.")]
-    [SerializeField] private RectTransform phaseMarker;
 
     [Tooltip("보스 이름표. 바 아래에 놓는다.")]
     [SerializeField] private TMP_Text nameLabel;
@@ -55,8 +59,16 @@ public class BossHealthBar : MonoBehaviour
     [Header("연출")]
     [Tooltip("게이지가 목표값을 따라가는 속도. 클수록 즉각적이다. 0이면 즉시 반영된다. " +
              "플레이어 체력 바(8)보다 느리게 둔다 — 보스는 최대 체력이 커서 한 대의 폭이 " +
-             "작기 때문에, 천천히 흘러야 '깎이고 있다'가 눈에 보인다.")]
+             "작기 때문에, 천천히 흘러야 깎이고 있다는 것이 눈에 보인다.")]
     [SerializeField, Min(0f)] private float followSpeed = 5f;
+
+    // 추가 생성 — 2페이즈로 넘어갈 때 빈 바가 다시 차오르는 데 걸리는 시간(초).
+    //
+    // 평소의 followSpeed(지수 감쇠)를 안 쓰는 이유: 지수 보간은 목표에 가까울수록 느려져서
+    // 마지막 20%가 뭉개진다. 깎이는 연출에는 그게 어울리지만(끝이 부드럽다), 차오르는 것은
+    // 끝까지 같은 속도로 올라가서 가득 찬 순간이 딱 떨어져야 "다시 채워졌다"가 읽힌다.
+    [Tooltip("2페이즈 전환 때 바가 다시 차오르는 시간(초). 일정한 속도로 채운다.")]
+    [SerializeField, Min(0.01f)] private float refillSeconds = 0.7f;
 
     [Tooltip("나타나고 사라지는 데 걸리는 시간(초).")]
     [SerializeField, Min(0f)] private float fadeSeconds = 0.35f;
@@ -67,19 +79,34 @@ public class BossHealthBar : MonoBehaviour
     // 화면에 지금 그려지고 있는 비율. 목표값을 향해 따라간다.
     private float displayed = 1f;
 
-    // 체력이 알려준 실제 비율.
+    // 체력이 알려준 값을 이 페이즈의 몫으로 환산한 비율.
     private float target = 1f;
+
+    // 추가 생성 — 체력이 마지막으로 알려준 날것의 값.
+    //
+    // 환산 결과(target)만 들고 있으면 안 된다. 페이즈가 바뀌는 순간 <b>같은 체력을 다른
+    // 기준으로 다시 환산해야</b> 하는데, 환산된 값에서는 원래 체력을 되돌릴 수 없다.
+    private int lastCurrent;
+    private int lastMax = 1;
 
     // 지금 보여야 하는가. 이 값에 따라 group.alpha가 0과 1 사이를 오간다.
     private bool visible;
 
-    // 지금 2페이즈인가. 채움 색을 정할 때 쓴다.
-    //
-    // 눈금이 켜져 있는지로 알아낼 수도 있지만 그러면 안 된다. 눈금은 <b>2페이즈가 아닌
-    // 이유로도</b> 꺼진다 — 전환 비율이 0이나 1이라 그릴 자리가 없을 때, 그리고 눈금
-    // 오브젝트가 아예 안 물려 있을 때. 그 경우 아직 1페이즈인데 색만 2페이즈로 나온다.
-    // 상태를 상태로 들고 있으면 그런 우연에 기대지 않는다.
+    // 지금 2페이즈인가. 채움 색과 환산 기준을 정할 때 쓴다.
     private bool isPhase2;
+
+    // 추가 생성 — 2페이즈로 넘어가는 체력 비율(0~1). 이 값이 두 페이즈의 경계다.
+    private float phase2Ratio;
+
+    // 추가 생성 — 전환 비율이 실제로 바를 둘로 나누는가.
+    //
+    // 0이나 1이면 나눌 수 없다(한쪽 몫이 0이 되어 0으로 나누게 된다). 그때는 페이즈가
+    // 없는 것으로 보고 체력 전체를 바 하나에 그린다 — 전환이 없는 보스를 이 바에 물릴
+    // 수도 있기 때문이다.
+    private bool hasPhaseSplit;
+
+    // 추가 생성 — 지금 차오르는 중인가. 켜져 있는 동안만 일정 속도로 채운다.
+    private bool refilling;
 
     private void Awake()
     {
@@ -117,13 +144,13 @@ public class BossHealthBar : MonoBehaviour
     /// 보스를 이 바에 물린다. <see cref="BossEncounter"/>가 보스를 만든 직후 부른다.
     ///
     /// 페이즈 비율을 인자로 받는 이유: 그 값의 주인은 <see cref="EnemyBoss"/>다. 여기에
-    /// 0.5를 따로 적어두면 보스 쪽 수치를 바꿨을 때 <b>눈금만 옛 자리에 남는다.</b>
-    /// 그건 아무 에러도 없이 "전환이 눈금보다 일찍/늦게 온다"로만 나타나서,
+    /// 0.5를 따로 적어두면 보스 쪽 수치를 바꿨을 때 <b>바가 옛 기준으로 나뉜다.</b>
+    /// 그건 아무 에러도 없이 "바가 다 비었는데 전환이 안 온다"로만 나타나서,
     /// 버그가 아니라 밸런스 문제로 오해하기 딱 좋다.
     /// </summary>
     /// <param name="bossHealth">보스의 체력. null이면 아무것도 하지 않는다.</param>
-    /// <param name="phase2Ratio">2페이즈로 넘어가는 체력 비율(0~1). 눈금 위치가 된다.</param>
-    public void Bind(Health bossHealth, float phase2Ratio)
+    /// <param name="phase2HealthRatio">2페이즈로 넘어가는 체력 비율(0~1). 두 페이즈의 경계다.</param>
+    public void Bind(Health bossHealth, float phase2HealthRatio)
     {
         if (bossHealth == null)
         {
@@ -140,15 +167,20 @@ public class BossHealthBar : MonoBehaviour
         health.Died += OnBossDied;
 
         // 새 보스는 1페이즈에서 시작한다. 이전 판에서 2페이즈까지 갔다가 다시 들어오면
-        // 색과 눈금이 그대로 남아, 아직 1페이즈인 보스가 2페이즈처럼 보인다.
+        // 색과 환산 기준이 그대로 남아, 아직 1페이즈인 보스가 2페이즈처럼 보인다.
         isPhase2 = false;
+        refilling = false;
+
+        phase2Ratio = phase2HealthRatio;
+        hasPhaseSplit = phase2Ratio > 0f && phase2Ratio < 1f;
 
         // 등장할 때는 지금 체력에서 시작한다. 0에서 차오르게 하면 "보스가 회복하는 중"으로
         // 보이고, 1에서 떨어지게 하면 시작하자마자 얻어맞은 것처럼 보인다.
-        target = Ratio(health.Current, health.Max);
+        lastCurrent = health.Current;
+        lastMax = health.Max;
+        target = PhaseRatio(lastCurrent, lastMax);
         displayed = target;
 
-        ApplyPhaseMarker(phase2Ratio);
         ApplyFill(displayed);
         ApplyColor();
         ApplyName();
@@ -165,22 +197,32 @@ public class BossHealthBar : MonoBehaviour
     public void Unbind()
     {
         Unsubscribe();
+        refilling = false;
         visible = false;
     }
 
     /// <summary>
-    /// 2페이즈에 들어갔음을 바에 알린다. 색이 바뀌고 눈금은 더 이상 의미가 없어 숨는다.
+    /// 2페이즈에 들어갔음을 바에 알린다. 색과 이름이 바뀌고, 빈 바가 다시 차오른다.
     ///
     /// <see cref="EnemyBoss"/>가 이 함수를 직접 부르지 않고 방(<see cref="BossEncounter"/>)이
     /// 신호를 받아 전달한다. 사망 처리를 그렇게 나눠둔 것과 같은 이유다 — <b>적 스크립트가
     /// 화면 구조를 모르게</b> 한다. 보스가 HUD를 직접 찾으면, HUD가 없는 씬(테스트 방 등)에
     /// 보스를 놓는 순간 경고가 뜨고 보스 쪽 코드를 고치게 된다.
+    ///
+    /// <b>수정 — 여기서 바가 다시 찬다.</b> 환산 기준을 2페이즈로 바꾸면 같은 체력이
+    /// 훨씬 큰 비율이 되므로(경계에서는 1.0), 목표값만 새로 잡아주면 채우는 일은
+    /// <see cref="Update"/>가 알아서 한다. 여기서 displayed를 직접 1로 밀지 않는 이유는
+    /// <b>가득 찬 결과가 아니라 차오르는 과정이 연출이기 때문이다.</b>
     /// </summary>
     public void MarkPhase2()
     {
         isPhase2 = true;
 
-        if (phaseMarker != null) phaseMarker.gameObject.SetActive(false);
+        // 같은 체력을 2페이즈 기준으로 다시 환산한다. 경계를 넘겨 때렸다면(예: 55%에서
+        // 45%로) 목표가 1.0이 아니라 0.9가 된다. 그게 맞다 — 넘겨서 깎은 만큼은 2페이즈
+        // 체력에서 이미 빠져 있고, 바가 가득 차버리면 그 한 대가 없던 일이 된다.
+        target = PhaseRatio(lastCurrent, lastMax);
+        refilling = true;
 
         ApplyColor();
         ApplyName();
@@ -193,7 +235,8 @@ public class BossHealthBar : MonoBehaviour
         Unsubscribe();
 
         // 대상을 잃었으니 보일 이유도 없다. 이걸 안 하면 다시 켜졌을 때 <b>아무도 안 물린
-        // 바가 옛 눈금값을 단 채</b> 떠 있고, 체력이 안 변하니 영영 그대로 멈춰 있는다.
+        // 바가 옛 값을 단 채</b> 떠 있고, 체력이 안 변하니 영영 그대로 멈춰 있는다.
+        refilling = false;
         visible = false;
     }
 
@@ -210,7 +253,9 @@ public class BossHealthBar : MonoBehaviour
     /// <summary>체력이 바뀔 때마다 불린다. 회복도 같은 이벤트로 온다.</summary>
     private void OnHealthChanged(int current, int max)
     {
-        target = Ratio(current, max);
+        lastCurrent = current;
+        lastMax = max;
+        target = PhaseRatio(current, max);
     }
 
     /// <summary>
@@ -223,51 +268,71 @@ public class BossHealthBar : MonoBehaviour
     private void OnBossDied()
     {
         target = 0f;
+        refilling = false;
     }
 
-    private static float Ratio(int current, int max)
-        => max <= 0 ? 0f : Mathf.Clamp01(current / (float)max);
-
-    /// <summary>눈금을 채움 영역 안의 비율 위치로 옮긴다.</summary>
-    private void ApplyPhaseMarker(float ratio)
+    /// <summary>
+    /// 추가 생성 — 체력을 <b>지금 페이즈의 몫</b>에 대한 비율(0~1)로 환산한다.
+    ///
+    /// 전환 비율이 0.5일 때 1페이즈는 체력 1.0~0.5를 1~0으로, 2페이즈는 체력 0.5~0을
+    /// 다시 1~0으로 옮긴다. 두 구간의 폭이 다르면(예: 0.3) 각자의 폭으로 나누므로
+    /// <b>바가 깎이는 속도가 페이즈마다 달라진다.</b> 그게 맞다 — 바는 남은 체력이 아니라
+    /// "이 페이즈가 얼마나 남았는가"를 말하는 물건이다.
+    /// </summary>
+    private float PhaseRatio(int current, int max)
     {
-        if (phaseMarker == null) return;
+        if (max <= 0) return 0f;
 
-        // 비율이 유효하지 않으면 눈금을 아예 숨긴다. 0이나 1에 붙은 눈금은
-        // 장식으로 보일 뿐 아무 정보도 주지 않는다.
-        if (ratio <= 0f || ratio >= 1f)
-        {
-            phaseMarker.gameObject.SetActive(false);
-            return;
-        }
+        float raw = current / (float)max;
 
-        phaseMarker.gameObject.SetActive(true);
+        // 경계가 없으면 예전처럼 체력 전체를 바 하나에 그린다.
+        if (!hasPhaseSplit) return Mathf.Clamp01(raw);
 
-        // 앵커를 비율 자리에 세로로 세운다. 앵커로 두는 이유는 채움 영역의 크기가
-        // 해상도에 따라 달라지기 때문이다 — 픽셀 좌표로 두면 창 크기를 바꿀 때 어긋난다.
-        phaseMarker.anchorMin = new Vector2(ratio, 0f);
-        phaseMarker.anchorMax = new Vector2(ratio, 1f);
-        phaseMarker.pivot = new Vector2(0.5f, 0.5f);
-        phaseMarker.anchoredPosition = Vector2.zero;
-
-        // 세로는 앵커가 위아래로 벌어져 있으므로 sizeDelta.y가 곧 "늘어난 양"이다.
-        // 0을 넣으면 채움 영역과 같은 높이가 된다. 가로만 실제 두께로 준다.
-        phaseMarker.sizeDelta = new Vector2(phaseMarker.sizeDelta.x, 0f);
+        return isPhase2
+            ? Mathf.Clamp01(raw / phase2Ratio)
+            : Mathf.Clamp01((raw - phase2Ratio) / (1f - phase2Ratio));
     }
 
     private void Update()
     {
-        // 목표값을 향해 부드럽게 따라간다. 값을 그대로 넣으면 한 대 맞을 때 게이지가 한
-        // 프레임에 뚝 떨어져서 얼마나 깎였는지 눈으로 읽히지 않는다.
-        //
-        // Exp를 쓴 형태라 프레임률이 달라도 감쇠 속도가 거의 같다. UI 연출이라 이 정도면 충분하다.
-        displayed = followSpeed <= 0f
-            ? target
-            : Mathf.Lerp(displayed, target, 1f - Mathf.Exp(-followSpeed * Time.deltaTime));
+        if (refilling) StepRefill();
+        else StepFollow();
 
         ApplyFill(displayed);
         ApplyColor();
         ApplyFade();
+    }
+
+    /// <summary>
+    /// 평소의 따라가기. 목표값을 향해 부드럽게 감쇠한다.
+    ///
+    /// 값을 그대로 넣으면 한 대 맞을 때 게이지가 한 프레임에 뚝 떨어져서 얼마나 깎였는지
+    /// 눈으로 읽히지 않는다. Exp를 쓴 형태라 프레임률이 달라도 감쇠 속도가 거의 같다.
+    /// </summary>
+    private void StepFollow()
+    {
+        displayed = followSpeed <= 0f
+            ? target
+            : Mathf.Lerp(displayed, target, 1f - Mathf.Exp(-followSpeed * Time.deltaTime));
+    }
+
+    /// <summary>
+    /// 추가 생성 — 2페이즈 전환의 재충전. 일정한 속도로 목표까지 올린다.
+    ///
+    /// 채우는 도중 목표가 도로 내려가면(전환이 끝나자마자 얻어맞은 경우) 재충전을 끝내고
+    /// 평소 방식으로 돌려보낸다. 그대로 두면 <b>맞았는데 바가 계속 차오르는</b> 그림이 된다.
+    /// </summary>
+    private void StepRefill()
+    {
+        if (target <= displayed)
+        {
+            refilling = false;
+            return;
+        }
+
+        displayed = Mathf.MoveTowards(displayed, target, Time.deltaTime / refillSeconds);
+
+        if (Mathf.Approximately(displayed, target)) refilling = false;
     }
 
     /// <summary>채움 비율을 반영한다. 전용 스프라이트가 있으면 fillAmount, 없으면 앵커를 쓴다.</summary>
