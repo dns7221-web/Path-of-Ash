@@ -777,6 +777,22 @@ public class EnemyBoss : MonoBehaviour
     {
         if (state == State.Dead || state == State.Transition) return;
 
+        // 수정(죽는 한 대가 페이즈 전환을 켜고 갔다) — 이 피해로 이미 죽었으면 여기서 끝낸다.
+        //
+        // Health는 Damaged → Changed → Died 순으로 알린다. 그래서 <b>죽인 한 대도 먼저
+        // 이리로 온다.</b> 그때 state는 아직 Dead가 아니라서 위 검사에 안 걸리고, 체력이
+        // 0이니 아래 절반 검사는 반드시 참이 된다. 결과적으로 죽는 순간 EnterPhase2가
+        // 시작되어 <b>전환 모션 트리거와 무적을 켜고</b>, 곧이어 도착한 OnDied의
+        // StopAllCoroutines에 중간에서 잘린다. 무적은 켜진 채 남고 사망 모션 대신
+        // 전환 모션이 먼저 재생된다.
+        //
+        // 지금 수치(보스 체력 40, 전환 50%)로는 한 대에 20 이상을 깎아야 해서 안 나온다.
+        // 하지만 <b>보스 체력을 낮춰 테스트할 때는 바로 나온다</b> — 확인하려고 줄인 값이
+        // 확인하려던 것을 망가뜨리는 셈이다.
+        //
+        // 죽음은 OnDied가 처리한다. 여기서 할 일이 없다.
+        if (current <= 0) return;
+
         // 절반이 되면 페이즈 전환. 공격 도중이어도 끼어든다 — 반쯤 진행된 패턴보다
         // 페이즈가 바뀌었다는 신호가 훨씬 중요하다.
         if (!isPhase2 && phase2Controller != null && current <= max * phase2HealthRatio)
