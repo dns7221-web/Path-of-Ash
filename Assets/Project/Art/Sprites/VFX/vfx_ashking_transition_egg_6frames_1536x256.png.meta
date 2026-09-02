@@ -221,815 +221,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_0
+      name: vfx_boss_transition_egg_00
       rect:
         serializedVersion: 2
-        x: 1330
-        y: 38
-        width: 156
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 04cebe9597f60d480800000000000000
-      internalID: -8876472298556888000
+      spriteID: 52c5a04d7e9697246ac1f32d4d7bc119
+      internalID: 1212160924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_1
+      name: vfx_boss_transition_egg_01
       rect:
         serializedVersion: 2
-        x: 1367
-        y: 232
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e238f9f2893c57a90800000000000000
-      internalID: -7316726961192074450
+      spriteID: d7ad0502b2e20de49828a692bf8bf9cd
+      internalID: 2134565020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_2
+      name: vfx_boss_transition_egg_02
       rect:
         serializedVersion: 2
-        x: 1074
-        y: 45
-        width: 125
-        height: 155
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 76c1b4ba51951f520800000000000000
-      internalID: 2734064398393613415
+      spriteID: b1cc84a77c9fb8041b5980affad1aeb3
+      internalID: -1573161510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_3
+      name: vfx_boss_transition_egg_03
       rect:
         serializedVersion: 2
-        x: 1129
-        y: 195
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4bf344ee2430e6350800000000000000
-      internalID: 6011746138586365876
+      spriteID: 798e8623e212c784fb9814e236ad8b3d
+      internalID: 1688704005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_4
+      name: vfx_boss_transition_egg_04
       rect:
         serializedVersion: 2
-        x: 1157
-        y: 194
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 192d06819fb748c90800000000000000
-      internalID: -7168468397080915311
+      spriteID: 2df1c3dd6bdcdb447bf94341b4670007
+      internalID: -759862060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_5
+      name: vfx_boss_transition_egg_05
       rect:
         serializedVersion: 2
-        x: 1183
-        y: 142
-        width: 47
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a3958ad8a1e8a08d0800000000000000
-      internalID: -2879332767053096646
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_6
-      rect:
-        serializedVersion: 2
-        x: 562
-        y: 38
-        width: 114
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c2260a171d8d38b0800000000000000
-      internalID: -5170821666791087419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_7
-      rect:
-        serializedVersion: 2
-        x: 1477
-        y: 170
-        width: 8
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f1310656d93952340800000000000000
-      internalID: 4838435678899409695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_8
-      rect:
-        serializedVersion: 2
-        x: 306
-        y: 38
-        width: 100
-        height: 122
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24f6cfc3278359ea0800000000000000
-      internalID: -5866720876279599294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_9
-      rect:
-        serializedVersion: 2
-        x: 818
-        y: 38
-        width: 112
-        height: 123
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bd98e2f44f062e820800000000000000
-      internalID: 2946023708670462427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_10
-      rect:
-        serializedVersion: 2
-        x: 967
-        y: 156
-        width: 6
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7028a00814542b9f0800000000000000
-      internalID: -454224464787635705
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_11
-      rect:
-        serializedVersion: 2
-        x: 1216
-        y: 156
-        width: 6
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fbb0e3d67a7788b10800000000000000
-      internalID: 1983967196832730047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_12
-      rect:
-        serializedVersion: 2
-        x: 1218
-        y: 100
-        width: 12
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cbbdd79c9c80704e0800000000000000
-      internalID: -2015632645463090244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_13
-      rect:
-        serializedVersion: 2
-        x: 438
-        y: 62
-        width: 24
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba80ab2c6537f6cc0800000000000000
-      internalID: -3715624351086016341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_14
-      rect:
-        serializedVersion: 2
-        x: 1205
-        y: 107
-        width: 15
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 615d1b934d724c6c0800000000000000
-      internalID: -4124127566310025962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_15
-      rect:
-        serializedVersion: 2
-        x: 1209
-        y: 140
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae500ce6d33ddb720800000000000000
-      internalID: 2863677198882047466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_16
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 45
-        width: 90
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13d1dbe0b5f159030800000000000000
-      internalID: 3500738761300188465
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_17
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 114
-        width: 9
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: baee3ce3c3f30d7b0800000000000000
-      internalID: -5201588041629307221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_18
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 115
-        width: 7
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: da150ad89262e36e0800000000000000
-      internalID: -1856004036518456915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_19
-      rect:
-        serializedVersion: 2
-        x: 712
-        y: 111
-        width: 6
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b924d727365c2de40800000000000000
-      internalID: 5679819110980862619
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_20
-      rect:
-        serializedVersion: 2
-        x: 959
-        y: 123
-        width: 6
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 19ba7912ecd0a4e30800000000000000
-      internalID: 4488415157606132625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_21
-      rect:
-        serializedVersion: 2
-        x: 967
-        y: 95
-        width: 7
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c0bdff30359053640800000000000000
-      internalID: 5058960008574655244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_22
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 56
-        width: 20
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae3d62c56e61c11e0800000000000000
-      internalID: -2225878937183530006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_23
-      rect:
-        serializedVersion: 2
-        x: 703
-        y: 79
-        width: 15
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 221eefcced3939230800000000000000
-      internalID: 3644419108604141858
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_24
-      rect:
-        serializedVersion: 2
-        x: 956
-        y: 101
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7321c0b6f8216a960800000000000000
-      internalID: 7612792627301978679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_25
-      rect:
-        serializedVersion: 2
-        x: 957
-        y: 73
-        width: 17
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9f712d2bf29ff8e20800000000000000
-      internalID: 3355174230673201145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_26
-      rect:
-        serializedVersion: 2
-        x: 1185
-        y: 95
-        width: 27
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e30edef094d18b260800000000000000
-      internalID: 7113467811068764222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_27
-      rect:
-        serializedVersion: 2
-        x: 1216
-        y: 77
-        width: 14
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 38535df5d8ab667b0800000000000000
-      internalID: -5231288800783288957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_28
-      rect:
-        serializedVersion: 2
-        x: 922
-        y: 75
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 34fca4dd3ee233a80800000000000000
-      internalID: -8488389316458131645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_29
-      rect:
-        serializedVersion: 2
-        x: 1200
-        y: 79
-        width: 7
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 29a0bcc53e561a000800000000000000
-      internalID: 45429498439207570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_30
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 38
-        width: 9
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2e10eb344a9660590800000000000000
-      internalID: -7708357557965946398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_31
-      rect:
-        serializedVersion: 2
-        x: 449
-        y: 51
-        width: 13
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 404f996c540491370800000000000000
-      internalID: 8293730857208378372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_32
-      rect:
-        serializedVersion: 2
-        x: 959
-        y: 50
-        width: 15
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f6bfaf304000e840800000000000000
-      internalID: 5251197441460385522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_33
-      rect:
-        serializedVersion: 2
-        x: 1212
-        y: 52
-        width: 18
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e8a1b962121156450800000000000000
-      internalID: 6081285705913014926
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_34
-      rect:
-        serializedVersion: 2
-        x: 1112
-        y: 38
-        width: 12
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1033d7aa05033adc0800000000000000
-      internalID: -3629003751714639103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_35
-      rect:
-        serializedVersion: 2
-        x: 1223
-        y: 40
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a071fbd38a5aedf90800000000000000
-      internalID: -6926917034840221942
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: vfx_ashking_transition_egg_6frames_1536x256_36
-      rect:
-        serializedVersion: 2
-        x: 1411
-        y: 38
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f886455c96b6e1910800000000000000
-      internalID: 1810002202275899535
+      spriteID: 89c0a7d1d2a7d754c90df699e9b8af83
+      internalID: 1819058487
       vertices: []
       indices: 
       edges: []
@@ -1038,7 +356,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e7e73f040050b2d4680e29578e34b91c
     internalID: 0
     vertices: []
     indices: 
@@ -1048,43 +366,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      vfx_ashking_transition_egg_6frames_1536x256_0: -8876472298556888000
-      vfx_ashking_transition_egg_6frames_1536x256_1: -7316726961192074450
-      vfx_ashking_transition_egg_6frames_1536x256_10: -454224464787635705
-      vfx_ashking_transition_egg_6frames_1536x256_11: 1983967196832730047
-      vfx_ashking_transition_egg_6frames_1536x256_12: -2015632645463090244
-      vfx_ashking_transition_egg_6frames_1536x256_13: -3715624351086016341
-      vfx_ashking_transition_egg_6frames_1536x256_14: -4124127566310025962
-      vfx_ashking_transition_egg_6frames_1536x256_15: 2863677198882047466
-      vfx_ashking_transition_egg_6frames_1536x256_16: 3500738761300188465
-      vfx_ashking_transition_egg_6frames_1536x256_17: -5201588041629307221
-      vfx_ashking_transition_egg_6frames_1536x256_18: -1856004036518456915
-      vfx_ashking_transition_egg_6frames_1536x256_19: 5679819110980862619
-      vfx_ashking_transition_egg_6frames_1536x256_2: 2734064398393613415
-      vfx_ashking_transition_egg_6frames_1536x256_20: 4488415157606132625
-      vfx_ashking_transition_egg_6frames_1536x256_21: 5058960008574655244
-      vfx_ashking_transition_egg_6frames_1536x256_22: -2225878937183530006
-      vfx_ashking_transition_egg_6frames_1536x256_23: 3644419108604141858
-      vfx_ashking_transition_egg_6frames_1536x256_24: 7612792627301978679
-      vfx_ashking_transition_egg_6frames_1536x256_25: 3355174230673201145
-      vfx_ashking_transition_egg_6frames_1536x256_26: 7113467811068764222
-      vfx_ashking_transition_egg_6frames_1536x256_27: -5231288800783288957
-      vfx_ashking_transition_egg_6frames_1536x256_28: -8488389316458131645
-      vfx_ashking_transition_egg_6frames_1536x256_29: 45429498439207570
-      vfx_ashking_transition_egg_6frames_1536x256_3: 6011746138586365876
-      vfx_ashking_transition_egg_6frames_1536x256_30: -7708357557965946398
-      vfx_ashking_transition_egg_6frames_1536x256_31: 8293730857208378372
-      vfx_ashking_transition_egg_6frames_1536x256_32: 5251197441460385522
-      vfx_ashking_transition_egg_6frames_1536x256_33: 6081285705913014926
-      vfx_ashking_transition_egg_6frames_1536x256_34: -3629003751714639103
-      vfx_ashking_transition_egg_6frames_1536x256_35: -6926917034840221942
-      vfx_ashking_transition_egg_6frames_1536x256_36: 1810002202275899535
-      vfx_ashking_transition_egg_6frames_1536x256_4: -7168468397080915311
-      vfx_ashking_transition_egg_6frames_1536x256_5: -2879332767053096646
-      vfx_ashking_transition_egg_6frames_1536x256_6: -5170821666791087419
-      vfx_ashking_transition_egg_6frames_1536x256_7: 4838435678899409695
-      vfx_ashking_transition_egg_6frames_1536x256_8: -5866720876279599294
-      vfx_ashking_transition_egg_6frames_1536x256_9: 2946023708670462427
+      vfx_boss_transition_egg_00: 1212160924
+      vfx_boss_transition_egg_01: 2134565020
+      vfx_boss_transition_egg_02: -1573161510
+      vfx_boss_transition_egg_03: 1688704005
+      vfx_boss_transition_egg_04: -759862060
+      vfx_boss_transition_egg_05: 1819058487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

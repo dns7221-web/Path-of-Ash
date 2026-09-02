@@ -53,21 +53,36 @@ public static class AshBossTransitionBuilder
     /// <c>shatter</c>는 한 번 재생하고 사라진다. 깨진 껍질이 화면에 남아 있으면
     /// 2페이즈 보스가 등장하는 자리를 가린다.
     ///
-    /// 배율은 <b>눈으로 맞출 값이라 여기 모아둔다.</b> 지금 값은 원본(KingsEmber, 4.5)을
-    /// 기준으로 어림잡은 것이다. 장막에서 모여드는 gather와 파편이 퍼지는 shatter는
-    /// 알보다 넓은 자리를 쓰므로 크게 잡았다.
+    /// 수정(처음에 4.5~6.0을 넣었다가 화면보다 큰 덩어리가 나왔다) — <b>배율 1이 기준이다.</b>
+    ///
+    /// 자폭병 폭발 빌더가 같은 자리에 적어둔 경고를 그대로 밟았다. 원본(KingsEmber)의 4.5는
+    /// <b>방 전체를 덮는 궁극기</b>에 맞춰 잰 값이라 여기 들고 오면 뜻이 없다. 실제로 재보면:
+    ///
+    /// <list type="bullet">
+    /// <item>셀 256px / PPU 32 = <b>셀 하나가 8유닛</b></item>
+    /// <item>카메라 orthographic size 14 = <b>화면 높이 28유닛</b></item>
+    /// <item>보스(BossAshKing, 루트 스케일 1)의 그림 높이 200px = <b>6.25유닛</b></item>
+    /// </list>
+    ///
+    /// 배율 4.5면 36유닛이라 <b>화면(28유닛)보다 크고 보스보다 6배 크다.</b> 1이면 그림이
+    /// 셀을 채운 만큼 그대로 나와 보스와 같은 키가 된다 — 알은 보스 몸집이면 되고,
+    /// 그것이 "저 안에 저것이 들어 있다"를 읽히게 하는 크기다.
+    ///
+    /// 셋 다 1로 두고 <b>퍼지는 정도는 그림 자체에 맡긴다.</b> gather와 shatter가 알보다
+    /// 넓어야 하는 것은 맞지만, 그건 시트에 이미 그렇게 그려져 있다. 여기서 배율로 또
+    /// 벌리면 같은 의도가 두 곳에 적히고, 시트를 다시 뽑을 때마다 배율도 같이 맞춰야 한다.
     /// </summary>
     private static readonly (string sheet, string prefix, string output,
                              bool loop, bool destroyWhenFinished, float scale)[] Effects =
     {
         ("vfx_ashking_transition_gather_6frames_1536x256", "vfx_boss_transition_gather",
-         "BossTransitionGather", false, true, 6.0f),
+         "BossTransitionGather", false, true, 1f),
 
         ("vfx_ashking_transition_egg_6frames_1536x256", "vfx_boss_transition_egg",
-         "BossTransitionEgg", true, false, 4.5f),
+         "BossTransitionEgg", true, false, 1f),
 
         ("vfx_ashking_transition_shatter_6frames_1536x256", "vfx_boss_transition_shatter",
-         "BossTransitionShatter", false, true, 6.0f),
+         "BossTransitionShatter", false, true, 1f),
     };
 
     [MenuItem("Tools/재의 길/보스 전환 이펙트 생성")]
