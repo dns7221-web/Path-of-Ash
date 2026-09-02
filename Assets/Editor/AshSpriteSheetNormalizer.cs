@@ -43,6 +43,9 @@ public static class AshSpriteSheetNormalizer
         new System.Collections.Generic.HashSet<string>
         {
             "ash-king-phase2-hit-death.png",
+            "vfx_ashking_transition_gather_6frames_1536x256.png",
+            "vfx_ashking_transition_egg_6frames_1536x256.png",
+            "vfx_ashking_transition_shatter_6frames_1536x256.png",
         };
 
     /// <summary>
@@ -120,6 +123,17 @@ public static class AshSpriteSheetNormalizer
                         "ash-king-phase2-ember-wave.png", 6, Mode.Character, 200),
         (AshKingFolder, "Raw/PlayerLike/ash-king-phase2-hit-death-raw.png",
                         "ash-king-phase2-hit-death.png", 6, Mode.Character, 200),
+
+        // 2페이즈 전환 연출. 보스의 발 위치에서 재가 응축한 중심핵이 맥동하다 흩어지고,
+        // 빈 중심 자리를 2페이즈 스프라이트가 받는다. 생성 원본은 칸 사이가 흰 선이거나 빈 프레임이
+        // 넓어 자동 간격 판정이 흔들릴 수 있어, 위 ForceEqualSplit으로 6등분을 고정했다.
+        // 전부 접지형 VFX라 보스의 발 위치와 같은 기준선에 놓는다.
+        (VfxFolder, "vfx_ashking_transition_gather_6frames_raw.png",
+                    "vfx_ashking_transition_gather_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
+        (VfxFolder, "vfx_ashking_transition_egg_6frames_raw.png",
+                    "vfx_ashking_transition_egg_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
+        (VfxFolder, "vfx_ashking_transition_shatter_6frames_raw.png",
+                    "vfx_ashking_transition_shatter_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
 
         (PlayerFolder, "player_bow_6frames_raw.png",
                        "player_bow_6frames_1536x256.png", 6, Mode.Character, 0),
