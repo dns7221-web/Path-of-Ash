@@ -52,6 +52,11 @@ public static class AshGaugeArtProcessor
         // 인벤토리. 게이지는 아니지만 하는 일이 똑같다 — 초록을 지우고 그림 있는 곳만 잘라낸다.
         ("inventory-relic-panel-empty.png", "InventoryPanel.png"),
         ("inventory-slot.png", "InventorySlot.png"),
+
+        // 추가 생성 — 보스 체력바. 뽑아온 이름을 원본으로 두고 결과를 새 이름으로 낸다.
+        // 재 게이지와 같은 방식이다. 원본을 덮어쓰면 임계값을 잘못 잡았을 때 돌아갈 곳이 없다.
+        ("AshKingHealthBarFrame.png", "BossGaugeFrame.png"),
+        ("AshKingHealthBarFill.png", "BossGaugeFill.png"),
     };
 
     /// <summary>

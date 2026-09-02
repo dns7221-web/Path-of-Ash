@@ -77,8 +77,18 @@ public static class AshGameHudBuilder
     /// </summary>
     private static readonly Vector2 BarSize = new Vector2(512f, 58f);
 
-    /// <summary>화면 왼쪽 아래 모서리로부터의 여백.</summary>
-    private static readonly Vector2 BarMargin = new Vector2(48f, 48f);
+    /// <summary>
+    /// 화면 왼쪽 아래 모서리로부터의 여백.
+    ///
+    /// 수정(HUD를 위로 올림): y 48 → 884. 세 게이지를 화면 <b>위쪽</b> 왼쪽에 쌓기로 했다.
+    /// 아래에 두면 보스 체력바가 화면 위를 독점할 때 시선이 위아래로 갈라지고, 무엇보다
+    /// 캐릭터가 화면 아래쪽에 있을 때 자기 체력을 자기 몸이 가린다.
+    ///
+    /// 앵커는 왼쪽 <b>아래</b>인 채로 y만 크게 준 것이 어색해 보이지만 문제는 없다.
+    /// 캔버스가 ScaleWithScreenSize + 기준 해상도 1920x1080이라 캔버스 높이가 항상 1080으로
+    /// 고정되기 때문이다. 앵커를 위로 옮기면 값이 음수가 되어 오히려 읽기 어렵다.
+    /// </summary>
+    private static readonly Vector2 BarMargin = new Vector2(48f, 884f);
 
     /// <summary>프레임 스프라이트를 못 찾았을 때 대신 깔 배경색.</summary>
     private static readonly Color FallbackBackgroundColor = new Color(0.08f, 0.06f, 0.06f, 0.85f);
@@ -109,8 +119,86 @@ public static class AshGameHudBuilder
     /// <summary>체력 게이지 크기. 원본 비율 1838:189 = 9.72:1을 지킨다.</summary>
     private static readonly Vector2 HealthBarSize = new Vector2(583f, 60f);
 
-    /// <summary>스태미나 바 바로 위에 놓는다.</summary>
-    private static readonly Vector2 HealthBarMargin = new Vector2(48f, 118f);
+    /// <summary>
+    /// 스태미나 바 바로 위에 놓는다. 세 게이지가 위에서부터 체력 → 스태미나 → 재 순으로 쌓인다.
+    ///
+    /// 수정(HUD를 위로 올림): y 118 → 954. 줄 간격은 70이다.
+    /// </summary>
+    private static readonly Vector2 HealthBarMargin = new Vector2(48f, 954f);
+
+    // ── 보스 체력 게이지 ───────────────────────────────────────────────────
+    //
+    // 추가 생성. 체력 게이지와 같은 액자형(안쪽이 뚫려 있음)이라 채움을 프레임 뒤에 깐다.
+    //
+    // 이 프레임은 <b>위쪽 절반이 장식(뿔)이고 게이지 슬롯은 아래쪽에 있다.</b> 그래서
+    // 안쪽 여백이 위아래로 크게 다르다(상 212 / 하 67). 다른 게이지처럼 위아래가 비슷할
+    // 거라고 보고 대충 넣으면 채움이 뿔 한가운데에 뜬다.
+
+    private const string BossBarName = "BossHealthBar";
+    private const string BossFramePath = "Assets/Project/Art/UI/BossGaugeFrame.png";
+    private const string BossFillPath = "Assets/Project/Art/UI/BossGaugeFill.png";
+
+    /// <summary>
+    /// 다듬은 뒤의 프레임 크기(px). 원본 2172x724에서 초록 배경을 지우고 여백을 잘라낸 값이다.
+    /// 아래 안쪽 여백이 이 크기 기준이라, 원본을 다시 뽑으면 이 숫자부터 다시 재야 한다.
+    /// </summary>
+    private const float BossFrameWidth = 2090f;
+    private const float BossFrameHeight = 412f;
+
+    // 프레임 안쪽 빈 구멍의 여백(px). 초록을 알파로 바꾼 뒤 "모든 행에 공통으로 안전한
+    // 사각형"을 픽셀 단위로 훑어서 구했다(구멍 = X 224~1869, Y 212~344).
+    // 좌우는 거의 대칭인데(224 / 220) 위아래는 3배 넘게 차이 난다 — 위가 뿔 장식이다.
+    private const float BossInteriorLeft = 224f;
+    private const float BossInteriorRight = 220f;
+    private const float BossInteriorTop = 212f;
+    private const float BossInteriorBottom = 67f;
+
+    /// <summary>
+    /// 보스 게이지 크기. 원본 비율 2090:412 = 5.07:1을 지킨다.
+    ///
+    /// 수정(플레이어 HUD와 충돌): 900 → 600.
+    ///
+    /// 이 바는 화면 <b>중앙 정렬</b>이라 폭의 한계를 정하는 것은 왼쪽 체력바다. 체력바가
+    /// x 48~631을 쓰므로, 가운데에 넣을 수 있는 최대 폭은 (960 - 631) x 2 = 658이고
+    /// 여백을 두면 606이다. 900으로 두면 왼쪽 체력바 위로 121px 겹친다.
+    ///
+    /// 크기를 바꿀 때 <b>Height는 반드시 Width ÷ 5.0728</b>로 맞춰라. 비율이 틀어지면
+    /// 프레임 위쪽 뿔 장식이 찌그러진다.
+    /// </summary>
+    private static readonly Vector2 BossBarSize = new Vector2(600f, 118.3f);
+
+    /// <summary>
+    /// 화면 위 가운데에서 아래로 내린 거리.
+    ///
+    /// 플레이어 HUD가 전부 아래쪽에 몰려 있어 위는 비어 있다. 보스 바를 아래에 두면
+    /// 자기 체력과 붙어서 <b>어느 쪽이 내 것인지</b> 순간적으로 헷갈린다.
+    /// </summary>
+    /// 수정(뿔 장식 때문에 낮아 보임): -36 → -28.
+    ///
+    /// 이 프레임은 <b>게이지 슬롯이 아래쪽 절반에 있다.</b> 위 212px이 전부 뿔 장식이라
+    /// (프레임 높이의 51.5%), 프레임 윗변을 화면 위에 붙여도 실제 막대는 거기서
+    /// 212 x (118.3/412) = 61px 더 내려간 자리에 그려진다. 프레임 기준으로 값을 잡으면
+    /// 항상 "생각보다 낮다"가 된다.
+    private static readonly Vector2 BossBarMargin = new Vector2(0f, -28f);
+
+    /// <summary>2페이즈 눈금의 두께(px)와 색.</summary>
+    private const float BossPhaseMarkerWidth = 5f;
+    private static readonly Color BossPhaseMarkerColor = new Color(0.1f, 0.08f, 0.08f, 0.85f);
+
+    /// <summary>
+    /// 보스 이름표. 프레임 <b>아래</b>에 둔다.
+    ///
+    /// 위가 아닌 이유는 두 가지다. 프레임 위쪽 절반이 뿔 장식이라 글자를 얹을 자리가 없고,
+    /// 바가 화면 맨 위에 붙어 있어서 프레임 위로는 화면 자체가 없다.
+    /// </summary>
+    private const float BossNameFontSize = 30f;
+    private const float BossNameHeight = 40f;
+
+    /// <summary>프레임 아래쪽 끝에서 이름표까지의 간격(px).</summary>
+    private const float BossNameGap = 4f;
+
+    /// <summary>이름 글자색. 흰색보다 살짝 죽여서 게이지가 먼저 읽히게 한다.</summary>
+    private static readonly Color BossNameColor = new Color(0.88f, 0.85f, 0.83f, 1f);
 
     [MenuItem("Tools/재의 길/게임 HUD 생성")]
     public static void BuildHud()
@@ -136,6 +224,7 @@ public static class AshGameHudBuilder
         var canvasObject = CreateCanvas();
         var bar = CreateBar(canvasObject.transform);
         CreateHealthBar(canvasObject.transform);
+        CreateBossHealthBar(canvasObject.transform); // 추가 생성
         CreateSkillBar(canvasObject.transform);
         CreateAshGauge(canvasObject.transform);
         CreateRelicToast(canvasObject.transform);
@@ -146,6 +235,62 @@ public static class AshGameHudBuilder
         Selection.activeGameObject = bar;
 
         Debug.Log("[게임 HUD] 스태미나 게이지 생성 완료. 씬을 저장해라(Ctrl+S).");
+    }
+
+    /// <summary>
+    /// 추가 생성 — <b>보스 체력바만</b> 만든다. 나머지 HUD는 손대지 않는다.
+    ///
+    /// <b>왜 따로 뒀나.</b> 위 <see cref="BuildHud"/>는 첫 줄에서 GameHUD를 통째로 지운다.
+    /// 그건 "여러 번 실행해도 결과가 같다"를 지키려는 설계라 그 자체로는 옳지만, 대가가 있다 —
+    /// 씬에서 손으로 맞춰둔 값이 <b>전부 코드 기본값으로 되돌아간다.</b> HUD 하나를 새로
+    /// 추가하려고 이미 자리를 잡아둔 다섯 개를 되돌리는 것은 손해다.
+    ///
+    /// 그래서 새 조각을 얹을 때는 이쪽을 쓴다. 이 함수도 자기 몫(BossHealthBar)에 대해서는
+    /// 여전히 멱등이다 — 있으면 지우고 다시 만든다. 지우는 범위만 좁혔을 뿐이다.
+    ///
+    /// <b>씬에서 맞춘 값을 계속 쓸 거라면 결국 코드로 옮겨야 한다.</b> 이 도구들이 존재하는
+    /// 이유가 그것이다(숫자가 코드에 있으면 언제 다시 돌려도 같다). 씬에만 있는 값은 다음에
+    /// 누가 전체 생성을 한 번 누르는 순간 사라진다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/보스 체력바만 생성 (나머지 HUD 유지)")]
+    public static void BuildBossHealthBarOnly()
+    {
+        var scene = SceneManager.GetActiveScene();
+        if (scene.name != TargetSceneName)
+        {
+            Debug.LogError(
+                $"[게임 HUD] 활성 씬이 '{scene.name}'이다. " +
+                $"{TargetSceneName} 씬을 열고 다시 실행해라.");
+            return;
+        }
+
+        var root = GameObject.Find(HudRootName);
+        if (root == null)
+        {
+            // 여기서 캔버스를 새로 만들지 않는다. 만들면 기존 HUD가 다른 이름으로 어딘가에
+            // 있을 때 캔버스가 둘이 되어, 어느 쪽이 그려지는지 보는 사람이 알 수 없게 된다.
+            Debug.LogError(
+                $"[게임 HUD] 씬에서 {HudRootName}을 못 찾았다. " +
+                "HUD가 아직 없으면 'Tools → 재의 길 → 게임 HUD 생성'을 먼저 실행해라.");
+            return;
+        }
+
+        // 자기 몫만 지운다. 이름이 같은 것이 다른 데 있을 수 있으므로 GameObject.Find가 아니라
+        // HUD 아래에서만 찾는다.
+        Transform existing = root.transform.Find(BossBarName);
+        if (existing != null)
+        {
+            Object.DestroyImmediate(existing.gameObject);
+            Debug.Log($"[게임 HUD] 기존 {BossBarName}을 지우고 다시 만든다.");
+        }
+
+        var bar = CreateBossHealthBar(root.transform);
+
+        EditorSceneManager.MarkSceneDirty(scene);
+        Selection.activeGameObject = bar;
+
+        Debug.Log("[게임 HUD] 보스 체력바 생성 완료. 나머지 HUD는 건드리지 않았다. " +
+                  "씬을 저장해라(Ctrl+S).");
     }
 
     /// <summary>화면 위에 겹쳐 그리는 캔버스를 만든다.</summary>
@@ -355,6 +500,154 @@ public static class AshGameHudBuilder
         return barObject;
     }
 
+    /// <summary>
+    /// 추가 생성 — 보스 체력 게이지를 만든다.
+    ///
+    /// 체력 게이지와 자식 순서가 같다. 채움을 먼저 만들어 뒤에 깔고 프레임을 나중에 얹는다.
+    /// 프레임 안쪽이 뚫려 있어서 채움이 그 구멍으로 비쳐 보이는 구조다.
+    ///
+    /// <b>CanvasGroup을 붙이는 것이 다른 게이지와 다른 점이다.</b> 이 바는 보스 방에서만
+    /// 보여야 한다. 오브젝트를 통째로 껐다 켜는 방법도 있지만, 그러면 꺼져 있는 동안
+    /// <see cref="BossHealthBar"/>의 Update가 안 돌아서 <b>사라지는 연출이 재생되지 않는다.</b>
+    /// 알파만 내리면 컴포넌트는 계속 살아 있다.
+    /// </summary>
+    private static GameObject CreateBossHealthBar(Transform parent)
+    {
+        var barObject = new GameObject(BossBarName, typeof(RectTransform), typeof(CanvasGroup));
+        barObject.layer = parent.gameObject.layer;
+        var barRect = barObject.GetComponent<RectTransform>();
+        barRect.SetParent(parent, false);
+
+        // 앵커와 피벗을 위쪽 가운데에 둔다. 그러면 anchoredPosition이 곧 "화면 위에서
+        // 얼마나 내렸는가"가 되어, 해상도가 바뀌어도 위쪽 여백이 유지된다.
+        barRect.anchorMin = new Vector2(0.5f, 1f);
+        barRect.anchorMax = new Vector2(0.5f, 1f);
+        barRect.pivot = new Vector2(0.5f, 1f);
+        barRect.anchoredPosition = BossBarMargin;
+        barRect.sizeDelta = BossBarSize;
+
+        // ── 채움 영역 (프레임보다 먼저 = 뒤에 깔림) ──
+        var fillArea = new GameObject("FillArea", typeof(RectTransform));
+        fillArea.layer = barObject.layer;
+        var fillAreaRect = fillArea.GetComponent<RectTransform>();
+        fillAreaRect.SetParent(barRect, false);
+
+        // 실측 픽셀을 0~1 비율로 바꿔 앵커에 넣는다. 비율이라 BossBarSize를 바꿔도 따라온다.
+        // y는 아래가 0이라 위/아래 여백을 뒤집어 넣는다.
+        fillAreaRect.anchorMin = new Vector2(
+            BossInteriorLeft / BossFrameWidth,
+            BossInteriorBottom / BossFrameHeight);
+        fillAreaRect.anchorMax = new Vector2(
+            1f - (BossInteriorRight / BossFrameWidth),
+            1f - (BossInteriorTop / BossFrameHeight));
+        fillAreaRect.offsetMin = Vector2.zero;
+        fillAreaRect.offsetMax = Vector2.zero;
+
+        var fill = CreateStretchedImage("Fill", fillAreaRect, Color.white);
+        var fillSprite = AssetDatabase.LoadAssetAtPath<Sprite>(BossFillPath);
+        if (fillSprite != null)
+        {
+            fill.sprite = fillSprite;
+            fill.type = Image.Type.Filled;
+            fill.fillMethod = Image.FillMethod.Horizontal;
+            fill.fillOrigin = (int)Image.OriginHorizontal.Left;
+            fill.fillAmount = 1f;
+
+            // 채움 원본(1910x103, 18.5:1)이 프레임 구멍(1646x133, 12.4:1)보다 납작하다.
+            // preserveAspect를 켜면 구멍 안에서 위아래로 여백이 생기므로 늘려서 채운다.
+            // 용암 무늬라 세로로 조금 늘어나도 무엇인지 알아볼 수 있다.
+            fill.preserveAspect = false;
+        }
+        else
+        {
+            Debug.LogWarning($"[게임 HUD] 보스 Fill 스프라이트를 못 읽었다: {BossFillPath}\n" +
+                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
+        }
+
+        // ── 2페이즈 눈금 (채움 위, 프레임 아래) ──
+        //
+        // 채움 영역의 자식으로 둔다. 그래야 BossHealthBar가 넣는 비율(0~1)이 곧 게이지
+        // 안에서의 위치가 된다. 바 전체의 자식으로 두면 프레임 장식만큼 어긋난다.
+        var marker = CreateStretchedImage("PhaseMarker", fillAreaRect, BossPhaseMarkerColor);
+        var markerRect = marker.rectTransform;
+
+        // 세로는 늘린 채로, 가로는 한 점에 모은다.
+        //
+        // CreateStretchedImage가 잡아준 (0,0)~(1,1) 앵커를 그대로 두면 안 된다. 가로가
+        // 늘어난 상태에서는 sizeDelta.x가 <b>폭이 아니라 부모 폭에 더할 양</b>이라,
+        // 5를 넣으면 게이지 전체를 덮는 띠가 된다. 실행 중에는 BossHealthBar가 앵커를
+        // 다시 잡지만, 그전까지 씬에서 보이는 모습이 실제와 달라 확인할 수가 없다.
+        //
+        // 가운데(0.5)에 세워두는 이유: 보스의 기본 전환 비율이 0.5라 대체로 맞는 자리이고,
+        // 실제 값은 실행할 때 보스에게 물어서 넣는다.
+        markerRect.anchorMin = new Vector2(0.5f, 0f);
+        markerRect.anchorMax = new Vector2(0.5f, 1f);
+        markerRect.pivot = new Vector2(0.5f, 0.5f);
+        markerRect.anchoredPosition = Vector2.zero;
+        markerRect.sizeDelta = new Vector2(BossPhaseMarkerWidth, 0f);
+
+        // ── 프레임 (나중에 = 위에 얹힘) ──
+        var frame = CreateStretchedImage("Frame", barRect, Color.white);
+        var frameSprite = AssetDatabase.LoadAssetAtPath<Sprite>(BossFramePath);
+        if (frameSprite != null)
+        {
+            frame.sprite = frameSprite;
+            frame.type = Image.Type.Simple;
+        }
+        else
+        {
+            // 체력 프레임과 같은 이유로 대체 사각형을 안 그린다. 속이 빈 액자를 단색으로
+            // 대체하면 채움을 통째로 가려버린다.
+            frame.enabled = false;
+
+            Debug.LogWarning($"[게임 HUD] 보스 프레임 스프라이트를 못 읽었다: {BossFramePath}\n" +
+                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
+        }
+
+        // ── 이름표 (프레임 아래) ──
+        var nameObject = new GameObject("NameLabel", typeof(RectTransform));
+        nameObject.layer = barObject.layer;
+        var nameRect = nameObject.GetComponent<RectTransform>();
+        nameRect.SetParent(barRect, false);
+
+        // 바 아래쪽 변에 가로로 꽉 채워 매단다. 앵커를 좌우로 벌려두면 바 크기를 바꿔도
+        // 이름이 항상 게이지 한가운데에 온다 — 폭을 따로 계산할 필요가 없다.
+        nameRect.anchorMin = new Vector2(0f, 0f);
+        nameRect.anchorMax = new Vector2(1f, 0f);
+        nameRect.pivot = new Vector2(0.5f, 1f);
+        nameRect.anchoredPosition = new Vector2(0f, -BossNameGap);
+
+        // 앵커가 좌우로 벌어져 있으므로 sizeDelta.x는 폭이 아니라 <b>바 폭에 더할 양</b>이다.
+        // 0을 넣으면 바와 같은 폭이 된다. 세로는 앵커가 한 점이라 그대로 높이다.
+        nameRect.sizeDelta = new Vector2(0f, BossNameHeight);
+
+        var nameLabel = nameObject.AddComponent<TMPro.TextMeshProUGUI>();
+
+        // 한글 폰트를 반드시 지정한다. 안 하면 기본 LiberationSans로 떨어지는데 거기엔
+        // 한글 글립이 없어서 '재의 길'이 통째로 두부(□)가 된다. 에러도 경고도 없다.
+        TMPro.TMP_FontAsset font = GetFont();
+        if (font != null) nameLabel.font = font;
+
+        // 실제 문구는 실행 중에 BossHealthBar가 넣는다. 여기서는 1페이즈 값을 미리 보여줘서
+        // 씬에서 자리와 크기를 눈으로 확인할 수 있게만 한다.
+        nameLabel.text = "???";
+        nameLabel.fontSize = BossNameFontSize;
+        nameLabel.alignment = TMPro.TextAlignmentOptions.Top;
+        nameLabel.color = BossNameColor;
+        nameLabel.raycastTarget = false;
+
+        var bossBar = barObject.AddComponent<BossHealthBar>();
+        var serialized = new SerializedObject(bossBar);
+        serialized.FindProperty("group").objectReferenceValue = barObject.GetComponent<CanvasGroup>();
+        serialized.FindProperty("fillImage").objectReferenceValue = fill;
+        serialized.FindProperty("fillRect").objectReferenceValue = fill.rectTransform;
+        serialized.FindProperty("phaseMarker").objectReferenceValue = markerRect;
+        serialized.FindProperty("nameLabel").objectReferenceValue = nameLabel;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        return barObject;
+    }
+
     // ── 유물 획득 알림 ─────────────────────────────────────────────────────
 
     private const string RelicToastName = "RelicToast";
@@ -460,8 +753,16 @@ public static class AshGameHudBuilder
     /// <summary>재 게이지 크기. 원본 비율 1803:253 = 7.13:1을 지킨다.</summary>
     private static readonly Vector2 AshBarSize = new Vector2(428f, 60f);
 
-    /// <summary>스태미나 바 아래. 세 게이지가 왼쪽 아래에 세로로 쌓인다.</summary>
-    private static readonly Vector2 AshBarMargin = new Vector2(48f, -18f);
+    /// <summary>
+    /// 스태미나 바 아래. 세 게이지가 왼쪽에 세로로 쌓인다.
+    ///
+    /// 수정(HUD를 위로 올림): (48, -18) → (52, 808).
+    ///
+    /// 옛 값은 **화면 아래로 18px 잘려 있었다.** 앵커와 피벗이 둘 다 왼쪽 아래(0,0)인데 y가
+    /// 음수라 바의 아래쪽이 화면 밖으로 나가 있었다. 프레임 아래 장식이 잘리는 정도라
+    /// 눈에 잘 안 띄었지만, 채움 영역 아래쪽도 5px 걸쳐 있었다.
+    /// </summary>
+    private static readonly Vector2 AshBarMargin = new Vector2(52f, 808f);
 
     /// <summary>
     /// 재 게이지를 만든다. 체력 게이지와 같은 구조 — 속이 빈 액자라 채움이 프레임 뒤에 깔린다.

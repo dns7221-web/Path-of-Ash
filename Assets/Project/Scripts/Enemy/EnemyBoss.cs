@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -315,6 +316,28 @@ public class EnemyBoss : MonoBehaviour
     private State state = State.Idle;
     private bool isPhase2;
     private float cooldownTimer;
+
+    /// <summary>
+    /// 추가 생성 — 2페이즈로 넘어가는 체력 비율. 체력바가 눈금을 어디에 그릴지 정할 때 읽는다.
+    ///
+    /// 값을 밖으로 내주기만 하고 바꾸지는 못하게 둔다. 이 수치의 주인은 보스다. UI가 이걸
+    /// 고칠 수 있으면 "화면에 보이는 눈금"과 "실제로 전환되는 지점"이 갈라질 수 있는데,
+    /// 그때 무엇이 맞는지 정할 방법이 없다.
+    /// </summary>
+    public float Phase2HealthRatio => phase2HealthRatio;
+
+    /// <summary>
+    /// 추가 생성 — 2페이즈 연출이 끝나고 실제로 넘어간 순간에 울린다.
+    ///
+    /// 보스가 화면을 직접 건드리지 않게 하려고 이벤트로 뺐다. 사망을 <see cref="Health"/>가
+    /// 알리고 방(<see cref="BossEncounter"/>)이 받아 처리하는 것과 같은 구조다.
+    /// 이 클래스는 <b>누가 듣는지 모른다.</b>
+    ///
+    /// 전환이 <b>시작될 때</b>가 아니라 <b>끝날 때</b> 울리는 이유: 연출 0.875초 동안은
+    /// 아직 1페이즈다. 시작할 때 울리면 갑옷이 무너지는 것을 보기도 전에 바 색이 먼저 바뀌어
+    /// 결과를 미리 말해버린다.
+    /// </summary>
+    public event Action EnteredPhase2;
 
     // 추가 생성 — 파도를 다시 쓸 수 있을 때까지 남은 시간.
     private float waveCooldownTimer;
@@ -864,6 +887,11 @@ public class EnemyBoss : MonoBehaviour
         // 이 줄과 "재 폭발 시전" 로그의 시간 차가 곧 유예 + 다음 공격까지의 대기다.
         Debug.Log($"[보스] 2페이즈로 넘어갔다. 재 폭발은 {ultimateFirstDelay}초 뒤부터, " +
                   $"거리 {ultimateRange} 안에서 나온다.", this);
+
+        // 추가 생성 — 듣는 쪽(체력바 등)에 전환을 알린다.
+        // 상태를 전부 바꾼 뒤에 울린다. 받는 쪽이 이 보스를 되물어볼 수 있는데,
+        // 중간에 울리면 절반만 2페이즈인 상태를 보게 된다.
+        EnteredPhase2?.Invoke();
     }
 
     /// <summary>
