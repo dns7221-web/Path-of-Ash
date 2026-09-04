@@ -300,7 +300,28 @@ public static class InputBindings
               .Start();
     }
 
-    /// <summary>이 액션에서 처음 나오는 키보드 바인딩의 번호. 없으면 -1.</summary>
+    /// <summary>
+    /// 이 액션에서 처음 나오는 키보드 바인딩의 <b>자리 번호</b>. 없으면 -1.
+    ///
+    /// <b>수정(키를 뺏기면 다시 못 넣던 버그) — effectivePath가 아니라 path로 찾는다.</b>
+    ///
+    /// <see cref="ClearConflicts"/>는 겹친 키를 <c>ApplyBindingOverride(index, "")</c>로
+    /// 비운다. 그러면 그 자리의 <c>effectivePath</c>가 <b>빈 문자열</b>이 되는데, 예전 코드는
+    /// 빈 경로를 건너뛰었다. 그래서 키보드 자리가 하나뿐인 액션은 여기서 -1이 나오고,
+    /// <see cref="StartRebind"/>가 "바꿀 키보드 바인딩이 없다"며 <b>영영 거절했다.</b>
+    ///
+    /// 실제로 이렇게 막혔다: Q 스킬의 Q를 인벤토리로 옮기면 Q 스킬 자리가 비는데,
+    /// 그 뒤로 Q 스킬은 <b>어떤 키로도 다시 정할 수 없었다.</b> 원래 키인 Q로 되돌리는 것조차
+    /// 안 됐고, 설정 초기화(<see cref="ResetToDefaults"/>)만이 유일한 탈출구였다.
+    ///
+    /// 스킬에서만 터진 이유는 <b>키보드 자리 개수</b>에 있다. 대시(Shift 좌우), 기본 공격
+    /// (Ctrl 좌우), 인벤토리(I/Tab)는 자리가 둘이라 하나가 비어도 나머지가 잡혔다.
+    /// 스킬 Q·W·E·R은 자리가 하나뿐이라 비는 순간 곧장 -1이 됐다.
+    ///
+    /// <c>path</c>는 <b>원래 설계된 경로</b>라 덮어쓰기와 무관하게 남아 있다. 그래서 이걸로
+    /// 찾으면 "이 자리는 키보드용이다"가 비어 있든 아니든 그대로 성립한다.
+    /// 우리가 필요한 건 지금 무슨 키인지가 아니라 <b>어느 자리에 넣을 것인가</b>이다.
+    /// </summary>
     private static int FirstKeyboardBindingIndex(InputAction action)
     {
         for (int i = 0; i < action.bindings.Count; i++)
@@ -308,7 +329,8 @@ public static class InputBindings
             InputBinding binding = action.bindings[i];
             if (binding.isComposite || binding.isPartOfComposite) continue;
 
-            string path = binding.effectivePath;
+            // path(원래 경로)로 자리를 고른다. 비워진 자리도 여기서 걸린다.
+            string path = binding.path;
             if (!string.IsNullOrEmpty(path) && path.StartsWith("<Keyboard>")) return i;
         }
 
@@ -386,8 +408,16 @@ public static class InputBindings
         int index = FirstKeyboardBindingIndex(action);
         if (index < 0) return "-";
 
+        // 수정(키를 뺏기면 다시 못 넣던 버그) — 자리는 찾았지만 비어 있을 수 있다.
+        //
+        // FirstKeyboardBindingIndex가 이제 path로 자리를 찾으므로, 겹침 때문에 비워진 자리도
+        // 번호가 돌아온다. 그 자리의 effectivePath는 빈 문자열이라 그대로 넘기면 스킬바에
+        // <b>아무것도 안 적힌 칸</b>이 나온다. 비어 있음은 "-"로 보여야 읽힌다.
+        string path = action.bindings[index].effectivePath;
+        if (string.IsNullOrEmpty(path)) return "-";
+
         string text = InputControlPath.ToHumanReadableString(
-            action.bindings[index].effectivePath,
+            path,
             InputControlPath.HumanReadableStringOptions.OmitDevice);
 
         if (text.StartsWith("Left ")) return text.Substring(5);
