@@ -28,17 +28,32 @@ public class EnemyBoss : MonoBehaviour
     [Tooltip("2페이즈에서 쓸 컨트롤러. 체력이 절반이 되면 갈아 끼운다.")]
     [SerializeField] private RuntimeAnimatorController phase2Controller;
 
-    [Tooltip("이 비율 이하로 떨어지면 2페이즈로 넘어간다.")]
-    [Range(0.1f, 0.9f)]
-    [SerializeField] private float phase2HealthRatio = 0.5f;
-
-    // 수정(타이밍 정합): 0.75 → 0.875.
+    // 수정(밸런스) — 0.5 → 0.7. 체력도 40 → 90으로 올렸다.
     //
-    // ashking_transition 클립은 8fps 7프레임이라 길이가 0.875초인데 0.75초만 기다리고 있었다.
-    // 그래서 갑옷이 무너지는 <b>마지막 한 프레임이 재생되기 전에 컨트롤러가 갈아 끼워졌다.</b>
-    // 보스전에서 유일한 절정을 0.125초 차이로 아무도 못 보고 있었던 셈이다.
-    [Tooltip("전환 연출 길이(초). ashking_transition 클립 길이(7프레임 ÷ 8fps = 0.875)와 맞춘다.")]
-    [SerializeField] private float transitionSeconds = 0.875f;
+    // <b>두 페이즈의 몫을 일부러 어긋나게 나눈다.</b> 0.5면 두 페이즈가 정확히 반반인데,
+    // 그러면 2페이즈가 "체력이 한 번 더 있는 1페이즈"가 된다. 실제로 어려운 쪽은 2페이즈다
+    // — 재 폭발이 그때만 나오고, 이동과 쿨다운도 빨라진다.
+    //
+    // 0.7이면 1페이즈가 전체의 30%(27), 2페이즈가 70%(63)를 맡는다. 예전 수치(반반, 20/20)와
+    // 견주면 1페이즈는 27로 조금 길어질 뿐이고 <b>2페이즈만 3배가 된다.</b>
+    // 노리는 그림이 그것이다 — 앞은 배우는 구간, 뒤는 버티는 구간.
+    //
+    // 체력바는 페이즈마다 새로 그리므로 이 비대칭이 화면에 드러나지 않는다.
+    // 두 페이즈 다 가득 찬 바에서 0까지 내려간다.
+    [Tooltip("이 비율 이하로 떨어지면 2페이즈로 넘어간다. 0.7이면 1페이즈가 30%, 2페이즈가 70%를 맡는다.")]
+    [Range(0.1f, 0.9f)]
+    [SerializeField] private float phase2HealthRatio = 0.7f;
+
+    // 수정(Timeline 도입) — transitionSeconds 필드를 지웠다.
+    //
+    // 예전 기록: 0.75 → 0.875로 고친 적이 있다. ashking_transition 클립이 8fps 7프레임이라
+    // 0.875초인데 코드가 0.75초만 기다려서, 갑옷이 무너지는 <b>마지막 한 프레임이 재생되기
+    // 전에</b> 컨트롤러가 갈아 끼워졌다. 보스전의 유일한 절정을 0.125초 차이로 아무도 못
+    // 보고 있었다.
+    //
+    // 그 사고의 뿌리는 <b>같은 시간이 두 곳(클립과 인스펙터)에 적혀 있던 것</b>이다. 이제
+    // 연출 길이의 주인은 타임라인 에셋 하나뿐이고, 보스는 BossTransitionSequence.TotalSeconds를
+    // 물어본다. 두 숫자가 갈라질 자리가 없어졌다.
 
     // 추가 생성 — 2페이즈에서 공격 모션 시간에 곱할 값.
     //
@@ -307,6 +322,10 @@ public class EnemyBoss : MonoBehaviour
     // 추가 생성 — 몸통(피격받는) 콜라이더. 2페이즈에서 폭을 줄이려고 들고 있는다.
     private CapsuleCollider2D bodyCollider;
 
+    // 추가 생성 — 2페이즈 전환 연출. 시간표는 저쪽(타임라인 에셋)이 들고 있고,
+    // 이 클래스는 "시작해라"와 "얼마나 걸리냐"만 주고받는다.
+    private BossTransitionSequence transitionSequence;
+
     // 추가 생성 — 조준할 때 겨눌 플레이어 콜라이더. 발밑(Transform)이 아니라 이쪽을 노린다.
     //
     // 왜 필요한가: 이 게임은 발바닥을 원점으로 쓴다. 그래서 Transform 위치는 <b>맞아야 할 몸이
@@ -315,6 +334,19 @@ public class EnemyBoss : MonoBehaviour
 
     private State state = State.Idle;
     private bool isPhase2;
+
+    // 추가 생성(전환이 두 번 돌았다) — 전환 연출을 한 번이라도 시작했는가.
+    //
+    // isPhase2와 나눠둔 이유는 OnDamaged의 검사 자리에 적어뒀다. 한 줄로 줄이면:
+    // <b>연출이 실패해도 두 번 하지는 않는다.</b>
+    private bool transitionStarted;
+
+    // 추가 생성(시그널 유실 안전망) — 밖에 2페이즈를 알린 적이 있는가.
+    //
+    // isPhase2와 또 나눈 이유: 알리는 시각(계획표 2.375)과 몸이 실제로 바뀌는 시각(2.875)이
+    // 다르다. 하나로 묶으면 아래 안전망이 둘 중 하나를 <b>반드시 두 번</b> 부르게 된다.
+    private bool announcedPhase2;
+
     private float cooldownTimer;
 
     /// <summary>
@@ -333,9 +365,17 @@ public class EnemyBoss : MonoBehaviour
     /// 알리고 방(<see cref="BossEncounter"/>)이 받아 처리하는 것과 같은 구조다.
     /// 이 클래스는 <b>누가 듣는지 모른다.</b>
     ///
-    /// 전환이 <b>시작될 때</b>가 아니라 <b>끝날 때</b> 울리는 이유: 연출 0.875초 동안은
-    /// 아직 1페이즈다. 시작할 때 울리면 갑옷이 무너지는 것을 보기도 전에 바 색이 먼저 바뀌어
-    /// 결과를 미리 말해버린다.
+    /// 전환이 <b>시작될 때</b>가 아니라 <b>껍질이 깨질 때</b> 울린다. 시작할 때 울리면
+    /// 갑옷이 무너지는 것을 보기도 전에 바 색이 먼저 바뀌어 결과를 미리 말해버린다.
+    ///
+    /// <b>수정(Timeline 도입) — 울리는 시각이 연출 끝(3.125)에서 2.375로 당겨졌다.</b>
+    ///
+    /// 이벤트를 새로 만들지 않고 <b>발화 시점만</b> 옮겼다. 이 이벤트가 실제로 뜻하는 것은
+    /// "이제 2페이즈라고 화면에 말해도 되는 순간"이고, 그건 계획표에서 플래시가 터지고
+    /// 이름이 바뀌는 2.375다. 3.125는 무적을 푸는 <b>보스 내부 사정</b>이라 밖에 알릴 것이 없다.
+    /// 두 순간에 각각 이벤트를 두면 그중 하나는 듣는 데가 없는 채로 남는다.
+    ///
+    /// 자세한 이유는 <see cref="OnTransitionRevealed"/>에 적어뒀다.
     /// </summary>
     public event Action EnteredPhase2;
 
@@ -370,18 +410,38 @@ public class EnemyBoss : MonoBehaviour
 
         // 추가 생성 — 몸통 콜라이더. 없어도 동작하지만 2페이즈에서 몸이 안 줄어든다.
         bodyCollider = GetComponent<CapsuleCollider2D>();
+
+        // 추가 생성 — 전환 연출. 없으면 연출 없이 페이즈만 바뀐다(EnterPhase2 참고).
+        transitionSequence = GetComponent<BossTransitionSequence>();
     }
 
     private void OnEnable()
     {
         health.Damaged += OnDamaged;
         health.Died += OnDied;
+
+        // 추가 생성 — 연출의 세 순간을 받는다.
+        //
+        // 연출이 보스의 몸을 직접 만지지 않게 하려고 이렇게 나눴다. 스프라이트와 애니메이터는
+        // 보스의 것이라 <b>연출이 중간에 끊겼을 때 되돌릴 책임도 보스에게</b> 있어야 한다.
+        // 연출이 남의 몸을 껐다가 자기가 멈춰버리면 꺼진 채로 남는 길이 생긴다.
+        if (transitionSequence == null) return;
+
+        transitionSequence.ArmorBroken += OnTransitionArmorBroken;
+        transitionSequence.Revealed += OnTransitionRevealed;
+        transitionSequence.BossReturns += OnTransitionBossReturns;
     }
 
     private void OnDisable()
     {
         health.Damaged -= OnDamaged;
         health.Died -= OnDied;
+
+        if (transitionSequence == null) return;
+
+        transitionSequence.ArmorBroken -= OnTransitionArmorBroken;
+        transitionSequence.Revealed -= OnTransitionRevealed;
+        transitionSequence.BossReturns -= OnTransitionBossReturns;
     }
 
     private void Start()
@@ -818,8 +878,19 @@ public class EnemyBoss : MonoBehaviour
 
         // 절반이 되면 페이즈 전환. 공격 도중이어도 끼어든다 — 반쯤 진행된 패턴보다
         // 페이즈가 바뀌었다는 신호가 훨씬 중요하다.
-        if (!isPhase2 && phase2Controller != null && current <= max * phase2HealthRatio)
+        //
+        // 수정(전환이 두 번 돌았다) — 검사 대상을 isPhase2에서 transitionStarted로 바꿨다.
+        //
+        // isPhase2는 연출 <b>중간</b>(2.875, 2페이즈 보스 등장)에 켜진다. 그래서 그 신호가
+        // 유실되면 isPhase2가 영원히 false로 남고, 보스를 한 대 더 때리는 순간 <b>전환이
+        // 처음부터 다시 시작한다.</b> 실제로 그렇게 됐다 — 콘솔에 "2페이즈로 넘어갔다"가
+        // 두 번씩 찍혔다.
+        //
+        // 두 값의 뜻이 다르다. isPhase2는 "지금 2페이즈인가"이고 transitionStarted는
+        // "전환을 한 번이라도 시작했는가"다. <b>다시 하지 않을 이유는 뒤쪽</b>이다.
+        if (!transitionStarted && phase2Controller != null && current <= max * phase2HealthRatio)
         {
+            transitionStarted = true;
             StopAllCoroutines();
             StartCoroutine(EnterPhase2());
             return;
@@ -858,17 +929,124 @@ public class EnemyBoss : MonoBehaviour
             animator.SetTrigger(TransitionHash);
         }
 
-        yield return new WaitForSeconds(transitionSeconds);
+        // 수정(Timeline 도입) — 여기서 시간을 세지 않는다.
+        //
+        // 무엇을 언제 켜고 끄는지는 전부 타임라인 에셋에 있고, 이 코루틴이 하는 일은
+        // <b>시작 신호와 무적</b>뿐이다. 페이즈가 실제로 바뀌는 것은 아래 세 개의
+        // On... 함수가 시그널을 받아서 한다.
+        //
+        // 길이를 먼저 받아두고 <b>그 값이 성립하는지</b> 본다. 0이면 연출이 붙어 있어도
+        // 기다리지 않고 지나가버리는데, 그건 시그널이 하나도 안 울린다는 뜻이다.
+        float seconds = transitionSequence != null ? transitionSequence.TotalSeconds : 0f;
 
-        isPhase2 = true;
+        if (seconds > 0f)
+        {
+            transitionSequence.Play();
+            yield return new WaitForSeconds(seconds);
+        }
+        else
+        {
+            // 연출이 없어도 <b>전투는 이어져야 한다.</b> 여기서 그냥 돌아가면 보스가 무적인 채
+            // 1페이즈로 영원히 서 있게 되는데, 그건 연출이 빠진 것보다 훨씬 나쁘다.
+            // 시그널이 할 일을 순서대로 직접 부른다.
+            Debug.LogError("[보스] 전환 연출을 못 쓴다(컴포넌트가 없거나 타임라인이 안 붙었다). " +
+                           "연출 없이 2페이즈로 넘어간다. " +
+                           "Tools → 재의 길 → 보스 전환 이펙트 생성 을 실행해라.", this);
 
-        // 추가 생성 — 몸이 줄었으니 맞는 자리도 줄인다.
-        ShrinkColliderForPhase2();
+            OnTransitionRevealed();
+            OnTransitionBossReturns();
+        }
+
+        // 추가 생성(시그널 유실 안전망) — 연출이 끝났는데 페이즈가 안 바뀌었으면 코드로 넘긴다.
+        //
+        // 여기까지 왔는데 isPhase2가 false라면 타임라인의 시그널이 도착하지 않았다는 뜻이다.
+        // 그대로 두면 아래에서 <b>무적만 풀린다.</b> 결과는 1페이즈 컨트롤러를 문 채 스프라이트가
+        // 꺼져 있고, 맞기는 하는 보스다 — 화면에 아무것도 없는데 체력이 깎인다.
+        // transitionStarted가 이미 true라 다시 시도하지도 않으므로 그 상태로 끝까지 간다.
+        //
+        // 실제로 그 경로로 두 번 물렸다(이름이 "???"로 남고 체력바가 안 찼다). 지금 배선
+        // (SignalReceiver + INotificationReceiver 이중 수신)으로는 안 나야 정상이지만,
+        // <b>연출이 빠지는 것과 전투가 망가지는 것은 무게가 다르다.</b> 싸게 막아둔다.
+        //
+        // 아래 두 함수는 각자 "한 번만 돈다" 검사를 갖고 있다. 그래서 시그널이 절반만 도착한
+        // 경우(2.375는 왔고 2.875는 유실)에도 <b>안 온 쪽만</b> 채워진다.
+        if (!isPhase2)
+        {
+            Debug.LogError("[보스] 전환 연출의 시그널이 도착하지 않았다. 페이즈를 코드로 넘긴다. " +
+                           "BossTransition.playable의 시그널 트랙과 프리팹의 시그널 참조를 확인해라.", this);
+
+            OnTransitionRevealed();
+            OnTransitionBossReturns();
+        }
 
         // 추가 생성 — 첫 재 폭발까지 유예를 준다.
         // 전환 연출 내내 무적이라 플레이어는 대개 코앞에 서 있다. 여기서 0이면
         // 변신하자마자 회피 불가능한 한 방이 나간다.
         ultimateCooldownTimer = ultimateFirstDelay;
+
+        health.IsInvulnerableExternally = false;
+        cooldownTimer = 0.4f;
+        state = State.Idle;
+
+        // 수정(궁극기 확인): 언제부터 재 폭발이 나올 수 있는지 같이 남긴다.
+        // 이 줄과 "재 폭발 시전" 로그의 시간 차가 곧 유예 + 다음 공격까지의 대기다.
+        Debug.Log($"[보스] 2페이즈로 넘어갔다. 재 폭발은 {ultimateFirstDelay}초 뒤부터, " +
+                  $"거리 {ultimateRange} 안에서 나온다.", this);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 계획표 <c>0.875</c>. 갑옷이 다 무너졌다. 보스 스프라이트를 숨긴다.
+    ///
+    /// 여기부터 <c>2.875</c>까지 화면에 있는 것은 시트 이펙트(gather → egg → shatter)와
+    /// 재 파티클뿐이다. 보스가 안 보이는 동안 컨트롤러를 갈아 끼우므로 교체가 눈에 안 띈다.
+    /// </summary>
+    private void OnTransitionArmorBroken()
+    {
+        if (spriteRenderer != null) spriteRenderer.enabled = false;
+    }
+
+    /// <summary>
+    /// 추가 생성 — 계획표 <c>2.375</c>. 껍질이 깨지는 순간. 밖(체력바)에 전환을 알린다.
+    ///
+    /// <b>수정 — 알리는 시점을 연출 끝(3.125)에서 여기로 당겼다.</b>
+    ///
+    /// 예전에는 "연출이 끝나고 실제로 넘어간 순간"에 울렸다. 그때는 연출이 0.875초짜리
+    /// 한 덩어리라 그 끝이 곧 절정이었다. 지금은 절정이 <b>껍질이 깨지는 2.375초</b>고,
+    /// 3.125초는 무적을 푸는 보스 내부 사정일 뿐이다. 이름 교체와 체력바 재충전이
+    /// 껍질이 깨지고 0.75초 뒤에 오면 <b>연출과 UI가 따로 논다.</b>
+    /// </summary>
+    private void OnTransitionRevealed()
+    {
+        // 수정(시그널 유실 안전망) — 두 번 알리지 않는다.
+        //
+        // 안전망이 이 함수를 다시 부를 수 있다. EnteredPhase2를 두 번 울리면 듣는 쪽
+        // (체력바)이 이름 교체와 재충전 연출을 두 번 재생한다.
+        if (announcedPhase2) return;
+        announcedPhase2 = true;
+
+        EnteredPhase2?.Invoke();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 계획표 <c>2.875</c>. 2페이즈 보스가 나타난다.
+    ///
+    /// 컨트롤러 교체와 콜라이더 축소를 <b>보이기 직전</b>에 모아두는 이유: 셋 중 하나라도
+    /// 다른 시각에 하면 그 사이 동안 <b>절반만 2페이즈인 보스</b>가 존재한다. 예를 들어
+    /// 콜라이더만 먼저 줄면 아직 1페이즈 그림인데 맞는 자리가 좁아진다.
+    /// </summary>
+    private void OnTransitionBossReturns()
+    {
+        // 수정(시그널 유실 안전망) — 두 번 갈아 끼우지 않는다.
+        //
+        // isPhase2는 이 함수의 결과이면서 동시에 안전망의 조건이다. 여기서 한 번 더 막아두면
+        // 시그널과 안전망이 같은 프레임에 겹쳐도 <c>Rebind</c>가 두 번 돌지 않는다.
+        // Rebind는 애니메이터 상태를 처음부터 다시 물리므로 두 번 돌면 첫 프레임이 튄다.
+        if (isPhase2) return;
+
+        isPhase2 = true;
+
+        // 추가 생성 — 몸이 줄었으니 맞는 자리도 줄인다.
+        ShrinkColliderForPhase2();
 
         if (animator != null)
         {
@@ -879,19 +1057,7 @@ public class EnemyBoss : MonoBehaviour
             animator.Rebind();
         }
 
-        health.IsInvulnerableExternally = false;
-        cooldownTimer = 0.4f;
-        state = State.Idle;
-
-        // 수정(궁극기 확인): 언제부터 재 폭발이 나올 수 있는지 같이 남긴다.
-        // 이 줄과 "재 폭발 시전" 로그의 시간 차가 곧 유예 + 다음 공격까지의 대기다.
-        Debug.Log($"[보스] 2페이즈로 넘어갔다. 재 폭발은 {ultimateFirstDelay}초 뒤부터, " +
-                  $"거리 {ultimateRange} 안에서 나온다.", this);
-
-        // 추가 생성 — 듣는 쪽(체력바 등)에 전환을 알린다.
-        // 상태를 전부 바꾼 뒤에 울린다. 받는 쪽이 이 보스를 되물어볼 수 있는데,
-        // 중간에 울리면 절반만 2페이즈인 상태를 보게 된다.
-        EnteredPhase2?.Invoke();
+        if (spriteRenderer != null) spriteRenderer.enabled = true;
     }
 
     /// <summary>
@@ -919,6 +1085,14 @@ public class EnemyBoss : MonoBehaviour
     private void OnDied()
     {
         StopAllCoroutines();
+
+        // 추가 생성 — 전환 중이었다면 연출을 멈추고 몸을 되돌린다.
+        //
+        // 전환 중에는 무적이라 여기 올 일이 없어야 하지만, StopAllCoroutines가 EnterPhase2를
+        // 중간에서 자를 수 있는 이상 <b>스프라이트가 꺼진 채 남는 길</b>이 존재한다.
+        // 그러면 사망 모션이 재생되는데 화면에는 아무것도 없다. 죽었는지 사라졌는지 모른다.
+        if (transitionSequence != null) transitionSequence.StopAndReset();
+        if (spriteRenderer != null) spriteRenderer.enabled = true;
 
         state = State.Dead;
         body.linearVelocity = Vector2.zero;
