@@ -327,6 +327,24 @@ public class RoomSequenceController : MonoBehaviour
         currentRoom = room;
         if (countAsProgress) enteredRoomCount++;
 
+#if UNITY_EDITOR
+        // 추가 생성(조사용 계측) — 입장 한 프레임이 <b>어디서</b> 시간을 쓰는지 나눠 잰다.
+        //
+        // 왜 넣었나: "보스 방에 들어가면 렉이 걸린다"는 증상만으로는 방 활성화(에셋 로드)와
+        // 전투 시작(보스 Instantiate) 중 어느 쪽인지 구분할 수 없다. 프로파일러로도 보이지만
+        // 스파이크 프레임을 손으로 집어야 해서, 들어갈 때마다 자동으로 남는 숫자가 더 빠르다.
+        //
+        // <b>일반 방도 같이 잰다</b>는 것이 요점이다. 보스 방 숫자만 있으면 그게 큰 건지
+        // 알 수 없다. 같은 판에서 일반 방 5ms / 보스 방 200ms가 찍혀야 비교가 된다.
+        //
+        // Time.time이 아니라 realtimeSinceStartup을 쓰는 이유: 이 구간은 timeScale과 무관하게
+        // <b>화면이 멎어 보이는 실제 시간</b>을 재야 한다. RunManager가 결과 화면 전환에
+        // WaitForSecondsRealtime을 쓰는 것과 같은 이유다.
+        //
+        // 원인을 잡고 나면 이 블록은 지운다. 에디터 전용이라 빌드에는 한 줄도 안 들어간다.
+        float enterT0 = Time.realtimeSinceStartup;
+#endif
+
         // 수정(튜토리얼 진행 정지 버그): SetActive를 PrepareForEntry보다 먼저 부른다.
         //
         // 예전 순서는 PrepareForEntry() → SetActive(true)였다. 방은 전부 씬에 비활성으로
@@ -341,12 +359,37 @@ public class RoomSequenceController : MonoBehaviour
         // 두 호출 사이에 프레임 경계가 없어서(SetActive는 Awake/OnEnable을 그 자리에서 돌린다)
         // 지난 판의 열린 문이 한 프레임이라도 보이는 일은 없다.
         room.gameObject.SetActive(true);
+
+#if UNITY_EDITOR
+        float enterT1 = Time.realtimeSinceStartup;
+#endif
+
         room.PrepareForEntry();
+
+#if UNITY_EDITOR
+        float enterT2 = Time.realtimeSinceStartup;
+#endif
+
         room.BeginEncounter();
+
+#if UNITY_EDITOR
+        float enterT3 = Time.realtimeSinceStartup;
+#endif
+
         MovePlayerTo(room.PlayerEntryPoint);
 
         // 추가 생성 — 결과 화면에 "몇 번째 방까지 갔는가"를 남긴다.
         runManager?.ReportRoomEntered(enteredRoomCount);
+
+#if UNITY_EDITOR
+        // 메모리도 같이 찍는다. "늦게 들어갈수록 비싸다"가 맞다면 이 숫자가 커질수록
+        // 위의 ms도 같이 커져야 한다. 둘이 같이 안 움직이면 메모리 가설이 틀린 것이다.
+        long allocatedMB = UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() / (1024 * 1024);
+
+        Debug.Log($"[방 진행/계측] {room.name} — 활성화 {(enterT1 - enterT0) * 1000f:0.0}ms / " +
+                  $"초기화 {(enterT2 - enterT1) * 1000f:0.0}ms / 전투시작 {(enterT3 - enterT2) * 1000f:0.0}ms " +
+                  $"= 합계 {(enterT3 - enterT0) * 1000f:0.0}ms, 할당 메모리 {allocatedMB}MB", this);
+#endif
 
         Debug.Log($"[방 진행] {enteredRoomCount}번째 방 입장 — {room.name}", this);
     }
