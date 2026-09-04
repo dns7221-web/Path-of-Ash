@@ -80,6 +80,41 @@ public class StaminaBar : MonoBehaviour
             return;
         }
 
+        // 수정(빈 게이지로 시작): 여기서도 값을 읽지만 이 값이 맞다는 보장이 없다.
+        // Awake 실행 순서는 오브젝트마다 정해져 있지 않아서, 이 줄이 PlayerStamina.Awake보다
+        // 먼저 돌면 Current가 아직 0이다. 진짜 초기값은 아래 Start에서 다시 맞춘다.
+        SnapToCurrent();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 모든 Awake가 끝난 뒤 현재 스태미나로 게이지를 다시 맞춘다.
+    ///
+    /// <b>왜 Start가 따로 필요한가.</b> <see cref="PlayerStamina"/>는 Awake에서
+    /// <c>Current = Max</c>로 게이지를 채운다. 그런데 이 바의 Awake와 OnEnable이 그보다
+    /// <b>먼저</b> 돌면 그때 읽는 Current는 아직 0이라, 게이지가 <b>빈 칸으로 시작한다.</b>
+    ///
+    /// 체력 바보다 더 오래 티가 안 난다. PlayerStamina.Update는 가득 차 있으면
+    /// <c>Current >= Max</c>에서 곧장 돌아가므로 <b>Changed가 아예 안 나간다</b> —
+    /// 대시를 한 번 쓸 때까지 빈 게이지가 그대로 남는다.
+    ///
+    /// 유니티는 <b>씬의 모든 Awake가 끝난 뒤에 Start를 부른다.</b> 그래서 여기서는
+    /// PlayerStamina.Awake가 반드시 끝나 있다. <see cref="HealthBar"/>와 같은 수정이다.
+    /// </summary>
+    private void Start()
+    {
+        if (stamina == null) return;
+
+        SnapToCurrent();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 현재 스태미나를 목표값과 표시값에 <b>동시에</b> 넣는다.
+    ///
+    /// displayed까지 같이 덮는 이유: 목표값만 넣으면 게이지가 0에서 가득까지 차오르는
+    /// 연출이 판 시작마다 보인다. 시작값은 연출 없이 그 자리에 있어야 한다.
+    /// </summary>
+    private void SnapToCurrent()
+    {
         target = stamina.Normalized;
         displayed = target;
     }
