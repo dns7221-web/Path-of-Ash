@@ -89,6 +89,29 @@ public class InventoryScreen : MonoBehaviour
                            "자식 오브젝트를 root로 넣어라.", this);
         }
 
+        // 추가 생성(화면 중복) — 씬에 이 화면이 둘 이상이면 여기서 잡는다.
+        //
+        // <b>둘이면 게임이 멈춘 채로 복구가 안 된다.</b> 둘 다 I 키를 듣고 각자
+        // <see cref="PauseGate"/>에 들어가는데, 보스 열쇠 화면은 <c>FindFirstObjectByType</c>으로
+        // <b>하나만</b> 찾아 닫는다. 남은 하나가 스택에서 안 빠져서 timeScale이 0에 고정되고,
+        // 그 뒤로는 I를 눌러도 두 화면이 번갈아 켜지기만 해서 스택이 절대 안 빈다.
+        //
+        // 원인은 빌더(<c>AshInventoryUiBuilder</c>)에서 막았지만 그건 <b>도구를 다시 돌릴 때만</b>
+        // 듣는 방어다. 씬을 손으로 복사하거나 화면을 통째로 붙여 넣으면 같은 상태가 다시 만들어진다.
+        // 증상이 "게임이 멈췄다"로만 나타나서 원인을 찾는 데 제일 오래 걸리는 종류라,
+        // 실행하는 순간 개수를 대고 알려주는 편이 싸다.
+        //
+        // Awake에서 한 번만 도는 검사라 매 프레임 비용은 없다.
+        var duplicates = FindObjectsByType<InventoryScreen>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        if (duplicates.Length > 1)
+        {
+            Debug.LogError($"[인벤토리] 씬에 인벤토리 화면이 {duplicates.Length}개 있다. 하나만 남겨라. " +
+                           "둘 이상이면 I와 T를 번갈아 누를 때 시간이 멈춘 채로 돌아오지 않는다. " +
+                           "Tools → 재의 길 → 인벤토리 화면 생성 을 다시 실행하면 정리된다.", this);
+        }
+
         // Time.timeScale은 건드리지 않는다. 시작할 때 1로 덮으면 다른 곳에서 멈춰둔 것까지 푼다.
         isOpen = false;
         if (root != null) root.SetActive(false);

@@ -74,6 +74,24 @@ public class BossKeyScreen : MonoBehaviour
 
         // 켜고 끌 오브젝트가 이 컴포넌트가 붙은 오브젝트 자신이면 안 된다.
         // 꺼진 오브젝트는 Update가 안 돌아서, 키를 눌러도 스스로를 다시 켤 수 없다.
+        // 추가 생성(화면 중복) — 씬에 이 화면이 둘 이상이면 여기서 잡는다.
+        //
+        // <see cref="InventoryScreen"/>에 적어둔 것과 같은 사고다. 둘이면 둘 다 T 키를 듣고
+        // 각자 <see cref="PauseGate"/>에 들어가는데 인벤토리는 하나만 찾아 닫는다. 남은 하나가
+        // 스택에서 안 빠져서 <b>timeScale이 0에 고정되고 돌아오지 않는다.</b>
+        //
+        // 저쪽은 실제로 터졌고 이쪽은 아직 안 터졌을 뿐이라 같이 막는다.
+        // Awake에서 한 번만 도는 검사라 매 프레임 비용은 없다.
+        var duplicates = FindObjectsByType<BossKeyScreen>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        if (duplicates.Length > 1)
+        {
+            Debug.LogError($"[보스 열쇠] 씬에 보스 열쇠 화면이 {duplicates.Length}개 있다. 하나만 남겨라. " +
+                           "둘 이상이면 T와 I를 번갈아 누를 때 시간이 멈춘 채로 돌아오지 않는다. " +
+                           "Tools → 재의 길 → 보스 열쇠 화면 생성 을 다시 실행하면 정리된다.", this);
+        }
+
         if (root == gameObject)
         {
             Debug.LogError("[보스 열쇠] root가 이 오브젝트 자신이라 한 번 닫히면 다시 열 수 없다. " +

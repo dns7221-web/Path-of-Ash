@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,11 +70,26 @@ public static class AshBossKeyUiBuilder
             return;
         }
 
+        // 캔버스를 먼저 정한다. 아래에서 지우기 전에 정해야 "지금 화면이 올라가 있는
+        // 캔버스를 그대로 쓴다"는 판단이 가능하다.
         Canvas canvas = FindOrCreateCanvas();
 
-        // 이전 실행 결과를 지운다. 남겨두면 칸이 두 겹으로 쌓인다.
-        var old = canvas.transform.Find("BossKeyScreen");
-        if (old != null) Object.DestroyImmediate(old.gameObject);
+        // 수정(화면 중복 생성) — 이전 실행 결과를 <b>씬 전체에서</b> 지운다.
+        //
+        // 인벤토리 화면에서 실제로 터진 사고와 같은 구조다. 정해진 캔버스 밑만 훑는데
+        // (<c>canvas.transform.Find("BossKeyScreen")</c>) 그 캔버스를 무순서로 골랐기 때문에,
+        // 다시 실행할 때 다른 캔버스가 집히면 지난번 것이 남고 하나가 더 생긴다.
+        //
+        // <b>이 화면이 둘이면 게임이 멈춘 채로 복구가 안 된다.</b> 둘 다 T 키를 듣고 각자
+        // PauseGate에 들어가는데, 인벤토리는 <c>FindFirstObjectByType</c>으로 <b>하나만</b>
+        // 찾아 닫는다. 남은 하나가 스택에서 안 빠져서 timeScale이 0에 고정된다.
+        //
+        // 저쪽은 실제로 터졌고 이쪽은 아직 안 터졌을 뿐이라 같이 막는다.
+        foreach (var stale in Object.FindObjectsByType<BossKeyScreen>(
+                     FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            Object.DestroyImmediate(stale.gameObject);
+        }
 
         // 항상 켜져 있는 껍데기. 키 입력을 듣는 컴포넌트가 여기 붙는다.
         var screenObject = NewRect("BossKeyScreen", canvas.transform);
@@ -228,20 +244,55 @@ public static class AshBossKeyUiBuilder
         return view;
     }
 
+    /// <summary>
+    /// 화면을 올릴 캔버스를 정한다. 없으면 만든다.
+    ///
+    /// <b>수정(화면 중복 생성) — 고르는 순서를 못 박았다.</b>
+    ///
+    /// <c>FindObjectsSortMode.None</c>은 이름 그대로 <b>순서를 보장하지 않는다.</b>
+    /// 그래서 같은 씬에서 두 번 실행해도 다른 캔버스가 집힐 수 있고, 그러면 위쪽의
+    /// 중복 제거가 헛돈다. 인벤토리 빌더에서 그 경로로 화면이 두 벌 생겼다.
+    ///
+    /// 이제 두 단계로 정한다.
+    /// <list type="number">
+    /// <item>이미 이 화면이 올라가 있는 캔버스가 있으면 <b>거기를 그대로 쓴다.</b>
+    /// 다시 만들어도 화면이 캔버스 사이를 옮겨 다니지 않는다.</item>
+    /// <item>없으면 <b>이름순</b>으로 첫 번째를 쓴다. 무엇이 뽑히든 상관없지만
+    /// <b>매번 같은 것이 뽑히는 것</b>이 중요하다.</item>
+    /// </list>
+    /// </summary>
     private static Canvas FindOrCreateCanvas()
     {
+        // 1단계 — 이미 이 화면이 올라가 있는 캔버스를 그대로 쓴다.
+        // 꺼진 채로 둘 수 있는 화면이라 비활성까지 포함해서 찾는다.
+        var placed = Object.FindFirstObjectByType<BossKeyScreen>(FindObjectsInactive.Include);
+
+        if (placed != null)
+        {
+            // 인자 true는 "꺼진 부모도 본다"는 뜻이다. 없으면 캔버스가 꺼져 있을 때 못 찾는다.
+            var owner = placed.GetComponentInParent<Canvas>(true);
+
+            if (owner != null && owner.renderMode == RenderMode.ScreenSpaceOverlay)
+                return EnsureRaycaster(owner);
+        }
+
+        // 2단계 — 후보를 모아 이름순으로 정렬한다. 정렬이 곧 "매번 같은 결과"의 보장이다.
+        var candidates = new List<Canvas>();
+
         foreach (var existing in Object.FindObjectsByType<Canvas>(
                      FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             if (existing.renderMode != RenderMode.ScreenSpaceOverlay) continue;
 
-            if (existing.GetComponent<GraphicRaycaster>() == null)
-            {
-                existing.gameObject.AddComponent<GraphicRaycaster>();
-                Debug.Log("[보스 열쇠] 캔버스에 GraphicRaycaster가 없어서 붙였다.");
-            }
+            candidates.Add(existing);
+        }
 
-            return existing;
+        if (candidates.Count > 0)
+        {
+            // 문화권에 따라 결과가 달라지지 않도록 Ordinal로 비교한다.
+            candidates.Sort((a, b) => string.CompareOrdinal(a.name, b.name));
+
+            return EnsureRaycaster(candidates[0]);
         }
 
         var canvasObject = new GameObject("Canvas", typeof(Canvas), typeof(CanvasScaler),
@@ -252,6 +303,23 @@ public static class AshBossKeyUiBuilder
         var scaler = canvasObject.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920f, 1080f);
+
+        return canvas;
+    }
+
+    /// <summary>
+    /// 추가 생성 — 캔버스에 <see cref="GraphicRaycaster"/>가 없으면 붙이고 그대로 돌려준다.
+    ///
+    /// 이게 없으면 칸을 눌러도 아무 반응이 없다. 위에서 캔버스를 고르는 길이 둘로
+    /// 갈라지면서 같은 검사를 두 번 쓰게 되어 함수로 뺐다.
+    /// </summary>
+    private static Canvas EnsureRaycaster(Canvas canvas)
+    {
+        if (canvas.GetComponent<GraphicRaycaster>() == null)
+        {
+            canvas.gameObject.AddComponent<GraphicRaycaster>();
+            Debug.Log("[보스 열쇠] 캔버스에 GraphicRaycaster가 없어서 붙였다.");
+        }
 
         return canvas;
     }
