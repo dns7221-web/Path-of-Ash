@@ -25,8 +25,10 @@ public class ChestRelicReward : MonoBehaviour
     [Tooltip("보스방을 여는 열쇠 유물들. 아직 안 가진 것 중에서만 나온다.")]
     [SerializeField] private RelicData[] keyPool;
 
-    [Tooltip("열쇠가 나올 확률(0~1). 이 판정에 실패하면 평범한 유물이 나온다. " +
-             "0.25면 상자 넷에 하나꼴이라 열쇠 3개를 모으는 데 대략 열 방 남짓 걸린다.")]
+    // 수정(확률 종속 버그): 툴팁이 열쇠 3개 기준이라 지금 구성(4개)과 안 맞았다.
+    // 열쇠 판정이 일반 유물 판정보다 먼저 돌게 바뀐 것도 같이 적는다.
+    [Tooltip("열쇠가 나올 확률(0~1). 열쇠를 먼저 판정하고, 실패하면 평범한 유물로 넘어간다. " +
+             "0.25면 상자 넷에 하나꼴이라 열쇠 4개를 모으는 데 기대값으로 상자 16개가 든다.")]
     [Range(0f, 1f)]
     [SerializeField] private float keyChance = 0.25f;
 
@@ -42,33 +44,53 @@ public class ChestRelicReward : MonoBehaviour
 
     private RewardChest chest;
 
+    // 추가 생성 — 이번에 띄운 픽업. 방을 나갈 때 치우려고 들고 있는다.
+    private RelicPickup spawned;
+
     private void Awake()
     {
         chest = GetComponent<RewardChest>();
     }
 
+    // 수정(문 개방 시점): Claimed가 아니라 Opened를 듣는다.
+    // Claimed는 이제 "플레이어가 유물을 실제로 주웠다"는 신호라, 그걸 들으면 유물을 띄울
+    // 차례가 영영 오지 않는다(내가 띄워야 그 신호가 나온다).
     private void OnEnable()
     {
-        if (chest != null) chest.Claimed += OnChestOpened;
+        if (chest != null) chest.Opened += OnChestOpened;
     }
 
     private void OnDisable()
     {
-        if (chest != null) chest.Claimed -= OnChestOpened;
+        if (chest != null) chest.Opened -= OnChestOpened;
+
+        // 추가 생성 — 방을 나가거나 방이 초기화되면 안 주운 유물을 치운다.
+        //
+        // 예전에는 픽업을 부모 없이 만들어서 방이 꺼져도 씬에 그대로 남았다. 방을 돌수록
+        // 안 주운 유물이 쌓이고, 이전 방 자리에 떠 있는 물건을 나중에 지나가다 줍기도 했다.
+        if (spawned != null)
+        {
+            Destroy(spawned.gameObject);
+            spawned = null;
+        }
     }
 
     private void OnChestOpened()
     {
-        if (pool == null || pool.Length == 0) return;
-        if (Random.value > chance) return;
-
-        // 열쇠를 먼저 판정한다. 실패하거나 남은 열쇠가 없으면 평범한 유물로 넘어간다.
+        // 수정(열쇠 확률 종속): 열쇠 판정을 일반 유물 판정보다 <b>먼저</b> 한다.
+        //
+        // 예전에는 pool 검사와 chance 판정을 통과해야 여기까지 왔다. 그래서 실제 열쇠 확률이
+        // chance × keyChance가 되고, 일반 유물 풀이 비어 있으면 열쇠는 아예 안 나왔다.
+        // 열쇠는 <b>진행에 반드시 필요한 물건</b>이라 다른 보상의 확률에 얹혀 있으면 안 된다.
         RelicData key = TryPickKey();
         if (key != null)
         {
             Give(key);
             return;
         }
+
+        if (pool == null || pool.Length == 0) return;
+        if (Random.value > chance) return;
 
         // 플레이어를 여기서 찾는 이유: 상자는 씬에 미리 놓이고 플레이어는 프리팹 인스턴스라
         // 인스펙터로 미리 연결할 수 없다. 상자를 여는 건 한 판에 몇 번뿐이라 비용도 무시할 만하다.
@@ -115,8 +137,19 @@ public class ChestRelicReward : MonoBehaviour
             float angle = (launchAngle + Random.Range(-launchSpread, launchSpread)) * Mathf.Deg2Rad;
             var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
-            var pickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity);
-            pickup.Setup(relic, direction);
+            // 수정(방 넘어 잔존): 상자를 부모로 붙인다. 방이 꺼지면 같이 꺼지고,
+            // 방을 나갈 때 OnDisable이 확실히 치운다.
+            //
+            // Instantiate의 부모 인자를 쓰지 않고 SetParent(true)로 붙이는 이유:
+            // 상자 오브젝트의 스케일이 1이 아니면 부모 인자로 붙일 때 픽업이 같이 늘어난다.
+            // worldPositionStays가 true면 화면에 보이는 크기와 자리가 그대로 유지된다.
+            spawned = Instantiate(pickupPrefab, transform.position, Quaternion.identity);
+            spawned.transform.SetParent(transform, true);
+
+            // 수정(문 개방 시점): 유물을 주울 때까지 문 개방을 미룬다.
+            // 상자를 여는 것과 보상을 손에 넣는 것은 다른 사건이고, 방이 알아야 하는 건 뒤쪽이다.
+            chest.HoldClaim();
+            spawned.Setup(relic, direction, OnPickupCollected);
             return;
         }
 
@@ -129,6 +162,19 @@ public class ChestRelicReward : MonoBehaviour
         }
 
         inventory.Acquire(relic);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 튀어나온 유물을 플레이어가 실제로 주웠을 때 상자의 보류를 푼다.
+    ///
+    /// 이 시점이 중요하다. 방은 여기서 문 종류를 정하는데, 네 번째 열쇠가 인벤토리에
+    /// 들어간 뒤라야 <b>그 자리에서</b> 부서진 문이 열린다. 예전에는 상자를 여는 순간
+    /// 문 종류가 정해져서, 열쇠를 다 모으고도 방을 하나 더 돌아야 보스로 갈 수 있었다.
+    /// </summary>
+    private void OnPickupCollected()
+    {
+        spawned = null;
+        if (chest != null) chest.ReleaseClaim();
     }
 
     /// <summary>

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,28 @@ public static class AshInventoryUiBuilder
 {
     private const string PanelPath = "Assets/Project/Art/UI/InventoryPanel.png";
     private const string SlotPath = "Assets/Project/Art/UI/InventorySlot.png";
+
+    // 수정(한글 깨짐) — Regular32 → Regular96.
+    //
+    // <b>두 에셋은 이름만 비슷하고 담긴 글자가 완전히 다르다.</b> 문자표를 까보면
+    // - Regular32: <b>딱 5자</b> — 공백, '_', '길', '의', '재'. 아틀라스 512x512.
+    //   타이틀 화면의 "재의 길" 넉 자를 96pt로 크게 구우려고 만든 <b>타이틀 전용</b>이다.
+    // - Regular96: 11267자(완성형 한글 11172자 전부). 아틀라스 4096x4096. 본문용이다.
+    //
+    // 파일 이름의 숫자는 <b>구운 크기</b>지 담긴 글자 수가 아니다. 그래서 이름만 보면
+    // 32가 작은 폰트로 읽히는데 실제로는 96pt로 구운 다섯 글자짜리다. 여기서 그걸
+    // 물리고 있어서 유물 이름과 설명의 한글이 통째로 두부(□)로 나왔다.
+    //
+    // 늦게 잡힌 이유: 폰트에 없는 글자는 <b>에러도 경고도 안 낸다.</b> TMP는 조용히
+    // 빈칸이나 두부를 그린다. HUD·보스 열쇠·설정·튜토리얼 빌더는 전부 96을 쓰고 있어서
+    // 다른 화면은 멀쩡하고 이 화면만 깨졌다 — 그래서 폰트 문제로 안 보였다.
+    //
+    // 상수로 올린 이유도 그것이다. 경로가 함수 안에 박혀 있으면 다른 빌더와 나란히
+    // 놓고 비교할 수가 없다. AshBossKeyUiBuilder·AshGameHudBuilder와 같은 모양으로 맞춘다.
+    //
+    // 덤으로 TMP Settings의 Fallback Font Assets에 Regular96을 등록해뒀다. 앞으로 어느
+    // 화면이 폰트를 잘못 물려도 한글은 폴백으로 그려진다 — 같은 사고의 안전망이다.
+    private const string FontPath = "Assets/Project/Art/UI/Fonts/NeoDunggeunmoPro-Regular96.asset";
 
     // 화면에 띄울 패널 크기(픽셀). 원본이 1610x977이라 비율을 지켜 줄였다.
     private const float PanelWidth = 1400f;
@@ -59,11 +82,30 @@ public static class AshInventoryUiBuilder
             return;
         }
 
+        // 캔버스를 먼저 정한다. 아래에서 지우기 전에 정해야 "지금 화면이 올라가 있는
+        // 캔버스를 그대로 쓴다"는 판단이 가능하다.
         Canvas canvas = FindOrCreateCanvas();
 
-        // 이전 실행 결과를 지운다. 남겨두면 칸이 두 겹으로 쌓인다.
-        var old = canvas.transform.Find("InventoryScreen");
-        if (old != null) Object.DestroyImmediate(old.gameObject);
+        // 수정(화면 중복 생성) — 이전 실행 결과를 <b>씬 전체에서</b> 지운다.
+        //
+        // 예전에는 정해진 캔버스 밑만 훑었다(<c>canvas.transform.Find("InventoryScreen")</c>).
+        // 그런데 <see cref="FindOrCreateCanvas"/>가 캔버스를 <b>무순서로</b> 집었기 때문에,
+        // 이번에 집힌 캔버스가 지난번과 다르면 지난번 것이 그대로 남고 하나가 더 생긴다.
+        // 실제로 그렇게 됐다 — GameHUD와 SettingsCanvas 밑에 하나씩, 둘 다 살아 있었다.
+        //
+        // <b>화면이 둘이면 게임이 멈춘 채로 복구가 안 된다.</b> 둘 다 I 키를 듣고 각자
+        // PauseGate에 들어가는데, 보스 열쇠 화면은 <c>FindFirstObjectByType</c>으로 <b>하나만</b>
+        // 찾아 닫는다. 남은 하나가 스택에서 안 빠져서 timeScale이 0에 고정되고, 그 뒤로는
+        // I를 눌러도 두 화면이 번갈아 켜지기만 해서 스택이 절대 안 빈다.
+        //
+        // 캔버스를 기준으로 삼지 않고 <b>컴포넌트 타입으로</b> 찾으면 어느 캔버스 밑에 있든
+        // 걸린다. 이름(<c>transform.Find</c>)이 아닌 것도 같은 이유다 — 오브젝트 이름을
+        // 바꿔도 살아남는다.
+        foreach (var stale in Object.FindObjectsByType<InventoryScreen>(
+                     FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            Object.DestroyImmediate(stale.gameObject);
+        }
 
         // 항상 켜져 있는 껍데기. 키 입력을 듣는 컴포넌트가 여기 붙는다.
         var screenObject = NewRect("InventoryScreen", canvas.transform);
@@ -228,11 +270,11 @@ public static class AshInventoryUiBuilder
     {
         // 프로젝트의 한글 폰트. 못 찾으면 TMP 기본값으로 두고 경고만 남긴다 —
         // 폰트 하나 때문에 화면 전체가 안 만들어지는 편이 더 나쁘다.
-        var font = AssetDatabase.LoadAssetAtPath<TMPro.TMP_FontAsset>(
-            "Assets/Project/Art/UI/Fonts/NeoDunggeunmoPro-Regular32.asset");
+        var font = AssetDatabase.LoadAssetAtPath<TMPro.TMP_FontAsset>(FontPath);
 
         if (font == null)
-            Debug.LogWarning("[인벤토리] 한글 폰트를 못 찾아 TMP 기본 폰트로 만든다. 한글이 깨질 수 있다.");
+            Debug.LogWarning($"[인벤토리] 한글 폰트를 못 찾아 TMP 기본 폰트로 만든다. " +
+                             $"기본 폰트에는 한글이 없어서 이름과 설명이 두부(□)로 나온다: {FontPath}");
 
         var nameRect = NewRect("SelectedName", panel);
         nameRect.anchorMin = new Vector2(BagLeft, 0.02f);
@@ -264,22 +306,56 @@ public static class AshInventoryUiBuilder
         return (nameText, descText);
     }
 
-    /// <summary>HUD 캔버스를 찾아 쓴다. 없으면 만든다.</summary>
+    /// <summary>
+    /// HUD 캔버스를 찾아 쓴다. 없으면 만든다.
+    ///
+    /// <b>수정(화면 중복 생성) — 고르는 순서를 못 박았다.</b>
+    ///
+    /// 예전에는 <c>FindObjectsSortMode.None</c>으로 받은 목록의 첫 번째를 그냥 썼다.
+    /// 이름 그대로 <b>순서를 보장하지 않는</b> 모드라, 같은 씬에서 두 번 실행해도 다른
+    /// 캔버스가 집힐 수 있다. 그것이 화면이 두 벌 생긴 원인이었다.
+    ///
+    /// 이제 두 단계로 정한다.
+    /// <list type="number">
+    /// <item>이미 인벤토리 화면이 올라가 있는 캔버스가 있으면 <b>거기를 그대로 쓴다.</b>
+    /// 다시 만들어도 화면이 캔버스 사이를 옮겨 다니지 않는다. 옮겨 다니면 그리는 순서가
+    /// 바뀌어서 어떤 실행에서는 HUD 뒤에 가려진다.</item>
+    /// <item>없으면 <b>이름순</b>으로 첫 번째를 쓴다. 무엇이 뽑히든 상관없지만
+    /// <b>매번 같은 것이 뽑히는 것</b>이 중요하다.</item>
+    /// </list>
+    /// </summary>
     private static Canvas FindOrCreateCanvas()
     {
+        // 1단계 — 이미 이 화면이 올라가 있는 캔버스를 그대로 쓴다.
+        // 꺼진 채로 둘 수 있는 화면이라 비활성까지 포함해서 찾는다.
+        var placed = Object.FindFirstObjectByType<InventoryScreen>(FindObjectsInactive.Include);
+
+        if (placed != null)
+        {
+            // 인자 true는 "꺼진 부모도 본다"는 뜻이다. 없으면 캔버스가 꺼져 있을 때 못 찾는다.
+            var owner = placed.GetComponentInParent<Canvas>(true);
+
+            if (owner != null && owner.renderMode == RenderMode.ScreenSpaceOverlay)
+                return EnsureRaycaster(owner);
+        }
+
+        // 2단계 — 후보를 모아 이름순으로 정렬한다. 정렬이 곧 "매번 같은 결과"의 보장이다.
+        var candidates = new List<Canvas>();
+
         foreach (var existing in Object.FindObjectsByType<Canvas>(
                      FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             if (existing.renderMode != RenderMode.ScreenSpaceOverlay) continue;
 
-            // 이게 없으면 칸을 눌러도 아무 반응이 없다. HUD만 있던 캔버스에는 없을 수 있다.
-            if (existing.GetComponent<GraphicRaycaster>() == null)
-            {
-                existing.gameObject.AddComponent<GraphicRaycaster>();
-                Debug.Log("[인벤토리] 캔버스에 GraphicRaycaster가 없어서 붙였다.");
-            }
+            candidates.Add(existing);
+        }
 
-            return existing;
+        if (candidates.Count > 0)
+        {
+            // 문화권에 따라 결과가 달라지지 않도록 Ordinal로 비교한다.
+            candidates.Sort((a, b) => string.CompareOrdinal(a.name, b.name));
+
+            return EnsureRaycaster(candidates[0]);
         }
 
         var canvasObject = new GameObject("Canvas", typeof(Canvas), typeof(CanvasScaler),
@@ -290,6 +366,23 @@ public static class AshInventoryUiBuilder
         var scaler = canvasObject.GetComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920f, 1080f);
+
+        return canvas;
+    }
+
+    /// <summary>
+    /// 추가 생성 — 캔버스에 <see cref="GraphicRaycaster"/>가 없으면 붙이고 그대로 돌려준다.
+    ///
+    /// 이게 없으면 칸을 눌러도 아무 반응이 없다. HUD만 있던 캔버스에는 없을 수 있다.
+    /// 위에서 캔버스를 고르는 길이 둘로 갈라지면서 같은 검사를 두 번 쓰게 되어 함수로 뺐다.
+    /// </summary>
+    private static Canvas EnsureRaycaster(Canvas canvas)
+    {
+        if (canvas.GetComponent<GraphicRaycaster>() == null)
+        {
+            canvas.gameObject.AddComponent<GraphicRaycaster>();
+            Debug.Log("[인벤토리] 캔버스에 GraphicRaycaster가 없어서 붙였다.");
+        }
 
         return canvas;
     }

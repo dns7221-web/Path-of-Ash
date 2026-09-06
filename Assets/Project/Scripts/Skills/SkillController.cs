@@ -35,8 +35,10 @@ public class SkillController : MonoBehaviour
     // 묶어두면 바인딩 순서가 곧 슬롯 번호라서 슬롯 하나에 키를 여러 개 달 수가 없다.
     // 기본 공격은 마우스 좌클릭·J·Q 셋 다 먹어야 하는데 그게 불가능했다.
     // 액션을 넷으로 나누면 각 액션이 바인딩을 몇 개든 가질 수 있다.
-    [Tooltip("슬롯별 입력. 순서가 곧 슬롯 순서(Q/W/E/R)다.")]
-    [SerializeField] private InputAction[] slotActions = new InputAction[SlotCount];
+    //
+    // 수정(입력 중앙화): slotActions 필드를 걷어내고 InputBindings에서 슬롯 번호로 꺼내 쓴다.
+    // 액션이 이 컴포넌트 안에 있으면 설정 화면이 키를 바꿀 방법이 없다. 슬롯을 액션에
+    // 하나씩 대응시키는 구조는 그대로다 — InputBindings.SkillSlotIds가 그 순서를 들고 있다.
 
     [Header("참조")]
     [Tooltip("근접 스킬이 켜고 끌 히트박스. 비우면 근접 스킬이 동작하지 않는다.")]
@@ -97,35 +99,6 @@ public class SkillController : MonoBehaviour
         return skill == null ? 0f : skill.CooldownSeconds * CooldownScale;
     }
 
-    private void Reset()
-    {
-        // 컴포넌트를 처음 붙일 때 기본 키를 채운다. PlayerController와 같은 방식이다.
-        slotActions = new InputAction[SlotCount];
-
-        // 슬롯 0 — 기본 공격. 항상 쓰는 평타라 손가락이 늘 닿아 있는 Ctrl에 둔다.
-        // 이동이 방향키로 옮겨갔으므로 왼손이 방향키, 오른손이 Ctrl+QWER에 놓인다.
-        slotActions[0] = new InputAction("BasicAttack", InputActionType.Button);
-        slotActions[0].AddBinding("<Keyboard>/leftCtrl");
-        slotActions[0].AddBinding("<Keyboard>/rightCtrl");
-        slotActions[0].AddBinding("<Gamepad>/buttonWest");
-
-        slotActions[1] = new InputAction("Skill_Q", InputActionType.Button);
-        slotActions[1].AddBinding("<Keyboard>/q");
-        slotActions[1].AddBinding("<Gamepad>/buttonNorth");
-
-        slotActions[2] = new InputAction("Skill_W", InputActionType.Button);
-        slotActions[2].AddBinding("<Keyboard>/w");
-        slotActions[2].AddBinding("<Gamepad>/buttonEast");
-
-        slotActions[3] = new InputAction("Skill_E", InputActionType.Button);
-        slotActions[3].AddBinding("<Keyboard>/e");
-        slotActions[3].AddBinding("<Gamepad>/leftShoulder");
-
-        slotActions[4] = new InputAction("Skill_R", InputActionType.Button);
-        slotActions[4].AddBinding("<Keyboard>/r");
-        slotActions[4].AddBinding("<Gamepad>/rightShoulder");
-    }
-
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -133,7 +106,6 @@ public class SkillController : MonoBehaviour
 
         // 인스펙터에서 배열 길이가 어긋났을 때를 대비한다. 길이가 다르면 인덱스 접근이 예외를 낸다.
         slots = FitLength(slots);
-        slotActions = FitLength(slotActions);
     }
 
     /// <summary>배열을 슬롯 개수에 맞춘다. 모자라면 채우고 넘치면 자른다.</summary>
@@ -150,20 +122,10 @@ public class SkillController : MonoBehaviour
         return result;
     }
 
-    private void OnEnable()
-    {
-        foreach (var action in slotActions) action?.Enable();
-    }
-
-    private void OnDisable()
-    {
-        foreach (var action in slotActions) action?.Disable();
-    }
-
-    private void OnDestroy()
-    {
-        foreach (var action in slotActions) action?.Dispose();
-    }
+    // 수정(입력 중앙화): 액션을 켜고 끄고 해제하던 OnEnable/OnDisable/OnDestroy를 걷어냈다.
+    //
+    // 맵은 InputBindings가 부팅 때 켜고 끄지 않는다. 여기서 해제하면 이 오브젝트가 죽을 때
+    // 다른 곳이 쓰는 액션까지 같이 죽는다 — 액션의 주인이 바뀌었기 때문이다.
 
     private void Update()
     {
@@ -171,7 +133,8 @@ public class SkillController : MonoBehaviour
 
         for (int i = 0; i < SlotCount; i++)
         {
-            if (slotActions[i] != null && slotActions[i].WasPressedThisFrame()) TryUse(i);
+            var action = InputBindings.SkillAction(i);
+            if (action != null && action.WasPressedThisFrame()) TryUse(i);
         }
     }
 

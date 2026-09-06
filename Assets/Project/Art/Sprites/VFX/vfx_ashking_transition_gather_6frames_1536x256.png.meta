@@ -1,0 +1,445 @@
+fileFormatVersion: 2
+guid: 12fa5f782792aed4da3dada4c930a444
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3380604443756805935
+    second: vfx_ashking_transition_gather_6frames_1536x256_0
+  - first:
+      213: 5598107920411803318
+    second: vfx_ashking_transition_gather_6frames_1536x256_1
+  - first:
+      213: -5786069349647890425
+    second: vfx_ashking_transition_gather_6frames_1536x256_2
+  - first:
+      213: 4448108294858454533
+    second: vfx_ashking_transition_gather_6frames_1536x256_3
+  - first:
+      213: -1338411577117039231
+    second: vfx_ashking_transition_gather_6frames_1536x256_4
+  - first:
+      213: 6741197663076736189
+    second: vfx_ashking_transition_gather_6frames_1536x256_5
+  - first:
+      213: -3077648887047145422
+    second: vfx_ashking_transition_gather_6frames_1536x256_6
+  - first:
+      213: -4175570169310049357
+    second: vfx_ashking_transition_gather_6frames_1536x256_7
+  - first:
+      213: -7400492440876202016
+    second: vfx_ashking_transition_gather_6frames_1536x256_8
+  - first:
+      213: 6600256256545299743
+    second: vfx_ashking_transition_gather_6frames_1536x256_9
+  - first:
+      213: 6215375781399501865
+    second: vfx_ashking_transition_gather_6frames_1536x256_10
+  - first:
+      213: 2492020661890404892
+    second: vfx_ashking_transition_gather_6frames_1536x256_11
+  - first:
+      213: 7562319847855429066
+    second: vfx_ashking_transition_gather_6frames_1536x256_12
+  - first:
+      213: 4361877776561765014
+    second: vfx_ashking_transition_gather_6frames_1536x256_13
+  - first:
+      213: -517907523082630412
+    second: vfx_ashking_transition_gather_6frames_1536x256_14
+  - first:
+      213: 7202618414523053831
+    second: vfx_ashking_transition_gather_6frames_1536x256_15
+  - first:
+      213: -6815536743634953938
+    second: vfx_ashking_transition_gather_6frames_1536x256_16
+  - first:
+      213: -5866687856991917716
+    second: vfx_ashking_transition_gather_6frames_1536x256_17
+  - first:
+      213: 5239077780970812944
+    second: vfx_ashking_transition_gather_6frames_1536x256_18
+  - first:
+      213: -4536873142227619468
+    second: vfx_ashking_transition_gather_6frames_1536x256_19
+  - first:
+      213: 5083629897441317425
+    second: vfx_ashking_transition_gather_6frames_1536x256_20
+  - first:
+      213: -5565644792878768754
+    second: vfx_ashking_transition_gather_6frames_1536x256_21
+  - first:
+      213: 5042801152632482889
+    second: vfx_ashking_transition_gather_6frames_1536x256_22
+  - first:
+      213: -3244998848612514094
+    second: vfx_ashking_transition_gather_6frames_1536x256_23
+  - first:
+      213: 5877492096781447452
+    second: vfx_ashking_transition_gather_6frames_1536x256_24
+  - first:
+      213: -8654853173727407305
+    second: vfx_ashking_transition_gather_6frames_1536x256_25
+  - first:
+      213: 4206653258619463137
+    second: vfx_ashking_transition_gather_6frames_1536x256_26
+  - first:
+      213: -8928327731666781905
+    second: vfx_ashking_transition_gather_6frames_1536x256_27
+  - first:
+      213: -7147578243499826753
+    second: vfx_ashking_transition_gather_6frames_1536x256_28
+  - first:
+      213: -7232761527097365551
+    second: vfx_ashking_transition_gather_6frames_1536x256_29
+  - first:
+      213: 778052634303643961
+    second: vfx_ashking_transition_gather_6frames_1536x256_30
+  - first:
+      213: -4085138215743173990
+    second: vfx_ashking_transition_gather_6frames_1536x256_31
+  - first:
+      213: 8658897675513039692
+    second: vfx_ashking_transition_gather_6frames_1536x256_32
+  - first:
+      213: 8377981637804689540
+    second: vfx_ashking_transition_gather_6frames_1536x256_33
+  - first:
+      213: -1287871046475602755
+    second: vfx_ashking_transition_gather_6frames_1536x256_34
+  - first:
+      213: 9006333382934543067
+    second: vfx_ashking_transition_gather_6frames_1536x256_35
+  - first:
+      213: -5149903882988470540
+    second: vfx_ashking_transition_gather_6frames_1536x256_36
+  - first:
+      213: -2623409820351600436
+    second: vfx_ashking_transition_gather_6frames_1536x256_37
+  - first:
+      213: 4876345663819931300
+    second: vfx_ashking_transition_gather_6frames_1536x256_38
+  - first:
+      213: -6990587654456951560
+    second: vfx_ashking_transition_gather_6frames_1536x256_39
+  - first:
+      213: 924505797332736482
+    second: vfx_ashking_transition_gather_6frames_1536x256_40
+  - first:
+      213: 5957473540095621500
+    second: vfx_ashking_transition_gather_6frames_1536x256_41
+  - first:
+      213: 5286848773386976451
+    second: vfx_ashking_transition_gather_6frames_1536x256_42
+  - first:
+      213: -6465472175691715704
+    second: vfx_ashking_transition_gather_6frames_1536x256_43
+  - first:
+      213: 1230516272984650307
+    second: vfx_ashking_transition_gather_6frames_1536x256_44
+  - first:
+      213: 5584260854104614728
+    second: vfx_ashking_transition_gather_6frames_1536x256_45
+  - first:
+      213: -667721885862617631
+    second: vfx_ashking_transition_gather_6frames_1536x256_46
+  - first:
+      213: 1714492790449456621
+    second: vfx_ashking_transition_gather_6frames_1536x256_47
+  - first:
+      213: 8897588927548306468
+    second: vfx_ashking_transition_gather_6frames_1536x256_48
+  - first:
+      213: 7796300358778452297
+    second: vfx_ashking_transition_gather_6frames_1536x256_49
+  - first:
+      213: 1870020978252479763
+    second: vfx_ashking_transition_gather_6frames_1536x256_50
+  - first:
+      213: -1397265237029861509
+    second: vfx_ashking_transition_gather_6frames_1536x256_51
+  - first:
+      213: -9128351021770220703
+    second: vfx_ashking_transition_gather_6frames_1536x256_52
+  - first:
+      213: -4280183460289039149
+    second: vfx_ashking_transition_gather_6frames_1536x256_53
+  - first:
+      213: -5818807606229934409
+    second: vfx_ashking_transition_gather_6frames_1536x256_54
+  - first:
+      213: -5898288667258195040
+    second: vfx_ashking_transition_gather_6frames_1536x256_55
+  - first:
+      213: -8600242263538843405
+    second: vfx_ashking_transition_gather_6frames_1536x256_56
+  - first:
+      213: 153190483061412150
+    second: vfx_ashking_transition_gather_6frames_1536x256_57
+  - first:
+      213: 1146628052835622869
+    second: vfx_ashking_transition_gather_6frames_1536x256_58
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_boss_transition_gather_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91f727e79e015c449f74e1febedbf92
+      internalID: 1573271179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_boss_transition_gather_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2745af241af42d947af1e39a0fb6a101
+      internalID: -954071720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_boss_transition_gather_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec63e94128013241a3d027304101e2c
+      internalID: 296529471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_boss_transition_gather_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0adee82c994182547864f4873743f5cd
+      internalID: 220158089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_boss_transition_gather_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11aa6a18cc43c344abc11c1b0d835ff8
+      internalID: 1728797547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_boss_transition_gather_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498bbd0f4f0b62d419af1574d657640b
+      internalID: 599759424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 767f630cd40ed974b840862e4a5623ca
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_boss_transition_gather_00: 1573271179
+      vfx_boss_transition_gather_01: -954071720
+      vfx_boss_transition_gather_02: 296529471
+      vfx_boss_transition_gather_03: 220158089
+      vfx_boss_transition_gather_04: 1728797547
+      vfx_boss_transition_gather_05: 599759424
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

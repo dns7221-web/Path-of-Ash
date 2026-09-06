@@ -22,6 +22,13 @@ public class TitleScreen : MonoBehaviour
 
     private void Update()
     {
+        // 추가 생성 — 설정 같은 화면이 열려 있는 동안 타이틀은 입력에서 손을 뗀다.
+        //
+        // 이게 없으면 타이틀에서 설정을 연 순간 화면이 못 쓰게 된다. 슬라이더를 만지려고
+        // 누른 아무 키나 "아무 키로 시작"에 걸려 게임이 시작되고, 설정을 닫으려고 누른
+        // Esc는 아래 종료 키에 걸려 게임이 꺼진다. 둘 다 되돌릴 수 없는 동작이다.
+        if (PauseGate.IsPaused) return;
+
         if (!startOnAnyInput) return;
 
         // 종료 키를 먼저 본다.

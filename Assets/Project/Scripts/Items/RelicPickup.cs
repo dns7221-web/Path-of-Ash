@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -46,10 +47,24 @@ public class RelicPickup : MonoBehaviour
     private RelicData relic;
     private bool collected;
 
-    /// <summary>상자가 부른다. 어떤 유물인지와 어느 방향으로 튈지를 정한다.</summary>
-    public void Setup(RelicData data, Vector2 direction)
+    // 추가 생성 — 주웠을 때 알려줄 상대. 없으면 아무에게도 안 알린다.
+    private Action collectedCallback;
+
+    /// <summary>
+    /// 상자가 부른다. 어떤 유물인지와 어느 방향으로 튈지를 정한다.
+    ///
+    /// 수정(문 개방 시점): 주운 순간을 알려줄 <paramref name="onCollected"/>를 받는다.
+    /// 기본값이 있으므로 이미 <see cref="RelicInventory.Gained"/>를 듣는
+    /// <see cref="BossRelicReward"/> 같은 기존 호출부는 고칠 필요가 없다.
+    ///
+    /// 인벤토리의 획득 이벤트가 아니라 픽업이 직접 알리는 쪽을 고른 이유:
+    /// 상자 유물은 같은 종류가 다른 곳에서도 나올 수 있어서, 유물 종류로 맞춰보면
+    /// "다른 데서 주운 같은 유물"과 구별이 안 된다. 이 픽업이 먹혔는지는 이 픽업이 가장 확실히 안다.
+    /// </summary>
+    public void Setup(RelicData data, Vector2 direction, Action onCollected = null)
     {
         relic = data;
+        collectedCallback = onCollected;
 
         if (spriteRenderer != null && data != null)
         {
@@ -122,6 +137,12 @@ public class RelicPickup : MonoBehaviour
 
         collected = true;
         inventory.Acquire(relic);
+
+        // 추가 생성 — 인벤토리에 들어간 <b>뒤에</b> 알린다.
+        // 순서가 뒤바뀌면 상자가 문 종류를 정할 때 방금 먹은 열쇠가 아직 안 세어져 있다.
+        collectedCallback?.Invoke();
+        collectedCallback = null;
+
         Destroy(gameObject);
     }
 }

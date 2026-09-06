@@ -109,7 +109,8 @@ public static class AshPlayerAnimationBuilder
         // 플레이어용 함수로 들어가 clips["attack"]에서 터진다.
         if (clips.ContainsKey("slam")) BuildBossController(controller, clips);
         else if (clips.ContainsKey("idle")) BuildPlayerController(controller, clips);
-        else BuildWraithController(controller, clips);
+        else if (clips.ContainsKey("windup")) BuildWraithController(controller, clips);
+        else BuildSimpleEnemyController(controller, clips);
 
         EditorUtility.SetDirty(controller);
 
@@ -284,6 +285,11 @@ public static class AshPlayerAnimationBuilder
         controller.AddParameter(ParamDie, AnimatorControllerParameterType.Trigger);
         controller.AddParameter(ParamTransition, AnimatorControllerParameterType.Trigger);
 
+        // 추가 생성 — 궁극기 트리거. 상태는 클립이 있는 페이즈에만 생기지만 파라미터는
+        // 양쪽에 둔다. 없는 파라미터에 SetTrigger를 부르면 유니티가 경고를 남기는데,
+        // 1페이즈에서 실수로 불렸을 때 그 경고가 보이는 편이 조용히 넘어가는 것보다 낫다.
+        controller.AddParameter(ParamUltimate, AnimatorControllerParameterType.Trigger);
+
         var machine = controller.layers[0].stateMachine;
 
         var idle = AddState(machine, "Idle", clips["idle"], new Vector3(300f, 0f, 0f));
@@ -318,6 +324,122 @@ public static class AshPlayerAnimationBuilder
                                       new Vector3(860f, 0f, 0f));
             AddTriggerFromAnyState(machine, transition, ParamTransition);
         }
+
+        // 추가 생성 — 궁극기는 2페이즈 컨트롤러에만 있다.
+        //
+        // 전환 상태와 같은 방식(클립이 있을 때만 만든다)을 쓴 이유: 두 페이즈가 이 함수
+        // 하나를 같이 쓰는데, 페이즈를 인자로 받아 if로 가르면 <b>"어느 페이즈냐"를 시트 정의와
+        // 여기 두 곳에서 관리</b>하게 된다. 클립의 존재를 근거로 삼으면 진실이 한 곳에만 있다.
+        // 시트 목록(AshPlayerSpriteSheets)에 ultimate를 넣은 세트만 이 상태를 갖는다.
+        if (clips.TryGetValue("ultimate", out AnimationClip ultimateClip))
+        {
+            var ultimate = AddState(machine, "Ultimate", ultimateClip, new Vector3(860f, 120f, 0f));
+            AddTriggerFromAnyState(machine, ultimate, ParamUltimate);
+
+            // 다른 공격과 같이 재생이 끝나면 서기로 돌아간다.
+            AddExitTimeTransition(ultimate, idle);
+        }
+    }
+
+    /// <summary>
+    /// 시트가 아직 다 안 나온 적의 컨트롤러. <b>있는 클립만으로 만든다.</b>
+    ///
+    /// 잿불 사수는 지금 걷기 한 장뿐이다. 망령용 함수는 clips["windup"]을 그냥 꺼내 쓰기
+    /// 때문에 그대로 태우면 그 자리에서 터진다.
+    ///
+    /// <b>파라미터는 클립이 없어도 미리 선언한다.</b> 코드는 이미 Attack·Hit·Die 트리거를
+    /// 쏘고 있는데, 선언되지 않은 파라미터에 SetTrigger를 걸면 유니티가 <b>매번 경고를
+    /// 뱉는다.</b> 전투 중에 계속 찍히면 정작 봐야 할 로그가 묻힌다.
+    ///
+    /// 시트가 오면 아래 조건들이 차례로 참이 되면서 상태가 저절로 늘어난다.
+    /// </summary>
+    private static void BuildSimpleEnemyController(
+        AnimatorController controller, Dictionary<string, AnimationClip> clips)
+    {
+        controller.AddParameter(ParamAttack, AnimatorControllerParameterType.Trigger);
+        controller.AddParameter(ParamHit, AnimatorControllerParameterType.Trigger);
+        controller.AddParameter(ParamDie, AnimatorControllerParameterType.Trigger);
+
+        var machine = controller.layers[0].stateMachine;
+
+        if (!clips.TryGetValue("walk", out AnimationClip walkClip))
+        {
+            Debug.LogError("[적 애니메이션] walk 클립이 없어 컨트롤러를 만들 수 없다.");
+            return;
+        }
+
+        var walk = AddState(machine, "Walk", walkClip, new Vector3(300f, 0f, 0f));
+        machine.defaultState = walk;
+
+        // 공격 모션. 사수는 조준 → 발사이고, 자폭병은 점화 한 장으로 끝난다.
+        //
+        // 수정(자폭병 추가) — 클립 이름을 하나로 통일하지 않은 이유: 클립 이름이 곧 그 적이
+        // 무엇을 하는지다. 자폭병의 점화 클립에 aim이라고 적어두면, 나중에 시트를 다시 볼 때
+        // 코드보다 그 이름을 먼저 믿게 된다. 이름은 그대로 두고 여기서 받아준다.
+        if (TryGetAttackClip(clips, out AnimationClip attackClip, out string attackStateName))
+        {
+            var attack = AddState(machine, attackStateName, attackClip, new Vector3(560f, 0f, 0f));
+
+            var toAttack = walk.AddTransition(attack);
+            ApplyInstantTransition(toAttack);
+            toAttack.AddCondition(AnimatorConditionMode.If, 0f, ParamAttack);
+
+            if (clips.TryGetValue("shoot", out AnimationClip shootClip))
+            {
+                var shoot = AddState(machine, "Shoot", shootClip, new Vector3(820f, 0f, 0f));
+                AddExitTimeTransition(attack, shoot);
+                AddExitTimeTransition(shoot, walk);
+            }
+            else
+            {
+                AddExitTimeTransition(attack, walk);
+            }
+        }
+
+        // 피격과 사망은 어느 상태에서든 끼어들어야 한다.
+        if (clips.TryGetValue("hit", out AnimationClip hitClip))
+        {
+            var hit = AddState(machine, "Hit", hitClip, new Vector3(560f, 120f, 0f));
+            AddTriggerFromAnyState(machine, hit, ParamHit);
+            AddExitTimeTransition(hit, walk);
+        }
+
+        if (clips.TryGetValue("death", out AnimationClip deathClip))
+        {
+            var death = AddState(machine, "Death", deathClip, new Vector3(560f, 200f, 0f));
+            AddTriggerFromAnyState(machine, death, ParamDie);
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성 — Attack 트리거로 들어갈 클립을 찾는다. 적마다 이름이 다르다.
+    ///
+    /// 목록에 <b>순서가 있다.</b> 한 적이 두 개를 다 가질 일은 없지만, 있다면 앞엣것을 쓴다.
+    /// 상태 이름을 클립 이름에서 자동으로 만들지 않고 짝을 적어두는 이유: Animator 창에
+    /// 뜨는 이름이라 사람이 읽을 것이고, 자동 변환은 fuse를 Fuse로 바꾸는 규칙 하나를
+    /// 위해 문자열 조작을 들이는 셈이 된다.
+    /// </summary>
+    private static readonly (string clip, string state)[] AttackClips =
+    {
+        ("aim", "Aim"),     // 잿불 사수 — 뒤에 shoot가 이어진다
+        ("fuse", "Fuse"),   // 잿불 자폭병 — 이 한 장으로 끝나고, 끝나는 순간 터진다
+    };
+
+    /// <summary>있는 공격 클립 하나를 꺼낸다. 없으면 거짓 — 그 적은 걷기만 한다.</summary>
+    private static bool TryGetAttackClip(
+        Dictionary<string, AnimationClip> clips, out AnimationClip clip, out string stateName)
+    {
+        foreach (var (clipName, state) in AttackClips)
+        {
+            if (!clips.TryGetValue(clipName, out clip)) continue;
+
+            stateName = state;
+            return true;
+        }
+
+        clip = null;
+        stateName = null;
+        return false;
     }
 
     private static void BuildWraithController(

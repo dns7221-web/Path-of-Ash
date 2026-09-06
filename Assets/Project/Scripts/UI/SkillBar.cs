@@ -28,6 +28,14 @@ public class SkillBar : MonoBehaviour
     [Tooltip("각 슬롯의 남은 시간 텍스트. 비워도 된다.")]
     [SerializeField] private TMP_Text[] cooldownLabels;
 
+    // 추가 생성 — 슬롯 아래의 키 글자.
+    //
+    // 예전에는 빌더가 "Ctrl", "Q", "W", "E", "R"을 글자로 박아 넣었다. 키를 바꿀 수 없던
+    // 시절에는 그래도 됐지만, 이제 플레이어가 Q를 A로 바꿀 수 있다. 박아둔 글자는 그 순간
+    // 거짓말이 되고, 스킬바는 전투 중에 계속 보는 곳이라 제일 먼저 눈에 띈다.
+    [Tooltip("각 슬롯의 키 표기. 실제 바인딩에서 읽어 채운다. 비워도 된다.")]
+    [SerializeField] private TMP_Text[] keyLabels;
+
     [Header("색")]
     [Tooltip("쓸 수 있을 때의 아이콘 색.")]
     [SerializeField] private Color readyColor = Color.white;
@@ -47,6 +55,39 @@ public class SkillBar : MonoBehaviour
             Debug.LogWarning("[스킬 바] SkillController를 못 찾았다. 슬롯이 비어 보인다.", this);
 
         ApplyIcons();
+        RefreshKeyLabels();
+    }
+
+    private void OnEnable()
+    {
+        // 설정 창에서 키를 바꾸면 그 자리에서 반영돼야 한다.
+        // 켜질 때도 한 번 읽는다 — 꺼져 있는 동안 바뀌었을 수 있다.
+        InputBindings.BindingsChanged += RefreshKeyLabels;
+        RefreshKeyLabels();
+    }
+
+    private void OnDisable()
+    {
+        InputBindings.BindingsChanged -= RefreshKeyLabels;
+    }
+
+    /// <summary>
+    /// 슬롯의 키 글자를 지금 바인딩에서 다시 읽는다.
+    ///
+    /// 짧은 표기를 쓰는 이유: 기본 공격은 좌우 Ctrl 둘 다 먹지만 칸이 좁아서
+    /// "Left Ctrl / Right Ctrl"은 안 들어간다. 대표 키 하나만 "Ctrl"로 보여준다.
+    /// </summary>
+    private void RefreshKeyLabels()
+    {
+        if (keyLabels == null) return;
+
+        for (int i = 0; i < keyLabels.Length; i++)
+        {
+            if (keyLabels[i] == null) continue;
+            if (i >= InputBindings.SkillSlotIds.Length) continue;
+
+            keyLabels[i].text = InputBindings.ShortKeyTextFor(InputBindings.SkillSlotIds[i]);
+        }
     }
 
     /// <summary>

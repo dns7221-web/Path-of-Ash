@@ -63,6 +63,43 @@ public class HealthBar : MonoBehaviour
             return;
         }
 
+        // 수정(빈 게이지로 시작): 여기서도 값을 읽지만 이 값이 맞다는 보장이 없다.
+        // Awake 실행 순서는 오브젝트마다 정해져 있지 않아서, 이 줄이 Health.Awake보다
+        // 먼저 돌면 Current가 아직 0이다. 진짜 초기값은 아래 Start에서 다시 맞춘다.
+        SnapToCurrent();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 모든 Awake가 끝난 뒤 현재 체력으로 게이지를 다시 맞춘다.
+    ///
+    /// <b>왜 Start가 따로 필요한가.</b> <see cref="Health"/>는 Awake에서 <c>Current = Max</c>로
+    /// 체력을 채운다. 그런데 이 바의 Awake와 OnEnable이 그보다 <b>먼저</b> 돌면 그때 읽는
+    /// Current는 아직 0이라, 게이지가 <b>빈 칸으로 시작한다.</b> 그 뒤로는 Changed가 올 때까지
+    /// 계속 비어 있으므로 <b>한 대 맞아야 정상으로 돌아온다.</b> 실제로 그렇게 보였다.
+    ///
+    /// 에러도 경고도 안 나고, 실행 순서는 판마다 같으리란 보장이 없어서 <b>어떤 판에서는
+    /// 멀쩡하고 어떤 판에서는 비어 있는</b> 형태로 나타난다. 재현이 들쭉날쭉한 이유가 그것이다.
+    ///
+    /// 유니티는 <b>씬의 모든 Awake가 끝난 뒤에 Start를 부른다.</b> 그래서 여기서는 Health.Awake가
+    /// 반드시 끝나 있다. 실행 순서 설정(Script Execution Order)으로도 막을 수 있지만, 그건
+    /// 프로젝트 설정에 숨어 있어서 코드만 봐서는 왜 되는지 알 수 없다. 순서에 기대지 않고
+    /// <b>순서가 끝난 뒤에 한 번 더 읽는</b> 쪽이 이 파일 안에서 이유가 보인다.
+    /// </summary>
+    private void Start()
+    {
+        if (health == null) return;
+
+        SnapToCurrent();
+    }
+
+    /// <summary>
+    /// 추가 생성 — 현재 체력을 목표값과 표시값에 <b>동시에</b> 넣는다.
+    ///
+    /// displayed까지 같이 덮는 이유: 목표값만 넣으면 게이지가 0에서 가득까지 차오르는
+    /// 연출이 판 시작마다 보인다. 시작값은 연출 없이 그 자리에 있어야 한다.
+    /// </summary>
+    private void SnapToCurrent()
+    {
         target = Ratio(health.Current, health.Max);
         displayed = target;
     }

@@ -47,8 +47,39 @@ public class Health : MonoBehaviour
     /// </summary>
     public bool IsInvulnerableExternally { get; set; }
 
-    /// <summary>지금 데미지를 받을 수 없는 상태인가.</summary>
-    public bool IsInvulnerable => IsDead || IsInvulnerableExternally || invulnerableTimer > 0f;
+#if UNITY_EDITOR
+    /// <summary>
+    /// 추가 생성 — 조사용 무적. <see cref="PlayerInvincibleDebugToggle"/>이 F6으로 켜고 끈다.
+    ///
+    /// <see cref="IsInvulnerableExternally"/>를 같이 쓰지 않고 통로를 따로 뚫은 이유:
+    /// 저 값은 <see cref="PlayerController"/>가 <b>매 프레임</b> 대시 상태로 덮어쓴다.
+    /// 조사용으로 켜봐야 다음 프레임에 지워져서, 켠 사람 입장에서는 "무적이 안 걸린다"로만 보인다.
+    ///
+    /// 대시 무적과 성격도 다르다. 저건 게임 규칙이고 이건 규칙 바깥이다. 한 변수에 담으면
+    /// 나중에 "지금 무적인 이유가 무엇인지"를 구별할 수 없다.
+    /// </summary>
+    public bool IsInvulnerableForDebug { get; set; }
+#endif
+
+    /// <summary>
+    /// 지금 데미지를 받을 수 없는 상태인가.
+    ///
+    /// 수정(조사용 무적): 식 하나였던 것을 블록으로 풀었다. 조사용 조건은 에디터에만
+    /// 존재해야 하는데, 식 가운데에 <c>#if</c>를 끼우면 읽기가 어렵다.
+    /// </summary>
+    public bool IsInvulnerable
+    {
+        get
+        {
+            if (IsDead || IsInvulnerableExternally || invulnerableTimer > 0f) return true;
+
+#if UNITY_EDITOR
+            if (IsInvulnerableForDebug) return true;
+#endif
+
+            return false;
+        }
+    }
 
     /// <summary>
     /// <b>실제로 데미지를 받았을 때만</b> 불린다. 인자는 (남은 체력, 최대 체력).

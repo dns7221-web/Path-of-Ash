@@ -141,7 +141,7 @@ public static class AshBossPrefabBuilder
         if (isNew)
         {
             var healthObject = new SerializedObject(health);
-            healthObject.FindProperty("maxHealth").intValue = 40;
+            healthObject.FindProperty("maxHealth").intValue = 90;
             healthObject.ApplyModifiedPropertiesWithoutUndo();
         }
     }

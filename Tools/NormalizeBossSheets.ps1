@@ -31,7 +31,14 @@ param(
     # 프레임 하나로 인정할 최소 불투명 픽셀 수. 이보다 적으면 빈 프레임으로 보고 이웃에서 복제한다.
     [int]$EmptyThreshold = 500,
     # 미리보기 PNG 저장 경로
-    [string]$PreviewPath = "$env:TEMP\boss_normalize_preview.png"
+    [string]$PreviewPath = "$env:TEMP\boss_normalize_preview.png",
+
+    # 추가 생성 — 여기에 파일 이름을 주면 그 시트만 처리한다. 비우면 폴더 전체다.
+    #
+    # 왜 필요한가: 이 도구는 Apply 때 원본을 Raw\PreNormalize 에 백업하는데, 전체를 다시
+    # 돌리면 <b>이미 정규화된 그림이 백업 자리를 덮어쓴다.</b> 그러면 진짜 원본을 되찾을
+    # 방법이 없어진다. 시트 한 장을 새로 넣었을 때 그것만 맞추려고 전체를 돌릴 이유는 없다.
+    [string[]]$Only = @()
 )
 
 Add-Type -AssemblyName System.Drawing
@@ -43,8 +50,14 @@ $Cell       = 256
 $FrameCount = 6
 
 # 6프레임으로 슬라이스되지 않은 시트는 건드리지 않는다.
-# ultimate 2장은 통짜 1스프라이트에 알파도 없어서 별도 작업 대상이다.
-$Skip = @('ash-king-phase2-ultimate.png', 'ash-king-phase2-ultimate-playerlike.png')
+#
+# 수정(궁극기 연결): ash-king-phase2-ultimate.png를 목록에서 뺐다.
+# 알파가 없어서 제외했던 것인데, RemoveChromaKeyGreen.ps1로 초록 배경을 걷어내고 나면
+# 다른 시트와 똑같은 6프레임 시트다. 발 라인이 223이라 다른 시트(238)보다 15px 떠 있어서
+# 오히려 이 도구를 반드시 거쳐야 한다.
+#
+# -playerlike 쪽은 설치되지 않는 대체본이라 그대로 둔다.
+$Skip = @('ash-king-phase2-ultimate-playerlike.png')
 
 # 비트맵 전체를 32bpp ARGB 바이트 배열로 읽는다.
 # GetPixel을 프레임마다 6만 번 부르면 너무 느려서 LockBits로 한 번에 가져온다.
@@ -152,6 +165,10 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter *.png | Sort-Object Name)) {
         Write-Output "$($file.Name) : 건너뜀 (6프레임 시트 아님)"
         continue
     }
+
+    # 추가 생성 — -Only를 준 경우 그 목록에 없는 시트는 조용히 넘어간다.
+    # 목록을 안 주면(기본) 예전처럼 폴더 전체를 돈다.
+    if ($Only.Count -gt 0 -and -not ($Only -contains $file.Name)) { continue }
 
     $bmp = New-Object System.Drawing.Bitmap $file.FullName
     if ($bmp.Width -ne ($Cell * $FrameCount) -or $bmp.Height -ne $Cell) {

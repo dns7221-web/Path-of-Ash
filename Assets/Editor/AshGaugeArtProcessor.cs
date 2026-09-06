@@ -52,6 +52,11 @@ public static class AshGaugeArtProcessor
         // 인벤토리. 게이지는 아니지만 하는 일이 똑같다 — 초록을 지우고 그림 있는 곳만 잘라낸다.
         ("inventory-relic-panel-empty.png", "InventoryPanel.png"),
         ("inventory-slot.png", "InventorySlot.png"),
+
+        // 추가 생성 — 보스 체력바. 뽑아온 이름을 원본으로 두고 결과를 새 이름으로 낸다.
+        // 재 게이지와 같은 방식이다. 원본을 덮어쓰면 임계값을 잘못 잡았을 때 돌아갈 곳이 없다.
+        ("AshKingHealthBarFrame.png", "BossGaugeFrame.png"),
+        ("AshKingHealthBarFill.png", "BossGaugeFill.png"),
     };
 
     /// <summary>
@@ -100,8 +105,12 @@ public static class AshGaugeArtProcessor
         Color32[] pixels = texture.GetPixels32();
 
         // ── 1단계: 배경을 알파로 바꾼다 ──
-        // 코너 픽셀로 흰 배경인지 초록 배경인지 판단한다. 네 귀퉁이 중 하나만 봐도 되지만
-        // 모서리에 그림이 걸쳐 있을 수 있어 왼쪽 위를 쓴다(여백이 가장 확실한 자리다).
+        // 코너 픽셀로 흰 배경인지 초록 배경인지 판단한다.
+        //
+        // 수정(주석이 틀렸다): 여기서 보는 pixels[0]은 <b>왼쪽 아래</b>다. GetPixels32()가
+        // 아래쪽 줄부터 담아주기 때문이다. 판단에는 영향이 없지만(어느 귀퉁이든 배경이다),
+        // 이 배열의 y 방향을 착각한 채로 다른 계산을 붙이면 위아래가 뒤집힌다 —
+        // 실제로 아래 LogInteriorRegion에서 그 일이 있었다.
         bool greenBackground = IsGreen(pixels[0]);
 
         for (int i = 0; i < pixels.Length; i++)
@@ -283,9 +292,23 @@ public static class AshGaugeArtProcessor
             return;
         }
 
+        // 수정(위아래가 뒤집혀 있었다) — innerTop/innerBottom의 이름과 뜻이 반대였다.
+        //
+        // 이 배열은 GetPixels32()가 준 것이라 <b>아래쪽 줄부터</b> 담겨 있다. 그래서 위 반복문의
+        // y=0은 맨 윗줄이 아니라 <b>맨 아랫줄</b>이고, 먼저 만나는 innerTop은 실제로는 아래쪽
+        // 여백이다. 시트 정규화 도구가 발이 아니라 머리를 맞추고 있던 것과 똑같은 실수다.
+        //
+        // 지금까지 안 걸린 이유: 여태 다듬은 프레임들은 위아래 여백이 거의 같았다
+        // (체력 프레임 52 / 51). 값이 대칭이면 뒤집혀도 같은 숫자가 나온다. 보스 프레임은
+        // 위쪽 절반이 뿔 장식이라 상 212 / 하 67로 3배 넘게 차이 나서, 이 로그를 그대로
+        // 믿으면 <b>채움이 게이지 슬롯이 아니라 뿔 한가운데에 놓인다.</b>
+        //
+        // 변수 이름을 바꾸지 않고 출력에서 바로잡는 이유: 위 반복문은 "먼저 만난 줄"과
+        // "마지막 줄"이라는 뜻으로만 쓰고 있어서 그 자체로는 틀리지 않았다. 뜻이 정해지는
+        // 곳은 이 한 줄뿐이다.
         Debug.Log($"[게이지 다듬기] {name} 안쪽 채움 영역 = " +
-                  $"X {innerLeft}~{innerRight} / Y {innerTop}~{innerBottom}\n" +
+                  $"X {innerLeft}~{innerRight} / Y {height - 1 - innerBottom}~{height - 1 - innerTop} (위에서부터)\n" +
                   $"  AshGameHudBuilder 상수 기준 → 좌 {innerLeft} / 우 {width - 1 - innerRight} / " +
-                  $"상 {innerTop} / 하 {height - 1 - innerBottom}  (텍스처 {width}x{height})");
+                  $"상 {height - 1 - innerBottom} / 하 {innerTop}  (텍스처 {width}x{height})");
     }
 }

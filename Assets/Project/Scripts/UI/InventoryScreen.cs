@@ -39,11 +39,15 @@ public class InventoryScreen : MonoBehaviour
     [Header("대상 (비어 있으면 실행 시 찾는다)")]
     [SerializeField] private RelicInventory inventory;
 
+    // 추가 생성 — 보스 열쇠 화면. 이 화면을 열 때 저쪽을 닫아 한 번에 하나만 열리게 한다.
+    [Tooltip("보스 열쇠 화면. I/Tab을 누르면 저 화면에서 이 화면으로 전환된다.")]
+    [SerializeField] private BossKeyScreen bossKeyScreen;
+
     // 실행 중에 만든 보관함 칸들. 다시 그릴 때 재사용한다.
     private readonly System.Collections.Generic.List<RelicSlotView> bagSlots =
         new System.Collections.Generic.List<RelicSlotView>();
 
-    private InputAction toggleAction;
+    // 수정(입력 중앙화): 액션을 직접 만들지 않고 InputBindings에서 꺼내 쓴다.
     private bool isOpen;
 
     /// <summary>화면이 열려 있는가. 다른 시스템이 입력을 무시할 때 읽는다.</summary>
@@ -51,15 +55,19 @@ public class InventoryScreen : MonoBehaviour
 
     private void Awake()
     {
-        // 액션을 코드로 만드는 이유는 SkillController와 같다 — 키 하나짜리 조작을 위해
-        // .inputactions 에셋을 열고 저장하는 왕복이 없다.
-        toggleAction = new InputAction("Inventory", InputActionType.Button, "<Keyboard>/i");
-        toggleAction.AddBinding("<Keyboard>/tab");
-
+        // 수정(입력 중앙화): 여기서 만들던 I/Tab 바인딩은 InputBindings.Build로 옮겼다.
         if (inventory == null)
         {
             // 꺼져 있는 순간에도 찾아야 한다. 기본값은 비활성 오브젝트를 건너뛴다.
             inventory = FindFirstObjectByType<RelicInventory>(FindObjectsInactive.Include);
+        }
+
+        // 추가 생성 — 인스펙터에 안 꽂혀 있어도 스스로 찾는다.
+        // 서로를 찾는 구조지만 Awake에서 필드만 채우고 상대의 상태를 읽지는 않으므로
+        // 어느 쪽이 먼저 깨어나도 상관없다.
+        if (bossKeyScreen == null)
+        {
+            bossKeyScreen = FindFirstObjectByType<BossKeyScreen>(FindObjectsInactive.Include);
         }
 
         if (bagSlotTemplate != null) bagSlotTemplate.gameObject.SetActive(false);
@@ -81,6 +89,29 @@ public class InventoryScreen : MonoBehaviour
                            "자식 오브젝트를 root로 넣어라.", this);
         }
 
+        // 추가 생성(화면 중복) — 씬에 이 화면이 둘 이상이면 여기서 잡는다.
+        //
+        // <b>둘이면 게임이 멈춘 채로 복구가 안 된다.</b> 둘 다 I 키를 듣고 각자
+        // <see cref="PauseGate"/>에 들어가는데, 보스 열쇠 화면은 <c>FindFirstObjectByType</c>으로
+        // <b>하나만</b> 찾아 닫는다. 남은 하나가 스택에서 안 빠져서 timeScale이 0에 고정되고,
+        // 그 뒤로는 I를 눌러도 두 화면이 번갈아 켜지기만 해서 스택이 절대 안 빈다.
+        //
+        // 원인은 빌더(<c>AshInventoryUiBuilder</c>)에서 막았지만 그건 <b>도구를 다시 돌릴 때만</b>
+        // 듣는 방어다. 씬을 손으로 복사하거나 화면을 통째로 붙여 넣으면 같은 상태가 다시 만들어진다.
+        // 증상이 "게임이 멈췄다"로만 나타나서 원인을 찾는 데 제일 오래 걸리는 종류라,
+        // 실행하는 순간 개수를 대고 알려주는 편이 싸다.
+        //
+        // Awake에서 한 번만 도는 검사라 매 프레임 비용은 없다.
+        var duplicates = FindObjectsByType<InventoryScreen>(
+            FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        if (duplicates.Length > 1)
+        {
+            Debug.LogError($"[인벤토리] 씬에 인벤토리 화면이 {duplicates.Length}개 있다. 하나만 남겨라. " +
+                           "둘 이상이면 I와 T를 번갈아 누를 때 시간이 멈춘 채로 돌아오지 않는다. " +
+                           "Tools → 재의 길 → 인벤토리 화면 생성 을 다시 실행하면 정리된다.", this);
+        }
+
         // Time.timeScale은 건드리지 않는다. 시작할 때 1로 덮으면 다른 곳에서 멈춰둔 것까지 푼다.
         isOpen = false;
         if (root != null) root.SetActive(false);
@@ -88,36 +119,78 @@ public class InventoryScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        toggleAction.Enable();
         if (inventory != null) inventory.Changed += Redraw;
     }
 
     private void OnDisable()
     {
-        toggleAction.Disable();
         if (inventory != null) inventory.Changed -= Redraw;
 
-        // 화면을 켠 채로 씬이 바뀌면 시간이 멈춘 채 남는다. 반드시 되돌린다.
-        if (isOpen) Time.timeScale = 1f;
+        // 수정(PauseGate): 시간을 직접 되돌리지 않고 스택에서 빠지기만 한다.
+        // 여기서 1로 덮으면, 이 화면 위에 설정 화면이 겹쳐 있을 때 그쪽까지 시간이 풀린다.
+        // 스택이 비었는지는 PauseGate가 판단한다.
+        if (isOpen)
+        {
+            isOpen = false;
+            PauseGate.Close(this);
+        }
     }
 
     private void Update()
     {
         // timeScale이 0이어도 입력은 실제 시간으로 들어온다. 그래서 멈춘 상태에서도 닫을 수 있다.
-        if (toggleAction.WasPressedThisFrame()) SetOpen(!isOpen);
+        if (InputBindings.InventoryAction.WasPressedThisFrame()) SetOpen(!isOpen);
     }
 
     private void SetOpen(bool open)
     {
+        // 추가 생성 — 여는 쪽이 상대 화면을 닫는다.
+        //
+        // 이렇게 여는 쪽에 책임을 두면 "한 번에 하나만 열린다"가 두 화면 어디서 열든 지켜진다.
+        // 예전에는 보스 열쇠 화면이 매 프레임 인벤토리를 감시하다가 스스로 닫았는데,
+        // 그때 닫으면서 timeScale까지 1로 되돌려서 <b>인벤토리를 연 채로 시간이 흘렀다.</b>
+        //
+        // 수정(PauseGate): 시간 제어를 PauseGate로 넘기고, 순서를 <b>먼저 열고 뒤에 닫기</b>로 바꿨다.
+        // 상대를 먼저 닫으면 스택이 잠깐 0이 되어 timeScale이 1 → 0으로 튄다. 같은 프레임 안이라
+        // 실제로 시간이 흐르진 않지만, "전환 중에는 스택이 안 빈다"를 값으로 보장해두는 편이
+        // 나중에 화면을 더 붙였을 때 안전하다.
         isOpen = open;
+
+        if (open) PauseGate.Open(this);
+
+        if (open && bossKeyScreen != null) bossKeyScreen.CloseForSwitch();
 
         if (root != null) root.SetActive(open);
 
-        // 시간을 멈춘다. 물리가 멈추므로 적의 이동도 피격 판정도 같이 멈춘다.
-        Time.timeScale = open ? 0f : 1f;
+        // 시간은 PauseGate가 잡는다. 물리가 멈추므로 적의 이동도 피격 판정도 같이 멈춘다.
+        if (!open) PauseGate.Close(this);
 
         if (open) Redraw();
         else ShowInfo(RelicInstance.None);
+    }
+
+    /// <summary>
+    /// 추가 생성 — 보스 열쇠 화면으로 전환하느라 이 화면을 닫는다.
+    ///
+    /// <b>전환 중에 시간이 풀리면 안 되는 것이 핵심이다.</b> 전환은 "멈춘 상태를 유지한 채
+    /// 보는 것만 바꾸는" 동작이라, 닫는 쪽이 시간을 풀면 여는 쪽이 다시 멈추기 전까지
+    /// 한 프레임 동안 게임이 흘러버린다. 화면 뒤에서 적이 한 걸음 움직이는 그 한 프레임이
+    /// 실제로는 피격으로 이어진다.
+    ///
+    /// 수정(PauseGate): 예전에는 "timeScale을 안 건드린다"로 지켰지만, 이제는 상대가
+    /// <b>먼저 스택에 들어온 뒤</b>에 이 함수가 불리므로 여기서 빠져도 스택이 안 빈다.
+    /// 규칙을 지키는 주체가 주석에서 코드로 옮겨간 셈이다.
+    /// </summary>
+    public void CloseForSwitch()
+    {
+        if (!isOpen) return;
+
+        isOpen = false;
+        if (root != null) root.SetActive(false);
+
+        PauseGate.Close(this);
+
+        ShowInfo(RelicInstance.None);
     }
 
     /// <summary>보관함과 장착 칸을 화면에 다시 그린다.</summary>

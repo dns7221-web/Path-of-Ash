@@ -1,0 +1,538 @@
+fileFormatVersion: 2
+guid: 336931ec13291294fb65d6fbe222424c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8192031132067514996
+    second: vfx_bomber_blast_6frames_1536x256_0
+  - first:
+      213: 5393292904612360952
+    second: vfx_bomber_blast_6frames_1536x256_1
+  - first:
+      213: -153977221660323290
+    second: vfx_bomber_blast_6frames_1536x256_2
+  - first:
+      213: 7461812401400855820
+    second: vfx_bomber_blast_6frames_1536x256_3
+  - first:
+      213: -7257466931383584450
+    second: vfx_bomber_blast_6frames_1536x256_4
+  - first:
+      213: 8557499722550695777
+    second: vfx_bomber_blast_6frames_1536x256_5
+  - first:
+      213: -8480970448588210980
+    second: vfx_bomber_blast_6frames_1536x256_6
+  - first:
+      213: 356536233847923434
+    second: vfx_bomber_blast_6frames_1536x256_7
+  - first:
+      213: 204185342600085366
+    second: vfx_bomber_blast_6frames_1536x256_8
+  - first:
+      213: -8879506805805369791
+    second: vfx_bomber_blast_6frames_1536x256_9
+  - first:
+      213: -6243879661429347642
+    second: vfx_bomber_blast_6frames_1536x256_10
+  - first:
+      213: 2142415233728955504
+    second: vfx_bomber_blast_6frames_1536x256_11
+  - first:
+      213: 521743541225517174
+    second: vfx_bomber_blast_6frames_1536x256_12
+  - first:
+      213: -9081782970672870704
+    second: vfx_bomber_blast_6frames_1536x256_13
+  - first:
+      213: -5688570534739783500
+    second: vfx_bomber_blast_6frames_1536x256_14
+  - first:
+      213: 7877639203934047996
+    second: vfx_bomber_blast_6frames_1536x256_15
+  - first:
+      213: 7894610785808236338
+    second: vfx_bomber_blast_6frames_1536x256_16
+  - first:
+      213: -2056985521894164151
+    second: vfx_bomber_blast_6frames_1536x256_17
+  - first:
+      213: -5940832969031564673
+    second: vfx_bomber_blast_6frames_1536x256_18
+  - first:
+      213: -683934393514427686
+    second: vfx_bomber_blast_6frames_1536x256_19
+  - first:
+      213: 7831734444504867426
+    second: vfx_bomber_blast_6frames_1536x256_20
+  - first:
+      213: 5810417002886792825
+    second: vfx_bomber_blast_6frames_1536x256_21
+  - first:
+      213: -5361685564000859085
+    second: vfx_bomber_blast_6frames_1536x256_22
+  - first:
+      213: -8138210101292119592
+    second: vfx_bomber_blast_6frames_1536x256_23
+  - first:
+      213: 412472204979400563
+    second: vfx_bomber_blast_6frames_1536x256_24
+  - first:
+      213: 2891367974324262156
+    second: vfx_bomber_blast_6frames_1536x256_25
+  - first:
+      213: 7917434179036595098
+    second: vfx_bomber_blast_6frames_1536x256_26
+  - first:
+      213: 335276823005204065
+    second: vfx_bomber_blast_6frames_1536x256_27
+  - first:
+      213: 1373313428415296140
+    second: vfx_bomber_blast_6frames_1536x256_28
+  - first:
+      213: -6288858234239222723
+    second: vfx_bomber_blast_6frames_1536x256_29
+  - first:
+      213: 7418351726768371619
+    second: vfx_bomber_blast_6frames_1536x256_30
+  - first:
+      213: -1015895569564928969
+    second: vfx_bomber_blast_6frames_1536x256_31
+  - first:
+      213: -5803634819910605845
+    second: vfx_bomber_blast_6frames_1536x256_32
+  - first:
+      213: 5188850486647052123
+    second: vfx_bomber_blast_6frames_1536x256_33
+  - first:
+      213: 4458196661872002736
+    second: vfx_bomber_blast_6frames_1536x256_34
+  - first:
+      213: 2652110442822782629
+    second: vfx_bomber_blast_6frames_1536x256_35
+  - first:
+      213: -8903170147088428089
+    second: vfx_bomber_blast_6frames_1536x256_36
+  - first:
+      213: -3143207621122396267
+    second: vfx_bomber_blast_6frames_1536x256_37
+  - first:
+      213: 3182157065877148045
+    second: vfx_bomber_blast_6frames_1536x256_38
+  - first:
+      213: -8860614601542062729
+    second: vfx_bomber_blast_6frames_1536x256_39
+  - first:
+      213: -1733943693107729036
+    second: vfx_bomber_blast_6frames_1536x256_40
+  - first:
+      213: -5681247488995223057
+    second: vfx_bomber_blast_6frames_1536x256_41
+  - first:
+      213: 180605622041634373
+    second: vfx_bomber_blast_6frames_1536x256_42
+  - first:
+      213: 6655838715983164038
+    second: vfx_bomber_blast_6frames_1536x256_43
+  - first:
+      213: 4251811705807634206
+    second: vfx_bomber_blast_6frames_1536x256_44
+  - first:
+      213: -1751694391792384814
+    second: vfx_bomber_blast_6frames_1536x256_45
+  - first:
+      213: -9102138319908529810
+    second: vfx_bomber_blast_6frames_1536x256_46
+  - first:
+      213: 4941987733846578269
+    second: vfx_bomber_blast_6frames_1536x256_47
+  - first:
+      213: 6760997945289503353
+    second: vfx_bomber_blast_6frames_1536x256_48
+  - first:
+      213: -7828877028201265816
+    second: vfx_bomber_blast_6frames_1536x256_49
+  - first:
+      213: -977148861883725859
+    second: vfx_bomber_blast_6frames_1536x256_50
+  - first:
+      213: -7738242808936326619
+    second: vfx_bomber_blast_6frames_1536x256_51
+  - first:
+      213: -4815202306932334939
+    second: vfx_bomber_blast_6frames_1536x256_52
+  - first:
+      213: 8494940687227217927
+    second: vfx_bomber_blast_6frames_1536x256_53
+  - first:
+      213: 7361308010393538071
+    second: vfx_bomber_blast_6frames_1536x256_54
+  - first:
+      213: 7291181502157589080
+    second: vfx_bomber_blast_6frames_1536x256_55
+  - first:
+      213: 8513269574004876371
+    second: vfx_bomber_blast_6frames_1536x256_56
+  - first:
+      213: -5172135363985615421
+    second: vfx_bomber_blast_6frames_1536x256_57
+  - first:
+      213: -6160996679084874418
+    second: vfx_bomber_blast_6frames_1536x256_58
+  - first:
+      213: 3490301598207950682
+    second: vfx_bomber_blast_6frames_1536x256_59
+  - first:
+      213: 4579932299874513578
+    second: vfx_bomber_blast_6frames_1536x256_60
+  - first:
+      213: 4489424609240409938
+    second: vfx_bomber_blast_6frames_1536x256_61
+  - first:
+      213: -7111031141996478304
+    second: vfx_bomber_blast_6frames_1536x256_62
+  - first:
+      213: -6803327806662852933
+    second: vfx_bomber_blast_6frames_1536x256_63
+  - first:
+      213: 2386117850123666996
+    second: vfx_bomber_blast_6frames_1536x256_64
+  - first:
+      213: -319319536637920553
+    second: vfx_bomber_blast_6frames_1536x256_65
+  - first:
+      213: -89039937351632979
+    second: vfx_bomber_blast_6frames_1536x256_66
+  - first:
+      213: 8594878795236813054
+    second: vfx_bomber_blast_6frames_1536x256_67
+  - first:
+      213: 7247779241485988798
+    second: vfx_bomber_blast_6frames_1536x256_68
+  - first:
+      213: 5339939569323108748
+    second: vfx_bomber_blast_6frames_1536x256_69
+  - first:
+      213: 601282374311398349
+    second: vfx_bomber_blast_6frames_1536x256_70
+  - first:
+      213: 7804366528213026088
+    second: vfx_bomber_blast_6frames_1536x256_71
+  - first:
+      213: -1635312431360270120
+    second: vfx_bomber_blast_6frames_1536x256_72
+  - first:
+      213: -9104811735292214020
+    second: vfx_bomber_blast_6frames_1536x256_73
+  - first:
+      213: 6639471439569304580
+    second: vfx_bomber_blast_6frames_1536x256_74
+  - first:
+      213: -6182555593476212987
+    second: vfx_bomber_blast_6frames_1536x256_75
+  - first:
+      213: -8797904787525362986
+    second: vfx_bomber_blast_6frames_1536x256_76
+  - first:
+      213: 3579303840141229539
+    second: vfx_bomber_blast_6frames_1536x256_77
+  - first:
+      213: 2448471877880932424
+    second: vfx_bomber_blast_6frames_1536x256_78
+  - first:
+      213: 4158232305283243959
+    second: vfx_bomber_blast_6frames_1536x256_79
+  - first:
+      213: -8382011592649669480
+    second: vfx_bomber_blast_6frames_1536x256_80
+  - first:
+      213: -1245803630483269386
+    second: vfx_bomber_blast_6frames_1536x256_81
+  - first:
+      213: 3633314019983349111
+    second: vfx_bomber_blast_6frames_1536x256_82
+  - first:
+      213: 2769040414762258948
+    second: vfx_bomber_blast_6frames_1536x256_83
+  - first:
+      213: -5978779791816381462
+    second: vfx_bomber_blast_6frames_1536x256_84
+  - first:
+      213: 7026334073730558536
+    second: vfx_bomber_blast_6frames_1536x256_85
+  - first:
+      213: -4076769886663612671
+    second: vfx_bomber_blast_6frames_1536x256_86
+  - first:
+      213: -8012950719930768401
+    second: vfx_bomber_blast_6frames_1536x256_87
+  - first:
+      213: 8954095523840938502
+    second: vfx_bomber_blast_6frames_1536x256_88
+  - first:
+      213: -7654472130020078323
+    second: vfx_bomber_blast_6frames_1536x256_89
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_bomber_blast_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a3181d5051d294385e533cf0999e7b
+      internalID: 918810581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_bomber_blast_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3426cd3c7b97e32498b27c7737796272
+      internalID: -1193208010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_bomber_blast_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91942baa576e1ef46926e8217e09f841
+      internalID: 301825481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_bomber_blast_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3523d74cd340e44bb38adc0ed18fd4
+      internalID: 150374131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_bomber_blast_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d41ba6121cdd9438790a8c9f07775f
+      internalID: -1530450033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_bomber_blast_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 383ab601a2522604da3e0f9a70c52909
+      internalID: 345539763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6cdd0425fc7f0de46bcb347c51f004b2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_bomber_blast_00: 918810581
+      vfx_bomber_blast_01: -1193208010
+      vfx_bomber_blast_02: 301825481
+      vfx_bomber_blast_03: 150374131
+      vfx_bomber_blast_04: -1530450033
+      vfx_bomber_blast_05: 345539763
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

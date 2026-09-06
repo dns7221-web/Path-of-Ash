@@ -54,16 +54,55 @@ param(
     [bool]$CheckVertical = $true,
 
     # 미리보기 PNG 저장 경로
-    [string]$PreviewPath = "$env:TEMP\fragment_cleanup_preview.png"
+    [string]$PreviewPath = "$env:TEMP\fragment_cleanup_preview.png",
+
+    # 훑을 시트 폴더. 비우면 플레이어 8방향 시트 폴더를 쓴다.
+    #
+    # 왜 열어둔가: 원래 이 도구는 플레이어 폴더에 못박혀 있었다. 그런데 같은 증상이
+    # <b>보스 전환 시트에서도</b> 나왔다 — 갑옷 붕괴 클립 뒤쪽 세 프레임에 옆 칸에서
+    # 넘어온 조각이 있었다. 판정 조건(본체 대비 비율, 최소 픽셀 수)은 여러 번 헛발질하며
+    # 잡은 것이라 <b>복사본을 만들면 그 함정을 다시 밟는다.</b> 대상만 열어준다.
+    [string]$SheetDir = "",
+
+    # 행 이름. 8방향 시트는 방향 이름이지만, 한 줄짜리 시트는 이름이 없다.
+    # 보고와 미리보기 라벨에만 쓴다.
+    [string[]]$RowNames = @('S','SW','W','NW','N','NE','E','SE'),
+
+    # 훑을 파일 이름 패턴. 폴더에 셀 크기가 다른 시트가 섞여 있으면 좁혀서 쓴다.
+    [string]$FilePattern = "*.png",
+
+    # 본체와 <b>가로 범위가 전혀 안 겹치는</b> 조각도 지운다.
+    #
+    # 왜 따로 뒀나: 기본 판정은 "칸 가장자리 EdgeMargin 안"이다. 그런데 보스 전환 알 시트는
+    # 다음 프레임 알의 왼쪽 끄트머리가 <b>칸 가장자리가 아니라 한참 안쪽(x 183~209)에</b>
+    # 잘려 남아 있었다. 가장자리만 보면 영영 안 잡힌다.
+    #
+    # 그렇다고 EdgeMargin을 60까지 키우면 <b>정상적으로 흩어진 재까지</b> 사정권에 들어온다.
+    # 대신 "본체 가로 범위 밖에 통째로 벗어났는가"를 본다. 옆 칸에서 넘어온 그림은 본체와
+    # 좌우로 떨어져 있고, 본체 주변에 흩어진 파편은 대개 본체의 가로 범위 안에 있다.
+    #
+    # 기본은 꺼둔다. 플레이어 시트에서 이미 확인된 동작을 바꾸지 않기 위해서다.
+    [switch]$OutsideBody
 )
 
 Add-Type -AssemblyName System.Drawing
 
 $ErrorActionPreference = 'Stop'
-$SheetDir  = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot "..\Assets\Project\Art\Sprites\Player\Topdown35\Production8Dir"))
+if ([string]::IsNullOrWhiteSpace($SheetDir)) {
+    $SheetDir = Join-Path $PSScriptRoot "..\Assets\Project\Art\Sprites\Player\Topdown35\Production8Dir"
+}
+$SheetDir  = [System.IO.Path]::GetFullPath($SheetDir)
 $BackupDir = Join-Path $SheetDir "Raw\PreFragmentCleanup"
 $Cell = 256
-$Dirs = @('S','SW','W','NW','N','NE','E','SE')
+$Dirs = $RowNames
+
+# 행 이름이 모자라면 번호로 부른다. 한 줄짜리 시트에 8방향 이름을 붙이면
+# 보고가 "S f3"으로 나와서 <b>있지도 않은 방향</b>을 가리킨다.
+function Get-RowLabel {
+    param([int]$Index)
+    if ($Index -lt $Dirs.Count) { return $Dirs[$Index] }
+    return "r$Index"
+}
 
 # 파일을 잠그지 않고 비트맵을 연다.
 # Bitmap::FromFile은 핸들을 붙들고 있어서 같은 경로로 Save하면 GDI+ 오류가 난다.
@@ -87,7 +126,7 @@ $previewRows = @()
 $totalErased = 0
 $totalCells = 0
 
-foreach ($file in (Get-ChildItem $SheetDir -Filter *.png -File | Sort-Object Name)) {
+foreach ($file in (Get-ChildItem $SheetDir -Filter $FilePattern -File | Sort-Object Name)) {
     $bmp = Open-Unlocked -Path $file.FullName
     $cols = [int]($bmp.Width / $Cell)
     $rows = [int]($bmp.Height / $Cell)
@@ -121,7 +160,12 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter *.png -File | Sort-Object Nam
             }
 
             # 가장자리에 아무것도 없으면 넘어온 조각도 없다. 대부분의 칸이 여기서 빠진다.
-            if ($total -eq 0 -or -not $hasEdge) { continue }
+            #
+            # 추가 생성 — OutsideBody를 켜면 가장자리 조건으로 칸을 거르지 않는다.
+            # 알 시트의 조각은 칸 <b>안쪽</b>(x 183~209)에 있어서, 여기서 걸러버리면
+            # 덩어리를 세어보기도 전에 칸이 통째로 넘어간다.
+            if ($total -eq 0) { continue }
+            if (-not $hasEdge -and -not $OutsideBody) { continue }
 
             # 칸 하나에서 지운 것을 모아 한 줄로 보고한다. 조각마다 한 줄씩 찍으면 읽을 수가 없다.
             # 반드시 칸마다 0으로 되돌린다 — 안 그러면 PowerShell은 앞 칸 값을 그대로 이어써서
@@ -168,20 +212,41 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter *.png -File | Sort-Object Nam
                         }
                     }
 
-                    $comps.Add(@{ Pixels = $comp; Size = $comp.Count; Edge = $touchesEdge })
+                    # 추가 생성 — 가로 범위. OutsideBody 판정에 쓴다.
+                    $minX = $Cell; $maxX = -1
+                    foreach ($i in $comp) {
+                        $iy = [int]($i / $Cell)
+                        $ix = $i - $iy * $Cell
+                        if ($ix -lt $minX) { $minX = $ix }
+                        if ($ix -gt $maxX) { $maxX = $ix }
+                    }
+
+                    $comps.Add(@{ Pixels = $comp; Size = $comp.Count; Edge = $touchesEdge; MinX = $minX; MaxX = $maxX })
                 }
             }
 
             # 3) 가장 큰 덩어리를 찾는다. 이건 무슨 일이 있어도 안 지운다.
             $maxSize = 0
-            foreach ($cp in $comps) { if ($cp.Size -gt $maxSize) { $maxSize = $cp.Size } }
+            $body = $null
+            foreach ($cp in $comps) { if ($cp.Size -gt $maxSize) { $maxSize = $cp.Size; $body = $cp } }
             $fragLimit = $maxSize * $MaxFragmentRatio
 
             # 4) 가장자리에 걸쳐 있고 충분히 작은 덩어리만 지운다.
             foreach ($cp in $comps) {
                 if ($cp.Size -ge $fragLimit) { continue }
-                if (-not $cp.Edge) { continue }
                 if ($cp.Size -lt $MinFragmentPixels) { continue }
+
+                # 추가 생성 — 본체와 가로로 전혀 안 겹치면 넘어온 그림으로 본다.
+                #
+                # 알 시트의 조각은 칸 가장자리가 아니라 x 183~209(칸 폭의 71~82%)에 있었다.
+                # 가장자리만 보는 기본 판정으로는 영영 안 잡힌다. 그렇다고 EdgeMargin을
+                # 그만큼 키우면 정상적으로 흩어진 재까지 사정권에 들어온다.
+                $outside = $false
+                if ($OutsideBody -and $null -ne $body) {
+                    if ($cp.MaxX -lt $body.MinX -or $cp.MinX -gt $body.MaxX) { $outside = $true }
+                }
+
+                if (-not $cp.Edge -and -not $outside) { continue }
 
                 foreach ($i in $cp.Pixels) {
                     $iy = [int]($i / $Cell)
@@ -196,7 +261,7 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter *.png -File | Sort-Object Nam
             }
 
             if ($cellPieces -gt 0) {
-                $sheetReport += ("{0} f{1}: {2}개 {3}px" -f $Dirs[$r], $c, $cellPieces, $cellPixels)
+                $sheetReport += ("{0} f{1}: {2}개 {3}px" -f (Get-RowLabel $r), $c, $cellPieces, $cellPixels)
                 $totalCells++
             }
         }
@@ -216,7 +281,7 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter *.png -File | Sort-Object Nam
     foreach ($r in $touchedRows.Keys) {
         $srcRect = New-Object System.Drawing.Rectangle 0, ($r * $Cell), ($cols * $Cell), $Cell
         $before = $bmp.Clone($srcRect, $bmp.PixelFormat)
-        $previewRows += @{ Label = "$($file.Name)  $($Dirs[$r])"; Before = $before; Row = $r; Cols = $cols; File = $file.FullName }
+        $previewRows += @{ Label = "$($file.Name)  $(Get-RowLabel $r)"; Before = $before; Row = $r; Cols = $cols; File = $file.FullName }
     }
 
     # 지운 결과를 비트맵에 되돌린다.

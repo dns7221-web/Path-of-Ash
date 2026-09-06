@@ -27,16 +27,47 @@ public static class AshTutorialRoomBuilder
     private const string CampSpritePath =
         "Assets/Project/Art/Environment/Rooms/ash-king-safe-camp-room.png";
 
+    private const string GuideRootName = "TutorialGuide";
 
-    /// <summary>안내 문구. 방 안에서 위에서 아래로 이 순서로 놓인다.</summary>
-    // 실제 바인딩과 반드시 일치해야 한다. PlayerController는 이동을 방향키에만 걸어뒀고
-    // WASD는 없다. 튜토리얼이 없는 키를 가르치면 첫 화면에서 조작을 못 하게 된다.
+    /// <summary>
+    /// 새로 만드는 줄의 기본 글자 크기.
+    ///
+    /// 이미 있는 줄에는 안 넣는다 — 사람이 인스펙터에서 키워둔 값을 되돌리면 안 된다.
+    /// 처음부터 크게 나오길 원하면 이 값을 올리고 줄을 지운 뒤 도구를 다시 돌리면 된다.
+    /// </summary>
+    private const float DefaultGuideFontSize = 6f;
+
+    /// <summary>안내 문구용 한글 폰트. 설정 화면과 같은 96pt 아틀라스를 쓴다.</summary>
+    private const string GuideFontPath =
+        "Assets/Project/Art/UI/Fonts/NeoDunggeunmoPro-Regular96.asset";
+
+
+    /// <summary>
+    /// 안내 문구. 방 안에서 위에서 아래로 이 순서로 놓인다.
+    ///
+    /// <b>키를 글자로 안 적는다.</b> 중괄호 안에 액션 이름을 적으면 실행 중에 실제 키로
+    /// 바뀐다(<see cref="ControlHintLabel"/>). 플레이어가 Q를 A로 바꾸면 이 안내도 A가 된다.
+    ///
+    /// 예전에는 키를 글자로 적어두고 "실제 바인딩과 반드시 일치해야 한다"는 주석을 달아뒀는데,
+    /// 그러고도 어긋났다 — 대시가 Shift로 옮겨간 뒤에도 안내는 "Ctrl - 대시"였고, 정작
+    /// Ctrl은 기본 공격이 됐는데 공격 안내는 아예 없었다. 첫 화면에서 틀린 조작을 가르치면
+    /// 플레이어는 게임이 고장났다고 판단한다. <b>사람이 지키기로 한 규칙은 지켜지지 않는다.</b>
+    ///
+    /// 이동만 글자로 남는 이유: 키 네 개가 한 조작(복합 바인딩)이라 자리표시자 하나로
+    /// 표현할 수 없다. 그래서 이동은 리바인딩 대상에서도 빠져 있다.
+    ///
+    /// <b>한 줄에 두 조작을 몰지 않는다.</b> 예전에 이동과 대시를 한 줄에 합쳤더니,
+    /// 키 이름이 길어졌을 때(Left Shift / Right Shift) 한 줄이 방 밖으로 넘쳤다.
+    /// 인스펙터에서 줄바꿈을 넣어 고쳐도 실행하면 이 표의 문구가 덮어써서 되돌아간다.
+    /// <b>줄을 나누는 일은 문구의 주인인 여기서 해야 한다.</b> 줄마다 오브젝트가 따로
+    /// 생기므로 위치도 줄 단위로 맞출 수 있다.
+    /// </summary>
     private static readonly string[] GuideLines =
     {
         "방향키 - 이동",
-        "Ctrl - 대시 (회피)",
-        "Q W E R - 스킬",
-        "아래 문으로 나가면 던전이 시작된다",
+        "{Dash} - 대시",
+        "{BasicAttack} - 공격",
+        "{Skill1} {Skill2} {Skill3} {Skill4} - 스킬",
     };
 
     [MenuItem("Tools/재의 길/튜토리얼 방 생성")]
@@ -74,8 +105,18 @@ public static class AshTutorialRoomBuilder
             // 출구 위치도 같이 맞춘다. 배경만 바꾸면 문은 그림 아래인데 판정은 위에 남는다.
             LayoutTutorialRoom(existing);
 
+            // 추가 생성 — 안내 문구도 다시 만든다.
+            //
+            // 예전에는 이 갈래에서 안내를 건너뛰었다. 그래서 <b>도구를 아무리 다시 돌려도
+            // 안내는 손도 안 댄 상태로 남았다.</b> 조작이 바뀌어도 안내가 옛 키를 말하는
+            // 상황이 여기서 나왔다. "설정을 다시 적용한다"는 이 갈래의 목적에 안내도 포함된다.
+            //
+            // 손으로 고친 문구가 있으면 덮어쓴다. 그게 의도다 — 안내가 실제 조작을 따라가려면
+            // 문구의 주인이 하나여야 하고, 그 주인은 GuideLines다.
+            AddGuideText(existing);
+
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
-            Debug.Log($"[튜토리얼] 이미 있는 {existing.name}에 설정과 배경을 다시 적용했다.", existing);
+            Debug.Log($"[튜토리얼] 이미 있는 {existing.name}에 설정·배경·안내를 다시 적용했다.", existing);
             return;
         }
 
@@ -252,6 +293,16 @@ public static class AshTutorialRoomBuilder
     /// 별도 UI 캔버스를 만들지 않고 월드 텍스트를 쓰는 이유:
     /// 캔버스는 화면에 고정돼서 던전에 들어가도 따라온다. 방에 놓인 글자는 그 방을 나가면
     /// 자연스럽게 사라지고, 방을 껐다 켜는 기존 구조에 그대로 얹힌다.
+    ///
+    /// <b>이미 있는 줄은 만들지 않고 문구만 다시 넣는다.</b>
+    ///
+    /// 예전에는 통째로 지우고 새로 만들었다. 그러면 도구를 돌릴 때마다 <b>손으로 맞춰둔
+    /// 글자 크기와 위치가 전부 날아간다.</b> 방 바닥의 글자는 배경 그림과 캐릭터 사이에
+    /// 놓이는 것이라 계산으로는 못 맞추고 사람이 눈으로 맞춰야 하는데, 그렇게 맞춘 값을
+    /// 도구가 되돌리면 조정할 때마다 다시 맞춰야 한다. 소품 배치 도구와 같은 판단이다.
+    ///
+    /// 그래서 이 함수가 <b>매번 책임지는 것은 문구 하나뿐</b>이다. 크기·위치·색·정렬은
+    /// 새로 만들 때만 기본값을 넣고, 그 뒤로는 사람이 정한 값을 존중한다.
     /// </summary>
     private static void AddGuideText(RoomController room)
     {
@@ -259,44 +310,145 @@ public static class AshTutorialRoomBuilder
         if (renderer == null) return;
 
         Bounds bounds = renderer.bounds;
-        var guideRoot = new GameObject("TutorialGuide");
-        guideRoot.transform.SetParent(room.transform, false);
+
+        // 뿌리는 있으면 그대로 쓴다. 지우면 그 밑의 줄들이 같이 사라진다.
+        Transform guideRoot = room.transform.Find(GuideRootName);
+        if (guideRoot == null)
+        {
+            var created = new GameObject(GuideRootName);
+            created.transform.SetParent(room.transform, false);
+            guideRoot = created.transform;
+        }
 
         TMP_FontAsset font = FindFont();
 
+        // 키 문구는 줄마다 같은 값을 쓰므로 루프 밖에서 한 번만 만든다.
+        // 안에서 만들면 줄 수만큼 액션 맵을 들여다보게 되고, 그때마다 경고가 반복해서 찍힌다.
         for (int i = 0; i < GuideLines.Length; i++)
         {
-            var line = new GameObject($"Guide_{i}");
-            line.transform.SetParent(guideRoot.transform, false);
+            string lineName = $"Guide_{i}";
 
-            // 방 위쪽부터 아래로 고르게 배치한다. 걸어 내려오면서 차례로 읽히게 하려는 것이다.
-            float t = (i + 1f) / (GuideLines.Length + 1f);
-            float y = Mathf.Lerp(bounds.max.y * 0.55f, bounds.min.y * 0.45f, t);
-            line.transform.position = new Vector3(bounds.center.x, y, 0f);
+            // Transform을 들고 다니지 않고 GameObject로 받는다.
+            //
+            // 예전에는 Transform 변수를 만들어 여러 단계를 거친 뒤 GetComponent를 불렀는데,
+            // 그 사이에 대상이 사라지면 <b>MissingReferenceException</b>이 났다. 유니티에서
+            // 파괴된 오브젝트는 <c>== null</c>로 걸러지므로, 쓰기 직전에 한 번 더 확인하면
+            // 예외 대신 "이 줄을 건너뛴다"는 안전한 결과가 된다.
+            GameObject lineObject = FindChild(guideRoot, lineName);
 
-            var text = line.AddComponent<TextMeshPro>();
-            text.text = GuideLines[i];
-            text.fontSize = 6f;
-            text.alignment = TextAlignmentOptions.Center;
-            text.color = new Color(0.9f, 0.85f, 0.75f, 0.85f);
+            // 새로 만드는 줄에만 기본 배치와 모양을 넣는다.
+            if (lineObject == null)
+            {
+                lineObject = new GameObject(lineName);
+                lineObject.transform.SetParent(guideRoot, false);
+
+                // 방 위쪽부터 아래로 고르게 배치한다. 걸어 내려오면서 차례로 읽히게 하려는 것이다.
+                float t = (i + 1f) / (GuideLines.Length + 1f);
+                float y = Mathf.Lerp(bounds.max.y * 0.55f, bounds.min.y * 0.45f, t);
+                lineObject.transform.position = new Vector3(bounds.center.x, y, 0f);
+
+                var newText = lineObject.AddComponent<TextMeshPro>();
+                newText.fontSize = DefaultGuideFontSize;
+                newText.alignment = TextAlignmentOptions.Center;
+                newText.color = new Color(0.9f, 0.85f, 0.75f, 0.85f);
+
+                // 바닥 그림 위, 캐릭터 아래에 그린다. 글자가 캐릭터를 가리면 전투가 안 보인다.
+                var meshRenderer = lineObject.GetComponent<MeshRenderer>();
+                if (meshRenderer != null)
+                {
+                    meshRenderer.sortingLayerID = renderer.sortingLayerID;
+                    meshRenderer.sortingOrder = renderer.sortingOrder + 1;
+                }
+            }
+
+            // 만들거나 찾은 직후에 한 번 확인한다. 여기서 걸리면 예외 대신 경고로 끝난다.
+            if (lineObject == null)
+            {
+                Debug.LogWarning($"[튜토리얼] {lineName}을 만들지 못했다. 이 줄은 건너뛴다.");
+                continue;
+            }
+
+            var text = lineObject.GetComponent<TextMeshPro>();
+            if (text == null) text = lineObject.AddComponent<TextMeshPro>();
+
+            // 폰트만은 이미 있는 줄에도 다시 넣는다. 한글이 없는 폰트가 걸려 있으면
+            // 글자가 두부(□)로 나오는데, 그건 사람이 고른 값이 아니라 옛 도구의 실수다.
             if (font != null) text.font = font;
 
-            // 바닥 그림 위, 캐릭터 아래에 그린다. 글자가 캐릭터를 가리면 전투가 안 보인다.
-            var meshRenderer = line.GetComponent<MeshRenderer>();
-            if (meshRenderer != null)
-            {
-                meshRenderer.sortingLayerID = renderer.sortingLayerID;
-                meshRenderer.sortingOrder = renderer.sortingOrder + 1;
-            }
+            // 자리표시자를 실제 키로 바꿔주는 컴포넌트. 실행 중 키가 바뀌면 스스로 다시 쓴다.
+            var hint = lineObject.GetComponent<ControlHintLabel>();
+            if (hint == null) hint = lineObject.AddComponent<ControlHintLabel>();
+
+            if (hint != null) hint.SetTemplate(GuideLines[i]);
+
+            // 에디터에서도 보이도록 지금 한 번 채워둔다 — 방 배치를 눈으로 맞춰야 한다.
+            text.text = ControlHintLabel.Fill(GuideLines[i]);
+
+            // 인스펙터를 거치지 않고 필드를 바꿨으므로 저장 대상이라고 알려준다.
+            // 이게 없으면 씬을 저장해도 template이 빈 채로 남을 수 있다.
+            if (hint != null) EditorUtility.SetDirty(hint);
+            EditorUtility.SetDirty(text);
+        }
+
+        RemoveExtraGuideLines(guideRoot);
+    }
+
+    /// <summary>
+    /// 자식을 이름으로 찾는다. 파괴된 것은 없는 것으로 본다.
+    ///
+    /// <see cref="Transform.Find"/>를 그대로 쓰지 않는 이유: 반환값을 여러 단계 뒤에
+    /// 쓰다 보면 그사이에 사라진 대상을 만지게 될 수 있다. 여기서 GameObject로 바꿔
+    /// 돌려주면, 유니티의 null 검사가 파괴된 것을 걸러낸다.
+    /// </summary>
+    private static GameObject FindChild(Transform parent, string name)
+    {
+        if (parent == null) return null;
+
+        Transform found = parent.Find(name);
+        return found == null ? null : found.gameObject;
+    }
+
+    /// <summary>
+    /// 문구 수보다 많이 남아 있는 줄을 치운다.
+    ///
+    /// 그냥 지우지 않고 무엇을 지웠는지 로그로 남기는 이유: 손으로 추가한 줄이 섞여 있을 수
+    /// 있다. 조용히 사라지면 "내가 쓴 안내가 어디 갔지"를 추적할 방법이 없다.
+    /// </summary>
+    private static void RemoveExtraGuideLines(Transform guideRoot)
+    {
+        for (int i = GuideLines.Length; ; i++)
+        {
+            Transform extra = guideRoot.Find($"Guide_{i}");
+            if (extra == null) break;
+
+            var text = extra.GetComponent<TextMeshPro>();
+            string had = text != null ? text.text : string.Empty;
+
+            Debug.LogWarning($"[튜토리얼] 남는 안내 줄 Guide_{i}을 치웠다. 적혀 있던 문구: [{had}] " +
+                             "이 줄이 필요하면 AshTutorialRoomBuilder.GuideLines에 추가해라.");
+
+            Object.DestroyImmediate(extra.gameObject);
         }
     }
 
-    /// <summary>프로젝트에 있는 TMP 폰트를 하나 찾는다. 없으면 TMP 기본값에 맡긴다.</summary>
+    /// <summary>
+    /// 안내 문구에 쓸 한글 폰트를 찾는다.
+    ///
+    /// <b>경로로 못 박는 이유.</b> 예전에는 프로젝트의 TMP 폰트를 검색해서 <b>첫 번째 것</b>을
+    /// 썼다. 그 순서는 우리가 정하는 것이 아니라 GUID 순이라, TMP가 기본으로 넣어주는
+    /// LiberationSans가 걸리면 <b>한글이 전부 두부(□)로 나온다.</b> 폰트에 없는 글자는
+    /// 에러도 경고도 없이 네모로 그려져서, 코드만 보면 멀쩡하고 화면에서만 깨진다.
+    ///
+    /// 96pt 아틀라스를 쓰는 것은 설정 화면과 같은 이유다 — 방 바닥에 크게 놓이는 글자라
+    /// 작은 아틀라스를 늘리면 픽셀이 뭉개진다.
+    /// </summary>
     private static TMP_FontAsset FindFont()
     {
-        string[] guids = AssetDatabase.FindAssets("t:TMP_FontAsset", new[] { "Assets" });
-        if (guids.Length == 0) return null;
+        var font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(GuideFontPath);
+        if (font != null) return font;
 
-        return AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(AssetDatabase.GUIDToAssetPath(guids[0]));
+        // 폰트 하나 때문에 방 전체가 안 만들어지는 편이 더 나쁘다. 경고만 남기고 진행한다.
+        Debug.LogWarning("[튜토리얼] 한글 폰트를 못 찾았다. 안내 글자가 깨질 수 있다: " + GuideFontPath);
+        return null;
     }
 }
