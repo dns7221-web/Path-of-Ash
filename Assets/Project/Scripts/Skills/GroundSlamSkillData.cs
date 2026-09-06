@@ -12,6 +12,17 @@ using UnityEngine;
 /// 단계가 둘이라 히트박스도 둘이 필요한데, 그러면 프리팹에 자식을 더 달고 좌우 반전까지
 /// 따로 챙겨야 한다. 순간 판정은 "그 시점 그 범위"만 보면 되고 방향은 계산으로 뒤집힌다.
 /// 장판(<see cref="AreaSkillData"/>)이 같은 판단을 한 것과 같은 이유다.
+///
+/// <b>주의 — 이 스킬은 <see cref="SkillData.Damage"/>를 쓰지 않는다.</b>
+///
+/// 데미지가 1단·2단으로 갈라져 있어서 <see cref="nearDamage"/>와 <see cref="farDamage"/>가
+/// 전부를 담당한다. 상속받은 damage는 <b>한 번도 읽히지 않는</b> 죽은 값이고, 그래서
+/// Skill_Q_GroundSlam.asset에는 0으로 들어 있다. 나머지 네 스킬(근접·투사체·장판)은
+/// 그 값을 실제로 쓰므로 0이 아니다.
+///
+/// 인스펙터에서 "Damage 0"을 보고 버그로 오해하기 쉬운 자리다. <b>거기를 채워도 게임에서는
+/// 아무것도 안 바뀐다</b> — 동작하는 것처럼 보이는 값이 하나 늘 뿐이라 오히려 나쁘다.
+/// 이 스킬의 데미지를 조절하려면 아래 nearDamage / farDamage를 고쳐야 한다.
 /// </summary>
 [CreateAssetMenu(fileName = "Skill_GroundSlam", menuName = "재의 길/스킬/내려찍기")]
 public class GroundSlamSkillData : SkillData
@@ -75,7 +86,8 @@ public class GroundSlamSkillData : SkillData
     [Tooltip("발밑 판정 크기(유닛). 좁고 짧다 — 코앞에 붙은 적만 맞는다.")]
     [SerializeField] private Vector2 nearSize = new Vector2(4f, 3f);
 
-    [Tooltip("1단 데미지. 2단보다 작다. 붙어 있으면 둘 다 맞아 합계가 커진다.")]
+    [Tooltip("1단 데미지. 2단보다 작다. 붙어 있으면 둘 다 맞아 합계가 커진다. " +
+             "이 스킬의 데미지는 위 Damage가 아니라 여기와 farDamage가 정한다.")]
     [SerializeField, Min(0)] private int nearDamage = 2;
 
     [Tooltip("검이 박히는 지점의 충격파 이펙트.")]
