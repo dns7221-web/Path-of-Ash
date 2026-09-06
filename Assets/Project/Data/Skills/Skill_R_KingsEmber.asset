@@ -30,5 +30,5 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 512
-  castDelay: 0.3
+  castDelay: 0.5
   explodeDelay: 0.15
