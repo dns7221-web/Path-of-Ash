@@ -298,6 +298,17 @@ public class DebugOverlay : MonoBehaviour
         if (GUILayout.Button("보스를 2페이즈 직전으로")) BringBossToPhase2Edge();
 
         if (GUILayout.Button("플레이어 체력 회복")) RestorePlayer();
+
+        // 보스 방으로 건너뛴다.
+        //
+        // <b>씬의 enableDebugKeys 토글을 우회한다.</b> RoomSequenceController에 B키가 이미
+        // 있지만 그 토글이 꺼져 있으면 안 먹고, 켜려면 플레이를 멈추고 인스펙터를 만져야 한다.
+        // 승리 흐름을 확인하려는 사람에게 그건 "확인하려면 먼저 설정을 바꿔라"가 된다.
+        //
+        // JumpToBossRoom이 public인 것은 우연이 아니다 — 그 함수 주석이 "나중에 디버그 UI
+        // 버튼이나 치트 콘솔에서도 같은 동작을 부를 수 있게 열어둔다"고 적어두었다.
+        // 여기가 그 자리다.
+        if (GUILayout.Button("보스 방으로")) JumpToBoss();
     }
 
     /// <summary>기존 조사용 키를 한곳에 적어둔다. 기억하지 않아도 되게 하는 것이 목적이다.</summary>
@@ -308,7 +319,7 @@ public class DebugOverlay : MonoBehaviour
             "F1 이 패널        F3 보스 열쇠\n" +
             "F6 무적           F11 재 게이지\n" +
             "F7 배속   F8 멈춤   F9 한 프레임\n" +
-            "B 보스 방         K 즉시 사망\n" +
+            "B 보스 방(토글 필요) K 즉시 사망\n" +
             "1/2/3 문 상태(닫힘/열림/부서짐)",
             labelStyle);
     }
@@ -406,6 +417,32 @@ public class DebugOverlay : MonoBehaviour
         Debug.Log($"[조사용] 보스 체력 {bossHealth.Current}/{bossHealth.Max} " +
                   $"(2페이즈 임계 {threshold}). <b>한 대 더 때리면 전환이 시작된다.</b>\n" +
                   "F7로 0.1배속을 걸면 3.125초 연출이 31초가 된다.");
+    }
+
+    /// <summary>
+    /// 보스 방으로 건너뛴다.
+    ///
+    /// <b>이 버튼이 있어야 승리 흐름을 확인할 수 있다.</b> 계획표에 "코드는 다 연결됐으나
+    /// 끝까지 도달한 적이 없다"가 오래 남아 있었는데, 배선을 전수로 짚어보니 실제로 끊긴 곳은
+    /// 하나도 없었다. 남은 문제는 <b>보스까지 17방을 걸어야 한다</b>는 것 하나였다.
+    ///
+    /// 이 버튼 다음에 <c>보스를 2페이즈 직전으로</c>를 누르면, 전환 연출부터 유물 획득,
+    /// 문 개방, 결과 화면까지를 몇 분 만에 한 바퀴 돌 수 있다.
+    /// </summary>
+    private void JumpToBoss()
+    {
+        if (rooms == null)
+        {
+            Debug.LogWarning("[조사용] RoomSequenceController를 못 찾았다. 게임 씬에서 눌러라.");
+            return;
+        }
+
+        rooms.JumpToBossRoom();
+
+        // 방이 바뀌면 보스가 새로 생긴다. 다음 갱신 때 다시 찾도록 참조를 비운다.
+        // 안 비우면 이전 판의 죽은 보스를 계속 들고 있어서 패널이 거짓말을 한다.
+        boss = null;
+        bossHealth = null;
     }
 
     private void RestorePlayer()
