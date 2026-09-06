@@ -299,8 +299,7 @@ public class DebugOverlay : MonoBehaviour
         {
             Bounds b = playerBody.bounds;
             text.Append($"몸   x {b.min.x:0.0}~{b.max.x:0.0}  y {b.min.y:0.0}~{b.max.y:0.0}");
-            text.Append("
-");
+            text.Append("\n");
         }
 
         if (exitTrigger != null)
@@ -313,8 +312,7 @@ public class DebugOverlay : MonoBehaviour
                 if (!col.enabled) text.Append(" (꺼짐)");
                 if (playerBody != null)
                     text.Append(playerBody.bounds.Intersects(e) ? "  <b>겹침</b>" : "  안겹침");
-                text.Append("
-");
+                text.Append("\n");
             }
         }
 
