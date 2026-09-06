@@ -562,6 +562,38 @@ Q 스킬은 이미 이펙트를 프리팹으로 분리한 구조라 그대로 �
 튜토리얼 → 던전 → 열쇠 4개 → 부서진 문 → 보스 → 유물 → 문 → 결과.
 코드는 다 연결됐으나 **끝까지 도달한 적이 없습니다.**
 
+**2026-09-06 — 배선을 전수로 짚었습니다. 끊긴 곳이 하나도 없습니다.**
+
+| 고리 | 상태 |
+| --- | --- |
+| `Room_Boss.encounter` → `BossEncounter` | OK |
+| `Room_Boss.reward` → `BossRelicReward` | OK (`clearRelic` = `Relic_AshKingHeart`, role 2 = RunEnd) |
+| `Room_Boss.roomDoor` → `RoomDoorState` | OK |
+| `Room_Boss.exitTrigger` → `RoomExitTrigger` | OK |
+| `RoomSequenceController.bossRoom` → `Room_Boss` | OK (`bossClearEndsRun: 1`) |
+| `RunManager.result` → `RunResultData` | OK |
+| 빌드 세팅 | OK (Title / Game / Result 셋 다 등록) |
+
+코드 경로도 이어져 있습니다 — 보스 사망 → `EncounterCleared` → 유물 드롭 →
+`RelicInventory.Gained` → 문 개방 → `ExitRequested` → `EndRun(true)` → `LoadResult()`.
+
+**즉 설정이 빠진 것이 아니라 아무도 끝까지 가보지 않은 것입니다.** 실제로 막고 있던 것은
+거리 하나였습니다 — 보스까지 17방. `RoomSequenceController`에 B키가 있지만
+**`enableDebugKeys`가 씬에서 꺼져 있어 안 먹습니다.**
+
+그래서 디버그 패널(F1)에 `보스 방으로` 버튼을 넣었습니다. 그 토글과 무관하게 동작합니다.
+확인 경로는 이렇습니다:
+
+```
+F1 → 보스 방으로 → 보스를 2페이즈 직전으로 → 직접 때려서 전환 확인 →
+보스 처치 → 유물 줍기 → 문으로 나가기 → 결과 화면
+```
+
+**남은 청소 하나:** `Room_Boss / RewardChest`에 `BossRelicReward`가 하나 더 붙어 있습니다.
+오브젝트가 비활성이고 `Room_Boss.reward`는 자기 자신을 가리키므로 아무도 안 부릅니다.
+상자를 복사해 와 컴포넌트를 바꿔보다가 방 본체에 붙이기로 하고 꺼둔 흔적입니다.
+지금은 무해하지만 **판을 끝내는 유물을 떨어뜨리는 컴포넌트**라 지우는 편이 낫습니다.
+
 ### 7. 그 밖에 남은 것
 
 - 창 크기·전체화면은 **빌드에서만** 확인됩니다
