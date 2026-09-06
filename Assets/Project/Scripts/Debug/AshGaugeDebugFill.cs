@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// 추가 생성 — `F10`으로 재 게이지를 가득 채우는 조사용 도구.
+/// 추가 생성 — `F11`로 재 게이지를 가득 채우는 조사용 도구.
 ///
 /// 왜 필요한가: 궁극기(R)는 <see cref="SkillData.RequiresFullAshGauge"/>가 켜져 있어서
 /// 게이지가 가득 찼을 때만 나간다. 게이지는 적을 잡아야만 차므로, <b>궁극기 연출을 한 번
@@ -27,7 +27,17 @@ using UnityEngine.InputSystem;
 [DisallowMultipleComponent]
 public class AshGaugeDebugFill : MonoBehaviour
 {
-    private const Key FillKey = Key.F10;
+    /// <summary>
+    /// F11인 이유 — <b>F10은 유니티 Recorder의 녹화 시작/정지 단축키다.</b>
+    ///
+    /// 처음에 F10으로 뒀다가 옮겼다. 시간 제어(F7~F9) 옆에 붙이려던 것이었는데, 이 프로젝트는
+    /// 연출을 확인할 때 Recorder로 녹화를 자주 건다. 그 상태에서 게이지를 채우려고 누르면
+    /// <b>녹화가 같이 시작되거나 끊긴다.</b> 조사용 도구가 조사 자체를 방해하는 셈이다.
+    ///
+    /// F10만 건너뛰고 F11로 갔다. 시간 제어 묶음과 여전히 붙어 있어 손이 기억하기 좋다.
+    /// <b>여기를 F10으로 "정리"하지 마라</b> — 빈 자리처럼 보이지만 비어 있는 것이 아니다.
+    /// </summary>
+    private const Key FillKey = Key.F11;
 
     /// <summary>
     /// 반복 횟수 상한.

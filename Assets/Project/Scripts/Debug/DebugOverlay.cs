@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 ///
 /// 왜 필요한가: 조사용 도구가 <see cref="BossKeyDebugGrant"/>(F3),
 /// <see cref="PlayerInvincibleDebugToggle"/>(F6), <see cref="TimeScaleDebugControl"/>(F7~F9),
-/// <see cref="AshGaugeDebugFill"/>(F10), 보스 방 점프(B), 사망(K)으로 흩어져 있다.
+/// <see cref="AshGaugeDebugFill"/>(F11), 보스 방 점프(B), 사망(K)으로 흩어져 있다.
 /// <b>어떤 키가 있는지 기억하는 것 자체가 비용</b>이고, 무엇보다 지금 상태(열쇠 몇 개인지,
 /// 보스가 전환까지 얼마 남았는지, 무적이 켜져 있는지)를 볼 방법이 콘솔 로그밖에 없다.
 ///
@@ -306,7 +306,7 @@ public class DebugOverlay : MonoBehaviour
         GUILayout.Label(
             "── 키 ──\n" +
             "F1 이 패널        F3 보스 열쇠\n" +
-            "F6 무적           F10 재 게이지\n" +
+            "F6 무적           F11 재 게이지\n" +
             "F7 배속   F8 멈춤   F9 한 프레임\n" +
             "B 보스 방         K 즉시 사망\n" +
             "1/2/3 문 상태(닫힘/열림/부서짐)",
