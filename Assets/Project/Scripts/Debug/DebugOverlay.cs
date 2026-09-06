@@ -61,6 +61,22 @@ public class DebugOverlay : MonoBehaviour
     private EnemyBoss boss;
     private Health bossHealth;
 
+    /// <summary>
+    /// 버튼이 누른 동작. <see cref="Update"/>에서 실행한다.
+    ///
+    /// <b>OnGUI 안에서 씬을 바꾸면 안 된다.</b> GUILayout은 한 프레임에 Layout 패스와 Repaint
+    /// 패스를 따로 돌면서 <b>두 패스의 항목 수와 상태가 같다고 전제</b>한다. 그 사이에 방을
+    /// 껐다 켜거나 오브젝트를 죽이면 전제가 깨지고
+    /// "Invalid GUILayout state ... Begin/End calls match" 가 난다.
+    ///
+    /// 실제로 그렇게 났다. 그리고 증상이 고약했다 — 예외가 아니라 <b>그리다 만 패널</b>로
+    /// 나타나서, 오류가 난 지점 아래의 줄들이 조용히 사라진다. 그 아래에 있던 것이
+    /// 하필 판정 좌표 두 줄이라 "왜 안 보이지"로 한참을 돌았다.
+    ///
+    /// 한 프레임 미루는 것으로 끝난다. 조사용 도구에서 한 프레임은 아무 의미가 없다.
+    /// </summary>
+    private System.Action pendingAction;
+
     private Collider2D playerBody;
     private RoomExitTrigger exitTrigger;
 
@@ -101,6 +117,14 @@ public class DebugOverlay : MonoBehaviour
     {
         Keyboard keyboard = Keyboard.current;
         if (keyboard != null && keyboard[ToggleKey].wasPressedThisFrame) visible = !visible;
+
+        // 버튼이 맡긴 일을 여기서 처리한다. 이유는 pendingAction 주석에 적었다.
+        if (pendingAction != null)
+        {
+            System.Action action = pendingAction;
+            pendingAction = null;
+            action();
+        }
 
         TrackFrameTime();
 
@@ -338,15 +362,15 @@ public class DebugOverlay : MonoBehaviour
         //
         // 왜 필요한가: 계획표에 "승리 흐름 완주 검증 — 코드는 다 연결됐으나 끝까지 도달한 적이
         // 없다"가 남아 있다. 보스까지 17방이고 한 판이 8~12분이라 그 확인 한 번의 비용이 너무 크다.
-        if (GUILayout.Button("적 전멸 (방 클리어)")) KillAllEnemies();
+        if (GUILayout.Button("적 전멸 (방 클리어)")) pendingAction = KillAllEnemies;
 
         // 2페이즈 전환 연출을 보려면 매번 보스를 27 깎아야 한다.
         //
         // 한 대 남기고 멈추는 이유: 여기서 그냥 임계값까지 깎아버리면 전환이 시작되는 순간을
         // 놓친다. 한 대 남겨두면 <b>직접 때려서 전환이 시작되는 그 프레임부터</b> 볼 수 있다.
-        if (GUILayout.Button("보스를 2페이즈 직전으로")) BringBossToPhase2Edge();
+        if (GUILayout.Button("보스를 2페이즈 직전으로")) pendingAction = BringBossToPhase2Edge;
 
-        if (GUILayout.Button("플레이어 체력 회복")) RestorePlayer();
+        if (GUILayout.Button("플레이어 체력 회복")) pendingAction = RestorePlayer;
 
         // 보스 방으로 건너뛴다.
         //
@@ -357,7 +381,7 @@ public class DebugOverlay : MonoBehaviour
         // JumpToBossRoom이 public인 것은 우연이 아니다 — 그 함수 주석이 "나중에 디버그 UI
         // 버튼이나 치트 콘솔에서도 같은 동작을 부를 수 있게 열어둔다"고 적어두었다.
         // 여기가 그 자리다.
-        if (GUILayout.Button("보스 방으로")) JumpToBoss();
+        if (GUILayout.Button("보스 방으로")) pendingAction = JumpToBoss;
     }
 
     /// <summary>기존 조사용 키를 한곳에 적어둔다. 기억하지 않아도 되게 하는 것이 목적이다.</summary>
