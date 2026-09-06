@@ -61,6 +61,9 @@ public class DebugOverlay : MonoBehaviour
     private EnemyBoss boss;
     private Health bossHealth;
 
+    private Collider2D playerBody;
+    private RoomExitTrigger exitTrigger;
+
     private int enemyCount;
     private float rescanTimer;
 
@@ -141,6 +144,27 @@ public class DebugOverlay : MonoBehaviour
         if (player == null) player = FindFirstObjectByType<PlayerController>(FindObjectsInactive.Include);
         if (player != null && playerHealth == null) playerHealth = player.GetComponent<Health>();
         if (player != null && stamina == null) stamina = player.GetComponent<PlayerStamina>();
+
+        // 추가 생성 — 플레이어의 몸 콜라이더.
+        //
+        // 왜 필요한가: 이 게임은 피벗이 발밑이라 <b>그림이 서 있는 자리와 판정이 있는 자리가
+        // 다르다.</b> 보스 방에서 "문 앞에 서 있는데 안 나가진다"가 났을 때, 눈으로 보이는
+        // 위치만으로는 판정이 출구 상자에 닿았는지 알 수 없다. 둘을 숫자로 나란히 봐야 갈린다.
+        //
+        // isTrigger가 아닌 것을 고르는 이유: 플레이어에는 공격 판정 같은 트리거 콜라이더가
+        // 같이 붙어 있어서, 아무거나 잡으면 몸이 아닌 것을 재게 된다.
+        if (playerBody == null && player != null)
+        {
+            foreach (var c in player.GetComponentsInChildren<Collider2D>(true))
+            {
+                if (c.isTrigger) continue;
+                playerBody = c;
+                break;
+            }
+        }
+
+        // 지금 열려 있는 방의 출구. 방이 바뀌면 새로 찾아야 하므로 매 갱신마다 다시 잡는다.
+        exitTrigger = FindFirstObjectByType<RoomExitTrigger>();
 
         if (ashGauge == null) ashGauge = FindFirstObjectByType<AshGauge>(FindObjectsInactive.Include);
         if (inventory == null) inventory = FindFirstObjectByType<RelicInventory>(FindObjectsInactive.Include);
@@ -266,6 +290,33 @@ public class DebugOverlay : MonoBehaviour
         text.Append($"PauseGate 스택 {PauseGate.OpenCount}");
         text.Append(PauseGate.OpenCount > 0 ? "  (정지 중)\n" : "\n");
         text.Append($"timeScale {Time.timeScale:0.##}\n");
+
+        // 추가 생성 — 몸 판정과 출구 판정을 나란히 찍는다.
+        //
+        // 이 두 줄이 "문 앞인데 왜 안 나가지"를 한눈에 가른다.
+        // 안 겹치면 그림만 문 앞이고 판정은 딴 데 있는 것이다.
+        if (playerBody != null)
+        {
+            Bounds b = playerBody.bounds;
+            text.Append($"몸   x {b.min.x:0.0}~{b.max.x:0.0}  y {b.min.y:0.0}~{b.max.y:0.0}");
+            text.Append("
+");
+        }
+
+        if (exitTrigger != null)
+        {
+            var col = exitTrigger.GetComponent<Collider2D>();
+            if (col != null)
+            {
+                Bounds e = col.bounds;
+                text.Append($"출구 x {e.min.x:0.0}~{e.max.x:0.0}  y {e.min.y:0.0}~{e.max.y:0.0}");
+                if (!col.enabled) text.Append(" (꺼짐)");
+                if (playerBody != null)
+                    text.Append(playerBody.bounds.Intersects(e) ? "  <b>겹침</b>" : "  안겹침");
+                text.Append("
+");
+            }
+        }
 
         text.Append("\n── 성능 ──\n");
         float fps = smoothedDelta > 0f ? 1f / smoothedDelta : 0f;
