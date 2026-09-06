@@ -382,6 +382,17 @@ public class DebugOverlay : MonoBehaviour
         // 버튼이나 치트 콘솔에서도 같은 동작을 부를 수 있게 열어둔다"고 적어두었다.
         // 여기가 그 자리다.
         if (GUILayout.Button("보스 방으로")) pendingAction = JumpToBoss;
+
+        // 플레이어를 출구 판정 한가운데로 옮긴다.
+        //
+        // 왜 이 버튼이 필요한가: "문이 열렸는데 안 나가진다"의 원인이 두 갈래로 갈리는데
+        // 눈으로는 구별이 안 된다. ① 판정이 서로 안 닿는다 ② 닿는데 이벤트가 안 온다.
+        //
+        // 이 게임은 몸 콜라이더가 <b>발밑 높이 1.25유닛</b>짜리인데 캐릭터 그림은 5.94유닛이다.
+        // 즉 화면으로 문 앞에 서 있어도 발 판정은 한참 아래일 수 있고, 그 상태로는 아무리
+        // 걸어도 트리거에 안 닿는다. 여기로 직접 옮겨보면 그 갈래가 한 번에 정해진다 —
+        // <b>옮겼는데도 안 나가면 물리 문제, 나가지면 위치 문제.</b>
+        if (GUILayout.Button("문 앞으로 (판정 한가운데)")) pendingAction = TeleportToExit;
     }
 
     /// <summary>기존 조사용 키를 한곳에 적어둔다. 기억하지 않아도 되게 하는 것이 목적이다.</summary>
@@ -516,6 +527,46 @@ public class DebugOverlay : MonoBehaviour
         // 안 비우면 이전 판의 죽은 보스를 계속 들고 있어서 패널이 거짓말을 한다.
         boss = null;
         bossHealth = null;
+    }
+
+    /// <summary>
+    /// 플레이어의 <b>몸 판정</b>이 출구 판정 한가운데 오도록 옮긴다.
+    ///
+    /// transform 위치가 아니라 몸 판정 기준으로 맞추는 것이 요점이다. 이 게임은 피벗이
+    /// 발밑이라 둘이 다르고, transform을 상자 중심에 두면 몸 판정은 그보다 아래에 남는다.
+    /// 그러면 이 버튼조차 "옮겼는데 안 닿는" 상태가 되어 아무것도 못 가른다.
+    /// </summary>
+    private void TeleportToExit()
+    {
+        if (player == null || exitTrigger == null)
+        {
+            Debug.LogWarning("[조사용] 플레이어나 출구를 못 찾았다. 보스 방에서 눌러라.");
+            return;
+        }
+
+        var col = exitTrigger.GetComponent<Collider2D>();
+        if (col == null) return;
+
+        if (!col.enabled)
+        {
+            Debug.LogWarning("[조사용] 출구 판정이 아직 꺼져 있다. 유물을 먼저 주워라.");
+            return;
+        }
+
+        Vector3 target = col.bounds.center;
+
+        // 몸 판정 중심과 transform의 차이만큼 되돌려서, 옮긴 뒤 몸 판정이 상자 한가운데 오게 한다.
+        if (playerBody != null)
+            target -= playerBody.bounds.center - player.transform.position;
+
+        player.transform.position = target;
+
+        // Rigidbody2D는 자기 위치를 따로 들고 있어서 transform만 바꾸면 다음 물리 프레임에
+        // 되돌아갈 수 있다. 같이 맞춰준다.
+        var body = player.GetComponent<Rigidbody2D>();
+        if (body != null) body.position = target;
+
+        Debug.Log($"[조사용] 출구 판정 한가운데로 옮겼다. 여기서도 안 나가지면 위치가 아니라 물리 문제다.");
     }
 
     private void RestorePlayer()
