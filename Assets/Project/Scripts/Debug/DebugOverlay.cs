@@ -61,6 +61,25 @@ public class DebugOverlay : MonoBehaviour
     private EnemyBoss boss;
     private Health bossHealth;
 
+    /// <summary>
+    /// 버튼이 누른 동작. <see cref="Update"/>에서 실행한다.
+    ///
+    /// <b>OnGUI 안에서 씬을 바꾸면 안 된다.</b> GUILayout은 한 프레임에 Layout 패스와 Repaint
+    /// 패스를 따로 돌면서 <b>두 패스의 항목 수와 상태가 같다고 전제</b>한다. 그 사이에 방을
+    /// 껐다 켜거나 오브젝트를 죽이면 전제가 깨지고
+    /// "Invalid GUILayout state ... Begin/End calls match" 가 난다.
+    ///
+    /// 실제로 그렇게 났다. 그리고 증상이 고약했다 — 예외가 아니라 <b>그리다 만 패널</b>로
+    /// 나타나서, 오류가 난 지점 아래의 줄들이 조용히 사라진다. 그 아래에 있던 것이
+    /// 하필 판정 좌표 두 줄이라 "왜 안 보이지"로 한참을 돌았다.
+    ///
+    /// 한 프레임 미루는 것으로 끝난다. 조사용 도구에서 한 프레임은 아무 의미가 없다.
+    /// </summary>
+    private System.Action pendingAction;
+
+    private Collider2D playerBody;
+    private RoomExitTrigger exitTrigger;
+
     private int enemyCount;
     private float rescanTimer;
 
@@ -98,6 +117,14 @@ public class DebugOverlay : MonoBehaviour
     {
         Keyboard keyboard = Keyboard.current;
         if (keyboard != null && keyboard[ToggleKey].wasPressedThisFrame) visible = !visible;
+
+        // 버튼이 맡긴 일을 여기서 처리한다. 이유는 pendingAction 주석에 적었다.
+        if (pendingAction != null)
+        {
+            System.Action action = pendingAction;
+            pendingAction = null;
+            action();
+        }
 
         TrackFrameTime();
 
@@ -141,6 +168,27 @@ public class DebugOverlay : MonoBehaviour
         if (player == null) player = FindFirstObjectByType<PlayerController>(FindObjectsInactive.Include);
         if (player != null && playerHealth == null) playerHealth = player.GetComponent<Health>();
         if (player != null && stamina == null) stamina = player.GetComponent<PlayerStamina>();
+
+        // 추가 생성 — 플레이어의 몸 콜라이더.
+        //
+        // 왜 필요한가: 이 게임은 피벗이 발밑이라 <b>그림이 서 있는 자리와 판정이 있는 자리가
+        // 다르다.</b> 보스 방에서 "문 앞에 서 있는데 안 나가진다"가 났을 때, 눈으로 보이는
+        // 위치만으로는 판정이 출구 상자에 닿았는지 알 수 없다. 둘을 숫자로 나란히 봐야 갈린다.
+        //
+        // isTrigger가 아닌 것을 고르는 이유: 플레이어에는 공격 판정 같은 트리거 콜라이더가
+        // 같이 붙어 있어서, 아무거나 잡으면 몸이 아닌 것을 재게 된다.
+        if (playerBody == null && player != null)
+        {
+            foreach (var c in player.GetComponentsInChildren<Collider2D>(true))
+            {
+                if (c.isTrigger) continue;
+                playerBody = c;
+                break;
+            }
+        }
+
+        // 지금 열려 있는 방의 출구. 방이 바뀌면 새로 찾아야 하므로 매 갱신마다 다시 잡는다.
+        exitTrigger = FindFirstObjectByType<RoomExitTrigger>();
 
         if (ashGauge == null) ashGauge = FindFirstObjectByType<AshGauge>(FindObjectsInactive.Include);
         if (inventory == null) inventory = FindFirstObjectByType<RelicInventory>(FindObjectsInactive.Include);
@@ -267,6 +315,55 @@ public class DebugOverlay : MonoBehaviour
         text.Append(PauseGate.OpenCount > 0 ? "  (정지 중)\n" : "\n");
         text.Append($"timeScale {Time.timeScale:0.##}\n");
 
+        // 추가 생성 — 몸 판정과 출구 판정을 나란히 찍는다.
+        //
+        // 이 두 줄이 "문 앞인데 왜 안 나가지"를 한눈에 가른다.
+        // 안 겹치면 그림만 문 앞이고 판정은 딴 데 있는 것이다.
+        if (playerBody != null)
+        {
+            Bounds b = playerBody.bounds;
+            text.Append($"몸   x {b.min.x:0.0}~{b.max.x:0.0}  y {b.min.y:0.0}~{b.max.y:0.0}");
+            text.Append("\n");
+        }
+
+        if (exitTrigger != null)
+        {
+            var col = exitTrigger.GetComponent<Collider2D>();
+            if (col != null)
+            {
+                Bounds e = col.bounds;
+                text.Append($"출구 x {e.min.x:0.0}~{e.max.x:0.0}  y {e.min.y:0.0}~{e.max.y:0.0}");
+                if (!col.enabled) text.Append(" (꺼짐)");
+                if (playerBody != null)
+                    text.Append(playerBody.bounds.Intersects(e) ? "  <b>겹침</b>" : "  안겹침");
+                text.Append("\n");
+
+                // 추가 생성 — 물리 엔진에게 직접 물어본 접촉 여부.
+                //
+                // <b>윗줄의 겹침과 이 줄은 다른 것을 말한다.</b> 윗줄은 Bounds.Intersects라
+                // 사각형 두 개의 좌표를 비교하는 순수 계산이고 물리 엔진은 아무 관여도 안 한다.
+                // 이 줄의 IsTouching은 물리 엔진이 실제로 잡고 있는 접촉을 그대로 읽는다.
+                //
+                // 그래서 <b>두 줄의 답이 갈리는 것 자체가 답이다.</b> 겹치는데 안 닿는다고
+                // 나오면 좌표 문제가 아니라 레이어·필터 쪽이고, 그 경우 판정을 아무리
+                // 옮겨도 영영 안 된다. 좌표만 보고 있으면 그것을 알 수 없다.
+                if (playerBody != null)
+                {
+                    text.Append(col.IsTouching(playerBody) ? "물리 접촉 <b>있음</b>" : "물리 접촉 없음");
+                    text.Append("\n");
+                }
+
+                // 추가 생성 — 출구 통과를 듣고 있는 곳의 수.
+                //
+                // 0이면 트리거가 정확히 닿아도 아무 일이 안 일어난다. 증상이 "안 나가진다"로
+                // 판정 문제와 똑같아서, 이 숫자가 없으면 둘을 끝까지 구별할 수 없다.
+                int listeners = exitTrigger.DebugListenerCount;
+                text.Append($"출구 구독자 {listeners}명");
+                if (listeners == 0) text.Append("  <b>(아무도 안 듣는다)</b>");
+                text.Append("\n");
+            }
+        }
+
         text.Append("\n── 성능 ──\n");
         float fps = smoothedDelta > 0f ? 1f / smoothedDelta : 0f;
         text.Append($"{fps:0} fps  ({smoothedDelta * 1000f:0.0}ms)\n");
@@ -289,15 +386,48 @@ public class DebugOverlay : MonoBehaviour
         //
         // 왜 필요한가: 계획표에 "승리 흐름 완주 검증 — 코드는 다 연결됐으나 끝까지 도달한 적이
         // 없다"가 남아 있다. 보스까지 17방이고 한 판이 8~12분이라 그 확인 한 번의 비용이 너무 크다.
-        if (GUILayout.Button("적 전멸 (방 클리어)")) KillAllEnemies();
+        if (GUILayout.Button("적 전멸 (방 클리어)")) pendingAction = KillAllEnemies;
 
         // 2페이즈 전환 연출을 보려면 매번 보스를 27 깎아야 한다.
         //
         // 한 대 남기고 멈추는 이유: 여기서 그냥 임계값까지 깎아버리면 전환이 시작되는 순간을
         // 놓친다. 한 대 남겨두면 <b>직접 때려서 전환이 시작되는 그 프레임부터</b> 볼 수 있다.
-        if (GUILayout.Button("보스를 2페이즈 직전으로")) BringBossToPhase2Edge();
+        if (GUILayout.Button("보스를 2페이즈 직전으로")) pendingAction = BringBossToPhase2Edge;
 
-        if (GUILayout.Button("플레이어 체력 회복")) RestorePlayer();
+        if (GUILayout.Button("플레이어 체력 회복")) pendingAction = RestorePlayer;
+
+        // 보스 방으로 건너뛴다.
+        //
+        // <b>씬의 enableDebugKeys 토글을 우회한다.</b> RoomSequenceController에 B키가 이미
+        // 있지만 그 토글이 꺼져 있으면 안 먹고, 켜려면 플레이를 멈추고 인스펙터를 만져야 한다.
+        // 승리 흐름을 확인하려는 사람에게 그건 "확인하려면 먼저 설정을 바꿔라"가 된다.
+        //
+        // JumpToBossRoom이 public인 것은 우연이 아니다 — 그 함수 주석이 "나중에 디버그 UI
+        // 버튼이나 치트 콘솔에서도 같은 동작을 부를 수 있게 열어둔다"고 적어두었다.
+        // 여기가 그 자리다.
+        if (GUILayout.Button("보스 방으로")) pendingAction = JumpToBoss;
+
+        // 플레이어를 출구 판정 한가운데로 옮긴다.
+        //
+        // 왜 이 버튼이 필요한가: "문이 열렸는데 안 나가진다"의 원인이 두 갈래로 갈리는데
+        // 눈으로는 구별이 안 된다. ① 판정이 서로 안 닿는다 ② 닿는데 이벤트가 안 온다.
+        //
+        // 이 게임은 몸 콜라이더가 <b>발밑 높이 1.25유닛</b>짜리인데 캐릭터 그림은 5.94유닛이다.
+        // 즉 화면으로 문 앞에 서 있어도 발 판정은 한참 아래일 수 있고, 그 상태로는 아무리
+        // 걸어도 트리거에 안 닿는다. 여기로 직접 옮겨보면 그 갈래가 한 번에 정해진다 —
+        // <b>옮겼는데도 안 나가면 물리 문제, 나가지면 위치 문제.</b>
+        if (GUILayout.Button("문 앞으로 (판정 한가운데)")) pendingAction = TeleportToExit;
+
+        // 추가 생성 — 트리거를 건너뛰고 출구 통과를 직접 일으킨다.
+        //
+        // 위의 두 버튼이 "왜 트리거가 안 먹는가"를 가르는 것이라면, 이 버튼은 그 질문을
+        // 통째로 미뤄두고 <b>트리거 뒤의 길이 굴러가는지</b>를 본다. 보스 방에서는
+        // 그 길이 곧 이 게임의 승리 조건이다 — 방 진행 → EndRun(true) → 결과 화면.
+        //
+        // 왜 나눠서 봐야 하는가: 지금까지 승리 흐름은 <b>코드로만 이어져 있고 한 번도
+        // 끝까지 가본 적이 없다.</b> 트리거를 고친 다음에야 뒷길을 처음 밟게 되면,
+        // 거기서 또 막혔을 때 앞의 수정이 맞았는지조차 알 수 없게 된다.
+        if (GUILayout.Button("출구 통과 (강제)")) pendingAction = ForceExit;
     }
 
     /// <summary>기존 조사용 키를 한곳에 적어둔다. 기억하지 않아도 되게 하는 것이 목적이다.</summary>
@@ -308,7 +438,7 @@ public class DebugOverlay : MonoBehaviour
             "F1 이 패널        F3 보스 열쇠\n" +
             "F6 무적           F11 재 게이지\n" +
             "F7 배속   F8 멈춤   F9 한 프레임\n" +
-            "B 보스 방         K 즉시 사망\n" +
+            "B 보스 방(토글 필요) K 즉시 사망\n" +
             "1/2/3 문 상태(닫힘/열림/부서짐)",
             labelStyle);
     }
@@ -406,6 +536,89 @@ public class DebugOverlay : MonoBehaviour
         Debug.Log($"[조사용] 보스 체력 {bossHealth.Current}/{bossHealth.Max} " +
                   $"(2페이즈 임계 {threshold}). <b>한 대 더 때리면 전환이 시작된다.</b>\n" +
                   "F7로 0.1배속을 걸면 3.125초 연출이 31초가 된다.");
+    }
+
+    /// <summary>
+    /// 보스 방으로 건너뛴다.
+    ///
+    /// <b>이 버튼이 있어야 승리 흐름을 확인할 수 있다.</b> 계획표에 "코드는 다 연결됐으나
+    /// 끝까지 도달한 적이 없다"가 오래 남아 있었는데, 배선을 전수로 짚어보니 실제로 끊긴 곳은
+    /// 하나도 없었다. 남은 문제는 <b>보스까지 17방을 걸어야 한다</b>는 것 하나였다.
+    ///
+    /// 이 버튼 다음에 <c>보스를 2페이즈 직전으로</c>를 누르면, 전환 연출부터 유물 획득,
+    /// 문 개방, 결과 화면까지를 몇 분 만에 한 바퀴 돌 수 있다.
+    /// </summary>
+    private void JumpToBoss()
+    {
+        if (rooms == null)
+        {
+            Debug.LogWarning("[조사용] RoomSequenceController를 못 찾았다. 게임 씬에서 눌러라.");
+            return;
+        }
+
+        rooms.JumpToBossRoom();
+
+        // 방이 바뀌면 보스가 새로 생긴다. 다음 갱신 때 다시 찾도록 참조를 비운다.
+        // 안 비우면 이전 판의 죽은 보스를 계속 들고 있어서 패널이 거짓말을 한다.
+        boss = null;
+        bossHealth = null;
+    }
+    /// <summary>
+    /// 추가 생성 — 지금 방의 출구 통과를 강제로 일으킨다.
+    ///
+    /// 판정과 무관하게 <see cref="RoomExitTrigger.Entered"/>를 직접 울린다. 트리거가
+    /// 안 먹는 상태에서도 그 뒤의 진행(다음 방 / 보스 방 / 클리어)을 확인할 수 있다.
+    /// </summary>
+    private void ForceExit()
+    {
+        if (exitTrigger == null)
+        {
+            Debug.LogWarning("[조사용] 지금 열린 방에서 출구를 못 찾았다.");
+            return;
+        }
+
+        exitTrigger.ForceEnterForDebug();
+    }
+
+
+    /// <summary>
+    /// 플레이어의 <b>몸 판정</b>이 출구 판정 한가운데 오도록 옮긴다.
+    ///
+    /// transform 위치가 아니라 몸 판정 기준으로 맞추는 것이 요점이다. 이 게임은 피벗이
+    /// 발밑이라 둘이 다르고, transform을 상자 중심에 두면 몸 판정은 그보다 아래에 남는다.
+    /// 그러면 이 버튼조차 "옮겼는데 안 닿는" 상태가 되어 아무것도 못 가른다.
+    /// </summary>
+    private void TeleportToExit()
+    {
+        if (player == null || exitTrigger == null)
+        {
+            Debug.LogWarning("[조사용] 플레이어나 출구를 못 찾았다. 보스 방에서 눌러라.");
+            return;
+        }
+
+        var col = exitTrigger.GetComponent<Collider2D>();
+        if (col == null) return;
+
+        if (!col.enabled)
+        {
+            Debug.LogWarning("[조사용] 출구 판정이 아직 꺼져 있다. 유물을 먼저 주워라.");
+            return;
+        }
+
+        Vector3 target = col.bounds.center;
+
+        // 몸 판정 중심과 transform의 차이만큼 되돌려서, 옮긴 뒤 몸 판정이 상자 한가운데 오게 한다.
+        if (playerBody != null)
+            target -= playerBody.bounds.center - player.transform.position;
+
+        player.transform.position = target;
+
+        // Rigidbody2D는 자기 위치를 따로 들고 있어서 transform만 바꾸면 다음 물리 프레임에
+        // 되돌아갈 수 있다. 같이 맞춰준다.
+        var body = player.GetComponent<Rigidbody2D>();
+        if (body != null) body.position = target;
+
+        Debug.Log($"[조사용] 출구 판정 한가운데로 옮겼다. 여기서도 안 나가지면 위치가 아니라 물리 문제다.");
     }
 
     private void RestorePlayer()
