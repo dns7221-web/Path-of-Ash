@@ -337,6 +337,30 @@ public class DebugOverlay : MonoBehaviour
                 if (playerBody != null)
                     text.Append(playerBody.bounds.Intersects(e) ? "  <b>겹침</b>" : "  안겹침");
                 text.Append("\n");
+
+                // 추가 생성 — 물리 엔진에게 직접 물어본 접촉 여부.
+                //
+                // <b>윗줄의 겹침과 이 줄은 다른 것을 말한다.</b> 윗줄은 Bounds.Intersects라
+                // 사각형 두 개의 좌표를 비교하는 순수 계산이고 물리 엔진은 아무 관여도 안 한다.
+                // 이 줄의 IsTouching은 물리 엔진이 실제로 잡고 있는 접촉을 그대로 읽는다.
+                //
+                // 그래서 <b>두 줄의 답이 갈리는 것 자체가 답이다.</b> 겹치는데 안 닿는다고
+                // 나오면 좌표 문제가 아니라 레이어·필터 쪽이고, 그 경우 판정을 아무리
+                // 옮겨도 영영 안 된다. 좌표만 보고 있으면 그것을 알 수 없다.
+                if (playerBody != null)
+                {
+                    text.Append(col.IsTouching(playerBody) ? "물리 접촉 <b>있음</b>" : "물리 접촉 없음");
+                    text.Append("\n");
+                }
+
+                // 추가 생성 — 출구 통과를 듣고 있는 곳의 수.
+                //
+                // 0이면 트리거가 정확히 닿아도 아무 일이 안 일어난다. 증상이 "안 나가진다"로
+                // 판정 문제와 똑같아서, 이 숫자가 없으면 둘을 끝까지 구별할 수 없다.
+                int listeners = exitTrigger.DebugListenerCount;
+                text.Append($"출구 구독자 {listeners}명");
+                if (listeners == 0) text.Append("  <b>(아무도 안 듣는다)</b>");
+                text.Append("\n");
             }
         }
 
@@ -393,6 +417,17 @@ public class DebugOverlay : MonoBehaviour
         // 걸어도 트리거에 안 닿는다. 여기로 직접 옮겨보면 그 갈래가 한 번에 정해진다 —
         // <b>옮겼는데도 안 나가면 물리 문제, 나가지면 위치 문제.</b>
         if (GUILayout.Button("문 앞으로 (판정 한가운데)")) pendingAction = TeleportToExit;
+
+        // 추가 생성 — 트리거를 건너뛰고 출구 통과를 직접 일으킨다.
+        //
+        // 위의 두 버튼이 "왜 트리거가 안 먹는가"를 가르는 것이라면, 이 버튼은 그 질문을
+        // 통째로 미뤄두고 <b>트리거 뒤의 길이 굴러가는지</b>를 본다. 보스 방에서는
+        // 그 길이 곧 이 게임의 승리 조건이다 — 방 진행 → EndRun(true) → 결과 화면.
+        //
+        // 왜 나눠서 봐야 하는가: 지금까지 승리 흐름은 <b>코드로만 이어져 있고 한 번도
+        // 끝까지 가본 적이 없다.</b> 트리거를 고친 다음에야 뒷길을 처음 밟게 되면,
+        // 거기서 또 막혔을 때 앞의 수정이 맞았는지조차 알 수 없게 된다.
+        if (GUILayout.Button("출구 통과 (강제)")) pendingAction = ForceExit;
     }
 
     /// <summary>기존 조사용 키를 한곳에 적어둔다. 기억하지 않아도 되게 하는 것이 목적이다.</summary>
@@ -528,6 +563,23 @@ public class DebugOverlay : MonoBehaviour
         boss = null;
         bossHealth = null;
     }
+    /// <summary>
+    /// 추가 생성 — 지금 방의 출구 통과를 강제로 일으킨다.
+    ///
+    /// 판정과 무관하게 <see cref="RoomExitTrigger.Entered"/>를 직접 울린다. 트리거가
+    /// 안 먹는 상태에서도 그 뒤의 진행(다음 방 / 보스 방 / 클리어)을 확인할 수 있다.
+    /// </summary>
+    private void ForceExit()
+    {
+        if (exitTrigger == null)
+        {
+            Debug.LogWarning("[조사용] 지금 열린 방에서 출구를 못 찾았다.");
+            return;
+        }
+
+        exitTrigger.ForceEnterForDebug();
+    }
+
 
     /// <summary>
     /// 플레이어의 <b>몸 판정</b>이 출구 판정 한가운데 오도록 옮긴다.
