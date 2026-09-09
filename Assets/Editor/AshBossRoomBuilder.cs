@@ -23,8 +23,28 @@ using UnityEngine;
 public static class AshBossRoomBuilder
 {
     private const string BossPrefabPath = "Assets/Project/Prefabs/Enemy/BossAshKing.prefab";
-    private const string BossRoomSpritePath =
-        "Assets/Project/Art/Environment/BossRooms/ash-king-boss-room.png";
+
+    /// <summary>
+    /// 보스 방 배경(문 닫힘).
+    ///
+    /// 수정(그림 갱신): 예전에는 <c>ash-king-boss-room.png</c>를 가리켰다. 그것은 2026-08-21판
+    /// 1254x1254(39.2유닛) 정사각 그림이고, 2026-08-26에 1920x1080(60x33.75유닛) 판을 새로
+    /// 뽑으면서 이 상수를 같이 안 고쳤다. 그래서 <b>보스 방 생성을 누를 때마다 방이 옛 그림으로
+    /// 끌려갔다.</b> 씬 뷰에는 새 그림이 그대로 보여서 눌러도 티가 안 났다.
+    /// </summary>
+    private const string BossRoomClosedSpritePath =
+        "Assets/Project/Art/Environment/BossRooms/ash-king-boss-room-orthographic-1920x1080-v1.png";
+
+    /// <summary>
+    /// 보스 방 배경(문 열림).
+    ///
+    /// 추가 생성 — 2026-08-26판에는 문 열린 변형이 같이 있다. 예전 주석이 "그림이 한 장뿐이라
+    /// 세 슬롯에 같은 것을 넣는다. 열린 변형이 생기면 그때 나눠 꽂으면 된다"고 적어둔
+    /// 바로 그 시점이다.
+    /// </summary>
+    private const string BossRoomOpenSpritePath =
+        "Assets/Project/Art/Environment/BossRooms/ash-king-boss-room-orthographic-open-1920x1080-v1.png";
+
     private const string ClearRelicPath = "Assets/Project/Data/Relics/Relic_AshKingHeart.asset";
     private const string RelicPickupPath = "Assets/Project/Prefabs/Items/RelicPickup.prefab";
 
@@ -36,6 +56,10 @@ public static class AshBossRoomBuilder
     /// 그림을 직접 재서 나온 값이다. 1254x1254 캔버스에서 방 그림은 x 52~1201에 있고,
     /// 그 안쪽으로 돌벽이 약 48픽셀 더 들어온다. 둘을 합쳐 100픽셀로 잡았다.
     /// 숫자를 유닛이 아니라 픽셀로 두는 이유: 나중에 PPU를 바꿔도 이 값은 그대로 맞는다.
+    ///
+    /// <b>주의 — 이 값은 2026-08-21판 1254x1254 그림을 재서 나왔다.</b> 지금 쓰는 그림은
+    /// 2026-08-26판 1920x1080이라 여백 비율이 다를 수 있다. 지금 벽 위치가 그림의 돌벽과
+    /// 어긋나 보이면 <b>제일 먼저 의심할 값이 이것이다.</b> 새 그림을 다시 재서 고치면 된다.
     /// </summary>
     private const float InteriorInsetPixels = 100f;
 
@@ -254,16 +278,37 @@ public static class AshBossRoomBuilder
     /// 그 컴포넌트가 방 상태에 따라 SpriteRenderer를 매번 다시 칠한다. 렌더러만 바꾸면
     /// 실행하는 순간 던전 방 그림으로 되돌아간다.
     ///
-    /// 세 슬롯(닫힘/열림/부서짐)에 같은 그림을 넣는 건 보스 방 그림이 한 장뿐이라서다.
-    /// 문 열린 변형이 생기면 그때 '열림' 슬롯만 나눠 꽂으면 된다.
+    /// 수정(슬롯 분리): 예전에는 세 슬롯에 같은 그림 하나를 넣었다. 그림이 한 장뿐이던 때의
+    /// 이야기이고, 2026-08-26판에는 문 열린 변형이 같이 있다. 이제 닫힘과 열림을 나눠 꽂는다 —
+    /// 안 그러면 <b>보스를 잡고 문이 열려도 화면이 그대로여서</b> 열린 것을 알 수 없다.
+    /// 부서짐은 비운다. 보스 방 문은 부서짐 상태가 되지 않는다(부서진 문은 보스로 <b>들어가는</b> 문이다).
+    ///
+    /// 수정(렌더러 동기화): 슬롯만 바꾸고 <c>spriteRenderer.sprite</c>를 그대로 두면 두 가지가 난다.
+    /// 첫째, <b>작업 화면과 게임 화면의 배경이 서로 달라진다</b> — 씬 뷰는 렌더러를 보고
+    /// 플레이는 슬롯을 보기 때문이다. 둘째, 뒤이어 도는 <see cref="LayoutBossRoom"/>이
+    /// <b>렌더러 경계를 재서 벽을 세우므로</b>, 어긋난 채로 두면 보이지도 않을 그림 기준으로 벽이 선다.
+    ///
+    /// 여태 벽이 맞아 보였던 것은 이 어긋남 덕분이었다 — 상수가 옛 그림을 가리키는데도
+    /// 렌더러가 안 바뀌어서 벽은 계속 새 그림 기준으로 섰다. <b>두 버그가 서로를 가리고 있었으므로
+    /// 한쪽만 고치면 오히려 나빠진다.</b> 상수와 렌더러를 같이 고쳐야 한다.
     /// </summary>
     private static void SwapBackground(RoomController room)
     {
-        var sprite = AssetDatabase.LoadAssetAtPath<Sprite>(BossRoomSpritePath);
-        if (sprite == null)
+        var closedSprite = AssetDatabase.LoadAssetAtPath<Sprite>(BossRoomClosedSpritePath);
+        if (closedSprite == null)
         {
-            Debug.LogWarning($"[보스 방] 배경 그림을 못 찾았다: {BossRoomSpritePath}", room);
+            Debug.LogWarning($"[보스 방] 배경 그림을 못 찾았다: {BossRoomClosedSpritePath}", room);
             return;
+        }
+
+        // 열림 그림이 없어도 멈추지는 않는다. 닫힘 그림으로 대신하면 예전 동작과 같아지고,
+        // 문이 열린 티가 안 날 뿐 방은 정상으로 만들어진다.
+        var openSprite = AssetDatabase.LoadAssetAtPath<Sprite>(BossRoomOpenSpritePath);
+        if (openSprite == null)
+        {
+            Debug.LogWarning($"[보스 방] 문 열린 그림을 못 찾아 닫힘 그림으로 대신한다: " +
+                             $"{BossRoomOpenSpritePath}", room);
+            openSprite = closedSprite;
         }
 
         var door = room.GetComponentInChildren<RoomDoorState>(true);
@@ -274,20 +319,52 @@ public static class AshBossRoomBuilder
         }
 
         var doorObject = new SerializedObject(door);
-        foreach (string slot in new[] { "closedRoom", "openRoom", "brokenRoom" })
-        {
-            SerializedProperty property = doorObject.FindProperty(slot);
-            if (property != null) property.objectReferenceValue = sprite;
-        }
+        SetSpriteSlot(doorObject, "closedRoom", closedSprite, room);
+        SetSpriteSlot(doorObject, "openRoom", openSprite, room);
+        SetSpriteSlot(doorObject, "brokenRoom", null, room);
         doorObject.ApplyModifiedPropertiesWithoutUndo();
+
+        // 추가 생성 — 렌더러도 닫힘 그림으로 맞춘다.
+        // 이 한 줄이 없으면 아래 LayoutBossRoom이 '지금 렌더러에 남아 있는 그림'을 재게 된다.
+        var renderer = door.GetComponent<SpriteRenderer>();
+        if (renderer != null && renderer.sprite != closedSprite)
+        {
+            Undo.RecordObject(renderer, "보스 방 배경");
+            Debug.Log($"[보스 방] 배경 갱신 — {(renderer.sprite != null ? renderer.sprite.name : "없음")} " +
+                      $"→ {closedSprite.name}", room);
+            renderer.sprite = closedSprite;
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성 — <see cref="RoomDoorState"/>의 그림 슬롯 하나를 채운다. <c>null</c>이면 비운다.
+    ///
+    /// 필드 이름이 바뀌면 <see cref="SerializedObject.FindProperty"/>가 조용히 null을 내고
+    /// 슬롯이 옛 값 그대로 남는다. 에러가 안 나서 "도구를 돌렸는데 안 바뀐다"로만 보이므로 경고한다.
+    /// </summary>
+    private static void SetSpriteSlot(SerializedObject doorObject, string slot, Sprite sprite, Object context)
+    {
+        SerializedProperty property = doorObject.FindProperty(slot);
+        if (property == null)
+        {
+            Debug.LogWarning($"[보스 방] RoomDoorState에 '{slot}' 필드가 없다. 이름이 바뀌었는지 확인해라.", context);
+            return;
+        }
+
+        property.objectReferenceValue = sprite;
     }
 
     /// <summary>
     /// 방 안의 배치물을 보스 방 그림 크기에 맞춰 다시 놓는다.
     ///
     /// 왜 필요한가: 이 방은 던전 방(1678x937, 52.4x29.3유닛)을 복제해 만들었는데 보스 방 그림은
-    /// 1254x1254(39.2x39.2유닛) 정사각형이다. 벽 충돌체와 입장 지점이 옛 가로 방 기준이라
-    /// 그대로 두면 벽이 그림 밖에 있거나 플레이어가 벽 속에서 시작한다.
+    /// 크기가 다르다. 벽 충돌체와 입장 지점이 옛 방 기준이라 그대로 두면 벽이 그림 밖에 있거나
+    /// 플레이어가 벽 속에서 시작한다.
+    ///
+    /// 수정(그림 갱신): 예전 주석은 보스 방 그림을 "1254x1254(39.2x39.2유닛) 정사각형"이라고
+    /// 적어뒀는데 그건 2026-08-21판이다. 지금 쓰는 2026-08-26판은 <b>1920x1080(60x33.75유닛)</b>
+    /// 가로 그림이다. 숫자를 코드에 박지 않고 스프라이트 경계에서 재는 구조라 동작에는 문제가
+    /// 없었지만, 주석만 옛 그림을 가리키고 있었다.
     ///
     /// 좌표를 숫자로 박지 않고 <b>스프라이트 경계에서 계산</b>하는 이유:
     /// 나중에 보스 방 그림을 다른 크기로 다시 뽑아도 이 도구를 다시 돌리기만 하면 된다.
@@ -342,7 +419,19 @@ public static class AshBossRoomBuilder
         Debug.Log($"[보스 방] 배치 갱신 — 바닥 {innerWidth:F1} x {innerHeight:F1} 유닛, 중심 {center}.", room);
     }
 
-    /// <summary>벽 오브젝트의 위치와 충돌체 크기를 맞춘다. 없으면 만든다.</summary>
+    /// <summary>
+    /// 벽 오브젝트의 위치와 충돌체 크기를 맞춘다. 없으면 만든다.
+    ///
+    /// 수정(벽 레이어): 예전에는 <c>created.layer = room.gameObject.layer</c>로 방의 레이어를
+    /// 물려줬다. 그런데 <c>Room_Boss</c> 자체가 Default(0)라 <b>보스 방 벽 넷이 전부 Default에
+    /// 놓였다.</b> 충돌 매트릭스에서 Player가 Default와도 부딪히게 열려 있어 <b>우연히</b>
+    /// 막아줬을 뿐이고, 매트릭스를 조금만 손대면 보스 방 벽이 통째로 사라진다.
+    /// 에러도 경고도 없이 "보스 방에서만 벽을 뚫는다"로 나타날 자리였다.
+    ///
+    /// 이제 이름으로 Wall 레이어를 찾아 넣는다. 숫자를 적지 않는 이유는 레이어 순서가
+    /// 프로젝트 설정 값이라, 바뀌면 엉뚱한 레이어에 놓고도 아무 말을 안 하기 때문이다.
+    /// 이미 있는 벽의 레이어도 같이 맞춘다 — 다시 실행하는 것으로 옛 씬이 고쳐져야 한다.
+    /// </summary>
     private static void PlaceWall(RoomController room, string wallName, Vector2 position, Vector2 size)
     {
         Transform wall = FindChild(room.transform, wallName);
@@ -351,8 +440,20 @@ public static class AshBossRoomBuilder
             var created = new GameObject(wallName);
             Undo.RegisterCreatedObjectUndo(created, "보스 방 배치");
             created.transform.SetParent(room.transform, false);
-            created.layer = room.gameObject.layer;
             wall = created.transform;
+        }
+
+        // 추가 생성 — 벽은 방이 아니라 Wall 레이어에 속한다.
+        int wallLayer = LayerMask.NameToLayer("Wall");
+        if (wallLayer < 0)
+        {
+            Debug.LogWarning("[보스 방] 'Wall' 레이어가 없어 벽 레이어를 못 맞췄다. " +
+                             "Tools → 재의 길 → 프로젝트 기본 설정 을 먼저 실행해라.", room);
+        }
+        else if (wall.gameObject.layer != wallLayer)
+        {
+            Undo.RecordObject(wall.gameObject, "보스 방 배치");
+            wall.gameObject.layer = wallLayer;
         }
 
         wall.position = new Vector3(position.x, position.y, wall.position.z);
