@@ -165,8 +165,14 @@ public class TimeScaleDebugControl : MonoBehaviour
         {
             // 방금 꺼졌다면 PauseGate의 판단으로 한 번 되돌려주고 손을 뗀다.
             // 매 프레임 쓰지 않는 이유는 클래스 주석에 적었다.
-            if (!Mathf.Approximately(Time.timeScale, PauseGate.IsPaused ? 0f : 1f))
-                Time.timeScale = PauseGate.IsPaused ? 0f : 1f;
+            //
+            // 수정(히트스톱): 기준을 PauseGate.IsPaused에서 <see cref="PauseGate.IntendedTimeScale"/>로
+            // 바꿨다. 예전 기준은 <b>열린 화면만</b> 보기 때문에, 화면이 없는 히트스톱 중에는
+            // "정상값은 1인데 지금 0이다"로 읽고 <b>매 프레임 되돌렸다.</b> 0.05초로 잡은 멈춤이
+            // 한 프레임 만에 풀려서 타격감이 아예 안 느껴졌다. 이 도구가 꺼져 있는데도
+            // 게임 연출을 지우고 있었던 셈이다.
+            if (!Mathf.Approximately(Time.timeScale, PauseGate.IntendedTimeScale))
+                Time.timeScale = PauseGate.IntendedTimeScale;
 
             return;
         }
@@ -197,7 +203,8 @@ public class TimeScaleDebugControl : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        Time.timeScale = PauseGate.IsPaused ? 0f : 1f;
+        // 수정(히트스톱): 여기도 같은 이유로 PauseGate의 판단을 그대로 따른다.
+        Time.timeScale = PauseGate.IntendedTimeScale;
     }
 
     /// <summary>

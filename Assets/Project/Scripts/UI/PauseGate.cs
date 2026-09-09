@@ -49,6 +49,18 @@ public static class PauseGate
     public static float HitStopRemaining => Mathf.Max(0f, hitStopEndsAt - Time.unscaledTime);
 
     /// <summary>
+    /// 추가 생성 — 화면 스택과 히트스톱만 보고 정한 timeScale.
+    ///
+    /// <b>왜 밖으로 내보내는가.</b> <c>TimeScaleDebugControl</c>이 자기가 꺼져 있을 때
+    /// "지금 값이 정상인가"를 매 프레임 확인하고 어긋나면 되돌린다. 그 기준을
+    /// <c>IsPaused ? 0 : 1</c>로 직접 적어두면 <b>히트스톱을 모르는 채 지워버린다</b> —
+    /// 실제로 그랬고, 0.05초짜리 멈춤이 한 프레임 만에 풀렸다.
+    ///
+    /// 판단을 여기 하나에 두면 시간을 멈추는 이유가 늘어도 보는 쪽을 안 고쳐도 된다.
+    /// </summary>
+    public static float IntendedTimeScale => (IsPaused || IsHitStopped) ? 0f : 1f;
+
+    /// <summary>
     /// 추가 생성 — 타격이 꽂히는 순간 아주 짧게 시간을 멈춘다.
     ///
     /// <b>왜 여기에 두는가.</b> <see cref="Apply"/>가 <c>Time.timeScale</c>을 하드 설정한다.
@@ -200,7 +212,7 @@ public static class PauseGate
     /// </summary>
     private static void ApplyTimeScale()
     {
-        Time.timeScale = (IsPaused || IsHitStopped) ? 0f : 1f;
+        Time.timeScale = IntendedTimeScale;
     }
 
     /// <summary>

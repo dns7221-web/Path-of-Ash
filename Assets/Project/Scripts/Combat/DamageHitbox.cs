@@ -22,8 +22,11 @@ public class DamageHitbox : MonoBehaviour
     [Tooltip("이 한 대로 죽었을 때 멈출 시간(초). 보통 일반 타격보다 길다.")]
     [SerializeField, Min(0f)] private float killHitStopSeconds = 0.1f;
 
+    // 기본값을 0이 아니라 0.18로 두는 이유: 멈춤만으로는 "뭔가 끊겼다"로 읽히고 타격으로는
+    // 안 읽힌다. CameraShake의 maxOffset이 0.6유닛이므로 0.18은 약 0.11유닛 —
+    // 32 PPU 기준 3~4픽셀이다. 알아볼 수는 있고 화면이 요동치지는 않는 정도.
     [Tooltip("맞은 순간 화면 흔들림 세기(0~1). 0이면 안 흔든다.")]
-    [SerializeField, Range(0f, 1f)] private float shakeStrength;
+    [SerializeField, Range(0f, 1f)] private float shakeStrength = 0.18f;
 
     [Tooltip("흔들림 시간(초).")]
     [SerializeField, Min(0f)] private float shakeSeconds = 0.12f;
