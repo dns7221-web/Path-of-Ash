@@ -25,6 +25,11 @@ public class AreaSkillData : SkillData
     [Tooltip("때릴 대상 레이어.")]
     [SerializeField] private LayerMask targetLayers;
 
+    // 추가 생성 — 타격감. 장판이 여러 마리를 한 번에 때려도 <see cref="PauseGate.HitStop"/>이
+    // 겹침을 "더 긴 쪽"으로 처리하므로, 마릿수만큼 시간이 불어나지 않는다.
+    [Tooltip("맞은 순간 멈출 실시간(초). 0이면 안 멈춘다.")]
+    [SerializeField, Min(0f)] private float hitStopSeconds = 0.07f;
+
     [Header("타이밍")]
     // 추가 생성(궁극기 연출 확인 후) — 이 값을 정하는 규칙.
     //
@@ -80,6 +85,9 @@ public class AreaSkillData : SkillData
             if (health == null || !damaged.Add(health)) continue;
 
             health.TakeDamage(damage, center);
+
+            // 추가 생성 — 데미지가 실제로 들어간 뒤에 멈춘다.
+            PauseGate.HitStop(hitStopSeconds);
         }
     }
 

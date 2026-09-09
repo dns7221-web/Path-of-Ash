@@ -59,6 +59,11 @@ public class GroundSlamSkillData : SkillData
     [Header("공통")]
     [SerializeField] private LayerMask targetLayers;
 
+    // 추가 생성 — 타격감. 내려찍기는 근·원 두 판정이 연달아 도는데, 겹침을 "더 긴 쪽"으로
+    // 처리하므로 두 번 맞아도 한 번 멈춘 것처럼 보인다. 그게 의도다.
+    [Tooltip("맞은 순간 멈출 실시간(초). 0이면 안 멈춘다.")]
+    [SerializeField, Min(0f)] private float hitStopSeconds = 0.08f;
+
     // 추가 생성 — 위/아래로 칠 때 거리를 얼마나 유지할지.
     //
     // 왜 SkillData의 원근 압축(Forward)을 그대로 안 쓰는가:
@@ -168,6 +173,9 @@ public class GroundSlamSkillData : SkillData
             if (health == null || !damaged.Add(health)) continue;
 
             health.TakeDamage(amount, center);
+
+            // 추가 생성 — 데미지가 실제로 들어간 뒤에 멈춘다.
+            PauseGate.HitStop(hitStopSeconds);
         }
     }
 
