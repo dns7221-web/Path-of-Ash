@@ -1,0 +1,20 @@
+Use case: game VFX. Asset: SIX-FRAME BOW RELEASE FLASH effect sprite strip for a 2D pixel-art top-down action game. Effect only: no character, no bow, no arrow.
+
+Art direction (the most important style rule): a skill effect from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. A crisp, stylish burst that sells the power of the shot. Bold, sharp, graphic shapes; glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic fire and smoke.
+
+Orientation: the shot goes to the RIGHT. The bowstring snaps at the left-center of the image and the burst is thrown to the RIGHT. The game rotates this sprite for the other directions, so draw it facing right only, and keep it mirror-symmetric top-to-bottom.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024). Each frame centered on its cell center, with at least 16 px margin inside every cell edge.
+
+Timing: 6 frames at 20 fps (0.3 s).
+1. SNAP: a thin, tall, vertical ellipse ring of white-hot light - like a shockwave seen edge-on, about three times taller than wide - appears at the left-center, with a tiny bright point in its middle.
+2. BURST: the ring widens and brightens; a short cone of sharp ember light rays shoots out to the RIGHT from its center; two small crescent shock arcs curve outward above and below the cone.
+3. PEAK: the ring at full size, the ray cone at full length (about two thirds of the cell width), a bright white-hot core. The biggest frame.
+4. BREAK: the ring breaks into ember dashes; the rays thin into long sparks drifting to the right.
+5. FADE: small ember sparks and ash flakes drifting to the right; the ring is gone.
+6. END: only a few tiny fading ash specks.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps, no antialiasing, no soft glow gradients, no blur, no photographic smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

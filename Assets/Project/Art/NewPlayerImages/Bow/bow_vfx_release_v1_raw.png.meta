@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: da5c17ee00c9dec4faf73aefeb648c3b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 763437563048320775
+    second: bow_vfx_release_v1_raw_0
+  - first:
+      213: -6643684016053669754
+    second: bow_vfx_release_v1_raw_1
+  - first:
+      213: -8544858251975185387
+    second: bow_vfx_release_v1_raw_2
+  - first:
+      213: -5185436717515473449
+    second: bow_vfx_release_v1_raw_3
+  - first:
+      213: -6202915524724993671
+    second: bow_vfx_release_v1_raw_4
+  - first:
+      213: 328282892792694410
+    second: bow_vfx_release_v1_raw_5
+  - first:
+      213: -3569093840867006834
+    second: bow_vfx_release_v1_raw_6
+  - first:
+      213: 6059056541425615302
+    second: bow_vfx_release_v1_raw_7
+  - first:
+      213: -3456362826413013103
+    second: bow_vfx_release_v1_raw_8
+  - first:
+      213: 6711256241037627215
+    second: bow_vfx_release_v1_raw_9
+  - first:
+      213: -3868801826577287322
+    second: bow_vfx_release_v1_raw_10
+  - first:
+      213: 3475761257601564111
+    second: bow_vfx_release_v1_raw_11
+  - first:
+      213: 7053746738771749485
+    second: bow_vfx_release_v1_raw_12
+  - first:
+      213: -5290259333320886374
+    second: bow_vfx_release_v1_raw_13
+  - first:
+      213: -6176776926360996887
+    second: bow_vfx_release_v1_raw_14
+  - first:
+      213: -4298061526630397401
+    second: bow_vfx_release_v1_raw_15
+  - first:
+      213: -2297509819643104002
+    second: bow_vfx_release_v1_raw_16
+  - first:
+      213: 4248352368864590283
+    second: bow_vfx_release_v1_raw_17
+  - first:
+      213: -677688443620856165
+    second: bow_vfx_release_v1_raw_18
+  - first:
+      213: -3791342013866279307
+    second: bow_vfx_release_v1_raw_19
+  - first:
+      213: -1064140490404495015
+    second: bow_vfx_release_v1_raw_20
+  - first:
+      213: -2601337379271128747
+    second: bow_vfx_release_v1_raw_21
+  - first:
+      213: 1856189722662603059
+    second: bow_vfx_release_v1_raw_22
+  - first:
+      213: 2464602682951153320
+    second: bow_vfx_release_v1_raw_23
+  - first:
+      213: -4177983449143421560
+    second: bow_vfx_release_v1_raw_24
+  - first:
+      213: 1178153994005425926
+    second: bow_vfx_release_v1_raw_25
+  - first:
+      213: 6005808632694784338
+    second: bow_vfx_release_v1_raw_26
+  - first:
+      213: -19767626643858058
+    second: bow_vfx_release_v1_raw_27
+  - first:
+      213: -7703017612552061427
+    second: bow_vfx_release_v1_raw_28
+  - first:
+      213: 406212514748630625
+    second: bow_vfx_release_v1_raw_29
+  - first:
+      213: 2877005886540312966
+    second: bow_vfx_release_v1_raw_30
+  - first:
+      213: -2740450479194926314
+    second: bow_vfx_release_v1_raw_31
+  - first:
+      213: -4289468572744181292
+    second: bow_vfx_release_v1_raw_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 37
+        width: 226
+        height: 671
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70f5fa13b66489a00800000000000000
+      internalID: 763437563048320775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_1
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 19
+        width: 607
+        height: 683
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6803e2f4694ecc3a0800000000000000
+      internalID: -6643684016053669754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_2
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 604
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c24f241b09a6980800000000000000
+      internalID: -8544858251975185387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_3
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 618
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ddf83f67c0a908b0800000000000000
+      internalID: -5185436717515473449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_4
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 0
+        width: 382
+        height: 666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 971d209d131dae9a0800000000000000
+      internalID: -6202915524724993671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_5
+      rect:
+        serializedVersion: 2
+        x: 1734
+        y: 423
+        width: 407
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a860fba3d8b4e8400800000000000000
+      internalID: 328282892792694410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_6
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 596
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e866615cf08087ec0800000000000000
+      internalID: -3569093840867006834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_7
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 167
+        width: 317
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c14ea972d7161450800000000000000
+      internalID: 6059056541425615302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_8
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 586
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19789cc62588800d0800000000000000
+      internalID: -3456362826413013103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_9
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 462
+        width: 119
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4fcba35efb232d50800000000000000
+      internalID: 6711256241037627215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_10
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 290
+        width: 232
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6677a7c8c314f4ac0800000000000000
+      internalID: -3868801826577287322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_11
+      rect:
+        serializedVersion: 2
+        x: 1605
+        y: 465
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcdf76bc2726c3030800000000000000
+      internalID: 3475761257601564111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_12
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 415
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6a6f0c5941f3e160800000000000000
+      internalID: 7053746738771749485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_13
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 429
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a97b6b35a293596b0800000000000000
+      internalID: -5290259333320886374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_14
+      rect:
+        serializedVersion: 2
+        x: 1945
+        y: 399
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e37c678c1ea74aa0800000000000000
+      internalID: -6176776926360996887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_15
+      rect:
+        serializedVersion: 2
+        x: 2074
+        y: 369
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72a0c6a40d73a54c0800000000000000
+      internalID: -4298061526630397401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_16
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 361
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef47334edfa9d10e0800000000000000
+      internalID: -2297509819643104002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_17
+      rect:
+        serializedVersion: 2
+        x: 1834
+        y: 361
+        width: 46
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc9fcd288fd25fa30800000000000000
+      internalID: 4248352368864590283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_18
+      rect:
+        serializedVersion: 2
+        x: 2011
+        y: 363
+        width: 35
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9e679973fd5896f0800000000000000
+      internalID: -677688443620856165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_19
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 158
+        width: 128
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e7c799682726bc0800000000000000
+      internalID: -3791342013866279307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_20
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 232
+        width: 86
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 951845eacd96b31f0800000000000000
+      internalID: -1064140490404495015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_21
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 63
+        width: 172
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 559499f9f6136ebd0800000000000000
+      internalID: -2601337379271128747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_22
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 248
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 339090fd7b282c910800000000000000
+      internalID: 1856189722662603059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_23
+      rect:
+        serializedVersion: 2
+        x: 1802
+        y: 305
+        width: 33
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a637c50517043220800000000000000
+      internalID: 2464602682951153320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_24
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 303
+        width: 33
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885585c5032d406c0800000000000000
+      internalID: -4177983449143421560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_25
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 152
+        width: 87
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60fa66fb0d4a95010800000000000000
+      internalID: 1178153994005425926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_26
+      rect:
+        serializedVersion: 2
+        x: 1937
+        y: 272
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2514fbc912be85350800000000000000
+      internalID: 6005808632694784338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_27
+      rect:
+        serializedVersion: 2
+        x: 1976
+        y: 317
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d17d3c275c9bff0800000000000000
+      internalID: -19767626643858058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_28
+      rect:
+        serializedVersion: 2
+        x: 1987
+        y: 288
+        width: 57
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0eb1413b42691590800000000000000
+      internalID: -7703017612552061427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_29
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 178
+        width: 86
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16609e4412823a500800000000000000
+      internalID: 406212514748630625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_30
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 83
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68171fb5c9d2de720800000000000000
+      internalID: 2877005886540312966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_31
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 83
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61399070fc6f7f9d0800000000000000
+      internalID: -2740450479194926314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bow_vfx_release_v1_raw_32
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 41
+        width: 87
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d991664f0fb874c0800000000000000
+      internalID: -4289468572744181292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bow_vfx_release_v1_raw_0: 763437563048320775
+      bow_vfx_release_v1_raw_1: -6643684016053669754
+      bow_vfx_release_v1_raw_10: -3868801826577287322
+      bow_vfx_release_v1_raw_11: 3475761257601564111
+      bow_vfx_release_v1_raw_12: 7053746738771749485
+      bow_vfx_release_v1_raw_13: -5290259333320886374
+      bow_vfx_release_v1_raw_14: -6176776926360996887
+      bow_vfx_release_v1_raw_15: -4298061526630397401
+      bow_vfx_release_v1_raw_16: -2297509819643104002
+      bow_vfx_release_v1_raw_17: 4248352368864590283
+      bow_vfx_release_v1_raw_18: -677688443620856165
+      bow_vfx_release_v1_raw_19: -3791342013866279307
+      bow_vfx_release_v1_raw_2: -8544858251975185387
+      bow_vfx_release_v1_raw_20: -1064140490404495015
+      bow_vfx_release_v1_raw_21: -2601337379271128747
+      bow_vfx_release_v1_raw_22: 1856189722662603059
+      bow_vfx_release_v1_raw_23: 2464602682951153320
+      bow_vfx_release_v1_raw_24: -4177983449143421560
+      bow_vfx_release_v1_raw_25: 1178153994005425926
+      bow_vfx_release_v1_raw_26: 6005808632694784338
+      bow_vfx_release_v1_raw_27: -19767626643858058
+      bow_vfx_release_v1_raw_28: -7703017612552061427
+      bow_vfx_release_v1_raw_29: 406212514748630625
+      bow_vfx_release_v1_raw_3: -5185436717515473449
+      bow_vfx_release_v1_raw_30: 2877005886540312966
+      bow_vfx_release_v1_raw_31: -2740450479194926314
+      bow_vfx_release_v1_raw_32: -4289468572744181292
+      bow_vfx_release_v1_raw_4: -6202915524724993671
+      bow_vfx_release_v1_raw_5: 328282892792694410
+      bow_vfx_release_v1_raw_6: -3569093840867006834
+      bow_vfx_release_v1_raw_7: 6059056541425615302
+      bow_vfx_release_v1_raw_8: -3456362826413013103
+      bow_vfx_release_v1_raw_9: 6711256241037627215
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

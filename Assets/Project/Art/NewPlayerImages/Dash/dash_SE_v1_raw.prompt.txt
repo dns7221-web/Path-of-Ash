@@ -1,0 +1,37 @@
+Use case: identity-preserve. Asset: SIX-FRAME DASH animation for a 2D pixel-art top-down action game.
+Reference image: the approved character in her idle pose. Copy her identity exactly: anime face with red eyes, long silver-white hair with straight bangs, charcoal hood, small gold crown-shaped brooch on her chest, dark fitted bodice with belts, armored gauntlets, tattered charcoal cloak with burnt ember-orange edges, black thigh-high stockings with thin straps, armored heeled knee boots, tall non-chibi proportions, and the same long jagged black sword with a glowing ember-orange edge and a thorny crossguard, in the same hand. Only the identity comes from the reference. The POSES in frames 1-5 must be strongly different from the reference; only frame 6 returns to the reference pose.
+
+Art direction (the most important style rule): Korean/Japanese "subculture" game style - a modern anime gacha action RPG - and she is its heroine. Every frame must look like a stylish key pose from an anime action game: one clear line of action through the whole body, a cool and confident heroine attitude, graceful readable hands, and hair and cloak that exaggerate the motion in big flowing shapes. Keep her anime face from the reference: large red eyes, small nose and mouth, calm focused expression. Exaggerate the POSES, never the anatomy: she keeps the reference's tall adult proportions, small head and long legs. Not chibi, not western cartoon, not realistic painting.
+
+Canvas: landscape 1536x1024. Layout: a grid of 3 columns x 2 rows, six equal square cells (512x512 each). Top row = frames 1, 2, 3 from left to right. Bottom row = frames 4, 5, 6 from left to right. One full-body frame per cell, with at least 24 px of empty background on every side of each cell. All six frames at the same scale: standing height about 380 px from hood top to boot sole when she is upright.
+
+This is a fast evasive DASH: a low, ground-skimming burst of speed like an anime shadow-step. It is not running, not jumping, not rolling and not attacking. Her feet stay on the ground line near the bottom of every cell - at least one foot touches or skims the ground in every frame, and she never leaps into the air. Her hips stay near the horizontal center of the cell; the dash is sold by the POSE (deep forward lean, long low stride, streaming hair and cloak), not by moving her across the cell.
+
+Camera: fixed 35-degree top-down 3/4 view. She faces the SAME direction in all six frames (see the direction block below) and dashes straight toward the direction she faces.
+Screen directions use a clock face around her body: 12 = up, 3 = right, 6 = down, 9 = left.
+
+The sword is never swung. It stays in the same hand as the reference; during the dash she carries it low and trailing BEHIND her, pointing backward away from the dash direction, blade nearly parallel to the ground at hip height. It returns to exactly the reference position only in frame 6.
+
+1. LAUNCH: a sudden crouch into the dash direction. Torso tipped forward, knees deeply bent, rear heel lifting off the ground, sword hand swinging back so the blade starts to trail behind her. Hair and cloak have not reacted yet and still hang close to the body.
+2. PUSH-OFF: the rear leg drives off the ground and straightens fully behind her with only the toe touching, the front knee thrusts forward, head low, eyes locked straight ahead. Hair and cloak begin lifting backward.
+3. SKIM: the lowest and longest silhouette of the whole animation. Torso almost horizontal, head low and forward, a long stride close to the ground - front foot sliding forward just above the floor, rear leg stretched straight out behind. Free arm tucked close to the body. Blade trailing straight back. Hair and cloak stream straight backward like a flag in strong wind.
+4. SKIM 2: the same speed pose continued, but the legs have switched: the rear foot swings forward under her body while the front leg reaches back. Torso still very low. Cloak hem rippling. Nearly as long as frame 3 but clearly different in the legs.
+5. BRAKE: front foot planted hard with the knee deeply bent, rear foot dragging, torso rising back up, free hand thrown out for balance, sword swinging forward toward its resting angle. Hair and cloak whip FORWARD past her body because they keep moving after she stops.
+6. RECOVER: exactly the idle pose of the reference - same stance, same sword angle, same cloak shape, same scale.
+
+Lock these per frame so the six poses cannot collapse into each other.
+Torso lean forward from vertical: 35 degrees, 55 degrees, 70 degrees, 65 degrees, 20 degrees, 0 degrees.
+Head height compared with her standing head height: 85%, 70%, 60%, 62%, 85%, 100%.
+Legs: both knees deeply bent, rear leg straight behind, long low stride, legs switching over, front knee deeply bent, reference.
+Hair and cloak: hanging, lifting backward, streaming straight back, streaming back and rippling, whipping forward, reference.
+Frames 3 and 6 matter most and must be unmistakably different - one is a low, long, almost horizontal speed shape, the other is the upright idle.
+
+Style: detailed hi-bit anime pixel art matching the reference - the same fine pixel density, consistent pixel cluster size, dark outline, 2-3 hard shade steps, no antialiasing, no smooth painting, no blur.
+Palette: gray and charcoal cloak and armor, white hair, pale skin, red eyes. Ember orange only on the sword edge and the torn cloak edges. No red cloth. Absolutely no green on the character.
+No afterimage, ghost copies, speed lines, dust clouds, smear, motion blur, sparks, embers or particles (the dash effect is a separate sprite). No shadow, no floor, no text, no frame numbers, no grid lines, no borders.
+Background: solid uniform pure chroma-key green #00FF00.
+
+Direction: she faces DOWN-RIGHT, toward the lower right, in every frame, and dashes toward 4-5 o'clock. Three-quarter front view, her face is visible and turned to the viewer's right. Sword hand on the same side as the reference (the viewer's LEFT).
+Her head and shoulders lead toward the lower right, the trailing leg stretches back toward 10-11 o'clock, and her hair and cloak stream toward 10-11 o'clock (up and to the viewer's left).
+The trailing blade points back toward 9-10 o'clock at hip height on the viewer's left.
+In frames 3 and 4 her head may be up to about 50 px to the viewer's RIGHT of her hips.

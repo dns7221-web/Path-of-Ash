@@ -1,0 +1,22 @@
+Use case: game VFX. Asset: SIX-FRAME ULTIMATE EXPLOSION effect sprite strip ("King's Ember") for a 2D pixel-art top-down action game. Effect only: no character, no sword. The heroine kneels exactly at the center of this effect with her sword planted in the floor, and the effect erupts from that point.
+
+Art direction (the most important style rule): the ULTIMATE skill effect of a Korean/Japanese "subculture" game - a modern anime gacha action RPG. The most spectacular effect in the game: majestic, royal and overwhelming. Its motif is a CROWN: a ring of giant jagged obsidian spikes with ember-glowing edges bursts outward around the center like a king's crown seen from above, followed by a radial shockwave of ember light. Shapes are bold, sharp and graphic; glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic fire and smoke.
+
+Camera: fixed 35-degree top-down 3/4 view. Rings on the floor are ellipses wider than tall.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024).
+
+Centering rule (important for the game): every frame is centered on its cell center (x=128, y=128) and arranged symmetrically around that center - mirror-symmetric left to right, with equal extent above and below - so the center never shifts between frames. The largest frames have a ROUND overall footprint, about as tall as it is wide, because the effect shows a circular damage area. Every frame ends in a round outer edge made of scattered hard pixels and stays at least 16 px away from all cell edges. Never fill the cell into a square and never touch the cell border.
+
+Timing: 6 frames at 8 fps (0.75 s). The damage lands on frame 2.
+1. IGNITION: a round, fully opaque white-hot flash disc about 100 px across, centered on the cell center, rimmed with amber and ember orange, with eight short sharp light rays. It must completely hide a small figure standing at the center.
+2. CROWN: a ring of ten to twelve giant jagged obsidian spikes with glowing ember edges bursts OUTWARD from the center in all directions on a wide floor ellipse, like the points of a crown seen from above; an ember shockwave ring expands between them; the center still white-hot.
+3. BLAST: the biggest and brightest frame. A round radial explosion fills most of the cell: layered rings of amber and ember-orange flame, long sharp light rays radiating evenly in all directions, the crown spikes at full length, a white-hot core.
+4. BURN: the explosion ring keeps expanding outward but thins; the inner area turns to dark ash crossed by glowing ember cracks; the crown spikes crack and crumble at their tips; burning flakes fly outward evenly.
+5. CRUMBLE: the crown spikes shatter into obsidian shards; the outer ring is a thin broken circle of embers near the edge of the footprint; ash flakes scattered evenly inside.
+6. ASH SNOW: only scattered ash flakes and a few tiny dying ember specks drifting down over the whole round area, and a faint cracked ember ellipse on the floor at the center.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps per shape, no antialiasing, no soft glow gradients, no blur, no photographic smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor texture, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

@@ -1,0 +1,21 @@
+Use case: game VFX. Asset: SIX-FRAME ARROW IMPACT effect sprite strip for a 2D pixel-art top-down action game. Effect only: no character, no arrow.
+
+Art direction (the most important style rule): a skill effect from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. A sharp, satisfying hit spark with a clean graphic shape. Glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic fire and smoke.
+
+Orientation: the arrow arrived from the LEFT and hit at the center of the image. The game rotates this sprite for the other directions, so draw it for a hit coming from the left only, and keep it mirror-symmetric top-to-bottom.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024).
+Centering rule (important for the game): every frame is centered on its cell center (x=128, y=128) - the hit point - with equal extent above and below, and at least 16 px margin inside every cell edge.
+
+Timing: 6 frames at 20 fps (0.3 s).
+1. HIT: a small white-hot four-pointed star flash at the center.
+2. BURST: a sharp eight-pointed star of ember light inside a thin ring, its longest rays pointing forward to the RIGHT and fanning out above and below.
+3. PEAK: the biggest frame - a round burst about 120 px across with a bright core, a jagged ring of ember shards, and a few obsidian ash splinters flying outward to the right.
+4. SCATTER: the ring breaks into ember shards flying outward; the core dims to orange.
+5. FADE: small ember specks and ash flakes drifting outward and slightly to the right.
+6. END: a few tiny fading ember specks.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps, no antialiasing, no soft glow gradients, no blur, no photographic smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

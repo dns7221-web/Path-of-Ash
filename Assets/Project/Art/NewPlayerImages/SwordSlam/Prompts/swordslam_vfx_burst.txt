@@ -1,0 +1,23 @@
+Use case: game VFX. Asset: SIX-FRAME FORWARD GROUND ERUPTION effect sprite strip (a wave of ember fire and obsidian spikes racing forward along the floor) for a 2D pixel-art top-down action game. Effect only: no character, no sword.
+
+Art direction (the most important style rule): a skill effect from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. A powerful ground wave in the style of an anime action skill: a row of jagged obsidian spikes with ember-glowing edges bursts up in sequence, leaning forward like the blades of a crown, with tongues of ember fire between them. Shapes are bold, sharp and graphic; glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic fire and smoke.
+
+Orientation: the wave travels to the RIGHT, starting at the LEFT end where a sword slammed into the floor. Up is always up the screen - the spikes rise upward and lean toward the right. Do not draw anything upside down.
+Camera: fixed 35-degree top-down 3/4 view. The fissure runs along the floor from left to right.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024). Each frame with at least 16 px margin inside every cell edge.
+
+Anchoring rule (important for the game): a thin glowing fissure line on the floor runs from the far LEFT to the far RIGHT of the effect - about 200 px long - and it has the SAME length and the SAME position in all six frames, near the bottom of the cell. Nothing is ever drawn to the left of the fissure's left end, to the right of its right end, or below it. Spikes, fire and shards only rise UPWARD from the fissure, never taller than about 110 px.
+
+Timing: 6 frames at 14 fps (0.43 s).
+1. SPARK: the fissure lights up as a thin ember line along its whole length, with small sparks and short glowing cracks branching off it.
+2. RISE: jagged obsidian spikes and ember flames burst up along the LEFT third of the fissure, leaning to the right.
+3. WAVE: the biggest frame - spikes stand along the whole fissure, tallest in the middle-right, white-hot and amber fire between them, embers flying up and forward.
+4. CREST: the spikes at the RIGHT end reach their peak while the ones at the left crack and crumble; fire thinning at the left.
+5. SHATTER: all spikes break into falling obsidian shards and ash flakes; only small flames remain along the fissure.
+6. SCORCH: only the scorched fissure line with a few dying ember specks above it.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps per shape, no antialiasing, no soft glow gradients, no blur, no photographic smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor tiles, stone slabs, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.
