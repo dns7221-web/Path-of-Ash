@@ -47,3 +47,6 @@ crashlytics-build.properties
 .DS_Store
 Thumbs.db
 _ArtReview/
+
+# 이미지 생성 초안 — 쓰는 그림은 Assets/Project/Art/New*Images로 옮겨 둔다
+/output/
