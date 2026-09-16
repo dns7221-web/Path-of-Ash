@@ -48,6 +48,11 @@ param(
     # 왜 필요한가: 처음엔 크기 조건 없이 돌렸더니 1픽셀짜리 잔티를 수천 개 지웠다.
     # 부드러운 가장자리에서 알파가 살짝 남은 점들인데, 화면에서 보이지도 않는 것을 지우면
     # 얻는 것 없이 원본만 건드리게 된다. 실제로 거슬리는 조각은 수십~1000px 단위다.
+    #
+    # 수정(2026-09-11) 메모 — 위의 "1픽셀 잔티 수천 개"는 잔티가 아니라 아래 덩어리 찾기의
+    # 좌표 반올림 버그 때문이었을 가능성이 크다. 칸 오른쪽 절반의 픽셀이 전부 좌표가 음수로
+    # 풀려 이웃을 못 찾고 1px 덩어리로 쪼개졌고, 음수 x는 "가장자리에 걸침"으로 판정됐다.
+    # 버그를 고친 뒤에도 이 하한은 그대로 둔다. 거슬리는 조각이 수십~1000px라는 판단은 여전히 맞다.
     [int]$MinFragmentPixels = 20,
 
     # 위아래 경계(= 다른 방향 행)도 볼지. 세로로 넘치면 옆 방향 그림이 섞인다.
@@ -194,7 +199,14 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter $FilePattern -File | Sort-Obj
                     while ($stack.Count -gt 0) {
                         $i = $stack.Pop()
                         $comp.Add($i)
-                        $iy = [int]($i / $Cell)
+
+                        # 수정(2026-09-11): [int]($i / $Cell) → [int][Math]::Floor($i / $Cell).
+                        # PowerShell의 [int] 변환은 내림이 아니라 반올림이다. 그래서 칸 오른쪽 절반
+                        # (x >= 128)은 몫이 한 줄 올라가고 x가 음수로 풀렸다(x=144 → -112, y+1).
+                        # 증상 셋: 그 픽셀의 이웃을 전부 칸 밖으로 보고 버려서 덩어리가 1px로 쪼개졌고,
+                        # 음수 x라 "가장자리에 걸침"으로 판정됐으며, 지울 때는 한 줄 아래·256px 왼쪽
+                        # (= 옆 프레임 칸)의 엉뚱한 픽셀을 지웠다. 오른쪽 절반의 조각은 한 번도 안 잡혔다.
+                        $iy = [int][Math]::Floor($i / $Cell)
                         $ix = $i - $iy * $Cell
 
                         if ($ix -lt $EdgeMargin -or $ix -ge ($Cell - $EdgeMargin)) { $touchesEdge = $true }
@@ -215,7 +227,9 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter $FilePattern -File | Sort-Obj
                     # 추가 생성 — 가로 범위. OutsideBody 판정에 쓴다.
                     $minX = $Cell; $maxX = -1
                     foreach ($i in $comp) {
-                        $iy = [int]($i / $Cell)
+                        # 수정(2026-09-11): 반올림 → 내림. 위 덩어리 찾기의 수정과 같은 이유다.
+                        # 반올림이면 오른쪽 절반의 x가 음수로 나와 가로 범위가 통째로 틀린다.
+                        $iy = [int][Math]::Floor($i / $Cell)
                         $ix = $i - $iy * $Cell
                         if ($ix -lt $minX) { $minX = $ix }
                         if ($ix -gt $maxX) { $maxX = $ix }
@@ -249,7 +263,9 @@ foreach ($file in (Get-ChildItem $SheetDir -Filter $FilePattern -File | Sort-Obj
                 if (-not $cp.Edge -and -not $outside) { continue }
 
                 foreach ($i in $cp.Pixels) {
-                    $iy = [int]($i / $Cell)
+                    # 수정(2026-09-11): 반올림 → 내림. 반올림이면 오른쪽 절반 픽셀을 지울 때
+                    # 한 줄 아래·256px 왼쪽, 곧 옆 프레임 칸의 엉뚱한 픽셀을 지운다.
+                    $iy = [int][Math]::Floor($i / $Cell)
                     $ix = $i - $iy * $Cell
                     $bytes[($oy + $iy) * $stride + ($ox + $ix) * 4 + 3] = 0
                 }
