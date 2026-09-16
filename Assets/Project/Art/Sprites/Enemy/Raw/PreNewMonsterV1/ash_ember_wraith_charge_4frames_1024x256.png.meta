@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: 5d5d5e1e410272742ab8e8c6cc23d72a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2776405651905830850
+    second: ash_ember_wraith_charge_4frames_1024x256_0
+  - first:
+      213: 373902347029854621
+    second: ash_ember_wraith_charge_4frames_1024x256_1
+  - first:
+      213: -7770248529415999921
+    second: ash_ember_wraith_charge_4frames_1024x256_2
+  - first:
+      213: -1987663337191474813
+    second: ash_ember_wraith_charge_4frames_1024x256_3
+  - first:
+      213: -7697122859663744804
+    second: ash_ember_wraith_charge_4frames_1024x256_4
+  - first:
+      213: 1051232042034164304
+    second: ash_ember_wraith_charge_4frames_1024x256_5
+  - first:
+      213: 8651072272820428729
+    second: ash_ember_wraith_charge_4frames_1024x256_6
+  - first:
+      213: -6054194803289037346
+    second: ash_ember_wraith_charge_4frames_1024x256_7
+  - first:
+      213: 1625076541957115693
+    second: ash_ember_wraith_charge_4frames_1024x256_8
+  - first:
+      213: -3514808407956347350
+    second: ash_ember_wraith_charge_4frames_1024x256_9
+  - first:
+      213: -1339431867411118756
+    second: ash_ember_wraith_charge_4frames_1024x256_10
+  - first:
+      213: -7514937064923888754
+    second: ash_ember_wraith_charge_4frames_1024x256_11
+  - first:
+      213: -3103992357506918061
+    second: ash_ember_wraith_charge_4frames_1024x256_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 38
+        width: 157
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cfdb3afa36c78620800000000000000
+      internalID: 2776405651905830850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_1
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 38
+        width: 193
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d99366f143e503500800000000000000
+      internalID: 373902347029854621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_2
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 38
+        width: 213
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e68ab81288a2490800000000000000
+      internalID: -7770248529415999921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_3
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 75
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38972a5d9b66a64e0800000000000000
+      internalID: -1987663337191474813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_4
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 38
+        width: 198
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd0243d4a835e2590800000000000000
+      internalID: -7697122859663744804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 38
+        width: 41
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05274f9f8f9b69e00800000000000000
+      internalID: 1051232042034164304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_6
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 62
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bf51b39568ce0870800000000000000
+      internalID: 8651072272820428729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_7
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 39
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed5e0f427ed2bfba0800000000000000
+      internalID: -6054194803289037346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_8
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 62
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2f8c20418e6d8610800000000000000
+      internalID: 1625076541957115693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_9
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 62
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26a43e0064e83fc0800000000000000
+      internalID: -3514808407956347350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_10
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 55
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c554f1e20d1696de0800000000000000
+      internalID: -1339431867411118756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_11
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 43
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e838bc72e8495b790800000000000000
+      internalID: -7514937064923888754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_ember_wraith_charge_4frames_1024x256_12
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 39
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 359d54185676ce4d0800000000000000
+      internalID: -3103992357506918061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash_ember_wraith_charge_4frames_1024x256_0: 2776405651905830850
+      ash_ember_wraith_charge_4frames_1024x256_1: 373902347029854621
+      ash_ember_wraith_charge_4frames_1024x256_10: -1339431867411118756
+      ash_ember_wraith_charge_4frames_1024x256_11: -7514937064923888754
+      ash_ember_wraith_charge_4frames_1024x256_12: -3103992357506918061
+      ash_ember_wraith_charge_4frames_1024x256_2: -7770248529415999921
+      ash_ember_wraith_charge_4frames_1024x256_3: -1987663337191474813
+      ash_ember_wraith_charge_4frames_1024x256_4: -7697122859663744804
+      ash_ember_wraith_charge_4frames_1024x256_5: 1051232042034164304
+      ash_ember_wraith_charge_4frames_1024x256_6: 8651072272820428729
+      ash_ember_wraith_charge_4frames_1024x256_7: -6054194803289037346
+      ash_ember_wraith_charge_4frames_1024x256_8: 1625076541957115693
+      ash_ember_wraith_charge_4frames_1024x256_9: -3514808407956347350
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

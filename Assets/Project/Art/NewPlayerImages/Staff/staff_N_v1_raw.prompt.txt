@@ -1,0 +1,35 @@
+Use case: identity-preserve. Asset: SIX-FRAME SPELL CAST animation for a 2D pixel-art top-down action game.
+Reference image: the approved character in her idle pose. Copy her identity exactly: anime face with red eyes, long silver-white hair with straight bangs, charcoal hood, small gold crown-shaped brooch on her chest, dark fitted bodice with belts, armored gauntlets, tattered charcoal cloak with burnt ember-orange edges, black thigh-high stockings with thin straps, armored heeled knee boots, tall non-chibi proportions, and the same long jagged black sword with a glowing ember-orange edge and a thorny crossguard, in the same hand. Only the identity comes from the reference. The POSES in frames 1-5 must be strongly different from the reference; only frame 6 returns to the reference pose.
+
+Art direction (the most important style rule): Korean/Japanese "subculture" game style - a modern anime gacha action RPG - and she is its heroine. Every frame must look like a stylish key pose from an anime action game: one clear line of action through the whole body, a cool and confident heroine attitude, graceful readable hands, and hair and cloak that exaggerate the motion in big flowing shapes. Keep her anime face from the reference: large red eyes, small nose and mouth, calm focused expression. Exaggerate the POSES, never the anatomy: she keeps the reference's tall adult proportions, small head and long legs. Not chibi, not western cartoon, not realistic painting.
+
+Canvas: landscape 1536x1024. Layout: a grid of 3 columns x 2 rows, six equal square cells (512x512 each). Top row = frames 1, 2, 3 from left to right. Bottom row = frames 4, 5, 6 from left to right. One full-body frame per cell, with at least 24 px of empty background on every side of each cell. All six frames at the same scale: standing height about 380 px from hood top to boot sole when she is upright.
+
+The spell is "Ember Sowing". She is a sword-wielding magic knight. She does NOT use a staff, wand, orb, book or any other item. She keeps holding her sword low in the same hand as the reference, and casts with her FREE hand (the hand that holds nothing in the reference): she gathers a spark of ember in her palm and flings it forward onto the floor in front of her, where a pillar of fire will erupt later (that pillar is a separate effect - do not draw it).
+Her boot soles stay on the same line near the bottom of every cell and she does not travel; she may take one step forward into a lunge.
+
+Camera: fixed 35-degree top-down 3/4 view. She faces the SAME direction in all six frames (see the direction block below) and casts at the floor straight ahead of her.
+Screen directions use a clock face around her body: 12 = up, 3 = right, 6 = down, 9 = left.
+
+1. GATHER: she raises her free hand in front of her chest, palm up, fingers slightly curled around a small ember glow resting in her palm. Head tilted down, eyes on her palm. Sword hand relaxed low at her side. Knees slightly bent. Her hair lifts a little, as if pushed up by rising heat.
+2. DRAW BACK: she steps forward with the front foot and swings the free hand down and back behind her hip, arm nearly straight, the ember still in her palm. Torso twisted away from the target, eyes locked on the floor ahead.
+3. SWING: the free arm sweeps forward in a low underhand arc at knee height, torso rotating toward the target, weight moving onto the front foot, cloak swinging.
+4. SOW: the key frame, the moment of release. The free arm is fully extended forward and slightly DOWN toward the floor ahead, palm open and facing the floor, fingers spread wide - the ember has just left her hand and is no longer drawn. Deep lunge: front knee strongly bent, rear leg straight, torso leaning forward. Hair and cloak flung forward toward the target.
+5. LOCK: still in the lunge with the arm extended, she snaps the open hand shut into a fist aimed at the target and lifts her chin with a sharp, cool glare. Cloak starting to settle.
+6. RECOVER: exactly the idle pose of the reference - same stance, same sword angle, same cloak shape, same scale.
+
+Lock these per frame so the six poses cannot collapse into each other.
+Free hand: in front of the chest palm up, behind the hip, forward at knee height, fully extended forward-down with the palm open, extended fist, reference.
+Torso lean forward from vertical: 5 degrees, 15 degrees and twisted away, 20 degrees, 30 degrees, 25 degrees, 0 degrees.
+Legs: slightly bent, stepping forward, bent, deep lunge, deep lunge, reference.
+Sword: held low in the reference hand in every frame - never swung, never raised, never pointed at the target.
+Frames 1 and 4 matter most and must be unmistakably different - one is compact with the hand at the chest, the other is a wide lunge with the arm stretched out toward the floor ahead.
+
+Style: detailed hi-bit anime pixel art matching the reference - the same fine pixel density, consistent pixel cluster size, dark outline, 2-3 hard shade steps, no antialiasing, no smooth painting, no blur.
+Palette: gray and charcoal cloak and armor, white hair, pale skin, red eyes. Ember orange only on the sword edge, the torn cloak edges, and the small ember in her palm in frames 1-3. No red cloth. Absolutely no green on the character.
+The ember in her palm is small (no bigger than her fist), hard-edged, and touches her fingers. There is no other glow. No magic circle, fire pillar, spell trail, sparks, floating embers, smear, motion blur, afterimage or speed lines (the spell effect is a separate sprite). No shadow, no floor, no text, no frame numbers, no grid lines, no borders.
+Background: solid uniform pure chroma-key green #00FF00.
+
+Direction: she faces UP, away from the viewer, in every frame, and casts at the floor above her on the screen. Back view - only the back of her hood and hair, her face is never visible. She holds the sword in her right hand, which is on the viewer's RIGHT side; her free left hand is on the viewer's LEFT side.
+In frame 2 the free arm swings back toward the viewer on the viewer's left, its open palm visible. In frame 4 it reaches up the screen past the left side of her hood, strongly foreshortened, so the arm reads as pointing AWAY from the viewer at the floor ahead; her lunge steps up the screen.
+Do NOT slide her up the cell; keep her soles on the same line. It must NOT look like the idle back view.

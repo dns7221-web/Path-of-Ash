@@ -1,0 +1,1066 @@
+fileFormatVersion: 2
+guid: d0002fbe12f45d842b79a7ba45b9221d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5703292466175951415
+    second: vfx_ember_arrow_impact_6frames_1536x256_0
+  - first:
+      213: 219840807811290339
+    second: vfx_ember_arrow_impact_6frames_1536x256_1
+  - first:
+      213: -5522330769913486344
+    second: vfx_ember_arrow_impact_6frames_1536x256_2
+  - first:
+      213: -372327458924488292
+    second: vfx_ember_arrow_impact_6frames_1536x256_3
+  - first:
+      213: -2777883672691746652
+    second: vfx_ember_arrow_impact_6frames_1536x256_4
+  - first:
+      213: -132266203805805772
+    second: vfx_ember_arrow_impact_6frames_1536x256_5
+  - first:
+      213: 3996753328292886945
+    second: vfx_ember_arrow_impact_6frames_1536x256_6
+  - first:
+      213: 4630089586632132298
+    second: vfx_ember_arrow_impact_6frames_1536x256_7
+  - first:
+      213: 8034862660652889626
+    second: vfx_ember_arrow_impact_6frames_1536x256_8
+  - first:
+      213: -5136622547584432761
+    second: vfx_ember_arrow_impact_6frames_1536x256_9
+  - first:
+      213: 7381526478466163486
+    second: vfx_ember_arrow_impact_6frames_1536x256_10
+  - first:
+      213: 4465617430869035195
+    second: vfx_ember_arrow_impact_6frames_1536x256_11
+  - first:
+      213: 2381657366260893951
+    second: vfx_ember_arrow_impact_6frames_1536x256_12
+  - first:
+      213: 7173175325734046928
+    second: vfx_ember_arrow_impact_6frames_1536x256_13
+  - first:
+      213: -6347427626985827165
+    second: vfx_ember_arrow_impact_6frames_1536x256_14
+  - first:
+      213: -7423455500840428142
+    second: vfx_ember_arrow_impact_6frames_1536x256_15
+  - first:
+      213: -6263705213896355172
+    second: vfx_ember_arrow_impact_6frames_1536x256_16
+  - first:
+      213: -8095895254040890833
+    second: vfx_ember_arrow_impact_6frames_1536x256_17
+  - first:
+      213: -7548590795437522530
+    second: vfx_ember_arrow_impact_6frames_1536x256_18
+  - first:
+      213: -4932166751063371480
+    second: vfx_ember_arrow_impact_6frames_1536x256_19
+  - first:
+      213: -3458594055490541097
+    second: vfx_ember_arrow_impact_6frames_1536x256_20
+  - first:
+      213: -5928258344916559857
+    second: vfx_ember_arrow_impact_6frames_1536x256_21
+  - first:
+      213: 6915707513904686244
+    second: vfx_ember_arrow_impact_6frames_1536x256_22
+  - first:
+      213: -7234124327676944411
+    second: vfx_ember_arrow_impact_6frames_1536x256_23
+  - first:
+      213: -4848217834492783165
+    second: vfx_ember_arrow_impact_6frames_1536x256_24
+  - first:
+      213: -8038674784671595721
+    second: vfx_ember_arrow_impact_6frames_1536x256_25
+  - first:
+      213: -1041586507802217230
+    second: vfx_ember_arrow_impact_6frames_1536x256_26
+  - first:
+      213: 2087013223285867204
+    second: vfx_ember_arrow_impact_6frames_1536x256_27
+  - first:
+      213: -3024024177711683502
+    second: vfx_ember_arrow_impact_6frames_1536x256_28
+  - first:
+      213: -3374761000527151204
+    second: vfx_ember_arrow_impact_6frames_1536x256_29
+  - first:
+      213: -8786411722396151951
+    second: vfx_ember_arrow_impact_6frames_1536x256_30
+  - first:
+      213: 4260934147997632325
+    second: vfx_ember_arrow_impact_6frames_1536x256_31
+  - first:
+      213: 8921620845284259990
+    second: vfx_ember_arrow_impact_6frames_1536x256_32
+  - first:
+      213: -524466645428168215
+    second: vfx_ember_arrow_impact_6frames_1536x256_33
+  - first:
+      213: -7268046846996975364
+    second: vfx_ember_arrow_impact_6frames_1536x256_34
+  - first:
+      213: -8386217059443515231
+    second: vfx_ember_arrow_impact_6frames_1536x256_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 49
+        width: 157
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7324498d74a262f40800000000000000
+      internalID: 5703292466175951415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 137
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e41ab8cc080d0300800000000000000
+      internalID: 219840807811290339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 155
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f3e81f5c6dbc53b0800000000000000
+      internalID: -5522330769913486344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 179
+        width: 34
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c999ea6162a35daf0800000000000000
+      internalID: -372327458924488292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 131
+        width: 77
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8d9dd7489f279d0800000000000000
+      internalID: -2777883672691746652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 181
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4339d52a6981a2ef0800000000000000
+      internalID: -132266203805805772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 164
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a9f1c3f9f1577730800000000000000
+      internalID: 3996753328292886945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 163
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac68171a2f1614040800000000000000
+      internalID: 4630089586632132298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 147
+        width: 55
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16f343f401918f60800000000000000
+      internalID: 8034862660652889626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 184
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 785c7f9020d07b8b0800000000000000
+      internalID: -5136622547584432761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 160
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e13ad112933707660800000000000000
+      internalID: 7381526478466163486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 83
+        width: 88
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb8cdbdb46f09fd30800000000000000
+      internalID: 4465617430869035195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 124
+        width: 49
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff84cac81c85d0120800000000000000
+      internalID: 2381657366260893951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 153
+        width: 22
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc89f124fc3c8360800000000000000
+      internalID: 7173175325734046928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 153
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a45200143869e7a0800000000000000
+      internalID: -6347427626985827165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 145
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d9c7a9d869af890800000000000000
+      internalID: -7423455500840428142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_16
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 137
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9212f36b49d219a0800000000000000
+      internalID: -6263705213896355172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_17
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 145
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f223f1c092a95af80800000000000000
+      internalID: -8095895254040890833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_18
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 104
+        width: 51
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91c92b6aa40e3790800000000000000
+      internalID: -7548590795437522530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_19
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 44
+        width: 77
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82110edb87c6d8bb0800000000000000
+      internalID: -4932166751063371480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_20
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 127
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d9653ce70b9000d0800000000000000
+      internalID: -3458594055490541097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_21
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 134
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08d08ec1789abda0800000000000000
+      internalID: -5928258344916559857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_22
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 54
+        width: 80
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4e9c8c75789ff50800000000000000
+      internalID: 6915707513904686244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_23
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 109
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efddc3804a3b9b90800000000000000
+      internalID: -7234124327676944411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_24
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 70
+        width: 45
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c51855019ba7bcb0800000000000000
+      internalID: -4848217834492783165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_25
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 101
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73382c2cfd3e07090800000000000000
+      internalID: -8038674784671595721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_26
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 93
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f4fb97f69a8b81f0800000000000000
+      internalID: -1041586507802217230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_27
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 55
+        width: 28
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c24f77187f86fc10800000000000000
+      internalID: 2087013223285867204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_28
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 93
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2586d4748028806d0800000000000000
+      internalID: -3024024177711683502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_29
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 71
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9fbcb110c07a21d0800000000000000
+      internalID: -3374761000527151204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_30
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 59
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17fcf344715601680800000000000000
+      internalID: -8786411722396151951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_31
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 61
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5470bbe3801e12b30800000000000000
+      internalID: 4260934147997632325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_32
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 73
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69873e7d3e6ffcb70800000000000000
+      internalID: 8921620845284259990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_33
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 45
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e996be5d58b8b8f0800000000000000
+      internalID: -524466645428168215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_34
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 27
+        width: 26
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf0f8d186e5b22b90800000000000000
+      internalID: -7268046846996975364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_impact_6frames_1536x256_35
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 50
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a06c8a340c2e9b80800000000000000
+      internalID: -8386217059443515231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_ember_arrow_impact_6frames_1536x256_0: 5703292466175951415
+      vfx_ember_arrow_impact_6frames_1536x256_1: 219840807811290339
+      vfx_ember_arrow_impact_6frames_1536x256_10: 7381526478466163486
+      vfx_ember_arrow_impact_6frames_1536x256_11: 4465617430869035195
+      vfx_ember_arrow_impact_6frames_1536x256_12: 2381657366260893951
+      vfx_ember_arrow_impact_6frames_1536x256_13: 7173175325734046928
+      vfx_ember_arrow_impact_6frames_1536x256_14: -6347427626985827165
+      vfx_ember_arrow_impact_6frames_1536x256_15: -7423455500840428142
+      vfx_ember_arrow_impact_6frames_1536x256_16: -6263705213896355172
+      vfx_ember_arrow_impact_6frames_1536x256_17: -8095895254040890833
+      vfx_ember_arrow_impact_6frames_1536x256_18: -7548590795437522530
+      vfx_ember_arrow_impact_6frames_1536x256_19: -4932166751063371480
+      vfx_ember_arrow_impact_6frames_1536x256_2: -5522330769913486344
+      vfx_ember_arrow_impact_6frames_1536x256_20: -3458594055490541097
+      vfx_ember_arrow_impact_6frames_1536x256_21: -5928258344916559857
+      vfx_ember_arrow_impact_6frames_1536x256_22: 6915707513904686244
+      vfx_ember_arrow_impact_6frames_1536x256_23: -7234124327676944411
+      vfx_ember_arrow_impact_6frames_1536x256_24: -4848217834492783165
+      vfx_ember_arrow_impact_6frames_1536x256_25: -8038674784671595721
+      vfx_ember_arrow_impact_6frames_1536x256_26: -1041586507802217230
+      vfx_ember_arrow_impact_6frames_1536x256_27: 2087013223285867204
+      vfx_ember_arrow_impact_6frames_1536x256_28: -3024024177711683502
+      vfx_ember_arrow_impact_6frames_1536x256_29: -3374761000527151204
+      vfx_ember_arrow_impact_6frames_1536x256_3: -372327458924488292
+      vfx_ember_arrow_impact_6frames_1536x256_30: -8786411722396151951
+      vfx_ember_arrow_impact_6frames_1536x256_31: 4260934147997632325
+      vfx_ember_arrow_impact_6frames_1536x256_32: 8921620845284259990
+      vfx_ember_arrow_impact_6frames_1536x256_33: -524466645428168215
+      vfx_ember_arrow_impact_6frames_1536x256_34: -7268046846996975364
+      vfx_ember_arrow_impact_6frames_1536x256_35: -8386217059443515231
+      vfx_ember_arrow_impact_6frames_1536x256_4: -2777883672691746652
+      vfx_ember_arrow_impact_6frames_1536x256_5: -132266203805805772
+      vfx_ember_arrow_impact_6frames_1536x256_6: 3996753328292886945
+      vfx_ember_arrow_impact_6frames_1536x256_7: 4630089586632132298
+      vfx_ember_arrow_impact_6frames_1536x256_8: 8034862660652889626
+      vfx_ember_arrow_impact_6frames_1536x256_9: -5136622547584432761
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

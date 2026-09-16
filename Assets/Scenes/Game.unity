@@ -2990,7 +2990,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24bfb2f9a27d2be4981807b58320edd4, type: 2}
   keyChance: 0.25
   pickupPrefab: {fileID: 3674633196886614197, guid: 898b7b8f242a35e44b3c4cccbde6153c, type: 3}
-  launchAngle: 90
+  launchAngle: 270
   launchSpread: 50
 --- !u!1 &139298687
 GameObject:
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   clearRelic: {fileID: 11400000, guid: 4adcb9ab3866416087917d04feadd9c4, type: 2}
   pickupPrefab: {fileID: 3674633196886614197, guid: 898b7b8f242a35e44b3c4cccbde6153c, type: 3}
   dropPoint: {fileID: 294135189}
-  launchAngle: 90
+  launchAngle: 270
 --- !u!1 &296134263
 GameObject:
   m_ObjectHideFlags: 0
@@ -11072,7 +11072,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24bfb2f9a27d2be4981807b58320edd4, type: 2}
   keyChance: 0.25
   pickupPrefab: {fileID: 3674633196886614197, guid: 898b7b8f242a35e44b3c4cccbde6153c, type: 3}
-  launchAngle: 90
+  launchAngle: 270
   launchSpread: 50
 --- !u!1 &661856218
 GameObject:
@@ -16339,7 +16339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RunManager
   result: {fileID: 11400000, guid: ec4fe98e3d6a69441af3df5dd2a26ab6, type: 2}
-  resultDelaySeconds: 0.6
+  resultDelaySeconds: 1.4
   debugDeathKey: 25
 --- !u!4 &915154374
 Transform:
@@ -23310,7 +23310,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24bfb2f9a27d2be4981807b58320edd4, type: 2}
   keyChance: 0.25
   pickupPrefab: {fileID: 3674633196886614197, guid: 898b7b8f242a35e44b3c4cccbde6153c, type: 3}
-  launchAngle: 90
+  launchAngle: 270
   launchSpread: 50
 --- !u!61 &1491591677
 BoxCollider2D:
@@ -31611,7 +31611,7 @@ MonoBehaviour:
   clearRelic: {fileID: 11400000, guid: 4adcb9ab3866416087917d04feadd9c4, type: 2}
   pickupPrefab: {fileID: 3674633196886614197, guid: 898b7b8f242a35e44b3c4cccbde6153c, type: 3}
   dropPoint: {fileID: 2088607622}
-  launchAngle: 90
+  launchAngle: 270
 --- !u!1 &2097143053
 GameObject:
   m_ObjectHideFlags: 0

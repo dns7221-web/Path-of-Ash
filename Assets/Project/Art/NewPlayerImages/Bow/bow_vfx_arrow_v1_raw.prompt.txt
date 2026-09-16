@@ -1,0 +1,16 @@
+Use case: game VFX. Asset: SIX-FRAME LOOPING PROJECTILE sprite strip ("Ash Ember Arrow" in flight) for a 2D pixel-art top-down action game. Effect only: no character, no bow.
+
+Art direction (the most important style rule): a skill projectile from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. Sleek, sharp and elegant, like a magic arrow of light in an anime action game. Glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic fire.
+
+Orientation: the arrow flies to the RIGHT, perfectly horizontal. The game rotates this sprite for the other directions, so draw it facing right only, and keep it mirror-symmetric top-to-bottom.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024). Each frame centered on its cell center (x=128, y=128), with at least 16 px margin inside every cell edge.
+
+Design: at the RIGHT end, a sharp crystal-like obsidian arrowhead with a white-hot molten edge; behind it a thin glowing ember shaft; two swept-back fletching shapes made of burning ash feathers; behind those, a tapering ribbon trail of ember light that ends in a few ash flakes at the LEFT end. Total length about 200 px from the arrowhead tip to the end of the trail; maximum thickness about 28 px at the fletching.
+
+Loop rule (important for the game): this animation LOOPS at 16 fps for as long as the arrow flies. All six frames show the SAME complete arrow at the SAME size and position - the arrowhead tip, the fletching and the end of the trail sit at identical x positions in every frame. Nothing grows, appears or dissolves. Only the inside of the shape animates: the ember ribbon ripples in a wave that travels to the left, the core flickers between amber and white-hot, and the ash flakes at the tail shift slightly. Frame 6 flows seamlessly back into frame 1.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps, no antialiasing, no soft glow gradients, no blur. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor, shadow, bow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

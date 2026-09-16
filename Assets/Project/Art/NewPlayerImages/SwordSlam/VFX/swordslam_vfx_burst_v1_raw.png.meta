@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: c6c831dda1192dd42976ecba578cbffa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6181688196803327778
+    second: swordslam_vfx_burst_v1_raw_0
+  - first:
+      213: 6030819386847927537
+    second: swordslam_vfx_burst_v1_raw_1
+  - first:
+      213: 4717764879504779780
+    second: swordslam_vfx_burst_v1_raw_2
+  - first:
+      213: -6507549510493871360
+    second: swordslam_vfx_burst_v1_raw_3
+  - first:
+      213: -8984537083013343422
+    second: swordslam_vfx_burst_v1_raw_4
+  - first:
+      213: -987344517034534235
+    second: swordslam_vfx_burst_v1_raw_5
+  - first:
+      213: -6578714710056179951
+    second: swordslam_vfx_burst_v1_raw_6
+  - first:
+      213: 6403545489001154373
+    second: swordslam_vfx_burst_v1_raw_7
+  - first:
+      213: 6130584470358853611
+    second: swordslam_vfx_burst_v1_raw_8
+  - first:
+      213: -5608841948898230799
+    second: swordslam_vfx_burst_v1_raw_9
+  - first:
+      213: -269868563335224664
+    second: swordslam_vfx_burst_v1_raw_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_0
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 236
+        width: 448
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed80055465b363aa0800000000000000
+      internalID: -6181688196803327778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_1
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 602
+        width: 144
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fc1c999746c1b350800000000000000
+      internalID: 6030819386847927537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_2
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 168
+        width: 598
+        height: 454
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a22b0892ed87140800000000000000
+      internalID: 4717764879504779780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_3
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 597
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 003eebcd23a80b5a0800000000000000
+      internalID: -6507549510493871360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_4
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 500
+        width: 190
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2475aa70023805380800000000000000
+      internalID: -8984537083013343422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_5
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 498
+        width: 82
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aa1a37946f3c42f0800000000000000
+      internalID: -987344517034534235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_6
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 236
+        width: 612
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 117e674a3d5b3b4a0800000000000000
+      internalID: -6578714710056179951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_7
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 208
+        width: 340
+        height: 197
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54708fed1b6fdd850800000000000000
+      internalID: 6403545489001154373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_8
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 327
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be704453816341550800000000000000
+      internalID: 6130584470358853611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_9
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 25
+        width: 362
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fd7c92e6f36922b0800000000000000
+      internalID: -5608841948898230799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordslam_vfx_burst_v1_raw_10
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 234
+        width: 341
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2eb52b8fb314cf0800000000000000
+      internalID: -269868563335224664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      swordslam_vfx_burst_v1_raw_0: -6181688196803327778
+      swordslam_vfx_burst_v1_raw_1: 6030819386847927537
+      swordslam_vfx_burst_v1_raw_10: -269868563335224664
+      swordslam_vfx_burst_v1_raw_2: 4717764879504779780
+      swordslam_vfx_burst_v1_raw_3: -6507549510493871360
+      swordslam_vfx_burst_v1_raw_4: -8984537083013343422
+      swordslam_vfx_burst_v1_raw_5: -987344517034534235
+      swordslam_vfx_burst_v1_raw_6: -6578714710056179951
+      swordslam_vfx_burst_v1_raw_7: 6403545489001154373
+      swordslam_vfx_burst_v1_raw_8: 6130584470358853611
+      swordslam_vfx_burst_v1_raw_9: -5608841948898230799
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

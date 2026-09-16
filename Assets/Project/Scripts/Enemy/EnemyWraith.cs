@@ -63,11 +63,36 @@ public class EnemyWraith : EnemyBase
     [Header("참조")]
     [SerializeField] private DamageHitbox chargeHitbox;
 
+    // 추가 생성(2026-09-15) — 돌진 예고선.
+    [Header("돌진 예고선")]
+    [Tooltip("예비동작 동안 돌진할 길을 바닥에 긋는 선. Tools → 재의 길 → 망령 돌진 예고선 생성 이 만들어 꽂는다. " +
+             "비어 있어도 돌진은 멀쩡히 돈다 — 선 없이 예비동작 모션만 보인다.")]
+    [SerializeField] private TelegraphLine chargeTelegraphPrefab;
+
+    // 추가 생성(2026-09-15) — 돌진 출발 자국.
+    [Header("돌진 출발 자국")]
+    [Tooltip("돌진이 시작되는 순간 출발 자리 바닥에 남기는 자국. Tools → 재의 길 → 망령 돌진 출발 자국 생성 이 만들어 꽂는다. " +
+             "비어 있어도 돌진은 멀쩡히 돈다 — 자국 없이 몸만 튀어 나간다.")]
+    [SerializeField] private GameObject chargeLaunchEffectPrefab;
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 출발 자국이 스스로 안 사라질 때 강제로 지우기까지의 시간(초).
+    /// 지금 프리팹은 6프레임 / 16fps = 0.375초 뒤 스스로 지운다. 반복 재생으로 잘못 설정된 프리팹을 꽂았을 때
+    /// 돌진마다 방에 쌓이지 않게 하는 안전장치다(PlayerController.DashEffectMaxLifetime과 같은 이유).
+    /// </summary>
+    private const float LaunchEffectMaxLifetime = 2f;
+
     private State state;
     private Vector2 roamDirection;
     private Vector2 chargeDirection = Vector2.right;
     private float stateTimer;
     private float roamTimer;
+
+    // 추가 생성(2026-09-15) — 예고선 인스턴스. 처음 쓸 때 자식으로 만들어 두고 돌진마다 켰다 끈다.
+    private TelegraphLine chargeTelegraph;
+
+    // 추가 생성(2026-09-15) — 돌진 판정 상자의 모양. 예고선의 길이와 높이를 이 상자에서 읽는다.
+    private BoxCollider2D chargeHitboxShape;
 
     // ── 수명 ──────────────────────────────────────────────────────────────
 
@@ -79,6 +104,9 @@ public class EnemyWraith : EnemyBase
     protected override void OnDespawned()
     {
         chargeHitbox?.Deactivate();
+
+        // 추가 생성(2026-09-15) — 예비동작 중에 풀로 돌아가면(방 정리 등) 선이 켜진 채 다음 방에 나온다.
+        HideChargeTelegraph();
     }
 
     private void Update()
@@ -219,6 +247,15 @@ public class EnemyWraith : EnemyBase
 
         UpdateFacing(chargeDirection.x);
         Animator?.SetTrigger(AttackHash);
+
+        // 추가 생성(2026-09-15) — 판정 상자를 고정한 돌진 방향으로 돌린다. 이유는 OrientChargeHitbox 참고.
+        // 아래 예고선이 길이와 굵기를 이 상자에서 재므로 반드시 그 앞에 부른다.
+        OrientChargeHitbox(chargeDirection);
+
+        // 추가 생성(2026-09-15) — 고정한 방향으로 선을 긋는다. 좌우 반전이 판정 상자 위치를 바꾸므로
+        // 반드시 UpdateFacing 뒤에 부른다(길이를 그 상자에서 잰다).
+        // 수정(2026-09-15) — 이제 상자를 바꾸는 것은 좌우 반전이 아니라 바로 위의 회전이다. 순서 조건은 그대로다.
+        ShowChargeTelegraph();
     }
 
     private void BeginCharge()
@@ -226,6 +263,35 @@ public class EnemyWraith : EnemyBase
         state = State.Charge;
         stateTimer = chargeSeconds;
         chargeHitbox?.Activate();
+
+        // 추가 생성(2026-09-15) — 선이 갈라지는 마지막 프레임이 끝나는 순간이 곧 돌진이다. 몸이 선을 따라 나가므로 선은 거둔다.
+        HideChargeTelegraph();
+
+        // 추가 생성(2026-09-15) — 선이 걷히는 바로 그 자리에 출발 자국을 남긴다. 경고(선)가 사건(자국)으로 바뀌는 순간이다.
+        SpawnLaunchEffect();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 돌진을 시작한 자리 바닥에 출발 자국을 남긴다. 이펙트가 없으면 아무 일도 안 한다.
+    ///
+    /// <b>왜 필요한가.</b> 돌진은 0.34초에 8유닛을 간다. 너무 빨라서 몸만 보면 "어디서 튀어나왔는지"가 눈에 안 남고,
+    /// 맞은 플레이어는 무엇에 맞았는지부터 되짚어야 한다. 플레이어 대시 자국(PlayerController.SpawnDashEffect)과 같은 역할이다.
+    ///
+    /// 자식이 아니라 월드에 놓는 이유: "여기서 출발했다"는 표시라 몸을 따라가면 뜻이 없어진다.
+    ///
+    /// 발밑(높이 0)에 두는 이유: 그림이 바닥이 갈라져 터지는 고리다. 예고선은 판정 상자 가운데 높이에서 그어지지만
+    /// 그건 "어디까지 맞는가"를 알리는 선이고, 자국은 "어디를 딛고 나갔는가"라 발이 닿은 자리여야 한다.
+    ///
+    /// 회전만으로 방향을 맞추는 이유: 그림이 오른쪽으로 뻗고 위아래 대칭으로 그려져 있다(생성 프롬프트의 조건).
+    /// 피벗이 고리의 왼쪽 끝(출발점)이라, 방향으로 돌리면 망령이 선 자리를 축으로 돈다(AshVfxSpriteSlicer의 Forward).
+    /// </summary>
+    private void SpawnLaunchEffect()
+    {
+        if (chargeLaunchEffectPrefab == null) return;
+
+        float angle = Mathf.Atan2(chargeDirection.y, chargeDirection.x) * Mathf.Rad2Deg;
+        var effect = Instantiate(chargeLaunchEffectPrefab, transform.position, Quaternion.Euler(0f, 0f, angle));
+        Destroy(effect, LaunchEffectMaxLifetime);
     }
 
     private void BeginCooldown()
@@ -254,6 +320,176 @@ public class EnemyWraith : EnemyBase
         stateTimer = 0f;
         roamTimer = 0f;
         chargeHitbox?.Deactivate();
+
+        // 추가 생성(2026-09-15) — 풀에서 다시 나올 때도 여기로 들어온다. 선이 꺼진 상태에서 시작한다.
+        HideChargeTelegraph();
+    }
+
+    // ── 돌진 예고선 ─────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 돌진할 길을 바닥에 긋는다. 방향이 고정된 직후(예비동작 시작)에 부른다.
+    ///
+    /// 선 길이를 몸이 가는 거리(chargeSpeed x chargeSeconds)가 아니라 <see cref="ChargeReach"/>로 잡는다.
+    /// 판정 상자가 몸 앞으로 나가 있어서, 몸이 멈추는 자리에서 선을 끝내면 <b>화살촉 너머에서도 맞는다.</b>
+    /// 선 끝 너머에 서 있으면 안전하다고 배운 플레이어가 거기서 맞으면 예고선 자체를 믿지 않게 된다.
+    ///
+    /// 예비동작 시간을 재생 시간으로 넘기는 이유: 선이 갈라지는 마지막 프레임이 끝나는 순간이
+    /// 돌진이 시작되는 순간이어야 한다. windupSeconds를 바꿔도 둘이 같이 움직인다.
+    /// </summary>
+    private void ShowChargeTelegraph()
+    {
+        if (chargeTelegraphPrefab == null) return;
+
+        // 처음 한 번만 만든다. 망령은 풀에서 재사용되므로 자식으로 붙은 선도 같이 재사용된다.
+        // 돌진마다 만들고 지우면, 예비동작 중에 맞아 돌진이 취소될 때 지울 시점을 따로 챙겨야 한다.
+        if (chargeTelegraph == null)
+        {
+            chargeTelegraph = Instantiate(chargeTelegraphPrefab, transform);
+            chargeTelegraph.name = chargeTelegraphPrefab.name;
+        }
+
+        // 수정(2026-09-15) — 판정 상자의 굵기도 받아서 넘긴다. 선이 판정보다 가늘면 선 바로 옆에 서도 맞는다.
+        float reach = ChargeReach(chargeDirection, out float lineHeight, out float lineThickness);
+        chargeTelegraph.transform.localPosition = new Vector3(0f, lineHeight, 0f);
+        chargeTelegraph.Show(chargeDirection, reach, lineThickness, windupSeconds);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 예고선을 끈다. 돌진이 시작됐거나 취소됐을 때(피격·사망·풀 복귀) 부른다.
+    ///
+    /// 취소될 때 끄는 것이 중요하다. 맞아서 돌진이 취소됐는데 선이 남아 있으면 <b>오지 않을 돌진</b>을 알리게 되고,
+    /// 플레이어는 비키지 않아도 되는 자리에서 비키게 된다.
+    /// </summary>
+    private void HideChargeTelegraph()
+    {
+        if (chargeTelegraph != null) chargeTelegraph.Hide();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 이번 돌진이 닿는 가장 먼 거리(유닛)를 선의 출발점부터 잰다.
+    ///
+    /// 몸이 가는 거리에, 판정 상자가 돌진 방향으로 선의 출발점보다 앞서 있는 만큼을 더한다. 상자의 네 모서리를
+    /// 돌진 방향으로 투영해서 가장 앞선 값을 쓴다. 상자는 좌우로만 뒤집히고 돌진 방향으로 돌지 않아서
+    /// 방향마다 앞서는 양이 다르다 — 옆으로 돌진하면 상자 폭만큼, 위로 돌진하면 상자 윗변까지다.
+    /// 판정이 상자 모양을 바꾸면(콜라이더 재조정) 선 길이도 코드 수정 없이 따라간다.
+    ///
+    /// 반드시 UpdateFacing 뒤에 불러야 한다. 좌우 반전이 상자 위치를 바꾸기 때문이다.
+    ///
+    /// 수정(2026-09-15) — 상자가 이제 돌진 방향으로 돈다(OrientChargeHitbox). 그래서 앞서는 양은 어느 방향이든
+    /// 상자 오프셋 + 반폭(지금 4.11)으로 같다. 모서리 투영은 그대로 뒀다 — 상자가 어떻게 놓여 있든 맞는 계산이라
+    /// 회전을 빼먹은 경우에도 선이 판정보다 짧아지지 않는다. 불러야 하는 조건도 "UpdateFacing 뒤"에서
+    /// "OrientChargeHitbox 뒤"로 바뀌었다. 선의 굵기도 같이 잰다.
+    /// </summary>
+    /// <param name="direction">돌진 방향.</param>
+    /// <param name="lineHeight">선의 출발점 높이(발밑 기준). 판정 상자의 세로 가운데라, 옆으로 돌진할 때 선이 판정 한가운데를 지난다.</param>
+    /// <param name="lineThickness">추가 생성(2026-09-15) — 선이 덮어야 하는 굵기(유닛). 상자를 돌진 방향과 수직으로 잰 폭이다. 상자가 없으면 0.</param>
+    private float ChargeReach(Vector2 direction, out float lineHeight, out float lineThickness)
+    {
+        float travel = chargeSpeed * chargeSeconds;
+        lineHeight = 0f;
+        lineThickness = 0f;
+
+        // 수정(2026-09-15) — 상자 찾기를 CacheChargeHitboxShape로 뺐다. 회전 함수도 같은 상자를 쓴다.
+        CacheChargeHitboxShape();
+
+        // 상자가 없거나 다른 모양이면 몸이 가는 거리만 쓴다. 선이 짧아질 뿐 돌진은 멀쩡하다.
+        if (chargeHitboxShape == null || direction.sqrMagnitude < 0.0001f) return travel;
+
+        direction.Normalize();
+
+        Transform box = chargeHitboxShape.transform;
+        Vector2 center = chargeHitboxShape.offset;
+        Vector2 half = chargeHitboxShape.size * 0.5f;
+
+        // 좌우 반전은 x만 바꾸므로 상자 가운데의 높이는 방향과 무관하다.
+        //
+        // 수정(2026-09-15) — 상자를 돌리면 가운데의 높이가 방향마다 달라진다(위로 돌진하면 앞으로 민 만큼 위로 간다).
+        // 그래서 "지금 상자 가운데"가 아니라 상자를 돌리는 축의 높이를 읽는다. 돌리기 전 상자 가운데의 높이와 같은 값이다.
+        lineHeight = ChargePivotHeight();
+        Vector2 start = (Vector2)transform.position + Vector2.up * lineHeight;
+
+        // 추가 생성(2026-09-15) — 돌진 방향에 수직인 축. 선의 굵기 방향이다.
+        Vector2 side = new Vector2(-direction.y, direction.x);
+        float sideReach = 0f;
+
+        float ahead = 0f;
+        for (int sx = -1; sx <= 1; sx += 2)
+        {
+            for (int sy = -1; sy <= 1; sy += 2)
+            {
+                Vector2 corner = box.TransformPoint(center + new Vector2(half.x * sx, half.y * sy));
+                ahead = Mathf.Max(ahead, Vector2.Dot(corner - start, direction));
+
+                // 추가 생성(2026-09-15) — 선 가운데에서 가장 멀리 벗어난 모서리.
+                sideReach = Mathf.Max(sideReach, Mathf.Abs(Vector2.Dot(corner - start, side)));
+            }
+        }
+
+        // 추가 생성(2026-09-15) — 선은 가운데를 기준으로 위아래가 같게 늘어나므로, 더 멀리 벗어난 쪽의 두 배를 굵기로 준다.
+        // 상자가 돌진 방향으로 돌아 있으면 상자 높이(size.y)와 같다. 돌지 않은 경우에도 선이 판정을 전부 덮는다.
+        lineThickness = sideReach * 2f;
+
+        return travel + ahead;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 돌진 판정 상자를 돌진 방향으로 돌린다. 예비동작에서 방향을 고정한 직후에 부른다.
+    ///
+    /// <b>왜.</b> 예전에는 좌우 반전(OnFacingChanged)만 해서, 위·아래로 돌진해도 판정은 몸 옆(바라보는 쪽)으로 뻗은
+    /// 가로 띠였다. 예고선은 몸에서 돌진 방향으로 곧게 그어지므로, 위로 돌진할 때는 <b>선 위에 서도 안 맞고 선 옆에서 맞았다</b>
+    /// (최대 4.1유닛 치우침). 선을 믿고 비킨 플레이어가 맞으면 예고선 전체를 믿지 않게 된다.
+    ///
+    /// <b>어디를 축으로 돌리나.</b> 발밑이 아니라 발밑 위의 상자 가운데 높이(= 예고선 출발점)다. 자식 오브젝트의 원점(발밑)을
+    /// 축으로 돌리면 상자의 세로 오프셋(0.705)까지 같이 돌아서, 위로 돌진할 때 상자가 선 옆으로 0.7유닛 비켜난다.
+    /// 출발점을 축으로 돌리면 어느 방향이든 상자 가운데가 예고선 위에 놓인다.
+    ///
+    /// 플레이어 공격 판정(PlayerController.UpdateVisuals)은 원점을 축으로 돌린다. 그쪽은 선 같은 예고가 없어서 조금 비켜도
+    /// 안 드러나지만, 이쪽은 선이 판정을 알리는 유일한 신호라 어긋나면 안 된다.
+    ///
+    /// 돌진 중에는 방향이 안 바뀌므로 예비동작 시작에 한 번이면 된다. 풀에서 재사용돼도 다음 예비동작에서 다시 돌린다.
+    /// </summary>
+    private void OrientChargeHitbox(Vector2 direction)
+    {
+        if (chargeHitbox == null || direction.sqrMagnitude < 0.0001f) return;
+
+        Transform box = chargeHitbox.transform;
+
+        // 방향은 이제 회전이 맡는다. 예전 좌우 반전으로 뒤집혀 있던 스케일이 남아 있으면 되돌린다.
+        Vector3 scale = box.localScale;
+        scale.x = Mathf.Abs(scale.x);
+        box.localScale = scale;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+        // 축 p를 중심으로 돌린 자식의 자리는 p - R·p다. 그러면 콜라이더 가운데는 p + R·(오프셋 x, 0)에 놓인다 —
+        // 출발점에서 돌진 방향으로 오프셋 x만큼 나간 자리, 즉 예고선 위다.
+        // Transform.RotateAround를 안 쓴 이유: 그건 지금 자리에서 "더" 돌린다. 매 돌진마다 누적되지 않게
+        // 기준 자세(원점, 회전 0)에서 한 번에 놓는 식으로 계산한다.
+        Vector3 pivot = new Vector3(0f, ChargePivotHeight(), 0f);
+        box.localRotation = rotation;
+        box.localPosition = pivot - rotation * pivot;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 판정 상자를 돌리는 축의 높이(발밑 기준, 유닛). 돌리기 전 상자 가운데의 높이이고, 예고선도 여기서 출발한다.
+    ///
+    /// 상자를 돌린 뒤에도 같은 값이 나와야 해서 상자의 지금 위치가 아니라 콜라이더 오프셋에서 읽는다.
+    /// </summary>
+    private float ChargePivotHeight()
+    {
+        CacheChargeHitboxShape();
+        if (chargeHitboxShape == null) return 0f;
+
+        return chargeHitboxShape.offset.y * Mathf.Abs(chargeHitboxShape.transform.localScale.y);
+    }
+
+    /// <summary>추가 생성(2026-09-15) — 돌진 판정 상자의 모양을 한 번만 찾아 둔다.</summary>
+    private void CacheChargeHitboxShape()
+    {
+        if (chargeHitboxShape == null && chargeHitbox != null)
+            chargeHitboxShape = chargeHitbox.GetComponent<BoxCollider2D>();
     }
 
     // ── 피격 / 사망 ────────────────────────────────────────────────────────
@@ -263,12 +499,18 @@ public class EnemyWraith : EnemyBase
         state = State.Hit;
         stateTimer = HitSeconds;
         chargeHitbox?.Deactivate();
+
+        // 추가 생성(2026-09-15) — 예비동작 중에 맞으면 돌진이 취소된다. 선도 같이 거둔다.
+        HideChargeTelegraph();
     }
 
     protected override void OnDeath()
     {
         state = State.Dead;
         chargeHitbox?.Deactivate();
+
+        // 추가 생성(2026-09-15) — 죽으면 오지 않을 돌진이다.
+        HideChargeTelegraph();
     }
 
     // ── 표시 ──────────────────────────────────────────────────────────────
@@ -277,11 +519,11 @@ public class EnemyWraith : EnemyBase
     {
         // 스프라이트와 돌진 판정을 같은 방향으로 반전한다.
         // flipX는 그림만 뒤집고 자식 Transform에는 영향이 없어서 히트박스를 따로 옮겨야 한다.
-        if (chargeHitbox == null) return;
-
-        Vector3 hitboxScale = chargeHitbox.transform.localScale;
-        hitboxScale.x = Mathf.Abs(hitboxScale.x) * (facesLeft ? -1f : 1f);
-        chargeHitbox.transform.localScale = hitboxScale;
+        //
+        // 수정(2026-09-15) — 판정 상자를 더 이상 여기서 뒤집지 않는다. 좌우 반전으로는 위·아래 돌진을 나타낼 수 없어서,
+        // 예비동작에서 방향을 고정할 때 돌진 방향으로 돌린다(OrientChargeHitbox). 여기서 계속 뒤집으면 추격 중에 좌우가
+        // 바뀔 때마다 돌려 둔 상자의 스케일이 뒤집혀 거울상이 된다. 그림 반전은 EnemyBase.UpdateFacing이 이미 한다.
+        // 빈 채로 남겨 두는 이유: 이 적에게 "방향이 바뀔 때 같이 할 일"이 없어졌다는 것 자체가 설계 변경의 기록이다.
     }
 
     protected override void DrawExtraGizmos()

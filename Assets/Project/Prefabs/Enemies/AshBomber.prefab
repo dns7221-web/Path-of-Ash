@@ -224,7 +224,7 @@ MonoBehaviour:
   explosionRadius: 6
   explosionDamage: 1
   explosionEffectPrefab: {fileID: 3489564958611883516, guid: e1c8567eab5786d49a642304e7e5872c, type: 3}
-  explosionEffectScale: 1
+  explosionEffectScale: 1.8
   roamSpeed: 5
   chaseSpeed: 7
   roamDirectionSeconds: 1.2

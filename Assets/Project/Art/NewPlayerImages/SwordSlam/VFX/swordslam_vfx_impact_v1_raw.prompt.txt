@@ -1,0 +1,23 @@
+Use case: game VFX. Asset: SIX-FRAME GROUND IMPACT effect sprite strip (the spot where a heavy sword slams into the floor) for a 2D pixel-art top-down action game. Effect only: no character, no sword.
+
+Art direction (the most important style rule): a skill effect from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. A punchy, satisfying impact with clean graphic shapes: a sharp star flash, crisp crystal-like obsidian shards, glowing crack lines. Glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic dust and smoke.
+
+Orientation: the heroine stands to the LEFT, outside the image, and her blade struck the floor at the center. The debris is thrown mostly UP and slightly forward to the RIGHT. Up is always up the screen - do not draw anything upside down.
+Camera: fixed 35-degree top-down 3/4 view. The crater lies flat on the floor, so it is drawn as an ellipse about three times wider than tall.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024). Each frame centered horizontally in its own cell, with at least 16 px margin inside every cell edge.
+
+Anchoring rule (important for the game): the crater ellipse on the floor has the SAME size and the SAME position in all six frames - about 200 px wide and 64 px tall, its bottom edge near the bottom of the cell. Nothing is ever drawn below the bottom edge of the crater or beyond its left and right ends. Flash, shards and sparks only go UPWARD, staying within the crater's width.
+
+Timing: 6 frames at 14 fps (0.43 s). Frame 1 is the exact moment of impact.
+1. IMPACT: a sharp white-hot four-pointed star flash at the center of the crater, a thin ember shock ring tracing the crater ellipse, and short glowing crack lines shooting out from the center across the floor.
+2. BURST: the shock ring flares at the crater edge; jagged obsidian shards and ember chunks burst up from the center, most of them leaning forward to the right; the cracks glow brighter.
+3. PEAK: the biggest frame - shards at their highest point (about 150 px above the crater bottom), a crown-like ring of short obsidian spikes standing up around the crater rim, the crack lines bright ember orange in a star pattern.
+4. FALL: the shards fall back down; the rim spikes crumble; the star-shaped cracks glow ember orange across the whole crater.
+5. SETTLE: dark rubble lying in the crater, the cracks dimming to deep red-brown, a few small ember specks just above the rubble.
+6. SCORCH: only the cracked, scorched crater ellipse with a few faint ember lines.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps per shape, no antialiasing, no soft glow gradients, no blur, no photographic dust or smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor tiles, stone slabs, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

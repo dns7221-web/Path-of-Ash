@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: dbe750843c2bfc34b95348a67642c986
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -280605416718183702
+    second: vfx_ember_arrow_flight_6frames_1536x256_0
+  - first:
+      213: 415371982501373398
+    second: vfx_ember_arrow_flight_6frames_1536x256_1
+  - first:
+      213: -2781824210295830643
+    second: vfx_ember_arrow_flight_6frames_1536x256_2
+  - first:
+      213: -2729050331919111060
+    second: vfx_ember_arrow_flight_6frames_1536x256_3
+  - first:
+      213: -3212272862948690455
+    second: vfx_ember_arrow_flight_6frames_1536x256_4
+  - first:
+      213: -2427472814440633197
+    second: vfx_ember_arrow_flight_6frames_1536x256_5
+  - first:
+      213: -44213413954481230
+    second: vfx_ember_arrow_flight_6frames_1536x256_6
+  - first:
+      213: -7334558966407799830
+    second: vfx_ember_arrow_flight_6frames_1536x256_7
+  - first:
+      213: 6141356459566535225
+    second: vfx_ember_arrow_flight_6frames_1536x256_8
+  - first:
+      213: 6368977274552176377
+    second: vfx_ember_arrow_flight_6frames_1536x256_9
+  - first:
+      213: -5814920031442316407
+    second: vfx_ember_arrow_flight_6frames_1536x256_10
+  - first:
+      213: 3596662511147829078
+    second: vfx_ember_arrow_flight_6frames_1536x256_11
+  - first:
+      213: 425135693640597735
+    second: vfx_ember_arrow_flight_6frames_1536x256_12
+  - first:
+      213: -2480343699979326094
+    second: vfx_ember_arrow_flight_6frames_1536x256_13
+  - first:
+      213: 7509376919092324101
+    second: vfx_ember_arrow_flight_6frames_1536x256_14
+  - first:
+      213: 4230491622158201684
+    second: vfx_ember_arrow_flight_6frames_1536x256_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 101
+        width: 97
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae256763cd61b1cf0800000000000000
+      internalID: -280605416718183702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 99
+        width: 171
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d5e4aa0e92b3c500800000000000000
+      internalID: 415371982501373398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 90
+        width: 202
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d874cb59e99f469d0800000000000000
+      internalID: -2781824210295830643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 94
+        width: 193
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6cacc7ae27702ad0800000000000000
+      internalID: -2729050331919111060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 142
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5f05ab9d6bb63d0800000000000000
+      internalID: -3212272862948690455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 96
+        width: 130
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c29592652ef4ed0800000000000000
+      internalID: -2427472814440633197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 148
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b39fee522ce26ff0800000000000000
+      internalID: -44213413954481230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 1409
+        y: 148
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb5b1fea79663a90800000000000000
+      internalID: -7334558966407799830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 122
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9329383692b7a3550800000000000000
+      internalID: 6141356459566535225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 114
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fec7304617236850800000000000000
+      internalID: 6368977274552176377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 120
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 983d3984a014d4fa0800000000000000
+      internalID: -5814920031442316407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 124
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6574ee97f79e9e130800000000000000
+      internalID: 3596662511147829078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 116
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e089c039a266e500800000000000000
+      internalID: 425135693640597735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 103
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27daad9db8c049dd0800000000000000
+      internalID: -2480343699979326094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 94
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507e303858aa63860800000000000000
+      internalID: 7509376919092324101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_arrow_flight_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 105
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 453710c57b9b5ba30800000000000000
+      internalID: 4230491622158201684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_ember_arrow_flight_6frames_1536x256_0: -280605416718183702
+      vfx_ember_arrow_flight_6frames_1536x256_1: 415371982501373398
+      vfx_ember_arrow_flight_6frames_1536x256_10: -5814920031442316407
+      vfx_ember_arrow_flight_6frames_1536x256_11: 3596662511147829078
+      vfx_ember_arrow_flight_6frames_1536x256_12: 425135693640597735
+      vfx_ember_arrow_flight_6frames_1536x256_13: -2480343699979326094
+      vfx_ember_arrow_flight_6frames_1536x256_14: 7509376919092324101
+      vfx_ember_arrow_flight_6frames_1536x256_15: 4230491622158201684
+      vfx_ember_arrow_flight_6frames_1536x256_2: -2781824210295830643
+      vfx_ember_arrow_flight_6frames_1536x256_3: -2729050331919111060
+      vfx_ember_arrow_flight_6frames_1536x256_4: -3212272862948690455
+      vfx_ember_arrow_flight_6frames_1536x256_5: -2427472814440633197
+      vfx_ember_arrow_flight_6frames_1536x256_6: -44213413954481230
+      vfx_ember_arrow_flight_6frames_1536x256_7: -7334558966407799830
+      vfx_ember_arrow_flight_6frames_1536x256_8: 6141356459566535225
+      vfx_ember_arrow_flight_6frames_1536x256_9: 6368977274552176377
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.05, z: 0}
-  m_LocalScale: {x: 0.42896825, y: 0.16300793, z: 1}
+  m_LocalScale: {x: 0.58412695, y: 0.22196823, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3897759375470196640}
@@ -273,7 +273,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.8225}
-  m_Size: {x: 2.9375, y: 1.645}
+  m_Size: {x: 4, y: 1.645}
   m_Direction: 1
 --- !u!114 &6574328348323945058
 MonoBehaviour:
@@ -306,6 +306,12 @@ MonoBehaviour:
     m_Bits: 256
   detectionRadius: 16
   loseRadius: 22
+  hitSeconds: 0.2
+  knockbackSpeed: 14
+  knockbackDeceleration: 50
+  deathDespawnSeconds: 1.1
+  animator: {fileID: 1381936575733079628}
+  spriteRenderer: {fileID: 8275607709375330520}
   chargeRange: 7
   roamSpeed: 6
   chaseSpeed: 8
@@ -314,13 +320,9 @@ MonoBehaviour:
   windupSeconds: 0.4
   chargeSeconds: 0.34
   cooldownSeconds: 0.7
-  hitSeconds: 0.2
-  knockbackSpeed: 14
-  knockbackDeceleration: 50
-  deathDespawnSeconds: 1.1
-  animator: {fileID: 1381936575733079628}
-  spriteRenderer: {fileID: 8275607709375330520}
   chargeHitbox: {fileID: 6618827061423280530}
+  chargeTelegraphPrefab: {fileID: 7534517734546456135, guid: 9aa9eb4efc9846a438f0d39a0cfaa4de, type: 3}
+  chargeLaunchEffectPrefab: {fileID: 5219487616036815973, guid: 158f7281b285b0d458c13560f3d695c3, type: 3}
 --- !u!1 &6564002092922201643
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,3 +418,7 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 256
+  hitStopSeconds: 0.05
+  killHitStopSeconds: 0.1
+  shakeStrength: 0.18
+  shakeSeconds: 0.12

@@ -1,0 +1,36 @@
+Use case: identity-preserve. Asset: SIX-FRAME ULTIMATE SKILL animation ("King's Ember") for a 2D pixel-art top-down action game.
+Reference image: the approved character in her idle pose. Copy her identity exactly: anime face with red eyes, long silver-white hair with straight bangs, charcoal hood, small gold crown-shaped brooch on her chest, dark fitted bodice with belts, armored gauntlets, tattered charcoal cloak with burnt ember-orange edges, black thigh-high stockings with thin straps, armored heeled knee boots, tall non-chibi proportions, and the same long jagged black sword with a glowing ember-orange edge and a thorny crossguard, in the same hand. Only the identity comes from the reference. The POSES in frames 1-5 must be strongly different from the reference; only frame 6 returns to the reference pose.
+
+Art direction (the most important style rule): Korean/Japanese "subculture" game style - a modern anime gacha action RPG - and she is its heroine. Every frame must look like a stylish key pose from an anime action game: one clear line of action through the whole body, a cool and confident heroine attitude, graceful readable hands, and hair and cloak that exaggerate the motion in big flowing shapes. Keep her anime face from the reference: large red eyes, small nose and mouth, calm focused expression. Exaggerate the POSES, never the anatomy: she keeps the reference's tall adult proportions, small head and long legs. Not chibi, not western cartoon, not realistic painting.
+This is her ULTIMATE move: frames 2, 4 and 5 should feel like the signature finisher poses of an anime gacha heroine - ceremonial, proud and powerful, the kind of pose shown in a skill cut-in.
+
+Canvas: landscape 1536x1024. Layout: a grid of 3 columns x 2 rows, six equal square cells (512x512 each). Top row = frames 1, 2, 3 from left to right. Bottom row = frames 4, 5, 6 from left to right. One full-body frame per cell, with at least 24 px of empty background on every side of each cell. All six frames at the same scale: standing height about 380 px from hood top to boot sole when she is upright.
+
+The move: she grips her sword in REVERSE (blade pointing down), swears an oath with it, then drops to one knee and drives the blade into the floor to borrow the power of the King of Ashes. The explosion that follows is a separate effect - do not draw it. It is the same sword as the reference and it never leaves her hands.
+The sword is NEVER raised above her head and the blade tip never points upward: in frames 1-5 the blade always points straight down toward the floor.
+Her boot soles - or her kneeling knee and foot - stay on the same ground line near the bottom of every cell. She never jumps.
+
+Camera: fixed 35-degree top-down 3/4 view. She faces the SAME direction in all six frames (see the direction block below).
+Screen directions use a clock face around her body: 12 = up, 3 = right, 6 = down, 9 = left.
+
+1. OATH: she flips the sword to a reverse grip and brings it in front of her body, BOTH hands on the hilt at chest height, the blade hanging straight down in front of her legs with the tip at knee height. Feet together, head bowed, eyes closed. Solemn and still; cloak hanging straight.
+2. AWAKEN: she lifts the reverse-gripped sword to face height - hilt just below her chin, blade vertical in front of her body, tip at hip height - and rises onto her toes. Chin up, eyes snapped open in a fierce red glare. Hair and cloak lift upward and outward as if an updraft of heat is rising around her.
+3. DROP: she drops fast into a deep crouch, both hands pulling the sword down, the blade vertical with its tip just above the floor in front of her feet. Head lowering. Hair and cloak float UP above her from the speed of the drop.
+4. PLUNGE: she lands on one knee and drives the blade straight down into the floor in front of her knee. The lower part of the blade is buried and not drawn below the floor line. Both hands on the pommel, arms straight, head bowed low. Hair and cloak flare out around her in a wide circle. The strongest, most dramatic silhouette.
+5. DECREE: still kneeling on one knee with both hands resting on the pommel of the planted sword, she raises her head and stares straight ahead with a cold, commanding glare. Cloak spread on the floor around her like a royal mantle, hair settling over her shoulders. Proud and still - this is the last pose the player sees before the explosion.
+6. RECOVER: exactly the idle pose of the reference - same stance, same sword angle, same cloak shape, same scale.
+
+Lock these per frame so the six poses cannot collapse into each other.
+Head height compared with her standing head height: 97%, 103% (on her toes), 70%, 58% (kneeling), 60% (kneeling), 100%.
+Hilt position: chest, just below the chin, waist, pommel at shoulder height of the kneeling figure, pommel at chest height of the kneeling figure, reference.
+Head and eyes: bowed with eyes closed, chin up with an open glare, lowering, bowed low, raised with a glare, reference.
+Blade tip: knee height, hip height, just above the floor, buried in the floor, buried in the floor, reference.
+Frames 2 and 4 matter most and must be unmistakably different - one is tall on her toes with the sword at her chin, the other is low on one knee with the sword planted in the floor.
+
+Style: detailed hi-bit anime pixel art matching the reference - the same fine pixel density, consistent pixel cluster size, dark outline, 2-3 hard shade steps, no antialiasing, no smooth painting, no blur.
+Palette: gray and charcoal cloak and armor, white hair, pale skin, red eyes. Ember orange only on the sword edge and the torn cloak edges. No red cloth. Absolutely no green on the character.
+No explosion, fire, crown, halo, aura, ground cracks, rubble, sparks, floating embers, smear, motion blur, afterimage or speed lines (the ultimate effect is a separate sprite). No shadow, no floor, no text, no frame numbers, no grid lines, no borders.
+Background: solid uniform pure chroma-key green #00FF00.
+
+Direction: she faces RIGHT in every frame. Side view, her face in profile. In frames 1-5 both hands hold the sword in front of her body.
+This is the direction where the plunge is fully visible - push it hardest here. In frames 4 and 5 her kneeling rear knee is on the ground on the viewer's left, her front foot is planted forward, her straight arms reach forward to the pommel, and the planted blade stands vertical in front of her front knee toward 3 o'clock. The cloak fans out behind her toward the viewer's left.

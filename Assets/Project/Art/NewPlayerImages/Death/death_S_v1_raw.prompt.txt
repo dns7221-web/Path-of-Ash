@@ -1,0 +1,35 @@
+Use case: identity-preserve. Asset: SIX-FRAME DEATH animation for a 2D pixel-art top-down action game.
+Reference image: the approved character in her idle pose. Copy her identity exactly: anime face with red eyes, long silver-white hair with straight bangs, charcoal hood, small gold crown-shaped brooch on her chest, dark fitted bodice with belts, armored gauntlets, tattered charcoal cloak with burnt ember-orange edges, black thigh-high stockings with thin straps, armored heeled knee boots, tall non-chibi proportions, and the same long jagged black sword with a glowing ember-orange edge and a thorny crossguard, in the same hand. Only the identity comes from the reference. The POSES in all six frames must be strongly different from the reference idle pose.
+
+Art direction (the most important style rule): Korean/Japanese "subculture" game style - a modern anime gacha action RPG - and she is its heroine. Every frame must look like a stylish key pose from an anime action game: one clear line of action through the whole body, graceful readable hands, and hair and cloak that exaggerate the motion in big flowing shapes. Keep her anime face from the reference: large red eyes, small nose and mouth. Exaggerate the POSES, never the anatomy: she keeps the reference's tall adult proportions, small head and long legs. Not chibi, not western cartoon, not realistic painting.
+This is the tragic, beautiful fall of an anime heroine. Even while she collapses her silhouette stays graceful - long hair fanning out, the cloak settling softly - and the final image of her sword standing alone beside a small mound of ash should feel quiet and poignant. No blood, no wounds, no gore.
+
+Canvas: landscape 1536x1024. Layout: a grid of 3 columns x 2 rows, six equal square cells (512x512 each). Top row = frames 1, 2, 3 from left to right. Bottom row = frames 4, 5, 6 from left to right. One frame per cell, with at least 24 px of empty background on every side of each cell. All six frames at the same scale: in frame 1 she stands upright at her full standing height of about 380 px from hood top to boot sole.
+
+The story: a fatal blow; she drops to one knee and catches herself on her planted sword; her grip slips and she collapses onto her side; she lies still; her body burns away into ash; only a small mound of ash remains, with her sword still planted upright beside it like a grave marker. In this world the dead turn to ash.
+Her lowest point - boots, knees, body or the ash mound - always rests on the same ground line near the bottom of every cell. She never floats or jumps. The figure stays centered horizontally in the cell in every frame: when she lies down, her hips stay near the cell center, her head on one side and her legs on the other. When lying, her knees are slightly drawn up, so the lying body is only about three quarters as long as her standing height.
+
+Camera: fixed 35-degree top-down 3/4 view. She starts facing the direction given in the direction block below, and the whole collapse happens in place.
+Screen directions use a clock face around her body: 12 = up, 3 = right, 6 = down, 9 = left.
+
+1. FATAL BLOW: upright at her full standing height. Her whole body jolts: head snapped back, chin up, eyes wide, free arm flung out to the side, sword arm going limp so the blade tip drops toward the floor. Hair and cloak lag behind and hang forward.
+2. KNEEL: she drops onto one knee and stops her fall by stabbing the sword point into the floor in front of her. Both hands on the hilt, all her weight leaning on it, head drooping forward, hair falling around her face, the other leg giving way. Weak and exhausted - not a proud pose.
+3. SLIP: her hands slide down the hilt and let go; both knees on the floor; her body tips sideways away from the sword, one hand reaching down toward the floor; head hanging; cloak sliding off her shoulder. The sword stays planted upright where she left it.
+4. FALLEN: she lies still on her side on the floor near the planted sword, knees slightly drawn up, one arm stretched out toward the sword, eyes closed, long hair spread across the floor, cloak draped over her body. This pose must read as a complete death on its own.
+5. BURNING TO ASH: the same lying pose and silhouette as frame 4, but her body is turning into ash - dark ash-gray texture with glowing ember-orange cracks spreading across it like burning paper, her white hair turned ash gray, the outline crumbling into small chunks that still touch the body. The sword is unchanged.
+6. ASH: she is gone. Only a low mound of gray ash in the rough shape of where she lay remains, a few faint ember cracks glowing inside it, and her sword still planted upright in the floor beside the mound like a grave marker. This is the final frame and it stays on screen.
+
+Lock these per frame so the six poses cannot collapse into each other.
+Height of the tallest point of her body (not counting the sword) compared with her standing height: 100%, 60% (kneeling), 45%, 25% (lying), 25% (lying), 12% (ash mound).
+Sword: dropping in her limp hand, planted with both her hands on it, planted with her hands slipping off, planted alone, planted alone, planted alone.
+Eyes: wide open, half closed, closed, closed, turned to ash, gone.
+Frames 4 and 6 matter most and must be unmistakably different - one is her whole body lying on the floor, the other is only a small ash mound beside the standing sword.
+
+Style: detailed hi-bit anime pixel art matching the reference - the same fine pixel density, consistent pixel cluster size, dark outline, 2-3 hard shade steps, no antialiasing, no smooth painting, no blur.
+Palette: gray and charcoal cloak and armor, white hair, pale skin, red eyes; ash gray and dark ash for the burning body and the ash mound. Ember orange only on the sword edge, the torn cloak edges and the glowing cracks in frames 5 and 6. No red cloth, no blood. Absolutely no green on the character.
+No floating ash flakes, flying embers, smoke, sparks, particles, smear, motion blur, afterimage or speed lines. No shadow, no floor (the ash mound is drawn, the floor itself is not), no text, no frame numbers, no grid lines, no borders.
+Background: solid uniform pure chroma-key green #00FF00.
+
+Direction: at the start she faces DOWN, toward the viewer. Front view, her face and red eyes are visible in frames 1-3. She holds the sword in her right hand, which is on the viewer's LEFT side.
+In frame 2 the sword is planted in front of her, slightly to the viewer's LEFT. In frames 3 and 4 she tips over to the viewer's RIGHT, away from the sword, and ends lying on her side across the screen: her head toward 3 o'clock with her face turned toward the viewer and eyes closed, her legs toward the sword on the viewer's left.
+In frames 5 and 6 the burning body and then the ash mound stay exactly where she lay, with the sword still standing at the mound's left end.

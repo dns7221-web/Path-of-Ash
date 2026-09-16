@@ -1,0 +1,22 @@
+Use case: game VFX. Asset: SIX-FRAME GROUND SPELL effect sprite strip ("Ember Pillar": a magic circle that erupts into a pillar of ember fire) for a 2D pixel-art top-down action game. Effect only: no character, no hand, no sword.
+
+Art direction (the most important style rule): a skill effect from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. First elegant and ornamental like an anime magic circle, then a bold explosive eruption. Shapes are sharp and graphic: thin precise rune lines, a ring of thorn-like spikes echoing the heroine's jagged sword guard and crown brooch, tapered flame tongues, crystal-like obsidian shards. Glow is drawn as hard-edged bands of color (cel-shaded), never as soft transparent blur or photographic fire and smoke.
+
+Camera: fixed 35-degree top-down 3/4 view. The magic circle lies FLAT on the floor, so it is drawn as an ellipse about twice as wide as it is tall. The pillar rises straight UP the screen from the center of that ellipse.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024). Each frame centered horizontally in its own cell, with at least 16 px margin inside every cell edge.
+
+Anchoring rule (important for the game): the floor ellipse has the SAME size and the SAME position in all six frames - about 200 px wide and 100 px tall, its bottom edge near the bottom of the cell. In frames 1 and 6 it is only a faint dotted outline, but it must still be there. Nothing is ever drawn below the bottom edge of the ellipse or beyond its left and right ends. The pillar and the flying shards only extend UPWARD.
+
+Timing: 6 frames at 7 fps (0.86 s). Frames 1-3 are the warning, frame 4 is the hit.
+1. SEED: a small white-hot ember point lands at the center of the ellipse with a tiny flash; the ellipse is only a faint dotted outline of ember specks.
+2. DRAW: the magic circle draws itself - an outer ring and an inner ring in ember orange, about two thirds complete, thin rune marks between the rings, short thorn-like spikes pointing outward from the outer ring.
+3. CHARGED: the complete magic circle at full brightness, its center white-hot, the thorn spikes of the inner ring tilted upward like a small crown, short vertical ember dashes rising a little from the lines. It must read clearly as "about to explode".
+4. ERUPTION: a tall pillar of ember fire bursts straight up from the center of the circle - white-hot core, amber and orange flame tongues - with jagged obsidian shards thrust up around its base like a crown of spikes. The pillar is about one third as wide as the ellipse and as tall as the cell allows. The biggest frame.
+5. COLLAPSE: the pillar breaks apart from the top down into falling obsidian shards and ember flakes; the core dims to orange; the circle is cracked and dimming.
+6. ASH: only the faint, cracked, dotted ellipse on the floor and a few ash flakes drifting down while the last embers die out.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps per shape, no antialiasing, no soft glow gradients, no blur, no photographic smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor texture, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

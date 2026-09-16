@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: 45d8d1d3ac1b0cc44970cf514f675f58
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1592069910279358842
+    second: vfx_ember_slash_6frames_1536x256_0
+  - first:
+      213: -1584595032751200428
+    second: vfx_ember_slash_6frames_1536x256_1
+  - first:
+      213: -4558436308651686864
+    second: vfx_ember_slash_6frames_1536x256_2
+  - first:
+      213: 1958022762128343678
+    second: vfx_ember_slash_6frames_1536x256_3
+  - first:
+      213: -5576187777663025616
+    second: vfx_ember_slash_6frames_1536x256_4
+  - first:
+      213: 7386431809194060339
+    second: vfx_ember_slash_6frames_1536x256_5
+  - first:
+      213: 2870259468505017346
+    second: vfx_ember_slash_6frames_1536x256_6
+  - first:
+      213: -1577360793154548133
+    second: vfx_ember_slash_6frames_1536x256_7
+  - first:
+      213: 3979715987505432436
+    second: vfx_ember_slash_6frames_1536x256_8
+  - first:
+      213: -3250531766570128350
+    second: vfx_ember_slash_6frames_1536x256_9
+  - first:
+      213: -5328148335599164948
+    second: vfx_ember_slash_6frames_1536x256_10
+  - first:
+      213: -4826233186283545713
+    second: vfx_ember_slash_6frames_1536x256_11
+  - first:
+      213: -5913019663417422573
+    second: vfx_ember_slash_6frames_1536x256_12
+  - first:
+      213: -6421898507111127817
+    second: vfx_ember_slash_6frames_1536x256_13
+  - first:
+      213: -7589151894996809909
+    second: vfx_ember_slash_6frames_1536x256_14
+  - first:
+      213: 8603505681008422979
+    second: vfx_ember_slash_6frames_1536x256_15
+  - first:
+      213: -4255805113833048762
+    second: vfx_ember_slash_6frames_1536x256_16
+  - first:
+      213: -8354993837947944348
+    second: vfx_ember_slash_6frames_1536x256_17
+  - first:
+      213: 9043569379006263162
+    second: vfx_ember_slash_6frames_1536x256_18
+  - first:
+      213: -5449884534503518731
+    second: vfx_ember_slash_6frames_1536x256_19
+  - first:
+      213: 1050621070538024795
+    second: vfx_ember_slash_6frames_1536x256_20
+  - first:
+      213: 4315104177474623207
+    second: vfx_ember_slash_6frames_1536x256_21
+  - first:
+      213: -4444316237820601055
+    second: vfx_ember_slash_6frames_1536x256_22
+  - first:
+      213: 1554934011709775237
+    second: vfx_ember_slash_6frames_1536x256_23
+  - first:
+      213: 7526107298455346673
+    second: vfx_ember_slash_6frames_1536x256_24
+  - first:
+      213: 1049725241125787418
+    second: vfx_ember_slash_6frames_1536x256_25
+  - first:
+      213: 7212530540698293419
+    second: vfx_ember_slash_6frames_1536x256_26
+  - first:
+      213: -8798469900249270830
+    second: vfx_ember_slash_6frames_1536x256_27
+  - first:
+      213: -5010296182930485881
+    second: vfx_ember_slash_6frames_1536x256_28
+  - first:
+      213: 4796260416792388813
+    second: vfx_ember_slash_6frames_1536x256_29
+  - first:
+      213: -5853334697914687137
+    second: vfx_ember_slash_6frames_1536x256_30
+  - first:
+      213: 384412497417971398
+    second: vfx_ember_slash_6frames_1536x256_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_ember_slash_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a247faadcebaf941a9d5c86bf9000e3
+      internalID: -109166093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_slash_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ecd6a3bc4b1dc409bcbb948d472785
+      internalID: -480491510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_slash_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6e29cc165a8644a85b4e95158430fc
+      internalID: 415960296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_slash_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716fe67c3a1d634489c833f92e1f852c
+      internalID: 112989650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_slash_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a4c263090ce2a4aa8393c614fc207b
+      internalID: 72027487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ember_slash_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ee7cbc828036a4aa31f7159bf90fe6
+      internalID: 110636204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1653965c43332f34fb7b5bf83e041474
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_ember_slash_00: -109166093
+      vfx_ember_slash_01: -480491510
+      vfx_ember_slash_02: 415960296
+      vfx_ember_slash_03: 112989650
+      vfx_ember_slash_04: 72027487
+      vfx_ember_slash_05: 110636204
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

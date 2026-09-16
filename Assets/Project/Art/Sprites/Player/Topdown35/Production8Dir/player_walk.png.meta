@@ -963,50 +963,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_S_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1792
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6f3507df1a694390800000000000000
-      internalID: -7833613391850291348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_S_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 1792
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4229f2321d052d580800000000000000
-      internalID: -8803885462387191260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_walk_SW_00
       rect:
         serializedVersion: 2
@@ -1134,50 +1090,6 @@ TextureImporter:
       bones: []
       spriteID: 00a1b06cb396718c0800000000000000
       internalID: -4028635636213016064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_SW_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 03bf22fa43ba7b160800000000000000
-      internalID: 7041284785182014256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_SW_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 1536
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dab9db0e92cf60fd0800000000000000
-      internalID: -2375934496596976723
       vertices: []
       indices: 
       edges: []
@@ -1315,50 +1227,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_W_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ebfc94645467f42a0800000000000000
-      internalID: -6751047276501020738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_W_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 1280
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3741514e89ca20780800000000000000
-      internalID: -8718216155974265741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_walk_NW_00
       rect:
         serializedVersion: 2
@@ -1486,50 +1354,6 @@ TextureImporter:
       bones: []
       spriteID: a9c77f8adb2ec1540800000000000000
       internalID: 4980104592176413850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_NW_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1024
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2894a5eea0c5142d0800000000000000
-      internalID: -3296252250240169598
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_NW_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 1024
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 83957c89bde64c5c0800000000000000
-      internalID: -4196107063362365128
       vertices: []
       indices: 
       edges: []
@@ -1667,50 +1491,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_N_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 768
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 259b7500aa5a72be0800000000000000
-      internalID: -1502049801135998638
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_N_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 768
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aeea77738de9afa10800000000000000
-      internalID: 1944040840644505322
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_walk_NE_00
       rect:
         serializedVersion: 2
@@ -1838,50 +1618,6 @@ TextureImporter:
       bones: []
       spriteID: b510e228f4b4f24a0800000000000000
       internalID: -6615986522725416613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_NE_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae6a5ba39ddc0e440800000000000000
-      internalID: 4963193122238867178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_NE_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 512
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 546c4c762ada6f720800000000000000
-      internalID: 2879679924787267141
       vertices: []
       indices: 
       edges: []
@@ -2019,50 +1755,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_E_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 256
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 62a31488403a674c0800000000000000
-      internalID: -4290062355162645978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_E_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 256
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 16aced8d762937590800000000000000
-      internalID: -7677631965018797471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_walk_SE_00
       rect:
         serializedVersion: 2
@@ -2190,50 +1882,6 @@ TextureImporter:
       bones: []
       spriteID: 37cf7a296180a7a20800000000000000
       internalID: 3060767789794458739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_SE_06
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa1979f3ad80806e0800000000000000
-      internalID: -1871235911709650518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_walk_SE_07
-      rect:
-        serializedVersion: 2
-        x: 1792
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15234375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2d3918f5f4b817170800000000000000
-      internalID: 8174467971675165650
       vertices: []
       indices: 
       edges: []

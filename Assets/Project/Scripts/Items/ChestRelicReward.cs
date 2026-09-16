@@ -36,8 +36,18 @@ public class ChestRelicReward : MonoBehaviour
     [Tooltip("상자에서 튀어나올 픽업 프리팹. 비우면 즉시 획득으로 돌아간다.")]
     [SerializeField] private RelicPickup pickupPrefab;
 
-    [Tooltip("튀어나오는 방향의 기준 각도(도). 0이 오른쪽, 90이 위.")]
-    [SerializeField] private float launchAngle = 90f;
+    // 수정(2026-09-15, 유물이 상자 뒤에 가려짐) — 기본값 90(위) → 270(아래, 화면 앞쪽).
+    //
+    // 이 게임은 화면 위쪽이 멀리 있는 쪽인 탑다운이고, 그리는 순서를 Y축으로 정한다(Graphics 설정의
+    // Transparency Sort Axis = (0, 1, 0)). 유물과 상자가 둘 다 Entity 레이어 순서 0이라 <b>y가 큰 쪽이 뒤에 그려진다.</b>
+    // 위로 3유닛 튀면 상자 뒤(y가 더 큰 자리)에 떨어져 상자 그림에 덮였다. 아래로 튀면 상자 앞에 놓여 가려지지 않고,
+    // 플레이어가 들어오는 쪽(입장 지점이 상자 아래)이라 주우러 가는 길도 짧다.
+    // 좌우 흔들림(launchSpread 50)을 더해도 방향은 220~320도라 늘 아래쪽 반원 안이다.
+    //
+    // 씬에 이미 저장된 상자들의 값(90)은 이 기본값으로 안 바뀐다 — Game.unity의 값도 같이 270으로 고쳤다.
+    [Tooltip("튀어나오는 방향의 기준 각도(도). 0이 오른쪽, 90이 위(상자 뒤), 270이 아래(상자 앞). " +
+             "Y축으로 그리는 순서를 정하므로 위쪽으로 튀면 상자에 가려진다.")]
+    [SerializeField] private float launchAngle = 270f;
 
     [Tooltip("기준 각도에서 좌우로 흔들 범위(도). 매번 조금씩 다른 곳에 떨어진다.")]
     [SerializeField, Min(0f)] private float launchSpread = 50f;

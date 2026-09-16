@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: 889a5c85b26233e44a02279fac006ed3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1592739537622292654
+    second: vfx_wraith_charge_launch_6frames_1536x256_0
+  - first:
+      213: -341788172714380723
+    second: vfx_wraith_charge_launch_6frames_1536x256_1
+  - first:
+      213: 1568564269990802428
+    second: vfx_wraith_charge_launch_6frames_1536x256_2
+  - first:
+      213: -5354910860364438689
+    second: vfx_wraith_charge_launch_6frames_1536x256_3
+  - first:
+      213: 4682265002714860820
+    second: vfx_wraith_charge_launch_6frames_1536x256_4
+  - first:
+      213: 4505846421294189544
+    second: vfx_wraith_charge_launch_6frames_1536x256_5
+  - first:
+      213: -5001563192175242572
+    second: vfx_wraith_charge_launch_6frames_1536x256_6
+  - first:
+      213: 4875269987463857399
+    second: vfx_wraith_charge_launch_6frames_1536x256_7
+  - first:
+      213: 987753026974715956
+    second: vfx_wraith_charge_launch_6frames_1536x256_8
+  - first:
+      213: -2623871507437202673
+    second: vfx_wraith_charge_launch_6frames_1536x256_9
+  - first:
+      213: 6383674233427335365
+    second: vfx_wraith_charge_launch_6frames_1536x256_10
+  - first:
+      213: 8844546368649559575
+    second: vfx_wraith_charge_launch_6frames_1536x256_11
+  - first:
+      213: 4077574390521446427
+    second: vfx_wraith_charge_launch_6frames_1536x256_12
+  - first:
+      213: -1869234445083225268
+    second: vfx_wraith_charge_launch_6frames_1536x256_13
+  - first:
+      213: -5121858294243564127
+    second: vfx_wraith_charge_launch_6frames_1536x256_14
+  - first:
+      213: -5336351056767272480
+    second: vfx_wraith_charge_launch_6frames_1536x256_15
+  - first:
+      213: 5711580056020656402
+    second: vfx_wraith_charge_launch_6frames_1536x256_16
+  - first:
+      213: -6513778088738604799
+    second: vfx_wraith_charge_launch_6frames_1536x256_17
+  - first:
+      213: -8979732030576799141
+    second: vfx_wraith_charge_launch_6frames_1536x256_18
+  - first:
+      213: 8561005832134931507
+    second: vfx_wraith_charge_launch_6frames_1536x256_19
+  - first:
+      213: -3001799878867113361
+    second: vfx_wraith_charge_launch_6frames_1536x256_20
+  - first:
+      213: -4696746531947609455
+    second: vfx_wraith_charge_launch_6frames_1536x256_21
+  - first:
+      213: -1329475728766320468
+    second: vfx_wraith_charge_launch_6frames_1536x256_22
+  - first:
+      213: 5062079924499942164
+    second: vfx_wraith_charge_launch_6frames_1536x256_23
+  - first:
+      213: 4680035375435008504
+    second: vfx_wraith_charge_launch_6frames_1536x256_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_wraith_launch_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.109375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aacad90981cfee944a231ea69f35b5e4
+      internalID: 2078567207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_wraith_launch_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.109375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f00c12b50d36d648b08b9fa5bdc52af
+      internalID: -2103080200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_wraith_launch_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.109375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8af7897ebb2714468560fb09cd6f7db
+      internalID: -228184422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_wraith_launch_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.109375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c6f21c7fbfb6f45b126d944886cfa3
+      internalID: -1308590837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_wraith_launch_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.109375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df27df7340fceb42a9983e707e2745d
+      internalID: 1677323474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_wraith_launch_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.109375, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba335adcb28d5414796248f9e500c7b1
+      internalID: -1929227111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7b3ac0d892ac5084cbd5de9da50857d3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_wraith_launch_00: 2078567207
+      vfx_wraith_launch_01: -2103080200
+      vfx_wraith_launch_02: -228184422
+      vfx_wraith_launch_03: -1308590837
+      vfx_wraith_launch_04: 1677323474
+      vfx_wraith_launch_05: -1929227111
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

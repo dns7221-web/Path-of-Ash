@@ -1,0 +1,37 @@
+Use case: identity-preserve. Asset: SIX-FRAME GREATSWORD SLAM animation for a 2D pixel-art top-down action game.
+Reference image: the approved character in her idle pose. Copy her identity exactly: anime face with red eyes, long silver-white hair with straight bangs, charcoal hood, small gold crown-shaped brooch on her chest, dark fitted bodice with belts, armored gauntlets, tattered charcoal cloak with burnt ember-orange edges, black thigh-high stockings with thin straps, armored heeled knee boots, tall non-chibi proportions, and the same long jagged black sword with a glowing ember-orange edge and a thorny crossguard, in the same hand. Only the identity comes from the reference. The POSES in frames 1-5 must be strongly different from the reference; only frame 6 returns to the reference pose.
+
+Art direction (the most important style rule): Korean/Japanese "subculture" game style - a modern anime gacha action RPG - and she is its heroine. Every frame must look like a stylish key pose from an anime action game: one clear line of action through the whole body, a cool and confident heroine attitude, graceful readable hands, and hair and cloak that exaggerate the motion in big flowing shapes. Keep her anime face from the reference: large red eyes, small nose and mouth, calm focused expression. Exaggerate the POSES, never the anatomy: she keeps the reference's tall adult proportions, small head and long legs. Not chibi, not western cartoon, not realistic painting.
+This is a heavy anime greatsword chop: a big wind-up, one explosive downward swing, and an impact frame that looks like the frozen hit-stop moment of an action game.
+
+Canvas: landscape 1536x1024. Layout: a grid of 3 columns x 2 rows, six equal square cells (512x512 each). Top row = frames 1, 2, 3 from left to right. Bottom row = frames 4, 5, 6 from left to right. One full-body frame per cell, with at least 24 px of empty background on every side of each cell. All six frames at the same scale: standing height about 380 px from hood top to boot sole when she is upright.
+
+The move: she grips her sword with BOTH hands like a greatsword and slams it down onto the floor in front of her. The sword is the same sword as the reference - do not make it bigger. The ground cracks and the fire that follow are separate effects - do not draw them.
+When she raises the sword, it goes back BEHIND her head at a shallow angle, never straight up: the blade tip never rises more than a hand's width above the top of her hood.
+Her boot soles stay on the same line near the bottom of every cell. She never jumps. Her hips stay near the horizontal center of the cell; she may take one step forward.
+
+Camera: fixed 35-degree top-down 3/4 view. She faces the SAME direction in all six frames (see the direction block below) and slams toward the floor straight ahead of her.
+Screen directions use a clock face around her body: 12 = up, 3 = right, 6 = down, 9 = left. The direction block gives the exact blade direction for every frame.
+
+1. GATHER: her free hand joins the sword hand on the hilt; she sinks into a low stance with her weight on the back foot and pulls the sword back over her shoulder, the blade lying behind her head and pointing backward, away from the target. Eyes locked on the target.
+2. RAISE: she drives up out of the crouch and arches her back like a drawn bow; both elbows high, the hilt at the height of her hood, the blade raised up and back behind her head. The front foot steps forward. Chest open, chin up, the most stretched silhouette of the animation.
+3. CHOP: the blade swings down in front of her; both arms extend forward, the torso folds forward, the front knee starts to bend deeply. Hair and cloak lift up behind her from the speed of the swing.
+4. IMPACT: the blade tip slams into the floor just in front of her front foot. Both arms straight down along the sword, deep squat lunge, torso bent low over the hilt, head down. Hair and cloak are thrown upward and forward over her shoulders by the sudden stop. The heaviest, most compressed silhouette - a frozen hit-stop key frame.
+5. PULL UP: still low, she wrenches the blade up out of the floor and starts to rise, the sword swinging back toward her side, hair and cloak falling back down.
+6. RECOVER: exactly the idle pose of the reference - same stance, same sword angle, same cloak shape, same scale.
+
+Lock these per frame so the six poses cannot collapse into each other.
+Torso lean from vertical: 10 degrees back (coiled), 15 degrees back (arched), 30 degrees forward, 50 degrees forward, 25 degrees forward, 0 degrees.
+Head height compared with her standing head height: 85%, 100%, 85%, 62%, 80%, 100%.
+Hands: both hands on the hilt in frames 1-5; only the reference hand in frame 6.
+Legs: low stance with the weight back, front foot stepping forward, front knee bending, deep squat lunge, rising, reference.
+Frames 2 and 4 matter most and must be unmistakably different - one is tall and arched with the sword raised behind her head, the other is low and folded with the blade driven into the floor ahead.
+
+Style: detailed hi-bit anime pixel art matching the reference - the same fine pixel density, consistent pixel cluster size, dark outline, 2-3 hard shade steps, no antialiasing, no smooth painting, no blur.
+Palette: gray and charcoal cloak and armor, white hair, pale skin, red eyes. Ember orange only on the sword edge and the torn cloak edges. No red cloth. Absolutely no green on the character.
+No ground cracks, crater, rubble, dust, shockwave, fire, sparks, embers, slash arc, smear, motion blur, afterimage or speed lines (the slam effects are separate sprites). No shadow, no floor, no text, no frame numbers, no grid lines, no borders.
+Background: solid uniform pure chroma-key green #00FF00.
+
+Direction: she faces DOWN, toward the viewer, in every frame, and slams toward the floor below her on the screen. Front view, her face and red eyes are visible throughout except where her bowed head hides them in frame 4. She holds the sword in her right hand, which is on the viewer's LEFT side.
+Blade direction per frame: 1 = lying diagonally behind her head, tip pointing to 10 o'clock beyond her right shoulder (the viewer's left); 2 = hilt at hood height on the viewer's left, blade pointing to 10-11 o'clock behind her head, tip no higher than a hand's width above her hood; 3 = swinging down in front of her chest toward the viewer, strongly foreshortened, tip pointing to 6 o'clock; 4 = planted almost vertically in the floor just in front of her boots, hilt at knee height, the top of her bowed hood visible; 5 = rising at 7 o'clock beside her right leg.
+Do NOT slide her down the cell; keep her soles on the same line.

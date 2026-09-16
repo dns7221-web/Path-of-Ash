@@ -1,0 +1,410 @@
+fileFormatVersion: 2
+guid: 1dffed0d53c9fbc44b01fbc234ddd169
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4326589302936413442
+    second: ash_bomber_self_destruct_6frames_1536x256_0
+  - first:
+      213: 7588978085335272551
+    second: ash_bomber_self_destruct_6frames_1536x256_1
+  - first:
+      213: 5898864769150251460
+    second: ash_bomber_self_destruct_6frames_1536x256_2
+  - first:
+      213: -1993723425571028401
+    second: ash_bomber_self_destruct_6frames_1536x256_3
+  - first:
+      213: -1090678324256686113
+    second: ash_bomber_self_destruct_6frames_1536x256_4
+  - first:
+      213: -5463404465002672221
+    second: ash_bomber_self_destruct_6frames_1536x256_5
+  - first:
+      213: 4116225192518298588
+    second: ash_bomber_self_destruct_6frames_1536x256_6
+  - first:
+      213: -5026272157422300152
+    second: ash_bomber_self_destruct_6frames_1536x256_7
+  - first:
+      213: -1296546446408494357
+    second: ash_bomber_self_destruct_6frames_1536x256_8
+  - first:
+      213: 2153661516378586243
+    second: ash_bomber_self_destruct_6frames_1536x256_9
+  - first:
+      213: 8013608261832500733
+    second: ash_bomber_self_destruct_6frames_1536x256_10
+  - first:
+      213: -8259131551720705127
+    second: ash_bomber_self_destruct_6frames_1536x256_11
+  - first:
+      213: -6206540818235279898
+    second: ash_bomber_self_destruct_6frames_1536x256_12
+  - first:
+      213: -1406006657716835019
+    second: ash_bomber_self_destruct_6frames_1536x256_13
+  - first:
+      213: -367766561214496996
+    second: ash_bomber_self_destruct_6frames_1536x256_14
+  - first:
+      213: 5659058507738550227
+    second: ash_bomber_self_destruct_6frames_1536x256_15
+  - first:
+      213: 1114891612107415733
+    second: ash_bomber_self_destruct_6frames_1536x256_16
+  - first:
+      213: 5711154487395871266
+    second: ash_bomber_self_destruct_6frames_1536x256_17
+  - first:
+      213: 5917519578401241758
+    second: ash_bomber_self_destruct_6frames_1536x256_18
+  - first:
+      213: 5852681819702800280
+    second: ash_bomber_self_destruct_6frames_1536x256_19
+  - first:
+      213: -3952034564887616506
+    second: ash_bomber_self_destruct_6frames_1536x256_20
+  - first:
+      213: 9177423671954054619
+    second: ash_bomber_self_destruct_6frames_1536x256_21
+  - first:
+      213: 172666157090299656
+    second: ash_bomber_self_destruct_6frames_1536x256_22
+  - first:
+      213: -6307295786563478803
+    second: ash_bomber_self_destruct_6frames_1536x256_23
+  - first:
+      213: -7520878251924511321
+    second: ash_bomber_self_destruct_6frames_1536x256_24
+  - first:
+      213: -7681117963064731767
+    second: ash_bomber_self_destruct_6frames_1536x256_25
+  - first:
+      213: 1943739562722998810
+    second: ash_bomber_self_destruct_6frames_1536x256_26
+  - first:
+      213: 3795977360993663238
+    second: ash_bomber_self_destruct_6frames_1536x256_27
+  - first:
+      213: -1941546237651232278
+    second: ash_bomber_self_destruct_6frames_1536x256_28
+  - first:
+      213: -1229154969959901945
+    second: ash_bomber_self_destruct_6frames_1536x256_29
+  - first:
+      213: 2666700192569073859
+    second: ash_bomber_self_destruct_6frames_1536x256_30
+  - first:
+      213: -1848888439898312913
+    second: ash_bomber_self_destruct_6frames_1536x256_31
+  - first:
+      213: -7832448161512766165
+    second: ash_bomber_self_destruct_6frames_1536x256_32
+  - first:
+      213: 3652506647197277610
+    second: ash_bomber_self_destruct_6frames_1536x256_33
+  - first:
+      213: -4361508295929861286
+    second: ash_bomber_self_destruct_6frames_1536x256_34
+  - first:
+      213: -7340931714572444656
+    second: ash_bomber_self_destruct_6frames_1536x256_35
+  - first:
+      213: -514575203160327694
+    second: ash_bomber_self_destruct_6frames_1536x256_36
+  - first:
+      213: 5101756188017982983
+    second: ash_bomber_self_destruct_6frames_1536x256_37
+  - first:
+      213: 4314703252165891037
+    second: ash_bomber_self_destruct_6frames_1536x256_38
+  - first:
+      213: 774417932163215579
+    second: ash_bomber_self_destruct_6frames_1536x256_39
+  - first:
+      213: -1473990585225807215
+    second: ash_bomber_self_destruct_6frames_1536x256_40
+  - first:
+      213: -2326391938884312822
+    second: ash_bomber_self_destruct_6frames_1536x256_41
+  - first:
+      213: -8866178142810105155
+    second: ash_bomber_self_destruct_6frames_1536x256_42
+  - first:
+      213: 7571302375125543099
+    second: ash_bomber_self_destruct_6frames_1536x256_43
+  - first:
+      213: 988324647033256375
+    second: ash_bomber_self_destruct_6frames_1536x256_44
+  - first:
+      213: -5299664815173696754
+    second: ash_bomber_self_destruct_6frames_1536x256_45
+  - first:
+      213: 2011453021033420284
+    second: ash_bomber_self_destruct_6frames_1536x256_46
+  - first:
+      213: 9000061265729945738
+    second: ash_bomber_self_destruct_6frames_1536x256_47
+  - first:
+      213: 1347467447290203098
+    second: ash_bomber_self_destruct_6frames_1536x256_48
+  - first:
+      213: 1608931475411902636
+    second: ash_bomber_self_destruct_6frames_1536x256_49
+  - first:
+      213: 4819088528956647999
+    second: ash_bomber_self_destruct_6frames_1536x256_50
+  - first:
+      213: 4923111041220240367
+    second: ash_bomber_self_destruct_6frames_1536x256_51
+  - first:
+      213: -4071132491807259589
+    second: ash_bomber_self_destruct_6frames_1536x256_52
+  - first:
+      213: 743197825990305781
+    second: ash_bomber_self_destruct_6frames_1536x256_53
+  - first:
+      213: 8774418235780009994
+    second: ash_bomber_self_destruct_6frames_1536x256_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 100
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bomber_self_destruct_00
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d3bcf1e2cf327d42b0c2cf2b98be459
+      internalID: -1613867140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_self_destruct_01
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1bdb610b6e9ea843afb5b295d981698
+      internalID: -853213491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_self_destruct_02
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0133420b6324e3d4ba6dc48e464fab2a
+      internalID: -1015024987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_self_destruct_03
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d557e0393f83774ea4b054a23515c16
+      internalID: 1364368394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_self_destruct_04
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84fbed5e66da829429c03173b04ba456
+      internalID: 1489249183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: aeef8ef8d87239444a0bc9f761c0b13a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bomber_self_destruct_00: -1613867140
+      bomber_self_destruct_01: -853213491
+      bomber_self_destruct_02: -1015024987
+      bomber_self_destruct_03: 1364368394
+      bomber_self_destruct_04: 1489249183
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

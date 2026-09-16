@@ -29,8 +29,12 @@ public class BossRelicReward : RoomReward
     [SerializeField] private Transform dropPoint;
 
     [Header("튀어나오기")]
-    [Tooltip("튀어나갈 방향(도). 90이면 위쪽이다.")]
-    [SerializeField] private float launchAngle = 90f;
+    // 수정(2026-09-15, 유물이 상자 뒤에 가려짐) — 기본값 90(위) → 270(아래, 화면 앞쪽).
+    // 상자 유물(ChestRelicReward)과 같은 이유다. 그리는 순서를 Y축으로 정해서, 위로 튄 클리어 유물이
+    // 보스 방 보상 상자 뒤(y가 더 큰 자리)에 떨어져 가려졌다. Game.unity에 저장된 값도 같이 270으로 고쳤다.
+    [Tooltip("튀어나갈 방향(도). 90이면 위쪽(상자 뒤), 270이면 아래쪽(상자 앞)이다. " +
+             "Y축으로 그리는 순서를 정하므로 위쪽으로 튀면 보상 상자에 가려진다.")]
+    [SerializeField] private float launchAngle = 270f;
 
     private RelicPickup dropped;
     private RelicInventory inventory;

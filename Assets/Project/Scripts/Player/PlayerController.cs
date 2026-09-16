@@ -84,6 +84,33 @@ public class PlayerController : MonoBehaviour
              "이 값과 클립 길이가 어긋나면 모션이 끝났는데도 미끄러지거나 그 반대가 된다.")]
     [SerializeField] private float dashDuration = 0.25f;
 
+    // 추가 생성(대시 VFX) — 대시를 시작한 자리에 남기는 잿불 자국.
+    //
+    // 대시에 이펙트가 필요한 이유: 0.25초에 11유닛을 가는데 그림은 캐릭터 한 장뿐이라,
+    // 빠르게 지나가면 "순간이동"으로 읽히고 어느 쪽으로 피했는지 궤적이 안 남는다.
+    // 출발점에서 진행 방향으로 뻗는 자국이 있으면 방향과 거리가 동시에 읽힌다.
+    //
+    // 스킬처럼 SkillData로 빼지 않은 이유: 대시는 스킬 슬롯이 아니라 이동의 일부라 이 컴포넌트가
+    // 시작과 방향을 소유한다. 이펙트를 놓을 자리(출발점)와 방향(dashDirection)을 아는 곳도 여기뿐이다.
+    [Tooltip("대시를 시작한 자리에 남길 이펙트. 오른쪽으로 뻗게 그린 그림을 대시 방향으로 돌려 놓는다. 비우면 안 남긴다.")]
+    [SerializeField] private GameObject dashEffectPrefab;
+
+    // 추가 생성(대시 VFX) — 이펙트를 발밑에서 화면 위로 띄울 높이.
+    //
+    // 0(발밑)이 아닌 이유: 자국이 앞서 가는 캐릭터의 <b>몸 뒤</b>로 이어져야 몸에서 끌려 나온
+    // 꼬리로 보인다. 발밑에 두면 바닥에 그은 줄이 되어 캐릭터와 따로 논다.
+    // 1은 캐릭터 키(5.94유닛)의 약 1/6로, 목업에서 줄기 끝이 캐릭터의 다리·엉덩이 뒤에 닿는 높이였다.
+    // SkillData.effectHeight와 같은 성격 — 바닥 위치가 아니라 화면상의 높이다.
+    [Tooltip("대시 이펙트를 발밑에서 화면 위로 띄울 높이(유닛). 줄기가 캐릭터 몸 뒤로 이어지게 맞춘다.")]
+    [SerializeField, Min(0f)] private float dashEffectHeight = 1f;
+
+    /// <summary>
+    /// 추가 생성 — 대시 이펙트가 스스로 안 사라질 때 강제로 지우기까지의 시간(초).
+    /// 지금 프리팹은 6프레임 / 16fps = 0.375초 뒤 스스로 지운다. 루프로 잘못 설정된 프리팹을
+    /// 끼웠을 때 대시할 때마다 방에 쌓이지 않게 하는 안전장치다(SkillData.SpawnEffect와 같은 이유).
+    /// </summary>
+    private const float DashEffectMaxLifetime = 2f;
+
     // 추가 생성 — 액션 지속 시간
     [Header("액션 지속 시간")]
     // 수정(스킬 시스템 도입): attackDuration과 attackCooldown을 여기서 뺐다.
@@ -145,8 +172,13 @@ public class PlayerController : MonoBehaviour
     // 대시가 시작될 때 고정된 방향. 대시 중에는 입력을 무시하므로 시작 시점의 방향을 들고 있어야 한다.
     private Vector2 dashDirection = Vector2.right;
 
-    // 마지막으로 바라본 방향이 오른쪽인가. 입력이 없을 때 대시 방향을 정하는 데 쓴다.
-    private bool facingRight = true;
+    // 수정(입력 없는 대시 방향 버그, 2026-09-14) — 여기 있던 bool facingRight를 걷어냈다.
+    // 옛 주석: "마지막으로 바라본 방향이 오른쪽인가. 입력이 없을 때 대시 방향을 정하는 데 쓴다."
+    //
+    // 걷어낸 이유: 그 "입력이 없을 때 대시 방향"이 버그였다. 대시 그림은 8방향 facingDirection으로
+    // 고르는데 이동은 좌우 bool로 정해서, 위를 보고 서서 Shift를 누르면 몸은 옆으로 미끄러지고
+    // 그림은 위로 돌진했다. 게임을 시작하자마자(아래를 보고 선 채) 대시해도 오른쪽으로 나갔다.
+    // 이 값을 읽는 곳이 대시 하나뿐이었으므로 남겨두면 같은 실수를 다시 부르는 죽은 값이 된다.
 
     // 추가 생성 — 8방향 애니메이션이 쓰는 실제 방향. 아래(정면)에서 시작한다.
     private Vector2 facingDirection = Vector2.down;
@@ -184,8 +216,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>추가 생성 — 죽었는가. 적 AI가 추격을 멈출 때 읽을 값이다.</summary>
     public bool IsDead => actionState == ActionState.Dead;
 
-    /// <summary>추가 생성 — 오른쪽을 보고 있는가. 대시 기본 방향에만 쓴다(스킬은 FacingDirection).</summary>
-    public bool FacingRight => facingRight;
+    // 수정(입력 없는 대시 방향 버그, 2026-09-14) — FacingRight 속성을 걷어냈다.
+    // 옛 주석: "오른쪽을 보고 있는가. 대시 기본 방향에만 쓴다(스킬은 FacingDirection)."
+    // 읽는 곳이 대시뿐이었고, 대시도 이제 FacingDirection을 쓴다. 이유는 위 facingRight 자리의 주석에 있다.
 
     /// <summary>추가 생성(8방향) — 바라보는 방향 벡터. 스킬을 8방향으로 옮길 때 쓴다.</summary>
     public Vector2 FacingDirection => facingDirection;
@@ -313,13 +346,15 @@ public class PlayerController : MonoBehaviour
 
         // 추가 생성 — 바라보는 방향을 먼저 갱신한다. 대시 방향이 이 값을 쓰므로
         // 아래 액션 입력 처리보다 앞에 있어야 한다.
-        if (Mathf.Abs(moveInput.x) > 0.01f)
-            facingRight = moveInput.x > 0f;
+        //
+        // 수정(입력 없는 대시 방향 버그, 2026-09-14) — 여기서 좌우 bool(facingRight)도 같이 갱신하던
+        // 두 줄을 걷어냈다. 위 문장의 "이 값"은 이제 아래 facingDirection 하나다.
 
         // 수정(8방향 전환) — 좌우 bool과 별개로 실제 방향 벡터를 들고 있는다.
         //
         // bool을 남겨둔 이유: 대시 방향을 정할 때 "입력이 없으면 마지막 좌우"라는 기존 규칙이
         // 아직 그 값을 쓴다. 스킬 쪽은 전부 방향 벡터로 옮겼다.
+        // → 수정(2026-09-14): 그 규칙이 버그라 대시도 이 벡터로 옮기고 bool은 걷어냈다.
         //
         // 입력이 0일 때 갱신하지 않는 이유: 멈춘 순간 마지막으로 보던 방향이 유지돼야
         // 그 방향 idle이 나온다. 안 그러면 손을 떼는 순간 정면으로 홱 돌아간다.
@@ -421,17 +456,50 @@ public class PlayerController : MonoBehaviour
     {
         // 입력이 있으면 그 방향, 없으면 바라보던 방향으로 나간다.
         // 제자리 대시가 아무 데도 안 가면 회피기로 못 쓴다.
-        dashDirection = moveInput.sqrMagnitude > 0.01f
-            ? moveInput.normalized
-            : (facingRight ? Vector2.right : Vector2.left);
+        //
+        // 수정(입력 없는 대시 방향 버그, 2026-09-14) — 입력이 없을 때 좌우 bool 대신 facingDirection을 쓴다.
+        // 예전 식: moveInput이 있으면 moveInput.normalized, 없으면 (facingRight ? 오른쪽 : 왼쪽).
+        //
+        // facingDirection 하나로 두 경우가 다 된다. 이 코루틴은 Update → HandleActionInput에서 시작되는데,
+        // Update가 그보다 앞에서 facingDirection을 입력이 있으면 이번 프레임 입력 방향으로, 없으면
+        // 마지막으로 움직인 방향 그대로 갱신해 두기 때문이다(StartCoroutine은 첫 yield까지 바로 실행된다).
+        // 그리고 대시 그림(블렌드 트리)도 같은 값으로 고르므로 <b>그림·이동·이펙트가 한 방향</b>을 가리킨다.
+        dashDirection = facingDirection;
 
         actionState = ActionState.Dashing;
         animator?.SetTrigger(DashHash);
+
+        // 추가 생성(대시 VFX) — 방향이 정해진 직후, 몸이 움직이기 전의 자리에 남긴다.
+        SpawnDashEffect();
 
         yield return new WaitForSeconds(dashDuration);
 
         if (actionState == ActionState.Dashing)
             actionState = ActionState.Normal;
+    }
+
+    /// <summary>
+    /// 추가 생성(대시 VFX) — 출발점에 대시 자국을 남긴다. 이펙트가 없으면 아무 일도 안 한다.
+    ///
+    /// 캐릭터의 자식으로 붙이지 않고 월드에 놓는 이유: 이 그림은 "여기서 출발했다"는 표시다.
+    /// 자식으로 달면 캐릭터를 따라 11유닛을 같이 미끄러져서 자국이 아니라 몸에 붙은 장식이 된다.
+    ///
+    /// 회전만으로 여덟 방향을 맞추는 이유: 그림이 오른쪽으로 뻗고 위아래 대칭으로 그려져 있다
+    /// (생성 프롬프트의 조건). 그래서 왼쪽 대시에 180도가 걸려 뒤집혀도 같은 그림으로 읽힌다.
+    /// Q(내려찍기)의 이펙트는 파편이 늘 위로 솟아야 해서 반전과 회전을 섞었지만, 이건 그럴 필요가 없다.
+    ///
+    /// 세로 원근 압축(SkillData.Forward)을 안 거는 이유: 대시는 dashSpeed로 방향과 무관하게 같은 거리를
+    /// 실제로 이동한다. 자국의 길이도 실제 이동을 따라가야 위로 대시할 때 줄기가 캐릭터에서 끊기지 않는다.
+    /// </summary>
+    private void SpawnDashEffect()
+    {
+        if (dashEffectPrefab == null) return;
+
+        float angle = Mathf.Atan2(dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;
+        Vector3 position = transform.position + Vector3.up * dashEffectHeight;
+
+        var effect = Instantiate(dashEffectPrefab, position, Quaternion.Euler(0f, 0f, angle));
+        Destroy(effect, DashEffectMaxLifetime);
     }
 
     /// <summary>

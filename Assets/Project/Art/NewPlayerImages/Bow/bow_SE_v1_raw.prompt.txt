@@ -1,0 +1,36 @@
+Use case: identity-preserve. Asset: SIX-FRAME BOW SHOT animation ("Ash Bow") for a 2D pixel-art top-down action game.
+Reference image: the approved character in her idle pose. Copy her identity exactly: anime face with red eyes, long silver-white hair with straight bangs, charcoal hood, small gold crown-shaped brooch on her chest, dark fitted bodice with belts, armored gauntlets, tattered charcoal cloak with burnt ember-orange edges, black thigh-high stockings with thin straps, armored heeled knee boots, and tall non-chibi proportions. Only the identity comes from the reference. The POSES in frames 1-5 must be strongly different from the reference; only frame 6 returns to the reference pose.
+
+Art direction (the most important style rule): Korean/Japanese "subculture" game style - a modern anime gacha action RPG - and she is its heroine. Every frame must look like a stylish key pose from an anime action game: one clear line of action through the whole body, a cool and confident heroine attitude, graceful readable hands, and hair and cloak that exaggerate the motion in big flowing shapes. Keep her anime face from the reference: large red eyes, small nose and mouth, calm focused expression. Exaggerate the POSES, never the anatomy: she keeps the reference's tall adult proportions, small head and long legs. Not chibi, not western cartoon, not realistic painting.
+
+Canvas: landscape 1536x1024. Layout: a grid of 3 columns x 2 rows, six equal square cells (512x512 each). Top row = frames 1, 2, 3 from left to right. Bottom row = frames 4, 5, 6 from left to right. One full-body frame per cell, with at least 24 px of empty background on every side of each cell. All six frames at the same scale: standing height about 380 px from hood top to boot sole when she is upright.
+
+The move: she is a swordswoman who can SUMMON a bow made of ash. At the start of the move her sword has already crumbled into ash and re-formed as a bow: a tall recurve bow of cracked charcoal-black ash with glowing ember-orange cracks along its limbs, decorated in the same thorny style as her sword's crossguard, strung with a thin straight line of ember light. She shoots one ember arrow (a dark ash shaft with a glowing ember-orange arrowhead).
+In frames 1-5 there is NO sword anywhere - not in her hand, not on her back, not at her hip, not on the ground. The bow is her only weapon. The sword comes back only in frame 6. No quiver.
+Hands: the bow is held in the hand that is EMPTY in the reference; the hand that holds the sword in the reference draws the string.
+The bow is about two thirds of her height. Cant it slightly, the top limb tilted back toward her by about 20 degrees, so its upper tip never rises more than a hand's width above the top of her hood.
+Her boot soles stay on the same line near the bottom of every cell. She stands in an archer's stance with her feet apart and does not travel.
+
+Camera: fixed 35-degree top-down 3/4 view. She faces the SAME direction in all six frames (see the direction block below) and shoots straight toward the direction she faces.
+Screen directions use a clock face around her body: 12 = up, 3 = right, 6 = down, 9 = left.
+
+1. SUMMON: the bow has just formed in her bow hand, held low and forward, about 45 degrees below the aim line; her drawing hand sweeps across in front of her body toward the string. Feet sliding apart into the stance, head turning to the target, hair lifting slightly.
+2. NOCK: the bow arm rises toward the aim line; an ember arrow is nocked; the drawing hand pinches the string and the arrow at chest height. Torso turning side-on to the target.
+3. FULL DRAW: the bow arm is fully extended straight at the target; the string is pulled back to her cheek with the drawing elbow held high behind her head; the bow is deeply bent; the arrow points exactly at the target. Back straight, chin level, a sharp focused glare down the arrow. The stillest and most elegant frame.
+4. RELEASE: the arrow has just been shot and is NOT drawn anymore. The string is straight again, the bow arm still points at the target, and the drawing hand has snapped open and flown back past her ear with the fingers spread. Hair and cloak jolt backward from the recoil; torso leans back about 5 degrees.
+5. FOLLOW-THROUGH: the bow arm lowers to about 30 degrees below the aim line and the bow tilts; the drawing hand relaxes at shoulder height; weight settles; cloak and hair fall back.
+6. RECOVER: exactly the idle pose of the reference - the bow is gone and the sword is back in her hand, same stance, same sword angle, same cloak shape, same scale.
+
+Lock these per frame so the six poses cannot collapse into each other.
+Bow arm from the aim line: 45 degrees below, 15 degrees below, on the aim line, on the aim line, 30 degrees below, reference (no bow).
+Drawing hand: sweeping toward the string, pinching at the chest, anchored at the cheek, flung open past the ear, relaxed at the shoulder, reference.
+String and arrow: loose with no arrow, lightly drawn with the arrow, fully drawn with the arrow, straight with no arrow, straight with no arrow, reference.
+Frames 3 and 4 matter most and must be unmistakably different - one is fully drawn with the arrow on the string, the other has an empty straight string and the drawing hand flung open behind her head.
+
+Style: detailed hi-bit anime pixel art matching the reference - the same fine pixel density, consistent pixel cluster size, dark outline, 2-3 hard shade steps, no antialiasing, no smooth painting, no blur.
+Palette: gray and charcoal cloak and armor, white hair, pale skin, red eyes. Ember orange only on the torn cloak edges, the glowing cracks of the bow, the bowstring and the arrowhead. No red cloth. Absolutely no green on the character or the bow.
+No flying arrow after the release, no muzzle flash, arrow trail, ash particles, floating embers, smear, motion blur, afterimage or speed lines (the arrow and its effects are separate sprites). No shadow, no floor, no text, no frame numbers, no grid lines, no borders.
+Background: solid uniform pure chroma-key green #00FF00.
+
+Direction: she faces DOWN-RIGHT, toward the lower right, in every frame, and shoots toward 4-5 o'clock. Three-quarter front view, her face is visible and turned to the viewer's right. The bow is in the hand that is empty in the reference (on the viewer's RIGHT), extended toward the lower right; the other hand draws back past her cheek toward 10-11 o'clock.
+Cant the bow so both limbs stay visible; the arrow in frame 3 points at 4-5 o'clock.

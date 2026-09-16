@@ -1,0 +1,20 @@
+Use case: game VFX. Asset: SIX-FRAME DASH EFFECT sprite strip (an ash "shadow-step" burst) for a 2D pixel-art top-down action game. Effect only: no character, no body parts, no sword.
+
+Art direction (the most important style rule): a skill effect from a Korean/Japanese "subculture" game - a modern anime gacha action RPG. Bold, sharp, graphic shapes like a cel-shaded anime effect: tapered strokes, crisp shards, clean rings. Glow is drawn as hard-edged bands of color, never as soft transparent blur or photographic fire and smoke.
+
+Orientation: the dash goes to the RIGHT. The effect marks the spot the heroine launched from: it bursts at the LEFT part of the image and its streaks stretch toward the RIGHT, the way she went. The game rotates this sprite for the other directions, so draw it facing right only, and keep it roughly mirror-symmetric top-to-bottom so it still reads when rotated.
+
+Layout: exactly SIX frames in ONE horizontal row, equally spaced, left to right in time order. Target canvas 1536x256 (six 256x256 cells). If you must enlarge, keep one row of six equal cells (for example 6144x1024). Each frame centered in its own cell, with at least 16 px margin inside every cell edge.
+
+Timing: 6 frames at 16 fps (0.375 s).
+1. A flat burst ring appears on the ground at the launch point (left of center): a thin bright ember ellipse about three times wider than tall, with a small white-hot flash at its center.
+2. The ring expands and splits into sharp ash flakes; three to five long tapered streaks of charcoal ash with ember-orange edges shoot out to the RIGHT from the ring, parallel, like a comet tail.
+3. The streaks reach full length (about three quarters of the cell width); the ring is now a broken ellipse of ember dashes. The biggest and brightest frame.
+4. The streaks thin and tear into flying ash flakes and ember specks drifting to the right; the ring fades to a few dark ash marks.
+5. Mostly ash flakes and a few small ember specks, drifting slightly right and upward.
+6. Only a handful of tiny fading ash specks.
+
+Style: crisp pixel art at a fine pixel density (the same density as a detailed 190 px tall anime character sprite, not chunky blocks), small hard pixel clusters, 3-4 hard color steps, no antialiasing, no soft glow gradients, no blur, no photographic smoke. Every effect pixel is fully opaque - no semi-transparent edges.
+Palette only: hot core #FFF2C0, amber #FFB000, ember orange #F06000, deep ember red-brown #8A2A10, ash gray #4A4648, obsidian black #1A1718. No pink, magenta, blue or purple. Absolutely no green in the effect.
+No text, labels, grid, frame borders, floor texture, shadow or character.
+Background: solid uniform pure chroma-key green #00FF00 only.

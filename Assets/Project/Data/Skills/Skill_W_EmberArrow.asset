@@ -20,8 +20,9 @@ MonoBehaviour:
   motionSeconds: 0.5
   damage: 2
   animatorTrigger: Bow
-  effectPrefab: {fileID: 0}
-  effectForwardOffset: 2
+  effectPrefab: {fileID: 7201995689302752745, guid: 61ae5d4cc9ac4039bfdc22372fd5f9e9, type: 3}
+  effectForwardOffset: 2.5
+  effectHeight: 1.2
   effectLifetime: 1
   projectilePrefab: {fileID: 2123806455390599290, guid: 4c741d700ae97e44f8ca56bbdd4e4dda, type: 3}
   releaseDelay: 0.286

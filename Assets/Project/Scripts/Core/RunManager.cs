@@ -28,8 +28,16 @@ public class RunManager : MonoBehaviour
     [SerializeField] private RunResultData result;
 
     [Header("연출")]
-    [Tooltip("죽고 나서 결과 화면으로 넘어가기까지의 시간(초). 사망 연출이 들어갈 자리다.")]
-    [SerializeField] private float resultDelaySeconds = 0.6f;
+    // 수정(2026-09-13, 새 사망 모션) — 0.6 → 1.4.
+    //
+    // 사망 클립이 6프레임 / 8fps = 0.75초이고, 결정타가 히트박스면 그 앞에 히트스톱 0.1초가 붙는다.
+    // 0.6이면 씬이 넘어갈 때 클립이 0.5초 지점이라 쓰러지는 4번 프레임까지만 보이고,
+    // 몸이 재로 타들어가는 5번과 잿더미만 남는 6번은 한 번도 화면에 나오지 않았다.
+    // 1.4면 잿더미(6번)가 약 0.73초에 나오고 0.67초 동안 보인 뒤 결과 화면으로 넘어간다.
+    //
+    // 이 값은 Game.unity에 직렬화되어 있어서 기본값만 고치면 게임에 반영되지 않는다. 씬 값도 같이 고쳤다.
+    [Tooltip("죽고 나서 결과 화면으로 넘어가기까지의 시간(초). 사망 클립 0.75초 + 히트스톱 + 잿더미를 보여줄 여유.")]
+    [SerializeField] private float resultDelaySeconds = 1.4f;
 
 #if UNITY_EDITOR
     // 수정(빌드 유출): 조사용 사망 키를 에디터에서만 컴파일되게 감쌌다.

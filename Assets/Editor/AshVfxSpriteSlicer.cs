@@ -29,6 +29,7 @@ public static class AshVfxSpriteSlicer
         Ground,   // 지면선 — 캐릭터 발끝과 같은 높이
         Center,   // 셀 정중앙 — 공중에 뜬 것
         Tip,      // 촉 끝 — 앞으로 날아가는 화살
+        Forward,  // 추가 생성(2026-09-14) — 출발점. 셀 왼쪽 28px, 세로 가운데 — 한 점에서 앞(오른쪽)으로 뻗는 것
     }
 
     /// <summary>
@@ -40,19 +41,82 @@ public static class AshVfxSpriteSlicer
     /// </summary>
     private const float TipPivotX = 228f / 256f;
 
+    /// <summary>
+    /// 추가 생성(2026-09-14) — 앞으로 뻗는 이펙트의 출발점이 놓인 자리.
+    ///
+    /// Tools/NormalizeVfxStrip.ps1의 -PivotX 28과 같은 값이어야 한다(C# 정규화 도구의
+    /// ForwardEffectLeftInset과도 같다). 대시 자국은 "여기서 출발했다", 활 발사 섬광은 "여기서 시위를 놓았다"를
+    /// 그리는 그림이라, 오브젝트 위치가 곧 그 점이어야 회전시켰을 때 그 점을 축으로 돈다.
+    /// 가운데를 피벗으로 두면 왼쪽으로 대시할 때 180도 회전하면서 자국이 출발점 반대편으로 넘어간다.
+    /// </summary>
+    private const float ForwardPivotX = 28f / 256f;
+
     /// <summary>자를 시트 목록.</summary>
     private static readonly (string folder, string file, string prefix, int frames, PivotKind pivot)[] Sheets =
     {
-        (Folder, "vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, PivotKind.Center),
+        // 수정(2026-09-14, 새 캐릭터 화살) — 비행 시트 피벗을 Center → Tip으로 바꿨다.
+        //
+        // 새 그림은 촉 뒤로 긴 잿불 꼬리가 붙어 꼬리가 전체 길이의 절반을 넘는다. 가운데 피벗이면 콜라이더
+        // (오브젝트 위치 중심, 폭 2.2)가 꼬리 쪽에 있어서, <b>촉이 적 콜라이더에 약 2유닛 파고든 뒤에야</b>
+        // 맞는다(배율 0.85 기준). 명중 불꽃도 오브젝트 위치에 터지므로 촉이 아니라 촉 뒤에서 터진다.
+        // 사수 화살(marksman_arrow)이 같은 이유로 처음부터 Tip이다.
+        (Folder, "vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, PivotKind.Tip),
+
+        // 수정(2026-09-14) — 옛 명중 시트는 어디서도 안 쓰던 것을 새 그림으로 덮어 되살렸다.
+        // 한가운데가 맞은 점이다(NormalizeVfxStrip.ps1 -AnchorX LumaCentroid로 흰 심지를 가운데에 모았다).
         (Folder, "vfx_ember_arrow_impact_6frames_1536x256", "vfx_arrow_impact", 6, PivotKind.Center),
+
+        // 추가 생성(2026-09-14) — 활 발사 섬광. 시위를 놓은 점(고리)에서 화살이 나가는 쪽으로 빛줄기가 뻗는다.
+        (Folder, "vfx_ember_arrow_release_6frames_1536x256", "vfx_arrow_release", 6, PivotKind.Forward),
+
+        // 추가 생성(2026-09-14) — 대시 자국. 출발점의 고리에서 대시한 쪽으로 잿불 줄기가 뻗는다.
+        (Folder, "vfx_dash_burst_6frames_1536x256", "vfx_dash_burst", 6, PivotKind.Forward),
         (Folder, "vfx_kings_ember_6frames_1536x256", "vfx_kings_ember", 6, PivotKind.Ground),
+
+        // 추가 생성(2026-09-13) — 새 캐릭터의 궁극기(왕의 잿불) 시트. 옛 시트는 보스 잿불 파도가 계속 쓴다.
+        //
+        // 피벗이 옛 시트와 <b>반대(가운데)</b>인 이유: 새 그림은 시전자 발밑을 중심으로 사방으로 퍼지는
+        // 원형 폭발이다. 판정도 발밑 중심 반경 14라, 지면선 피벗이면 폭발 전체가 머리 위로 떠서 판정 원과 어긋난다.
+        // 접두어를 옛 시트와 같게 둔 이유: 다시 자를 때 이름으로 기존 스프라이트 ID를 찾으므로,
+        // 이름이 같아야 KingsEmber 프리팹의 참조가 끊기지 않는다.
+        (Folder, "vfx_kings_ember_crown_6frames_1536x256", "vfx_kings_ember", 6, PivotKind.Center),
+        // 수정(2026-09-14) — 아래 세 장은 새 캐릭터용 그림으로 같은 파일에 덮어썼다. 피벗 종류는 그대로 Ground지만
+        // 지면선에 놓이는 것이 달라졌다. 옛 그림은 그림의 <b>바닥</b>, 새 그림은 바닥에 누운 <b>타원·균열선의 가운데</b>다
+        // (NormalizeVfxStrip.ps1 -AnchorY WidestRow). 새 그림은 파편이 타원 앞쪽 아래로도 튀어서 바닥 끝을
+        // 맞추면 프레임마다 타원이 오르내린다. 타원 가운데가 곧 검이 꽂힌 점·기둥이 솟는 점이기도 하다.
         (Folder, "vfx_ash_staff_ground_spell_6frames_1536x256", "vfx_staff_spell", 6, PivotKind.Ground),
         (Folder, "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, PivotKind.Ground),
         (Folder, "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, PivotKind.Ground),
 
+        // 추가 생성 — 기본 공격의 검 궤적.
+        //
+        // 같은 검이지만 피벗이 Q의 두 이펙트와 <b>반대다.</b> Q는 대검을 바닥에 내려찍어
+        // 충격파가 지면에서 퍼지므로 지면선이 기준이고, 기본 공격은 허공을 베는 것이라
+        // 그림 한가운데가 기준이다. 정규화 도구에 Mode.FloatCenter로 등록한 것과 같은 기준이다 —
+        // 한쪽만 바꾸면 그림은 맞는데 붙는 높이만 어긋난다.
+        (Folder, "vfx_ember_slash_6frames_1536x256", "vfx_ember_slash", 6, PivotKind.Center),
+
         // 자폭병의 폭발. 바닥에서 터지므로 피벗이 지면선이다 — 자폭병의 발끝 높이에서
         // 원이 퍼져야 판정 원(발밑 기준)과 그림이 같은 자리에 놓인다.
-        (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Ground),
+        //
+        // 수정(2026-09-15, 새 폭발 그림) — 피벗을 Ground → Center로 바꿨다.
+        // 의도(판정 원과 같은 자리)는 맞았지만 지면선 피벗은 그림의 <b>아랫변</b>을 발밑에 놓는다. 사방으로 퍼지는
+        // 원은 가운데가 반지름만큼 위에 떠서(옛 그림 기준 약 3.1유닛), OverlapCircle(발밑, 6) 판정이 보이는 원 밖
+        // 아래쪽에서도 맞았다. 새 시트는 Tools/NormalizeVfxStrip.ps1 -PivotX 128 -PivotY 128로 원을 셀 정중앙에
+        // 모았으므로, 가운데 피벗이면 오브젝트 위치(자폭병 발밑)가 곧 원의 가운데다.
+        // 왕의 잿불 새 시트(vfx_kings_ember_crown)를 Center로 둔 것과 같은 판단이다.
+        (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Center),
+
+        // 추가 생성(2026-09-15) — 잿불 망령의 돌진 예고선. 망령이 선 자리에서 돌진할 쪽(오른쪽)으로 바닥에 선이 그어진다.
+        // 대시 자국과 같은 Forward다 — 오브젝트 위치가 곧 선의 출발점이라, 돌진 방향으로 돌리면 망령 자리를 축으로 돌고
+        // 가로로 늘려도 출발점이 망령에서 떨어지지 않는다. 새 시트는 NormalizeVfxStrip.ps1 -AnchorX LeftEdge -PivotX 28로 만들었다.
+        (Folder, "vfx_wraith_charge_telegraph_6frames_1536x256", "vfx_wraith_telegraph", 6, PivotKind.Forward),
+
+        // 추가 생성(2026-09-15) — 잿불 망령의 돌진 출발 자국. 바닥이 갈라져 터진 고리의 <b>왼쪽 끝</b>이 출발점이고, 불티 줄기가
+        // 돌진한 쪽(오른쪽)으로 뻗는다. 예고선과 같은 Forward라, 돌진 방향으로 돌리면 망령이 선 자리를 축으로 돈다.
+        // 새 시트는 NormalizeVfxStrip.ps1 -SeparateBlobs -AnchorX LeftEdge -AnchorY WidestRow -PivotX 28 -PivotY 128로 만들었다
+        // (세로는 고리의 가장 넓은 행 = 고리 가운데를 피벗 높이에 맞췄다. 파편이 위로만 튀어서 범위 가운데는 고리보다 높다).
+        (Folder, "vfx_wraith_charge_launch_6frames_1536x256", "vfx_wraith_launch", 6, PivotKind.Forward),
 
         // 추가 생성 — 재의 왕 2페이즈 전환 연출 3장.
         //
@@ -136,6 +200,7 @@ public static class AshVfxSpriteSlicer
         {
             PivotKind.Ground => AshPlayerSpriteSheets.Pivot,
             PivotKind.Tip => new Vector2(TipPivotX, 0.5f),
+            PivotKind.Forward => new Vector2(ForwardPivotX, 0.5f), // 추가 생성(2026-09-14)
             _ => new Vector2(0.5f, 0.5f),
         };
 
