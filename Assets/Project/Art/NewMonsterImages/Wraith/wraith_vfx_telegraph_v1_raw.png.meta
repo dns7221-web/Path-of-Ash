@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: dbc95d10890d7b74081109a07cd88fd8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1331626407044197034
+    second: wraith_vfx_telegraph_v1_raw_0
+  - first:
+      213: 5613526063448658996
+    second: wraith_vfx_telegraph_v1_raw_1
+  - first:
+      213: -6897196531715640008
+    second: wraith_vfx_telegraph_v1_raw_2
+  - first:
+      213: -569517534994513340
+    second: wraith_vfx_telegraph_v1_raw_3
+  - first:
+      213: 1655025069650620664
+    second: wraith_vfx_telegraph_v1_raw_4
+  - first:
+      213: 3156485970238095825
+    second: wraith_vfx_telegraph_v1_raw_5
+  - first:
+      213: -8792449855951125392
+    second: wraith_vfx_telegraph_v1_raw_6
+  - first:
+      213: -8644336644740892247
+    second: wraith_vfx_telegraph_v1_raw_7
+  - first:
+      213: 8187347248081352191
+    second: wraith_vfx_telegraph_v1_raw_8
+  - first:
+      213: -775879964178804636
+    second: wraith_vfx_telegraph_v1_raw_9
+  - first:
+      213: -2496263815839325128
+    second: wraith_vfx_telegraph_v1_raw_10
+  - first:
+      213: -2039590614857495964
+    second: wraith_vfx_telegraph_v1_raw_11
+  - first:
+      213: -1362410178576325230
+    second: wraith_vfx_telegraph_v1_raw_12
+  - first:
+      213: 8046474700247226674
+    second: wraith_vfx_telegraph_v1_raw_13
+  - first:
+      213: -1447016441622260248
+    second: wraith_vfx_telegraph_v1_raw_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 546
+        width: 138
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655d99a86dc158de0800000000000000
+      internalID: -1331626407044197034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 89
+        width: 518
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4341145863047ed40800000000000000
+      internalID: 5613526063448658996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_2
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 71
+        width: 839
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 835780d1c4c3840a0800000000000000
+      internalID: -6897196531715640008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_3
+      rect:
+        serializedVersion: 2
+        x: 1681
+        y: 63
+        width: 491
+        height: 591
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 442cb41c1daa818f0800000000000000
+      internalID: -569517534994513340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 329
+        width: 205
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f034ea3884d7f610800000000000000
+      internalID: 1655025069650620664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_5
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 318
+        width: 351
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d1cb8224471ecb20800000000000000
+      internalID: 3156485970238095825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_6
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 305
+        width: 346
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074499eb071faf580800000000000000
+      internalID: -8792449855951125392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_7
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 134
+        width: 31
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a9b35b0f95290880800000000000000
+      internalID: -8644336644740892247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_8
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 194
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff539a691fc4f9170800000000000000
+      internalID: 8187347248081352191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_9
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 176
+        width: 32
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46097ca88458b35f0800000000000000
+      internalID: -775879964178804636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_10
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 162
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8346c37094d7b5dd0800000000000000
+      internalID: -2496263815839325128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_11
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 168
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46ac23a542be1b3e0800000000000000
+      internalID: -2039590614857495964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_12
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 150
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295e493392fb71de0800000000000000
+      internalID: -1362410178576325230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_13
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 144
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239576a9b12daaf60800000000000000
+      internalID: 8046474700247226674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wraith_vfx_telegraph_v1_raw_14
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 128
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e594f4863a2bebe0800000000000000
+      internalID: -1447016441622260248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      wraith_vfx_telegraph_v1_raw_0: -1331626407044197034
+      wraith_vfx_telegraph_v1_raw_1: 5613526063448658996
+      wraith_vfx_telegraph_v1_raw_10: -2496263815839325128
+      wraith_vfx_telegraph_v1_raw_11: -2039590614857495964
+      wraith_vfx_telegraph_v1_raw_12: -1362410178576325230
+      wraith_vfx_telegraph_v1_raw_13: 8046474700247226674
+      wraith_vfx_telegraph_v1_raw_14: -1447016441622260248
+      wraith_vfx_telegraph_v1_raw_2: -6897196531715640008
+      wraith_vfx_telegraph_v1_raw_3: -569517534994513340
+      wraith_vfx_telegraph_v1_raw_4: 1655025069650620664
+      wraith_vfx_telegraph_v1_raw_5: 3156485970238095825
+      wraith_vfx_telegraph_v1_raw_6: -8792449855951125392
+      wraith_vfx_telegraph_v1_raw_7: -8644336644740892247
+      wraith_vfx_telegraph_v1_raw_8: 8187347248081352191
+      wraith_vfx_telegraph_v1_raw_9: -775879964178804636
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

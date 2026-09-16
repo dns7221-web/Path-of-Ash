@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: b9a74a2a951d6a144a97a9ea73962c46
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7067043333624152893
+    second: ash_marksman_hit_death_6frames_1536x256_0
+  - first:
+      213: 951760810532235537
+    second: ash_marksman_hit_death_6frames_1536x256_1
+  - first:
+      213: -5853217409762733648
+    second: ash_marksman_hit_death_6frames_1536x256_2
+  - first:
+      213: -875173998609891284
+    second: ash_marksman_hit_death_6frames_1536x256_3
+  - first:
+      213: -8077977637958068309
+    second: ash_marksman_hit_death_6frames_1536x256_4
+  - first:
+      213: 2174687528471685465
+    second: ash_marksman_hit_death_6frames_1536x256_5
+  - first:
+      213: 5452842956026965355
+    second: ash_marksman_hit_death_6frames_1536x256_6
+  - first:
+      213: -8385514576894671226
+    second: ash_marksman_hit_death_6frames_1536x256_7
+  - first:
+      213: -9156451364081661541
+    second: ash_marksman_hit_death_6frames_1536x256_8
+  - first:
+      213: -3269331981664761798
+    second: ash_marksman_hit_death_6frames_1536x256_9
+  - first:
+      213: 7670840401586884494
+    second: ash_marksman_hit_death_6frames_1536x256_10
+  - first:
+      213: -6066335132115083646
+    second: ash_marksman_hit_death_6frames_1536x256_11
+  - first:
+      213: -1010062646386921797
+    second: ash_marksman_hit_death_6frames_1536x256_12
+  - first:
+      213: -2442903786477326645
+    second: ash_marksman_hit_death_6frames_1536x256_13
+  - first:
+      213: 2873716105446965439
+    second: ash_marksman_hit_death_6frames_1536x256_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 38
+        width: 106
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cc3a07e781dced90800000000000000
+      internalID: -7067043333624152893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 38
+        width: 110
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11969ee1a65553d00800000000000000
+      internalID: 951760810532235537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 38
+        width: 114
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b1d5f907c135cea0800000000000000
+      internalID: -5853217409762733648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 38
+        width: 120
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c20033892e1cad3f0800000000000000
+      internalID: -875173998609891284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 169
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7d5f1232245ef80800000000000000
+      internalID: -8077977637958068309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 38
+        width: 104
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 959e60009ca0e2e10800000000000000
+      internalID: 2174687528471685465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 143
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6d6af137c36cab40800000000000000
+      internalID: 5452842956026965355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 121
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6864551bbeaa0ab80800000000000000
+      internalID: -8385514576894671226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 100
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9985c05fffbde080800000000000000
+      internalID: -9156451364081661541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 87
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a384c0462eff0a2d0800000000000000
+      internalID: -3269331981664761798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 73
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f0d4114bc447a60800000000000000
+      internalID: 7670840401586884494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 38
+        width: 92
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28edec1965c00dba0800000000000000
+      internalID: -6066335132115083646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 38
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbe6739ef598bf1f0800000000000000
+      internalID: -1010062646386921797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 39
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bceef8203ff091ed0800000000000000
+      internalID: -2442903786477326645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_marksman_hit_death_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 44
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb04c72829d71e720800000000000000
+      internalID: 2873716105446965439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash_marksman_hit_death_6frames_1536x256_0: -7067043333624152893
+      ash_marksman_hit_death_6frames_1536x256_1: 951760810532235537
+      ash_marksman_hit_death_6frames_1536x256_10: 7670840401586884494
+      ash_marksman_hit_death_6frames_1536x256_11: -6066335132115083646
+      ash_marksman_hit_death_6frames_1536x256_12: -1010062646386921797
+      ash_marksman_hit_death_6frames_1536x256_13: -2442903786477326645
+      ash_marksman_hit_death_6frames_1536x256_14: 2873716105446965439
+      ash_marksman_hit_death_6frames_1536x256_2: -5853217409762733648
+      ash_marksman_hit_death_6frames_1536x256_3: -875173998609891284
+      ash_marksman_hit_death_6frames_1536x256_4: -8077977637958068309
+      ash_marksman_hit_death_6frames_1536x256_5: 2174687528471685465
+      ash_marksman_hit_death_6frames_1536x256_6: 5452842956026965355
+      ash_marksman_hit_death_6frames_1536x256_7: -8385514576894671226
+      ash_marksman_hit_death_6frames_1536x256_8: -9156451364081661541
+      ash_marksman_hit_death_6frames_1536x256_9: -3269331981664761798
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

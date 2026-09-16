@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: a2bb987ad188c174db884859609c7677
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4887828874581370361
+    second: bomber_vfx_blast_v1_raw_0
+  - first:
+      213: -1934882483009138888
+    second: bomber_vfx_blast_v1_raw_1
+  - first:
+      213: 6922720029968361224
+    second: bomber_vfx_blast_v1_raw_2
+  - first:
+      213: -4361656804380790119
+    second: bomber_vfx_blast_v1_raw_3
+  - first:
+      213: -3753685726864179827
+    second: bomber_vfx_blast_v1_raw_4
+  - first:
+      213: -6834219838367438836
+    second: bomber_vfx_blast_v1_raw_5
+  - first:
+      213: 8765927640346401702
+    second: bomber_vfx_blast_v1_raw_6
+  - first:
+      213: 8596834918836055440
+    second: bomber_vfx_blast_v1_raw_7
+  - first:
+      213: -6602344909765624272
+    second: bomber_vfx_blast_v1_raw_8
+  - first:
+      213: -6156578725209575922
+    second: bomber_vfx_blast_v1_raw_9
+  - first:
+      213: -8839474423361438857
+    second: bomber_vfx_blast_v1_raw_10
+  - first:
+      213: 2893803191374708713
+    second: bomber_vfx_blast_v1_raw_11
+  - first:
+      213: -1656147069053261258
+    second: bomber_vfx_blast_v1_raw_12
+  - first:
+      213: 1472518528639008140
+    second: bomber_vfx_blast_v1_raw_13
+  - first:
+      213: -5729170382376976784
+    second: bomber_vfx_blast_v1_raw_14
+  - first:
+      213: 5932634118371570910
+    second: bomber_vfx_blast_v1_raw_15
+  - first:
+      213: -6334321672797805187
+    second: bomber_vfx_blast_v1_raw_16
+  - first:
+      213: -4705547008628433734
+    second: bomber_vfx_blast_v1_raw_17
+  - first:
+      213: 398859500338119341
+    second: bomber_vfx_blast_v1_raw_18
+  - first:
+      213: 5212723347708311862
+    second: bomber_vfx_blast_v1_raw_19
+  - first:
+      213: -7210339481789014570
+    second: bomber_vfx_blast_v1_raw_20
+  - first:
+      213: -5200035536492045040
+    second: bomber_vfx_blast_v1_raw_21
+  - first:
+      213: -6622426546667920685
+    second: bomber_vfx_blast_v1_raw_22
+  - first:
+      213: 7559592522293500959
+    second: bomber_vfx_blast_v1_raw_23
+  - first:
+      213: -7184014762715298531
+    second: bomber_vfx_blast_v1_raw_24
+  - first:
+      213: 9049121754706700602
+    second: bomber_vfx_blast_v1_raw_25
+  - first:
+      213: -8251733637333848855
+    second: bomber_vfx_blast_v1_raw_26
+  - first:
+      213: 4163489753713317962
+    second: bomber_vfx_blast_v1_raw_27
+  - first:
+      213: 1898723141028341692
+    second: bomber_vfx_blast_v1_raw_28
+  - first:
+      213: -3865873325028173598
+    second: bomber_vfx_blast_v1_raw_29
+  - first:
+      213: -1016122299510856879
+    second: bomber_vfx_blast_v1_raw_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 39
+        width: 223
+        height: 651
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f5e150f67e05d340800000000000000
+      internalID: 4887828874581370361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_1
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 15
+        width: 378
+        height: 691
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f4d1612aae525e0800000000000000
+      internalID: -1934882483009138888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_2
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 681
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 807eeb96031721060800000000000000
+      internalID: 6922720029968361224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_3
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 0
+        width: 790
+        height: 628
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992b7b6de384873c0800000000000000
+      internalID: -4361656804380790119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_4
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 624
+        width: 134
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d7ec328ba38ebc0800000000000000
+      internalID: -3753685726864179827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_5
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 618
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c086e292449f721a0800000000000000
+      internalID: -6834219838367438836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_6
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 596
+        width: 61
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab10a9beb4d6a970800000000000000
+      internalID: 8765927640346401702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_7
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 626
+        width: 345
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09da5e98fc71e4770800000000000000
+      internalID: 8596834918836055440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_8
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 35
+        width: 419
+        height: 657
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03ebfc80942cf54a0800000000000000
+      internalID: -6602344909765624272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_9
+      rect:
+        serializedVersion: 2
+        x: 1935
+        y: 578
+        width: 75
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0ee724b4407f8aa0800000000000000
+      internalID: -6156578725209575922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_10
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 675
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77bf36278d0e35580800000000000000
+      internalID: -8839474423361438857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_11
+      rect:
+        serializedVersion: 2
+        x: 2067
+        y: 616
+        width: 80
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eff7c7abaad82820800000000000000
+      internalID: 2893803191374708713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_12
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 642
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63aa64de30f2409e0800000000000000
+      internalID: -1656147069053261258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_13
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 606
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d75b0dccf6f6410800000000000000
+      internalID: 1472518528639008140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_14
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 578
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e3bb444e5ed70b0800000000000000
+      internalID: -5729170382376976784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_15
+      rect:
+        serializedVersion: 2
+        x: 1826
+        y: 197
+        width: 333
+        height: 370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed476e75c43f45250800000000000000
+      internalID: 5932634118371570910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_16
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 91
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7524dfcff7f718a0800000000000000
+      internalID: -6334321672797805187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_17
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 87
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abcdccc3de982beb0800000000000000
+      internalID: -4705547008628433734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_18
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 95
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da281f03a98098500800000000000000
+      internalID: 398859500338119341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_19
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 33
+        width: 235
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 639f98c3440575840800000000000000
+      internalID: 5212723347708311862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_20
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 83
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ddddfd717abfeb90800000000000000
+      internalID: -7210339481789014570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_21
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 71
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ddbf30b33c5d7b0800000000000000
+      internalID: -5200035536492045040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_22
+      rect:
+        serializedVersion: 2
+        x: 1544
+        y: 74
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2edb6942a6814a0800000000000000
+      internalID: -6622426546667920685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_23
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 69
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1cd00ab85119e860800000000000000
+      internalID: 7559592522293500959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_24
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 65
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d154137c2a04d4c90800000000000000
+      internalID: -7184014762715298531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_25
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 65
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a396d86aa40f49d70800000000000000
+      internalID: 9049121754706700602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_26
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 47
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ece295f9f3fb7d80800000000000000
+      internalID: -8251733637333848855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_27
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 27
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a489f043fdfa7c930800000000000000
+      internalID: 4163489753713317962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_28
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 23
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb7eecb03ae995a10800000000000000
+      internalID: 1898723141028341692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_29
+      rect:
+        serializedVersion: 2
+        x: 939
+        y: 31
+        width: 11
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e8990371b8a95ac0800000000000000
+      internalID: -3865873325028173598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomber_vfx_blast_v1_raw_30
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 31
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1536d49f62206e1f0800000000000000
+      internalID: -1016122299510856879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bomber_vfx_blast_v1_raw_0: 4887828874581370361
+      bomber_vfx_blast_v1_raw_1: -1934882483009138888
+      bomber_vfx_blast_v1_raw_10: -8839474423361438857
+      bomber_vfx_blast_v1_raw_11: 2893803191374708713
+      bomber_vfx_blast_v1_raw_12: -1656147069053261258
+      bomber_vfx_blast_v1_raw_13: 1472518528639008140
+      bomber_vfx_blast_v1_raw_14: -5729170382376976784
+      bomber_vfx_blast_v1_raw_15: 5932634118371570910
+      bomber_vfx_blast_v1_raw_16: -6334321672797805187
+      bomber_vfx_blast_v1_raw_17: -4705547008628433734
+      bomber_vfx_blast_v1_raw_18: 398859500338119341
+      bomber_vfx_blast_v1_raw_19: 5212723347708311862
+      bomber_vfx_blast_v1_raw_2: 6922720029968361224
+      bomber_vfx_blast_v1_raw_20: -7210339481789014570
+      bomber_vfx_blast_v1_raw_21: -5200035536492045040
+      bomber_vfx_blast_v1_raw_22: -6622426546667920685
+      bomber_vfx_blast_v1_raw_23: 7559592522293500959
+      bomber_vfx_blast_v1_raw_24: -7184014762715298531
+      bomber_vfx_blast_v1_raw_25: 9049121754706700602
+      bomber_vfx_blast_v1_raw_26: -8251733637333848855
+      bomber_vfx_blast_v1_raw_27: 4163489753713317962
+      bomber_vfx_blast_v1_raw_28: 1898723141028341692
+      bomber_vfx_blast_v1_raw_29: -3865873325028173598
+      bomber_vfx_blast_v1_raw_3: -4361656804380790119
+      bomber_vfx_blast_v1_raw_30: -1016122299510856879
+      bomber_vfx_blast_v1_raw_4: -3753685726864179827
+      bomber_vfx_blast_v1_raw_5: -6834219838367438836
+      bomber_vfx_blast_v1_raw_6: 8765927640346401702
+      bomber_vfx_blast_v1_raw_7: 8596834918836055440
+      bomber_vfx_blast_v1_raw_8: -6602344909765624272
+      bomber_vfx_blast_v1_raw_9: -6156578725209575922
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

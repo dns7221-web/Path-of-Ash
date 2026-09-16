@@ -1,0 +1,390 @@
+fileFormatVersion: 2
+guid: cf72994c2fd74ee4fb29876322125bbd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8194654330503743949
+    second: ash_bomber_hit_death_6frames_1536x256_0
+  - first:
+      213: -4323285304635970306
+    second: ash_bomber_hit_death_6frames_1536x256_1
+  - first:
+      213: -7286974000334069022
+    second: ash_bomber_hit_death_6frames_1536x256_2
+  - first:
+      213: -8932153013289417411
+    second: ash_bomber_hit_death_6frames_1536x256_3
+  - first:
+      213: 7504381724200685181
+    second: ash_bomber_hit_death_6frames_1536x256_4
+  - first:
+      213: 6052479134902589061
+    second: ash_bomber_hit_death_6frames_1536x256_5
+  - first:
+      213: -7910198817450077545
+    second: ash_bomber_hit_death_6frames_1536x256_6
+  - first:
+      213: -4977130734132941370
+    second: ash_bomber_hit_death_6frames_1536x256_7
+  - first:
+      213: 6490474540054025103
+    second: ash_bomber_hit_death_6frames_1536x256_8
+  - first:
+      213: 6579881434840953470
+    second: ash_bomber_hit_death_6frames_1536x256_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 38
+        width: 85
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3363535bd4db64e80800000000000000
+      internalID: -8194654330503743949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 183
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efca182dbea9004c0800000000000000
+      internalID: -4323285304635970306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 38
+        width: 89
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2a49631c77fda90800000000000000
+      internalID: -7286974000334069022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 39
+        width: 84
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d350373b82e9a0480800000000000000
+      internalID: -8932153013289417411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 38
+        width: 102
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7e4ae11b6be42860800000000000000
+      internalID: 7504381724200685181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 38
+        width: 98
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 586155ea4b9bef350800000000000000
+      internalID: 6052479134902589061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 38
+        width: 74
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7925c27e514593290800000000000000
+      internalID: -7910198817450077545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 1397
+        y: 69
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cda35f97fdadeab0800000000000000
+      internalID: -4977130734132941370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 61
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8313a7c43cc21a50800000000000000
+      internalID: 6490474540054025103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash_bomber_hit_death_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 38
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e72f1e3ad4f605b50800000000000000
+      internalID: 6579881434840953470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash_bomber_hit_death_6frames_1536x256_0: -8194654330503743949
+      ash_bomber_hit_death_6frames_1536x256_1: -4323285304635970306
+      ash_bomber_hit_death_6frames_1536x256_2: -7286974000334069022
+      ash_bomber_hit_death_6frames_1536x256_3: -8932153013289417411
+      ash_bomber_hit_death_6frames_1536x256_4: 7504381724200685181
+      ash_bomber_hit_death_6frames_1536x256_5: 6052479134902589061
+      ash_bomber_hit_death_6frames_1536x256_6: -7910198817450077545
+      ash_bomber_hit_death_6frames_1536x256_7: -4977130734132941370
+      ash_bomber_hit_death_6frames_1536x256_8: 6490474540054025103
+      ash_bomber_hit_death_6frames_1536x256_9: 6579881434840953470
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

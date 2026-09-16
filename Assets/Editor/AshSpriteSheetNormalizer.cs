@@ -155,68 +155,40 @@ public static class AshSpriteSheetNormalizer
         ("Assets/Art/Generated", "skill-icons-ember-set.png",
                                  "skill_icons_5frames_1280x256.png", 5, Mode.FloatCenter, 0),
 
-        // ── 잿불 사수(원거리 일반 적) ──
+        // 수정(2026-09-15, 일반 몬스터 새 그림) — 사수 4줄·자폭병 3줄을 걷어냈다. 결과 파일 이름은 그대로 쓰지만
+        // <b>그림은 새 원본(Art/NewMonsterImages/…)에서 Tools/NormalizeGeneratedStrip.ps1로 만들었다.</b>
+        // 망령 시트는 원래 이 표에 없었다(PowerShell 도구로 만든 시트다).
         //
-        // 원본이 1536x1024로 왔다. 가로는 맞지만(256x6) 세로가 네 배고, 인물은 위아래
-        // 가운데 띠에만 있다. 이 도구를 만든 이유가 정확히 이것이다 — 이미지 생성 모델은
-        // 정해진 몇 가지 비율만 낼 수 있어서 6:1 캔버스를 애초에 못 맞춘다.
-        // 규격은 코드가 맞추고, 그림에는 초록 배경·같은 키·같은 바닥선만 요구한다.
+        //   ash_marksman_walk_6frames_raw       → ..._1536x256  Character 160(기본)
+        //   ash_marksman_aim_4frames_raw        → ..._1024x256  Character 160(기본)
+        //   ash_marksman_shoot_4frames_raw      → ..._1024x256  Character 160(기본)  (3번 프레임의 화살이 빈 구간에 걸쳐 경계가 밀릴 수 있었다)
+        //   ash_marksman_hit_death_6frames_raw  → ..._1536x256  Character 160(기본)  (피격 2 + 사망 4)
+        //   ash_bomber_walk_6frames_raw         → ..._1536x256  Character 141
+        //   ash_bomber_fuse_4frames_raw         → ..._1024x256  Character 214(셀 상한)
+        //   ash_bomber_hit_death_6frames_raw    → ..._1536x256  Character 149
         //
-        // 목표 키는 기본값(160)을 쓴다. 플레이어와 같은 크기다 — 활을 든 인간형이라
-        // 덩치로 위협하는 적이 아니고, 크기 차이는 보스가 맡는다(200).
-        // 원본이 1536x1024, 1881x836처럼 제각각으로 온다. 가로세로 6:1(또는 4:1) 캔버스를
-        // 이미지 생성 모델이 못 맞추기 때문인데, 이 도구가 있는 이유가 정확히 그것이다.
-        // 그림에는 초록 배경·같은 키·같은 바닥선만 요구하고 나머지는 코드가 맞춘다.
+        // 사수가 기본값(160)이었던 이유: 활을 든 인간형이라 덩치로 위협하는 적이 아니고, 크기 차이는 보스(200)가 맡는다.
+        // 자폭병의 141/214/149는 옛 점화 시트가 마지막 프레임에 1.48배로 부풀어서, 셀 상한 214를 넘지 않게 세 시트에
+        // 배율 0.379를 공통으로 걸려고 거꾸로 계산한 값이었다(걷기를 160으로 두면 점화가 시작될 때 몸이 쪼그라들었다).
+        // 새 점화는 부풀기 전인 2번 프레임을 걷기와 같은 키 140에 맞춰 정규화해서 같은 문제가 없다.
         //
-        // 목표 키는 기본값(160)을 쓴다. 플레이어와 같은 크기다 — 활을 든 인간형이라
-        // 덩치로 위협하는 적이 아니고, 크기 차이는 보스가 맡는다(200).
-        (EnemyFolder, "ash_marksman_walk_6frames_raw.png",
-                      "ash_marksman_walk_6frames_1536x256.png", 6, Mode.Character, 0),
-        (EnemyFolder, "ash_marksman_aim_4frames_raw.png",
-                      "ash_marksman_aim_4frames_1024x256.png", 4, Mode.Character, 0),
+        // 줄을 남겨두면 안 되는 이유: "원본 시트 정규화"(전체)를 누르는 순간 옛 원본으로 결과를 다시 써서
+        // <b>새 그림이 에러 없이 옛 그림으로 돌아간다.</b> 옛 원본 PNG가 폴더에 남아 있어 실패도 안 한다.
+        // 2026-09-14 VFX 다섯 줄을 걷어낸 것과 같은 사정이다. 옛 결과 시트는 Enemy/Raw/PreNewMonsterV1에 백업했다.
+        // 수정(2026-09-15, 몬스터 VFX) — 사수 화살과 자폭병 폭발 줄도 같은 날 새 그림으로 바꿔 걷어냈다(아래 두 곳 주석).
 
-        // 발사 3번째 프레임에 화살이 그려져 있다. 그 화살이 프레임 사이 빈 구간에 걸쳐 있어서
-        // 경계 판정이 한 칸 밀릴 수 있다. 프레임 수가 안 맞으면 도구가 에러로 알려주므로
-        // 그때 ForceEqualSplit에 넣으면 된다.
-        (EnemyFolder, "ash_marksman_shoot_4frames_raw.png",
-                      "ash_marksman_shoot_4frames_1024x256.png", 4, Mode.Character, 0),
-
-        // 한 장에 피격 2프레임 + 사망 4프레임. 마지막 칸은 재 무더기라 거의 비어 있는데,
-        // 프레임 사이 간격이 넓어서 빈 구간 순위로도 갈린다. 망령 시트와 같은 구성이다.
-        (EnemyFolder, "ash_marksman_hit_death_6frames_raw.png",
-                      "ash_marksman_hit_death_6frames_1536x256.png", 6, Mode.Character, 0),
-
-        // ── 잿불 자폭병 ──
+        // 수정(2026-09-15, 몬스터 VFX) — 자폭병 폭발 줄을 걷어냈다. 원래 줄과 설명은 이랬다.
         //
-        // 목표 키를 사수(160)가 아니라 <b>141</b>로 잡는다. 세 시트의 배율을 하나로 묶기 위해서다.
+        //   vfx_bomber_blast_6frames_raw  → ..._1536x256  GroundCenter
+        //   "자폭병의 폭발. 발밑에서 사방으로 퍼진다 — 왕의 잿불과 같은 성격이라 같은 방식이다.
+        //    실제 크기는 EnemyBomber의 Explosion Effect Scale이 정한다. 여기서는 셀에 꽉 차지
+        //    않게만 두고, 판정 반경(6유닛)에 맞추는 일은 프리팹 쪽 배율 한 곳에서만 한다."
         //
-        // 점화 시트는 프레임마다 몸이 부풀어 마지막이 첫 프레임의 1.48배(383 → 566px)다.
-        // 배율은 시트 안에서 하나이므로 가장 큰 프레임이 셀에 들어가는지가 상한을 정하는데,
-        // 발끝이 y=216이라 위로 쓸 수 있는 것이 216px뿐이고 안전값은 214다. 그 214를 맞추면
-        // 점화 첫 프레임은 145px이 된다. 걷기를 160으로 두면 점화가 시작될 때 몸이 9% 작아져
-        // <b>쪼그라들었다가 부푸는</b> 그림이 된다 — 예비동작이 가장 크게 읽혀야 하는 적에게
-        // 정반대의 신호다.
-        //
-        // 그래서 점화 첫 프레임(383px)을 145px로 만드는 배율 0.379를 세 시트에 공통으로 적용한다.
-        // 걷기의 가장 큰 프레임 373 x 0.379 = 141, 피격·사망은 393 x 0.379 = 149다.
-        // 결과적으로 망령(141)과 같은 키가 되는데, 항아리를 끌어안은 뭉툭한 잡몹이라 사수보다
-        // 작은 편이 오히려 맞다. 덩치로 위협하는 적이 아니고, 위협은 부푸는 순간에만 나온다.
-        (EnemyFolder, "ash_bomber_walk_6frames_raw.png",
-                      "ash_bomber_walk_6frames_1536x256.png", 6, Mode.Character, 141),
-
-        // 점화. 214는 셀 상한이다 — 더 키우면 마지막 프레임의 불꽃이 셀 위에서 잘린다.
-        (EnemyFolder, "ash_bomber_fuse_4frames_raw.png",
-                      "ash_bomber_fuse_4frames_1024x256.png", 4, Mode.Character, 214),
-
-        // 한 장에 피격 2프레임 + 사망 4프레임. 뒤로 갈수록 재 무더기로 낮아진다.
-        (EnemyFolder, "ash_bomber_hit_death_6frames_raw.png",
-                      "ash_bomber_hit_death_6frames_1536x256.png", 6, Mode.Character, 149),
-
-        // 자폭병의 폭발. 발밑에서 사방으로 퍼진다 — 왕의 잿불과 같은 성격이라 같은 방식이다.
-        // 실제 크기는 EnemyBomber의 Explosion Effect Scale이 정한다. 여기서는 셀에 꽉 차지
-        // 않게만 두고, 판정 반경(6유닛)에 맞추는 일은 프리팹 쪽 배율 한 곳에서만 한다.
-        (VfxFolder, "vfx_bomber_blast_6frames_raw.png",
-                    "vfx_bomber_blast_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
+        // 새 원본(Art/NewMonsterImages/Bomber/bomber_vfx_blast_v1_raw.png)은 배경이 투명해서 이 도구가 못 읽는다.
+        // Tools/NormalizeVfxStrip.ps1 -AnchorX BoxCenter -AnchorY BoxCenter -PivotX 128 -PivotY 128로 만들었다.
+        // 기준도 지면선이 아니라 <b>셀 정중앙</b>으로 바꿨다 — 이유는 AshVfxSpriteSlicer 표의 같은 시트 주석에 있다.
+        // 크기를 판정에 맞추는 곳이 프리팹 쪽 배율 한 곳이라는 원칙은 그대로다(Explosion Effect Scale 1.8).
+        // 옛 결과 시트는 Sprites/VFX/Raw/PreNewMonsterV1에 백업했다.
 
         // R 필살기. 검을 머리 위로 치켜드는 프레임이 있어 목표를 키운다.
         (PlayerFolder, "player_ultimate_kings_ember_execution_6poses_v3_raw.png",
@@ -242,10 +214,15 @@ public static class AshSpriteSheetNormalizer
         // <b>새 그림이 에러 없이 옛 그림으로 돌아간다.</b> 옛 원본 PNG는 폴더에 남아 있어 실패도 안 한다.
         // 되돌려야 할 때는 Raw/PreNewCharacterVfx의 백업을 쓴다.
 
-        // 사수가 쏘는 화살. 한 장짜리라 프레임이 1개다.
-        // 촉 끝을 기준으로 놓아야 맞는 지점과 눈에 보이는 촉이 일치한다.
-        (VfxFolder, "ash_marksman_ember_arrow_raw.png",
-                    "ash_marksman_ember_arrow_1frame_256x256.png", 1, Mode.TipRight, 0),
+        // 수정(2026-09-15, 몬스터 VFX) — 사수 화살 줄을 걷어냈다. 원래 줄과 설명은 이랬다.
+        //
+        //   ash_marksman_ember_arrow_raw  → ash_marksman_ember_arrow_1frame_256x256  TipRight
+        //   "사수가 쏘는 화살. 한 장짜리라 프레임이 1개다.
+        //    촉 끝을 기준으로 놓아야 맞는 지점과 눈에 보이는 촉이 일치한다."
+        //
+        // 새 원본(Art/NewMonsterImages/Marksman/marksman_vfx_arrow_v1_raw.png)도 배경이 투명해서
+        // Tools/NormalizeVfxStrip.ps1 -Frames 1 -AnchorX RightEdge -AnchorY BoxCenter -PivotX 228 -PivotY 128로 만들었다.
+        // 촉 끝 자리 228은 TipRightInset과 같아서 붙는 기준은 그대로다. 옛 결과 시트는 Sprites/VFX/Raw/PreNewMonsterV1에 백업했다.
 
         // 추가 생성 — 기본 공격(Ctrl, 잿불 베기)의 검 궤적.
         //
