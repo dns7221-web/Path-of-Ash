@@ -94,6 +94,21 @@ public abstract class SkillData : ScriptableObject
     [Tooltip("이펙트를 시전자 앞 얼마에 놓을지(유닛). 바라보는 방향으로 이만큼 떨어진다.")]
     [SerializeField] private float effectForwardOffset = 2f;
 
+    // 추가 생성(기본 공격 VFX) — 이펙트를 화면에서 위로 띄우는 높이.
+    //
+    // <b>왜 앞 거리와 따로 필요한가.</b> 이 게임의 y축은 높이가 아니라 <b>바닥 위치</b>다.
+    // effectForwardOffset은 바닥 평면에서 미는 값이라, 그것만으로는 "공중에 뜬 그림"을
+    // 만들 수 없다 — 위로 올리면 시전자가 한 발 뒤로 물러난 자리에 놓일 뿐이다.
+    // 히트박스를 가슴 높이(3.0유닛)에서 발치로 내렸던 것과 같은 구분이다. 그때는 <b>판정</b>이라
+    // 바닥 위치가 맞았고, 이건 <b>그림</b>이라 화면 높이가 맞다. 둘을 같은 값으로 묶으면
+    // 한쪽이 반드시 틀린다.
+    //
+    // 기본값이 0인 이유: 지금 있는 이펙트는 대부분 바닥에서 솟는 것이다. 0이면 지금까지와
+    // 똑같이 시전자 발밑에 놓이므로, 값을 넣는 스킬만 공중으로 뜬다.
+    [Tooltip("이펙트를 화면에서 위로 띄울 높이(유닛). 바닥 이펙트는 0으로 두고, 허공을 베는 " +
+             "궤적처럼 공중에 뜨는 것만 값을 넣는다. 기본 공격은 3(캐릭터 키의 45% = 가슴 높이).")]
+    [SerializeField, Min(0f)] private float effectHeight;
+
     // 추가 생성(8방향) — 세로 방향 거리 배율.
     //
     // 왜 필요한가: 이 게임은 위에서 비스듬히 내려다보는 시점이다. 배경 기둥의 윗면이 보이는
@@ -167,8 +182,14 @@ public abstract class SkillData : ScriptableObject
         if (effectPrefab == null || context.Owner == null) return;
 
         // 수정(8방향) — 이펙트가 놓일 자리도 바라보는 방향으로 민다.
+        //
+        // 수정(기본 공격 VFX) — 민 뒤에 화면에서 위로 들어올린다.
+        // 두 이동을 한 벡터로 합치지 않는 이유: 앞으로 미는 것은 바닥 평면의 이동이라
+        // 세로 압축(verticalSquash)을 받아야 하지만, 위로 들어올리는 것은 화면상의 높이라
+        // 압축과 상관이 없다. 묶어서 계산하면 위/아래를 보고 벨 때만 궤적이 가슴에서 벗어난다.
         Vector3 position = context.Owner.position +
-                           (Vector3)(Forward(context.FacingDirection) * effectForwardOffset);
+                           (Vector3)(Forward(context.FacingDirection) * effectForwardOffset) +
+                           Vector3.up * effectHeight;
 
         var effect = Object.Instantiate(effectPrefab, position, Quaternion.identity);
 

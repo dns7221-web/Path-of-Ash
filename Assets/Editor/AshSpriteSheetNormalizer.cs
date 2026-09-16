@@ -250,7 +250,18 @@ public static class AshSpriteSheetNormalizer
         (VfxFolder, "ash_marksman_ember_arrow_raw.png",
                     "ash_marksman_ember_arrow_1frame_256x256.png", 1, Mode.TipRight, 0),
 
-        // vfx_ember_slash_A/B는 검 스킬이 내려찍기로 바뀌면서 쓰지 않는다. 목록에서 뺐다.
+        // 추가 생성 — 기본 공격(Ctrl, 잿불 베기)의 검 궤적.
+        //
+        // 위에서 "vfx_ember_slash_A/B는 검 스킬이 내려찍기로 바뀌면서 뺐다"고 적었던 것과
+        // <b>다른 물건</b>이다. 그때 사라진 건 Q였고, 이건 그 뒤에 따로 생긴 기본 공격이다.
+        // Q는 대검을 바닥에 내려찍으므로 이펙트가 바닥에서 솟지만(GroundCenter), 기본 공격은
+        // 검을 허공에 휘두르는 것이라 궤적이 공중에 뜬다.
+        //
+        // FloatCenter인 이유: 여섯 프레임의 세로 중심이 원본에서 전부 y=352로 같다(초승달이
+        // 자라고 흩어질 뿐 위치는 안 움직인다). 바닥선 기준으로 놓으면 초승달이 프레임마다
+        // 커지는 만큼 위로 자라 올라가서, 한 자리에서 번쩍이는 게 아니라 위로 솟는 것으로 보인다.
+        (VfxFolder, "vfx_ember_slash_6frames_raw.png",
+                    "vfx_ember_slash_6frames_1536x256.png", 6, Mode.FloatCenter, 0),
     };
 
     /// <summary>

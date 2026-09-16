@@ -20,8 +20,11 @@ MonoBehaviour:
   motionSeconds: 0.43
   damage: 2
   animatorTrigger: Attack
-  effectPrefab: {fileID: 0}
-  effectForwardOffset: 2
+  requiresFullAshGauge: 0
+  effectPrefab: {fileID: 7640813901752479188, guid: 1f2c8c1c38dae9748b1ee749f6b8a9d1, type: 3}
+  effectForwardOffset: 5
+  effectHeight: 3
+  verticalSquash: 0.55
   effectLifetime: 1
   hitboxDelay: 0.12
   hitboxDuration: 0.18

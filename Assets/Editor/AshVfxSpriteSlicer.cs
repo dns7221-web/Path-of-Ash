@@ -50,6 +50,14 @@ public static class AshVfxSpriteSlicer
         (Folder, "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, PivotKind.Ground),
         (Folder, "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, PivotKind.Ground),
 
+        // 추가 생성 — 기본 공격의 검 궤적.
+        //
+        // 같은 검이지만 피벗이 Q의 두 이펙트와 <b>반대다.</b> Q는 대검을 바닥에 내려찍어
+        // 충격파가 지면에서 퍼지므로 지면선이 기준이고, 기본 공격은 허공을 베는 것이라
+        // 그림 한가운데가 기준이다. 정규화 도구에 Mode.FloatCenter로 등록한 것과 같은 기준이다 —
+        // 한쪽만 바꾸면 그림은 맞는데 붙는 높이만 어긋난다.
+        (Folder, "vfx_ember_slash_6frames_1536x256", "vfx_ember_slash", 6, PivotKind.Center),
+
         // 자폭병의 폭발. 바닥에서 터지므로 피벗이 지면선이다 — 자폭병의 발끝 높이에서
         // 원이 퍼져야 판정 원(발밑 기준)과 그림이 같은 자리에 놓인다.
         (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Ground),
