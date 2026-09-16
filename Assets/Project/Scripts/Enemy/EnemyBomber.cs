@@ -274,7 +274,8 @@ public class EnemyBomber : EnemyBase
             if (target != null) target.TakeDamage(explosionDamage, transform.position);
         }
 
-        Health.TakeDamage(Health.Current, transform.position);
+        // 수정(2026-09-15) — 자폭은 피격 무적에 막히면 안 된다. 사망 이벤트로 방 집계와 사망 연출 후 풀 복귀까지 이어 준다.
+        Health.Kill();
     }
 
     /// <summary>
