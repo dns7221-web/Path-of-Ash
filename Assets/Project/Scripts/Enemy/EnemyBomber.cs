@@ -47,14 +47,21 @@ public class EnemyBomber : EnemyBase
              "이 적은 한 번 터지고 사라지므로 2로 올리면 거래가 자폭병 쪽으로 크게 기운다.")]
     [SerializeField, Min(0)] private int explosionDamage = 1;
 
-    [Tooltip("터질 때 띄울 이펙트. 시트에는 폭발 그림이 없으므로 이것이 유일한 폭발 연출이고, " +
-             "동시에 판정 반경을 플레이어에게 알려주는 유일한 수단이다.")]
+    // 수정(2026-09-15) — 툴팁 문구만 고쳤다. 자폭 사망 모션(몸이 터지는 그림)이 생겼지만 그 그림은 몸 칸 안에서 끝나서,
+    // 판정 반경을 알려주는 수단이 이 이펙트뿐이라는 사실은 그대로다. 직렬화 값에는 영향이 없다.
+    [Tooltip("터질 때 띄울 이펙트. 몸이 터지는 그림(자폭 사망 모션)은 몸 칸 안에서 끝나므로, " +
+             "판정 반경을 플레이어에게 알려주는 수단은 이 이펙트뿐이다.")]
     [SerializeField] private GameObject explosionEffectPrefab;
 
     [Tooltip("이펙트 크기 배율. 프리팹에 들어 있는 크기에 곱한다. " +
              "그림의 불투명 영역이 판정 반경과 맞도록 재서 넣는다 — 스프라이트 크기가 아니라 " +
              "실제로 그려진 부분을 기준으로 재야 한다.")]
-    [SerializeField, Min(0.05f)] private float explosionEffectScale = 1f;
+    // 수정(2026-09-15, 새 폭발 그림) — 기본값 1 → 1.8.
+    // 새 시트에서 가장 큰 3·4번 프레임의 불꽃 링 바깥쪽(불투명 픽셀 95%가 들어가는 반지름)이 셀 가운데에서
+    // 107~110px이다. PPU 32에서 6유닛(폭발 반경) = 192px이므로 192 / 107 ≈ 1.8. 밖으로 튀는 파편만 원을 조금 넘는다.
+    // 기본값까지 바꾸는 이유: AshBomberPrefabBuilder가 프리팹을 다시 만들 때 이 컴포넌트를 새로 붙여서
+    // C# 기본값이 들어간다. 이미 있는 AshBomber 프리팹은 저장된 값(1)이 그대로라 인스펙터에서 따로 고쳐야 한다.
+    [SerializeField, Min(0.05f)] private float explosionEffectScale = 1.8f;
 
     [Header("이동 속도")]
     [Tooltip("배회 속도. 플레이어를 못 찾은 상태라 느긋해도 된다.")]
@@ -73,9 +80,45 @@ public class EnemyBomber : EnemyBase
     private float roamTimer;
 
     // 터져서 죽는 중인가. 사망 처리에서 그림을 감출지 정하는 데 쓴다.
+    // 수정(2026-09-15) — 이제 어떤 사망 모션을 걸지도 이 값으로 고른다(DeathTriggerHash).
     private bool exploded;
 
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 자폭 사망 모션 트리거. 이름은 AshPlayerAnimationBuilder.ParamSelfDestruct와 같아야 한다.
+    /// 에디터 스크립트는 빌드에 없어서 런타임이 그 상수를 참조할 수 없다. 다른 트리거(Attack·Hit·Die)와 같은 사정이다.
+    /// </summary>
+    private static readonly int SelfDestructHash = Animator.StringToHash("SelfDestruct");
+
+    // 추가 생성(2026-09-15) — 이 자폭병의 컨트롤러에 자폭 사망 모션이 들어 있는가. Awake에서 한 번 확인한다.
+    private bool hasSelfDestructMotion;
+
     // ── 수명 ──────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 자폭 사망 모션이 컨트롤러에 있는지 한 번만 확인한다.
+    ///
+    /// <b>왜 확인하나.</b> 모션은 시트 슬라이스 → 캐릭터 애니메이션 생성을 거쳐야 컨트롤러에 생긴다. 그 전에
+    /// 없는 트리거를 걸면 유니티가 경고만 남기고 점화 상태(끝나면 걷기로 돌아가는 상태)에 머물러서, 방금 터진 몸이
+    /// 제자리에서 걷는다. 없으면 예전처럼 그림을 감춘다. 도구를 아직 안 돌렸어도 게임이 틀린 그림을 보여주지 않는다.
+    ///
+    /// 파라미터로 확인하는 이유: 애니메이션 빌더가 이 파라미터를 <b>클립이 있을 때만</b> 선언한다. 그래서
+    /// "파라미터가 있다"가 곧 "모션이 있다"다. 상태 이름으로 찾으려면 레이어·상태를 뒤져야 해서 더 무겁다.
+    /// Animator.parameters는 배열을 새로 만들어 돌려주므로 매 사망마다가 아니라 여기서 한 번만 부른다.
+    /// </summary>
+    protected override void Awake()
+    {
+        base.Awake();
+
+        hasSelfDestructMotion = false;
+        if (Animator == null || Animator.runtimeAnimatorController == null) return;
+
+        foreach (AnimatorControllerParameter parameter in Animator.parameters)
+        {
+            if (parameter.nameHash != SelfDestructHash) continue;
+            hasSelfDestructMotion = parameter.type == AnimatorControllerParameterType.Trigger;
+            break;
+        }
+    }
 
     protected override void OnSpawned()
     {
@@ -265,6 +308,23 @@ public class EnemyBomber : EnemyBase
 
     // ── 피격 / 사망 ────────────────────────────────────────────────────────
 
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 점화 중에는 경직에 들어가지 않는다. 넉백도 피격 모션도 없다.
+    ///
+    /// 설계는 원래부터 "점화는 맞아도 안 멈춘다"였다(아래 OnStaggered의 주석). 그런데 그 검사가 OnStaggered 안에만 있어서
+    /// EnemyBase가 먼저 건 피격 트리거가 <b>점화 그림을</b> 끊었다 — 상태는 점화인데 그림은 피격 → 걷기로 넘어가서,
+    /// 걷는 그림으로 터졌다. 점화 그림이 곧 "곧 터진다"는 신호라, 끊기면 신호 없이 터진 것과 같다.
+    /// </summary>
+    protected override bool CanBeStaggered => state != State.Fuse;
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 스스로 터져 죽을 때는 자폭 모션, 잡혀 죽을 때는 원래 사망 모션이다.
+    ///
+    /// 두 죽음을 그림으로도 갈라 두는 이유는 AshPlayerSpriteSheets.Bomber 설명과 같다 — 잡았는데 폭발이 나오면
+    /// "잡는 것"과 "맞는 것"이 같아 보인다. 자폭 모션이 컨트롤러에 없으면 원래 트리거를 쓰고 그림은 OnDeath가 감춘다.
+    /// </summary>
+    protected override int DeathTriggerHash => exploded && hasSelfDestructMotion ? SelfDestructHash : DieHash;
+
     protected override void OnStaggered()
     {
         // 점화가 시작되면 맞아도 안 멈춘다.
@@ -272,6 +332,9 @@ public class EnemyBomber : EnemyBase
         // 경직이 점화를 늦추면 계속 때리는 것만으로 폭발을 막을 수 있고, 그러면 이 적의
         // 위협이 통째로 사라진다. 대신 <b>죽이는 것</b>은 여전히 폭발을 막으므로,
         // 점화가 시작된 뒤에도 "끝낼 수 있는가"라는 판단이 남는다.
+        //
+        // 수정(2026-09-15) — 이제 점화 중에는 EnemyBase가 CanBeStaggered로 먼저 걸러서 여기까지 오지 않는다.
+        // 이 검사는 남겨 둔다. 누가 CanBeStaggered를 바꿔도 점화가 경직으로 끊기는 일은 없게 하는 마지막 둑이다.
         if (state == State.Fuse) return;
 
         state = State.Hit;
@@ -285,7 +348,10 @@ public class EnemyBomber : EnemyBase
         // 자폭으로 죽었으면 그림을 감춘다. 안 그러면 방금 터진 몸이 다시 나타나 무릎 꿇고
         // 무너지는 그림이 이어져서, 폭발과 앞뒤가 안 맞는다.
         // 감춘 것은 OnSpawned에서 되돌린다 — 풀에서 재사용되기 때문이다.
-        if (exploded && Renderer != null) Renderer.enabled = false;
+        //
+        // 수정(2026-09-15) — 자폭 사망 모션이 생겨서, 모션이 있으면 감추지 않는다. 몸이 터지고 잿더미가 되는 그림이
+        // 폭발 이펙트 밑에서 이어진다(DeathTriggerHash가 그 모션을 건다). 모션이 없는 컨트롤러일 때만 예전처럼 감춘다.
+        if (exploded && !hasSelfDestructMotion && Renderer != null) Renderer.enabled = false;
     }
 
     // ── 표시 ──────────────────────────────────────────────────────────────

@@ -53,6 +53,12 @@ public static class AshPlayerAnimationBuilder
     public const string ParamTransition = "Transition";
 
     /// <summary>
+    /// 추가 생성(2026-09-15) — 잿불 자폭병 전용. 스스로 터져 죽는 모션.
+    /// 런타임(EnemyBomber)은 에디터 스크립트를 참조할 수 없어서 같은 문자열을 따로 적어 두었다. 바꾸면 둘 다 바꾼다.
+    /// </summary>
+    public const string ParamSelfDestruct = "SelfDestruct";
+
+    /// <summary>
     /// "움직이는 중"으로 볼 최소 속도(유닛/초).
     ///
     /// 0이 아니라 0.1인 이유: 물리로 이동하면 키를 뗀 뒤에도 속도가 정확히 0이 되기까지
@@ -408,6 +414,20 @@ public static class AshPlayerAnimationBuilder
         {
             var death = AddState(machine, "Death", deathClip, new Vector3(560f, 200f, 0f));
             AddTriggerFromAnyState(machine, death, ParamDie);
+        }
+
+        // 추가 생성(2026-09-15) — 자폭 사망. 자폭병만 이 클립을 갖는다. Death와 같이 나가는 전이가 없다 —
+        // 마지막 칸(흩어지는 잿더미)에서 멈춘 채 풀로 돌아간다.
+        //
+        // <b>파라미터를 클립이 있을 때만 선언한다.</b> 위 함수 설명의 "파라미터는 미리 선언한다"와 반대인데,
+        // 이유가 있다. EnemyBomber가 이 파라미터가 <b>있는지</b>를 보고 자폭 모션을 쓸지(없으면 예전처럼 그림을 감출지)
+        // 정한다. 클립 없이 선언하면 "있다"고 답해서, 없는 상태로 트리거를 걸고 몸이 제자리에서 걷는다.
+        // 코드가 없는 파라미터에 SetTrigger를 거는 일도 없으므로 경고 걱정도 없다.
+        if (clips.TryGetValue("self_destruct", out AnimationClip selfDestructClip))
+        {
+            controller.AddParameter(ParamSelfDestruct, AnimatorControllerParameterType.Trigger);
+            var selfDestruct = AddState(machine, "SelfDestruct", selfDestructClip, new Vector3(560f, 280f, 0f));
+            AddTriggerFromAnyState(machine, selfDestruct, ParamSelfDestruct);
         }
     }
 

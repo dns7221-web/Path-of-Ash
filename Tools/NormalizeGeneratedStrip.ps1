@@ -68,6 +68,13 @@ param(
     [double]$GreenRatio = 1.35,
     [int]$GreenFloor = 90,
 
+    # 추가 생성(2026-09-15) — 0보다 크면 초록기(G - max(R,B))가 이 값을 넘는 픽셀도 배경으로 친다.
+    # 위 판정(G가 R·B의 1.35배)만 쓰면 주황·노랑 불꽃과 초록 배경이 섞인 가장자리가 살아남고, 아래에서
+    # 초록을 R·B 최대치까지 깎으면 올리브색(예: 130,130,0) 점으로 남는다. 캐릭터 몸은 섞일 색이 어두워 티가 안 났지만
+    # 자폭 사망처럼 폭발이 그려진 원본은 프레임당 300~600px이 올리브로 남았다.
+    # NormalizeVfxStrip.ps1의 -GreenKey와 같은 판정이고 같은 값(24)을 쓰면 된다. 기본 0은 이전 결과와 한 바이트도 다르지 않다.
+    [int]$GreenKey = 0,
+
     # 마지막 프레임을 바꿔 넣을 대기 시트와 그 안의 행·열. 비우면 바꾸지 않는다.
     [string]$IdleSheet = "",
     [int]$IdleRow = -1,
@@ -135,12 +142,16 @@ for ($y = 0; $y -lt $H; $y++) {
     for ($x = 0; $x -lt $W; $x++) {
         $o = $rowBase + ($x * 4)
         $b = [int]$bytes[$o]; $g = [int]$bytes[$o + 1]; $r = [int]$bytes[$o + 2]
-        if ($g -gt $GreenFloor -and $g -gt ($r * $GreenRatio) -and $g -gt ($b * $GreenRatio)) {
+        # 수정(2026-09-15) — 초록기 문턱(-GreenKey)을 같이 보려고 max(R,B)를 판정 앞으로 옮겼다. 값은 같다.
+        $maxRB = [Math]::Max($r, $b)
+        $isKeyGreen = $g -gt $GreenFloor -and $g -gt ($r * $GreenRatio) -and $g -gt ($b * $GreenRatio)
+        # 추가 생성(2026-09-15) — 불꽃과 섞인 가장자리(올리브로 남는 것)도 배경으로 친다. 파라미터 설명 참고.
+        $isMixedGreen = $GreenKey -gt 0 -and ($g - $maxRB) -gt $GreenKey
+        if ($isKeyGreen -or $isMixedGreen) {
             $bytes[$o + 3] = 0
             continue
         }
         # 실루엣 가장자리의 초록기를 R/B 최대치까지만 내린다. 원래 초록기가 없던 픽셀은 그대로다.
-        $maxRB = [Math]::Max($r, $b)
         if ($g -gt $maxRB) { $bytes[$o + 1] = [byte]$maxRB }
         $bytes[$o + 3] = 255
         $opaque[($y * $W) + $x] = $true

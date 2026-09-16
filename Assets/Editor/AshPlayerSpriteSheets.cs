@@ -312,6 +312,10 @@ public static class AshPlayerSpriteSheets
     /// death 시트가 따로 있는 이유: <b>터지기 전에 잡혔을 때</b>의 그림이다. 자폭과 사망은
     /// 다른 사건이라 그림도 달라야 한다 — 잡았는데 폭발이 나오면 "잡는 것"과 "맞는 것"이
     /// 같아 보인다.
+    ///
+    /// 수정(2026-09-15) — <b>자폭 사망 시트를 더했다.</b> 위 "폭발 시트가 없다"의 뜻은 그대로다 — 판정 반경을 그리는
+    /// 폭발은 여전히 VFX가 맡는다. 새 시트는 반경이 아니라 <b>몸이 어떻게 되는지</b>(폭탄이 터져 몸이 흩어지고 잿더미가
+    /// 되는 것)를 셀 안에 그린다. 예전에는 터지는 순간 그림을 감춰서, 폭발 이펙트가 걷히면 몸이 그냥 없어져 있었다.
     /// </summary>
     public static readonly CharacterSet Bomber = new CharacterSet(
         "잿불 자폭병",
@@ -329,6 +333,18 @@ public static class AshPlayerSpriteSheets
             new Sheet("ash_bomber_hit_death_6frames_1536x256", 6,
                 new Segment("hit", 0, 2, 10, false),
                 new Segment("death", 2, 4, 8, false)),
+
+            // 추가 생성(2026-09-15) — 자폭 사망. 스스로 터져 죽을 때만 쓴다(EnemyBomber.DeathTriggerHash).
+            //
+            // <b>1번 칸부터 5칸만 쓴다.</b> 0번 칸은 폭탄이 달아오른 채 들고 있는 그림인데, 점화 시트의 마지막 칸과
+            // 같은 자세다. 폭발 판정은 점화가 끝나는 순간이라 0번부터 틀면 폭발 이펙트가 터지는 동안 몸은 멀쩡히
+            // 폭탄을 들고 있다. 시트는 생성 원본(3x2)의 여섯 칸을 그대로 둬서 다른 시트와 규격을 맞췄다.
+            //
+            // Fps 8: 5프레임 / 8 = 0.625초. 폭발 이펙트(6프레임 / 12fps = 0.5초)가 링을 넓히며 가운데를 비우는
+            // 0.25초부터 파편과 잿더미가 드러나고, 이펙트가 걷힌 뒤 잿더미 마지막 칸이 사라질 때(deathDespawnSeconds 1.1)까지 남는다.
+            // 사망 모션(death 8fps)과 같은 속도다. 정규화 인자는 개발 로그 2026-09-15 (밤) 표에 있다.
+            new Sheet("ash_bomber_self_destruct_6frames_1536x256", 6,
+                new Segment("self_destruct", 1, 5, 8, false)),
         });
 
     /// <summary>도구가 순회할 전체 세트.</summary>

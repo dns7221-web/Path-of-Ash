@@ -98,7 +98,25 @@ public static class AshVfxSpriteSlicer
 
         // 자폭병의 폭발. 바닥에서 터지므로 피벗이 지면선이다 — 자폭병의 발끝 높이에서
         // 원이 퍼져야 판정 원(발밑 기준)과 그림이 같은 자리에 놓인다.
-        (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Ground),
+        //
+        // 수정(2026-09-15, 새 폭발 그림) — 피벗을 Ground → Center로 바꿨다.
+        // 의도(판정 원과 같은 자리)는 맞았지만 지면선 피벗은 그림의 <b>아랫변</b>을 발밑에 놓는다. 사방으로 퍼지는
+        // 원은 가운데가 반지름만큼 위에 떠서(옛 그림 기준 약 3.1유닛), OverlapCircle(발밑, 6) 판정이 보이는 원 밖
+        // 아래쪽에서도 맞았다. 새 시트는 Tools/NormalizeVfxStrip.ps1 -PivotX 128 -PivotY 128로 원을 셀 정중앙에
+        // 모았으므로, 가운데 피벗이면 오브젝트 위치(자폭병 발밑)가 곧 원의 가운데다.
+        // 왕의 잿불 새 시트(vfx_kings_ember_crown)를 Center로 둔 것과 같은 판단이다.
+        (Folder, "vfx_bomber_blast_6frames_1536x256", "vfx_bomber_blast", 6, PivotKind.Center),
+
+        // 추가 생성(2026-09-15) — 잿불 망령의 돌진 예고선. 망령이 선 자리에서 돌진할 쪽(오른쪽)으로 바닥에 선이 그어진다.
+        // 대시 자국과 같은 Forward다 — 오브젝트 위치가 곧 선의 출발점이라, 돌진 방향으로 돌리면 망령 자리를 축으로 돌고
+        // 가로로 늘려도 출발점이 망령에서 떨어지지 않는다. 새 시트는 NormalizeVfxStrip.ps1 -AnchorX LeftEdge -PivotX 28로 만들었다.
+        (Folder, "vfx_wraith_charge_telegraph_6frames_1536x256", "vfx_wraith_telegraph", 6, PivotKind.Forward),
+
+        // 추가 생성(2026-09-15) — 잿불 망령의 돌진 출발 자국. 바닥이 갈라져 터진 고리의 <b>왼쪽 끝</b>이 출발점이고, 불티 줄기가
+        // 돌진한 쪽(오른쪽)으로 뻗는다. 예고선과 같은 Forward라, 돌진 방향으로 돌리면 망령이 선 자리를 축으로 돈다.
+        // 새 시트는 NormalizeVfxStrip.ps1 -SeparateBlobs -AnchorX LeftEdge -AnchorY WidestRow -PivotX 28 -PivotY 128로 만들었다
+        // (세로는 고리의 가장 넓은 행 = 고리 가운데를 피벗 높이에 맞췄다. 파편이 위로만 튀어서 범위 가운데는 고리보다 높다).
+        (Folder, "vfx_wraith_charge_launch_6frames_1536x256", "vfx_wraith_launch", 6, PivotKind.Forward),
 
         // 추가 생성 — 재의 왕 2페이즈 전환 연출 3장.
         //

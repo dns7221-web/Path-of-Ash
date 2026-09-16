@@ -16,6 +16,7 @@
          붉은 반투명 번짐을 깐다(2026-09-14의 6장에서 캔버스 픽셀의 3~12%). 픽셀 아트 사이에서 그것만 뿌옇게 뜬다
       3. 남은 픽셀의 초록 번짐을 깎는다(G를 max(R,B)까지). 이 팔레트는 전부 R >= G라 그림은 안 변한다
       4. 프레임 분리: 빈 열 중 가장 넓은 (프레임 수 - 1)개를 경계로 쓴다. C# 정규화 도구와 같은 규칙이다
+         (추가 2026-09-15: 프레임끼리 가로로 겹친 원본은 -SeparateBlobs로 덩어리 기준으로 먼저 벌려 놓는다)
       5. 프레임마다 기준점을 잰다(AnchorX / AnchorY) — 아래 "기준점" 참고
       6. 모든 프레임에 같은 배율: 기준점을 셀의 Pivot 자리에 뒀을 때 어느 프레임도 Margin 밖으로
          안 나가는 가장 큰 값, 그리고 긴 변이 MaxSize를 넘지 않는 값 중 작은 쪽
@@ -95,6 +96,12 @@ param(
     # 프레임 경계를 원본 x 좌표로 직접 준다(프레임 수 - 1개). 자동 분리가 틀릴 때만 쓴다.
     [int[]]$Cuts = @(),
 
+    # 추가 생성(2026-09-15) — 프레임을 빈 열이 아니라 <이어진 픽셀 덩어리>로 가른다.
+    # 한 프레임의 줄기가 옆 프레임 칸까지 넘어가 가로 범위가 겹친 원본에 쓴다(망령 출발 자국: 3번 줄기 끝이
+    # 4번 고리보다 17px 오른쪽). 겹친 구간에는 빈 열이 없어서 자동 분리도 -Cuts(세로 직선)도 못 가른다.
+    # 아래 "3.5)" 참고. 켜지 않으면 이전과 한 바이트도 다르지 않다.
+    [switch]$SeparateBlobs,
+
     [int]$Frames = 6,
     [int]$Cell = 256
 )
@@ -172,6 +179,141 @@ for ($y = 0; $y -lt $H; $y++) {
 }
 if ($isAlphaSource) {
     Write-Output ("번짐 제거 : 알파 1~{0} 픽셀 {1}개" -f ($AlphaCut - 1), $removedSoft)
+}
+
+# --- 3.5) 추가 생성(2026-09-15) — 선택: 덩어리로 프레임을 가른다 ----------------
+# 왜 이렇게 가르나:
+#   생성기는 프레임을 칸 안에 가두라는 요구를 가끔 어긴다. 줄기가 옆 칸으로 넘어가도 두 그림이 <닿지는> 않는 경우가
+#   많아서, 알파 문턱을 넘은 픽셀을 8방향으로 이어 붙인 덩어리로 보면 여전히 갈린다.
+#   망령 출발 자국 원본에서 3번(x 691-1140)과 4번(x 1124-1475)은 가로로 17px 겹치지만 서로 다른 덩어리다.
+#
+# 어떻게 가르나:
+#   1. 덩어리를 전부 찾는다(8방향 이웃).
+#   2. 가장 큰 덩어리 Frames개를 각 프레임의 몸통으로 삼는다. 불꽃 줄기와 고리가 한 덩어리로 이어진 그림이라
+#      프레임마다 몸통이 하나씩 제일 크다(출발 자국: 38279 · 22181 · 15298 · 14622 · 7292 · 3575px, 7번째는 2862px 파편).
+#   3. 나머지 파편·불티는 가로로 가장 가까운 몸통의 프레임에 붙인다. 몸통 범위 안이면 거리 0이고,
+#      두 몸통 범위에 다 걸치면 가운데가 더 가까운 쪽이다.
+#   4. 프레임마다 가로로 밀어 사이에 한 칸(Cell)만큼 빈 열을 만든다. 그 뒤로는 기존 흐름(빈 열 분리 → 기준점 → 배율)을
+#      그대로 탄다. 기준점은 프레임마다 따로 재므로 가로로 민 거리는 결과에 안 남고, 세로는 건드리지 않는다.
+#
+# 가르기만 따로 하지 않고 벌려 놓는 이유: 아래 7)은 "자기 프레임의 가로 범위 밖은 옆 프레임"이라는 규칙으로
+# 픽셀을 가져온다. 범위가 겹친 채로 두면 그 규칙이 깨져서 옆 프레임 줄기 끝이 딸려 온다. 벌려 두면 규칙이 다시 참이 된다.
+if ($SeparateBlobs) {
+    $labels = New-Object int[] ($W * $H)
+    $blobSize = New-Object System.Collections.Generic.List[int]
+    $blobMinX = New-Object System.Collections.Generic.List[int]
+    $blobMaxX = New-Object System.Collections.Generic.List[int]
+    $blobSumX = New-Object System.Collections.Generic.List[double]
+    $stack = New-Object System.Collections.Generic.Stack[int]
+
+    # 1) 덩어리 찾기. 재귀 대신 스택을 쓴다 — 큰 덩어리는 픽셀이 3만 개를 넘어 재귀 깊이가 터진다.
+    for ($y = 0; $y -lt $H; $y++) {
+        $rowBase = $y * $stride
+        for ($x = 0; $x -lt $W; $x++) {
+            if ($px[$rowBase + ($x * 4) + 3] -eq 0 -or $labels[($y * $W) + $x] -ne 0) { continue }
+
+            $id = $blobSize.Count + 1   # 0은 "빈 픽셀"로 쓰므로 1부터 센다
+            $size = 0; $minBX = $x; $maxBX = $x; $sumX = 0.0
+            $labels[($y * $W) + $x] = $id
+            $stack.Push(($y * $W) + $x)
+
+            while ($stack.Count -gt 0) {
+                $index = $stack.Pop()
+                # [int]로 내림을 못 박는다. PowerShell의 [int](a / b)는 반올림이라 오른쪽 절반 픽셀의 행이 하나 밀린다
+                # (RemoveCrossFrameFragments.ps1에서 2026-09-11에 잡은 것과 같은 함정).
+                $cy = [int][Math]::Floor($index / $W)
+                $cx = $index - ($cy * $W)
+                $size++; $sumX += $cx
+                if ($cx -lt $minBX) { $minBX = $cx }; if ($cx -gt $maxBX) { $maxBX = $cx }
+
+                # 이웃 범위를 먼저 계산해 둔다. for 조건식에 함수 호출을 두면 PowerShell이 매 반복 다시 부른다.
+                $y0n = [Math]::Max(0, $cy - 1); $y1n = [Math]::Min($H - 1, $cy + 1)
+                $x0n = [Math]::Max(0, $cx - 1); $x1n = [Math]::Min($W - 1, $cx + 1)
+                for ($ny = $y0n; $ny -le $y1n; $ny++) {
+                    $neighborRow = $ny * $W
+                    $pixelRow = $ny * $stride
+                    for ($nx = $x0n; $nx -le $x1n; $nx++) {
+                        $neighbor = $neighborRow + $nx
+                        if ($labels[$neighbor] -ne 0) { continue }
+                        if ($px[$pixelRow + ($nx * 4) + 3] -eq 0) { continue }
+                        $labels[$neighbor] = $id
+                        $stack.Push($neighbor)
+                    }
+                }
+            }
+
+            $blobSize.Add($size); $blobMinX.Add($minBX); $blobMaxX.Add($maxBX); $blobSumX.Add($sumX)
+        }
+    }
+
+    $blobCount = $blobSize.Count
+    if ($blobCount -lt $Frames) { Write-Error "덩어리가 $blobCount 개뿐이라 $Frames 프레임으로 못 가른다."; return }
+
+    # 2) 가장 큰 덩어리 Frames개 = 프레임 몸통. 왼쪽부터 프레임 번호를 준다.
+    $seeds = @(0..($blobCount - 1) | Sort-Object -Property @{ Expression = { $blobSize[$_] }; Descending = $true } |
+               Select-Object -First $Frames | Sort-Object -Property @{ Expression = { $blobMinX[$_] } })
+
+    # 3) 나머지 덩어리를 가장 가까운 몸통의 프레임에 붙인다.
+    $frameOfBlob = New-Object int[] ($blobCount + 1)
+    $frameMinX = New-Object int[] $Frames
+    $frameMaxX = New-Object int[] $Frames
+    for ($k = 0; $k -lt $Frames; $k++) { $frameMinX[$k] = $W; $frameMaxX[$k] = -1 }
+
+    for ($b = 0; $b -lt $blobCount; $b++) {
+        $centerX = $blobSumX[$b] / $blobSize[$b]
+        $best = 0; $bestGap = [double]::MaxValue; $bestCenter = [double]::MaxValue
+        for ($k = 0; $k -lt $Frames; $k++) {
+            $s = $seeds[$k]
+            $gap = if ($centerX -lt $blobMinX[$s]) { $blobMinX[$s] - $centerX }
+                   elseif ($centerX -gt $blobMaxX[$s]) { $centerX - $blobMaxX[$s] }
+                   else { 0.0 }
+            $toCenter = [Math]::Abs($centerX - ($blobSumX[$s] / $blobSize[$s]))
+            if ($gap -lt $bestGap -or ($gap -eq $bestGap -and $toCenter -lt $bestCenter)) {
+                $best = $k; $bestGap = $gap; $bestCenter = $toCenter
+            }
+        }
+        $frameOfBlob[$b + 1] = $best
+        if ($blobMinX[$b] -lt $frameMinX[$best]) { $frameMinX[$best] = $blobMinX[$b] }
+        if ($blobMaxX[$b] -gt $frameMaxX[$best]) { $frameMaxX[$best] = $blobMaxX[$b] }
+    }
+
+    # 4) 프레임을 가로로 민다. 앞 프레임의 오른쪽 끝에서 한 칸(Cell)만큼 떨어뜨리고, 왼쪽으로는 당기지 않는다.
+    #    틈을 한 칸이나 두는 이유: 한 프레임 안의 빈 열(불티와 몸통 사이)이 이보다 넓을 수 없어서, 아래 4)의
+    #    "넓은 빈 구간 순서" 규칙이 프레임 사이 틈만 고른다(출발 자국의 프레임 안 빈 구간은 가장 넓은 것이 28px).
+    $shift = New-Object int[] $Frames
+    for ($k = 1; $k -lt $Frames; $k++) {
+        $needed = ($frameMaxX[$k - 1] + $shift[$k - 1]) + $Cell + 1 - $frameMinX[$k]
+        $shift[$k] = [Math]::Max($shift[$k - 1], $needed)
+    }
+
+    $W2 = $W + $shift[$Frames - 1]
+    $stride2 = $W2 * 4
+    $spread = New-Object byte[] ($stride2 * $H)
+    $columnCounts = New-Object int[] $W2
+    for ($y = 0; $y -lt $H; $y++) {
+        for ($x = 0; $x -lt $W; $x++) {
+            $label = $labels[($y * $W) + $x]
+            if ($label -eq 0) { continue }
+            $tx = $x + $shift[$frameOfBlob[$label]]
+            $so = ($y * $stride) + ($x * 4)
+            $to = ($y * $stride2) + ($tx * 4)
+            $spread[$to] = $px[$so]; $spread[$to + 1] = $px[$so + 1]
+            $spread[$to + 2] = $px[$so + 2]; $spread[$to + 3] = $px[$so + 3]
+            $columnCounts[$tx]++
+        }
+    }
+
+    Write-Output ("덩어리    : {0}개 → 프레임 {1}개로 묶음" -f $blobCount, $Frames)
+    for ($k = 0; $k -lt $Frames; $k++) {
+        $members = @(1..$blobCount | Where-Object { $frameOfBlob[$_] -eq $k }).Count
+        Write-Output ("  f{0}: 원본 x {1}-{2}, 몸통 {3}px + 조각 {4}개, 오른쪽으로 {5}px" -f
+                      ($k + 1), $frameMinX[$k], $frameMaxX[$k], $blobSize[$seeds[$k]], ($members - 1), $shift[$k])
+    }
+
+    # 여기서부터는 벌려 놓은 그림이 원본이다.
+    $px = $spread
+    $W = $W2
+    $stride = $stride2
 }
 
 # --- 4) 프레임 분리 ----------------------------------------------------------

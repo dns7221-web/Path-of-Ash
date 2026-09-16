@@ -11,8 +11,28 @@ public static class AshEnemyPrefabBuilder
     private const string PrefabPath = Folder + "/AshEmberWraith.prefab";
     private const string ControllerPath = "Assets/Project/Animations/Enemy/Wraith.controller";
 
+    // 추가 생성(2026-09-15) — 돌진 예고선 프리팹. AshWraithTelegraphBuilder가 만든다.
+    private const string TelegraphPrefabPath = "Assets/Project/Prefabs/VFX/WraithChargeTelegraph.prefab";
+
+    // 추가 생성(2026-09-15) — 돌진 출발 자국 프리팹. 같은 빌더의 "망령 돌진 출발 자국 생성"이 만든다.
+    private const string LaunchPrefabPath = "Assets/Project/Prefabs/VFX/WraithChargeLaunch.prefab";
+
     private static float Height =>
         AshPlayerSpriteSheets.EnemyPixelHeight / AshSpriteImportRules.CharacterPixelsPerUnit;
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 몸 콜라이더 폭(유닛).
+    ///
+    /// <b>왜 키 비율(Height x 0.5 = 2.94)에서 떼어 냈나.</b> 2026-09-15에 망령 그림이 바뀌면서 체형이 넓어졌다.
+    /// 옛 망령은 폭 117px 안팎의 구부정한 몸이라 2.94가 발 사이를 덮었지만, 새 망령은 몸통 키가 같은데 폭이 159px(1.36배)이고
+    /// 양쪽 발톱을 땅에 짚고 선다. 2.94면 몸 가운데 3분의 1만 덮어서 <b>발톱이나 옆구리를 베어도 헛친다.</b>
+    /// 2.94 x 1.36 = 4.0. 그림 위에 판정을 겹친 목업(월드 단위)에서 뒷다리~앞발 사이를 덮고 발톱 끝은 남는 폭이다 —
+    /// 그림보다 조금 좁게 맞아야 스친 공격이 억울하지 않다.
+    ///
+    /// 세로(바닥 깊이)는 키 비율 그대로다. 몸통 키가 옛 망령과 같아서 바닥에서 차지하는 깊이도 같다.
+    /// 사수·자폭병은 새 그림으로도 발밑이 옛 폭(2.94) 안에 들어와서 그 빌더들은 바꾸지 않았다.
+    /// </summary>
+    private const float BodyWidth = 4f;
 
     [MenuItem("Tools/재의 길/잿불 망령 프리팹 생성")]
     public static void Build()
@@ -81,7 +101,8 @@ public static class AshEnemyPrefabBuilder
 
         var collider = root.AddComponent<CapsuleCollider2D>();
         collider.direction = CapsuleDirection2D.Horizontal;
-        collider.size = new Vector2(Height * 0.5f, Height * 0.28f);
+        // 수정(2026-09-15) — 폭 Height * 0.5(2.94) → BodyWidth(4). 이유는 BodyWidth 설명 참고. 세로와 오프셋은 그대로다.
+        collider.size = new Vector2(BodyWidth, Height * 0.28f);
         collider.offset = new Vector2(0f, collider.size.y * 0.5f);
     }
 
@@ -115,6 +136,18 @@ public static class AshEnemyPrefabBuilder
         serialized.FindProperty("animator").objectReferenceValue = root.GetComponent<Animator>();
         serialized.FindProperty("spriteRenderer").objectReferenceValue = root.GetComponent<SpriteRenderer>();
         serialized.FindProperty("chargeHitbox").objectReferenceValue = hitbox;
+
+        // 추가 생성(2026-09-15) — 예고선이 이미 만들어져 있으면 꽂는다. 망령 프리팹을 다시 조립해도 선이 조용히
+        // 빠지지 않게 한다. 없으면 비워 둔다 — 예고선 빌더가 나중에 꽂으므로 어느 쪽을 먼저 돌려도 된다.
+        var telegraphRoot = AssetDatabase.LoadAssetAtPath<GameObject>(TelegraphPrefabPath);
+        if (telegraphRoot != null && telegraphRoot.TryGetComponent(out TelegraphLine telegraph))
+            serialized.FindProperty("chargeTelegraphPrefab").objectReferenceValue = telegraph;
+
+        // 추가 생성(2026-09-15) — 출발 자국도 같은 약속이다. 있으면 꽂고, 없으면 비워 두면 출발 자국 메뉴가 나중에 꽂는다.
+        var launchRoot = AssetDatabase.LoadAssetAtPath<GameObject>(LaunchPrefabPath);
+        if (launchRoot != null)
+            serialized.FindProperty("chargeLaunchEffectPrefab").objectReferenceValue = launchRoot;
+
         serialized.ApplyModifiedPropertiesWithoutUndo();
     }
 

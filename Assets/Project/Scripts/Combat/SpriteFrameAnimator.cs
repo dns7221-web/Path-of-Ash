@@ -67,4 +67,33 @@ public class SpriteFrameAnimator : MonoBehaviour
 
         spriteRenderer.sprite = frames[index];
     }
+
+    /// <summary>
+    /// 추가 생성(2026-09-15, 망령 돌진 예고선) — 첫 프레임부터 다시 재생한다. 전체 재생 시간을 같이 줄 수 있다.
+    ///
+    /// <b>왜 OnEnable만으로 안 되나.</b> 지금까지의 이펙트는 한 번 만들고 끝나면 지우는 것이라 OnEnable의
+    /// 초기화로 충분했다. 예고선은 적에게 붙여 두고 공격할 때마다 다시 켜는데, 반복하지 않는 재생은 끝나면
+    /// 이 컴포넌트를 스스로 끈다(위 Update의 enabled = false). 꺼진 컴포넌트는 Update가 돌지 않아서,
+    /// 다시 부르지 않으면 <b>두 번째 공격부터 마지막 프레임에 멈춘 그림만</b> 뜬다. 에러도 안 난다.
+    ///
+    /// <b>왜 재생 시간을 받나.</b> 예고선은 "마지막 프레임이 끝나는 순간 = 공격이 시작되는 순간"이어야 읽힌다.
+    /// fps를 인스펙터 숫자로만 두면 적의 예비동작 시간을 바꿀 때 두 숫자를 같이 고쳐야 하고, 한쪽만 고치면
+    /// 선이 먼저 끝나거나 공격이 시작된 뒤에도 남는다. 시간을 쥔 쪽(적)이 넘겨주면 둘이 어긋날 수 없다.
+    /// </summary>
+    /// <param name="durationSeconds">첫 프레임부터 마지막 프레임이 끝날 때까지의 시간(초). 0 이하면 인스펙터의 fps를 그대로 쓴다.</param>
+    public void Restart(float durationSeconds = 0f)
+    {
+        // 한 번도 켜진 적 없는 오브젝트에서 불리면 Awake가 아직 안 돌았을 수 있다.
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // 인스턴스의 값만 바뀐다. 프리팹 에셋의 fps는 그대로다.
+        if (durationSeconds > 0f && frames != null && frames.Length > 0)
+            fps = frames.Length / durationSeconds;
+
+        elapsed = 0f;
+        if (frames != null && frames.Length > 0) spriteRenderer.sprite = frames[0];
+
+        // 끝까지 재생해서 스스로 꺼졌을 수 있다. 다시 켜야 Update가 돈다.
+        enabled = true;
+    }
 }

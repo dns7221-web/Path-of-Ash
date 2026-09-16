@@ -109,6 +109,26 @@ public abstract class EnemyBase : MonoBehaviour
     /// <summary>대상이 아직 쫓을 만한가. 사라졌거나 죽었으면 거짓.</summary>
     protected bool HasLiveTarget => target != null && (targetHealth == null || !targetHealth.IsDead);
 
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 지금 맞으면 경직(넉백·피격 모션·<see cref="OnStaggered"/>)에 들어가는가.
+    ///
+    /// <b>왜 자식이 정하나.</b> 자폭병은 점화 중에 맞아도 멈추지 않는 것이 설계인데, 그 판단이
+    /// <see cref="OnStaggered"/> 안에만 있었다. 그런데 피격 트리거는 그보다 먼저 HandleDamaged에서 무조건 걸려서,
+    /// 상태는 점화 그대로인데 <b>그림만</b> 피격 → 걷기로 끊긴 채 터졌다. 체력 2가 모든 공격 피해 이하라
+    /// 한 대에 죽어서 안 드러났을 뿐이다. 모션을 걸기 전에 물어봐야 상태와 그림이 같은 답을 낸다.
+    /// </summary>
+    protected virtual bool CanBeStaggered => true;
+
+    /// <summary>
+    /// 추가 생성(2026-09-15) — 죽는 순간 Animator에 걸 트리거. 기본은 Die(사망 모션)다.
+    ///
+    /// 자폭병이 <b>스스로 터져 죽을 때</b>는 잡혀 쓰러지는 그림이 아니라 몸이 터지는 그림이어야 해서 바꿔 끼운다.
+    /// 트리거를 둘 다 걸고 하나를 지우는 방식으로 하지 않은 이유: Any State 전이 둘이 같은 프레임에 켜지면
+    /// 먼저 뽑힌 쪽이 이기고, 남은 트리거가 다음 프레임에 <b>다른 사망 모션으로 한 번 더</b> 넘어간다.
+    /// 처음부터 하나만 걸면 그럴 자리가 없다.
+    /// </summary>
+    protected virtual int DeathTriggerHash => DieHash;
+
     // ── 수명 ──────────────────────────────────────────────────────────────
 
     protected virtual void Awake()
@@ -239,15 +259,21 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (current <= 0 || IsDead) return;
 
+        // 맞았으면 때린 쪽을 쫓는 게 자연스럽다. 아직 대상이 없었다면 여기서 잡는다.
+        // 반경을 loseRadius로 넉넉히 준 이유: 원거리에서 맞았을 때도 반응해야 한다.
+        //
+        // 수정(2026-09-15) — 아래 경직 검사보다 앞으로 옮겼다. 경직에 안 들어가는 적(점화 중인 자폭병)도
+        // 누가 때렸는지는 알아야 한다.
+        if (target == null) TryAcquireTarget(loseRadius);
+
+        // 추가 생성(2026-09-15) — 경직에 안 들어가는 상태면 넉백도 피격 모션도 없다. 이유는 CanBeStaggered 참고.
+        if (!CanBeStaggered) return;
+
         // 때린 쪽의 반대 방향으로 밀려난다.
         // 방향은 Health가 데미지를 받을 때 기록해둔 값을 그대로 쓴다.
         knockbackVelocity = health.LastHitDirection * knockbackSpeed;
 
         animator?.SetTrigger(HitHash);
-
-        // 맞았으면 때린 쪽을 쫓는 게 자연스럽다. 아직 대상이 없었다면 여기서 잡는다.
-        // 반경을 loseRadius로 넉넉히 준 이유: 원거리에서 맞았을 때도 반응해야 한다.
-        if (target == null) TryAcquireTarget(loseRadius);
 
         OnStaggered();
     }
@@ -263,7 +289,9 @@ public abstract class EnemyBase : MonoBehaviour
         if (bodyCollider != null) bodyCollider.enabled = false;
 
         ClearTarget();
-        animator?.SetTrigger(DieHash);
+
+        // 수정(2026-09-15) — Die 고정 → DeathTriggerHash. 자폭병이 터져 죽을 때 다른 모션을 고를 수 있게 한다.
+        animator?.SetTrigger(DeathTriggerHash);
 
         OnDeath();
         StartCoroutine(RequestDespawnAfterDeath());
