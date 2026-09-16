@@ -98,7 +98,17 @@ public class DamageHitbox : MonoBehaviour
         // 밀어낸 자식이라, 적이 검 끝보다 안쪽에 있으면 히트박스 → 적 방향이 뒤를 가리킨다.
         // 그러면 적이 플레이어 쪽으로 빨려온다. 본체 기준이면 항상 바깥으로 밀린다.
         Transform source = transform.parent != null ? transform.parent : transform;
-        health.TakeDamage(damage, source.position);
+
+        // 수정(2026-09-16) — TakeDamage의 결과를 보고, 막혔으면 여기서 끝낸다.
+        //
+        // 예전에는 결과를 버렸다. 그래서 <b>무적으로 막힌 공격도</b> 아래 타격감과 명중 알림을 그대로 냈다 —
+        // 대시로 망령 돌진이나 화살을 흘려도 맞은 것처럼 화면이 멈추고 흔들렸고, 피격 직후 0.35초 무적인 적이나
+        // 전환 중인 보스를 쳐도 같았다. 흘린 순간과 맞은 순간이 같은 반응을 내면 <b>회피를 배울 수가 없다.</b>
+        // 바로 아래 주석이 말하는 "걸러지면 여기까지 안 온다"를 실제로 성립하게 하는 줄이다.
+        //
+        // 막힌 대상을 damagedThisActivation에서 빼지 않는 이유: 한 번의 공격은 같은 대상에게 한 번만 기회를 갖는다.
+        // 빼면 판정이 켜져 있는 동안(돌진은 0.34초) 대상이 나갔다 들어올 때 같은 공격에 두 번 걸린다.
+        if (!health.TakeDamage(damage, source.position)) return;
 
         // 추가 생성 — 타격감은 데미지가 <b>실제로 들어간 뒤</b>에 준다.
         // 위에서 무적이나 중복 판정으로 걸러졌다면 여기까지 오지 않는다.
