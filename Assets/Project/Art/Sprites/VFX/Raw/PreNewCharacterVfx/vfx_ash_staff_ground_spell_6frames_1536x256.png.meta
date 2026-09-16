@@ -1,0 +1,1742 @@
+fileFormatVersion: 2
+guid: 03ef631fc61b5a94aaaf8b9a6b866018
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6361811755483143039
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_0
+  - first:
+      213: -8803167795870718755
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_1
+  - first:
+      213: 8807625875089319877
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_2
+  - first:
+      213: 5370294074535280482
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_3
+  - first:
+      213: 313143455418906359
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_4
+  - first:
+      213: 2992737203715093162
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_5
+  - first:
+      213: 8271790381056683922
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_6
+  - first:
+      213: 6852444870225166733
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_7
+  - first:
+      213: -4547665500785143806
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_8
+  - first:
+      213: 3954023922619755762
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_9
+  - first:
+      213: 247074701140475919
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_10
+  - first:
+      213: -3744698835253760488
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_11
+  - first:
+      213: -3894006344968629038
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_12
+  - first:
+      213: -44706248432156915
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_13
+  - first:
+      213: -7830533959926853718
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_14
+  - first:
+      213: 6578135513656560647
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_15
+  - first:
+      213: -857647194588427517
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_16
+  - first:
+      213: 1112827754184906388
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_17
+  - first:
+      213: -4978345957380846470
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_18
+  - first:
+      213: 7682733593999804616
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_19
+  - first:
+      213: 6355267538687236273
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_20
+  - first:
+      213: -535773070870803449
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_21
+  - first:
+      213: -176877877980180261
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_22
+  - first:
+      213: -7307477099519708789
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_23
+  - first:
+      213: 4688174002629609316
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_24
+  - first:
+      213: 3395506481402972162
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_25
+  - first:
+      213: -6456115451561178588
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_26
+  - first:
+      213: -6203965132345993904
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_27
+  - first:
+      213: 4520233761066035641
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_28
+  - first:
+      213: -8492417040604109860
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_29
+  - first:
+      213: -3353073352197908254
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_30
+  - first:
+      213: 5260043886334431850
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_31
+  - first:
+      213: -6297569534180556707
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_32
+  - first:
+      213: -3805531013739350771
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_33
+  - first:
+      213: -6536514219076827764
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_34
+  - first:
+      213: -6473265525300972539
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_35
+  - first:
+      213: 4650112782999419514
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_36
+  - first:
+      213: -1945472840664701379
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_37
+  - first:
+      213: 5352098878427167193
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_38
+  - first:
+      213: -5652961364155464265
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_39
+  - first:
+      213: -6367954261631686648
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_40
+  - first:
+      213: 6254506836992196081
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_41
+  - first:
+      213: -7923877858681381846
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_42
+  - first:
+      213: 5974074711626253432
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_43
+  - first:
+      213: 5781460022691593050
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_44
+  - first:
+      213: -3786765947503101598
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_45
+  - first:
+      213: -1120227498706234827
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_46
+  - first:
+      213: 3742995164430887023
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_47
+  - first:
+      213: -1300813472018707059
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_48
+  - first:
+      213: 2267699422170266509
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_49
+  - first:
+      213: -4221610370223105523
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_50
+  - first:
+      213: -7395171409622879777
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_51
+  - first:
+      213: -5584756435763119269
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_52
+  - first:
+      213: -6110231132277472463
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_53
+  - first:
+      213: -485482816180796232
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_54
+  - first:
+      213: -3522622084025921109
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_55
+  - first:
+      213: 3976300962406739116
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_56
+  - first:
+      213: -2024311074875350133
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_57
+  - first:
+      213: -468718251790464757
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_58
+  - first:
+      213: -5810827852333964790
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_59
+  - first:
+      213: -2704310783777804649
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_60
+  - first:
+      213: 3717371529098787335
+    second: vfx_ash_staff_ground_spell_6frames_1536x256_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_0
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 38
+        width: 163
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 184e58a2aed46b7a0800000000000000
+      internalID: -6361811755483143039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_1
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 225
+        width: 6
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4a7f4e78dd4d580800000000000000
+      internalID: -8803167795870718755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_2
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 227
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c7ec3f8119fa3a70800000000000000
+      internalID: 8807625875089319877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_3
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 200
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f7f0cf10e178a40800000000000000
+      internalID: 5370294074535280482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_4
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 211
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f67bf74052885400800000000000000
+      internalID: 313143455418906359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_5
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 189
+        width: 35
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa2b88d61a6588920800000000000000
+      internalID: 2992737203715093162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_6
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 174
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f6067968d4bc270800000000000000
+      internalID: 8271790381056683922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_7
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 182
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8108bcbd46c81f50800000000000000
+      internalID: 6852444870225166733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_8
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 164
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2001764525273e0c0800000000000000
+      internalID: -4547665500785143806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_9
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 161
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fca52deec38fd630800000000000000
+      internalID: 3954023922619755762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_10
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 167
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f00c672b129cd6300800000000000000
+      internalID: 247074701140475919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_11
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 171
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81e61e5ef38280cc0800000000000000
+      internalID: -3744698835253760488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 153
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d4170f4cd5b5f9c0800000000000000
+      internalID: -3894006344968629038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 159
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ff5f667eb216ff0800000000000000
+      internalID: -44706248432156915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_14
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 152
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf4de4f9da545390800000000000000
+      internalID: -7830533959926853718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_15
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 148
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c81efa56b3a4b50800000000000000
+      internalID: 6578135513656560647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_16
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 147
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b42f7ab660914f0800000000000000
+      internalID: -857647194588427517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_17
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 136
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 496136842fe817f00800000000000000
+      internalID: 1112827754184906388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_18
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 122
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c00596abc59eab0800000000000000
+      internalID: -4978345957380846470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_19
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 125
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c88156bf7d8e9a60800000000000000
+      internalID: 7682733593999804616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_20
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 148
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b81600a722723850800000000000000
+      internalID: 6355267538687236273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_21
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 128
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70c868e0b3d8098f0800000000000000
+      internalID: -535773070870803449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_22
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 117
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd0dd52d18a9b8df0800000000000000
+      internalID: -176877877980180261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_23
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 38
+        width: 164
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8173de6b40a69a90800000000000000
+      internalID: -7307477099519708789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_24
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 133
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46785f79a6dbf0140800000000000000
+      internalID: 4688174002629609316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_25
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 120
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2088f8897234f1f20800000000000000
+      internalID: 3395506481402972162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_26
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 101
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42a09c8e3354766a0800000000000000
+      internalID: -6456115451561178588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_27
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 38
+        width: 93
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0559b97059617e9a0800000000000000
+      internalID: -6203965132345993904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_28
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 112
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b9a11e08a81bbe30800000000000000
+      internalID: 4520233761066035641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_29
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 93
+        width: 24
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3615242bfd42a80800000000000000
+      internalID: -8492417040604109860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_30
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 107
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e85a603d8d7771d0800000000000000
+      internalID: -3353073352197908254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_31
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 90
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a62dde3bb0e6ff840800000000000000
+      internalID: 5260043886334431850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_32
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 41
+        width: 69
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5088d6efd98a98a0800000000000000
+      internalID: -6297569534180556707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_33
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 102
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d057550a4b9003bc0800000000000000
+      internalID: -3805531013739350771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_34
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 41
+        width: 58
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c85c2ae13f2a945a0800000000000000
+      internalID: -6536514219076827764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_35
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 53
+        width: 35
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50437a33d475a26a0800000000000000
+      internalID: -6473265525300972539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_36
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 94
+        width: 63
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7afe2450f4888040800000000000000
+      internalID: 4650112782999419514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_37
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 89
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d36a20c42ca4005e0800000000000000
+      internalID: -1945472840664701379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_38
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 86
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9fa63c299764a40800000000000000
+      internalID: 5352098878427167193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_39
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 90
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b581880795ac81b0800000000000000
+      internalID: -5652961364155464265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_40
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 83
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8082281865b70a7a0800000000000000
+      internalID: -6367954261631686648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_41
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 91
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fdfb2894d87cc650800000000000000
+      internalID: 6254506836992196081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_42
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 73
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2c96bde11bb80290800000000000000
+      internalID: -7923877858681381846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_43
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 78
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87480285c4d28e250800000000000000
+      internalID: 5974074711626253432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_44
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 76
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b77a7524fdb3050800000000000000
+      internalID: 5781460022691593050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_45
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 71
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26938831f64b27bc0800000000000000
+      internalID: -3786765947503101598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_46
+      rect:
+        serializedVersion: 2
+        x: 1453
+        y: 80
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5329dff66072470f0800000000000000
+      internalID: -1120227498706234827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_47
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 71
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6868e3554ac1f330800000000000000
+      internalID: 3742995164430887023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_48
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 60
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d48490a0592fde0800000000000000
+      internalID: -1300813472018707059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_49
+      rect:
+        serializedVersion: 2
+        x: 1094
+        y: 67
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b31d31c9c787f10800000000000000
+      internalID: 2267699422170266509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_50
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 64
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0a1fbe3cb3d965c0800000000000000
+      internalID: -4221610370223105523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_51
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 53
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd1bd44c8c21f5990800000000000000
+      internalID: -7395171409622879777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_52
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 64
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b33496c95fe72b0800000000000000
+      internalID: -5584756435763119269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_53
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 52
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13381199829143ba0800000000000000
+      internalID: -6110231132277472463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_54
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 38
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4ccfc63f73349f0800000000000000
+      internalID: -485482816180796232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_55
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 53
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba150b3d0e12d1fc0800000000000000
+      internalID: -3522622084025921109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_56
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 51
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cac2c4078a8ae2730800000000000000
+      internalID: 3976300962406739116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_57
+      rect:
+        serializedVersion: 2
+        x: 1385
+        y: 48
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b836a2b7dc338e3e0800000000000000
+      internalID: -2024311074875350133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_58
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 45
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b09894ebb37ce79f0800000000000000
+      internalID: -468718251790464757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_59
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 51
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0220bafadacb5fa0800000000000000
+      internalID: -5810827852333964790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_60
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 38
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79e6aa29bab587ad0800000000000000
+      internalID: -2704310783777804649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vfx_ash_staff_ground_spell_6frames_1536x256_61
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 38
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a7512d5b1c69330800000000000000
+      internalID: 3717371529098787335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      vfx_ash_staff_ground_spell_6frames_1536x256_0: -6361811755483143039
+      vfx_ash_staff_ground_spell_6frames_1536x256_1: -8803167795870718755
+      vfx_ash_staff_ground_spell_6frames_1536x256_10: 247074701140475919
+      vfx_ash_staff_ground_spell_6frames_1536x256_11: -3744698835253760488
+      vfx_ash_staff_ground_spell_6frames_1536x256_12: -3894006344968629038
+      vfx_ash_staff_ground_spell_6frames_1536x256_13: -44706248432156915
+      vfx_ash_staff_ground_spell_6frames_1536x256_14: -7830533959926853718
+      vfx_ash_staff_ground_spell_6frames_1536x256_15: 6578135513656560647
+      vfx_ash_staff_ground_spell_6frames_1536x256_16: -857647194588427517
+      vfx_ash_staff_ground_spell_6frames_1536x256_17: 1112827754184906388
+      vfx_ash_staff_ground_spell_6frames_1536x256_18: -4978345957380846470
+      vfx_ash_staff_ground_spell_6frames_1536x256_19: 7682733593999804616
+      vfx_ash_staff_ground_spell_6frames_1536x256_2: 8807625875089319877
+      vfx_ash_staff_ground_spell_6frames_1536x256_20: 6355267538687236273
+      vfx_ash_staff_ground_spell_6frames_1536x256_21: -535773070870803449
+      vfx_ash_staff_ground_spell_6frames_1536x256_22: -176877877980180261
+      vfx_ash_staff_ground_spell_6frames_1536x256_23: -7307477099519708789
+      vfx_ash_staff_ground_spell_6frames_1536x256_24: 4688174002629609316
+      vfx_ash_staff_ground_spell_6frames_1536x256_25: 3395506481402972162
+      vfx_ash_staff_ground_spell_6frames_1536x256_26: -6456115451561178588
+      vfx_ash_staff_ground_spell_6frames_1536x256_27: -6203965132345993904
+      vfx_ash_staff_ground_spell_6frames_1536x256_28: 4520233761066035641
+      vfx_ash_staff_ground_spell_6frames_1536x256_29: -8492417040604109860
+      vfx_ash_staff_ground_spell_6frames_1536x256_3: 5370294074535280482
+      vfx_ash_staff_ground_spell_6frames_1536x256_30: -3353073352197908254
+      vfx_ash_staff_ground_spell_6frames_1536x256_31: 5260043886334431850
+      vfx_ash_staff_ground_spell_6frames_1536x256_32: -6297569534180556707
+      vfx_ash_staff_ground_spell_6frames_1536x256_33: -3805531013739350771
+      vfx_ash_staff_ground_spell_6frames_1536x256_34: -6536514219076827764
+      vfx_ash_staff_ground_spell_6frames_1536x256_35: -6473265525300972539
+      vfx_ash_staff_ground_spell_6frames_1536x256_36: 4650112782999419514
+      vfx_ash_staff_ground_spell_6frames_1536x256_37: -1945472840664701379
+      vfx_ash_staff_ground_spell_6frames_1536x256_38: 5352098878427167193
+      vfx_ash_staff_ground_spell_6frames_1536x256_39: -5652961364155464265
+      vfx_ash_staff_ground_spell_6frames_1536x256_4: 313143455418906359
+      vfx_ash_staff_ground_spell_6frames_1536x256_40: -6367954261631686648
+      vfx_ash_staff_ground_spell_6frames_1536x256_41: 6254506836992196081
+      vfx_ash_staff_ground_spell_6frames_1536x256_42: -7923877858681381846
+      vfx_ash_staff_ground_spell_6frames_1536x256_43: 5974074711626253432
+      vfx_ash_staff_ground_spell_6frames_1536x256_44: 5781460022691593050
+      vfx_ash_staff_ground_spell_6frames_1536x256_45: -3786765947503101598
+      vfx_ash_staff_ground_spell_6frames_1536x256_46: -1120227498706234827
+      vfx_ash_staff_ground_spell_6frames_1536x256_47: 3742995164430887023
+      vfx_ash_staff_ground_spell_6frames_1536x256_48: -1300813472018707059
+      vfx_ash_staff_ground_spell_6frames_1536x256_49: 2267699422170266509
+      vfx_ash_staff_ground_spell_6frames_1536x256_5: 2992737203715093162
+      vfx_ash_staff_ground_spell_6frames_1536x256_50: -4221610370223105523
+      vfx_ash_staff_ground_spell_6frames_1536x256_51: -7395171409622879777
+      vfx_ash_staff_ground_spell_6frames_1536x256_52: -5584756435763119269
+      vfx_ash_staff_ground_spell_6frames_1536x256_53: -6110231132277472463
+      vfx_ash_staff_ground_spell_6frames_1536x256_54: -485482816180796232
+      vfx_ash_staff_ground_spell_6frames_1536x256_55: -3522622084025921109
+      vfx_ash_staff_ground_spell_6frames_1536x256_56: 3976300962406739116
+      vfx_ash_staff_ground_spell_6frames_1536x256_57: -2024311074875350133
+      vfx_ash_staff_ground_spell_6frames_1536x256_58: -468718251790464757
+      vfx_ash_staff_ground_spell_6frames_1536x256_59: -5810827852333964790
+      vfx_ash_staff_ground_spell_6frames_1536x256_6: 8271790381056683922
+      vfx_ash_staff_ground_spell_6frames_1536x256_60: -2704310783777804649
+      vfx_ash_staff_ground_spell_6frames_1536x256_61: 3717371529098787335
+      vfx_ash_staff_ground_spell_6frames_1536x256_7: 6852444870225166733
+      vfx_ash_staff_ground_spell_6frames_1536x256_8: -4547665500785143806
+      vfx_ash_staff_ground_spell_6frames_1536x256_9: 3954023922619755762
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

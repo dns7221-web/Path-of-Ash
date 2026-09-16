@@ -1,55 +1,7 @@
 fileFormatVersion: 2
-guid: 389feafb83a8d0e4aa7ac2e4db4fe8c5
+guid: ee35d6dc91c6498183f2835f601889d8
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -280605416718183702
-    second: vfx_ember_arrow_flight_6frames_1536x256_0
-  - first:
-      213: 415371982501373398
-    second: vfx_ember_arrow_flight_6frames_1536x256_1
-  - first:
-      213: -2781824210295830643
-    second: vfx_ember_arrow_flight_6frames_1536x256_2
-  - first:
-      213: -2729050331919111060
-    second: vfx_ember_arrow_flight_6frames_1536x256_3
-  - first:
-      213: -3212272862948690455
-    second: vfx_ember_arrow_flight_6frames_1536x256_4
-  - first:
-      213: -2427472814440633197
-    second: vfx_ember_arrow_flight_6frames_1536x256_5
-  - first:
-      213: -44213413954481230
-    second: vfx_ember_arrow_flight_6frames_1536x256_6
-  - first:
-      213: -7334558966407799830
-    second: vfx_ember_arrow_flight_6frames_1536x256_7
-  - first:
-      213: 6141356459566535225
-    second: vfx_ember_arrow_flight_6frames_1536x256_8
-  - first:
-      213: 6368977274552176377
-    second: vfx_ember_arrow_flight_6frames_1536x256_9
-  - first:
-      213: -5814920031442316407
-    second: vfx_ember_arrow_flight_6frames_1536x256_10
-  - first:
-      213: 3596662511147829078
-    second: vfx_ember_arrow_flight_6frames_1536x256_11
-  - first:
-      213: 425135693640597735
-    second: vfx_ember_arrow_flight_6frames_1536x256_12
-  - first:
-      213: -2480343699979326094
-    second: vfx_ember_arrow_flight_6frames_1536x256_13
-  - first:
-      213: 7509376919092324101
-    second: vfx_ember_arrow_flight_6frames_1536x256_14
-  - first:
-      213: 4230491622158201684
-    second: vfx_ember_arrow_flight_6frames_1536x256_15
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -171,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vfx_arrow_flight_00
+      name: vfx_dash_burst_00
       rect:
         serializedVersion: 2
         x: 0
@@ -179,21 +131,21 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 9
-      pivot: {x: 0.890625, y: 0.5}
+      pivot: {x: 0.109375, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2efd766f3e51ec343bfa4634858fe80b
-      internalID: 1786702630
+      spriteID: 4a3236db4508409e976d1af24b40434a
+      internalID: -2104122863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_arrow_flight_01
+      name: vfx_dash_burst_01
       rect:
         serializedVersion: 2
         x: 256
@@ -201,21 +153,21 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 9
-      pivot: {x: 0.890625, y: 0.5}
+      pivot: {x: 0.109375, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 989fe721ab6ae33428b3490770be1ef4
-      internalID: 157270026
+      spriteID: 7e0215d3218241dc9a139573bad10259
+      internalID: -1512526681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_arrow_flight_02
+      name: vfx_dash_burst_02
       rect:
         serializedVersion: 2
         x: 512
@@ -223,21 +175,21 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 9
-      pivot: {x: 0.890625, y: 0.5}
+      pivot: {x: 0.109375, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0cf864a2c688e54d9e7eb8d27fe7c08
-      internalID: 984217453
+      spriteID: 4dec6c9b1338407a9a3c6b544a1244b2
+      internalID: -1181363492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_arrow_flight_03
+      name: vfx_dash_burst_03
       rect:
         serializedVersion: 2
         x: 768
@@ -245,21 +197,21 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 9
-      pivot: {x: 0.890625, y: 0.5}
+      pivot: {x: 0.109375, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0575836632df59409a99add8f57806b
-      internalID: 2003354588
+      spriteID: a13425e51c784fcfb800b4c9ff89fbf7
+      internalID: -733866061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_arrow_flight_04
+      name: vfx_dash_burst_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -267,21 +219,21 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 9
-      pivot: {x: 0.890625, y: 0.5}
+      pivot: {x: 0.109375, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfa77f40c870ebd46a36e61122b8a609
-      internalID: 1059058399
+      spriteID: e5c121c3fe2945d88d5343b131a2f10a
+      internalID: 284117114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: vfx_arrow_flight_05
+      name: vfx_dash_burst_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -289,15 +241,15 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 9
-      pivot: {x: 0.890625, y: 0.5}
+      pivot: {x: 0.109375, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1187cb930c8ae374b99439e540a93d50
-      internalID: 210624638
+      spriteID: be1ff539c04b47cda0a7c0ffc817b7e7
+      internalID: 205214501
       vertices: []
       indices: 
       edges: []
@@ -306,7 +258,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 137dca1c9fd60824a9e209e84ec72244
+    spriteID: aed8f6818ded4176916c97f09170b64d
     internalID: 0
     vertices: []
     indices: 
@@ -316,12 +268,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      vfx_arrow_flight_00: 1786702630
-      vfx_arrow_flight_01: 157270026
-      vfx_arrow_flight_02: 984217453
-      vfx_arrow_flight_03: 2003354588
-      vfx_arrow_flight_04: 1059058399
-      vfx_arrow_flight_05: 210624638
+      vfx_dash_burst_00: -2104122863
+      vfx_dash_burst_01: -1512526681
+      vfx_dash_burst_02: -1181363492
+      vfx_dash_burst_03: -733866061
+      vfx_dash_burst_04: 284117114
+      vfx_dash_burst_05: 205214501
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

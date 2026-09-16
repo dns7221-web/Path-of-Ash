@@ -34,6 +34,18 @@ public class DamageHitbox : MonoBehaviour
     private readonly HashSet<Health> damagedThisActivation = new HashSet<Health>();
     private Collider2D hitboxCollider;
 
+    /// <summary>
+    /// 추가 생성(화살 명중 VFX) — 이 히트박스가 대상에게 데미지를 <b>실제로 넣은 뒤</b> 한 번 울린다.
+    ///
+    /// 왜 이벤트로 여는가: 화살이 맞은 자리에 불꽃을 터뜨리려면 <see cref="Projectile"/>이
+    /// "맞았다"를 알아야 하는데, 판정 규칙(레이어·중복 방지·무적)은 전부 이쪽에 있다.
+    /// 투사체가 OnTriggerEnter2D를 따로 받아 같은 검사를 다시 하면, 무적인 적에게도 불꽃이 튀는 식으로
+    /// 두 판정이 조용히 갈라진다. 걸러진 결과만 밖으로 알리면 규칙은 여전히 한 곳에 있다.
+    ///
+    /// 무엇을 보여줄지는 듣는 쪽이 정한다. 검(플레이어)과 돌진(적)은 지금 듣는 곳이 없어서 아무 일도 없다.
+    /// </summary>
+    public event System.Action<Health> HitLanded;
+
     // 히트박스는 검·돌진·투사체마다 하나씩이라 여럿이 동시에 산다. 매번 Camera.main을
     // 뒤지지 않도록 한 번 찾은 것을 공유한다. 씬이 바뀌어 카메라가 파괴되면 유니티의
     // 가짜 null 비교에 걸려 다시 찾는다.
@@ -91,6 +103,11 @@ public class DamageHitbox : MonoBehaviour
         // 추가 생성 — 타격감은 데미지가 <b>실제로 들어간 뒤</b>에 준다.
         // 위에서 무적이나 중복 판정으로 걸러졌다면 여기까지 오지 않는다.
         ApplyImpactFeel(health.IsDead);
+
+        // 추가 생성(화살 명중 VFX) — 맞혔다고 알린다. 여기서 만든 이펙트는 SpriteFrameAnimator가
+        // Time.deltaTime으로 프레임을 넘기므로, 히트스톱 동안 첫 프레임(흰 섬광)에 멈춰 있다가
+        // 시간이 풀리면서 퍼진다. 멈춤과 섬광이 같은 순간에 겹쳐 "꽂혔다"가 한 번에 읽힌다.
+        HitLanded?.Invoke(health);
     }
 
     /// <summary>

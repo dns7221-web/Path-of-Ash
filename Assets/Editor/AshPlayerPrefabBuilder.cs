@@ -502,10 +502,14 @@ public static class AshPlayerPrefabBuilder
             var repair = new SerializedObject(existing);
             bool changed = false;
 
+            // 수정(2026-09-14, 새 캐릭터 VFX) — 배율 2 / 3 → 1.8 / 2.
+            // 지금 프리팹에 들어 있는 값과 맞췄다. 원래 숫자는 프리팹(1.05 / 2.4)과도 이미 달라서, 프리팹을
+            // 지웠다 이 분기로 되살리면 크기가 조용히 바뀌었다. 1.8은 충격 타원 폭이 1단 판정 폭(8.4)의 85%,
+            // 2는 균열선 폭이 15유닛으로 옛 그림과 같아 플레이어 몸을 덮지 않는 값이다.
             changed |= RepairEffect(repair, "nearEffect",
-                "SlamImpact", "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 2f);
+                "SlamImpact", "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 1.8f);
             changed |= RepairEffect(repair, "farEffect",
-                "SlamBurst", "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 3f);
+                "SlamBurst", "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 2f);
 
             if (changed)
             {
@@ -532,11 +536,12 @@ public static class AshPlayerPrefabBuilder
             AshPlayerAnimationBuilder.ParamSwordSlam;
         serialized.FindProperty("targetLayers").intValue = 1 << LayerMask.NameToLayer("Enemy");
 
+        // 수정(2026-09-14) — 배율 2 / 3 → 1.8 / 2. 이유는 위 복구 분기의 주석과 같다.
         serialized.FindProperty("nearEffect").objectReferenceValue = CreateOrLoadEffectPrefab(
-            "SlamImpact", "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 14f, 2f);
+            "SlamImpact", "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 14f, 1.8f);
 
         serialized.FindProperty("farEffect").objectReferenceValue = CreateOrLoadEffectPrefab(
-            "SlamBurst", "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 14f, 3f);
+            "SlamBurst", "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 14f, 2f);
 
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
@@ -567,7 +572,9 @@ public static class AshPlayerPrefabBuilder
             for (int i = 0; i < frames.Length; i++)
             {
                 frames[i] = FindSprite("Assets/Project/Art/Sprites/VFX",
-                                       "vfx_kings_ember_6frames_1536x256",
+                                       // 수정(2026-09-13) — 새 캐릭터용 잿불 왕관 시트로 바꿨다.
+                                       // 옛 시트(vfx_kings_ember_6frames_1536x256)는 보스 잿불 파도가 계속 쓰므로 지우지 않는다.
+                                       "vfx_kings_ember_crown_6frames_1536x256",
                                        $"vfx_kings_ember_{i:00}");
                 if (frames[i] != null) found++;
             }

@@ -226,24 +226,21 @@ public static class AshSpriteSheetNormalizer
         (VfxFolder, "vfx_kings_ember_full_room_6frames_raw.png",
                     "vfx_kings_ember_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
 
-        // 지팡이 주문은 바닥에서 솟는 잿불 기둥이다. 그 자리에서 위로 퍼진다.
-        (VfxFolder, "vfx_ash_staff_ground_spell_6frames_raw.png",
-                    "vfx_ash_staff_ground_spell_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
-
-        // 검이 박힌 지점의 충격파. 그 점을 중심으로 사방으로 퍼진다.
-        (VfxFolder, "vfx_sword_slam_impact_6frames_raw.png",
-                    "vfx_sword_slam_impact_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
-
-        // 검이 박힌 지점에서 앞으로 터져 나간다. 시작점 고정.
-        (VfxFolder, "vfx_sword_slam_forward_burst_6frames_raw.png",
-                    "vfx_sword_slam_forward_burst_6frames_1536x256.png", 6, Mode.GroundForward, 0),
-
-        // 화살은 공중을 나는 투사체다. 바닥에 닿지 않는다.
-        (VfxFolder, "vfx_ember_arrow_flight_6frames_raw.png",
-                    "vfx_ember_arrow_flight_6frames_1536x256.png", 6, Mode.FloatCenter, 0),
-
-        (VfxFolder, "vfx_ember_arrow_impact_6frames_raw.png",
-                    "vfx_ember_arrow_impact_6frames_1536x256.png", 6, Mode.FloatCenter, 0),
+        // 수정(2026-09-14, 새 캐릭터 VFX) — 여기 있던 다섯 줄을 걷어냈다. 결과 파일은 그대로 쓰지만
+        // <b>원본이 바뀌었고, 이 도구는 새 원본을 읽지 못한다.</b>
+        //
+        //   vfx_ash_staff_ground_spell_6frames_raw      → ..._1536x256  GroundCenter  (지팡이 주문 — 바닥에서 솟는 잿불 기둥)
+        //   vfx_sword_slam_impact_6frames_raw           → ..._1536x256  GroundCenter  (검이 박힌 지점의 충격파)
+        //   vfx_sword_slam_forward_burst_6frames_raw    → ..._1536x256  GroundForward (박힌 지점에서 앞으로, 시작점 고정)
+        //   vfx_ember_arrow_flight_6frames_raw          → ..._1536x256  FloatCenter   (공중을 나는 화살)
+        //   vfx_ember_arrow_impact_6frames_raw          → ..._1536x256  FloatCenter
+        //
+        // 새 원본(Art/NewPlayerImages/…)은 배경이 이미 투명한데, 이 도구의 배경 제거는 초록이 아닌 픽셀을
+        // 전부 불투명으로 만든다(RemoveBackground). 그래서 새 그림은 Tools/NormalizeVfxStrip.ps1로 만들었다.
+        //
+        // 줄을 남겨두면 안 되는 이유: "원본 시트 정규화"(전체)를 누르는 순간 옛 원본으로 결과를 다시 써서
+        // <b>새 그림이 에러 없이 옛 그림으로 돌아간다.</b> 옛 원본 PNG는 폴더에 남아 있어 실패도 안 한다.
+        // 되돌려야 할 때는 Raw/PreNewCharacterVfx의 백업을 쓴다.
 
         // 사수가 쏘는 화살. 한 장짜리라 프레임이 1개다.
         // 촉 끝을 기준으로 놓아야 맞는 지점과 눈에 보이는 촉이 일치한다.

@@ -44,10 +44,13 @@ param(
     [switch]$All,
 
     # 실제로 고칠 시트. 기본값은 Q 1단/2단 둘뿐이다.
-    [string[]]$Sheets = @(
-        'vfx_sword_slam_impact_6frames_1536x256.png',
-        'vfx_sword_slam_forward_burst_6frames_1536x256.png'
-    ),
+    #
+    # 수정(2026-09-14) — 기본값을 비웠다. 옛 기본값: 'vfx_sword_slam_impact_6frames_1536x256.png',
+    # 'vfx_sword_slam_forward_burst_6frames_1536x256.png'.
+    # 그 두 파일은 새 캐릭터용 그림으로 바뀌었고 NormalizeVfxStrip.ps1이 <바닥 타원·균열선의 가운데>를
+    # 지면선에 맞춰 만든다. 이 도구는 기준을 "가장 넓은 행 + 여백"으로 다시 잡고 .meta 피벗까지 고치므로,
+    # 기본값 그대로 -Apply를 붙이면 맞춰 둔 자리를 에러 없이 옮겨버린다. 쓰려면 -Sheets로 이름을 직접 준다.
+    [string[]]$Sheets = @(),
 
     # 기준 바닥선을 잘리지 않는 하한에서 이만큼 아래로 띄운다.
     # 하한에 딱 붙이면 가장 높은 프레임이 셀 맨 위 줄에 닿아서, 나중에 그림을 조금만
