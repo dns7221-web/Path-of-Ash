@@ -46,6 +46,14 @@ public static class AshVfxSpriteSlicer
         (Folder, "vfx_ember_arrow_flight_6frames_1536x256", "vfx_arrow_flight", 6, PivotKind.Center),
         (Folder, "vfx_ember_arrow_impact_6frames_1536x256", "vfx_arrow_impact", 6, PivotKind.Center),
         (Folder, "vfx_kings_ember_6frames_1536x256", "vfx_kings_ember", 6, PivotKind.Ground),
+
+        // 추가 생성(2026-09-13) — 새 캐릭터의 궁극기(왕의 잿불) 시트. 옛 시트는 보스 잿불 파도가 계속 쓴다.
+        //
+        // 피벗이 옛 시트와 <b>반대(가운데)</b>인 이유: 새 그림은 시전자 발밑을 중심으로 사방으로 퍼지는
+        // 원형 폭발이다. 판정도 발밑 중심 반경 14라, 지면선 피벗이면 폭발 전체가 머리 위로 떠서 판정 원과 어긋난다.
+        // 접두어를 옛 시트와 같게 둔 이유: 다시 자를 때 이름으로 기존 스프라이트 ID를 찾으므로,
+        // 이름이 같아야 KingsEmber 프리팹의 참조가 끊기지 않는다.
+        (Folder, "vfx_kings_ember_crown_6frames_1536x256", "vfx_kings_ember", 6, PivotKind.Center),
         (Folder, "vfx_ash_staff_ground_spell_6frames_1536x256", "vfx_staff_spell", 6, PivotKind.Ground),
         (Folder, "vfx_sword_slam_impact_6frames_1536x256", "vfx_slam_impact", 6, PivotKind.Ground),
         (Folder, "vfx_sword_slam_forward_burst_6frames_1536x256", "vfx_slam_burst", 6, PivotKind.Ground),

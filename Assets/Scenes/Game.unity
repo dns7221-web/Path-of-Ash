@@ -16339,7 +16339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RunManager
   result: {fileID: 11400000, guid: ec4fe98e3d6a69441af3df5dd2a26ab6, type: 2}
-  resultDelaySeconds: 0.6
+  resultDelaySeconds: 1.4
   debugDeathKey: 25
 --- !u!4 &915154374
 Transform:
