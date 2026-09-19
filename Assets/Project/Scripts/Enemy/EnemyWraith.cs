@@ -75,6 +75,23 @@ public class EnemyWraith : EnemyBase
              "비어 있어도 돌진은 멀쩡히 돈다 — 자국 없이 몸만 튀어 나간다.")]
     [SerializeField] private GameObject chargeLaunchEffectPrefab;
 
+    // 추가 생성(2026-09-19, 망령-1 예비동작 불씨) — 예비동작을 시작할 때 몸 앞에 만드는 모으기 이펙트.
+    // 예고선이 "어디로"를 보여준다면 이것은 "곧"을 보여준다. 0.4초 동안 불씨가 앞발로 빨려 든다.
+    [Header("파티클 (없어도 동작한다)")]
+    [Tooltip("예비동작을 시작할 때 몸 앞에 만들 모으기 이펙트(WraithWindupGather). 비우면 안 만든다.")]
+    [SerializeField] private GameObject windupEffectPrefab;
+
+    [Tooltip("모으기 이펙트를 발밑에서 화면 위로 띄울 높이(유닛). 앞발·가슴 높이.")]
+    [SerializeField, Min(0f)] private float windupEffectHeight = 2.6f;
+
+    [Tooltip("모으기 이펙트를 돌진 방향으로 밀 거리(유닛).")]
+    [SerializeField, Min(0f)] private float windupEffectForward = 1.2f;
+
+    // 추가 생성(2026-09-19, 망령-2 돌진 길 불씨) — 돌진하는 동안만 방출을 켜는 바닥 불씨(자식).
+    // 0.34초에 8유닛을 가서 몸만 보면 어디를 지나갔는지 안 남는다. 플레이어 대시 불씨(DashTrail)와 같은 방식이다.
+    [Tooltip("돌진하는 동안만 방출을 켤 바닥 불씨(자식, 평소에는 방출이 꺼져 있다). 비우면 안 남긴다.")]
+    [SerializeField] private ParticleSystem chargeTrail;
+
     /// <summary>
     /// 추가 생성(2026-09-15) — 출발 자국이 스스로 안 사라질 때 강제로 지우기까지의 시간(초).
     /// 지금 프리팹은 6프레임 / 16fps = 0.375초 뒤 스스로 지운다. 반복 재생으로 잘못 설정된 프리팹을 꽂았을 때
@@ -107,6 +124,37 @@ public class EnemyWraith : EnemyBase
 
         // 추가 생성(2026-09-15) — 예비동작 중에 풀로 돌아가면(방 정리 등) 선이 켜진 채 다음 방에 나온다.
         HideChargeTelegraph();
+
+        // 추가 생성(2026-09-19) — 풀에서 다시 나올 때 지난 돌진의 불씨가 남아 있으면 안 된다.
+        SetChargeTrail(false, clear: true);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-19, 망령-2) — 돌진 길 불씨의 방출만 켜고 끈다. 시스템은 계속 돌고 있어서, 끄면 이미 깔린 불씨는
+    /// 제 수명대로 꺼진다. clear면 깔린 불씨까지 지운다(풀로 돌아갈 때).
+    /// </summary>
+    private void SetChargeTrail(bool on, bool clear = false)
+    {
+        if (chargeTrail == null) return;
+
+        ParticleSystem.EmissionModule emission = chargeTrail.emission;
+        emission.enabled = on;
+
+        if (clear) chargeTrail.Clear(true);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-19, 망령-1) — 몸 앞에 모으기 이펙트를 만든다. 자식이 아니라 월드에 둔다 — 예비동작 동안 몸은
+    /// 제자리라 따라갈 일이 없고, 수명(0.4초 안팎)은 프리팹의 Stop Action이 정리한다.
+    /// </summary>
+    private void SpawnWindupEffect()
+    {
+        if (windupEffectPrefab == null) return;
+
+        Vector3 position = transform.position
+                           + (Vector3)(chargeDirection * windupEffectForward)
+                           + Vector3.up * windupEffectHeight;
+        Instantiate(windupEffectPrefab, position, Quaternion.identity);
     }
 
     private void Update()
@@ -256,6 +304,9 @@ public class EnemyWraith : EnemyBase
         // 반드시 UpdateFacing 뒤에 부른다(길이를 그 상자에서 잰다).
         // 수정(2026-09-15) — 이제 상자를 바꾸는 것은 좌우 반전이 아니라 바로 위의 회전이다. 순서 조건은 그대로다.
         ShowChargeTelegraph();
+
+        // 추가 생성(2026-09-19, 망령-1) — 선과 같은 순간에 불씨를 모은다. 방향이 고정된 뒤라 몸 앞을 정확히 안다.
+        SpawnWindupEffect();
     }
 
     private void BeginCharge()
@@ -269,6 +320,9 @@ public class EnemyWraith : EnemyBase
 
         // 추가 생성(2026-09-15) — 선이 걷히는 바로 그 자리에 출발 자국을 남긴다. 경고(선)가 사건(자국)으로 바뀌는 순간이다.
         SpawnLaunchEffect();
+
+        // 추가 생성(2026-09-19, 망령-2) — 몸이 미끄러지는 동안만 바닥 불씨를 뿌린다.
+        SetChargeTrail(true);
     }
 
     /// <summary>
@@ -298,6 +352,9 @@ public class EnemyWraith : EnemyBase
     {
         state = State.Cooldown;
         stateTimer = cooldownSeconds;
+
+        // 추가 생성(2026-09-19) — 돌진이 끝났다. 걷는 동안에도 뿌리면 발자국이 아니라 불길이 된다.
+        SetChargeTrail(false);
         chargeHitbox?.Deactivate();
     }
 
@@ -497,6 +554,9 @@ public class EnemyWraith : EnemyBase
     protected override void OnStaggered()
     {
         state = State.Hit;
+
+        // 추가 생성(2026-09-19) — 돌진 도중 맞아 멈췄으면 불씨도 멈춘다.
+        SetChargeTrail(false);
         stateTimer = HitSeconds;
         chargeHitbox?.Deactivate();
 
@@ -507,6 +567,9 @@ public class EnemyWraith : EnemyBase
     protected override void OnDeath()
     {
         state = State.Dead;
+
+        // 추가 생성(2026-09-19) — 돌진 도중 죽었으면 불씨도 멈춘다(깔린 것은 제 수명대로 꺼진다).
+        SetChargeTrail(false);
         chargeHitbox?.Deactivate();
 
         // 추가 생성(2026-09-15) — 죽으면 오지 않을 돌진이다.

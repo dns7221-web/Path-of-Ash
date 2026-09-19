@@ -82,6 +82,19 @@ public class EnemyMarksman : EnemyBase
              "몸통을 확실히 지난다.")]
     [SerializeField, Min(0f)] private float launchHeight = 1f;
 
+    // 추가 생성(2026-09-17, 사수 화살 높이) — 화살 <b>그림</b>이 나가는 높이.
+    //
+    // launchHeight(1)는 판정 높이라 그대로 둔다 — 아래 FireArrow 주석대로 플레이어 몸통 콜라이더(0~1.25)를 지나야 맞는다.
+    // 그런데 그림도 그 높이에 있어서 화살이 활이 아니라 발목에서 나갔다(사용자 지적). 조준 마지막 프레임의 활 가운데가
+    // 발에서 약 4.65유닛 위라, 그림만 그 근처로 올린다(Projectile.SetVisualLift). 판정과 그림의 차이만큼 띄운다.
+    [Tooltip("화살 그림이 나가는 화면 높이(유닛). 활 가운데에 맞춘다. 판정 높이(Launch Height)와 따로 움직인다.")]
+    [SerializeField, Min(0f)] private float bowHeight = 4.5f;
+
+    // 추가 생성(2026-09-19, 사수-1 조준 불씨) — 조준을 시작할 때 화살촉 자리(활)에 만드는 모으기 이펙트.
+    // 활이 작아서 0.55초 조준이 잘 안 읽혔다. 화살이 나갈 자리로 불씨가 모이면 "저기서 나온다"가 먼저 보인다.
+    [Tooltip("조준을 시작할 때 화살촉 자리에 만들 모으기 이펙트(MarksmanAimGather). 비우면 안 만든다.")]
+    [SerializeField] private GameObject aimEffectPrefab;
+
     [Tooltip("화살 한 대의 피해량.")]
     [SerializeField, Min(0)] private int arrowDamage = 1;
 
@@ -255,6 +268,16 @@ public class EnemyMarksman : EnemyBase
 
         UpdateFacing(shotDirection.x);
         Animator?.SetTrigger(AttackHash);
+
+        // 추가 생성(2026-09-19, 사수-1) — 방향이 고정된 직후, 화살 그림이 나갈 자리(활 높이)에 불씨를 모은다.
+        // 자리 계산은 FireArrow의 발사 원점과 같고 높이만 그림 높이(bowHeight)다. 조준 동안 몸은 제자리라 월드에 둔다.
+        if (aimEffectPrefab != null)
+        {
+            Vector3 bow = transform.position
+                          + (Vector3)(shotDirection * forwardOffset)
+                          + new Vector3(0f, bowHeight, 0f);
+            Instantiate(aimEffectPrefab, bow, Quaternion.identity);
+        }
     }
 
     private void BeginShoot()
@@ -289,6 +312,9 @@ public class EnemyMarksman : EnemyBase
                          + new Vector3(0f, launchHeight, 0f);
 
         var arrow = Instantiate(arrowPrefab, origin, Quaternion.identity);
+
+        // 추가 생성(2026-09-17) — 판정은 launchHeight에 두고 그림만 활 높이로 띄운다. Launch 전에 넣어야 회전 뒤에 적용된다.
+        arrow.SetVisualLift(Mathf.Max(0f, bowHeight - launchHeight));
         arrow.Launch(shotDirection, arrowDamage);
     }
 

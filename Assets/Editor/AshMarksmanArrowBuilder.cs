@@ -60,6 +60,10 @@ public static class AshMarksmanArrowBuilder
         GameObject instance = Object.Instantiate(source);
         try
         {
+            // 추가 생성(2026-09-17, 플레이어 파티클) — 원본(플레이어 화살)의 불티 꼬리를 걷어낸다.
+            // 사수 화살의 곁들임은 몬스터 파티클 작업에서 따로 정한다.
+            AshPlayerParticleBuilder.StripGarnish(instance);
+
             instance.name = "AshMarksmanArrow";
 
             // 1. 레이어 — 플레이어 공격이 아니라 적 공격이다.
@@ -73,6 +77,9 @@ public static class AshMarksmanArrowBuilder
 
             // 4. 속도 — 플레이어의 화살보다 느리게.
             ApplySpeed(instance);
+
+            // 5. 추가 생성(2026-09-17) — 그림을 자식으로 옮긴다. 판정은 발치 높이에 두고 그림만 활 높이로 띄우기 위해서다.
+            MoveVisualToChild(instance);
 
             PrefabUtility.SaveAsPrefabAsset(instance, OutputPath, out bool saved);
             if (!saved)
@@ -88,6 +95,9 @@ public static class AshMarksmanArrowBuilder
 
         AssetDatabase.SaveAssets();
         ConnectToMarksman();
+
+        // 추가 생성(2026-09-19) — 새로 구운 화살에는 곁들임이 없다(위에서 원본 것을 걷어냈다). 사수용 꼬리와 부서짐을 다시 넣는다.
+        AshMonsterParticleBuilder.EnsureMarksmanArrow();
     }
 
     /// <summary>
@@ -152,6 +162,49 @@ public static class AshMarksmanArrowBuilder
             frames.GetArrayElementAtIndex(0).objectReferenceValue = arrowSprite;
         }
 
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17, 사수 화살 높이) — 루트의 SpriteRenderer·SpriteFrameAnimator를 자식 "Visual"로 옮기고
+    /// <see cref="Projectile"/>의 visual 칸에 연결한다.
+    ///
+    /// 왜 옮기나: 사수는 활 높이(발에서 약 4.5유닛)에서 쏘는 그림인데, 판정은 플레이어 몸 콜라이더가 있는 발치(1유닛)로
+    /// 날아야 맞는다. 그림이 루트에 있으면 둘이 같은 높이일 수밖에 없어서 화살이 발목에서 나갔다.
+    /// 자식으로 옮기면 <see cref="EnemyMarksman"/>이 그림만 띄운다(Projectile.SetVisualLift).
+    ///
+    /// 컴포넌트는 오브젝트 사이로 옮길 수 없어서, 자식에 새로 붙이고 값을 통째로 복사한 뒤 루트의 것을 지운다.
+    /// SpriteFrameAnimator가 SpriteRenderer를 요구하므로 지우는 순서는 애니메이터가 먼저다.
+    /// </summary>
+    private static void MoveVisualToChild(GameObject instance)
+    {
+        var projectile = instance.GetComponent<Projectile>();
+        var renderer = instance.GetComponent<SpriteRenderer>();
+        if (projectile == null || renderer == null)
+        {
+            Debug.LogWarning("[사수 화살] 루트에 Projectile 또는 SpriteRenderer가 없어 그림을 옮기지 않았다. 화살 그림이 발치 높이로 날아간다.");
+            return;
+        }
+
+        var visual = new GameObject("Visual");
+        visual.layer = instance.layer;
+        visual.transform.SetParent(instance.transform, false);
+
+        var newRenderer = visual.AddComponent<SpriteRenderer>();
+        EditorUtility.CopySerialized(renderer, newRenderer);
+
+        var animator = instance.GetComponent<SpriteFrameAnimator>();
+        if (animator != null)
+        {
+            var newAnimator = visual.AddComponent<SpriteFrameAnimator>();
+            EditorUtility.CopySerialized(animator, newAnimator);
+            Object.DestroyImmediate(animator);
+        }
+
+        Object.DestroyImmediate(renderer);
+
+        var serialized = new SerializedObject(projectile);
+        serialized.FindProperty("visual").objectReferenceValue = visual.transform;
         serialized.ApplyModifiedPropertiesWithoutUndo();
     }
 

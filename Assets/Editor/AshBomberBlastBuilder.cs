@@ -68,6 +68,10 @@ public static class AshBomberBlastBuilder
         GameObject instance = Object.Instantiate(source);
         try
         {
+            // 추가 생성(2026-09-17, 플레이어 파티클) — 원본(KingsEmber)에 곁들인 R의 불티 고리·재 비를 걷어낸다.
+            // 안 걷어내면 자폭병이 터질 때마다 화면 전체에 재가 내린다.
+            AshPlayerParticleBuilder.StripGarnish(instance);
+
             instance.name = "BomberBlast";
             instance.transform.localScale = Vector3.one * BaseScale;
 
@@ -87,6 +91,9 @@ public static class AshBomberBlastBuilder
 
         AssetDatabase.SaveAssets();
         ConnectToBomber();
+
+        // 추가 생성(2026-09-19) — 새로 구운 폭발에는 곁들임이 없다. 파편·재·잔불을 다시 넣는다.
+        AshMonsterParticleBuilder.EnsureBlast();
     }
 
     /// <summary>슬라이스된 폭발 프레임을 순서대로 읽는다.</summary>

@@ -227,6 +227,9 @@ public class EnemyBomber : EnemyBase
         stateTimer = fuseSeconds;
 
         Animator?.SetTrigger(AttackHash);
+
+        // 추가 생성(2026-09-17, 자폭병-1·2) — 점화 모션과 같은 순간에 경고 링과 불똥을 시작한다.
+        PlayFuseParticles();
     }
 
     private void UpdateTimedState()
@@ -260,6 +263,9 @@ public class EnemyBomber : EnemyBase
     {
         exploded = true;
         state = State.Dead;
+
+        // 추가 생성(2026-09-17) — 경고는 끝났다. 폭발 그림의 링이 같은 반경을 이어받는다.
+        StopFuseParticles();
 
         // 이펙트를 판정보다 먼저 만든다. 맞은 쪽이 죽으면서 무슨 연출을 하든 폭발은 이미
         // 나와 있어야 한다 — 판정 결과에 따라 이펙트가 달라지면 플레이어는 "맞았을 때만
@@ -326,6 +332,66 @@ public class EnemyBomber : EnemyBase
     /// </summary>
     protected override int DeathTriggerHash => exploded && hasSelfDestructMotion ? SelfDestructHash : DieHash;
 
+    /// <summary>추가 생성(2026-09-17) — 스스로 터져 죽으면 사망 재를 만들지 않는다. 폭발 파편과 재가 그 역할을 한다.</summary>
+    protected override bool SpawnsDeathEffect => !exploded;
+
+    // 추가 생성(2026-09-17, 자폭병-1·2) — 점화하는 동안만 도는 파티클(자식). 평소에는 멈춰 있다.
+    // 경고 링은 폭발 반경(explosionRadius) 원 위에 깔리고, 도화선 불똥은 머리에서 튄다. 둘 다 점화 시간 동안
+    // 방출이 점점 늘어나는 곡선을 갖고 있어서, 시스템 길이를 점화 시간에 맞춰 재생한다.
+    [Header("점화 파티클 (없어도 동작한다)")]
+    [Tooltip("폭발 반경 원 위에 깔리는 경고 불씨(자식). 반경은 Explosion Radius를 읽어 맞춘다.")]
+    [SerializeField] private ParticleSystem fuseRing;
+
+    [Tooltip("머리의 도화선에서 튀는 불똥(자식).")]
+    [SerializeField] private ParticleSystem fuseSparks;
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 점화 파티클을 처음부터 재생한다. 링의 반지름을 폭발 판정 반경에 맞춘다 —
+    /// 숫자를 파티클 쪽에 따로 적으면 반경을 고칠 때 링만 옛 크기로 남는다.
+    /// </summary>
+    private void PlayFuseParticles()
+    {
+        if (fuseRing != null)
+        {
+            ParticleSystem.ShapeModule shape = fuseRing.shape;
+            shape.radius = explosionRadius;
+        }
+
+        Replay(fuseRing);
+        Replay(fuseSparks);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 시스템 길이를 점화 시간으로 맞추고 처음부터 재생한다.
+    /// 방출량 곡선이 시스템 길이를 가로축으로 쓰므로, 길이가 점화 시간과 같아야 "터질 때 가장 촘촘"이 맞는다.
+    /// duration은 멈춘 상태에서만 바꿀 수 있어서 먼저 멈추고 비운다.
+    /// </summary>
+    private void Replay(ParticleSystem particles)
+    {
+        if (particles == null) return;
+
+        particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        ParticleSystem.MainModule main = particles.main;
+        main.duration = Mathf.Max(0.05f, fuseSeconds);
+        particles.Play(true);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 점화 파티클을 즉시 지운다. 터지는 순간에는 폭발 그림의 링이 경고 링을 대신하고,
+    /// 점화 중에 죽거나 풀로 돌아가면 다음에 나올 때 불씨가 남아 있으면 안 된다.
+    /// </summary>
+    private void StopFuseParticles()
+    {
+        if (fuseRing != null) fuseRing.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        if (fuseSparks != null) fuseSparks.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
+    /// <summary>추가 생성(2026-09-17) — 풀로 돌아갈 때 점화 파티클을 비운다.</summary>
+    protected override void OnDespawned()
+    {
+        StopFuseParticles();
+    }
+
     protected override void OnStaggered()
     {
         // 점화가 시작되면 맞아도 안 멈춘다.
@@ -345,6 +411,9 @@ public class EnemyBomber : EnemyBase
     protected override void OnDeath()
     {
         state = State.Dead;
+
+        // 추가 생성(2026-09-17) — 점화 중에 맞아 죽었으면 경고 링과 불똥을 거둔다.
+        StopFuseParticles();
 
         // 자폭으로 죽었으면 그림을 감춘다. 안 그러면 방금 터진 몸이 다시 나타나 무릎 꿇고
         // 무너지는 그림이 이어져서, 폭발과 앞뒤가 안 맞는다.
