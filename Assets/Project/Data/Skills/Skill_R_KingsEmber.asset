@@ -24,11 +24,18 @@ MonoBehaviour:
   requiresFullAshGauge: 1
   effectPrefab: {fileID: 8670208565340853328, guid: 525c98481831e624d8958e93af64a930, type: 3}
   effectForwardOffset: 2
+  effectHeight: 0
+  verticalSquash: 0.55
   effectLifetime: 1
   forwardDistance: 0
   radius: 14
+  verticalScale: 1
+  areaCenterOffset: {x: 0, y: 0}
   targetLayers:
     serializedVersion: 2
     m_Bits: 512
+  hitStopSeconds: 0.07
   castDelay: 0.5
   explodeDelay: 0.15
+  castEffectPrefab: {fileID: 7632445254580359906, guid: b9cd267f0f8d52c43889105a78197bdf, type: 3}
+  castEffectHeight: 2.6

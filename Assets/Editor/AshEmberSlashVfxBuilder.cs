@@ -81,6 +81,10 @@ public static class AshEmberSlashVfxBuilder
         GameObject instance = Object.Instantiate(source);
         try
         {
+            // 추가 생성(2026-09-17, 플레이어 파티클) — 원본(SlamImpact)의 곁들임(돌 파편·재 먼지)은 가져오지 않는다.
+            // 참격에 붙일 불티는 저장한 뒤 아래 EnsureGarnish가 따로 넣는다.
+            AshPlayerParticleBuilder.StripGarnish(instance);
+
             instance.name = "EmberSlash";
             instance.transform.localScale = Vector3.one * BaseScale;
 
@@ -100,6 +104,9 @@ public static class AshEmberSlashVfxBuilder
 
         AssetDatabase.SaveAssets();
         ConnectToSkill();
+
+        // 추가 생성(2026-09-17) — 새로 구운 프리팹에는 곁들임이 없다. 참격 불티(공격-1)를 다시 넣는다.
+        AshPlayerParticleBuilder.EnsureGarnish(OutputPath);
     }
 
     /// <summary>슬라이스된 궤적 프레임을 순서대로 읽는다.</summary>

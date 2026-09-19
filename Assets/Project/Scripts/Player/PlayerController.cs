@@ -104,6 +104,17 @@ public class PlayerController : MonoBehaviour
     [Tooltip("대시 이펙트를 발밑에서 화면 위로 띄울 높이(유닛). 줄기가 캐릭터 몸 뒤로 이어지게 맞춘다.")]
     [SerializeField, Min(0f)] private float dashEffectHeight = 1f;
 
+    // 추가 생성(2026-09-17, 대시 발자국 잔불) — 대시하는 동안 지나간 바닥에 불씨를 깐다.
+    //
+    // 출발점 자국(dashEffectPrefab)만으로는 "어디서 출발했는지"만 남고 "어디까지 갔는지"는 비어 있었다.
+    // 지나간 길에 불씨가 깔리면 11유닛을 피한 거리가 그대로 바닥에 보인다.
+    //
+    // 이펙트를 대시마다 새로 만들지 않고 플레이어 자식 하나를 켜고 끄는 이유: 불씨는 몸이 움직인 거리만큼
+    // 뿌려야 하는데(Rate over Distance — 유니티 내장), 그 거리를 아는 것은 몸에 붙어 따라다니는 방출기다.
+    // 불씨 자체는 월드 공간이라 몸이 지나가도 바닥에 남는다.
+    [Tooltip("대시하는 동안만 방출을 켤 파티클(플레이어 자식, 평소에는 방출이 꺼져 있다). 비우면 안 남긴다.")]
+    [SerializeField] private ParticleSystem dashTrail;
+
     /// <summary>
     /// 추가 생성 — 대시 이펙트가 스스로 안 사라질 때 강제로 지우기까지의 시간(초).
     /// 지금 프리팹은 6프레임 / 16fps = 0.375초 뒤 스스로 지운다. 루프로 잘못 설정된 프리팹을
@@ -307,6 +318,10 @@ public class PlayerController : MonoBehaviour
     {
         attackHitbox?.Deactivate();
 
+        // 추가 생성(2026-09-17) — 대시 도중 오브젝트가 꺼지면 대시 코루틴이 끄기 전에 멈춘다.
+        // 방출이 켜진 채로 남으면 다시 켜졌을 때 걷기만 해도 불씨가 깔린다.
+        SetDashTrail(false);
+
         if (health != null)
         {
             health.Damaged -= OnHealthDamaged;
@@ -472,10 +487,31 @@ public class PlayerController : MonoBehaviour
         // 추가 생성(대시 VFX) — 방향이 정해진 직후, 몸이 움직이기 전의 자리에 남긴다.
         SpawnDashEffect();
 
+        // 추가 생성(2026-09-17) — 몸이 미끄러지는 동안만 바닥 불씨를 뿌린다.
+        SetDashTrail(true);
+
         yield return new WaitForSeconds(dashDuration);
+
+        // 추가 생성(2026-09-17) — 대시가 끝나면 끈다. 걷는 동안에도 뿌리면 발자국이 아니라 불길이 된다.
+        SetDashTrail(false);
 
         if (actionState == ActionState.Dashing)
             actionState = ActionState.Normal;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17, 대시 발자국 잔불) — 바닥 불씨의 방출만 켜고 끈다.
+    ///
+    /// 파티클 시스템 자체는 계속 재생 중이고 방출(Emission)만 여닫는다. 시스템을 Stop/Play로 다루면
+    /// 대시가 끝날 때 아직 바닥에 남은 불씨까지 같이 지워지거나(Clear), 다시 켤 때 처음부터 새로 도는
+    /// 준비 시간이 끼어든다. 방출만 끄면 이미 깔린 불씨는 제 수명대로 꺼진다.
+    /// </summary>
+    private void SetDashTrail(bool on)
+    {
+        if (dashTrail == null) return;
+
+        ParticleSystem.EmissionModule emission = dashTrail.emission;
+        emission.enabled = on;
     }
 
     /// <summary>
@@ -553,6 +589,10 @@ public class PlayerController : MonoBehaviour
         // 상태를 Normal로 되돌리고, 죽은 캐릭터가 다시 걷는다.
         StopAllCoroutines();
         attackHitbox?.Deactivate();
+
+        // 추가 생성(2026-09-17) — 대시 도중에 죽으면 대시 코루틴이 끄기 전에 끊긴다. 여기서 꺼야
+        // 쓰러진 몸이 밀려나는 동안(넉백 등) 바닥 불씨가 계속 깔리지 않는다.
+        SetDashTrail(false);
 
         actionState = ActionState.Dead;
         moveInput = Vector2.zero;

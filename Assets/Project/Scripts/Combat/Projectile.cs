@@ -30,6 +30,11 @@ public class Projectile : MonoBehaviour
     [Tooltip("무언가를 맞혔을 때 화살촉 자리에 만들 이펙트. 비우면 아무것도 안 남긴다.")]
     [SerializeField] private GameObject impactEffectPrefab;
 
+    // 추가 생성(2026-09-19, 사수-3 화살 재 부서짐) — 사거리 끝에서 사라질 때 남길 이펙트.
+    // 아무것도 못 맞힌 화살이 허공에서 그냥 꺼지면 "사라졌다"가 아니라 "안 보이게 됐다"로 읽힌다. 비우면 예전처럼 조용히 사라진다.
+    [Tooltip("사거리 끝에서 사라질 때 화살촉 자리에 만들 이펙트. 비우면 아무것도 안 남긴다.")]
+    [SerializeField] private GameObject expireEffectPrefab;
+
     /// <summary>
     /// 추가 생성 — 명중 이펙트가 스스로 안 사라질 때 강제로 지우기까지의 시간(초).
     ///
@@ -39,8 +44,28 @@ public class Projectile : MonoBehaviour
     /// </summary>
     private const float ImpactEffectMaxLifetime = 2f;
 
+    // 추가 생성(2026-09-17, 사수 화살 높이) — 그림만 따로 띄울 자식.
+    //
+    // 이 게임의 y는 바닥 위치와 화면 높이를 겸한다. 판정(이 오브젝트의 콜라이더)은 몸 콜라이더가 있는 발치 높이로
+    // 날아야 같은 줄의 대상을 맞히는데, 그림까지 거기 있으면 화살이 활이 아니라 발목에서 나간다.
+    // 그림을 자식으로 두고 그것만 위로 올리면 판정은 그대로 두고 보이는 높이만 활에 맞출 수 있다.
+    [Tooltip("그림(SpriteRenderer)이 붙은 자식. 비우면 그림이 판정과 같은 자리에 있다(플레이어 화살).")]
+    [SerializeField] private Transform visual;
+
+    // 추가 생성(2026-09-17) — 그림을 판정 위로 띄울 화면 높이(유닛). 쏘는 쪽이 Launch 전에 넣는다.
+    private float visualLift;
+
     private Rigidbody2D body;
     private Vector2 direction = Vector2.right;
+
+    /// <summary>
+    /// 추가 생성(2026-09-17, 사수 화살 높이) — 그림을 판정보다 화면에서 얼마나 위에 그릴지 정한다.
+    /// <see cref="Launch"/>보다 먼저 부른다. 그림 자식(visual)이 없으면 아무 일도 안 한다.
+    /// </summary>
+    public void SetVisualLift(float lift) => visualLift = lift;
+
+    /// <summary>추가 생성(2026-09-17) — 화면에서 화살이 보이는 자리. 명중 이펙트를 여기에 놓는다.</summary>
+    private Vector3 VisualPosition => visual != null ? visual.position : transform.position;
 
     private void Awake()
     {
@@ -80,7 +105,9 @@ public class Projectile : MonoBehaviour
     {
         if (impactEffectPrefab == null) return;
 
-        var effect = Instantiate(impactEffectPrefab, transform.position, transform.rotation);
+        // 수정(2026-09-17) — transform.position → VisualPosition. 그림을 띄운 화살(사수)은 보이는 촉 자리에서 터져야 한다.
+        // 그림 자식이 없는 화살(플레이어)은 두 값이 같다.
+        var effect = Instantiate(impactEffectPrefab, VisualPosition, transform.rotation);
         Destroy(effect, ImpactEffectMaxLifetime);
     }
 
@@ -102,6 +129,12 @@ public class Projectile : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
+        // 추가 생성(2026-09-17, 사수 화살 높이) — 회전을 정한 뒤에 그림을 화면 위쪽(월드 +y)으로 띄운다.
+        // 로컬 좌표로 바꿔 넣는 이유: 화살이 날아가는 방향으로 돌아 있어서, 로컬 +y로 올리면 왼쪽으로 쏠 때는
+        // 아래로, 위로 쏠 때는 옆으로 밀린다. 월드 +y를 이 오브젝트 기준으로 되돌려야 어느 방향이든 위로 뜬다.
+        if (visual != null)
+            visual.localPosition = transform.InverseTransformVector(new Vector3(0f, visualLift, 0f));
+
         if (hitbox != null)
         {
             hitbox.SetDamage(damage);
@@ -110,7 +143,29 @@ public class Projectile : MonoBehaviour
 
         // 사거리를 거리가 아니라 시간으로 재는 이유: 속도를 바꾸면 사거리가 같이 따라와서
         // 두 값을 따로 맞출 필요가 없다.
-        Destroy(gameObject, lifetime);
+        //
+        // 수정(2026-09-17, 화살 불티 꼬리) — Destroy(gameObject, lifetime) → Invoke(Expire).
+        // 예약된 Destroy는 끼어들 틈이 없어서, 화살에 붙은 꼬리 파티클이 화살과 같이 한순간에 사라졌다.
+        // 사라지기 직전에 꼬리를 떼어 내려면 지우는 순간을 이 컴포넌트가 쥐고 있어야 한다.
+        // Invoke도 Destroy의 지연처럼 게임 시간(timeScale)으로 세므로 사거리는 그대로다.
+        Invoke(nameof(Expire), lifetime);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 사거리 끝. 곁들인 파티클(꼬리)을 월드에 남기고 화살만 지운다.
+    /// 꼬리는 남은 불티가 다 꺼지면 스스로 사라진다(<see cref="ParticleGarnish"/>).
+    /// </summary>
+    private void Expire()
+    {
+        // 추가 생성(2026-09-19, 사수-3) — 보이는 촉 자리에서 부서진다. 명중 이펙트와 같은 안전 수명을 건다.
+        if (expireEffectPrefab != null)
+        {
+            var effect = Instantiate(expireEffectPrefab, VisualPosition, transform.rotation);
+            Destroy(effect, ImpactEffectMaxLifetime);
+        }
+
+        ParticleGarnish.ReleaseAll(gameObject);
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()

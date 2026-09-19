@@ -58,6 +58,10 @@ public static class AshBossWaveBuilder
         GameObject instance = Object.Instantiate(source);
         try
         {
+            // 추가 생성(2026-09-17, 플레이어 파티클) — 원본(플레이어 화살)의 불티 꼬리를 걷어낸다.
+            // 잿불 파도는 느리고 크게 날아가는 그림이라 화살용 꼬리가 맞지 않는다.
+            AshPlayerParticleBuilder.StripGarnish(instance);
+
             instance.name = "BossEmberWave";
 
             // 1. 레이어 — 플레이어 공격이 아니라 적 공격이다.
