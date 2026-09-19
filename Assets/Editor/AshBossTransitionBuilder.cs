@@ -273,6 +273,10 @@ public static class AshBossTransitionBuilder
         GameObject instance = Object.Instantiate(source);
         try
         {
+            // 추가 생성(2026-09-17, 플레이어 파티클) — 원본(KingsEmber)에 곁들인 R의 불티 고리·재 비를 걷어낸다.
+            // 전환 연출의 재는 BossTransitionAsh가 따로 맡는다.
+            AshPlayerParticleBuilder.StripGarnish(instance);
+
             instance.name = effect.output;
             instance.transform.localScale = Vector3.one * effect.scale;
 

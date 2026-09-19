@@ -1,0 +1,43 @@
+[한 번에 뽑는 판 — 이 블록 전체를 붙여 넣는다]
+첨부: references/01_boss_phase2_idle.png (보스 정체성), 04_broken_crown_relic.png (왕관), 02_boss_phase2_slam_motion.png (내려찍기 자세), 05_palette.png (색)
+
+Use case: identity-preserve cinematic cut-in. A 4.5-second 16:9 video for the boss ULTIMATE of a 2D dark-fantasy pixel-art action game. The game pauses and plays this clip full screen, then cuts back to gameplay on the final white frame.
+
+Reference images:
+- Image 1 is the boss. Copy her identity exactly: the true form of the Ash King, a tall silver-haired woman with very long straight silver-white hair and bangs, calm glowing amber-gold eyes, pale skin, dark charcoal plate armor with pauldrons and a small glowing ember cross on the chest, a long tattered charcoal cloak and skirt whose edges crumble into ash, thin ember-orange cracks glowing across the armor, and a FLOATING CROWN of five dark iron spikes hovering in an arc above her head with ember-glowing tips. Her weapon is a massive serrated greatsword of cracked charcoal-black stone with jagged teeth along the edge and molten ember-orange cracks running through the blade.
+- Image 2 is the broken crown: a heavy dark iron crown with tall spikes, one side shattered away, glowing lava cracks. In this video its missing pieces return and it becomes whole.
+- Image 3 shows her sword-slam motion (sword raised behind, then a heavy downward strike that bursts into ember light). Use it for the pose in shots 3 and 4.
+- Image 4 is the only allowed palette.
+
+Art direction: detailed hi-bit anime pixel art in motion, matching image 1 exactly - crisp square pixels on a consistent pixel grid, dark outlines, 2-3 hard shade steps, no antialiasing, no smooth painterly gradients, no photorealism, no 3D render look. Korean/Japanese subculture action-RPG boss: cool, regal, overwhelming. She is majestic and silent, not screaming. Dark ruined throne-hall background in deep charcoal, almost black, lit only by her embers.
+
+Shots (one continuous clip, hard cuts between shots):
+0.0-1.2s  SHOT 1 - CROWN: extreme close-up of the broken iron crown floating in black darkness. Its lava cracks ignite one by one. Four missing crown shards fly in from the edges of the frame, trailing embers, and lock into place with bright sparks. The crown becomes whole and glows from inside.
+1.2-2.4s  SHOT 2 - THE QUEEN: medium shot from a low angle. The completed crown rises and becomes the floating crown of five spikes above her head; the spike tips ignite. She slowly opens her amber eyes. Ash rises around her in a slow spiral; her silver hair and cloak lift in a hot updraft.
+2.4-3.4s  SHOT 3 - RAISE: wide low-angle full-body shot. She lifts the serrated greatsword high overhead with both hands. Embers and ash spiral into the blade; every crack in the blade and armor blazes brighter. A moment of stillness at the top of the swing.
+3.4-4.5s  SHOT 4 - SLAM: she slams the greatsword down toward the camera and the ground. The floor cracks open in a ring of molten light and a shockwave of white-hot fire rushes outward and fills the entire frame. The last 0.4 seconds are pure solid white-hot (#FFF2C0), no image.
+
+Camera: cinematic but readable. Slow push-in on shot 1, low angle on shots 2-3, a sharp push toward the blade on shot 4. No shaky handheld camera, no fisheye.
+
+Palette (strict): charcoal #1A1718, ash gray #4A4648, deep ember #8A2A10, ember orange #F06000, amber #FFB000, white-hot #FFF2C0, plus her silver-white hair and pale skin. No green, no blue, no purple anywhere. The only light sources are embers and fire.
+
+Format: 16:9, 1920x1080, 30 fps, exactly 4.5 seconds, no loop. Full-frame image with no letterbox bars (the game adds its own black bars). No text, no subtitles, no title, no logo, no watermark, no UI, no health bars, no frame border.
+
+Audio: no music and no voice. A deep low rumble under shot 1, crackling fire in shots 2-3, and one heavy impact boom with a fire roar at the slam in shot 4.
+
+
+[그림을 못 올릴 때 — 글만으로 쓰는 판: 위 판의 "Reference images:" 블록을 아래 블록으로 바꾸고, 본문의 "Use it for the pose..." 줄은 지운다]
+Boss design (no reference images - follow this description exactly):
+- The boss is the true form of the Ash King: a tall silver-haired woman with very long straight silver-white hair and bangs, calm glowing amber-gold eyes and pale skin. She wears dark charcoal plate armor with pauldrons and a small glowing ember cross on the chest, and a long tattered charcoal cloak and skirt whose ragged edges crumble into ash. Thin ember-orange cracks glow across her armor. A FLOATING CROWN of five dark iron spikes hovers in an arc above her head, each spike tip glowing ember orange.
+- Her weapon is a massive serrated greatsword, as tall as she is, made of cracked charcoal-black stone with jagged teeth along the edge and molten ember-orange cracks running through the blade.
+- The broken crown in shot 1 is a heavy dark iron crown with tall spikes and small riveted diamonds on its band; one side is shattered away and the break glows with lava cracks. In this video its missing pieces return and it becomes whole.
+- Her slam: she lifts the sword high behind her head with both hands, then brings it down in one heavy strike that bursts into ember light and shards of ash.
+
+[샷별로 따로 뽑는 판 — 한 번에 잘 안 나올 때. 네 개를 뽑아 이어 붙인다]
+공통으로 앞에 붙일 것:
+Detailed hi-bit anime pixel art video, crisp square pixels, no antialiasing, no painterly gradients. Dark ruined throne hall, almost black, lit only by embers. Strict palette: charcoal #1A1718, ash gray #4A4648, deep ember #8A2A10, ember orange #F06000, amber #FFB000, white-hot #FFF2C0, silver-white hair, pale skin. No green, blue or purple. 16:9, 1920x1080, 30 fps. No text, no UI, no letterbox, no watermark. Keep the boss identical to the reference image.
+
+샷 1 (1.2초): Extreme close-up of a broken dark iron crown with tall spikes floating in darkness. Its lava cracks ignite one by one; four missing shards fly in from the frame edges trailing embers and lock into place with bright sparks; the crown becomes whole and glows from inside. Slow push-in.
+샷 2 (1.2초): Low-angle medium shot of the silver-haired Ash King (reference). A floating crown of five dark iron spikes above her head ignites at the tips. She slowly opens her glowing amber eyes; ash spirals up around her; her long silver hair and tattered cloak lift in a hot updraft.
+샷 3 (1.0초): Wide low-angle full-body shot. She raises her massive serrated charcoal greatsword with molten ember cracks high overhead with both hands; embers spiral into the blade and every crack blazes brighter; a moment of stillness at the top.
+샷 4 (1.1초): She slams the greatsword down toward the camera; the floor cracks open in a ring of molten light and a shockwave of white-hot fire fills the entire frame, ending on 0.4 seconds of solid white-hot #FFF2C0.

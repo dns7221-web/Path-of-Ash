@@ -59,7 +59,14 @@ public class SpriteFrameAnimator : MonoBehaviour
                 index = frames.Length - 1;
                 spriteRenderer.sprite = frames[index];
 
-                if (destroyWhenFinished) Destroy(gameObject);
+                if (destroyWhenFinished)
+                {
+                    // 추가 생성(2026-09-17, 플레이어 파티클) — 곁들인 파티클을 먼저 월드로 떼어 낸다.
+                    // 같이 지우면 그림이 끝나는 순간 불티까지 한꺼번에 사라져 여운이 안 남는다.
+                    // 곁들임이 없는 이펙트에서는 아무 일도 하지 않는다.
+                    ParticleGarnish.ReleaseAll(gameObject);
+                    Destroy(gameObject);
+                }
                 enabled = false;
                 return;
             }

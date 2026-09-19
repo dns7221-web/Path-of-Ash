@@ -219,6 +219,7 @@ MonoBehaviour:
   deathDespawnSeconds: 1.1
   animator: {fileID: 1779916553267905681}
   spriteRenderer: {fileID: 3278710789459643274}
+  deathEffectPrefab: {fileID: 2513328310284607378, guid: b22c73293f275a54a9869c0a2f3888ed, type: 3}
   preferredRange: 12
   retreatDistance: 6
   rangeTolerance: 2
@@ -231,4 +232,6 @@ MonoBehaviour:
   arrowPrefab: {fileID: 9076789602913453292, guid: 7bac3705ce71ef249a1e4eb354ff786d, type: 3}
   forwardOffset: 2
   launchHeight: 1
+  bowHeight: 4.5
+  aimEffectPrefab: {fileID: 6130861334597070137, guid: f072c6132a99c5b4f95f0046759034b0, type: 3}
   arrowDamage: 1

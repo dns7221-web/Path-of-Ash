@@ -129,6 +129,17 @@ public abstract class EnemyBase : MonoBehaviour
     /// </summary>
     protected virtual int DeathTriggerHash => DieHash;
 
+    // 추가 생성(2026-09-17, 공통-1 사망 재 흩날림) — 쓰러질 때 발밑에 만드는 이펙트.
+    // 세 몬스터의 사망 모션 끝이 모두 잿더미라, 처치의 마무리를 "재가 흩어진다"로 한 번 더 보여준다.
+    // 자식이 아니라 월드에 놓는다 — 시체는 잠시 뒤 풀로 돌아가는데 재는 그 뒤에도 흩날려야 한다.
+    [Tooltip("쓰러질 때 발밑에 만들 이펙트(재 흩날림). 수명은 프리팹의 Stop Action이 정리한다. 비우면 안 만든다.")]
+    [SerializeField] private GameObject deathEffectPrefab;
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 이번 죽음에 사망 재를 만들지. 자폭병이 스스로 터져 죽을 때는 폭발이 대신하므로 false.
+    /// </summary>
+    protected virtual bool SpawnsDeathEffect => true;
+
     // ── 수명 ──────────────────────────────────────────────────────────────
 
     protected virtual void Awake()
@@ -294,6 +305,11 @@ public abstract class EnemyBase : MonoBehaviour
         animator?.SetTrigger(DeathTriggerHash);
 
         OnDeath();
+
+        // 추가 생성(2026-09-17) — OnDeath 뒤에 묻는다. 자폭병은 그 전에 "스스로 터졌는가"를 정해 둔다.
+        if (deathEffectPrefab != null && SpawnsDeathEffect)
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+
         StartCoroutine(RequestDespawnAfterDeath());
     }
 

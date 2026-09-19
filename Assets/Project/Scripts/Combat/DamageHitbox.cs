@@ -43,8 +43,19 @@ public class DamageHitbox : MonoBehaviour
     /// 두 판정이 조용히 갈라진다. 걸러진 결과만 밖으로 알리면 규칙은 여전히 한 곳에 있다.
     ///
     /// 무엇을 보여줄지는 듣는 쪽이 정한다. 검(플레이어)과 돌진(적)은 지금 듣는 곳이 없어서 아무 일도 없다.
+    /// 수정(2026-09-17) — 검은 이제 아래 <see cref="HitLandedAt"/>로 듣는다(<see cref="HitSparkSpawner"/>). 돌진은 그대로다.
     /// </summary>
     public event System.Action<Health> HitLanded;
+
+    /// <summary>
+    /// 추가 생성(2026-09-17, 기본 공격 명중 불똥) — <see cref="HitLanded"/>와 같은 순간에, 맞은 자리를 같이 알린다.
+    /// 두 번째 인자는 맞은 콜라이더에서 이 판정의 중심에 가장 가까운 점(월드 좌표)이다.
+    ///
+    /// 왜 따로 여는가: 불똥을 맞은 자리에 놓으려면 <b>어느 콜라이더에 닿았는지</b>가 필요한데, 그걸 아는 곳은
+    /// 트리거를 받은 여기뿐이다. 듣는 쪽이 Health에서 콜라이더를 다시 찾으면 감지용 트리거 같은 엉뚱한 것을
+    /// 집을 수 있다. 기존 HitLanded는 화살(Projectile)이 쓰고 있어 모양을 바꾸지 않고 옆에 더했다.
+    /// </summary>
+    public event System.Action<Health, Vector2> HitLandedAt;
 
     // 히트박스는 검·돌진·투사체마다 하나씩이라 여럿이 동시에 산다. 매번 Camera.main을
     // 뒤지지 않도록 한 번 찾은 것을 공유한다. 씬이 바뀌어 카메라가 파괴되면 유니티의
@@ -118,6 +129,11 @@ public class DamageHitbox : MonoBehaviour
         // Time.deltaTime으로 프레임을 넘기므로, 히트스톱 동안 첫 프레임(흰 섬광)에 멈춰 있다가
         // 시간이 풀리면서 퍼진다. 멈춤과 섬광이 같은 순간에 겹쳐 "꽂혔다"가 한 번에 읽힌다.
         HitLanded?.Invoke(health);
+
+        // 추가 생성(2026-09-17) — 듣는 곳이 있을 때만 맞은 점을 계산한다. 적 돌진·사수 화살처럼 아무도 안 듣는
+        // 히트박스에서는 ClosestPoint를 부를 이유가 없다.
+        if (HitLandedAt != null)
+            HitLandedAt.Invoke(health, other.ClosestPoint(hitboxCollider.bounds.center));
     }
 
     /// <summary>

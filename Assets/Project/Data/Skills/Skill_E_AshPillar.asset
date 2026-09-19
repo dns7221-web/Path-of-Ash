@@ -21,13 +21,21 @@ MonoBehaviour:
   motionSeconds: 0.5
   damage: 4
   animatorTrigger: Staff
+  requiresFullAshGauge: 0
   effectPrefab: {fileID: 2413951896586397748, guid: db289f81774497c45a488dcd2fbd5301, type: 3}
   effectForwardOffset: 2
+  effectHeight: 0
+  verticalSquash: 0.55
   effectLifetime: 1
   forwardDistance: 10
-  radius: 12
+  radius: 4.5
+  verticalScale: 0.66
+  areaCenterOffset: {x: 0, y: 0.9}
   targetLayers:
     serializedVersion: 2
     m_Bits: 512
+  hitStopSeconds: 0.07
   castDelay: 0.286
   explodeDelay: 0.5
+  castEffectPrefab: {fileID: 0}
+  castEffectHeight: 2.6

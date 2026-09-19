@@ -61,7 +61,10 @@ public class GroundSlamSkillData : SkillData
 
     // 추가 생성 — 타격감. 내려찍기는 근·원 두 판정이 연달아 도는데, 겹침을 "더 긴 쪽"으로
     // 처리하므로 두 번 맞아도 한 번 멈춘 것처럼 보인다. 그게 의도다.
-    [Tooltip("맞은 순간 멈출 실시간(초). 0이면 안 멈춘다.")]
+    //
+    // 수정(2026-09-17, 사용자 결정) — 이제 <b>2단에서만</b> 멈춘다. 1단(0.25초)과 2단(0.42초)이 0.17초 차이라
+    // 1단에서 멈추면 멈춤이 두 번 이어져 한 방이 아니라 끊긴 두 방으로 읽혔다. 무게가 실린 2단 폭발에 한 번 멈춘다.
+    [Tooltip("2단(전방 폭발)이 맞은 순간 멈출 실시간(초). 1단에서는 멈추지 않는다. 0이면 안 멈춘다.")]
     [SerializeField, Min(0f)] private float hitStopSeconds = 0.08f;
 
     // 추가 생성 — 위/아래로 칠 때 거리를 얼마나 유지할지.
@@ -122,20 +125,27 @@ public class GroundSlamSkillData : SkillData
         Vector2 facing = context.FacingDirection;
         Vector2 feet = context.Owner.position;
 
+        // 추가 생성(2026-09-17) — 그림을 놓는 방식(반전·회전·길이)을 한 번만 구해 그림과 판정이 같이 쓴다.
+        ArtPose pose = PoseFor(facing);
+
         // 1단 — 발밑. 판정 중심을 몸 높이 절반쯤으로 올린다. 피벗이 발밑이라
         // 그대로 쓰면 판정이 바닥 아래로 반쯤 내려간다.
         // 수정(1단 위치): 앞으로 nearDistance만큼 내보낸다.
         // 이게 없으면 판정도 이펙트도 몸 안에서 터져서 무엇이 일어났는지 읽히지 않는다.
+        // 수정(2026-09-17) — "몸 높이 절반쯤 올리기"는 ApplyDamage 안으로 옮겼다. 그림이 돌면 올리는 방향도 같이 돌아야 한다.
         Vector2 nearGround = feet + Reach(facing) * nearDistance;
-        Vector2 nearCenter = nearGround + new Vector2(0f, nearSize.y * 0.5f);
 
         // 수정(이펙트 높이): 이펙트는 판정 중심이 아니라 <b>지면 가까이</b> 놓는다.
         //
         // 판정 상자는 중심이 위에 있어도 아래 절반이 지면부터 시작한다(중심 = 바닥 + 높이/2).
         // 즉 지면이 곧 판정의 바닥이라 여기 놓아도 어긋나지 않는다. 반대로 중심에 놓으면
         // 대검을 바닥에 내려찍는데 충격파가 가슴 높이에 떠서 따로 논다.
-        Spawn(nearEffect, nearGround + new Vector2(0f, EffectGroundLift), facing);
-        ApplyDamage(nearCenter, nearSize, nearDamage + context.BonusDamage);
+        Spawn(nearEffect, nearGround + new Vector2(0f, EffectGroundLift), pose);
+
+        // 수정(2026-09-17, 사용자 결정) — 1단은 멈추지 않는다. 멈춤은 2단에서 한 번.
+        // 수정(2026-09-17, 사용자 결정) — 1단은 피격 무적도 걸지 않는다. 걸면 붙어 있던 적이 0.17초 뒤의 2단을 무시한다.
+        ApplyDamage(nearGround, nearSize, pose, nearDamage + context.BonusDamage,
+                    hitStop: false, grantInvulnerability: false);
 
         yield return new WaitForSeconds(Mathf.Max(0f, farDelay - nearDelay));
         if (context.Owner == null) yield break;
@@ -144,9 +154,51 @@ public class GroundSlamSkillData : SkillData
         // 수정(8방향 + 이펙트 위치): 거리를 화면 원근에 맞게 누르고, 이펙트를 판정 중심에 놓는다.
         // Forward를 안 쓰면 위/아래로 쓸 때만 2단이 몸에서 훨씬 멀리 떨어져 따로 논다.
         Vector2 farGround = feet + Reach(facing) * farDistance;
-        Vector2 farCenter = farGround + new Vector2(0f, farSize.y * 0.5f);
-        Spawn(farEffect, farGround + new Vector2(0f, EffectGroundLift), facing);
-        ApplyDamage(farCenter, farSize, farDamage + context.BonusDamage);
+        Spawn(farEffect, farGround + new Vector2(0f, EffectGroundLift), pose);
+        ApplyDamage(farGround, farSize, pose, farDamage + context.BonusDamage,
+                    hitStop: true, grantInvulnerability: true);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 이펙트 그림을 놓는 방식. 그림과 판정 상자가 같은 값을 쓴다.
+    /// </summary>
+    private struct ArtPose
+    {
+        /// <summary>그림을 좌우 반전하는가(왼쪽을 볼 때).</summary>
+        public bool Flipped;
+
+        /// <summary>그림의 최종 회전(도). 반전한 경우 부호까지 반영된 값이다.</summary>
+        public float Angle;
+
+        /// <summary>균열이 뻗는 축(그림의 X)의 원근 배율. 좌우로 칠 때 1, 위·아래로 칠 때 VerticalSquash.</summary>
+        public float LengthScale;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-17) — 바라보는 방향에서 그림의 반전·회전·길이를 구한다.
+    ///
+    /// 예전에는 <see cref="Spawn"/> 안에서만 계산해서 <b>그림만 돌고 판정 상자는 늘 가로 그대로</b>였다.
+    /// 위로 칠 때 그림은 90도 돌아 세로 균열(불길은 왼쪽)이 되는데 판정은 가로 띠여서, 보이는 곳과 맞는 곳이 달랐다
+    /// (2단 기준 그림 x -10.1~0.9 · y 4.0~12.2, 판정 x ±9.45 · y 8.1~16.5). 계산을 여기로 빼서 둘이 같은 값을 쓴다.
+    ///
+    /// 계산 자체는 예전 Spawn의 것과 같다. 좌우로 칠 때는 회전 0·길이 1이라 판정이 예전과 똑같다.
+    /// </summary>
+    private ArtPose PoseFor(Vector2 facing)
+    {
+        var pose = new ArtPose { Flipped = facing.x < 0f, Angle = 0f, LengthScale = 1f };
+
+        if (facing.sqrMagnitude > 0.0001f)
+        {
+            Vector2 dir = facing.normalized;
+            float px = Mathf.Abs(dir.x);
+            float py = dir.y * VerticalSquash;
+
+            float angle = Mathf.Atan2(py, px) * Mathf.Rad2Deg;
+            pose.Angle = pose.Flipped ? -angle : angle;
+            pose.LengthScale = Mathf.Sqrt(px * px + py * py);
+        }
+
+        return pose;
     }
 
     /// <summary>
@@ -161,22 +213,59 @@ public class GroundSlamSkillData : SkillData
         return new Vector2(facing.x, facing.y * verticalReach);
     }
 
-    /// <summary>범위 안의 대상을 한 번씩만 때린다.</summary>
-    private void ApplyDamage(Vector2 center, Vector2 size, int amount)
+    /// <summary>
+    /// 범위 안의 대상을 한 번씩만 때린다.
+    ///
+    /// 수정(2026-09-17) — 판정 상자를 그림과 같이 놓는다. 인자가 상자 중심에서 <b>지면 점</b>으로 바뀌었다.
+    /// <list type="bullet">
+    /// <item>길이(size.x)에 그림의 원근 배율을 곱한다 — 위·아래로 칠 때 짧아진 균열만큼.</item>
+    /// <item>"지면에서 높이 절반만큼 올린 중심"을 그림의 회전만큼 돌린다 — 그림의 위쪽(불길이 솟는 쪽)과 같은 쪽으로.</item>
+    /// <item>상자도 같은 각도로 돌린다(OverlapBoxAll의 각도 인자 — 회전한 사각형 겹침은 유니티가 푼다).</item>
+    /// </list>
+    /// 좌우로 칠 때는 각도 0·배율 1이라 예전과 같은 상자다. 반전은 상자가 좌우 대칭이라 따로 볼 필요가 없다.
+    /// </summary>
+    /// <param name="ground">그림이 놓이는 지면 점.</param>
+    /// <param name="size">좌우로 칠 때 기준의 상자 크기(가로 = 균열 방향, 세로 = 불길 높이).</param>
+    /// <param name="pose">그림을 놓은 방식.</param>
+    /// <param name="amount">데미지.</param>
+    /// <param name="hitStop">맞은 대상이 있으면 멈출지. 추가 생성(2026-09-17) — 1단은 false, 2단은 true.</param>
+    /// <param name="grantInvulnerability">
+    /// 추가 생성(2026-09-17) — 맞은 대상에게 피격 무적을 걸지. 1단은 false라야 0.17초 뒤의 2단이 붙어 있는 적에게 들어간다
+    /// (<see cref="Health.TakeDamage(int, Vector2?, bool)"/> 설명 참고). 2단은 true — 동작이 끝났으니 평소 규칙대로 건다.
+    /// </param>
+    private void ApplyDamage(Vector2 ground, Vector2 size, ArtPose pose, int amount, bool hitStop, bool grantInvulnerability)
     {
-        var hits = Physics2D.OverlapBoxAll(center, size, 0f, targetLayers);
+        Vector2 boxSize = new Vector2(size.x * pose.LengthScale, size.y);
+        Vector2 center = ground + Rotate(new Vector2(0f, size.y * 0.5f), pose.Angle);
+
+        var hits = Physics2D.OverlapBoxAll(center, boxSize, pose.Angle, targetLayers);
         var damaged = new HashSet<Health>();
+
+        // 추가 생성(2026-09-17) — 이번 판정에서 데미지가 실제로 들어간 대상이 있었는가.
+        bool landed = false;
 
         foreach (var hit in hits)
         {
             var health = hit.GetComponentInParent<Health>();
             if (health == null || !damaged.Add(health)) continue;
 
-            health.TakeDamage(amount, center);
-
-            // 추가 생성 — 데미지가 실제로 들어간 뒤에 멈춘다.
-            PauseGate.HitStop(hitStopSeconds);
+            // 수정(2026-09-17) — 결과를 본다. 무적·사망으로 막힌 대상은 멈춤의 이유가 되지 않는다.
+            if (health.TakeDamage(amount, center, grantInvulnerability)) landed = true;
         }
+
+        // 추가 생성 — 데미지가 실제로 들어간 뒤에 멈춘다.
+        //
+        // 수정(2026-09-17) — 예전에는 대상마다 TakeDamage의 결과를 버리고 바로 멈춰서, 막힌 대상(피격 무적·전환 중인 보스)을
+        // 쳐도 화면이 멈췄다. 09-16에 DamageHitbox에서 고친 것과 같은 문제다. 이제 한 대상이라도 실제로 맞았을 때만,
+        // 그리고 멈출 단계(2단)에서만 한 번 멈춘다. 대상마다 부르던 것을 한 번으로 줄여도 결과는 같다 —
+        // PauseGate는 겹친 멈춤을 "더 긴 쪽" 하나로 처리한다.
+        if (hitStop && landed) PauseGate.HitStop(hitStopSeconds);
+    }
+
+    /// <summary>추가 생성(2026-09-17) — 벡터를 degrees만큼 반시계로 돌린다. Transform 회전(Euler z)과 같은 방향이다.</summary>
+    private static Vector2 Rotate(Vector2 value, float degrees)
+    {
+        return (Vector2)(Quaternion.Euler(0f, 0f, degrees) * value);
     }
 
     /// <summary>
@@ -185,8 +274,11 @@ public class GroundSlamSkillData : SkillData
     /// static을 뗀 이유: 원근 압축에 <see cref="SkillData.VerticalSquash"/>가 필요한데
     /// 그건 인스턴스 값이다. 같은 화면 각도를 상수로 또 적으면 인스펙터에서 조절할 때
     /// 거리와 그림이 서로 다른 각도를 쓰게 된다.
+    ///
+    /// 수정(2026-09-17) — 바라보는 방향 대신 <see cref="PoseFor"/>가 구한 값을 받는다. 판정 상자가 같은 값을 쓰게 하려고
+    /// 계산을 밖으로 뺐다. 아래 주석들은 그 계산이 왜 그런 모양인지에 대한 설명이라 그대로 둔다.
     /// </summary>
-    private void Spawn(GameObject prefab, Vector2 position, Vector2 facing)
+    private void Spawn(GameObject prefab, Vector2 position, ArtPose pose)
     {
         if (prefab == null) return;
 
@@ -209,7 +301,8 @@ public class GroundSlamSkillData : SkillData
         //
         // 이펙트가 어느 쪽에 놓일지는 호출부가 이미 Forward(facing)로 위치를 밀어서 정한다.
         // 그래서 그림까지 돌릴 이유가 없고, 좌우 기울기만 맞춰주면 된다.
-        bool flipped = facing.x < 0f;
+        // 수정(2026-09-17) — 반전 여부는 PoseFor가 정한다(facing.x < 0 그대로).
+        bool flipped = pose.Flipped;
         if (renderer != null) renderer.flipX = flipped;
 
         // 추가 생성 — 균열이 공격 방향으로 뻗도록 회전시키고, 원근만큼 길이를 줄인다.
@@ -223,20 +316,20 @@ public class GroundSlamSkillData : SkillData
         //
         // scale.x를 줄이는 게 맞는 이유: 회전을 준 뒤의 x축은 <b>균열이 뻗어나가는 축</b>이다.
         // 그래서 여기를 줄이면 두께가 아니라 길이가 짧아진다.
-        if (facing.sqrMagnitude > 0.0001f)
-        {
-            Vector2 dir = facing.normalized;
-            float px = Mathf.Abs(dir.x);
-            float py = dir.y * VerticalSquash;
+        //
+        // 수정(2026-09-17) — 각도·배율 계산(px, py, Atan2, 투영 길이)은 PoseFor로 옮겼다. 여기서는 적용만 한다.
+        effect.transform.rotation = Quaternion.Euler(0f, 0f, pose.Angle);
 
-            float angle = Mathf.Atan2(py, px) * Mathf.Rad2Deg;
-            effect.transform.rotation = Quaternion.Euler(0f, 0f, flipped ? -angle : angle);
+        Vector3 scale = effect.transform.localScale;
+        scale.x *= pose.LengthScale;
+        effect.transform.localScale = scale;
 
-            float projected = Mathf.Sqrt(px * px + py * py);
-            Vector3 scale = effect.transform.localScale;
-            scale.x *= projected;
-            effect.transform.localScale = scale;
-        }
+        // 추가 생성(2026-09-17, 플레이어 파티클) — 곁들인 파티클도 그림과 같이 뒤집고 줄인다.
+        //
+        // 파티클은 flipX를 모르고, Scaling Mode가 Local이라 위 배율도 안 먹는다. 그대로 두면 왼쪽으로 칠 때
+        // 불티가 오른쪽부터 번지고(Q-3), 위·아래로 칠 때 짧아진 균열 밖까지 불티가 솟는다.
+        // 회전은 부모를 따라가므로 따로 맞출 필요가 없다.
+        ParticleGarnish.MatchSprite(effect, flipped, pose.LengthScale);
 
         // 수정(시트 바닥선 정규화) — 높이 보정을 걷어냈다.
         //

@@ -149,7 +149,22 @@ public class Health : MonoBehaviour
     /// 추가 생성 — 때린 위치를 같이 받는 판. 넉백 방향을 기록하는 것 외에는 위와 같다.
     /// </summary>
     /// <param name="sourcePosition">때린 쪽의 월드 좌표. null이면 방향을 갱신하지 않는다.</param>
-    public bool TakeDamage(int amount, Vector2? sourcePosition)
+    /// <remarks>수정(2026-09-17) — 본문을 아래 세 인자 판으로 옮겼다. 이 판은 예전처럼 피격 무적을 건다.</remarks>
+    public bool TakeDamage(int amount, Vector2? sourcePosition) => TakeDamage(amount, sourcePosition, true);
+
+    /// <summary>
+    /// 추가 생성(2026-09-17, Q 2단이 가까운 적에게 막히던 것) — 피격 무적을 걸지 말지까지 정하는 판.
+    ///
+    /// <b>왜 필요한가.</b> Q(내려찍기)는 한 번의 동작 안에서 1단(0.25초)과 2단(0.42초)이 0.17초 간격으로 들어간다.
+    /// 1단이 맞히면 여기서 피격 무적 0.35초가 걸려서, 붙어 있던 적은 2단(데미지 5)을 늘 무시했다.
+    /// 기획은 "붙어 있으면 둘 다 맞아 더 아프다"(2 + 5)인데 실제로는 붙을수록 덜 아팠다(2 대 5).
+    /// 히트스톱은 원인이 아니다 — 멈추는 동안 무적 타이머와 2단 대기가 같이 멈춰 간격이 그대로다.
+    ///
+    /// <b>무적을 무시하는 게 아니라 "걸지 않는" 것이다.</b> 이미 걸린 무적(대시 회피·다른 공격의 피격 무적)은
+    /// 위 IsInvulnerable 검사에서 그대로 막는다. 회피 규칙은 안 깨진다. 스킬이 자기 연속 타격의 앞 타에만 false를 넘긴다.
+    /// </summary>
+    /// <param name="grantInvulnerability">false면 이번 타격 뒤에 피격 무적을 걸지 않는다. 바로 이어지는 같은 스킬의 다음 타를 위해서만 쓴다.</param>
+    public bool TakeDamage(int amount, Vector2? sourcePosition, bool grantInvulnerability)
     {
         if (amount <= 0) return false;
         if (IsInvulnerable) return false;
@@ -165,7 +180,9 @@ public class Health : MonoBehaviour
         }
 
         Current = Mathf.Max(0, Current - amount);
-        invulnerableTimer = invulnerableSecondsAfterHit;
+
+        // 수정(2026-09-17) — 스킬이 원할 때는 무적을 걸지 않는다. 이유는 이 함수의 설명에 있다.
+        if (grantInvulnerability) invulnerableTimer = invulnerableSecondsAfterHit;
 
         Damaged?.Invoke(Current, Max);
         Changed?.Invoke(Current, Max);
