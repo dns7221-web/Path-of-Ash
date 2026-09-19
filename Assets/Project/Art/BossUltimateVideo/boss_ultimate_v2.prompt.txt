@@ -1,0 +1,82 @@
+[v2 — 사이 그림·효과 소재 (2026-09-19)]
+v1은 그림 8장이 컷마다 카메라가 달라서, 영상이 "움직임"이 아니라 "장면 넘김"으로 보였다.
+v2는 같은 카메라에서 자세만 바뀐 그림을 더 뽑아, 한 컷 안에서 움직이게 한다.
+
+쓰는 법
+- 한 요청에 한 장만. [0]을 대화 첫 메시지로 보내고, 그다음 아래에서부터 순서대로.
+- "첨부"에 적힌 기준 그림을 매번 같이 올린다(keyframes 폴더). 그래야 카메라·배경이 제일 덜 바뀐다.
+- 배경이나 얼굴이 바뀌어 나오면: "Keep the camera, background and her face exactly like the attached frame; change only the pose. Try again."
+- 받은 순서대로 내려받으면 시간순으로 맞춰 넣는다. 건너뛴 번호만 따로 적어 둔다.
+
+[0] 공통 규칙 — 대화 첫 메시지 한 번
+첨부: keyframes/01~08 여덟 장 + references/01_boss_phase2_idle.png
+I'm making a 5-second boss ultimate cut-in for a 2D dark-fantasy action game. The attached frames 01-08 are the existing keyframes, in playback order. I will now ask for new frames one at a time. Each one goes between these keyframes, so it must look like it comes from the same animation.
+
+Rules for every image:
+- Match the keyframes exactly: detailed dark-fantasy anime illustration, crisp dark outlines, blocky square ash fragments, glowing molten cracks. Light comes only from embers and fire; shadows are near black. Colors: charcoal, ash gray, deep ember red, ember orange, amber, white-hot, plus silver-white hair and pale skin. No green, blue or purple.
+- Her design never changes: very long straight silver-white hair with bangs, glowing amber-gold eyes, pale skin, dark charcoal plate armor with molten orange cracks and a glowing ember cross on the chest, a tattered charcoal cloak crumbling into ash, a floating crown of five dark iron spikes above her head, and a huge serrated charcoal-stone greatsword with molten cracks.
+- When I attach a keyframe and say "edit", keep its camera angle, framing, crop, background, lighting and every design detail the same. Change only what I describe. Do not re-compose, zoom or move the camera.
+- 16:9 landscape, the same size as the keyframes. No text, no watermark, no letterbox bars, no border, no UI.
+
+Reply only "OK" to this message. Don't make an image yet.
+
+
+===== A. 움직임 사이 그림 (필수 9장) =====
+
+[01a] 왕관 — 조각이 오기 전 / 첨부: 01_crown.png
+Edit the attached frame (01). Make it the moment just before it: the crown is still broken. The flying shards are not there yet; leave clean, jagged gaps where they will lock in. Its cracks are dark and only faintly smoldering, there are very few embers, and the whole image is darker.
+
+[01b] 왕관 — 조각이 붙은 순간 / 첨부: 01_crown.png
+Edit the attached frame (01). Make it the moment just after it: every shard has locked into place and the crown is whole. The seams flash white-hot, every crack blazes bright amber, and a burst of sparks sprays outward from the seams.
+
+[03a] 눈 — 감음 / 첨부: 03_eye_open.png
+Edit the attached frame (03). Make it the moment before her eyes open: her eyes are fully closed and calm, lashes lowered. The five crown spikes above her head are dark and unlit, the cracks in her armor glow only faintly, and there are fewer embers in the air. Keep her face, hair and pose otherwise the same.
+
+[03b] 눈 — 반쯤 뜸 / 첨부: 03_eye_open.png
+Edit the attached frame (03). Her eyes are half open, showing a thin line of amber glow. The crown spike tips are just starting to ignite, and the cracks in her armor are getting brighter. Keep her face, hair and pose otherwise the same.
+
+[06a] 칼 — 들기 시작 / 첨부: 06_raise_top.png
+Edit the attached frame (06). Make it the start of the same swing, with the same camera: she holds the greatsword low in front of her, both hands on the hilt, the blade pointing down with its tip below the bottom of the frame, head slightly lowered. The blade's cracks glow dimly. Her hair and cloak hang down, and there is little swirling ash.
+
+[06b] 칼 — 들어 올리는 중 / 첨부: 06_raise_top.png
+Edit the attached frame (06). Make it the middle of the lift, with the same camera: both hands raise the greatsword past her right shoulder, the blade diagonal across her body. Its cracks glow brighter, and a stream of embers and ash is pulled into the blade. Her hair and cloak are starting to lift.
+
+[06c] 칼 — 내려치는 순간(잔상) / 첨부: 06_raise_top.png
+Edit the attached frame (06). Make it the downward strike, with the same camera: the greatsword is halfway through a violent swing down toward the camera. Draw it as an anime motion smear: a thick curved crescent of white-hot fire and orange streaks from above her head down to the floor, with the blade only partly visible inside the smear. Her hair and cloak whip upward from the force, and ash blasts outward.
+
+[07a] 충격 — 칼끝이 닿는 순간 / 첨부: 07_impact.png
+Edit the attached frame (07). Make it one instant before the explosion: the blade tip has just touched the floor. Remove the explosion. Show only a thin starburst of glowing cracks spreading across the stone from the contact point, one tiny blinding white point of light at the tip, and a few floor chunks starting to lift. Keep her pose, the sword and the camera the same.
+
+[08b] 폭발 — 흰 불로 삼켜짐 / 첨부: 08_impact_wide.png
+Edit the attached frame (08). Make it a moment after: the shockwave ring has spread past the edges of the frame, and a wall of white-hot fire rises all around her. The whole image is flooded with blinding light, and her figure is a dark silhouette in the center about to be swallowed by white.
+
+
+===== B. 효과 소재 (3장, 검은 배경 — 그림 위에 빛으로 더해 움직인다) =====
+첨부: 07_impact.png (그림체 참고용)
+
+[FX1] 폭발 불꽃
+Draw a separate effect element in the same art style as the attached frame. It is a single radial explosion burst, seen from the front and centered: a white-hot core, ember-orange tongues of flame, and flying sparks. Show only the fire and sparks on a pure black background (#000000). No character, no floor, no gray smoke.
+
+[FX2] 충격파 고리
+Draw a separate effect element in the same art style as the attached frame. It is a ring-shaped fire shockwave lying flat on the ground, seen from a low angle so it is a wide, flat ellipse across the frame. The rim is white-hot, flames lick upward from it, and sparks fly outward. Show only the ring and sparks on a pure black background (#000000). Nothing else.
+
+[FX3] 칼 궤적
+Draw a separate effect element in the same art style as the attached frame. It is one heavy greatsword slash trail: a thick crescent arc from the upper right to the lower left, white-hot at the leading edge and fading into ember-orange and red streaks at the tail, with a few sparks. Show only the trail on a pure black background (#000000). Nothing else.
+
+
+===== C. 선택 (여유 있을 때) =====
+
+[02-BG] 전신 컷 — 배경만 / 첨부: 02_queen_wide.png
+Edit the attached frame (02). Remove her completely, including her sword and the ash around her. Fill in what was behind her (throne steps, pillars, banners, floor) so it reads as the same empty hall. Keep the camera and everything else the same.
+
+[02-FG] 전신 컷 — 보스만 / 첨부: 02_queen_wide.png
+Edit the attached frame (02). Keep only her, in the same pose, size and position, with her sword, hair, cloak and crown. Put her on a transparent background (PNG with alpha). If transparency isn't possible, use a flat pure green background (#00FF00) with no shadow or glow spilling onto it.
+
+[N1] 새 컷 — 칼자루를 쥐는 손 / 첨부: 06_raise_top.png (디자인 참고)
+New shot, same style and colors as the keyframes: an extreme close-up of her armored gauntlet tightening its grip on the greatsword's hilt. The molten cracks in the gauntlet and hilt flare brighter, and ash flakes off her fingers. Behind them, the throne hall is dark and out of focus.
+
+[N2] 새 컷 — 발밑이 갈라짐 / 첨부: 06_raise_top.png (디자인 참고)
+New shot, same style and colors as the keyframes: a low, ground-level shot of the cracked stone floor at her feet, with only her armored boots and the hem of her cloak at the top of the frame. Glowing molten cracks race across the floor toward the camera, small stones tremble and lift, and embers rise.
+
+[N3] 새 컷 — 플레이어 뒤에서 올려다보기 / 첨부: 06_raise_top.png (디자인 참고)
+New shot, same style and colors as the keyframes: an over-the-shoulder shot from behind a small, pure black silhouette of a lone warrior in the foreground (no details). The silver-haired queen towers far above, raising her blazing greatsword over her head, and the blade lights the whole hall. The mood is scale and dread.
