@@ -422,7 +422,26 @@ public static class AshSpriteSheetNormalizer
         Color32[] pixels = texture.GetPixels32();
         Object.DestroyImmediate(texture);
 
-        RemoveBackground(pixels);
+        // 수정(2026-09-21, 투명 원본) — 원본이 이미 투명 배경이면 초록 빼기를 건너뛴다.
+        //
+        // 이 도구는 초록 배경 원본만 생각하고 만들어졌다. RemoveBackground는 "초록이 아닌 픽셀은
+        // 전부 그림"으로 보고 불투명하게 칠하는데, 투명 배경 원본의 빈 칸은 색이 (0,0,0)이라
+        // 초록이 아니다. 그래서 <b>빈 칸 전체가 불투명한 검정</b>이 됐다. 재의 창 원본이 그렇게
+        // 망가졌다 — 창마다 검은 네모가 붙고, 칸 전체가 그림으로 잡혀서 그걸 셀에 맞춰 줄이느라
+        // 창이 1/3 크기가 됐다.
+        //
+        // 초록 빼기를 고치지 않고 원본 종류를 먼저 가르는 이유: 투명 원본은 배경을 뺄 필요가
+        // 애초에 없다. 이미 있는 투명도가 정답이고, 거기에 초록 판정을 덧씌우면 그림 속 초록기
+        // 있는 픽셀에 구멍만 뚫린다. 초록 배경 원본은 전부 불투명이라 이 검사를 통과하지 못하므로
+        // 지금까지 만든 시트는 결과가 그대로다.
+        if (HasTransparentBackground(pixels))
+        {
+            Debug.Log($"[시트 정규화] {sourceName}은 이미 투명 배경이다 — 초록 빼기를 건너뛰고 원본 투명도를 쓴다.");
+        }
+        else
+        {
+            RemoveBackground(pixels);
+        }
 
         var figures = FindFigures(pixels, width, height, expectedFrames,
                                   ForceEqualSplit.Contains(outputName));
@@ -437,6 +456,32 @@ public static class AshSpriteSheetNormalizer
     }
 
     // ── 1단계: 배경 제거 ──────────────────────────────────────────────────
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 이 픽셀 비율보다 많이 투명하면 "이미 투명 배경인 원본"으로 본다.
+    ///
+    /// 비율로 가르는 이유: 초록 배경 원본은 PNG여도 알파가 전부 255라 투명 픽셀이 0개다.
+    /// 투명 원본은 그림 사이 빈 칸이 대부분이라 보통 80~95%가 투명하다(재의 창 원본은 92.8%).
+    /// 둘 사이가 이렇게 멀어서 기준을 20%에 두면 어느 쪽도 헷갈리지 않는다.
+    /// </summary>
+    private const float TransparentBackgroundRatio = 0.2f;
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 원본이 이미 투명 배경인가.
+    ///
+    /// 거의 투명한 픽셀(알파 8 미만)을 센다. 생성 그림은 빈 칸에 알파 1~2짜리 먼지가 섞여
+    /// 나오기도 해서, 0만 세면 투명 배경인데도 비율이 낮게 나올 수 있다.
+    /// </summary>
+    private static bool HasTransparentBackground(Color32[] pixels)
+    {
+        int transparent = 0;
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            if (pixels[i].a < 8) transparent++;
+        }
+
+        return transparent > pixels.Length * TransparentBackgroundRatio;
+    }
 
     /// <summary>
     /// 초록 배경을 알파로 바꾼다.
