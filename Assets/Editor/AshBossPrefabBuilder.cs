@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 재의 왕(보스) 프리팹을 만든다.
 ///
-/// 메뉴: Tools → 재의 길 → 보스 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 보스 프리팹 생성
 ///
 /// 플레이어 프리팹 도구와 따로 둔 이유: 플레이어는 스킬 에셋·이펙트 프리팹까지 같이 만들어서
 /// 그 파일이 이미 크다. 보스를 거기 넣으면 스킬을 손볼 때마다 보스까지 다시 만들게 된다.
@@ -31,7 +31,7 @@ public static class AshBossPrefabBuilder
     private static float HeightUnits =>
         AshPlayerSpriteSheets.BossPixelHeight / AshSpriteImportRules.CharacterPixelsPerUnit;
 
-    [MenuItem("Tools/재의 길/보스 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/보스 프리팹 생성")]
     public static void Build()
     {
         var phase1 = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(Phase1Path);
@@ -40,7 +40,7 @@ public static class AshBossPrefabBuilder
         if (phase1 == null || phase2 == null)
         {
             Debug.LogError("[보스] 애니메이터 컨트롤러를 못 찾았다.\n" +
-                           "Tools → 재의 길 → 캐릭터 애니메이션 생성 을 먼저 실행해라.");
+                           "Tools → 재의 길 → 애니메이션 → 캐릭터 애니메이션 생성 을 먼저 실행해라.");
             return;
         }
 

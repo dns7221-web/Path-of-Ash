@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Game 씬에 튜토리얼 방을 구성한다.
 ///
-/// 메뉴: Tools → 재의 길 → 튜토리얼 방 생성
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 튜토리얼 방 생성
 ///
 /// 별도 씬이 아니라 방으로 만드는 이유:
 /// 튜토리얼은 <b>진짜 플레이어와 진짜 HUD</b>로 가르쳐야 의미가 있다. 씬을 나누면 플레이어·
@@ -70,7 +70,7 @@ public static class AshTutorialRoomBuilder
         "{Skill1} {Skill2} {Skill3} {Skill4} - 스킬",
     };
 
-    [MenuItem("Tools/재의 길/튜토리얼 방 생성")]
+    [MenuItem("Tools/재의 길/씬·세팅/튜토리얼 방 생성")]
     public static void Build()
     {
         // FindObjectsInactive.Include가 필요한 이유: 기본값은 꺼진 오브젝트를 건너뛴다.

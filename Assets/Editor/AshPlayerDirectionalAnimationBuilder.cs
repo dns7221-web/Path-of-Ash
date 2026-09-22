@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// 8방향 플레이어 스프라이트를 잘라 클립 80개와 블렌드 트리를 만든다.
 ///
-/// 메뉴: Tools → 재의 길 → 8방향 플레이어 애니메이션 생성
+/// 메뉴: Tools → 재의 길 → 애니메이션 → 8방향 플레이어 애니메이션 생성
 ///
 /// 왜 도구인가:
 /// 액션 10개 x 방향 8개 = <b>클립 80개</b>다. 손으로 만들 수 있는 양이 아니고, 하나라도
@@ -83,7 +83,7 @@ public static class AshPlayerDirectionalAnimationBuilder
         new ActionDef { Sheet = "player_death",      State = "Die",       Trigger = "Die",        Fps = 8f,  Loop = false },
     };
 
-    [MenuItem("Tools/재의 길/8방향 플레이어 애니메이션 생성")]
+    [MenuItem("Tools/재의 길/애니메이션/8방향 플레이어 애니메이션 생성")]
     public static void Build()
     {
         string spritePath = FindSpriteRendererPath();

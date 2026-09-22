@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Game 씬의 HUD(지금은 스태미나 게이지 하나)를 조립하는 에디터 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 게임 HUD 생성
+/// 메뉴: Tools → 재의 길 → 화면 → 게임 HUD 생성
 ///
 /// UI를 손으로 만들지 않고 스크립트로 둔 이유는 프리팹 빌더와 같다. RectTransform은 앵커,
 /// 피벗, 오프셋, sizeDelta가 서로 얽혀 있어서 창에서 끌어 맞추면 "내 화면에서는 맞는데
@@ -196,7 +196,7 @@ public static class AshGameHudBuilder
     /// <summary>이름 글자색. 흰색보다 살짝 죽여서 게이지가 먼저 읽히게 한다.</summary>
     private static readonly Color BossNameColor = new Color(0.88f, 0.85f, 0.83f, 1f);
 
-    [MenuItem("Tools/재의 길/게임 HUD 생성")]
+    [MenuItem("Tools/재의 길/화면/게임 HUD 생성")]
     public static void BuildHud()
     {
         var scene = SceneManager.GetActiveScene();
@@ -248,7 +248,7 @@ public static class AshGameHudBuilder
     /// 이유가 그것이다(숫자가 코드에 있으면 언제 다시 돌려도 같다). 씬에만 있는 값은 다음에
     /// 누가 전체 생성을 한 번 누르는 순간 사라진다.
     /// </summary>
-    [MenuItem("Tools/재의 길/보스 체력바만 생성 (나머지 HUD 유지)")]
+    [MenuItem("Tools/재의 길/화면/보스 체력바만 생성 (나머지 HUD 유지)")]
     public static void BuildBossHealthBarOnly()
     {
         var scene = SceneManager.GetActiveScene();
@@ -267,7 +267,7 @@ public static class AshGameHudBuilder
             // 있을 때 캔버스가 둘이 되어, 어느 쪽이 그려지는지 보는 사람이 알 수 없게 된다.
             Debug.LogError(
                 $"[게임 HUD] 씬에서 {HudRootName}을 못 찾았다. " +
-                "HUD가 아직 없으면 'Tools → 재의 길 → 게임 HUD 생성'을 먼저 실행해라.");
+                "HUD가 아직 없으면 'Tools → 재의 길 → 화면 → 게임 HUD 생성'을 먼저 실행해라.");
             return;
         }
 
@@ -465,7 +465,7 @@ public static class AshGameHudBuilder
         else
         {
             Debug.LogWarning($"[게임 HUD] 체력 Fill 스프라이트를 못 읽었다: {HealthFillPath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
         }
 
         // ── 프레임 (나중에 = 위에 얹힘) ──
@@ -483,7 +483,7 @@ public static class AshGameHudBuilder
             frame.enabled = false;
 
             Debug.LogWarning($"[게임 HUD] 체력 프레임 스프라이트를 못 읽었다: {HealthFramePath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
         }
 
         var bar = barObject.AddComponent<HealthBar>();
@@ -557,7 +557,7 @@ public static class AshGameHudBuilder
         else
         {
             Debug.LogWarning($"[게임 HUD] 보스 Fill 스프라이트를 못 읽었다: {BossFillPath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
         }
 
         // 수정(눈금을 걷어냈다) — 여기에 2페이즈 전환 지점을 알리는 눈금이 있었다.
@@ -580,7 +580,7 @@ public static class AshGameHudBuilder
             frame.enabled = false;
 
             Debug.LogWarning($"[게임 HUD] 보스 프레임 스프라이트를 못 읽었다: {BossFramePath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
         }
 
         // ── 이름표 (프레임 아래) ──
@@ -788,7 +788,7 @@ public static class AshGameHudBuilder
         else
         {
             Debug.LogWarning($"[게임 HUD] 재 게이지 채움을 못 읽었다: {AshFillPath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.");
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.");
         }
 
         // 프레임을 나중에 = 위에 얹힌다.

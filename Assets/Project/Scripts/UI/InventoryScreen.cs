@@ -109,7 +109,7 @@ public class InventoryScreen : MonoBehaviour
         {
             Debug.LogError($"[인벤토리] 씬에 인벤토리 화면이 {duplicates.Length}개 있다. 하나만 남겨라. " +
                            "둘 이상이면 I와 T를 번갈아 누를 때 시간이 멈춘 채로 돌아오지 않는다. " +
-                           "Tools → 재의 길 → 인벤토리 화면 생성 을 다시 실행하면 정리된다.", this);
+                           "Tools → 재의 길 → 화면 → 인벤토리 화면 생성 을 다시 실행하면 정리된다.", this);
         }
 
         // Time.timeScale은 건드리지 않는다. 시작할 때 1로 덮으면 다른 곳에서 멈춰둔 것까지 푼다.

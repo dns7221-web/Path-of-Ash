@@ -89,7 +89,7 @@ public class TrainingDummy : MonoBehaviour
         }
         else if (hitSprite == null)
         {
-            Debug.LogWarning("[허수아비] 피격 그림이 비어 있다. Tools → 재의 길 → 허수아비 세팅 을 다시 실행해라.", this);
+            Debug.LogWarning("[허수아비] 피격 그림이 비어 있다. Tools → 재의 길 → 씬·세팅 → 허수아비 세팅 을 다시 실행해라.", this);
         }
 
         // 죽기 전에 되돌린다. 0이 된 뒤에 채우면 Died가 이미 나가버려서

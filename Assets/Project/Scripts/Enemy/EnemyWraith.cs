@@ -65,13 +65,13 @@ public class EnemyWraith : EnemyBase
 
     // 추가 생성(2026-09-15) — 돌진 예고선.
     [Header("돌진 예고선")]
-    [Tooltip("예비동작 동안 돌진할 길을 바닥에 긋는 선. Tools → 재의 길 → 망령 돌진 예고선 생성 이 만들어 꽂는다. " +
+    [Tooltip("예비동작 동안 돌진할 길을 바닥에 긋는 선. Tools → 재의 길 → 프리팹 → 망령 돌진 예고선 생성 이 만들어 꽂는다. " +
              "비어 있어도 돌진은 멀쩡히 돈다 — 선 없이 예비동작 모션만 보인다.")]
     [SerializeField] private TelegraphLine chargeTelegraphPrefab;
 
     // 추가 생성(2026-09-15) — 돌진 출발 자국.
     [Header("돌진 출발 자국")]
-    [Tooltip("돌진이 시작되는 순간 출발 자리 바닥에 남기는 자국. Tools → 재의 길 → 망령 돌진 출발 자국 생성 이 만들어 꽂는다. " +
+    [Tooltip("돌진이 시작되는 순간 출발 자리 바닥에 남기는 자국. Tools → 재의 길 → 프리팹 → 망령 돌진 출발 자국 생성 이 만들어 꽂는다. " +
              "비어 있어도 돌진은 멀쩡히 돈다 — 자국 없이 몸만 튀어 나간다.")]
     [SerializeField] private GameObject chargeLaunchEffectPrefab;
 

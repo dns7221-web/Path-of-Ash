@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// 타이틀 화면 연출을 씬에 붙이는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 타이틀 연출 구성
+/// 메뉴: Tools → 재의 길 → 화면 → 타이틀 연출 구성
 ///
 /// 컨셉은 <b>"불이 꺼진 뒤에도 잿더미는 아직 뜨겁다"</b> — 정지 이미지가 아니라 식어가는
 /// 중인 화면으로 보이게 한다. 타이틀 아트에 이미 붉은 잉걸이 흩뿌려져 있으므로,
@@ -24,7 +24,7 @@ public static class AshTitleSceneBuilder
     private const string TargetSceneName = "Title";
     private const string EmberRootName = "TitleEmbers";
 
-    [MenuItem("Tools/재의 길/타이틀 연출 구성")]
+    [MenuItem("Tools/재의 길/화면/타이틀 연출 구성")]
     public static void Build()
     {
         var scene = SceneManager.GetActiveScene();

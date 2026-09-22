@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 낱장으로 뽑은 유물 아이콘 원본을 다듬어 게임에서 쓸 아이콘으로 만든다.
 ///
-/// 메뉴: Tools → 재의 길 → 유물 아이콘 다듬기
+/// 메뉴: Tools → 재의 길 → 그림 → 유물 아이콘 다듬기
 ///
 /// <b>시트 정규화(<see cref="AshSpriteSheetNormalizer"/>)와 따로 만든 이유:</b>
 /// 그쪽은 "한 장에 여러 칸이 가로로 붙어 있는 시트"를 전제로, 칸 사이 빈 틈을 찾아 프레임을
@@ -43,7 +43,7 @@ public static class AshRelicIconProcessor
     private const int GreenBackgroundThreshold = 110;
     private const int GreenOpaqueThreshold = 45;
 
-    [MenuItem("Tools/재의 길/유물 아이콘 다듬기")]
+    [MenuItem("Tools/재의 길/그림/유물 아이콘 다듬기")]
     public static void ProcessAll()
     {
         int done = 0;

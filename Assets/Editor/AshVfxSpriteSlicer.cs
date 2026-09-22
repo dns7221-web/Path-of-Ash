@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 정규화된 VFX 시트를 자르는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → VFX 스프라이트 슬라이스
+/// 메뉴: Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스
 ///
 /// 캐릭터 슬라이서(<see cref="AshPlayerSpriteSlicer"/>)와 따로 둔 이유는 <b>피벗이 다르기</b>
 /// 때문이다. 캐릭터는 전부 발밑(지면선)이지만, VFX는 바닥에서 솟는 것과 공중에 뜨는 것의
@@ -139,11 +139,11 @@ public static class AshVfxSpriteSlicer
 
         // 스킬 아이콘. VFX는 아니지만 자르는 방식이 같아서 여기서 같이 처리한다.
         // UI라 바닥 개념이 없으므로 피벗은 정중앙이다.
-        ("Assets/Art/Generated", "skill_icons_5frames_1280x256", "skill_icon", 5, PivotKind.Center),
+        ("Assets/Project/Art/UI", "skill_icons_5frames_1280x256", "skill_icon", 5, PivotKind.Center),
         ("Assets/Project/Art/UI", "relic_icons_3frames_768x256", "relic_icon", 3, PivotKind.Center),
     };
 
-    [MenuItem("Tools/재의 길/VFX 스프라이트 슬라이스")]
+    [MenuItem("Tools/재의 길/그림/VFX 스프라이트 슬라이스")]
     public static void SliceAll()
     {
         int total = 0;
@@ -171,7 +171,7 @@ public static class AshVfxSpriteSlicer
         if (importer == null)
         {
             Debug.LogError($"[VFX 슬라이스] 시트를 못 찾았다: {path}\n" +
-                           "Tools → 재의 길 → 원본 시트 정규화 를 먼저 실행해라.");
+                           "Tools → 재의 길 → 그림 → 원본 시트 정규화 를 먼저 실행해라.");
             return 0;
         }
 

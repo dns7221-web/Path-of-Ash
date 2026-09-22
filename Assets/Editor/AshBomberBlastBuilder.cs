@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 잿불 자폭병의 폭발 이펙트 프리팹을 만들고 자폭병 프리팹에 연결한다.
-/// 메뉴: Tools → 재의 길 → 자폭병 폭발 이펙트 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 자폭병 폭발 이펙트 생성
 ///
 /// <b>왜 이펙트가 필수인가.</b> 자폭병 시트에는 터지는 그림이 없다. 재의 왕 궁극기에서
 /// 배운 것과 같은 이유로 일부러 뺐다 — 폭발을 256 셀 안에 그리면 판정 반경을 전달할
@@ -46,7 +46,7 @@ public static class AshBomberBlastBuilder
     /// </summary>
     private const float BaseScale = 1f;
 
-    [MenuItem("Tools/재의 길/자폭병 폭발 이펙트 생성")]
+    [MenuItem("Tools/재의 길/프리팹/자폭병 폭발 이펙트 생성")]
     public static void Build()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);
@@ -60,7 +60,7 @@ public static class AshBomberBlastBuilder
         if (frames.Count != FrameCount)
         {
             Debug.LogError($"[자폭병 폭발] {SheetPath}에서 프레임을 {frames.Count}개만 찾았다 " +
-                           $"(필요: {FrameCount}). Tools → 재의 길 → VFX 스프라이트 슬라이스 를 " +
+                           $"(필요: {FrameCount}). Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 " +
                            "먼저 실행해라.");
             return;
         }

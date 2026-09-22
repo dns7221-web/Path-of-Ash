@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 씬에 놓인 허수아비를 때릴 수 있게 배선한다.
 ///
-/// 메뉴: Tools → 재의 길 → 허수아비 세팅
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 허수아비 세팅
 ///
 /// 왜 도구인가:
 /// 허수아비가 맞으려면 <b>레이어·콜라이더·Health·TrainingDummy</b> 네 가지가 동시에 맞아야 한다.
@@ -23,7 +23,7 @@ public static class AshTrainingDummyBuilder
     /// <summary>허수아비 체력. 튜토리얼 내내 안 죽을 만큼 크게 둔다.</summary>
     private const int DummyHealth = 999;
 
-    [MenuItem("Tools/재의 길/허수아비 세팅")]
+    [MenuItem("Tools/재의 길/씬·세팅/허수아비 세팅")]
     public static void Build()
     {
         Sprite[] idleFrames = LoadSprites(IdleSpritePath);

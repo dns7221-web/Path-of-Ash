@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 /// <summary>
 /// 추가 생성(2026-09-17) — 플레이어 스킬의 파티클 곁들임을 만들고 연결한다.
-/// 메뉴: Tools → 재의 길 → 플레이어 파티클 만들기
+/// 메뉴: Tools → 재의 길 → 파티클 → 플레이어 파티클 만들기
 ///
 /// 기획 페이지(09-16)에서 사용자가 고른 14개를 그대로 옮긴다.
 /// 공격-1·2, 대시-1, W-1·3, Q-1·2·3, E-1·2·3, R-1·2·3. 양은 "화려하게"라 개수에 <see cref="Amount"/>를 곱한다.
@@ -147,7 +147,7 @@ public static class AshPlayerParticleBuilder
     /// 전부 만든다. 독립 프리팹 → 이펙트 자식 → 플레이어 프리팹 → 스킬 에셋 순서다.
     /// 뒤의 것이 앞에서 만든 프리팹을 참조하므로 순서를 바꾸면 안 된다.
     /// </summary>
-    [MenuItem("Tools/재의 길/플레이어 파티클 만들기")]
+    [MenuItem("Tools/재의 길/파티클/플레이어 파티클 만들기")]
     public static void Build()
     {
         var report = new List<string>();

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// 던전 소품을 Game 씬에 기본 위치로 깔아주는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 던전 소품 기본 배치
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 던전 소품 기본 배치
 ///
 /// 여기 적힌 좌표는 <b>최종 배치가 아니라 출발점</b>이다. 세부 위치는 씬에서 눈으로 보며
 /// 직접 옮기는 게 맞다 — 소품 배치는 숫자로 판단할 수 있는 종류의 작업이 아니다.
@@ -74,7 +74,7 @@ public static class AshDungeonPropPlacer
         new Placement("prop_stairs", new Vector2(0f, 6.8f)),
     };
 
-    [MenuItem("Tools/재의 길/던전 소품 기본 배치")]
+    [MenuItem("Tools/재의 길/씬·세팅/던전 소품 기본 배치")]
     public static void Place()
     {
         var scene = SceneManager.GetActiveScene();
@@ -103,7 +103,7 @@ public static class AshDungeonPropPlacer
             if (prefab == null)
             {
                 Debug.LogError($"[소품 배치] 프리팹을 못 찾았다: {path}\n" +
-                               "Tools → 재의 길 → 던전 소품 슬라이스 + 프리팹 생성 을 먼저 실행해라.");
+                               "Tools → 재의 길 → 프리팹 → 던전 소품 슬라이스 + 프리팹 생성 을 먼저 실행해라.");
                 continue;
             }
 

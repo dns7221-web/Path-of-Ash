@@ -14,7 +14,7 @@ using UnityEngine.SceneManagement;
 /// 3) 충돌 매트릭스는 조합이 수십 개라 손으로 찍으면 반드시 하나를 빠뜨린다. 그 하나가
 ///    "가끔 플레이어가 자기 공격에 맞는" 식의 재현하기 어려운 버그가 된다.
 ///
-/// 메뉴: Tools → 재의 길 → 프로젝트 세팅 적용
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 프로젝트 세팅 적용
 /// </summary>
 public static class AshProjectSetup
 {
@@ -129,7 +129,7 @@ public static class AshProjectSetup
         SceneFolder + "/Result.unity",
     };
 
-    [MenuItem("Tools/재의 길/프로젝트 세팅 적용")]
+    [MenuItem("Tools/재의 길/씬·세팅/프로젝트 세팅 적용")]
     public static void ApplyAll()
     {
         // 씬을 새로 만들면 지금 열린 씬이 닫힌다. 저장 안 된 작업이 있으면 먼저 물어본다.

@@ -32,7 +32,7 @@ using UnityEngine.Timeline;
 /// </summary>
 public static class AshBossTransitionTimelineBuilder
 {
-    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemy/BossAshKing.prefab";
+    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemies/BossAshKing.prefab";
     private const string ContainerName = "Transition";
 
     private const string TimelineFolder = "Assets/Project/Animations/Boss";

@@ -1313,7 +1313,7 @@ AI 시트에서 필요한 그룹만 잘라 균등 셀로 다시 만든다.
 - **`AshSpriteImportRules`의 규칙을 바꾸면 `GetVersion()`의 숫자를 같이 올린다.** 안 올리면
   아무 일도 일어나지 않는데, 그게 "설정이 안 먹었다"가 아니라 "아무 변화가 없다"로 보여서
   원인을 찾기 어렵다.
-- **압축 작업 뒤에는 `Tools → 재의 길 → 텍스처 포맷 감사`를 돌린다.** 4의 배수 조건에
+- **압축 작업 뒤에는 `Tools → 재의 길 → 조사 → 텍스처 포맷 감사`를 돌린다.** 4의 배수 조건에
   걸린 것이 있으면 거기서만 드러난다.
 - 배치모드는 유니티를 닫아야 들어간다. 열려 있으면 `Temp/UnityLockfile`에 막힌다.
 
@@ -1895,7 +1895,7 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - **E·R** — `AreaSkillData`에 `verticalScale`·`areaCenterOffset`(판정을 눌린 타원으로, 중심을 그림의 고리 중심으로),
   `castEffectPrefab`·`castEffectHeight`(R 모으기), 판정 경계 파티클에 반경 넘기기(`AreaRingParticles.SetRadius`)를 더했다.
   타원 판정은 원으로 후보를 모은 뒤 콜라이더의 가장 가까운 점을 타원 식에 넣는다. 원(세로 1)이면 예전과 똑같다.
-- **빌더** — `Tools → 재의 길 → 플레이어 파티클 만들기`(`AshPlayerParticleBuilder`). 독립 프리팹 둘 → 이펙트 자식 12개 →
+- **빌더** — `Tools → 재의 길 → 파티클 → 플레이어 파티클 만들기`(`AshPlayerParticleBuilder`). 독립 프리팹 둘 → 이펙트 자식 12개 →
   플레이어 프리팹(대시 불씨·명중 불똥 연결) → 스킬 에셋(E 반경 12일 때만 4.5·0.66·+0.9로, R 시전 이펙트 비었을 때만) 순서.
   자식 이름으로 찾아 없을 때만 만든다.
 - 컴파일(새 파일을 넣은 임시 프로젝트로 `dotnet build`) 오류 0·경고 0. 유니티가 아직 새 파일을 읽지 않아(.meta 없음) 임시 프로젝트로 확인했다.
@@ -1959,7 +1959,7 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 
 ### 다음 작업(09-18)
 
-- 유니티: **Tools → 재의 길 → 잿불 사수 화살 프리팹 생성**을 다시 돌려 화살 그림을 `Visual` 자식으로 옮긴다 → 사수 화살이 활 높이에서 나가는지,
+- 유니티: **Tools → 재의 길 → 프리팹 → 잿불 사수 화살 프리팹 생성**을 다시 돌려 화살 그림을 `Visual` 자식으로 옮긴다 → 사수 화살이 활 높이에서 나가는지,
   같은 줄의 플레이어가 여전히 맞는지 본다. 플레이어 파티클 메뉴와 Q 확인도 남아 있다.
 - 몬스터 파티클 10개 구현(자폭병 → 사수 → 망령 → 공통). 사수 화살 꼬리는 `Visual` 밑에 붙인다.
 
@@ -1972,7 +1972,7 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
   쉬기·맞음·죽음에 끄고, 풀로 돌아갈 때 비움). `EnemyMarksman`: 조준 때 활 높이(`bowHeight`)에 모으기 이펙트(`aimEffectPrefab`).
   `Projectile.expireEffectPrefab`: 사거리 끝에서 보이는 촉 자리에 이펙트. 09-17에 먼저 넣은 `EnemyBase.deathEffectPrefab`·
   `EnemyBomber` 점화 파티클과 합쳐 10개가 다 연결된다.
-- **빌더** — `Tools → 재의 길 → 몬스터 파티클 만들기`(`AshMonsterParticleBuilder`). 플레이어 빌더의 도우미를 `internal`로 열어 같이 쓴다.
+- **빌더** — `Tools → 재의 길 → 파티클 → 몬스터 파티클 만들기`(`AshMonsterParticleBuilder`). 플레이어 빌더의 도우미를 `internal`로 열어 같이 쓴다.
   독립 프리팹 넷(WraithWindupGather·MarksmanAimGather·ArrowAshBreak·EnemyDeathAsh) → 사수 화살(꼬리는 `Visual` 밑, 명중·사거리 끝 = ArrowAshBreak —
   복제 때 딸려 온 플레이어 명중 불꽃이면 바꾼다) → 폭발(파편·재·잔불) → 망령·사수·자폭병 프리팹(자식과 참조 칸, 빈 칸만 채움).
   사수 화살·자폭병 폭발 빌더는 저장한 뒤 스스로 곁들임을 다시 넣는다.
@@ -1996,7 +1996,7 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - **재생 장치** `CutsceneVideo`(UI) — 띠·어둠 → 영상(RenderTexture → RawImage, 16:9 유지) → 흰 화면을 걷으며 복귀 → 띠 빠짐 → Finished.
   시간은 전부 실제 시간(게임은 PauseGate로 멈춘다), 시작할 때와 재생 뒤에 Prepare. 건너뛰기 지원.
   `CutsceneVideoTester`(편집기 전용, 스페이스 재생·Esc 건너뛰기, 재생 중 timeScale 0).
-  `Tools → 재의 길 → 영상 테스트 씬 구성`(`AshVideoTestSceneBuilder`)이 사용자가 만든 Video 씬에 전부 꾸린다.
+  `Tools → 재의 길 → 씬·세팅 → 영상 테스트 씬 구성`(`AshVideoTestSceneBuilder`)이 사용자가 만든 Video 씬에 전부 꾸린다.
 - 컴파일 오류 0·경고 0.
 - **v1이 유니티에서 검은 화면** — 로그: "Color primaries 0 is unknown ... WindowsMediaFoundation", "Unexpected timestamp values
   (baseline이 아닌 H.264)". 재생 흐름은 끝까지 돌았는데(loopPointReached) 프레임이 텍스처에 안 그려졌다.

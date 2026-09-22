@@ -111,7 +111,7 @@ public class BossEncounter : RoomEncounter
             // 경고에 그친다. 체력바가 없어도 보스전은 성립한다 — 화면에 안 보일 뿐이다.
             // 여기서 return하면 HUD를 아직 안 만든 테스트 씬에서 보스가 아예 안 나온다.
             Debug.LogWarning("[보스 방] 씬에서 BossHealthBar를 못 찾았다. " +
-                             "Tools → 재의 길 → 게임 HUD 생성 을 실행해라.", this);
+                             "Tools → 재의 길 → 화면 → 게임 HUD 생성 을 실행해라.", this);
         }
     }
 

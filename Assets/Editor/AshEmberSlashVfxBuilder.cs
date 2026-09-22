@@ -6,7 +6,7 @@ using UnityEngine;
 /// 추가 생성 — 기본 공격(Ctrl, 잿불 베기)의 검 궤적 이펙트 프리팹을 만들고
 /// <c>Skill_Basic_AshSlash</c>에 연결한다.
 ///
-/// 메뉴: Tools → 재의 길 → 기본 공격 베기 이펙트 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 기본 공격 베기 이펙트 생성
 ///
 /// <b>왜 이 이펙트가 필요한가.</b> 기본 공격은 QWER 네 스킬과 달리 이펙트가 하나도 없었다.
 /// 캐릭터가 검을 휘두르는 그림은 있지만 <b>검이 지나간 자리에 아무것도 안 남는다.</b>
@@ -57,7 +57,7 @@ public static class AshEmberSlashVfxBuilder
     /// </summary>
     private const float BaseScale = 0.65f;
 
-    [MenuItem("Tools/재의 길/기본 공격 베기 이펙트 생성")]
+    [MenuItem("Tools/재의 길/프리팹/기본 공격 베기 이펙트 생성")]
     public static void Build()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);
@@ -72,9 +72,9 @@ public static class AshEmberSlashVfxBuilder
         {
             Debug.LogError($"[기본 공격 베기] {SheetPath}에서 프레임을 {frames.Count}개만 찾았다 " +
                            $"(필요: {FrameCount}).\n" +
-                           "Tools → 재의 길 → 원본 시트 정규화 (고른 것만) 으로 " +
+                           "Tools → 재의 길 → 그림 → 원본 시트 정규화 (고른 것만) 으로 " +
                            "vfx_ember_slash_6frames_raw.png 를 정규화하고, " +
-                           "Tools → 재의 길 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
+                           "Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
             return;
         }
 

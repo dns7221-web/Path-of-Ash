@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: b26e55fc82e118a40b4c7324a7dd00bf
+guid: 64bdcb7f7db43634496eb4fad6d954bf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1902524483537747852
-    second: hud-gauge-frame-ash-king_0
+      213: 5347613462146669048
+    second: skill_icons_5frames_1280x256_0
+  - first:
+      213: 3000537003587324739
+    second: skill_icons_5frames_1280x256_1
+  - first:
+      213: -6551353418487102577
+    second: skill_icons_5frames_1280x256_2
+  - first:
+      213: -387876461118343620
+    second: skill_icons_5frames_1280x256_3
+  - first:
+      213: 2952388160970601780
+    second: skill_icons_5frames_1280x256_4
+  - first:
+      213: 8550867488928906095
+    second: skill_icons_5frames_1280x256_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,23 +141,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hud-gauge-frame-ash-king_0
+      name: skill_icon_00
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1881
-        height: 836
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c8f30c110ff176a10800000000000000
-      internalID: 1902524483537747852
+      spriteID: 3357cd99680771c448f3385059ac5b4c
+      internalID: -574953584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438597757267f494ca53c654aecdc83a
+      internalID: -94398619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4d67d1c9268699469f1ebd71a5e991c
+      internalID: -1555885319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 313c4c99d95ab0441817bcc8c8e4d873
+      internalID: 854722827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a417492a8239e499b921b657e5dad9
+      internalID: -1408756098
       vertices: []
       indices: 
       edges: []
@@ -151,7 +254,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 24756937f78a56d46ac634327aa80801
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +264,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      hud-gauge-frame-ash-king_0: 1902524483537747852
+      skill_icon_00: -574953584
+      skill_icon_01: -94398619
+      skill_icon_02: -1555885319
+      skill_icon_03: 854722827
+      skill_icon_04: -1408756098
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

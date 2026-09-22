@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 /// <summary>
 /// 추가 생성(2026-09-19) — 일반 몬스터(망령·사수·자폭병)의 파티클 곁들임을 만들고 연결한다.
-/// 메뉴: Tools → 재의 길 → 몬스터 파티클 만들기
+/// 메뉴: Tools → 재의 길 → 파티클 → 몬스터 파티클 만들기
 ///
 /// 기획 페이지(09-17)에서 사용자가 고른 10개를 옮긴다. 망령-1·2, 사수-1·2·3, 자폭병-1·2·3·4, 공통-1.
 /// 양은 "화려하게"(×1.5), 적 불티는 흰 심 없이 황금에서 시작해 더 붉게 식는다(플레이어 불티와 구별).
@@ -50,7 +50,7 @@ public static class AshMonsterParticleBuilder
     /// 전부 만든다. 독립 프리팹 → 사수 화살·폭발 이펙트 → 몬스터 프리팹 세 개 순서다.
     /// 뒤의 것이 앞에서 만든 프리팹을 참조하므로 순서를 바꾸면 안 된다.
     /// </summary>
-    [MenuItem("Tools/재의 길/몬스터 파티클 만들기")]
+    [MenuItem("Tools/재의 길/파티클/몬스터 파티클 만들기")]
     public static void Build()
     {
         var report = new List<string>();
@@ -116,7 +116,7 @@ public static class AshMonsterParticleBuilder
             Transform visual = root.transform.Find("Visual");
             if (visual == null)
             {
-                Debug.LogWarning("[몬스터 파티클] 사수 화살에 Visual 자식이 없다. Tools → 재의 길 → 잿불 사수 화살 프리팹 생성 을 먼저 " +
+                Debug.LogWarning("[몬스터 파티클] 사수 화살에 Visual 자식이 없다. Tools → 재의 길 → 프리팹 → 잿불 사수 화살 프리팹 생성 을 먼저 " +
                                  "돌려야 화살 그림이 활 높이로 뜬다. 꼬리는 일단 루트에 붙인다.");
                 visual = root.transform;
             }

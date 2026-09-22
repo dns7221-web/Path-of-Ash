@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// 던전 소품 시트를 이름 붙여 자르고, 각 소품의 프리팹을 만드는 에디터 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 던전 소품 슬라이스 + 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 던전 소품 슬라이스 + 프리팹 생성
 ///
 /// 유니티의 자동 슬라이스(Automatic)를 안 쓰는 이유가 두 가지다.
 /// 1) 이름이 DungeonProps_v2_0 식으로 붙어서, 어느 게 상자고 어느 게 항아리인지 알 수 없다.
@@ -85,7 +85,7 @@ public static class AshDungeonPropBuilder
         new Prop(StatesSheet, "prop_urn_broken",     709, 143, 394, 369, 1.7f, Solid.None,    "Decal"),
     };
 
-    [MenuItem("Tools/재의 길/던전 소품 슬라이스 + 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/던전 소품 슬라이스 + 프리팹 생성")]
     public static void BuildAll()
     {
         SliceSheet(PropsSheet);

@@ -70,7 +70,7 @@ public static class AshPlayerAnimationBuilder
     // ── 메뉴 ──────────────────────────────────────────────────────────────
 
     // 수정(적 추가 시점): 캐릭터 세트 전체를 돈다. 슬라이서와 같은 이유로 메뉴는 하나만 둔다.
-    [MenuItem("Tools/재의 길/캐릭터 애니메이션 생성")]
+    [MenuItem("Tools/재의 길/애니메이션/캐릭터 애니메이션 생성")]
     public static void BuildAll()
     {
         EnsureFolder(AnimationRoot);

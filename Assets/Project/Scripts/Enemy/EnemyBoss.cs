@@ -951,7 +951,7 @@ public class EnemyBoss : MonoBehaviour
             // 시그널이 할 일을 순서대로 직접 부른다.
             Debug.LogError("[보스] 전환 연출을 못 쓴다(컴포넌트가 없거나 타임라인이 안 붙었다). " +
                            "연출 없이 2페이즈로 넘어간다. " +
-                           "Tools → 재의 길 → 보스 전환 이펙트 생성 을 실행해라.", this);
+                           "Tools → 재의 길 → 프리팹 → 보스 전환 이펙트 생성 을 실행해라.", this);
 
             OnTransitionRevealed();
             OnTransitionBossReturns();

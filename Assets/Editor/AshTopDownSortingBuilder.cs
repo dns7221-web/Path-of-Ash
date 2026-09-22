@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 /// <summary>
 /// 탑다운에 필요한 Y축 정렬과 소품 충돌체를 한 번에 맞춘다.
 ///
-/// 메뉴: Tools → 재의 길 → 탑다운 정렬·충돌 세팅
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 탑다운 정렬·충돌 세팅
 ///
 /// 왜 필요한가:
 /// 캐릭터가 기둥보다 위에 서 있어도 기둥 앞에 그려지는 문제가 있었다. 원인은 두 가지다.
@@ -47,7 +47,7 @@ public static class AshTopDownSortingBuilder
     /// <summary>충돌체가 차지할 스프라이트 세로 비율. 탑다운은 밑동만 막고 윗부분은 지나갈 수 있어야 한다.</summary>
     private const float ColliderHeightRatio = 0.28f;
 
-    [MenuItem("Tools/재의 길/탑다운 정렬·충돌 세팅")]
+    [MenuItem("Tools/재의 길/씬·세팅/탑다운 정렬·충돌 세팅")]
     public static void Build()
     {
         ApplySortAxis();

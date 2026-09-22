@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 플레이어 프리팹을 만들어내는 에디터 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 플레이어 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 플레이어 프리팹 생성
 ///
 /// 프리팹을 손으로 조립하지 않고 스크립트로 둔 이유는 AshProjectSetup과 같다.
 /// 컴포넌트가 6개, 설정할 값이 15개쯤 되는데 그중 하나(예: Rigidbody2D의 회전 고정)를
@@ -45,7 +45,7 @@ public static class AshPlayerPrefabBuilder
     /// </summary>
     private static Vector2 ColliderOffset => new Vector2(0f, ColliderSize.y * 0.5f);
 
-    [MenuItem("Tools/재의 길/플레이어 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/플레이어 프리팹 생성")]
     public static void BuildPrefab()
     {
         var controller = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>(ControllerPath);
@@ -67,7 +67,7 @@ public static class AshPlayerPrefabBuilder
             if (root.layer < 0)
             {
                 Debug.LogError("[플레이어 프리팹] Player 레이어가 없다. " +
-                               "Tools → 재의 길 → 프로젝트 세팅 적용 을 먼저 실행해라.");
+                               "Tools → 재의 길 → 씬·세팅 → 프로젝트 세팅 적용 을 먼저 실행해라.");
                 return;
             }
 
@@ -269,7 +269,7 @@ public static class AshPlayerPrefabBuilder
             else
             {
                 Debug.LogWarning("[플레이어 프리팹] 화살 스프라이트를 못 찾았다. " +
-                                 "Tools → 재의 길 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
+                                 "Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
             }
 
             root.AddComponent<Rigidbody2D>();
@@ -447,7 +447,7 @@ public static class AshPlayerPrefabBuilder
     private static void AssignSkillIcons(SerializedProperty slots)
     {
         const string sheet = "skill_icons_5frames_1280x256";
-        const string folder = "Assets/Art/Generated";
+        const string folder = "Assets/Project/Art/UI";
 
         for (int i = 0; i < slots.arraySize; i++)
         {

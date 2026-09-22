@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// GPT가 뽑아준 원본 그림을 프로젝트 규격의 스프라이트 시트로 바꾸는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 원본 시트 정규화
+/// 메뉴: Tools → 재의 길 → 그림 → 원본 시트 정규화
 ///
 /// <b>왜 만들었나.</b> 프롬프트에 좌표 규칙(셀 256, 발끝 y=216, 중심 x=128)을 적어 GPT가
 /// 맞춰주기를 기대했지만, 캔버스 비율·배경·시점·좌표가 한꺼번에 어긋나는 일이 반복됐다.
@@ -152,7 +152,7 @@ public static class AshSpriteSheetNormalizer
 
         // 스킬 아이콘 5개. 캐릭터도 이펙트도 아니지만 처리는 같다 — 초록 배경을 걷고
         // 균등한 칸에 가운데 정렬해서 담는다. 아이콘은 바닥 개념이 없으므로 FloatCenter.
-        ("Assets/Art/Generated", "skill-icons-ember-set.png",
+        ("Assets/Project/Art/UI", "skill-icons-ember-set.png",
                                  "skill_icons_5frames_1280x256.png", 5, Mode.FloatCenter, 0),
 
         // 수정(2026-09-15, 일반 몬스터 새 그림) — 사수 4줄·자폭병 3줄을 걷어냈다. 결과 파일 이름은 그대로 쓰지만
@@ -341,7 +341,7 @@ public static class AshSpriteSheetNormalizer
     /// </summary>
     private const float LegBandRatio = 0.2f;
 
-    [MenuItem("Tools/재의 길/원본 시트 정규화")]
+    [MenuItem("Tools/재의 길/그림/원본 시트 정규화")]
     public static void NormalizeAll()
     {
         foreach (var (folder, source, output, frames, mode, targetHeight) in Jobs)
@@ -358,7 +358,7 @@ public static class AshSpriteSheetNormalizer
     /// 확인해야 한다. 정렬 규칙을 고친 직후에는 특히 나쁘다 — 무엇이 왜 달라진 건지
     /// 구별할 수 없다. PowerShell 정규화 도구에 -Only를 넣었던 것과 같은 판단이다.
     /// </summary>
-    [MenuItem("Tools/재의 길/원본 시트 정규화 (고른 것만)")]
+    [MenuItem("Tools/재의 길/그림/원본 시트 정규화 (고른 것만)")]
     public static void NormalizeSelected()
     {
         var picked = new HashSet<string>();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 유물 인벤토리 화면을 씬에 만든다.
 ///
-/// 메뉴: Tools → 재의 길 → 인벤토리 화면 생성
+/// 메뉴: Tools → 재의 길 → 화면 → 인벤토리 화면 생성
 ///
 /// HUD 도구(<see cref="AshGameHudBuilder"/>)와 따로 둔 이유: HUD는 게임 중 항상 켜져 있는
 /// 게이지와 아이콘이고, 이건 눌러서 여는 별개의 화면이다. 한 도구에 넣으면 게이지를 손볼 때마다
@@ -68,7 +68,7 @@ public static class AshInventoryUiBuilder
     private const float BagCellSize = 96f;
     private const float BagSpacing = 12f;
 
-    [MenuItem("Tools/재의 길/인벤토리 화면 생성")]
+    [MenuItem("Tools/재의 길/화면/인벤토리 화면 생성")]
     public static void Build()
     {
         var panelSprite = AssetDatabase.LoadAssetAtPath<Sprite>(PanelPath);

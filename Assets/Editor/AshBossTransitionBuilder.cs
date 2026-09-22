@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 재의 왕 2페이즈 전환 연출의 시트 이펙트 3개를 만든다.
-/// 메뉴: Tools → 재의 길 → 보스 전환 이펙트 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 보스 전환 이펙트 생성
 ///
 /// <b>이 셋이 맡는 것은 "중심의 형상"이다.</b> 전환 연출은 둘로 나뉘어 있다 —
 /// 넓은 공간에 흩어지는 재는 파티클이, 발밑 한 자리에서 벌어지는 <b>모양</b>은 이 시트가
@@ -38,7 +38,7 @@ public static class AshBossTransitionBuilder
     // 하나로 묶는 이유: 보스 프리팹 루트에 이펙트 3개가 바로 붙으면 GroundShadow 같은
     // 원래 자식과 섞여서 <b>어디까지가 연출용인지</b>가 계층에서 안 읽힌다. 그리고 이
     // 컨테이너를 통째로 지웠다 다시 만드는 것이 곧 이 도구의 "다시 만들기"가 된다.
-    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemy/BossAshKing.prefab";
+    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemies/BossAshKing.prefab";
     private const string ContainerName = "Transition";
 
     /// <summary>
@@ -143,7 +143,7 @@ public static class AshBossTransitionBuilder
          "BossTransitionShatter", false, false, SheetScale),
     };
 
-    [MenuItem("Tools/재의 길/보스 전환 이펙트 생성")]
+    [MenuItem("Tools/재의 길/프리팹/보스 전환 이펙트 생성")]
     public static void Build()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);
@@ -265,8 +265,8 @@ public static class AshBossTransitionBuilder
             Debug.LogError(
                 $"[보스 전환] {effect.output}: {sheetPath}에서 프레임을 {frames.Count}개만 " +
                 $"찾았다 (필요: {FrameCount}).\n" +
-                "Tools → 재의 길 → 원본 시트 정규화 (고른 것만) 과 " +
-                "Tools → 재의 길 → VFX 스프라이트 슬라이스 를 차례로 먼저 실행해라.");
+                "Tools → 재의 길 → 그림 → 원본 시트 정규화 (고른 것만) 과 " +
+                "Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 차례로 먼저 실행해라.");
             return false;
         }
 

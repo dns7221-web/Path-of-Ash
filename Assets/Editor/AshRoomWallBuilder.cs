@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// 추가 생성 — 방의 경계 벽을 <b>방이 소유하게</b> 만든다.
 ///
-/// 메뉴: Tools → 재의 길 → 방 벽을 방마다 소유하게
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 방 벽을 방마다 소유하게
 ///
 /// <b>왜 필요한가.</b> Game 씬 최상위에 <c>Wall</c> 오브젝트가 하나 있었고, 이것이 방과
 /// 무관하게 <b>항상 켜져 있었다.</b> 크기는 던전 방 규격이다. 그런데 보스 방은
@@ -75,7 +75,7 @@ public static class AshRoomWallBuilder
         }
     }
 
-    [MenuItem("Tools/재의 길/방 벽을 방마다 소유하게")]
+    [MenuItem("Tools/재의 길/씬·세팅/방 벽을 방마다 소유하게")]
     public static void Build()
     {
         Scene scene = SceneManager.GetActiveScene();

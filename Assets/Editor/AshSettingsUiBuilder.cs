@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 추가 생성 — 설정 화면을 씬에 조립하는 에디터 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 설정 화면 전체 구성 (Title + Game)
+/// 메뉴: Tools → 재의 길 → 화면 → 설정 화면 전체 구성 (Title + Game)
 ///
 /// UI를 손으로 안 만들고 코드로 두는 이유는 다른 빌더와 같다. RectTransform은 앵커·피벗·
 /// 오프셋이 서로 얽혀 있어서 창에서 끌어 맞추면 "내 화면에서는 맞는데 해상도가 바뀌면
@@ -133,7 +133,7 @@ public static class AshSettingsUiBuilder
     ///
     /// 씬을 갈아 끼우는 도구라 저장 안 된 변경을 먼저 묻고, 끝나면 원래 씬으로 돌려놓는다.
     /// </summary>
-    [MenuItem("Tools/재의 길/설정 화면 전체 구성 (Title + Game)")]
+    [MenuItem("Tools/재의 길/화면/설정 화면 전체 구성 (Title + Game)")]
     public static void BuildAllScenes()
     {
         // 안 물어보면 작업 중이던 씬의 변경이 조용히 날아간다. 되돌릴 방법이 없는 종류다.
@@ -169,7 +169,7 @@ public static class AshSettingsUiBuilder
         return true;
     }
 
-    [MenuItem("Tools/재의 길/설정 화면 생성")]
+    [MenuItem("Tools/재의 길/화면/설정 화면 생성")]
     public static void Build()
     {
         Scene scene = SceneManager.GetActiveScene();

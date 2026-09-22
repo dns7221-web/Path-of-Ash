@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 잿불 자폭병 프리팹을 코드로 조립한다.
-/// 메뉴: Tools → 재의 길 → 잿불 자폭병 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 잿불 자폭병 프리팹 생성
 ///
 /// 사수 빌더(<see cref="AshMarksmanPrefabBuilder"/>)와 규격은 같고 두 가지가 다르다.
 /// - 쏘는 것이 없으므로 투사체도, 발사 자리도 없다. 폭발은 반경 판정이라 히트박스가 필요 없다.
@@ -36,7 +36,7 @@ public static class AshBomberPrefabBuilder
     private static float Height =>
         AshPlayerSpriteSheets.EnemyPixelHeight / AshSpriteImportRules.CharacterPixelsPerUnit;
 
-    [MenuItem("Tools/재의 길/잿불 자폭병 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/잿불 자폭병 프리팹 생성")]
     public static void Build()
     {
         RuntimeAnimatorController controller =
@@ -45,7 +45,7 @@ public static class AshBomberPrefabBuilder
         if (controller == null)
         {
             Debug.LogError($"[자폭병 프리팹] 컨트롤러가 없다: {Set.ControllerPath}\n" +
-                           "Tools → 재의 길 → 캐릭터 스프라이트 슬라이스 → 캐릭터 애니메이션 생성 " +
+                           "Tools → 재의 길 → 그림 → 캐릭터 스프라이트 슬라이스 → 캐릭터 애니메이션 생성 " +
                            "순서로 먼저 실행해라.");
             return;
         }
@@ -73,7 +73,7 @@ public static class AshBomberPrefabBuilder
             {
                 string effectNote = keptEffect != null
                     ? $"폭발 이펙트: {keptEffect.name}"
-                    : "남은 일: Tools → 재의 길 → 자폭병 폭발 이펙트 생성 을 실행해라. " +
+                    : "남은 일: Tools → 재의 길 → 프리팹 → 자폭병 폭발 이펙트 생성 을 실행해라. " +
                       "지금은 아무 그림 없이 피해만 들어가서, 플레이어가 왜 맞았는지 알 수 없다.";
 
                 Debug.Log($"[자폭병 프리팹] 생성 완료 → {PrefabPath}\n체력 {MaxHealth}. {effectNote}");

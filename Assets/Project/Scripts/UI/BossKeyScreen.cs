@@ -89,7 +89,7 @@ public class BossKeyScreen : MonoBehaviour
         {
             Debug.LogError($"[보스 열쇠] 씬에 보스 열쇠 화면이 {duplicates.Length}개 있다. 하나만 남겨라. " +
                            "둘 이상이면 T와 I를 번갈아 누를 때 시간이 멈춘 채로 돌아오지 않는다. " +
-                           "Tools → 재의 길 → 보스 열쇠 화면 생성 을 다시 실행하면 정리된다.", this);
+                           "Tools → 재의 길 → 화면 → 보스 열쇠 화면 생성 을 다시 실행하면 정리된다.", this);
         }
 
         if (root == gameObject)
