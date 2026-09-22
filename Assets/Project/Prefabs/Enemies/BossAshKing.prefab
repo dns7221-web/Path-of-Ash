@@ -352,15 +352,21 @@ MonoBehaviour:
   slamMotionSeconds: 0.583
   slamHitSize: {x: 7, y: 5}
   slamDamage: 2
-  wavePrefab: {fileID: 1746557871272930878, guid: 0fbb4d97f1e788248a0a402767283205, type: 3}
-  waveRange: 20
-  waveCooldown: 6
-  waveFireDelay: 0.4
-  waveMotionSeconds: 0.583
-  waveCount: 3
-  waveSpreadDegrees: 18
-  waveDamage: 1
-  waveSpawnHeight: 1.6
+  spearPrefab: {fileID: 1236756480030715208, guid: e1142856e2a6dc64899824cb72b9622f, type: 3}
+  spearRange: 18
+  spearCooldown: 9
+  spearAimSeconds: 1.1
+  spearCount: 3
+  spearPhase2Bonus: 2
+  spearSpreadDegrees: 14
+  spearFireInterval: 0.07
+  spearTurnDegreesPerSecond: 200
+  spearDamage: 1
+  spearFireDelay: 0.4
+  spearMotionSeconds: 0.583
+  spearSpawnHeight: 1.6
+  spearCastName: "\uC7AC\uC758 \uCC3D"
+  aimFan: {fileID: 0}
   ultimateRange: 12
   ultimateLungeSpeed: 0
   ultimateRadius: 12

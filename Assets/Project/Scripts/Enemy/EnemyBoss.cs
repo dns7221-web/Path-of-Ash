@@ -11,8 +11,12 @@ using UnityEngine;
 /// 일반 몹을 손볼 때마다 보스가 깨지는지 확인해야 한다.
 ///
 /// <b>패턴을 거리로 가르는 것이 이 보스의 전부다.</b>
-/// 붙으면 내려찍기, 떨어지면 잿불 파도. 한 자리에 서 있으면 안 되게 만드는 장치다.
-/// 둘 다 예비동작이 애니메이션에 들어 있어서, 플레이어는 모션을 보고 빠질 수 있다.
+/// 붙으면 내려찍기, 떨어지면 재의 창. 한 자리에 서 있으면 안 되게 만드는 장치다.
+/// 둘 다 예비동작이 있어서(내려찍기는 애니메이션, 창은 조준선과 시전 바) 보고 빠질 수 있다.
+///
+/// 수정(2026-09-20, 기획 선택) — 원거리를 잿불 파도에서 <b>재의 창</b>으로 갈아탔다.
+/// 둘 다 부채꼴로 날아오는 원거리라 회피법이 똑같았고, 그림까지 같아서 화면에서도 구별되지
+/// 않았다. 패턴이 둘로 보이지 않으면 늘린 만큼의 재미가 없다.
 ///
 /// 페이즈 전환은 <b>컨트롤러를 갈아 끼운다.</b> 오브젝트도 Health도 그대로라
 /// 진행 중인 체력과 위치가 안 끊긴다.
@@ -57,7 +61,7 @@ public class EnemyBoss : MonoBehaviour
 
     // 추가 생성 — 2페이즈에서 공격 모션 시간에 곱할 값.
     //
-    // 왜 필요한가: 아래 slamMotionSeconds·waveMotionSeconds는 1페이즈 클립에 맞춘 숫자다.
+    // 왜 필요한가: 아래 slamMotionSeconds·spearMotionSeconds는 1페이즈 클립에 맞춘 숫자다.
     // 그런데 2페이즈 클립은 15fps로 뽑아서 1페이즈(12fps)보다 짧다. 프레임 수는 7로 같으므로
     // 길이 비가 12/15 = 0.8로 딱 떨어진다.
     //
@@ -130,43 +134,72 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private Vector2 slamHitSize = new Vector2(7f, 5f);
     [SerializeField] private int slamDamage = 2;
 
-    [Header("잿불 파도")]
-    [Tooltip("멀리 있을 때 쓴다. 비어 있으면 이 패턴을 건너뛴다.")]
-    [SerializeField] private Projectile wavePrefab;
-
-    // 추가 생성 — 잿불 파도를 쓸 수 있는 최대 거리.
+    // 추가 생성(2026-09-20, 기획 선택 "C 재의 창") — 예고하고 나가는 원거리 공격.
     //
-    // 왜 필요한가: 예전에는 "내려찍기 사거리 밖"이 곧 파도 조건이었다. 그런데 쿨다운 중에
-    // 보스가 계속 다가오기 때문에, 쿨다운이 끝나는 순간에는 거의 항상 사거리 안이었다.
-    // 그래서 파도는 사실상 한 번도 나오지 않았다. 이제 두 패턴의 사거리를 겹쳐두고
-    // 겹치는 구간에서는 번갈아 쓴다.
-    [Tooltip("잿불 파도를 쓸 수 있는 최대 거리. 내려찍기 사거리보다 커야 두 패턴이 섞인다.")]
-    [SerializeField] private float waveRange = 20f;
-
-    // 추가 생성 — 파도 전용 쿨다운.
+    // <b>잿불 파도와 무엇이 다른가.</b> 파도는 발사 직전에 방향을 잡아 곧바로 나간다.
+    // 재의 창은 <see cref="BossAimFan"/>의 부채꼴 조준선으로 <b>먼저 보여준 뒤</b> 나간다.
+    // 그래서 회피법이 갈린다 — 파도는 "날아오는 것 사이로" 피하고, 창은 "겨누는 동안 선 밖으로"
+    // 빠진다. 회피 축이 겹치지 않아야 패턴을 늘린 만큼 플레이어가 할 일도 늘어난다
+    // (재 폭발 주석에 적어둔 것과 같은 기준이다).
     //
-    // 왜 공용 쿨다운으로는 부족한가: 공용 쿨다운(attackCooldown)은 "공격 후 쉬는 시간"이라
-    // 1.1초로 짧다. 두 패턴을 번갈아 쓰게 하면 파도가 2.2초마다 나오는데, 화면을 가로지르는
-    // 광역 패턴이 그 빈도로 나오면 <b>평타처럼 보인다.</b> 보스 패턴은 가끔 나와서 예비동작을
-    // 읽고 대비하는 맛이 있어야 한다. 그래서 파도만 따로 훨씬 긴 쿨다운을 둔다.
-    [Tooltip("잿불 파도를 다시 쓰기까지의 시간(초). 이 값이 파도 빈도를 정한다.")]
-    [SerializeField, Min(0f)] private float waveCooldown = 6f;
+    // 시전 바로 예고하는 유일한 패턴이다. 기획에서 원거리 공격은 바로 알리되 <b>저지는 안 되는</b>
+    // 것으로 정했다. 그래서 이 패턴은 맞아도 끊기지 않는다 — 공격 중 경직을 안 거는 기존 규칙이
+    // 그대로 적용된다(<see cref="OnDamaged"/> 참고).
+    [Header("재의 창 (원거리)")]
+    [Tooltip("창 프리팹. 비어 있으면 이 패턴을 건너뛴다. " +
+             "Tools → 재의 길 → 프리팹 → 재의 창 투사체 생성 이 만들어 꽂는다.")]
+    [SerializeField] private Projectile spearPrefab;
 
-    [Tooltip("모션 시작부터 발사까지(초). ashking_wave의 5번째 프레임(0.417) 근처다.")]
-    [SerializeField] private float waveFireDelay = 0.4f;
+    [Tooltip("재의 창을 쓸 수 있는 최대 거리. 조준선 길이도 이 값이다.")]
+    [SerializeField] private float spearRange = 18f;
 
-    // 수정(타이밍 정합): 0.7 → 0.583. 내려찍기와 같은 이유다.
-    [Tooltip("모션 전체 길이(초). ashking_wave 클립 길이(7프레임 ÷ 12fps = 0.583)와 맞춘다.")]
-    [SerializeField] private float waveMotionSeconds = 0.583f;
+    [Tooltip("다시 쓰기까지의 시간(초). 2페이즈에서는 페이즈 배율이 곱해져 더 자주 나온다.")]
+    [SerializeField, Min(0f)] private float spearCooldown = 9f;
 
-    [Tooltip("한 번에 나가는 발수. 2페이즈에서는 여기에 2가 더해진다.")]
-    [SerializeField] private int waveCount = 3;
+    [Tooltip("겨누는 시간(초). 이 동안 조준선이 따라 돌고 시전 바가 찬다. " +
+             "짧으면 예고가 예고 구실을 못 하고, 길면 보스가 멈춰 서 있는 시간이 된다.")]
+    [SerializeField, Min(0.1f)] private float spearAimSeconds = 1.1f;
 
-    [Tooltip("발 사이 각도(도).")]
-    [SerializeField] private float waveSpreadDegrees = 18f;
+    [Tooltip("1페이즈에 나가는 창의 수. 기획에서 1페이즈에도 짧게 넣기로 했다.")]
+    [SerializeField, Min(1)] private int spearCount = 3;
 
-    [SerializeField] private int waveDamage = 1;
-    [SerializeField] private float waveSpawnHeight = 1.6f;
+    [Tooltip("2페이즈에 더해지는 창의 수.")]
+    [SerializeField, Min(0)] private int spearPhase2Bonus = 2;
+
+    [Tooltip("창 사이 각도(도).")]
+    [SerializeField] private float spearSpreadDegrees = 14f;
+
+    [Tooltip("창이 하나씩 나가는 간격(초). 0이면 한꺼번에 나간다. 조금 두면 가운데부터 " +
+             "좌우로 퍼지는 순서가 눈에 보인다.")]
+    [SerializeField, Min(0f)] private float spearFireInterval = 0.07f;
+
+    // 추가 생성 — 조준이 따라 도는 속도.
+    //
+    // <b>이 값 하나가 이 패턴의 회피 난이도다.</b> 무한대면 겨누는 동안 무엇을 해도 조준이
+    // 붙어 있어서 시전 시간이 그냥 대기 시간이 된다. 제한을 두면 보스 주위를 크게 돌아
+    // 조준을 흘릴 수 있고, 그때 비로소 "겨누는 동안 움직인다"가 회피가 된다.
+    [Tooltip("조준선이 플레이어를 따라 도는 속도(도/초). 클수록 끈질기게 따라붙는다.")]
+    [SerializeField, Min(0f)] private float spearTurnDegreesPerSecond = 200f;
+
+    [SerializeField] private int spearDamage = 1;
+
+    [Tooltip("모션 시작부터 창이 나가기까지(초). ashking_wave 클립의 5번째 프레임(0.417) 근처다. " +
+             "파도를 빼면서 이 두 숫자가 창으로 넘어왔다 — 던지는 그림은 같은 클립을 쓴다.")]
+    [SerializeField] private float spearFireDelay = 0.4f;
+
+    [Tooltip("던지는 모션 전체 길이(초). 클립 길이(7프레임 ÷ 12fps = 0.583)와 맞춘다.")]
+    [SerializeField] private float spearMotionSeconds = 0.583f;
+
+    [Tooltip("창이 나가는 높이(유닛). 조준선도 같은 높이에서 시작한다 — 파도가 조준 원점을 " +
+             "발사 원점과 어긋나게 잡아 헛치던 실수를 되풀이하지 않기 위해서다.")]
+    [SerializeField] private float spearSpawnHeight = 1.6f;
+
+    [Tooltip("시전 바에 적을 이름.")]
+    [SerializeField] private string spearCastName = "재의 창";
+
+    [Tooltip("조준선을 그리는 컴포넌트. 비어 있으면 실행할 때 스스로 붙인다 — 그림 자산이 " +
+             "필요 없는 컴포넌트라 프리팹에 미리 달아두지 않아도 된다.")]
+    [SerializeField] private BossAimFan aimFan;
 
     // 추가 생성 — 2페이즈 전용 궁극기. 기획 4패턴 중 "재 폭발"이다.
     //
@@ -379,8 +412,27 @@ public class EnemyBoss : MonoBehaviour
     /// </summary>
     public event Action EnteredPhase2;
 
-    // 추가 생성 — 파도를 다시 쓸 수 있을 때까지 남은 시간.
-    private float waveCooldownTimer;
+    /// <summary>
+    /// 추가 생성(2026-09-20, 시전 바) — 예고가 필요한 패턴을 시작할 때 울린다.
+    /// 넘기는 값은 (패턴 이름, 시전 길이(초))다.
+    ///
+    /// <see cref="EnteredPhase2"/>와 같은 이유로 이벤트다. 보스는 화면에 무엇이 있는지 모르고,
+    /// 방(<see cref="BossEncounter"/>)이 받아 시전 바에 넘긴다. 길이를 같이 보내는 이유는
+    /// 눈금의 주인이 보스이기 때문이다 — 바가 1.1초를 따로 적어두면 보스 쪽 시전 시간을
+    /// 바꿨을 때 <b>바만 옛 속도로 찬다.</b>
+    /// </summary>
+    public event Action<string, float> CastStarted;
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 시전이 끝났거나 끊겼을 때 울린다.
+    ///
+    /// 끊기는 경우도 같은 이벤트로 알린다(죽음·페이즈 전환). 바 입장에서 할 일은 둘 다
+    /// "그만 채운다"로 같고, 두 이벤트로 나누면 한쪽을 안 듣는 곳이 반드시 생긴다.
+    /// </summary>
+    public event Action CastEnded;
+
+    // 추가 생성(2026-09-20) — 재의 창을 다시 쓸 수 있을 때까지 남은 시간.
+    private float spearCooldownTimer;
 
     // 추가 생성 — 재 폭발을 다시 쓸 수 있을 때까지 남은 시간.
     private float ultimateCooldownTimer;
@@ -393,7 +445,9 @@ public class EnemyBoss : MonoBehaviour
 
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int SlamHash = Animator.StringToHash("Slam");
-    private static readonly int WaveHash = Animator.StringToHash("Wave");
+    // 수정(2026-09-20, 파도 제거) — WaveHash → ThrowHash. 애니메이터 상태 이름은 "Wave" 그대로다
+    // (컨트롤러를 고치면 1·2페이즈 두 벌을 다시 이어야 한다). 쓰는 쪽은 이제 재의 창뿐이다.
+    private static readonly int ThrowHash = Animator.StringToHash("Wave");
     private static readonly int HitHash = Animator.StringToHash("Hit");
     private static readonly int DieHash = Animator.StringToHash("Die");
     private static readonly int TransitionHash = Animator.StringToHash("Transition");
@@ -471,18 +525,14 @@ public class EnemyBoss : MonoBehaviour
 
     private void Update()
     {
-        // 수정(주석과 동작 불일치) — 파도 쿨다운을 상태 검사보다 <b>위로</b> 올렸다.
+        // 패턴 전용 쿨다운은 상태 검사보다 <b>위</b>에서 흐른다.
         //
-        // 예전에는 아래 return 뒤에 있으면서 주석만 "공격 중에도 계속 흐른다"고 적혀 있었다.
-        // 실제로는 공격·경직·전환 중에 멈춰 있었고, 그래서 인스펙터의 6초는 <b>쉬는 시간 6초</b>를
-        // 뜻했다. 패턴 하나가 0.58초씩 걸리니 체감 주기는 7~8초까지 늘어난다.
-        // waveCooldown을 시전 <b>시작</b> 시점에 거는 이유(주기를 인스펙터 숫자와 맞추기 위해)와
-        // 정면으로 어긋나던 자리다.
-        if (waveCooldownTimer > 0f) waveCooldownTimer -= Time.deltaTime;
-
-        // 추가 생성 — 재 폭발 쿨다운도 같은 자리에서 흐른다.
-        // 파도와 같은 이유다. 상태와 무관하게 흘러야 인스펙터에 적은 초가 실제 주기와 맞는다.
+        // 아래 return 뒤에 두면 공격·경직·전환 중에 멈춘다. 그러면 인스펙터에 적은 9초가
+        // <b>쉬는 시간 9초</b>라는 뜻이 되고, 패턴 하나가 1.5초씩 걸리니 체감 주기는 11초까지
+        // 늘어난다. 쿨다운을 시전 <b>시작</b> 시점에 거는 이유(숫자와 실제 주기를 맞추려고)와
+        // 정면으로 어긋난다. 예전에 파도가 정확히 그 상태였다.
         if (ultimateCooldownTimer > 0f) ultimateCooldownTimer -= Time.deltaTime;
+        if (spearCooldownTimer > 0f) spearCooldownTimer -= Time.deltaTime;
 
         if (state == State.Dead || state == State.Attack ||
             state == State.Transition || state == State.Hit) return;
@@ -529,27 +579,17 @@ public class EnemyBoss : MonoBehaviour
         bool canUltimate = isPhase2 && ultimateCooldownTimer <= 0f && distance <= ultimateRange;
         if (canUltimate) { StartUltimate(toPlayer); return; }
 
-        // 파도는 자기 쿨다운이 돌아왔을 때만 쓴다. 빈도를 이 하나로 통제하므로
-        // "직전에 무엇을 썼는지" 같은 기억이 따로 필요 없다.
-        bool canWave = wavePrefab != null && distance <= waveRange && waveCooldownTimer <= 0f;
-        if (canWave) { StartWave(toPlayer); return; }
+        // 추가 생성(2026-09-20) — 재의 창은 파도보다 먼저 본다.
+        //
+        // 이유는 재 폭발을 맨 앞에 둔 것과 같다. 시전에 1초 넘게 걸리는 데다 쿨다운도 길어서,
+        // 순서를 뒤로 두면 차례가 됐을 때 파도에 계속 밀린다. 그러면 인스펙터의 9초가
+        // "9초 + 파도가 안 걸릴 때까지"가 되어 숫자가 뜻을 잃는다.
+        bool canSpear = SpearPrefab != null && distance <= spearRange && spearCooldownTimer <= 0f;
+        if (canSpear) { StartAshSpears(toPlayer); return; }
 
         if (distance <= slamRange) { StartCoroutine(Slam(toPlayer)); return; }
 
         Chase(toPlayer, distance);
-    }
-
-    /// <summary>
-    /// 추가 생성 — 잿불 파도를 시작하고 전용 쿨다운을 건다.
-    ///
-    /// 쿨다운을 시전이 끝난 뒤가 아니라 <b>시작할 때</b> 거는 이유:
-    /// 끝난 뒤에 걸면 모션 길이(0.7초)만큼 간격이 더 늘어나, 인스펙터에 적은 숫자와
-    /// 실제 체감 주기가 어긋난다. 시작 시점 기준이라야 "6초마다 한 번"이 그대로 지켜진다.
-    /// </summary>
-    private void StartWave(Vector2 toPlayer)
-    {
-        waveCooldownTimer = waveCooldown * (isPhase2 ? phase2CooldownScale : 1f);
-        StartCoroutine(Wave(toPlayer));
     }
 
     /// <summary>
@@ -600,7 +640,7 @@ public class EnemyBoss : MonoBehaviour
         if (animator != null) animator.SetFloat(SpeedHash, speed);
     }
 
-    /// <summary>플레이어에게 다가간다. 잿불 파도가 없을 때 먼 거리에서 쓴다.</summary>
+    /// <summary>플레이어에게 다가간다. 원거리 패턴이 쿨다운일 때 먼 거리에서 쓴다.</summary>
     private void Chase(Vector2 toPlayer, float distance)
     {
         Reposition(toPlayer, distance);
@@ -637,9 +677,9 @@ public class EnemyBoss : MonoBehaviour
 
         // 추가 생성 — 조준 방향을 예비동작이 시작되는 지금 고정한다.
         //
-        // 잿불 파도(<see cref="Wave"/>)는 반대로 발사 직전에 방향을 다시 잡는다. 두 패턴이 다른 이유:
-        // 파도는 화면을 가로지르는 원거리 견제라, 제자리에서 옆으로 한 발짝 걷는 것만으로 전부
-        // 피해지면 패턴이 성립하지 않는다. 반면 내려찍기는 <b>예비동작을 보고 그 자리를 벗어나는 것이
+        // 재의 창(<see cref="AshSpears"/>)은 반대로 겨누는 동안 계속 방향을 고쳐 잡는다. 두 패턴이 다른 이유:
+        // 창은 화면을 가로지르는 원거리라, 제자리에서 옆으로 한 발짝 걷는 것만으로 전부
+        // 피해지면 패턴이 성립하지 않는다(그래서 조준선으로 미리 보여준다). 반면 내려찍기는 <b>예비동작을 보고 그 자리를 벗어나는 것이
         // 회피 그 자체다.</b> 판정 순간에 다시 조준하면 어디로 도망쳐도 맞게 되고, 그러면 아래
         // slamHitDelay로 예비동작을 둔 이유가 통째로 사라진다.
         slamAim = AimFrom(toPlayer);
@@ -695,57 +735,174 @@ public class EnemyBoss : MonoBehaviour
             : new Vector2(FacingSign(), 0f);
     }
 
-    private IEnumerator Wave(Vector2 toPlayer)
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 창 프리팹. 비어 있으면 이 패턴을 건너뛴다.
+    ///
+    /// 수정(2026-09-20, 파도 제거) — 비었을 때 파도 프리팹으로 대신 쏘던 임시 처리를 걷어냈다.
+    /// 파도 패턴 자체가 사라져서 빌려올 것이 없다. 대신 <see cref="OnValidate"/>가 비어 있으면
+    /// 알려준다 — 조용히 사라지는 패턴을 다시 찾아다니지 않게.
+    /// </summary>
+    private Projectile SpearPrefab => spearPrefab;
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 재의 창을 시작하고 전용 쿨다운을 건다.
+    /// 재 폭발과 같이 <b>시작할 때</b> 건다(이유는 <see cref="StartUltimate"/> 주석 참고).
+    /// </summary>
+    private void StartAshSpears(Vector2 toPlayer)
+    {
+        spearCooldownTimer = spearCooldown * (isPhase2 ? phase2CooldownScale : 1f);
+        StartCoroutine(AshSpears(toPlayer));
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 재의 창. <b>겨누는 것을 보여주고</b> 나가는 원거리 공격이다.
+    ///
+    /// 흐름: 부채꼴 조준선을 켠다 → 시전 바를 띄운다 → 겨누는 동안 조준선이 플레이어를 따라
+    /// 돈다 → 방향을 그 자리에서 굳힌다 → 던지는 모션에 맞춰 가운데부터 좌우로 하나씩 나간다.
+    ///
+    /// <b>방향을 발사 직전이 아니라 시전이 끝나는 순간에 굳히는 것이 핵심이다.</b> 파도처럼
+    /// 발사 시점에 다시 잡으면, 모션이 도는 0.4초 동안 조준선은 멈춰 있는데 창은 다른 데로
+    /// 나간다. 조준선이 거짓말을 하는 셈이라, 예고 자체를 못 믿게 된다.
+    /// </summary>
+    private IEnumerator AshSpears(Vector2 toPlayer)
     {
         state = State.Attack;
         Stop();
-        state = State.Attack;
+        state = State.Attack; // Stop이 Idle로 되돌리므로 다시 잠근다
 
-        // 추가 생성 — 내려찍기와 같은 이유로 페이즈 시간을 한 쌍으로 먼저 구한다.
-        float fireDelay = MotionTime(waveFireDelay);
-        float motionSeconds = MotionTime(waveMotionSeconds);
+        int count = spearCount + (isPhase2 ? spearPhase2Bonus : 0);
+        Vector2 aim = AimFrom(toPlayer);
 
-        if (animator != null) animator.SetTrigger(WaveHash);
+        BossAimFan fan = EnsureAimFan();
+        fan.Show(count, spearSpreadDegrees, spearRange, spearSpawnHeight);
+        fan.Aim(aim);
+
+        CastStarted?.Invoke(spearCastName, spearAimSeconds);
+
+        // 겨누는 동안. 프레임마다 조준을 조금씩 돌리고 몸도 그쪽을 본다.
+        for (float t = 0f; t < spearAimSeconds; t += Time.deltaTime)
+        {
+            aim = TrackPlayer(aim);
+            fan.Aim(aim);
+            FaceTowards(aim.x);
+            yield return null;
+        }
+
+        // 보이는 선 그대로를 발사 방향으로 굳힌다. 각도를 여기서 다시 계산하지 않고
+        // 조준선에게 물어보는 이유는 BossAimFan.DirectionAt 주석에 적어뒀다.
+        var directions = new Vector2[count];
+        for (int i = 0; i < count; i++) directions[i] = fan.DirectionAt(i);
+
+        CastEnded?.Invoke();
+
+        // 던지는 그림은 보스의 "Wave" 상태를 그대로 쓴다. 클립 이름이 파도에서 왔을 뿐,
+        // 대검을 휘둘러 무언가를 날리는 동작이라 창에도 맞는다.
+        float fireDelay = MotionTime(spearFireDelay);
+        float motionSeconds = MotionTime(spearMotionSeconds);
+
+        if (animator != null) animator.SetTrigger(ThrowHash);
 
         yield return new WaitForSeconds(fireDelay);
 
-        // 수정(조준 원점 어긋남) — <b>쏘는 자리에서 맞힐 자리로</b> 겨눈다.
-        //
-        // 예전에는 방향을 "보스 발밑 → 플레이어 발밑"으로 잡아놓고, 정작 투사체는 발밑이 아니라
-        // waveSpawnHeight(1.6)만큼 위에서 내보냈다. 그러면 파도는 목표에 도달했을 때
-        // <b>플레이어 발밑보다 1.6유닛 위</b>에 있다. 플레이어 캡슐이 0~1.25이고 파도 히트박스가
-        // ±0.7이라, 옆에서 쏠 때 겹치는 구간이 0.9~1.25의 <b>0.35유닛</b>뿐이었다. 그것도
-        // 캡슐의 둥근 꼭대기라서, 값 하나만 건드려도 조용히 안 맞게 되는 상태였다.
-        //
-        // 내려찍기(<see cref="Slam"/>)와 같은 계열의 실수다. 거기서는 판정 방향이 그림을 따라갔고
-        // 여기서는 조준 원점이 발사 원점을 안 따라갔다.
-        Vector2 spawn = (Vector2)transform.position + Vector2.up * waveSpawnHeight;
-        Vector2 target = playerCollider != null
-            ? (Vector2)playerCollider.bounds.center
-            : (player != null ? (Vector2)player.position : (Vector2)transform.position + toPlayer);
+        // 첫 창이 나가는 순간 조준선을 끈다. 남겨두면 이미 날아간 뒤에도 선이 떠 있어서
+        // "아직 안 쐈다"로 읽힌다.
+        fan.Hide();
 
-        // 시전 시작이 아니라 여기서 방향을 다시 잡는다. 예비동작 동안 플레이어가 움직였으면
-        // 그쪽으로 나가야 한다 — 안 그러면 제자리에서 옆으로 걸어 나가기만 해도 전부 피해진다.
-        // (내려찍기는 반대로 시작 시점에 고정한다. 이유는 Slam 쪽 주석에 적어뒀다.)
-        Vector2 toTarget = target - spawn;
-        Vector2 aim = toTarget.sqrMagnitude > 0.0001f ? toTarget.normalized : AimFrom(toPlayer);
+        Vector2 spawn = (Vector2)transform.position + Vector2.up * spearSpawnHeight;
+        Projectile prefab = SpearPrefab;
+        float fired = 0f;
 
-        int count = waveCount + (isPhase2 ? 2 : 0);
-
-        // 가운데를 기준으로 좌우 대칭이 되게 각도를 나눈다.
-        float start = -waveSpreadDegrees * (count - 1) * 0.5f;
-
-        for (int i = 0; i < count; i++)
+        foreach (int index in FireOrder(count))
         {
-            Vector2 direction = Quaternion.Euler(0f, 0f, start + waveSpreadDegrees * i) * aim;
+            var spear = Instantiate(prefab, spawn, Quaternion.identity);
+            spear.Launch(directions[index], spearDamage);
 
-            var shot = Instantiate(wavePrefab, spawn, Quaternion.identity);
-            shot.Launch(direction, waveDamage);
+            if (spearFireInterval <= 0f) continue;
+
+            yield return new WaitForSeconds(spearFireInterval);
+            fired += spearFireInterval;
         }
 
-        yield return new WaitForSeconds(Mathf.Max(0f, motionSeconds - fireDelay));
+        yield return new WaitForSeconds(Mathf.Max(0f, motionSeconds - fireDelay - fired));
 
         EndAttack();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 창이 나가는 순서. <b>가운데부터 좌우로 번갈아</b> 나간다.
+    ///
+    /// 한쪽 끝에서부터 차례로 쏘면 부채꼴이 아니라 <b>쓸어내리는 선</b>으로 보인다.
+    /// 가운데부터 퍼지면 짧은 간격에도 "가운데를 노리고 좌우로 벌어진다"가 읽힌다.
+    /// </summary>
+    private static System.Collections.Generic.IEnumerable<int> FireOrder(int count)
+    {
+        int center = count / 2;
+        yield return center;
+
+        for (int step = 1; step <= count; step++)
+        {
+            int right = center + step;
+            if (right < count) yield return right;
+
+            int left = center - step;
+            if (left >= 0) yield return left;
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 지금 조준을 플레이어 쪽으로 <b>조금만</b> 돌린다.
+    ///
+    /// 한 프레임에 돌릴 수 있는 각도를 <see cref="spearTurnDegreesPerSecond"/>로 막는다.
+    /// 목표를 발밑이 아니라 몸통 가운데로 잡는 이유는 파도와 같다 — 쏘는 높이와 겨누는
+    /// 높이가 다르면 옆에서 쏠 때만 스치듯 맞는다.
+    /// </summary>
+    private Vector2 TrackPlayer(Vector2 current)
+    {
+        if (player == null) return current;
+
+        Vector2 spawn = (Vector2)transform.position + Vector2.up * spearSpawnHeight;
+        Vector2 target = playerCollider != null
+            ? (Vector2)playerCollider.bounds.center
+            : (Vector2)player.position;
+
+        Vector2 desired = target - spawn;
+        if (desired.sqrMagnitude < 0.0001f) return current;
+
+        float delta = Vector2.SignedAngle(current, desired.normalized);
+        float step = Mathf.Clamp(delta, -spearTurnDegreesPerSecond * Time.deltaTime,
+                                 spearTurnDegreesPerSecond * Time.deltaTime);
+
+        Vector3 turned = Quaternion.Euler(0f, 0f, step) * (Vector3)current;
+        return ((Vector2)turned).normalized;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 조준선 컴포넌트를 얻는다. 없으면 그 자리에서 붙인다.
+    ///
+    /// 프리팹에 미리 달아두지 않아도 되는 이유: <see cref="BossAimFan"/>은 스프라이트도
+    /// 머티리얼도 인스펙터에서 물릴 것이 없다. 프리팹을 고쳐야만 도는 구조로 만들면
+    /// 보스 프리팹을 다시 만드는 빌더까지 같이 고쳐야 한다.
+    /// </summary>
+    private BossAimFan EnsureAimFan()
+    {
+        if (aimFan == null) aimFan = GetComponent<BossAimFan>();
+        if (aimFan == null) aimFan = gameObject.AddComponent<BossAimFan>();
+
+        return aimFan;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 시전을 도중에 끊는다. 죽음·페이즈 전환처럼 코루틴이
+    /// 통째로 멈추는 자리에서 부른다.
+    ///
+    /// 코루틴이 잘리면 조준선을 끄는 코드도 같이 잘린다. 그러면 <b>보스가 죽은 자리에
+    /// 조준선만 남고</b> 시전 바도 가득 찬 채로 굳는다.
+    /// </summary>
+    private void CancelCast()
+    {
+        if (aimFan != null) aimFan.Hide();
+
+        CastEnded?.Invoke();
     }
 
     /// <summary>
@@ -891,6 +1048,11 @@ public class EnemyBoss : MonoBehaviour
         if (!transitionStarted && phase2Controller != null && current <= max * phase2HealthRatio)
         {
             transitionStarted = true;
+
+            // 추가 생성(2026-09-20) — 시전 중이었다면 먼저 끊는다. StopAllCoroutines가
+            // 조준선을 끄는 줄까지 같이 자르기 때문이다.
+            CancelCast();
+
             StopAllCoroutines();
             StartCoroutine(EnterPhase2());
             return;
@@ -1084,6 +1246,10 @@ public class EnemyBoss : MonoBehaviour
 
     private void OnDied()
     {
+        // 추가 생성(2026-09-20) — 시전 중에 죽으면 조준선과 시전 바가 그대로 남는다.
+        // 코루틴을 멈추기 전에 끊어야 한다.
+        CancelCast();
+
         StopAllCoroutines();
 
         // 추가 생성 — 전환 중이었다면 연출을 멈추고 몸을 되돌린다.
@@ -1140,10 +1306,10 @@ public class EnemyBoss : MonoBehaviour
                 "그 거리에서 시전해도 못 닿는다. 사거리를 줄이거나 달려드는 속도를 올려라.", this);
         }
 
-        if (slamRange > waveRange)
+        if (slamRange > spearRange)
         {
             Debug.LogWarning(
-                $"[보스] 내려찍기 사거리({slamRange})가 파도 사거리({waveRange})보다 크다. " +
+                $"[보스] 내려찍기 사거리({slamRange})가 재의 창 사거리({spearRange})보다 크다. " +
                 "두 사거리가 겹치지 않으면 패턴이 한쪽으로 편중된다.", this);
         }
     }

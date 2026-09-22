@@ -623,6 +623,103 @@ public static class AshGameHudBuilder
         serialized.FindProperty("nameLabel").objectReferenceValue = nameLabel;
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
+        // 추가 생성(2026-09-20) — 시전 바를 보스 바의 자식으로 매단다.
+        CreateBossCastBar(barRect);
+
+        return barObject;
+    }
+
+    // ── 보스 시전 바 ───────────────────────────────────────────────────────
+
+    private const string CastBarName = "CastBar";
+
+    /// 시전 바 크기. 체력바(600)보다 좁게 둔다 — 같은 폭이면 둘이 한 덩어리로 보여서
+    /// 어느 쪽이 체력이고 어느 쪽이 시전인지 한눈에 안 갈린다.
+    private static readonly Vector2 CastBarSize = new Vector2(420f, 16f);
+
+    /// 이름표 아래로 띄우는 간격(px).
+    private const float CastBarGap = 8f;
+
+    private const float CastLabelFontSize = 22f;
+    private const float CastLabelHeight = 28f;
+
+    private static readonly Color CastBackColor = new Color(0.06f, 0.05f, 0.05f, 0.85f);
+    private static readonly Color CastFillColor = new Color(1f, 0.45f, 0.1f, 0.95f);
+    private static readonly Color CastLabelColor = new Color(0.95f, 0.85f, 0.7f, 1f);
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 보스가 무엇을 준비하는지 알리는 시전 바.
+    ///
+    /// <b>자리를 보스 체력바 아래로 정한 것은 기획 선택이다.</b> 보스 머리 위에 띄우는 안도
+    /// 있었지만, 그러면 플레이어가 보스와 자기 캐릭터와 바까지 세 곳을 번갈아 봐야 한다.
+    /// 체력바 아래면 이미 보고 있는 자리에 붙는다.
+    ///
+    /// <b>전용 스프라이트를 쓰지 않는다.</b> 체력 게이지는 액자와 용암 무늬 그림이 있지만
+    /// 시전 바는 1초 남짓 떴다 사라지는 물건이라, 그림을 새로 그리기 전에도 단색 사각형으로
+    /// 충분히 돌아간다. <see cref="BossCastBar"/>는 채움 스프라이트가 없으면 앵커로 늘리는
+    /// 방식으로 알아서 넘어간다.
+    /// </summary>
+    private static GameObject CreateBossCastBar(RectTransform parent)
+    {
+        var barObject = new GameObject(CastBarName, typeof(RectTransform), typeof(CanvasGroup));
+        barObject.layer = parent.gameObject.layer;
+        var barRect = barObject.GetComponent<RectTransform>();
+        barRect.SetParent(parent, false);
+
+        // 보스 바의 아래 변에 매단다. 이름표(BossNameHeight)만큼 더 내려서 겹치지 않게 한다.
+        barRect.anchorMin = new Vector2(0.5f, 0f);
+        barRect.anchorMax = new Vector2(0.5f, 0f);
+        barRect.pivot = new Vector2(0.5f, 1f);
+        barRect.anchoredPosition = new Vector2(0f, -(BossNameGap + BossNameHeight + CastBarGap));
+        barRect.sizeDelta = CastBarSize;
+
+        CreateStretchedImage("Background", barRect, CastBackColor);
+
+        // 채움 자리. 배경보다 2px 안쪽으로 넣어 테두리가 남게 한다 — 테두리가 없으면
+        // 바가 가득 찼을 때 배경이 안 보여서 얼마나 찼는지 기준이 사라진다.
+        var fillArea = new GameObject("FillArea", typeof(RectTransform));
+        fillArea.layer = barObject.layer;
+        var fillAreaRect = fillArea.GetComponent<RectTransform>();
+        fillAreaRect.SetParent(barRect, false);
+        fillAreaRect.anchorMin = Vector2.zero;
+        fillAreaRect.anchorMax = Vector2.one;
+        fillAreaRect.offsetMin = new Vector2(2f, 2f);
+        fillAreaRect.offsetMax = new Vector2(-2f, -2f);
+
+        var fill = CreateStretchedImage("Fill", fillAreaRect, CastFillColor);
+
+        // 이름표는 바 아래. 보스 이름이 바 위에 있으므로 위아래로 나눠 두면 둘이 안 겹친다.
+        var labelObject = new GameObject("NameLabel", typeof(RectTransform));
+        labelObject.layer = barObject.layer;
+        var labelRect = labelObject.GetComponent<RectTransform>();
+        labelRect.SetParent(barRect, false);
+        labelRect.anchorMin = new Vector2(0f, 0f);
+        labelRect.anchorMax = new Vector2(1f, 0f);
+        labelRect.pivot = new Vector2(0.5f, 1f);
+        labelRect.anchoredPosition = new Vector2(0f, -2f);
+        labelRect.sizeDelta = new Vector2(0f, CastLabelHeight);
+
+        var label = labelObject.AddComponent<TMPro.TextMeshProUGUI>();
+
+        // 보스 이름표와 같은 이유로 한글 폰트를 반드시 지정한다. 안 하면 "재의 창"이 두부가 된다.
+        TMPro.TMP_FontAsset font = GetFont();
+        if (font != null) label.font = font;
+
+        // 실제 문구는 실행 중에 보스가 넘겨준다. 여기서는 자리 확인용이다.
+        label.text = "재의 창";
+        label.fontSize = CastLabelFontSize;
+        label.alignment = TMPro.TextAlignmentOptions.Top;
+        label.color = CastLabelColor;
+        label.raycastTarget = false;
+
+        var castBar = barObject.AddComponent<BossCastBar>();
+        var serialized = new SerializedObject(castBar);
+        serialized.FindProperty("group").objectReferenceValue = barObject.GetComponent<CanvasGroup>();
+        serialized.FindProperty("fillImage").objectReferenceValue = fill;
+        serialized.FindProperty("fillRect").objectReferenceValue = fill.rectTransform;
+        serialized.FindProperty("nameLabel").objectReferenceValue = label;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
         return barObject;
     }
 

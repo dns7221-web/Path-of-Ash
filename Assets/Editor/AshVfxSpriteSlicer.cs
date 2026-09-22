@@ -137,6 +137,9 @@ public static class AshVfxSpriteSlicer
         // 사수의 화살. 촉 끝이 피벗이라 오브젝트 위치가 곧 촉 위치가 된다.
         (Folder, "ash_marksman_ember_arrow_1frame_256x256", "marksman_arrow", 1, PivotKind.Tip),
 
+        // 추가 생성(2026-09-20) — 보스의 재의 창. 화살과 같은 이유로 촉(Tip)이 기준점이다.
+        (Folder, "vfx_ashking_ash_spear_6frames_1536x256", "vfx_ash_spear", 6, PivotKind.Tip),
+
         // 스킬 아이콘. VFX는 아니지만 자르는 방식이 같아서 여기서 같이 처리한다.
         // UI라 바닥 개념이 없으므로 피벗은 정중앙이다.
         ("Assets/Project/Art/UI", "skill_icons_5frames_1280x256", "skill_icon", 5, PivotKind.Center),

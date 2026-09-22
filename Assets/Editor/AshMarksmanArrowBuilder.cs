@@ -11,7 +11,7 @@ using UnityEngine;
 /// 화살은 멀쩡히 날아가고 아무 일도 안 생긴다.
 ///
 /// 빈 오브젝트부터 쌓지 않고 EmberArrow를 <b>복제해서</b> 만드는 이유는 잿불 파도
-/// (<see cref="AshBossWaveBuilder"/>)와 같다. 투사체 하나에 Rigidbody2D, 트리거 콜라이더,
+/// (<see cref="AshAshSpearBuilder"/>)와 같다. 투사체 하나에 Rigidbody2D, 트리거 콜라이더,
 /// DamageHitbox, Projectile, 레이어가 서로 맞물려 있어서, 손으로 다시 조립하면 어긋난 곳이
 /// 에러가 아니라 "가끔 안 맞는다"로만 드러난다. 이미 도는 것을 복제하면 그 사고가 없다.
 ///

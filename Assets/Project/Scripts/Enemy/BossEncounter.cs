@@ -45,6 +45,9 @@ public class BossEncounter : RoomEncounter
     // 둘 다 실행 중에 방이 찾아서 연결한다.
     private BossHealthBar healthBar;
 
+    // 추가 생성(2026-09-20) — 보스 시전 바. 체력바와 같은 이유로 여기서 잇는다.
+    private BossCastBar castBar;
+
     private void Awake()
     {
         if (runManager == null) runManager = FindFirstObjectByType<RunManager>();
@@ -113,6 +116,33 @@ public class BossEncounter : RoomEncounter
             Debug.LogWarning("[보스 방] 씬에서 BossHealthBar를 못 찾았다. " +
                              "Tools → 재의 길 → 화면 → 게임 HUD 생성 을 실행해라.", this);
         }
+
+        // 추가 생성(2026-09-20) — 시전 바를 보스의 시전 신호에 잇는다.
+        //
+        // 체력바와 달리 없어도 경고하지 않는다. 시전 바는 예고용이라 없으면 예고만 사라지고,
+        // 패턴은 그대로 돈다 — HUD를 안 만든 테스트 씬에서 콘솔만 시끄러워질 이유가 없다.
+        if (castBar == null) castBar = FindFirstObjectByType<BossCastBar>();
+
+        if (castBar != null)
+        {
+            castBar.HideImmediate();
+            activeBoss.CastStarted += OnBossCastStarted;
+            activeBoss.CastEnded += OnBossCastEnded;
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 보스가 예고가 필요한 패턴을 시작했을 때. 그대로 시전 바에 넘긴다.
+    /// </summary>
+    private void OnBossCastStarted(string patternName, float seconds)
+    {
+        castBar?.Show(patternName, seconds);
+    }
+
+    /// <summary>추가 생성(2026-09-20) — 시전이 끝났거나 끊겼을 때.</summary>
+    private void OnBossCastEnded()
+    {
+        castBar?.Hide();
     }
 
     /// <summary>
@@ -185,6 +215,16 @@ public class BossEncounter : RoomEncounter
         // 이미 파괴된 보스의 이벤트를 해제하게 된다.
         if (activeBoss != null) activeBoss.EnteredPhase2 -= OnBossEnteredPhase2;
         if (healthBar != null) healthBar.Unbind();
+
+        // 추가 생성(2026-09-20) — 시전 바도 같은 순서로 뗀다. 방이 끝나는 순간 시전 중이었다면
+        // 가득 차다 만 바가 화면에 남으므로 즉시 감춘다.
+        if (activeBoss != null)
+        {
+            activeBoss.CastStarted -= OnBossCastStarted;
+            activeBoss.CastEnded -= OnBossCastEnded;
+        }
+
+        if (castBar != null) castBar.HideImmediate();
 
         if (activeBoss != null)
         {

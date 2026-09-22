@@ -135,6 +135,11 @@ public static class AshSpriteSheetNormalizer
         (VfxFolder, "vfx_ashking_transition_shatter_6frames_raw.png",
                     "vfx_ashking_transition_shatter_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
 
+        // 추가 생성(2026-09-20) — 보스의 재의 창. 앞으로 날아가는 투사체라 화살과 같은 TipRight다.
+        // 촉을 같은 x에 고정해야 6프레임이 흔들리지 않고, 회전시켰을 때 촉이 진행 방향에 온다.
+        (VfxFolder, "vfx_ashking_ash_spear_6frames_raw.png",
+                    "vfx_ashking_ash_spear_6frames_1536x256.png", 6, Mode.TipRight, 0),
+
         (PlayerFolder, "player_bow_6frames_raw.png",
                        "player_bow_6frames_1536x256.png", 6, Mode.Character, 0),
 
