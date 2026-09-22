@@ -43,11 +43,27 @@ public static class AshBossTransitionTimelineBuilder
     /// 계획표(2026-09-01 기록의 표)의 시각. <b>여기 값은 뼈대를 처음 세울 때만 쓰인다.</b>
     /// 그 뒤의 조정은 Timeline 창에서 하고, 이 상수는 다시 읽히지 않는다.
     /// </summary>
-    private const double ArmorBrokenTime = 0.875;
-    private const double EggTime = 1.625;
-    private const double ShatterTime = 2.375;
-    private const double BossReturnsTime = 2.875;
-    private const double TotalTime = 3.125;
+    ///
+    /// 수정(2026-09-21, 전환 흐름 B "재의 알에서 깨어남") — 3.125초 계획표를 <b>2.5초</b>로 다시 세웠다.
+    /// <list type="bullet">
+    /// <item><c>0.00</c> 무릎 꿇고 갑옷에 금(전환 모션 앞 2장, 한 장 0.2초) · 재 장막</item>
+    /// <item><c>0.50</c> 갑옷 붕괴 — 보스가 흐려지며 사라지고, 힘의 장이 방의 재를 발밑으로 모은다</item>
+    /// <item><c>1.25</c> 재의 알</item>
+    /// <item><c>2.00</c> 알이 깨짐 — 이름·체력바가 바뀌고 파편이 터진다</item>
+    /// <item><c>2.10</c> 2페이즈 모습이 깨진 알 속에서 드러난다(한 번만)</item>
+    /// <item><c>2.50</c> 끝</item>
+    /// </list>
+    /// 예전 계획표(0.875 / 1.625 / 2.375 / 2.875 / 3.125)에서는 전환 모션이 여자까지 다 보여준 뒤
+    /// 알에서 같은 모습이 또 나왔다(보스가 두 번 드러남). 모임·알 구간 길이(0.75초)는 그대로라
+    /// 힘의 장 세기(55)는 다시 맞출 필요가 없다.
+    ///
+    /// 추가 생성(2026-09-21) — <b>internal</b>로 열었다. 재 파티클 빌더가 같은 시각을 따로 적어 두던
+    /// 것을 여기서 읽게 바꿨다 — 시각이 한 곳에만 적혀야 흐름을 바꿀 때 파편만 옛 시각에 터지는 일이 없다.
+    internal const double ArmorBrokenTime = 0.5;
+    internal const double EggTime = 1.25;
+    internal const double ShatterTime = 2.0;
+    internal const double BossReturnsTime = 2.1;
+    internal const double TotalTime = 2.5;
 
     /// <summary>
     /// 추가 생성 — Activation Track 목록. 트랙 이름, 켤 자식의 경로, 켜고 끄는 시각.
@@ -71,6 +87,19 @@ public static class AshBossTransitionTimelineBuilder
         ("egg", "BossTransitionEgg", EggTime, ShatterTime),
         ("shatter", "BossTransitionShatter", ShatterTime, TotalTime),
     };
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 타임라인 에셋을 <b>휴지통으로</b> 보낸다. "보스 전환 다시 만들기" 메뉴가 부른다.
+    ///
+    /// 이 빌더는 타임라인이 이미 있으면 트랙 시각을 덮어쓰지 않는다(Timeline 창에서 손으로 맞춘 값을
+    /// 지키려고). 그래서 계획표 자체를 바꾸려면 에셋을 지우고 새로 만들어야 한다. 완전히 지우지 않고
+    /// 휴지통으로 보내는 이유: 손으로 맞춘 옛 타임라인을 되살릴 길을 남긴다.
+    /// </summary>
+    internal static bool TrashTimeline()
+    {
+        if (AssetDatabase.LoadAssetAtPath<TimelineAsset>(TimelinePath) == null) return true;
+        return AssetDatabase.MoveAssetToTrash(TimelinePath);
+    }
 
     private const string ArmorBrokenSignalName = "BossTransitionArmorBroken";
     private const string RevealedSignalName = "BossTransitionRevealed";

@@ -59,6 +59,19 @@ public class EnemyBoss : MonoBehaviour
     // 연출 길이의 주인은 타임라인 에셋 하나뿐이고, 보스는 BossTransitionSequence.TotalSeconds를
     // 물어본다. 두 숫자가 갈라질 자리가 없어졌다.
 
+    // 추가 생성(2026-09-21, 전환 흐름 B) — 갑옷이 무너질 때 흐려져 사라지는 시간.
+    //
+    // 예전에는 갑옷 붕괴 신호에 그림을 한 프레임에 껐다. 그때는 전환 모션이 여자까지 다 보여준
+    // 뒤라 끊겨도 티가 덜 났는데, 흐름 B는 금이 간 기사 모습에서 곧장 재로 넘어간다. 한 프레임에
+    // 사라지면 "무너졌다"가 아니라 "없어졌다"로 보여서, 모여드는 재와 겹치게 천천히 흐린다.
+    [Tooltip("갑옷 붕괴 신호에 1페이즈 그림이 흐려져 사라지는 시간(초). 0이면 바로 꺼진다.")]
+    [SerializeField, Min(0f)] private float transitionFadeOutSeconds = 0.3f;
+
+    // 추가 생성(2026-09-21, 전환 흐름 B) — 깨진 알 속에서 2페이즈 모습이 떠오르는 시간.
+    // 알이 깨지는 번쩍임 뒤에 한 프레임에 켜지면 알 그림과 겹쳐 튀어 보인다.
+    [Tooltip("2페이즈 모습이 나타날 때 흐려졌다 선명해지는 시간(초). 0이면 바로 켜진다.")]
+    [SerializeField, Min(0f)] private float transitionFadeInSeconds = 0.3f;
+
     // 추가 생성 — 2페이즈에서 공격 모션 시간에 곱할 값.
     //
     // 왜 필요한가: 아래 slamMotionSeconds·spearMotionSeconds는 1페이즈 클립에 맞춘 숫자다.
@@ -1164,7 +1177,47 @@ public class EnemyBoss : MonoBehaviour
     /// </summary>
     private void OnTransitionArmorBroken()
     {
-        if (spriteRenderer != null) spriteRenderer.enabled = false;
+        // 수정(2026-09-21, 흐름 B) — 한 프레임에 끄던 것을 흐리며 끄게 바꿨다. 이유는
+        // transitionFadeOutSeconds 주석 참고. 다 흐려진 뒤에는 예전처럼 렌더러를 끈다.
+        if (spriteRenderer != null) StartCoroutine(FadeSprite(1f, 0f, transitionFadeOutSeconds, true));
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 보스 그림의 투명도만 <paramref name="from"/>에서 <paramref name="to"/>로 옮긴다.
+    ///
+    /// 색(RGB)은 건드리지 않는다. 피격 번쩍임 같은 다른 연출이 색을 쓰기 때문이다.
+    /// 게임 시간으로 흐른다 — 전환 타임라인과 같은 시계라야 깨짐 순간의 멈춤(히트스톱)에 같이 멈춘다.
+    /// </summary>
+    /// <param name="hideAtEnd">끝나면 렌더러를 끈다(갑옷 붕괴). 켜 둔 채 투명하게 두면 그림자·정렬 계산이 계속 돈다.</param>
+    private IEnumerator FadeSprite(float from, float to, float seconds, bool hideAtEnd)
+    {
+        if (spriteRenderer == null) yield break;
+
+        spriteRenderer.enabled = true;
+        for (float t = 0f; t < seconds; t += Time.deltaTime)
+        {
+            SetSpriteAlpha(Mathf.Lerp(from, to, t / seconds));
+            yield return null;
+        }
+
+        SetSpriteAlpha(to);
+        if (hideAtEnd)
+        {
+            spriteRenderer.enabled = false;
+
+            // 꺼 둔 뒤에는 투명도를 되돌려 둔다. 다음에 켜는 쪽(2페이즈 등장·사망)이 투명한 채로 켜지지 않게.
+            SetSpriteAlpha(1f);
+        }
+    }
+
+    /// <summary>추가 생성(2026-09-21) — 그림의 투명도만 바꾼다.</summary>
+    private void SetSpriteAlpha(float alpha)
+    {
+        if (spriteRenderer == null) return;
+
+        Color color = spriteRenderer.color;
+        color.a = alpha;
+        spriteRenderer.color = color;
     }
 
     /// <summary>
@@ -1219,7 +1272,14 @@ public class EnemyBoss : MonoBehaviour
             animator.Rebind();
         }
 
-        if (spriteRenderer != null) spriteRenderer.enabled = true;
+        // 수정(2026-09-21, 흐름 B) — 한 프레임에 켜던 것을 깨진 알 속에서 떠오르게 바꿨다.
+        // 이유는 transitionFadeInSeconds 주석 참고. 투명에서 시작해야 켜지는 순간 번쩍 튀지 않는다.
+        if (spriteRenderer != null)
+        {
+            SetSpriteAlpha(0f);
+            spriteRenderer.enabled = true;
+            StartCoroutine(FadeSprite(0f, 1f, transitionFadeInSeconds, false));
+        }
     }
 
     /// <summary>
@@ -1259,6 +1319,9 @@ public class EnemyBoss : MonoBehaviour
         // 그러면 사망 모션이 재생되는데 화면에는 아무것도 없다. 죽었는지 사라졌는지 모른다.
         if (transitionSequence != null) transitionSequence.StopAndReset();
         if (spriteRenderer != null) spriteRenderer.enabled = true;
+
+        // 추가 생성(2026-09-21) — 흐리던 도중에 코루틴이 멈췄다면 반투명으로 남는다. 사망 모션은 선명하게.
+        SetSpriteAlpha(1f);
 
         state = State.Dead;
         body.linearVelocity = Vector2.zero;

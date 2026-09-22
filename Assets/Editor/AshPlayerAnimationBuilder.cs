@@ -84,6 +84,26 @@ public static class AshPlayerAnimationBuilder
         AssetDatabase.Refresh();
     }
 
+    /// <summary>
+    /// 추가 생성(2026-09-21, 페이즈 전환 흐름 B) — 재의 왕(1·2페이즈)의 클립과 컨트롤러만 다시 만든다.
+    ///
+    /// 위 BuildAll은 플레이어·잡몹까지 전부 다시 만든다. 이번에 바뀐 것은 보스 전환 클립(6장·8fps →
+    /// 앞 2장·5fps) 하나뿐인데, 전부 돌리면 플레이어 컨트롤러까지 새로 써서 확인할 것이 늘어난다.
+    /// 보스 두 세트는 궁극기 상태까지 이 빌더 안에서 만들어지므로 따로 돌려도 빠지는 것이 없다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/애니메이션/보스 애니메이션만 생성")]
+    public static void BuildBossOnly()
+    {
+        EnsureFolder(AnimationRoot);
+
+        if (!BuildSet(AshPlayerSpriteSheets.AshKingPhase1)) return;
+        if (!BuildSet(AshPlayerSpriteSheets.AshKingPhase2)) return;
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log("[애니메이션] 재의 왕 1·2페이즈 클립과 컨트롤러를 다시 만들었다(플레이어·잡몹은 그대로).");
+    }
+
     /// <summary>캐릭터 한 종류의 클립과 컨트롤러를 만든다. 실패하면 false.</summary>
     private static bool BuildSet(AshPlayerSpriteSheets.CharacterSet set)
     {
