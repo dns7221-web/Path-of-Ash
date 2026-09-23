@@ -62,6 +62,19 @@ public static class AshPlayerDirectionalAnimationBuilder
         public string Trigger;  // 이 액션을 부르는 트리거. Idle/Walk는 없다.
         public float Fps;
         public bool Loop;
+
+        // 추가 생성(2026-09-21, 왕관 의식) — 프레임마다 다른 시간(초). 비우면 Fps로 고르게 나눈다.
+        // 연출 모션은 장면마다 머무는 시간이 달라야 읽힌다(움찔은 짧게, 웅크려 떠는 장면은 길게).
+        // 이 값을 쓰면 마지막 장도 제 시간만큼 머물도록 끝에 같은 그림 키를 하나 더 찍는다.
+        public float[] FrameSeconds;
+
+        // 추가 생성(2026-09-21) — EventFrame번째 장(0부터)이 <b>시작하는 순간</b>에 부를 애니메이션 이벤트.
+        // 받는 쪽은 Animator가 붙은 오브젝트(지금은 플레이어 루트)의 PlayerAnimationEvents다(이벤트는 그 오브젝트에만 간다).
+        public int EventFrame = -1;
+        public string EventFunction;
+
+        // 추가 생성(2026-09-21) — 클립이 끝나는 순간에 부를 애니메이션 이벤트(비우면 없음).
+        public string EndFunction;
     }
 
     private static readonly ActionDef[] Actions =
@@ -81,6 +94,19 @@ public static class AshPlayerDirectionalAnimationBuilder
         new ActionDef { Sheet = "player_dash_hit",   State = "Dash",      Trigger = "Dash",       Fps = 24f, Loop = false },
         new ActionDef { Sheet = "player_hit",        State = "Hit",       Trigger = "Hit",        Fps = 14f, Loop = false },
         new ActionDef { Sheet = "player_death",      State = "Die",       Trigger = "Die",        Fps = 8f,  Loop = false },
+
+        // 추가 생성(2026-09-21, 보스 궁극기 "왕관 의식") — 유물 뽑힘. 8방향 모두 같은 앞모습이다
+        // (뽑히는 순간에는 화면 쪽으로 돌아선다). 프레임별 시간:
+        // 움찔 0.15 · 움켜쥠 0.15 · 웅크림 0.3 · 불빛(떨림) 0.5 · 뽑힘 0.2 · 주저앉음 0.8 = 2.1초.
+        // 5번째 장(0부터 4)이 시작하는 순간 RelicsTornOut — 유물 네 개가 튀어나오는 신호다(사용자 요청:
+        // 반드시 그 장면에 나와야 한다). 끝나는 순간 ScriptedPoseEnd — 조작이 돌아온다.
+        // 주저앉음 0.8초는 유물이 네 귀퉁이까지 날아가는 시간(왕관 의식의 비행 0.8초)과 같게 잡았다.
+        new ActionDef
+        {
+            Sheet = "player_relic_torn", State = "RelicTorn", Trigger = "RelicTorn", Fps = 60f, Loop = false,
+            FrameSeconds = new[] { 0.15f, 0.15f, 0.3f, 0.5f, 0.2f, 0.8f },
+            EventFrame = 4, EventFunction = "RelicsTornOut", EndFunction = "ScriptedPoseEnd",
+        },
     };
 
     [MenuItem("Tools/재의 길/애니메이션/8방향 플레이어 애니메이션 생성")]
@@ -221,12 +247,51 @@ public static class AshPlayerDirectionalAnimationBuilder
 
             var keys = new List<ObjectReferenceKeyframe>();
             int index = 0;
+
+            // 추가 생성(2026-09-21) — 프레임별 시간이 있으면 그 누적 시각에 키를 찍는다.
+            var startTimes = new List<float>();
+            float cursor = 0f;
+            Sprite last = null;
             foreach (KeyValuePair<int, Sprite> pair in frames)
             {
-                keys.Add(new ObjectReferenceKeyframe { time = index / action.Fps, value = pair.Value });
+                float time = action.FrameSeconds != null ? cursor : index / action.Fps;
+                keys.Add(new ObjectReferenceKeyframe { time = time, value = pair.Value });
+                startTimes.Add(time);
+
+                if (action.FrameSeconds != null)
+                    cursor += action.FrameSeconds[Mathf.Min(index, action.FrameSeconds.Length - 1)];
+
+                last = pair.Value;
                 index++;
             }
+
+            // 추가 생성(2026-09-21) — 마지막 장도 제 시간만큼 머물게 끝에 같은 그림 키를 하나 더 찍는다.
+            // 안 찍으면 클립 길이가 "마지막 키의 시각"에서 끝나서 마지막 장이 한 프레임만 스친다.
+            if (action.FrameSeconds != null && last != null)
+                keys.Add(new ObjectReferenceKeyframe { time = cursor, value = last });
+
             AnimationUtility.SetObjectReferenceCurve(clip, binding, keys.ToArray());
+
+            // 추가 생성(2026-09-21) — 애니메이션 이벤트. 이유는 PlayerAnimationEvents 주석 참고.
+            var events = new List<AnimationEvent>();
+            if (!string.IsNullOrEmpty(action.EventFunction) &&
+                action.EventFrame >= 0 && action.EventFrame < startTimes.Count)
+            {
+                events.Add(new AnimationEvent { time = startTimes[action.EventFrame], functionName = action.EventFunction });
+            }
+
+            if (!string.IsNullOrEmpty(action.EndFunction))
+            {
+                float end = action.FrameSeconds != null ? cursor : (index - 1) / action.Fps;
+
+                // 클립 끝과 딱 같은 시각에 두면, 같은 프레임에 대기 상태로 넘어갈 때 이벤트가 가끔
+                // 안 울린다. 한 프레임(1/60초) 앞에 두면 항상 울리고, 눈으로는 차이가 안 난다.
+                if (action.FrameSeconds != null) end = Mathf.Max(0f, end - 1f / 60f);
+
+                events.Add(new AnimationEvent { time = end, functionName = action.EndFunction });
+            }
+
+            if (events.Count > 0) AnimationUtility.SetAnimationEvents(clip, events.ToArray());
 
             AnimationClipSettings settings = AnimationUtility.GetAnimationClipSettings(clip);
             settings.loopTime = action.Loop;
@@ -351,6 +416,12 @@ public static class AshPlayerDirectionalAnimationBuilder
             }
 
             animator.runtimeAnimatorController = controller;
+
+            // 추가 생성(2026-09-21) — 애니메이션 이벤트를 받을 컴포넌트. 이벤트는 Animator가 붙은
+            // 오브젝트에만 가므로 거기에 둔다. 없으면 "유물 뽑힘" 클립이 재생될 때마다 유니티가
+            // "no receiver" 오류를 찍고, 유물이 안 튀어나온다.
+            if (animator.GetComponent<PlayerAnimationEvents>() == null)
+                animator.gameObject.AddComponent<PlayerAnimationEvents>();
             PrefabUtility.SaveAsPrefabAsset(root, PlayerPrefabPath);
         }
         finally

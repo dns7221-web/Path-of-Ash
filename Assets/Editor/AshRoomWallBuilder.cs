@@ -387,7 +387,9 @@ public static class AshRoomWallBuilder
     }
 
     /// <summary>벽 콜라이더에서 방 안쪽을 향한 면의 좌표를 낸다.</summary>
-    private static float InnerFace(Transform wall, int sign, bool vertical = false)
+    // 수정(2026-09-22) — private → internal. 왕관 의식 구성 도구(AshCrownRitualBuilder)가 방 안쪽 귀퉁이를
+    // 같은 계산으로 구한다. 계산을 복사해 두면 벽 판정 규칙을 고칠 때 한쪽만 바뀐다.
+    internal static float InnerFace(Transform wall, int sign, bool vertical = false)
     {
         var box = wall.GetComponent<BoxCollider2D>();
         if (box == null) return vertical ? wall.position.y : wall.position.x;
@@ -401,7 +403,8 @@ public static class AshRoomWallBuilder
     }
 
     /// <summary>이름이 같은 직속 자식을 찾는다. 꺼져 있어도 찾는다.</summary>
-    private static Transform FindChild(Transform parent, string childName)
+    // 수정(2026-09-22) — private → internal. 이유는 InnerFace와 같다.
+    internal static Transform FindChild(Transform parent, string childName)
     {
         for (int i = 0; i < parent.childCount; i++)
         {

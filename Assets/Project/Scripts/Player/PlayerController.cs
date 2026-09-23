@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         Dashing,   // 대시 중. 입력과 무관하게 정해진 방향으로 밀려간다
         Hit,       // 피격 경직. 입력을 안 받는다
         Dead,      // 사망. 이후 아무 입력도 받지 않는다
+
+        // 추가 생성(2026-09-21, 왕관 의식) — 연출이 플레이어를 붙잡고 있다(보스 궁극기의 "유물 뽑힘" 등).
+        // 입력·이동·스킬을 안 받고, 맞아도 경직으로 끊기지 않으며, 피해도 받지 않는다.
+        // 끝내는 쪽은 연출 모션의 마지막 애니메이션 이벤트(또는 연출 쪽의 안전장치)다.
+        Scripted,
     }
 
     [Header("이동")]
@@ -222,10 +227,25 @@ public class PlayerController : MonoBehaviour
     /// 무적 구간을 대시보다 짧게(앞부분만) 두지 않은 이유: 스태미나 25(회복 18/초)가 이미
     /// 남발을 막고 있다. 여기서 또 조이면 대시가 이동에도 회피에도 쓰기 애매해진다.
     /// </summary>
-    public bool IsInvincible => actionState == ActionState.Dashing;
+    // 수정(2026-09-21, 왕관 의식) — 연출 중(Scripted)도 무적이다. 유물이 뽑히는 동안 조작을 못 하는데
+    // 그 사이 이미 날아오던 창에 맞으면 피할 방법이 없는 피해가 된다.
+    public bool IsInvincible => actionState == ActionState.Dashing || actionState == ActionState.Scripted;
 
     /// <summary>추가 생성 — 죽었는가. 적 AI가 추격을 멈출 때 읽을 값이다.</summary>
     public bool IsDead => actionState == ActionState.Dead;
+
+    /// <summary>추가 생성(2026-09-21) — 연출이 플레이어를 붙잡고 있는가(<see cref="BeginScripted"/>).</summary>
+    public bool IsScripted => actionState == ActionState.Scripted;
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 왕관 의식) — "유물 뽑힘" 모션의 5번째 장(몸을 젖히는 순간)에 울린다.
+    /// 클립에 박힌 애니메이션 이벤트가 <see cref="PlayerAnimationEvents"/>를 거쳐 여기로 온다.
+    /// 유물을 날려 보내는 쪽(왕관 의식)이 이 신호를 듣는다 — 그래야 그림과 유물이 같은 프레임에 나온다.
+    /// </summary>
+    public event System.Action RelicsTornOut;
+
+    /// <summary>추가 생성(2026-09-21) — 연출 모션이 끝나 조작이 돌아온 순간에 울린다.</summary>
+    public event System.Action ScriptedPoseEnded;
 
     // 수정(입력 없는 대시 방향 버그, 2026-09-14) — FacingRight 속성을 걷어냈다.
     // 옛 주석: "오른쪽을 보고 있는가. 대시 기본 방향에만 쓴다(스킬은 FacingDirection)."
@@ -548,6 +568,7 @@ public class PlayerController : MonoBehaviour
     public void TakeHitReaction()
     {
         // 죽었거나 대시 무적 중이면 경직에 걸리지 않는다.
+        // 수정(2026-09-21) — IsInvincible에 연출 중(Scripted)도 들어가서, 연출 모션도 경직으로 끊기지 않는다.
         if (actionState == ActionState.Dead || IsInvincible) return;
 
         // 이전 액션 코루틴이 돌고 있을 수 있으므로 전부 끊는다. 안 끊으면 공격 코루틴이
@@ -602,6 +623,62 @@ public class PlayerController : MonoBehaviour
 
         // 판을 끝낸다. 이미 끝나 있으면 RunManager가 알아서 무시한다.
         runManager?.EndRun(false);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 왕관 의식) — 연출이 플레이어를 붙잡는다. 입력·이동·스킬을 막고,
+    /// 정한 방향을 보게 한 뒤 연출 모션을 튼다. 죽었으면 붙잡지 못하고 false를 돌려준다.
+    ///
+    /// 진행 중이던 공격·대시·경직 코루틴을 끊는 이유는 <see cref="Die"/>와 같다 — 안 끊으면
+    /// 나중에 깨어난 코루틴이 상태를 Normal로 되돌려 연출 도중에 걸어 다닌다.
+    ///
+    /// 방향을 트리거보다 먼저 애니메이터에 넣는 이유: 블렌드 트리가 들어가는 첫 프레임에 방향을
+    /// 고른다. 순서가 바뀌면 한 프레임 동안 옛 방향 그림이 나온다.
+    /// </summary>
+    /// <param name="face">바라볼 방향. "유물 뽑힘"은 화면 쪽(아래)이다.</param>
+    /// <param name="animatorTrigger">틀 연출 모션의 트리거 이름.</param>
+    public bool BeginScripted(Vector2 face, string animatorTrigger)
+    {
+        if (actionState == ActionState.Dead) return false;
+
+        StopAllCoroutines();
+        attackHitbox?.Deactivate();
+        SetDashTrail(false);
+
+        actionState = ActionState.Scripted;
+        moveInput = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
+
+        if (face.sqrMagnitude > 0.0001f) facingDirection = face.normalized;
+        UpdateVisuals();
+
+        if (animator != null && !string.IsNullOrEmpty(animatorTrigger)) animator.SetTrigger(animatorTrigger);
+        return true;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 연출이 플레이어를 놓아준다. 연출 중이 아니면 아무것도 안 한다
+    /// (그사이 죽었다면 Dead를 Normal로 되돌리면 안 된다).
+    /// </summary>
+    public void EndScripted()
+    {
+        if (actionState != ActionState.Scripted) return;
+
+        actionState = ActionState.Normal;
+        ScriptedPoseEnded?.Invoke();
+    }
+
+    /// <summary>추가 생성(2026-09-21) — 애니메이션 이벤트 "RelicsTornOut"을 받는다. <see cref="PlayerAnimationEvents"/>가 부른다.</summary>
+    internal void HandleRelicsTornOut()
+    {
+        // 연출 중일 때만 넘긴다. 다른 경로로 같은 클립이 재생돼도(예: 에디터 미리보기) 유물이 튀지 않게.
+        if (actionState == ActionState.Scripted) RelicsTornOut?.Invoke();
+    }
+
+    /// <summary>추가 생성(2026-09-21) — 애니메이션 이벤트 "ScriptedPoseEnd"를 받는다. 모션이 끝나면 조작을 돌려준다.</summary>
+    internal void HandleScriptedPoseEnd()
+    {
+        EndScripted();
     }
 
     /// <summary>애니메이션 파라미터와 좌우 반전을 갱신한다.</summary>

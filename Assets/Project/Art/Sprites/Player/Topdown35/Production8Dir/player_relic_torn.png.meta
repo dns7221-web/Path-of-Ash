@@ -1,523 +1,295 @@
 fileFormatVersion: 2
-guid: 1a28809892af61d428c2b9d686477129
+guid: bbc89e2f13528094095272da82a47f2f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7577168174706008411
-    second: player_staff_0
+      213: -7210246670979900782
+    second: player_relic_torn_0
   - first:
-      213: 1048642881823194251
-    second: player_staff_1
+      213: 8352613181465251762
+    second: player_relic_torn_1
   - first:
-      213: -6665882862357852787
-    second: player_staff_2
+      213: -7439584035914362421
+    second: player_relic_torn_2
   - first:
-      213: 3334654647495920955
-    second: player_staff_3
+      213: -8134695368420132344
+    second: player_relic_torn_3
   - first:
-      213: 5561707231371463098
-    second: player_staff_4
+      213: 6621602594302213847
+    second: player_relic_torn_4
   - first:
-      213: 8782987768137563326
-    second: player_staff_5
+      213: 9105011308790838914
+    second: player_relic_torn_5
   - first:
-      213: -6639763293635954833
-    second: player_staff_6
+      213: -5350198158975383301
+    second: player_relic_torn_6
   - first:
-      213: -7860223870817608730
-    second: player_staff_7
+      213: 8892396618314101434
+    second: player_relic_torn_7
   - first:
-      213: 3634926243608282157
-    second: player_staff_8
+      213: 8360306681367307450
+    second: player_relic_torn_8
   - first:
-      213: -8356904989528082179
-    second: player_staff_9
+      213: -4252270532025306691
+    second: player_relic_torn_9
   - first:
-      213: -5649075915405666436
-    second: player_staff_10
+      213: 1152361317862665137
+    second: player_relic_torn_10
   - first:
-      213: 8409898414236625737
-    second: player_staff_11
+      213: -6959981065790086563
+    second: player_relic_torn_11
   - first:
-      213: 5842656603561526211
-    second: player_staff_12
+      213: 837631509675140943
+    second: player_relic_torn_12
   - first:
-      213: 3489563351299913853
-    second: player_staff_13
+      213: 5670186614453046436
+    second: player_relic_torn_13
   - first:
-      213: -1295857943842186401
-    second: player_staff_14
+      213: -4381957865935311243
+    second: player_relic_torn_14
   - first:
-      213: -8432506022756329655
-    second: player_staff_15
+      213: -7209370648687610297
+    second: player_relic_torn_15
   - first:
-      213: 786825626279766541
-    second: player_staff_16
+      213: -1058299776214357931
+    second: player_relic_torn_16
   - first:
-      213: -5667925677737819913
-    second: player_staff_17
+      213: -1387771814950135947
+    second: player_relic_torn_17
   - first:
-      213: 6516598391828557133
-    second: player_staff_18
+      213: 5827116676596449887
+    second: player_relic_torn_18
   - first:
-      213: -3440870822712779336
-    second: player_staff_19
+      213: -7846101632270495306
+    second: player_relic_torn_19
   - first:
-      213: 197953352152485144
-    second: player_staff_20
+      213: 2340697219194339285
+    second: player_relic_torn_20
   - first:
-      213: 26367765780173375
-    second: player_staff_21
+      213: 2324587905534087994
+    second: player_relic_torn_21
   - first:
-      213: -6625242674420715819
-    second: player_staff_22
+      213: -2717013230728703074
+    second: player_relic_torn_22
   - first:
-      213: -2664997808372024765
-    second: player_staff_23
+      213: -5793479638823286108
+    second: player_relic_torn_23
   - first:
-      213: -3395498092482500582
-    second: player_staff_24
+      213: -6520651601246229214
+    second: player_relic_torn_24
   - first:
-      213: -4256440705747096382
-    second: player_staff_25
+      213: 52624166173713423
+    second: player_relic_torn_25
   - first:
-      213: -7152437341335805649
-    second: player_staff_26
+      213: 5279423745256516212
+    second: player_relic_torn_26
   - first:
-      213: 2649430298019160550
-    second: player_staff_27
+      213: 6610141758342798264
+    second: player_relic_torn_27
   - first:
-      213: -8217372132707087667
-    second: player_staff_28
+      213: -6124723535500561814
+    second: player_relic_torn_28
   - first:
-      213: -3482866887773446841
-    second: player_staff_29
+      213: 3302712364086356024
+    second: player_relic_torn_29
   - first:
-      213: 3821588129498332866
-    second: player_staff_30
+      213: 3714968676384770503
+    second: player_relic_torn_30
   - first:
-      213: 3505598235507252595
-    second: player_staff_31
+      213: -7922431739230647660
+    second: player_relic_torn_31
   - first:
-      213: 2179263298101994435
-    second: player_staff_32
+      213: 6838704615735639995
+    second: player_relic_torn_32
   - first:
-      213: 1705271503923396401
-    second: player_staff_33
+      213: 7361316867746944773
+    second: player_relic_torn_33
   - first:
-      213: -6823560100197775163
-    second: player_staff_34
+      213: 6043871657530219960
+    second: player_relic_torn_34
   - first:
-      213: 5616510622363129563
-    second: player_staff_35
+      213: -5290514370602631344
+    second: player_relic_torn_35
   - first:
-      213: -7179213633906236349
-    second: player_staff_36
+      213: -198375931593351483
+    second: player_relic_torn_36
   - first:
-      213: -3185775860301113577
-    second: player_staff_37
+      213: -2917360721446513294
+    second: player_relic_torn_37
   - first:
-      213: 1871959252110837179
-    second: player_staff_38
+      213: 2717190359242697429
+    second: player_relic_torn_38
   - first:
-      213: 3622657737997308990
-    second: player_staff_39
+      213: -8407249961324682732
+    second: player_relic_torn_39
   - first:
-      213: -6264099555997437181
-    second: player_staff_40
+      213: 4019917231120587358
+    second: player_relic_torn_40
   - first:
-      213: 6606968614857783887
-    second: player_staff_41
+      213: 5813133757567130496
+    second: player_relic_torn_41
   - first:
-      213: -6035144131446039121
-    second: player_staff_42
+      213: -6981497050227823351
+    second: player_relic_torn_42
   - first:
-      213: 7208331939072550398
-    second: player_staff_43
+      213: -719633522303887473
+    second: player_relic_torn_43
   - first:
-      213: -5059330348910371894
-    second: player_staff_44
+      213: 1073700490144950776
+    second: player_relic_torn_44
   - first:
-      213: 8731469418552721631
-    second: player_staff_45
+      213: 1821504055102860078
+    second: player_relic_torn_45
   - first:
-      213: -4617577221122366033
-    second: player_staff_46
+      213: 8357621423548951795
+    second: player_relic_torn_46
   - first:
-      213: 7876127686114176915
-    second: player_staff_47
+      213: 6674701328271349974
+    second: player_relic_torn_47
   - first:
-      213: 8215761339507647758
-    second: player_staff_48
+      213: 1650934587129557867
+    second: player_relic_torn_S_00
   - first:
-      213: -5555695040555839651
-    second: player_staff_49
+      213: -7692453919523630247
+    second: player_relic_torn_S_01
   - first:
-      213: 2791211219534119720
-    second: player_staff_50
+      213: 7411739916261561416
+    second: player_relic_torn_S_02
   - first:
-      213: -8840640367550054189
-    second: player_staff_51
+      213: -5505841823948409388
+    second: player_relic_torn_S_03
   - first:
-      213: 781110224014333725
-    second: player_staff_52
+      213: -4571947213513142836
+    second: player_relic_torn_S_04
   - first:
-      213: -1651860381031198150
-    second: player_staff_53
+      213: 3880791562020622266
+    second: player_relic_torn_S_05
   - first:
-      213: 556491998468543835
-    second: player_staff_54
+      213: 868489618920634051
+    second: player_relic_torn_SW_00
   - first:
-      213: -6935001896340407196
-    second: player_staff_55
+      213: 3452937566830581096
+    second: player_relic_torn_SW_01
   - first:
-      213: -1753858939095176355
-    second: player_staff_56
+      213: 8302074812717715105
+    second: player_relic_torn_SW_02
   - first:
-      213: 8573207068841240813
-    second: player_staff_57
+      213: -1132908314191069328
+    second: player_relic_torn_SW_03
   - first:
-      213: -7581981775045464436
-    second: player_staff_58
+      213: -5849304808795601799
+    second: player_relic_torn_SW_04
   - first:
-      213: -931388097220331343
-    second: player_staff_59
+      213: -6525760230132456260
+    second: player_relic_torn_SW_05
   - first:
-      213: 2919530099429250626
-    second: player_staff_60
+      213: -2498553637502890325
+    second: player_relic_torn_W_00
   - first:
-      213: 4268458455205857853
-    second: player_staff_61
+      213: -56323590902719517
+    second: player_relic_torn_W_01
   - first:
-      213: -1840839298375694232
-    second: player_staff_62
+      213: -7326670050024093850
+    second: player_relic_torn_W_02
   - first:
-      213: 4290050318412894714
-    second: player_staff_63
+      213: 1213558305327579033
+    second: player_relic_torn_W_03
   - first:
-      213: -6018388018618867615
-    second: player_staff_64
+      213: -7916811964542949204
+    second: player_relic_torn_W_04
   - first:
-      213: 7730870743806732146
-    second: player_staff_65
+      213: 6409044549554323548
+    second: player_relic_torn_W_05
   - first:
-      213: 2893150217726201141
-    second: player_staff_66
+      213: -8209461718048426146
+    second: player_relic_torn_NW_00
   - first:
-      213: -1862587572871045174
-    second: player_staff_67
+      213: 6279008637588889659
+    second: player_relic_torn_NW_01
   - first:
-      213: 1239314737794483096
-    second: player_staff_68
+      213: -6606891608828252581
+    second: player_relic_torn_NW_02
   - first:
-      213: 3945357579357106986
-    second: player_staff_69
+      213: 6455128524191241650
+    second: player_relic_torn_NW_03
   - first:
-      213: -8802407461023846755
-    second: player_staff_70
+      213: -2145155936778089265
+    second: player_relic_torn_NW_04
   - first:
-      213: 2088473849470541735
-    second: player_staff_71
+      213: -4850504086103759301
+    second: player_relic_torn_NW_05
   - first:
-      213: -3922699286396750846
-    second: player_staff_72
+      213: 7305997980609103542
+    second: player_relic_torn_N_00
   - first:
-      213: 7140985378520871033
-    second: player_staff_73
+      213: -4791637365001284283
+    second: player_relic_torn_N_01
   - first:
-      213: 6952678717483015641
-    second: player_staff_74
+      213: 8574579959500183475
+    second: player_relic_torn_N_02
   - first:
-      213: 1987231728833290442
-    second: player_staff_75
+      213: -8656504178464610222
+    second: player_relic_torn_N_03
   - first:
-      213: -424566424073022125
-    second: player_staff_76
+      213: -139868636420152083
+    second: player_relic_torn_N_04
   - first:
-      213: -1880236061530976068
-    second: player_staff_77
+      213: 5073695661762774344
+    second: player_relic_torn_N_05
   - first:
-      213: -1100406338226796979
-    second: player_staff_78
+      213: 9063341082367723594
+    second: player_relic_torn_NE_00
   - first:
-      213: 8821692000656165948
-    second: player_staff_79
+      213: 4069540913799877438
+    second: player_relic_torn_NE_01
   - first:
-      213: -478632314516932978
-    second: player_staff_80
+      213: -8597097580401539187
+    second: player_relic_torn_NE_02
   - first:
-      213: 3269133013079798100
-    second: player_staff_81
+      213: -4198735916357737436
+    second: player_relic_torn_NE_03
   - first:
-      213: 8102402012561064665
-    second: player_staff_82
+      213: -4832539796447876345
+    second: player_relic_torn_NE_04
   - first:
-      213: -2200732954435901091
-    second: player_staff_83
+      213: -1687583836815474662
+    second: player_relic_torn_NE_05
   - first:
-      213: 4082129416501277611
-    second: player_staff_84
+      213: -8785039925109455510
+    second: player_relic_torn_E_00
   - first:
-      213: -3294813198082129301
-    second: player_staff_85
+      213: 2529021845806567156
+    second: player_relic_torn_E_01
   - first:
-      213: -6511954177257947248
-    second: player_staff_86
+      213: 6931885701100293379
+    second: player_relic_torn_E_02
   - first:
-      213: -7049069351631787454
-    second: player_staff_87
+      213: 1173108750306940132
+    second: player_relic_torn_E_03
   - first:
-      213: 7357767295558634608
-    second: player_staff_88
+      213: -8140478626182152661
+    second: player_relic_torn_E_04
   - first:
-      213: 5859798908360995112
-    second: player_staff_89
+      213: 7881134994174301406
+    second: player_relic_torn_E_05
   - first:
-      213: -3625861545998613000
-    second: player_staff_90
+      213: 1290880169561777770
+    second: player_relic_torn_SE_00
   - first:
-      213: -4380543488072511196
-    second: player_staff_91
+      213: -2532519723978005347
+    second: player_relic_torn_SE_01
   - first:
-      213: -720423636174748284
-    second: player_staff_92
+      213: -8651380928180597968
+    second: player_relic_torn_SE_02
   - first:
-      213: -1221001339447979199
-    second: player_staff_93
+      213: -323730808246465888
+    second: player_relic_torn_SE_03
   - first:
-      213: 2844619245349428050
-    second: player_staff_94
+      213: -8709013063813579359
+    second: player_relic_torn_SE_04
   - first:
-      213: -6673021357122769026
-    second: player_staff_95
-  - first:
-      213: 8722027176909960761
-    second: player_staff_96
-  - first:
-      213: 6789535477500164761
-    second: player_staff_97
-  - first:
-      213: 3198781593828244236
-    second: player_staff_98
-  - first:
-      213: -8031816145470627242
-    second: player_staff_99
-  - first:
-      213: 1627326612975754025
-    second: player_staff_100
-  - first:
-      213: 14777551058046113
-    second: player_staff_101
-  - first:
-      213: -5461869150363824848
-    second: player_staff_102
-  - first:
-      213: 6214335433247420378
-    second: player_staff_103
-  - first:
-      213: -5549317220797762445
-    second: player_staff_104
-  - first:
-      213: -6139496178937939423
-    second: player_staff_105
-  - first:
-      213: 3906855101495589824
-    second: player_staff_106
-  - first:
-      213: -4818121936351390743
-    second: player_staff_107
-  - first:
-      213: 8941327938860783801
-    second: player_staff_108
-  - first:
-      213: -8701315426289948779
-    second: player_staff_109
-  - first:
-      213: 8410473929612446766
-    second: player_staff_110
-  - first:
-      213: -7591158406949996920
-    second: player_staff_111
-  - first:
-      213: -6223024396185835821
-    second: player_staff_112
-  - first:
-      213: -1711619430893502064
-    second: player_staff_113
-  - first:
-      213: 9145062659619216680
-    second: player_staff_114
-  - first:
-      213: -4737465642790745393
-    second: player_staff_115
-  - first:
-      213: -7698040078593419616
-    second: player_staff_116
-  - first:
-      213: -8515995411446565382
-    second: player_staff_117
-  - first:
-      213: -34689673558945479
-    second: player_staff_118
-  - first:
-      213: -5698050510029938658
-    second: player_staff_119
-  - first:
-      213: 3278165583134380795
-    second: player_staff_120
-  - first:
-      213: 1000156529524625492
-    second: player_staff_121
-  - first:
-      213: -2940641554052960980
-    second: player_staff_122
-  - first:
-      213: 3650389593526432826
-    second: player_staff_123
-  - first:
-      213: -8833783610615307810
-    second: player_staff_S_00
-  - first:
-      213: 6418210433533103028
-    second: player_staff_S_01
-  - first:
-      213: -5365753521243355211
-    second: player_staff_S_02
-  - first:
-      213: -8355718048879395653
-    second: player_staff_S_03
-  - first:
-      213: -5759088676209582701
-    second: player_staff_S_04
-  - first:
-      213: 8746936177365018332
-    second: player_staff_S_05
-  - first:
-      213: -2379907428053042283
-    second: player_staff_SW_00
-  - first:
-      213: -3932306401757231162
-    second: player_staff_SW_01
-  - first:
-      213: -2453522646873340024
-    second: player_staff_SW_02
-  - first:
-      213: 4772637322400562703
-    second: player_staff_SW_03
-  - first:
-      213: -6093242054510577973
-    second: player_staff_SW_04
-  - first:
-      213: -2214342859910959929
-    second: player_staff_SW_05
-  - first:
-      213: -2064050373468236829
-    second: player_staff_W_00
-  - first:
-      213: 1393106820655015494
-    second: player_staff_W_01
-  - first:
-      213: 4972521557303285343
-    second: player_staff_W_02
-  - first:
-      213: 4919905486267249809
-    second: player_staff_W_03
-  - first:
-      213: -2128578285613567283
-    second: player_staff_W_04
-  - first:
-      213: -5245175177500177393
-    second: player_staff_W_05
-  - first:
-      213: -4450579225931231867
-    second: player_staff_NW_00
-  - first:
-      213: 3280347169617117789
-    second: player_staff_NW_01
-  - first:
-      213: -5858824069834727477
-    second: player_staff_NW_02
-  - first:
-      213: -2535950572450801238
-    second: player_staff_NW_03
-  - first:
-      213: 6215363475821622996
-    second: player_staff_NW_04
-  - first:
-      213: 4103673789935394718
-    second: player_staff_NW_05
-  - first:
-      213: 2962812798885060603
-    second: player_staff_N_00
-  - first:
-      213: -7088466408964186811
-    second: player_staff_N_01
-  - first:
-      213: 6832933761414597616
-    second: player_staff_N_02
-  - first:
-      213: 3827077762526548011
-    second: player_staff_N_03
-  - first:
-      213: -6354109588685486771
-    second: player_staff_N_04
-  - first:
-      213: -3199846201144263625
-    second: player_staff_N_05
-  - first:
-      213: 199445425884361645
-    second: player_staff_NE_00
-  - first:
-      213: 8272361274974497858
-    second: player_staff_NE_01
-  - first:
-      213: -5816104897871343516
-    second: player_staff_NE_02
-  - first:
-      213: -4037655012209231102
-    second: player_staff_NE_03
-  - first:
-      213: -3986924149204284802
-    second: player_staff_NE_04
-  - first:
-      213: -7318832332560585717
-    second: player_staff_NE_05
-  - first:
-      213: 4952206391035890387
-    second: player_staff_E_00
-  - first:
-      213: 1874469953583332863
-    second: player_staff_E_01
-  - first:
-      213: -3476564414263672312
-    second: player_staff_E_02
-  - first:
-      213: 1041265597090349982
-    second: player_staff_E_03
-  - first:
-      213: -7035958429687212405
-    second: player_staff_E_04
-  - first:
-      213: -8007566813572378248
-    second: player_staff_E_05
-  - first:
-      213: 2378633676448253550
-    second: player_staff_SE_00
-  - first:
-      213: 1428070730749037260
-    second: player_staff_SE_01
-  - first:
-      213: -5259157412641952535
-    second: player_staff_SE_02
-  - first:
-      213: -8343002763834057939
-    second: player_staff_SE_03
-  - first:
-      213: -6377678092539600081
-    second: player_staff_SE_04
-  - first:
-      213: -6089111182774768886
-    second: player_staff_SE_05
+      213: -42385536973957697
+    second: player_relic_torn_SE_05
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -550,7 +322,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -588,7 +360,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 100
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -622,24 +394,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_staff_S_00
+      name: player_relic_torn_S_00
       rect:
         serializedVersion: 2
         x: 0
@@ -654,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: b63734d824c49e610800000000000000
+      internalID: 1650934587129557867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_S_01
+      name: player_relic_torn_S_01
       rect:
         serializedVersion: 2
         x: 256
@@ -676,14 +435,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 9539bb3aae9ee3590800000000000000
+      internalID: -7692453919523630247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_S_02
+      name: player_relic_torn_S_02
       rect:
         serializedVersion: 2
         x: 512
@@ -698,14 +457,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 8449a5c4f2acbd660800000000000000
+      internalID: 7411739916261561416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_S_03
+      name: player_relic_torn_S_03
       rect:
         serializedVersion: 2
         x: 768
@@ -720,14 +479,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 4d5f01648025793b0800000000000000
+      internalID: -5505841823948409388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_S_04
+      name: player_relic_torn_S_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -742,14 +501,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: ccd46b68b3e2d80c0800000000000000
+      internalID: -4571947213513142836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_S_05
+      name: player_relic_torn_S_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -764,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: abf82954d575bd530800000000000000
+      internalID: 3880791562020622266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SW_00
+      name: player_relic_torn_SW_00
       rect:
         serializedVersion: 2
         x: 0
@@ -786,14 +545,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 3c6f0eaf4be7d0c00800000000000000
+      internalID: 868489618920634051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SW_01
+      name: player_relic_torn_SW_01
       rect:
         serializedVersion: 2
         x: 256
@@ -808,14 +567,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 865d98e2c6c4bef20800000000000000
+      internalID: 3452937566830581096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SW_02
+      name: player_relic_torn_SW_02
       rect:
         serializedVersion: 2
         x: 512
@@ -830,14 +589,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 1aec1ce4e05e63370800000000000000
+      internalID: 8302074812717715105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SW_03
+      name: player_relic_torn_SW_03
       rect:
         serializedVersion: 2
         x: 768
@@ -852,14 +611,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 07ffd8104e91740f0800000000000000
+      internalID: -1132908314191069328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SW_04
+      name: player_relic_torn_SW_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -874,14 +633,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 97401c0744813dea0800000000000000
+      internalID: -5849304808795601799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SW_05
+      name: player_relic_torn_SW_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -896,14 +655,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: cb4659945a7df65a0800000000000000
+      internalID: -6525760230132456260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_W_00
+      name: player_relic_torn_W_00
       rect:
         serializedVersion: 2
         x: 0
@@ -918,14 +677,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: bae416064ba535dd0800000000000000
+      internalID: -2498553637502890325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_W_01
+      name: player_relic_torn_W_01
       rect:
         serializedVersion: 2
         x: 256
@@ -940,14 +699,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 3ebd4c31ef5e73ff0800000000000000
+      internalID: -56323590902719517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_W_02
+      name: player_relic_torn_W_02
       rect:
         serializedVersion: 2
         x: 512
@@ -962,14 +721,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 66702d96860725a90800000000000000
+      internalID: -7326670050024093850
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_W_03
+      name: player_relic_torn_W_03
       rect:
         serializedVersion: 2
         x: 768
@@ -984,14 +743,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 99f764759dc67d010800000000000000
+      internalID: 1213558305327579033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_W_04
+      name: player_relic_torn_W_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -1006,14 +765,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: ca8eadb9675d12290800000000000000
+      internalID: -7916811964542949204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_W_05
+      name: player_relic_torn_W_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -1028,14 +787,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: c50c6ddaf0081f850800000000000000
+      internalID: 6409044549554323548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NW_00
+      name: player_relic_torn_NW_00
       rect:
         serializedVersion: 2
         x: 0
@@ -1050,14 +809,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: e573e822012221e80800000000000000
+      internalID: -8209461718048426146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NW_01
+      name: player_relic_torn_NW_01
       rect:
         serializedVersion: 2
         x: 256
@@ -1072,14 +831,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: b3068199615832750800000000000000
+      internalID: 6279008637588889659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NW_02
+      name: player_relic_torn_NW_02
       rect:
         serializedVersion: 2
         x: 512
@@ -1094,14 +853,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: b5e684a261b9f44a0800000000000000
+      internalID: -6606891608828252581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NW_03
+      name: player_relic_torn_NW_03
       rect:
         serializedVersion: 2
         x: 768
@@ -1116,14 +875,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 2b519e72139359950800000000000000
+      internalID: 6455128524191241650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NW_04
+      name: player_relic_torn_NW_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -1138,14 +897,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: fcc85808a00ea32e0800000000000000
+      internalID: -2145155936778089265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NW_05
+      name: player_relic_torn_NW_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -1160,14 +919,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: b3664369b3c8facb0800000000000000
+      internalID: -4850504086103759301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_N_00
+      name: player_relic_torn_N_00
       rect:
         serializedVersion: 2
         x: 0
@@ -1182,14 +941,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 6b64deb547e146560800000000000000
+      internalID: 7305997980609103542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_N_01
+      name: player_relic_torn_N_01
       rect:
         serializedVersion: 2
         x: 256
@@ -1204,14 +963,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 5451c96243fa08db0800000000000000
+      internalID: -4791637365001284283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_N_02
+      name: player_relic_torn_N_02
       rect:
         serializedVersion: 2
         x: 512
@@ -1226,14 +985,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 3b711380b070ff670800000000000000
+      internalID: 8574579959500183475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_N_03
+      name: player_relic_torn_N_03
       rect:
         serializedVersion: 2
         x: 768
@@ -1248,14 +1007,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 258aee5505bedd780800000000000000
+      internalID: -8656504178464610222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_N_04
+      name: player_relic_torn_N_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -1270,14 +1029,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: de465fa57361f0ef0800000000000000
+      internalID: -139868636420152083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_N_05
+      name: player_relic_torn_N_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -1292,14 +1051,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 8458fc1a253696640800000000000000
+      internalID: 5073695661762774344
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NE_00
+      name: player_relic_torn_NE_00
       rect:
         serializedVersion: 2
         x: 0
@@ -1314,14 +1073,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: a488bbcd1b477cd70800000000000000
+      internalID: 9063341082367723594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NE_01
+      name: player_relic_torn_NE_01
       rect:
         serializedVersion: 2
         x: 256
@@ -1336,14 +1095,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: e33d5f556e9e97830800000000000000
+      internalID: 4069540913799877438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NE_02
+      name: player_relic_torn_NE_02
       rect:
         serializedVersion: 2
         x: 512
@@ -1358,14 +1117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: d87cbcccc49f0b880800000000000000
+      internalID: -8597097580401539187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NE_03
+      name: player_relic_torn_NE_03
       rect:
         serializedVersion: 2
         x: 768
@@ -1380,14 +1139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 424a2df0ee71bb5c0800000000000000
+      internalID: -4198735916357737436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NE_04
+      name: player_relic_torn_NE_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -1402,14 +1161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 70b29c5b8ae5fecb0800000000000000
+      internalID: -4832539796447876345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_NE_05
+      name: player_relic_torn_NE_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -1424,14 +1183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: a104ced017f7498e0800000000000000
+      internalID: -1687583836815474662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_E_00
+      name: player_relic_torn_E_00
       rect:
         serializedVersion: 2
         x: 0
@@ -1446,14 +1205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: a650a36bbb4451680800000000000000
+      internalID: -8785039925109455510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_E_01
+      name: player_relic_torn_E_01
       rect:
         serializedVersion: 2
         x: 256
@@ -1468,14 +1227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 4fec08c28f3e81320800000000000000
+      internalID: 2529021845806567156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_E_02
+      name: player_relic_torn_E_02
       rect:
         serializedVersion: 2
         x: 512
@@ -1490,14 +1249,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 30d41b58151033060800000000000000
+      internalID: 6931885701100293379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_E_03
+      name: player_relic_torn_E_03
       rect:
         serializedVersion: 2
         x: 768
@@ -1512,14 +1271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 4e492f86138b74010800000000000000
+      internalID: 1173108750306940132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_E_04
+      name: player_relic_torn_E_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -1534,14 +1293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: b2eb0c0d1d5370f80800000000000000
+      internalID: -8140478626182152661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_E_05
+      name: player_relic_torn_E_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -1556,14 +1315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: ed4d8aa658a6f5d60800000000000000
+      internalID: 7881134994174301406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SE_00
+      name: player_relic_torn_SE_00
       rect:
         serializedVersion: 2
         x: 0
@@ -1578,14 +1337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: a666352cca02ae110800000000000000
+      internalID: 1290880169561777770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SE_01
+      name: player_relic_torn_SE_01
       rect:
         serializedVersion: 2
         x: 256
@@ -1600,14 +1359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: d94ee999abeaadcd0800000000000000
+      internalID: -2532519723978005347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SE_02
+      name: player_relic_torn_SE_02
       rect:
         serializedVersion: 2
         x: 512
@@ -1622,14 +1381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 03bc43ff1ee10f780800000000000000
+      internalID: -8651380928180597968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SE_03
+      name: player_relic_torn_SE_03
       rect:
         serializedVersion: 2
         x: 768
@@ -1644,14 +1403,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 0aa8e9b8b80e18bf0800000000000000
+      internalID: -323730808246465888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SE_04
+      name: player_relic_torn_SE_04
       rect:
         serializedVersion: 2
         x: 1024
@@ -1666,14 +1425,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: 1adb723c2ce532780800000000000000
+      internalID: -8709013063813579359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_staff_SE_05
+      name: player_relic_torn_SE_05
       rect:
         serializedVersion: 2
         x: 1280
@@ -1688,8 +1447,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 
-      internalID: 0
+      spriteID: fb59d05249a696ff0800000000000000
+      internalID: -42385536973957697
       vertices: []
       indices: 
       edges: []
@@ -1708,178 +1467,102 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      player_staff_0: -7577168174706008411
-      player_staff_1: 1048642881823194251
-      player_staff_10: -5649075915405666436
-      player_staff_100: 1627326612975754025
-      player_staff_101: 14777551058046113
-      player_staff_102: -5461869150363824848
-      player_staff_103: 6214335433247420378
-      player_staff_104: -5549317220797762445
-      player_staff_105: -6139496178937939423
-      player_staff_106: 3906855101495589824
-      player_staff_107: -4818121936351390743
-      player_staff_108: 8941327938860783801
-      player_staff_109: -8701315426289948779
-      player_staff_11: 8409898414236625737
-      player_staff_110: 8410473929612446766
-      player_staff_111: -7591158406949996920
-      player_staff_112: -6223024396185835821
-      player_staff_113: -1711619430893502064
-      player_staff_114: 9145062659619216680
-      player_staff_115: -4737465642790745393
-      player_staff_116: -7698040078593419616
-      player_staff_117: -8515995411446565382
-      player_staff_118: -34689673558945479
-      player_staff_119: -5698050510029938658
-      player_staff_12: 5842656603561526211
-      player_staff_120: 3278165583134380795
-      player_staff_121: 1000156529524625492
-      player_staff_122: -2940641554052960980
-      player_staff_123: 3650389593526432826
-      player_staff_13: 3489563351299913853
-      player_staff_14: -1295857943842186401
-      player_staff_15: -8432506022756329655
-      player_staff_16: 786825626279766541
-      player_staff_17: -5667925677737819913
-      player_staff_18: 6516598391828557133
-      player_staff_19: -3440870822712779336
-      player_staff_2: -6665882862357852787
-      player_staff_20: 197953352152485144
-      player_staff_21: 26367765780173375
-      player_staff_22: -6625242674420715819
-      player_staff_23: -2664997808372024765
-      player_staff_24: -3395498092482500582
-      player_staff_25: -4256440705747096382
-      player_staff_26: -7152437341335805649
-      player_staff_27: 2649430298019160550
-      player_staff_28: -8217372132707087667
-      player_staff_29: -3482866887773446841
-      player_staff_3: 3334654647495920955
-      player_staff_30: 3821588129498332866
-      player_staff_31: 3505598235507252595
-      player_staff_32: 2179263298101994435
-      player_staff_33: 1705271503923396401
-      player_staff_34: -6823560100197775163
-      player_staff_35: 5616510622363129563
-      player_staff_36: -7179213633906236349
-      player_staff_37: -3185775860301113577
-      player_staff_38: 1871959252110837179
-      player_staff_39: 3622657737997308990
-      player_staff_4: 5561707231371463098
-      player_staff_40: -6264099555997437181
-      player_staff_41: 6606968614857783887
-      player_staff_42: -6035144131446039121
-      player_staff_43: 7208331939072550398
-      player_staff_44: -5059330348910371894
-      player_staff_45: 8731469418552721631
-      player_staff_46: -4617577221122366033
-      player_staff_47: 7876127686114176915
-      player_staff_48: 8215761339507647758
-      player_staff_49: -5555695040555839651
-      player_staff_5: 8782987768137563326
-      player_staff_50: 2791211219534119720
-      player_staff_51: -8840640367550054189
-      player_staff_52: 781110224014333725
-      player_staff_53: -1651860381031198150
-      player_staff_54: 556491998468543835
-      player_staff_55: -6935001896340407196
-      player_staff_56: -1753858939095176355
-      player_staff_57: 8573207068841240813
-      player_staff_58: -7581981775045464436
-      player_staff_59: -931388097220331343
-      player_staff_6: -6639763293635954833
-      player_staff_60: 2919530099429250626
-      player_staff_61: 4268458455205857853
-      player_staff_62: -1840839298375694232
-      player_staff_63: 4290050318412894714
-      player_staff_64: -6018388018618867615
-      player_staff_65: 7730870743806732146
-      player_staff_66: 2893150217726201141
-      player_staff_67: -1862587572871045174
-      player_staff_68: 1239314737794483096
-      player_staff_69: 3945357579357106986
-      player_staff_7: -7860223870817608730
-      player_staff_70: -8802407461023846755
-      player_staff_71: 2088473849470541735
-      player_staff_72: -3922699286396750846
-      player_staff_73: 7140985378520871033
-      player_staff_74: 6952678717483015641
-      player_staff_75: 1987231728833290442
-      player_staff_76: -424566424073022125
-      player_staff_77: -1880236061530976068
-      player_staff_78: -1100406338226796979
-      player_staff_79: 8821692000656165948
-      player_staff_8: 3634926243608282157
-      player_staff_80: -478632314516932978
-      player_staff_81: 3269133013079798100
-      player_staff_82: 8102402012561064665
-      player_staff_83: -2200732954435901091
-      player_staff_84: 4082129416501277611
-      player_staff_85: -3294813198082129301
-      player_staff_86: -6511954177257947248
-      player_staff_87: -7049069351631787454
-      player_staff_88: 7357767295558634608
-      player_staff_89: 5859798908360995112
-      player_staff_9: -8356904989528082179
-      player_staff_90: -3625861545998613000
-      player_staff_91: -4380543488072511196
-      player_staff_92: -720423636174748284
-      player_staff_93: -1221001339447979199
-      player_staff_94: 2844619245349428050
-      player_staff_95: -6673021357122769026
-      player_staff_96: 8722027176909960761
-      player_staff_97: 6789535477500164761
-      player_staff_98: 3198781593828244236
-      player_staff_99: -8031816145470627242
-      player_staff_E_00: 4952206391035890387
-      player_staff_E_01: 1874469953583332863
-      player_staff_E_02: -3476564414263672312
-      player_staff_E_03: 1041265597090349982
-      player_staff_E_04: -7035958429687212405
-      player_staff_E_05: -8007566813572378248
-      player_staff_NE_00: 199445425884361645
-      player_staff_NE_01: 8272361274974497858
-      player_staff_NE_02: -5816104897871343516
-      player_staff_NE_03: -4037655012209231102
-      player_staff_NE_04: -3986924149204284802
-      player_staff_NE_05: -7318832332560585717
-      player_staff_NW_00: -4450579225931231867
-      player_staff_NW_01: 3280347169617117789
-      player_staff_NW_02: -5858824069834727477
-      player_staff_NW_03: -2535950572450801238
-      player_staff_NW_04: 6215363475821622996
-      player_staff_NW_05: 4103673789935394718
-      player_staff_N_00: 2962812798885060603
-      player_staff_N_01: -7088466408964186811
-      player_staff_N_02: 6832933761414597616
-      player_staff_N_03: 3827077762526548011
-      player_staff_N_04: -6354109588685486771
-      player_staff_N_05: -3199846201144263625
-      player_staff_SE_00: 2378633676448253550
-      player_staff_SE_01: 1428070730749037260
-      player_staff_SE_02: -5259157412641952535
-      player_staff_SE_03: -8343002763834057939
-      player_staff_SE_04: -6377678092539600081
-      player_staff_SE_05: -6089111182774768886
-      player_staff_SW_00: -2379907428053042283
-      player_staff_SW_01: -3932306401757231162
-      player_staff_SW_02: -2453522646873340024
-      player_staff_SW_03: 4772637322400562703
-      player_staff_SW_04: -6093242054510577973
-      player_staff_SW_05: -2214342859910959929
-      player_staff_S_00: -8833783610615307810
-      player_staff_S_01: 6418210433533103028
-      player_staff_S_02: -5365753521243355211
-      player_staff_S_03: -8355718048879395653
-      player_staff_S_04: -5759088676209582701
-      player_staff_S_05: 8746936177365018332
-      player_staff_W_00: -2064050373468236829
-      player_staff_W_01: 1393106820655015494
-      player_staff_W_02: 4972521557303285343
-      player_staff_W_03: 4919905486267249809
-      player_staff_W_04: -2128578285613567283
-      player_staff_W_05: -5245175177500177393
+      player_relic_torn_0: -7210246670979900782
+      player_relic_torn_1: 8352613181465251762
+      player_relic_torn_10: 1152361317862665137
+      player_relic_torn_11: -6959981065790086563
+      player_relic_torn_12: 837631509675140943
+      player_relic_torn_13: 5670186614453046436
+      player_relic_torn_14: -4381957865935311243
+      player_relic_torn_15: -7209370648687610297
+      player_relic_torn_16: -1058299776214357931
+      player_relic_torn_17: -1387771814950135947
+      player_relic_torn_18: 5827116676596449887
+      player_relic_torn_19: -7846101632270495306
+      player_relic_torn_2: -7439584035914362421
+      player_relic_torn_20: 2340697219194339285
+      player_relic_torn_21: 2324587905534087994
+      player_relic_torn_22: -2717013230728703074
+      player_relic_torn_23: -5793479638823286108
+      player_relic_torn_24: -6520651601246229214
+      player_relic_torn_25: 52624166173713423
+      player_relic_torn_26: 5279423745256516212
+      player_relic_torn_27: 6610141758342798264
+      player_relic_torn_28: -6124723535500561814
+      player_relic_torn_29: 3302712364086356024
+      player_relic_torn_3: -8134695368420132344
+      player_relic_torn_30: 3714968676384770503
+      player_relic_torn_31: -7922431739230647660
+      player_relic_torn_32: 6838704615735639995
+      player_relic_torn_33: 7361316867746944773
+      player_relic_torn_34: 6043871657530219960
+      player_relic_torn_35: -5290514370602631344
+      player_relic_torn_36: -198375931593351483
+      player_relic_torn_37: -2917360721446513294
+      player_relic_torn_38: 2717190359242697429
+      player_relic_torn_39: -8407249961324682732
+      player_relic_torn_4: 6621602594302213847
+      player_relic_torn_40: 4019917231120587358
+      player_relic_torn_41: 5813133757567130496
+      player_relic_torn_42: -6981497050227823351
+      player_relic_torn_43: -719633522303887473
+      player_relic_torn_44: 1073700490144950776
+      player_relic_torn_45: 1821504055102860078
+      player_relic_torn_46: 8357621423548951795
+      player_relic_torn_47: 6674701328271349974
+      player_relic_torn_5: 9105011308790838914
+      player_relic_torn_6: -5350198158975383301
+      player_relic_torn_7: 8892396618314101434
+      player_relic_torn_8: 8360306681367307450
+      player_relic_torn_9: -4252270532025306691
+      player_relic_torn_E_00: -8785039925109455510
+      player_relic_torn_E_01: 2529021845806567156
+      player_relic_torn_E_02: 6931885701100293379
+      player_relic_torn_E_03: 1173108750306940132
+      player_relic_torn_E_04: -8140478626182152661
+      player_relic_torn_E_05: 7881134994174301406
+      player_relic_torn_NE_00: 9063341082367723594
+      player_relic_torn_NE_01: 4069540913799877438
+      player_relic_torn_NE_02: -8597097580401539187
+      player_relic_torn_NE_03: -4198735916357737436
+      player_relic_torn_NE_04: -4832539796447876345
+      player_relic_torn_NE_05: -1687583836815474662
+      player_relic_torn_NW_00: -8209461718048426146
+      player_relic_torn_NW_01: 6279008637588889659
+      player_relic_torn_NW_02: -6606891608828252581
+      player_relic_torn_NW_03: 6455128524191241650
+      player_relic_torn_NW_04: -2145155936778089265
+      player_relic_torn_NW_05: -4850504086103759301
+      player_relic_torn_N_00: 7305997980609103542
+      player_relic_torn_N_01: -4791637365001284283
+      player_relic_torn_N_02: 8574579959500183475
+      player_relic_torn_N_03: -8656504178464610222
+      player_relic_torn_N_04: -139868636420152083
+      player_relic_torn_N_05: 5073695661762774344
+      player_relic_torn_SE_00: 1290880169561777770
+      player_relic_torn_SE_01: -2532519723978005347
+      player_relic_torn_SE_02: -8651380928180597968
+      player_relic_torn_SE_03: -323730808246465888
+      player_relic_torn_SE_04: -8709013063813579359
+      player_relic_torn_SE_05: -42385536973957697
+      player_relic_torn_SW_00: 868489618920634051
+      player_relic_torn_SW_01: 3452937566830581096
+      player_relic_torn_SW_02: 8302074812717715105
+      player_relic_torn_SW_03: -1132908314191069328
+      player_relic_torn_SW_04: -5849304808795601799
+      player_relic_torn_SW_05: -6525760230132456260
+      player_relic_torn_S_00: 1650934587129557867
+      player_relic_torn_S_01: -7692453919523630247
+      player_relic_torn_S_02: 7411739916261561416
+      player_relic_torn_S_03: -5505841823948409388
+      player_relic_torn_S_04: -4571947213513142836
+      player_relic_torn_S_05: 3880791562020622266
+      player_relic_torn_W_00: -2498553637502890325
+      player_relic_torn_W_01: -56323590902719517
+      player_relic_torn_W_02: -7326670050024093850
+      player_relic_torn_W_03: 1213558305327579033
+      player_relic_torn_W_04: -7916811964542949204
+      player_relic_torn_W_05: 6409044549554323548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

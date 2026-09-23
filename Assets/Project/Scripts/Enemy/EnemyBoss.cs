@@ -26,7 +26,9 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class EnemyBoss : MonoBehaviour
 {
-    private enum State { Idle, Chase, Attack, Transition, Hit, Dead }
+    // 수정(2026-09-21, 왕관 의식) — Ritual을 더했다. 의식 동안 보스는 멈춰 서서 무적이고 아무 패턴도 안 쓴다.
+    // 수정(2026-09-22) — Groggy를 더했다. 유물 넷을 다 부숴 의식을 막으면, 정해 둔 시간 동안 멈춰 서서 맞기만 한다(무적 아님).
+    private enum State { Idle, Chase, Attack, Transition, Hit, Dead, Ritual, Groggy }
 
     [Header("페이즈")]
     [Tooltip("2페이즈에서 쓸 컨트롤러. 체력이 절반이 되면 갈아 끼운다.")]
@@ -88,6 +90,67 @@ public class EnemyBoss : MonoBehaviour
     [Tooltip("2페이즈에서 공격 모션 시간에 곱할 값. 2페이즈 클립이 15fps라 1페이즈(12fps)의 0.8배다.")]
     [Range(0.1f, 2f)]
     [SerializeField] private float phase2MotionScale = 0.8f;
+
+    // 추가 생성(2026-09-21, 기획 선택 "2페이즈 체력 35%에서 한 번") — 왕관 의식(진짜 궁극기)을 여는 체력 비율.
+    //
+    // 코드 안의 "Ultimate"(재 폭발)와 이름이 겹치지 않게 왕관 의식이라고 부른다. 재 폭발은 기획에서
+    // 일반 패턴으로 남기기로 했고, 왕관 의식은 판마다 한 번뿐인 절정이다.
+    [Tooltip("2페이즈에서 체력이 이 비율 이하로 떨어지면 왕관 의식을 한 번 시작한다(체력 전체 기준).")]
+    [Range(0.05f, 0.95f)]
+    [SerializeField] private float crownRitualHealthRatio = 0.35f;
+
+    // 추가 생성(2026-09-22, 기획 "넷을 다 부수면 보스 그로기") — 의식을 막았을 때의 보상.
+    [Tooltip("유물 넷을 다 부숴 왕관 의식을 막으면 이 시간(초) 동안 멈춰 서서 맞기만 한다. 무적은 아니다. 0이면 그로기 없이 바로 싸운다.")]
+    [SerializeField, Min(0f)] private float groggySeconds = 5f;
+
+    [Tooltip("그로기 동안 시전 바에 띄울 이름. 바가 차는 동안이 마음껏 때릴 수 있는 시간이다.")]
+    [SerializeField] private string groggyCastName = "그로기";
+
+    // 추가 생성(2026-09-22, 보스 파티클 기획 1부 "왕관 의식") — 의식 동안의 자세와 파티클.
+    //
+    // <b>자세를 애니메이터 상태로 만들지 않은 이유.</b> 넷 다 "한 장을 붙들고 있는" 자세라 움직이는 클립이 필요 없다.
+    // 상태로 만들면 1·2페이즈 컨트롤러 두 벌과 보스 애니메이션 빌더를 같이 고쳐야 한다. 그래서 자세를 보여 주는 동안만
+    // 애니메이터를 끄고 그 장의 스프라이트를 직접 넣는다(SetPose). 끝나면 다시 켜서 대기 모션으로 돌아간다.
+    // 그림과 파티클은 Tools → 재의 길 → 파티클 → 보스 파티클 만들기 가 채운다. 비어 있으면 그 연출만 빠진다.
+    [Header("왕관 의식 연출 (보스 파티클 만들기가 채운다)")]
+    [Tooltip("동작-1 손 뻗기 — 유물을 끌어낼 때(궁극기 시트 4번째 장).")]
+    [SerializeField] private Sprite ritualReachSprite;
+    [Tooltip("동작-2 의식 자세 — 칼을 머리 위로 든 채 버틴다(내려찍기 시트 3번째 장).")]
+    [SerializeField] private Sprite ritualHoldSprite;
+    [Tooltip("동작-3 움찔 — 유물이 깨질 때 차례로 보여 줄 장(피격 두 장).")]
+    [SerializeField] private Sprite[] ritualFlinchSprites = Array.Empty<Sprite>();
+    [Tooltip("동작-4 무너짐 — 그로기 동안의 자세(칼을 짚고 무릎 꿇은 장).")]
+    [SerializeField] private Sprite groggySprite;
+    [Tooltip("손 뻗기 장에서 손의 자리(발밑 기준, 오른쪽을 볼 때). 줄기가 여기로 끌려 들어간다.")]
+    [SerializeField] private Vector2 ritualHandOffset = new Vector2(2.45f, 5.95f);
+    [Tooltip("유물 실이 닿는 가슴 높이(발밑 기준).")]
+    [SerializeField] private float ritualChestHeight = 4.2f;
+    [Tooltip("의식-1 손 뻗기 줄기. 코드가 플레이어 가슴에서 보스 손 쪽으로 직접 뿌린다(월드 공간).")]
+    [SerializeField] private ParticleSystem ritualTether;
+    [Tooltip("의식-1 줄기가 초당 뿌리는 수(기획 70 × 화려하게 1.5).")]
+    [SerializeField, Min(0f)] private float ritualTetherRate = 105f;
+    [Tooltip("의식-2 왕관 점화. 의식 자세 동안 켜고 점점 세진다.")]
+    [SerializeField] private ParticleSystem crownFire;
+    [Tooltip("의식-2 왕관 불이 가장 세지기까지의 시간(초). 의식 시간(10초)과 같게 둔다.")]
+    [SerializeField, Min(0.1f)] private float crownIgniteSeconds = 10f;
+    [Tooltip("의식-3 재 소용돌이. 의식 자세 동안 켠다.")]
+    [SerializeField] private ParticleSystem ashVortex;
+    [Tooltip("의식-5 유물이 깨질 때 가슴에서 튀는 불꽃(한 번씩 터진다).")]
+    [SerializeField] private ParticleSystem ritualChestSparks;
+    [Tooltip("의식-6 무너질 때 왕관에서 쏟아지는 재(한 번 터진다).")]
+    [SerializeField] private ParticleSystem collapseAsh;
+    [Tooltip("의식-6 그로기 동안 머리 위를 맴도는 꺼져 가는 불씨.")]
+    [SerializeField] private ParticleSystem dizzyEmbers;
+    [Tooltip("의식-7 못 막았을 때 방으로 퍼지는 충격파(한 번 터진다).")]
+    [SerializeField] private ParticleSystem ritualBlast;
+
+    // 추가 생성(2026-09-22) — 손 뻗기 줄기를 뿌리는 중인가, 의식 자세까지 갔는가(못 막았을 때만 충격파를 터뜨리려고),
+    // 줄기 방출의 소수점 누적, 왕관 불을 켠 시각.
+    private bool ritualTetherOn;
+    private bool ritualHoldReached;
+    private float ritualTetherCarry;
+    private float crownFireStartTime;
+    private float crownFireBaseRate = -1f;
 
     [Header("이동")]
     // 수정(보스가 플레이어에게 못 붙음): 4.5 → 7.
@@ -426,6 +489,18 @@ public class EnemyBoss : MonoBehaviour
     public event Action EnteredPhase2;
 
     /// <summary>
+    /// 추가 생성(2026-09-21) — 왕관 의식이 시작된 순간에 울린다. 방(<see cref="BossEncounter"/>)이 받아
+    /// 의식 연출(<see cref="CrownRitual"/>)을 돌리고, 끝나면 <see cref="EndCrownRitual"/>을 부른다.
+    ///
+    /// <see cref="EnteredPhase2"/>와 같은 이유로 이벤트다. 보스는 방의 네 귀퉁이도, 플레이어의 유물도
+    /// 모른다 — 의식에 필요한 것은 전부 방 쪽에 있다.
+    /// </summary>
+    public event Action CrownRitualStarted;
+
+    // 추가 생성(2026-09-21) — 이번 판에 의식을 이미 시작했는가. 한 판에 한 번뿐이다.
+    private bool crownRitualStarted;
+
+    /// <summary>
     /// 추가 생성(2026-09-20, 시전 바) — 예고가 필요한 패턴을 시작할 때 울린다.
     /// 넘기는 값은 (패턴 이름, 시전 길이(초))다.
     ///
@@ -547,8 +622,14 @@ public class EnemyBoss : MonoBehaviour
         if (ultimateCooldownTimer > 0f) ultimateCooldownTimer -= Time.deltaTime;
         if (spearCooldownTimer > 0f) spearCooldownTimer -= Time.deltaTime;
 
+        // 추가 생성(2026-09-22) — 의식 연출은 아래 상태 검사(의식 중이면 return)보다 위에서 돈다.
+        UpdateRitualEffects();
+
+        // 수정(2026-09-21) — 의식 중(Ritual)에도 아무것도 안 한다.
+        // 수정(2026-09-22) — 그로기(Groggy) 중에도 아무것도 안 한다.
         if (state == State.Dead || state == State.Attack ||
-            state == State.Transition || state == State.Hit) return;
+            state == State.Transition || state == State.Hit || state == State.Ritual ||
+            state == State.Groggy) return;
 
         if (player == null) { Stop(); return; }
 
@@ -1071,9 +1152,32 @@ public class EnemyBoss : MonoBehaviour
             return;
         }
 
+        // 추가 생성(2026-09-21, 왕관 의식) — 2페이즈에서 체력이 의식 비율 아래로 내려가면 한 번 시작한다.
+        //
+        // 페이즈 전환처럼 공격 도중이어도 끼어든다. 의식은 판의 절정이라 반쯤 진행된 패턴보다 중요하다.
+        // 시전 중이던 창은 끊고(조준선·시전 바가 남지 않게) 코루틴을 전부 멈춘다.
+        if (isPhase2 && !crownRitualStarted && current <= max * crownRitualHealthRatio)
+        {
+            crownRitualStarted = true;
+            CancelCast();
+            StopAllCoroutines();
+            BeginCrownRitual();
+            return;
+        }
+
         // 공격 중에는 경직을 안 건다. 걸면 예비동작이 끊겨서, 플레이어가 계속 때리는 것만으로
         // 보스가 아무 패턴도 못 쓰는 허수아비가 된다.
         if (state == State.Attack) return;
+
+        // 추가 생성(2026-09-22) — 그로기 중에는 경직(HitStun)을 새로 걸지 않는다. HitStun은 끝날 때 상태를 Idle로
+        // 돌려놓아서, 걸면 그로기가 첫 대에 풀려 버린다. 맞은 모션만 보여 준다.
+        if (state == State.Groggy)
+        {
+            // 수정(2026-09-22) — 그로기 중에는 무릎 꿇은 자세를 붙들고 있어(애니메이터 꺼짐) 맞은 모션 대신 가슴 불꽃만 튄다.
+            if (animator != null && animator.enabled) animator.SetTrigger(HitHash);
+            else if (ritualChestSparks != null) ritualChestSparks.Play();
+            return;
+        }
 
         StartCoroutine(HitStun());
     }
@@ -1304,11 +1408,291 @@ public class EnemyBoss : MonoBehaviour
         bodyCollider.size = new Vector2(size.x * phase2ColliderWidthScale, size.y);
     }
 
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 왕관 의식에 들어간다. 멈춰 서서 무적이 되고, 방에 알린다.
+    ///
+    /// 듣는 쪽이 없으면(의식 연출을 안 꾸린 씬) 곧바로 끝낸다. 안 그러면 보스가 무적인 채로
+    /// 영영 서 있어서 판이 끝나지 않는다 — 에러 없이 "보스가 안 죽는다"로만 보이는 막힘이다.
+    /// </summary>
+    private void BeginCrownRitual()
+    {
+        state = State.Ritual;
+        body.linearVelocity = Vector2.zero;
+        health.IsInvulnerableExternally = true;
+        if (animator != null) animator.SetFloat(SpeedHash, 0f);
+
+        Debug.Log($"[보스] 왕관 의식 시작 — 체력 {health.Current}/{health.Max}.", this);
+
+        // 추가 생성(2026-09-22) — 동작-1 손 뻗기와 의식-1 줄기. 플레이어 쪽으로 돌아서 손을 뻗고, 유물이 뽑힐 때까지
+        // (RitualRelicsTorn) 플레이어 가슴에서 손으로 불티를 끌어온다. 의식을 받는 쪽이 없으면 아래에서 곧바로 끝난다.
+        if (player != null) FaceTowards(player.position.x - transform.position.x);
+        SetPose(ritualReachSprite);
+        ritualTetherOn = ritualTether != null && player != null;
+        ritualTetherCarry = 0f;
+        ritualHoldReached = false;
+
+        if (CrownRitualStarted == null)
+        {
+            Debug.LogWarning("[보스] 왕관 의식을 받아 줄 곳이 없다(방에 CrownRitual이 없다). 의식 없이 이어간다. " +
+                             "Tools → 재의 길 → 씬·세팅 → 왕관 의식 구성 을 실행해라.", this);
+            EndCrownRitual();
+            return;
+        }
+
+        CrownRitualStarted.Invoke();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 왕관 의식을 끝내고 싸움으로 돌아온다. 의식 연출이 끝나면 방이 부른다.
+    /// 의식 중이 아니면 아무것도 안 한다(두 번 불려도 안전).
+    /// </summary>
+    /// <param name="groggy">수정(2026-09-22) — 유물을 다 부숴 의식을 막았는가. 참이면 곧바로 싸우지 않고 그로기에 빠진다.</param>
+    public void EndCrownRitual(bool groggy = false)
+    {
+        if (state != State.Ritual) return;
+
+        health.IsInvulnerableExternally = false;
+
+        // 추가 생성(2026-09-22) — 의식 연출(줄기·왕관 불·소용돌이)을 거둔다.
+        ritualTetherOn = false;
+        if (crownFire != null) crownFire.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (ashVortex != null) ashVortex.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+        // 추가 생성(2026-09-22) — 의식을 막혔으면 그로기로 넘어간다.
+        if (groggy && groggySeconds > 0f)
+        {
+            StartCoroutine(Groggy());
+            return;
+        }
+
+        // 추가 생성(2026-09-22) — 의식-7 못 막았을 때: 들고 있던 칼을 내리치며 방으로 충격파가 퍼진다.
+        // 결과(체력 깎기)는 의식이 바로 앞에서 넣었다. 칼을 내리치는 그림은 내려찍기 모션을 그대로 튼다(판정 없이 모습만).
+        // 의식을 받는 쪽이 없어 곧바로 끝난 경우(의식 자세까지 못 감)에는 터뜨리지 않는다 — 아무 일도 없었는데 충격파만 난다.
+        ClearPose();
+        if (ritualHoldReached)
+        {
+            if (ritualBlast != null) ritualBlast.Play();
+            if (animator != null) animator.SetTrigger(SlamHash);
+        }
+
+        // 의식에서 풀리자마자 공격이 날아오면 플레이어가 자리를 잡을 틈이 없다. 전환 뒤와 같은 짧은 쉼.
+        cooldownTimer = 0.6f;
+        state = State.Idle;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 유물이 뽑혀 나갔다(방이 의식의 신호를 전한다). 줄기를 끊어 양 끝에서 터뜨리고,
+    /// 0.4초 더 손을 뻗고 있다가 의식 자세(칼을 머리 위로)로 바꾸며 왕관 불과 재 소용돌이를 켠다.
+    /// </summary>
+    public void RitualRelicsTorn()
+    {
+        if (state != State.Ritual) return;
+
+        if (ritualTetherOn)
+        {
+            ritualTetherOn = false;
+            BurstTether(RitualHand(), 30);
+            if (player != null) BurstTether(player.position + Vector3.up * 2f, 30);
+        }
+
+        StartCoroutine(RitualHoldAfterReach());
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 유물 하나가 깨졌다. 가슴에서 불꽃이 튀고 움찔한 뒤 의식 자세로 돌아간다(동작-3, 의식-5).
+    /// 무적이라 피해는 없고 모습만이다.
+    /// </summary>
+    public void RitualFlinch()
+    {
+        if (state != State.Ritual) return;
+
+        if (ritualChestSparks != null) ritualChestSparks.Play();
+        if (ritualFlinchSprites.Length > 0) StartCoroutine(RitualFlinchRoutine());
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 유물 실이 닿을 보스 가슴(월드 좌표).</summary>
+    public Vector3 RitualChest => transform.position + Vector3.up * ritualChestHeight;
+
+    private IEnumerator RitualHoldAfterReach()
+    {
+        yield return new WaitForSeconds(0.4f);
+        if (state != State.Ritual) yield break;
+
+        SetPose(ritualHoldSprite);
+        ritualHoldReached = true;
+        crownFireStartTime = Time.time;
+        FaceChild(crownFire);
+        FaceChild(collapseAsh);
+        if (crownFire != null) crownFire.Play();
+        if (ashVortex != null) ashVortex.Play();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 자식 파티클의 좌우 자리를 보스가 보는 쪽에 맞춘다. 그림은 flipX로 뒤집히지만
+    /// 자식 오브젝트는 안 뒤집혀서, 왼쪽을 볼 때 왕관 불이 머리 반대편에 뜬다.
+    /// </summary>
+    private void FaceChild(ParticleSystem particles)
+    {
+        if (particles == null) return;
+
+        Vector3 local = particles.transform.localPosition;
+        local.x = Mathf.Abs(local.x) * FacingSign();
+        particles.transform.localPosition = local;
+    }
+
+    private IEnumerator RitualFlinchRoutine()
+    {
+        foreach (Sprite sprite in ritualFlinchSprites)
+        {
+            SetPose(sprite);
+            yield return new WaitForSeconds(0.15f);
+            if (state != State.Ritual) yield break;
+        }
+
+        SetPose(ritualHoldSprite);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 의식 연출의 매 프레임 일. 줄기를 뿌리고, 왕관 불을 의식 진행에 맞춰 키운다.
+    /// </summary>
+    private void UpdateRitualEffects()
+    {
+        if (ritualTetherOn && player != null)
+        {
+            ritualTetherCarry += ritualTetherRate * Time.deltaTime;
+            int count = (int)ritualTetherCarry;
+            ritualTetherCarry -= count;
+
+            Vector3 chest = player.position + Vector3.up * 2f;
+            Vector3 hand = RitualHand();
+            const float life = 0.42f;
+            for (int i = 0; i < count; i++)
+            {
+                var emit = new ParticleSystem.EmitParams
+                {
+                    position = chest + (Vector3)(UnityEngine.Random.insideUnitCircle * 0.3f),
+                    velocity = (hand - chest) / life + (Vector3)(UnityEngine.Random.insideUnitCircle * 0.6f),
+                    startLifetime = life,
+                    applyShapeToPosition = false,
+                };
+                ritualTether.Emit(emit, 1);
+            }
+        }
+
+        // 왕관 불은 켠 순간 약하게 시작해 의식 시간 동안 네 배 반까지 세진다(기획: 초당 10 → 45).
+        if (crownFire != null && crownFire.isEmitting)
+        {
+            var emission = crownFire.emission;
+            if (crownFireBaseRate < 0f) crownFireBaseRate = emission.rateOverTimeMultiplier;
+            float progress = Mathf.Clamp01((Time.time - crownFireStartTime) / crownIgniteSeconds);
+            emission.rateOverTimeMultiplier = crownFireBaseRate * Mathf.Lerp(1f, 4.5f, progress);
+        }
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 손 뻗기 장에서 손의 월드 좌표. 왼쪽을 보면 좌우가 뒤집힌다.</summary>
+    private Vector3 RitualHand()
+    {
+        return transform.position + new Vector3(ritualHandOffset.x * FacingSign(), ritualHandOffset.y, 0f);
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 줄기 끝에서 불티를 사방으로 터뜨린다(줄기가 끊기는 순간).</summary>
+    private void BurstTether(Vector3 at, int count)
+    {
+        if (ritualTether == null) return;
+
+        for (int i = 0; i < count; i++)
+        {
+            var emit = new ParticleSystem.EmitParams
+            {
+                position = at,
+                velocity = (Vector3)(UnityEngine.Random.insideUnitCircle.normalized * UnityEngine.Random.Range(2f, 7f)),
+                startLifetime = UnityEngine.Random.Range(0.25f, 0.45f),
+                applyShapeToPosition = false,
+            };
+            ritualTether.Emit(emit, 1);
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 한 장짜리 자세를 붙든다. 애니메이터를 끄고 그 스프라이트를 직접 넣는다(이유는 필드 주석).
+    /// 그림이 비어 있으면 아무것도 안 한다 — 애니메이터가 하던 모습(대기)이 그대로 남는다.
+    /// </summary>
+    private void SetPose(Sprite sprite)
+    {
+        if (sprite == null || spriteRenderer == null) return;
+
+        if (animator != null) animator.enabled = false;
+        spriteRenderer.sprite = sprite;
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 자세를 놓고 애니메이터를 다시 켠다. 다시 켜진 애니메이터는 대기 상태부터 돈다.</summary>
+    private void ClearPose()
+    {
+        if (animator != null) animator.enabled = true;
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 의식·그로기 연출을 전부 거둔다(죽을 때).</summary>
+    private void StopRitualEffects()
+    {
+        ritualTetherOn = false;
+        if (crownFire != null) crownFire.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (ashVortex != null) ashVortex.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (dizzyEmbers != null) dizzyEmbers.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        ClearPose();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 그로기. 멈춰 서서 맞기만 한다. 무적이 아니고, 남은 시간을 시전 바로 보여 준다.
+    ///
+    /// 시전 바를 쓰는 이유: 이때 플레이어에게 필요한 정보는 "얼마 동안 때릴 수 있나" 하나다. 바는 이미 보스 체력바
+    /// 아래에 있고, 보스가 신호(<see cref="CastStarted"/>)만 내면 방이 받아 채운다 — 새 UI 없이 같은 자리에서 읽힌다.
+    /// 그로기 도중에 죽으면 <see cref="OnDied"/>가 코루틴을 멈추고 <see cref="CancelCast"/>로 바를 거둔다.
+    ///
+    /// 스케일 시간으로 센다. 다른 보스 코루틴과 같이 히트스톱·일시정지에 멈춰야, 인벤토리를 여는 동안
+    /// 그로기가 저절로 흘러가 버리지 않는다.
+    /// </summary>
+    private IEnumerator Groggy()
+    {
+        state = State.Groggy;
+        body.linearVelocity = Vector2.zero;
+        if (animator != null) animator.SetFloat(SpeedHash, 0f);
+
+        Debug.Log($"[보스] 왕관 의식을 막혔다 — {groggySeconds:0.#}초 그로기.", this);
+        CastStarted?.Invoke(groggyCastName, groggySeconds);
+
+        // 추가 생성(2026-09-22) — 동작-4 무너짐, 의식-6 무너짐 재. 움찔 둘째 장을 잠깐 보인 뒤 칼을 짚고 무릎 꿇는다.
+        // 왕관 불이 꺼지며 재가 쏟아지고, 그로기 동안 꺼져 가는 불씨가 머리 위를 맴돈다.
+        if (collapseAsh != null) collapseAsh.Play();
+        if (ritualFlinchSprites.Length > 1)
+        {
+            SetPose(ritualFlinchSprites[1]);
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        SetPose(groggySprite);
+        if (dizzyEmbers != null) dizzyEmbers.Play();
+
+        yield return new WaitForSeconds(groggySeconds);
+
+        CastEnded?.Invoke();
+
+        // 추가 생성(2026-09-22) — 일어나며 연출을 거둔다.
+        if (dizzyEmbers != null) dizzyEmbers.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        ClearPose();
+
+        // 그로기에서 풀리자마자 공격이 날아오면 억울하다. 의식 뒤와 같은 짧은 쉼을 둔다.
+        cooldownTimer = 0.6f;
+        state = State.Idle;
+    }
+
     private void OnDied()
     {
         // 추가 생성(2026-09-20) — 시전 중에 죽으면 조준선과 시전 바가 그대로 남는다.
         // 코루틴을 멈추기 전에 끊어야 한다.
         CancelCast();
+
+        // 추가 생성(2026-09-22) — 그로기 도중에 죽으면 무릎 꿇은 자세(애니메이터 꺼짐)가 남아 사망 모션이 안 나온다. 먼저 놓는다.
+        StopRitualEffects();
 
         StopAllCoroutines();
 
