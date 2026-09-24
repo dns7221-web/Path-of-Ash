@@ -73,7 +73,22 @@ public class Projectile : MonoBehaviour
     private ParticleSystem[] garnishes;
 
     /// <summary>추가 생성 — 풀이 새로 만든 직후 한 번 부른다. 이게 있으면 사거리 끝에서 지우지 않고 풀에 돌려놓는다.</summary>
-    public void AssignPool(IObjectPool<Projectile> owner) => pool = owner;
+    public void AssignPool(IObjectPool<Projectile> owner)
+    {
+        pool = owner;
+        if (garnishes == null) return; // Awake 전(꺼진 프리팹)이면 모을 것이 아직 없다
+
+        // 수정(2026-09-24, 재사용 때 MissingReferenceException) — 곁들임 파티클의 Stop Action이 Destroy라서,
+        // 반납하려고 방출을 멈추면 불티가 꺼지는 순간 <b>파티클 오브젝트가 스스로 지워졌다.</b> 다시 꺼낸 화살이
+        // 지워진 파티클을 만지다 예외가 났다. 풀에 속한 투사체는 꼬리를 떼어 내지 않으므로 스스로 지울 이유가 없다.
+        // (풀 밖에서 만든 투사체는 예전처럼 떼어 낸 꼬리가 Destroy로 사라진다 — 거기엔 손대지 않는다.)
+        foreach (ParticleSystem particles in garnishes)
+        {
+            if (particles == null) continue;
+            ParticleSystem.MainModule main = particles.main;
+            main.stopAction = ParticleSystemStopAction.None;
+        }
+    }
 
     /// <summary>
     /// 추가 생성(2026-09-17, 사수 화살 높이) — 그림을 판정보다 화면에서 얼마나 위에 그릴지 정한다.
@@ -223,7 +238,8 @@ public class Projectile : MonoBehaviour
         if (hitbox != null) hitbox.Deactivate();
 
         foreach (SpriteRenderer spriteRenderer in renderers) spriteRenderer.enabled = false;
-        foreach (ParticleSystem particles in garnishes) particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        foreach (ParticleSystem particles in garnishes)
+            if (particles != null) particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         while (AnyGarnishAlive()) yield return null;
 
@@ -247,6 +263,8 @@ public class Projectile : MonoBehaviour
         // 지난번 불티를 지우고 처음부터 다시 뿜는다. 켜질 때 저절로 도는(Play On Awake) 것만 — 원래 그렇게 쓰이던 것만 되살린다.
         foreach (ParticleSystem particles in garnishes)
         {
+            // 수정(2026-09-24) — 혹시 지워진 것이 있어도 멈추지 않게 건너뛴다(안전망).
+            if (particles == null) continue;
             particles.Clear(true);
             if (particles.main.playOnAwake) particles.Play(true);
         }
