@@ -87,6 +87,11 @@ public class AreaSkillData : SkillData
     [Tooltip("시전 이펙트를 발밑에서 화면 위로 띄울 높이(유닛). 불티가 모이는 곳 = 몸통 가운데.")]
     [SerializeField, Min(0f)] private float castEffectHeight = 2.6f;
 
+    // 추가 생성(2026-09-24) — R의 큰 폭발이 캐릭터 모션을 덮던 문제. 켜면 폭발이 살아 있는 동안 시전자를 폭발 위에 그린다.
+    // 이유와 방식은 CasterSortingLift 참고. E처럼 작은 이펙트는 끄고 둔다(기본값 false라 다른 스킬은 그대로).
+    [Tooltip("켜면 장판 이펙트가 살아 있는 동안 시전자를 이펙트 위에 그린다. 화면을 덮는 큰 이펙트(R)용.")]
+    [SerializeField] private bool drawCasterAboveEffect;
+
     public override IEnumerator Execute(SkillContext context)
     {
         // 추가 생성(2026-09-17) — 기다리기 전에 만든다. 기다리는 시간이 곧 이 이펙트가 보이는 시간이다.
@@ -102,6 +107,10 @@ public class AreaSkillData : SkillData
 
         // 이펙트를 먼저 깐다. 이게 "여기가 터진다"는 예고이므로 폭발보다 앞서야 한다.
         GameObject effect = SpawnEffectAt(center);
+
+        // 추가 생성(2026-09-24) — 폭발이 캐릭터를 덮지 않게, 폭발이 있는 동안 시전자를 위로 올린다.
+        if (drawCasterAboveEffect && effect != null)
+            CasterSortingLift.For(context.Owner)?.LiftWhile(effect);
 
         // 추가 생성(2026-09-17, R 판정 경계 불티 고리) — 판정 경계를 그리는 파티클에 반경을 넘긴다.
         // 첫 불티가 나오기 전(같은 프레임)이라 시작 속도를 바꿔도 이미 나간 불티가 없다.

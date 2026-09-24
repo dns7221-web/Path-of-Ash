@@ -2286,3 +2286,10 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
   파티클 오브젝트가 스스로 지워졌다. 풀에 속한 투사체는 `AssignPool`에서 Stop Action을 None으로 바꾼다. 지워진 것은 건너뛰는 안전망도 넣었다.
 - **의식 중 보스가 방 끝으로 밀려남**: 보스는 Dynamic(질량 1), 탑다운이라 마찰이 없다. 멈춘 상태에서는 속도를 한 번만 0으로 만들어,
   플레이어가 몸으로 밀면 그대로 미끄러졌다. 의식·그로기·전환 동안 `Rigidbody2D.constraints = FreezeAll`, 끝나면 원래 값(`PinWhileHeld`).
+
+## 2026-09-24 — R 폭발이 캐릭터 모션을 덮던 것
+
+- 사용자 확인: 가리는 것은 0.5초에 터지는 큰 왕관 폭발(KingsEmber, 약 36유닛, VFX 층)이다. 09-06에 시점을 늦췄지만 폭발이 끝날 때까지 캐릭터가 묻혔다.
+- 폭발을 캐릭터 층 아래로 내리면 적도 폭발 위로 올라와 맞는 느낌이 사라진다. 그래서 **폭발이 살아 있는 동안만 시전자를 VFX 층 순서 10으로 올리고**
+  폭발이 지워지면 되돌린다(`CasterSortingLift`, 안전 상한 3초, 그림자처럼 음수 순서인 그림은 그대로).
+- `AreaSkillData.drawCasterAboveEffect` — R만 켰다(E 등은 기본값 false라 그대로).
