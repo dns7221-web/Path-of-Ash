@@ -183,8 +183,32 @@ public class AshSpriteImportRules : AssetPostprocessor
     ///
     /// <b>규칙(PPU, 필터, 압축)을 바꿀 때마다 이 숫자를 1 올린다.</b>
     ///   1 → 2 : 캐릭터 시트를 무압축에서 BC7(CompressedHQ)로 전환
+    ///   2 → 3 : (2026-09-24) 화면보다 훨씬 큰 UI 그림에 최대 크기(Max Size)를 건다 — UiMaxTextureSize 참고
     /// </summary>
-    public override uint GetVersion() => 2;
+    public override uint GetVersion() => 3;
+
+    /// <summary>
+    /// 추가 생성(2026-09-24, UI 메모리) — 화면에 실제로 나오는 크기보다 훨씬 큰 UI 그림의 최대 크기. 해당 없으면 0(건드리지 않음).
+    ///
+    /// 씬과 프리팹에서 잰 표시 크기(1920×1080 기준)의 약 1.5~2.5배로 잡았다. 그보다 크면 메모리만 쓰고,
+    /// 화면에서는 GPU가 어차피 줄여서 그리므로 선명해지지 않는다(오히려 자글자글해진다).
+    /// 원본 png는 그대로다 — 유니티 내장 TextureImporter.maxTextureSize가 가져올 때만 줄인다. 되돌리려면 이 표에서 빼면 된다.
+    ///
+    /// | 그림 | 원본 | 화면 표시 | 최대 |
+    /// | InventorySlot | 1036² | 194² | 512 |
+    /// | boss-key-panel-4-empty-slots-square | 1254² | 900² | 1024 |
+    /// | *GaugeFrame / *GaugeFill (가로 1024 초과) | 1700~2090 가로 | 약 500~700 가로 | 1024 |
+    /// </summary>
+    private static int UiMaxTextureSize(string path)
+    {
+        string file = System.IO.Path.GetFileNameWithoutExtension(path);
+
+        if (file == "InventorySlot") return 512;
+        if (file == "boss-key-panel-4-empty-slots-square") return 1024;
+        if (file.EndsWith("GaugeFrame") || file.EndsWith("GaugeFill")) return 1024;
+
+        return 0;
+    }
 
     /// <summary>
     /// 추가 생성 — 한 장에 여러 칸이 든 시트인가.
@@ -310,6 +334,10 @@ public class AshSpriteImportRules : AssetPostprocessor
         }
         else if (isUiFolder)
         {
+            // 추가 생성(2026-09-24) — 화면보다 훨씬 큰 그림만 줄인다(표는 UiMaxTextureSize).
+            int uiMaxSize = UiMaxTextureSize(assetPath);
+            if (uiMaxSize > 0) importer.maxTextureSize = uiMaxSize;
+
             // 추가 생성 — 화면 UI 스프라이트.
 
             // 100은 CanvasScaler의 Reference Pixels Per Unit 기본값이다. 같은 값으로 맞춰야
