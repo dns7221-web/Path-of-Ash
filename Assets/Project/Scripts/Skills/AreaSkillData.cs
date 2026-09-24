@@ -92,6 +92,10 @@ public class AreaSkillData : SkillData
     [Tooltip("켜면 장판 이펙트가 살아 있는 동안 시전자를 이펙트 위에 그린다. 화면을 덮는 큰 이펙트(R)용.")]
     [SerializeField] private bool drawCasterAboveEffect;
 
+    // 추가 생성(2026-09-24) — R: 무릎 꿇는 모션이 폭발보다 먼저 끝나 곧장 일어나던 것. 켜면 폭발이 끝날 때까지 마지막 자세를 유지한다.
+    [Tooltip("켜면 장판 이펙트가 사라질 때까지 시전 모션의 마지막 자세(R의 무릎 꿇기)를 유지하고 움직이지 못한다.")]
+    [SerializeField] private bool holdCasterPose;
+
     public override IEnumerator Execute(SkillContext context)
     {
         // 추가 생성(2026-09-17) — 기다리기 전에 만든다. 기다리는 시간이 곧 이 이펙트가 보이는 시간이다.
@@ -111,6 +115,12 @@ public class AreaSkillData : SkillData
         // 추가 생성(2026-09-24) — 폭발이 캐릭터를 덮지 않게, 폭발이 있는 동안 시전자를 위로 올린다.
         if (drawCasterAboveEffect && effect != null)
             CasterSortingLift.For(context.Owner)?.LiftWhile(effect);
+
+        // 추가 생성(2026-09-24) — 모션의 마지막 프레임이 보이는 동안(끝나기 0.05초 전) 애니메이터를 멈춰 자세를 붙잡는다.
+        // 지금은 castDelay 뒤이므로 남은 모션 시간 = MotionSeconds - castDelay.
+        if (holdCasterPose && effect != null && context.Owner != null &&
+            context.Owner.TryGetComponent(out PlayerController caster))
+            caster.HoldPoseWhile(effect, Mathf.Max(0f, MotionSeconds - castDelay - 0.05f));
 
         // 추가 생성(2026-09-17, R 판정 경계 불티 고리) — 판정 경계를 그리는 파티클에 반경을 넘긴다.
         // 첫 불티가 나오기 전(같은 프레임)이라 시작 속도를 바꿔도 이미 나간 불티가 없다.

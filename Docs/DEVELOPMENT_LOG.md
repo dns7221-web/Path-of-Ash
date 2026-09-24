@@ -2293,3 +2293,12 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - 폭발을 캐릭터 층 아래로 내리면 적도 폭발 위로 올라와 맞는 느낌이 사라진다. 그래서 **폭발이 살아 있는 동안만 시전자를 VFX 층 순서 10으로 올리고**
   폭발이 지워지면 되돌린다(`CasterSortingLift`, 안전 상한 3초, 그림자처럼 음수 순서인 그림은 그대로).
 - `AreaSkillData.drawCasterAboveEffect` — R만 켰다(E 등은 기본값 false라 그대로).
+
+## 2026-09-24 — R 무릎 꿇기가 폭발 중에 풀리던 것
+
+- 모션(6프레임 10fps = 0.6초)은 0.5초에 폭발이 터지고 0.6초에 끝나 Idle로 일어나는데, 폭발(6프레임 8fps = 0.75초)은 1.25초까지 남는다.
+  사용자 요청: 폭발이 끝날 때까지 무릎을 꿇고 있어야 한다.
+- `PlayerController.HoldPoseWhile(effect, delay)`: 마지막 프레임이 보이는 동안(모션 끝 0.05초 전) `Animator.speed = 0`으로 자세를 멈추고,
+  폭발이 지워지면 푼다. 그동안 스킬 모션 상태를 유지해 움직이지 못한다. 피격·사망 때 바로 풀고, 안전 상한은 3초.
+  클립이나 전이를 고치지 않은 이유: 빌더가 다시 굽는 에셋이라 고쳐도 사라진다.
+- `AreaSkillData.holdCasterPose` — R에서만 켰다.
