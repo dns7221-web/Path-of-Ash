@@ -63,8 +63,12 @@ public static class AshVideoTestSceneBuilder
         RenderTexture texture = EnsureRenderTexture();
         var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
 
-        var old = GameObject.Find(RootName);
-        if (old != null) Object.DestroyImmediate(old);
+        // 수정(2026-09-24) — 예전에는 GameObject.Find(RootName)로 이름을 찾아 지웠다. Find는 켜진 오브젝트만 찾고
+        // 이름이 겹치면 어느 쪽이 걸릴지 모른다 — 실제로 씬에 같은 이름의 "손으로 만든 판"(켜짐)과 옛 도구 판(꺼짐)이
+        // 있어서, 메뉴를 누르면 손으로 만든 판이 지워지고 옛 도구 판은 남을 상황이었다.
+        // 이제 이름이 아니라 CutsceneVideo 컴포넌트로, 꺼진 것까지 찾아 도구 판만 지운다.
+        foreach (var old in Object.FindObjectsByType<CutsceneVideo>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            Object.DestroyImmediate(old.gameObject);
 
         BuildCutscene(clip, texture);
         EnsureBackground();
@@ -133,7 +137,9 @@ public static class AshVideoTestSceneBuilder
         player.playOnAwake = false;
         player.waitForFirstFrame = true;
         player.isLooping = false;
-        player.skipOnDrop = true;
+        // 수정(2026-09-24, 검은 화면) — true → false. 게임이 멈춘 실시간 재생에서 중간 프레임이 전부 버려졌다.
+        // 이유는 CutsceneVideo.Awake 주석 참고(거기서도 한 번 더 못 박는다).
+        player.skipOnDrop = false;
         player.aspectRatio = VideoAspectRatio.FitInside;
         // 소리는 게임 효과음으로 따로 낸다. 영상에는 소리 트랙이 없다.
         player.audioOutputMode = VideoAudioOutputMode.None;
