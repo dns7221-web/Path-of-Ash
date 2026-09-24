@@ -32,6 +32,13 @@ public class ChestRelicReward : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float keyChance = 0.25f;
 
+    // 추가 생성(2026-09-24, 사용자 요청) — 보스 열쇠가 너무 초반에 다 모였다. 판 초반에는 열쇠가 아예 안 나오게 잠근다.
+    // 방 번호는 판 기록의 주인인 RunManager.RoomsEntered(첫 방 = 1)를 읽는다 — 던전 쪽 카운터를 따로 세지 않는다.
+    [Tooltip("이 번째 방부터 보스 열쇠가 나온다(첫 방 = 1). 그 전 상자에서는 열쇠 판정을 건너뛰고 평범한 유물만 나온다. 1이면 제한 없음.")]
+    [SerializeField, Min(1)] private int keyMinRoom = 8;
+
+    private RunManager runManager;
+
     [Header("튀어나오기")]
     [Tooltip("상자에서 튀어나올 픽업 프리팹. 비우면 즉시 획득으로 돌아간다.")]
     [SerializeField] private RelicPickup pickupPrefab;
@@ -122,6 +129,10 @@ public class ChestRelicReward : MonoBehaviour
     private RelicData TryPickKey()
     {
         if (keyPool == null || keyPool.Length == 0) return null;
+
+        // 추가 생성(2026-09-24) — 아직 열쇠가 풀리지 않은 방이면 열쇠 판정 자체를 하지 않는다(평범한 유물로 넘어간다).
+        if (runManager == null) runManager = FindFirstObjectByType<RunManager>();
+        if (runManager != null && runManager.RoomsEntered < keyMinRoom) return null;
 
         var inventory = FindInventory();
         if (inventory == null) return null;
