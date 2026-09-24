@@ -23,7 +23,7 @@ public static class AshTextureFormatAudit
         "Assets/Project/Art",
     };
 
-    [MenuItem("Tools/재의 길/텍스처 포맷 감사")]
+    [MenuItem("Tools/재의 길/조사/텍스처 포맷 감사")]
     public static void Audit()
     {
         var guids = AssetDatabase.FindAssets("t:Texture2D", Roots);

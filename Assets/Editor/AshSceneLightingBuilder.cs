@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 /// <summary>
 /// 씬에 URP 2D 조명을 세운다.
 ///
-/// 메뉴: Tools → 재의 길 → 2D 조명 세팅
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 2D 조명 세팅
 ///
 /// 왜 필요한가:
 /// 프로젝트는 URP 2D 렌더러(Assets/Settings/Renderer2D.asset)를 이미 쓰고 있는데 씬에 Light2D가
@@ -46,7 +46,7 @@ public static class AshSceneLightingBuilder
     /// <summary>플레이어 빛이 닿는 거리(유닛). 방 세로가 약 29유닛이라 9면 주변만 밝힌다.</summary>
     private const float HeroOuterRadius = 9f;
 
-    [MenuItem("Tools/재의 길/2D 조명 세팅")]
+    [MenuItem("Tools/재의 길/씬·세팅/2D 조명 세팅")]
     public static void Build()
     {
         Material lit = EnsureLitMaterial();

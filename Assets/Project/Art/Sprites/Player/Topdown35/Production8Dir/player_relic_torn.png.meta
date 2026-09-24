@@ -1,0 +1,1570 @@
+fileFormatVersion: 2
+guid: bbc89e2f13528094095272da82a47f2f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7210246670979900782
+    second: player_relic_torn_0
+  - first:
+      213: 8352613181465251762
+    second: player_relic_torn_1
+  - first:
+      213: -7439584035914362421
+    second: player_relic_torn_2
+  - first:
+      213: -8134695368420132344
+    second: player_relic_torn_3
+  - first:
+      213: 6621602594302213847
+    second: player_relic_torn_4
+  - first:
+      213: 9105011308790838914
+    second: player_relic_torn_5
+  - first:
+      213: -5350198158975383301
+    second: player_relic_torn_6
+  - first:
+      213: 8892396618314101434
+    second: player_relic_torn_7
+  - first:
+      213: 8360306681367307450
+    second: player_relic_torn_8
+  - first:
+      213: -4252270532025306691
+    second: player_relic_torn_9
+  - first:
+      213: 1152361317862665137
+    second: player_relic_torn_10
+  - first:
+      213: -6959981065790086563
+    second: player_relic_torn_11
+  - first:
+      213: 837631509675140943
+    second: player_relic_torn_12
+  - first:
+      213: 5670186614453046436
+    second: player_relic_torn_13
+  - first:
+      213: -4381957865935311243
+    second: player_relic_torn_14
+  - first:
+      213: -7209370648687610297
+    second: player_relic_torn_15
+  - first:
+      213: -1058299776214357931
+    second: player_relic_torn_16
+  - first:
+      213: -1387771814950135947
+    second: player_relic_torn_17
+  - first:
+      213: 5827116676596449887
+    second: player_relic_torn_18
+  - first:
+      213: -7846101632270495306
+    second: player_relic_torn_19
+  - first:
+      213: 2340697219194339285
+    second: player_relic_torn_20
+  - first:
+      213: 2324587905534087994
+    second: player_relic_torn_21
+  - first:
+      213: -2717013230728703074
+    second: player_relic_torn_22
+  - first:
+      213: -5793479638823286108
+    second: player_relic_torn_23
+  - first:
+      213: -6520651601246229214
+    second: player_relic_torn_24
+  - first:
+      213: 52624166173713423
+    second: player_relic_torn_25
+  - first:
+      213: 5279423745256516212
+    second: player_relic_torn_26
+  - first:
+      213: 6610141758342798264
+    second: player_relic_torn_27
+  - first:
+      213: -6124723535500561814
+    second: player_relic_torn_28
+  - first:
+      213: 3302712364086356024
+    second: player_relic_torn_29
+  - first:
+      213: 3714968676384770503
+    second: player_relic_torn_30
+  - first:
+      213: -7922431739230647660
+    second: player_relic_torn_31
+  - first:
+      213: 6838704615735639995
+    second: player_relic_torn_32
+  - first:
+      213: 7361316867746944773
+    second: player_relic_torn_33
+  - first:
+      213: 6043871657530219960
+    second: player_relic_torn_34
+  - first:
+      213: -5290514370602631344
+    second: player_relic_torn_35
+  - first:
+      213: -198375931593351483
+    second: player_relic_torn_36
+  - first:
+      213: -2917360721446513294
+    second: player_relic_torn_37
+  - first:
+      213: 2717190359242697429
+    second: player_relic_torn_38
+  - first:
+      213: -8407249961324682732
+    second: player_relic_torn_39
+  - first:
+      213: 4019917231120587358
+    second: player_relic_torn_40
+  - first:
+      213: 5813133757567130496
+    second: player_relic_torn_41
+  - first:
+      213: -6981497050227823351
+    second: player_relic_torn_42
+  - first:
+      213: -719633522303887473
+    second: player_relic_torn_43
+  - first:
+      213: 1073700490144950776
+    second: player_relic_torn_44
+  - first:
+      213: 1821504055102860078
+    second: player_relic_torn_45
+  - first:
+      213: 8357621423548951795
+    second: player_relic_torn_46
+  - first:
+      213: 6674701328271349974
+    second: player_relic_torn_47
+  - first:
+      213: 1650934587129557867
+    second: player_relic_torn_S_00
+  - first:
+      213: -7692453919523630247
+    second: player_relic_torn_S_01
+  - first:
+      213: 7411739916261561416
+    second: player_relic_torn_S_02
+  - first:
+      213: -5505841823948409388
+    second: player_relic_torn_S_03
+  - first:
+      213: -4571947213513142836
+    second: player_relic_torn_S_04
+  - first:
+      213: 3880791562020622266
+    second: player_relic_torn_S_05
+  - first:
+      213: 868489618920634051
+    second: player_relic_torn_SW_00
+  - first:
+      213: 3452937566830581096
+    second: player_relic_torn_SW_01
+  - first:
+      213: 8302074812717715105
+    second: player_relic_torn_SW_02
+  - first:
+      213: -1132908314191069328
+    second: player_relic_torn_SW_03
+  - first:
+      213: -5849304808795601799
+    second: player_relic_torn_SW_04
+  - first:
+      213: -6525760230132456260
+    second: player_relic_torn_SW_05
+  - first:
+      213: -2498553637502890325
+    second: player_relic_torn_W_00
+  - first:
+      213: -56323590902719517
+    second: player_relic_torn_W_01
+  - first:
+      213: -7326670050024093850
+    second: player_relic_torn_W_02
+  - first:
+      213: 1213558305327579033
+    second: player_relic_torn_W_03
+  - first:
+      213: -7916811964542949204
+    second: player_relic_torn_W_04
+  - first:
+      213: 6409044549554323548
+    second: player_relic_torn_W_05
+  - first:
+      213: -8209461718048426146
+    second: player_relic_torn_NW_00
+  - first:
+      213: 6279008637588889659
+    second: player_relic_torn_NW_01
+  - first:
+      213: -6606891608828252581
+    second: player_relic_torn_NW_02
+  - first:
+      213: 6455128524191241650
+    second: player_relic_torn_NW_03
+  - first:
+      213: -2145155936778089265
+    second: player_relic_torn_NW_04
+  - first:
+      213: -4850504086103759301
+    second: player_relic_torn_NW_05
+  - first:
+      213: 7305997980609103542
+    second: player_relic_torn_N_00
+  - first:
+      213: -4791637365001284283
+    second: player_relic_torn_N_01
+  - first:
+      213: 8574579959500183475
+    second: player_relic_torn_N_02
+  - first:
+      213: -8656504178464610222
+    second: player_relic_torn_N_03
+  - first:
+      213: -139868636420152083
+    second: player_relic_torn_N_04
+  - first:
+      213: 5073695661762774344
+    second: player_relic_torn_N_05
+  - first:
+      213: 9063341082367723594
+    second: player_relic_torn_NE_00
+  - first:
+      213: 4069540913799877438
+    second: player_relic_torn_NE_01
+  - first:
+      213: -8597097580401539187
+    second: player_relic_torn_NE_02
+  - first:
+      213: -4198735916357737436
+    second: player_relic_torn_NE_03
+  - first:
+      213: -4832539796447876345
+    second: player_relic_torn_NE_04
+  - first:
+      213: -1687583836815474662
+    second: player_relic_torn_NE_05
+  - first:
+      213: -8785039925109455510
+    second: player_relic_torn_E_00
+  - first:
+      213: 2529021845806567156
+    second: player_relic_torn_E_01
+  - first:
+      213: 6931885701100293379
+    second: player_relic_torn_E_02
+  - first:
+      213: 1173108750306940132
+    second: player_relic_torn_E_03
+  - first:
+      213: -8140478626182152661
+    second: player_relic_torn_E_04
+  - first:
+      213: 7881134994174301406
+    second: player_relic_torn_E_05
+  - first:
+      213: 1290880169561777770
+    second: player_relic_torn_SE_00
+  - first:
+      213: -2532519723978005347
+    second: player_relic_torn_SE_01
+  - first:
+      213: -8651380928180597968
+    second: player_relic_torn_SE_02
+  - first:
+      213: -323730808246465888
+    second: player_relic_torn_SE_03
+  - first:
+      213: -8709013063813579359
+    second: player_relic_torn_SE_04
+  - first:
+      213: -42385536973957697
+    second: player_relic_torn_SE_05
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 100
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_relic_torn_S_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b63734d824c49e610800000000000000
+      internalID: 1650934587129557867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_S_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9539bb3aae9ee3590800000000000000
+      internalID: -7692453919523630247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_S_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8449a5c4f2acbd660800000000000000
+      internalID: 7411739916261561416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_S_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d5f01648025793b0800000000000000
+      internalID: -5505841823948409388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_S_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccd46b68b3e2d80c0800000000000000
+      internalID: -4571947213513142836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_S_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abf82954d575bd530800000000000000
+      internalID: 3880791562020622266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6f0eaf4be7d0c00800000000000000
+      internalID: 868489618920634051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 865d98e2c6c4bef20800000000000000
+      internalID: 3452937566830581096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aec1ce4e05e63370800000000000000
+      internalID: 8302074812717715105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07ffd8104e91740f0800000000000000
+      internalID: -1132908314191069328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97401c0744813dea0800000000000000
+      internalID: -5849304808795601799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb4659945a7df65a0800000000000000
+      internalID: -6525760230132456260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_W_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bae416064ba535dd0800000000000000
+      internalID: -2498553637502890325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_W_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ebd4c31ef5e73ff0800000000000000
+      internalID: -56323590902719517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_W_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66702d96860725a90800000000000000
+      internalID: -7326670050024093850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_W_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99f764759dc67d010800000000000000
+      internalID: 1213558305327579033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_W_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8eadb9675d12290800000000000000
+      internalID: -7916811964542949204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_W_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c50c6ddaf0081f850800000000000000
+      internalID: 6409044549554323548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e573e822012221e80800000000000000
+      internalID: -8209461718048426146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3068199615832750800000000000000
+      internalID: 6279008637588889659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5e684a261b9f44a0800000000000000
+      internalID: -6606891608828252581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b519e72139359950800000000000000
+      internalID: 6455128524191241650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc85808a00ea32e0800000000000000
+      internalID: -2145155936778089265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3664369b3c8facb0800000000000000
+      internalID: -4850504086103759301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_N_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b64deb547e146560800000000000000
+      internalID: 7305997980609103542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_N_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5451c96243fa08db0800000000000000
+      internalID: -4791637365001284283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_N_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b711380b070ff670800000000000000
+      internalID: 8574579959500183475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_N_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258aee5505bedd780800000000000000
+      internalID: -8656504178464610222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_N_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de465fa57361f0ef0800000000000000
+      internalID: -139868636420152083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_N_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8458fc1a253696640800000000000000
+      internalID: 5073695661762774344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a488bbcd1b477cd70800000000000000
+      internalID: 9063341082367723594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33d5f556e9e97830800000000000000
+      internalID: 4069540913799877438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d87cbcccc49f0b880800000000000000
+      internalID: -8597097580401539187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 424a2df0ee71bb5c0800000000000000
+      internalID: -4198735916357737436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70b29c5b8ae5fecb0800000000000000
+      internalID: -4832539796447876345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_NE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a104ced017f7498e0800000000000000
+      internalID: -1687583836815474662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_E_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a650a36bbb4451680800000000000000
+      internalID: -8785039925109455510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_E_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fec08c28f3e81320800000000000000
+      internalID: 2529021845806567156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_E_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d41b58151033060800000000000000
+      internalID: 6931885701100293379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_E_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e492f86138b74010800000000000000
+      internalID: 1173108750306940132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_E_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2eb0c0d1d5370f80800000000000000
+      internalID: -8140478626182152661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_E_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed4d8aa658a6f5d60800000000000000
+      internalID: 7881134994174301406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a666352cca02ae110800000000000000
+      internalID: 1290880169561777770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94ee999abeaadcd0800000000000000
+      internalID: -2532519723978005347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03bc43ff1ee10f780800000000000000
+      internalID: -8651380928180597968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aa8e9b8b80e18bf0800000000000000
+      internalID: -323730808246465888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1adb723c2ce532780800000000000000
+      internalID: -8709013063813579359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_relic_torn_SE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb59d05249a696ff0800000000000000
+      internalID: -42385536973957697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_relic_torn_0: -7210246670979900782
+      player_relic_torn_1: 8352613181465251762
+      player_relic_torn_10: 1152361317862665137
+      player_relic_torn_11: -6959981065790086563
+      player_relic_torn_12: 837631509675140943
+      player_relic_torn_13: 5670186614453046436
+      player_relic_torn_14: -4381957865935311243
+      player_relic_torn_15: -7209370648687610297
+      player_relic_torn_16: -1058299776214357931
+      player_relic_torn_17: -1387771814950135947
+      player_relic_torn_18: 5827116676596449887
+      player_relic_torn_19: -7846101632270495306
+      player_relic_torn_2: -7439584035914362421
+      player_relic_torn_20: 2340697219194339285
+      player_relic_torn_21: 2324587905534087994
+      player_relic_torn_22: -2717013230728703074
+      player_relic_torn_23: -5793479638823286108
+      player_relic_torn_24: -6520651601246229214
+      player_relic_torn_25: 52624166173713423
+      player_relic_torn_26: 5279423745256516212
+      player_relic_torn_27: 6610141758342798264
+      player_relic_torn_28: -6124723535500561814
+      player_relic_torn_29: 3302712364086356024
+      player_relic_torn_3: -8134695368420132344
+      player_relic_torn_30: 3714968676384770503
+      player_relic_torn_31: -7922431739230647660
+      player_relic_torn_32: 6838704615735639995
+      player_relic_torn_33: 7361316867746944773
+      player_relic_torn_34: 6043871657530219960
+      player_relic_torn_35: -5290514370602631344
+      player_relic_torn_36: -198375931593351483
+      player_relic_torn_37: -2917360721446513294
+      player_relic_torn_38: 2717190359242697429
+      player_relic_torn_39: -8407249961324682732
+      player_relic_torn_4: 6621602594302213847
+      player_relic_torn_40: 4019917231120587358
+      player_relic_torn_41: 5813133757567130496
+      player_relic_torn_42: -6981497050227823351
+      player_relic_torn_43: -719633522303887473
+      player_relic_torn_44: 1073700490144950776
+      player_relic_torn_45: 1821504055102860078
+      player_relic_torn_46: 8357621423548951795
+      player_relic_torn_47: 6674701328271349974
+      player_relic_torn_5: 9105011308790838914
+      player_relic_torn_6: -5350198158975383301
+      player_relic_torn_7: 8892396618314101434
+      player_relic_torn_8: 8360306681367307450
+      player_relic_torn_9: -4252270532025306691
+      player_relic_torn_E_00: -8785039925109455510
+      player_relic_torn_E_01: 2529021845806567156
+      player_relic_torn_E_02: 6931885701100293379
+      player_relic_torn_E_03: 1173108750306940132
+      player_relic_torn_E_04: -8140478626182152661
+      player_relic_torn_E_05: 7881134994174301406
+      player_relic_torn_NE_00: 9063341082367723594
+      player_relic_torn_NE_01: 4069540913799877438
+      player_relic_torn_NE_02: -8597097580401539187
+      player_relic_torn_NE_03: -4198735916357737436
+      player_relic_torn_NE_04: -4832539796447876345
+      player_relic_torn_NE_05: -1687583836815474662
+      player_relic_torn_NW_00: -8209461718048426146
+      player_relic_torn_NW_01: 6279008637588889659
+      player_relic_torn_NW_02: -6606891608828252581
+      player_relic_torn_NW_03: 6455128524191241650
+      player_relic_torn_NW_04: -2145155936778089265
+      player_relic_torn_NW_05: -4850504086103759301
+      player_relic_torn_N_00: 7305997980609103542
+      player_relic_torn_N_01: -4791637365001284283
+      player_relic_torn_N_02: 8574579959500183475
+      player_relic_torn_N_03: -8656504178464610222
+      player_relic_torn_N_04: -139868636420152083
+      player_relic_torn_N_05: 5073695661762774344
+      player_relic_torn_SE_00: 1290880169561777770
+      player_relic_torn_SE_01: -2532519723978005347
+      player_relic_torn_SE_02: -8651380928180597968
+      player_relic_torn_SE_03: -323730808246465888
+      player_relic_torn_SE_04: -8709013063813579359
+      player_relic_torn_SE_05: -42385536973957697
+      player_relic_torn_SW_00: 868489618920634051
+      player_relic_torn_SW_01: 3452937566830581096
+      player_relic_torn_SW_02: 8302074812717715105
+      player_relic_torn_SW_03: -1132908314191069328
+      player_relic_torn_SW_04: -5849304808795601799
+      player_relic_torn_SW_05: -6525760230132456260
+      player_relic_torn_S_00: 1650934587129557867
+      player_relic_torn_S_01: -7692453919523630247
+      player_relic_torn_S_02: 7411739916261561416
+      player_relic_torn_S_03: -5505841823948409388
+      player_relic_torn_S_04: -4571947213513142836
+      player_relic_torn_S_05: 3880791562020622266
+      player_relic_torn_W_00: -2498553637502890325
+      player_relic_torn_W_01: -56323590902719517
+      player_relic_torn_W_02: -7326670050024093850
+      player_relic_torn_W_03: 1213558305327579033
+      player_relic_torn_W_04: -7916811964542949204
+      player_relic_torn_W_05: 6409044549554323548
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

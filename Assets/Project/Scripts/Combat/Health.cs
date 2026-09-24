@@ -169,6 +169,43 @@ public class Health : MonoBehaviour
         if (amount <= 0) return false;
         if (IsInvulnerable) return false;
 
+        // 수정(2026-09-22) — 아래에 있던 본문을 ApplyDamage로 옮겼다. 피할 수 없는 피해(TakeUnavoidableDamage)가
+        // 같은 길로 들어가야 방향 기록·무적·알림 순서가 한 곳에서만 정해진다.
+        ApplyDamage(amount, sourcePosition, grantInvulnerability);
+        return true;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22, 보스 궁극기 "왕관 의식"의 결과) — <b>피할 수 없는 피해.</b>
+    /// 대시·피격 무적·연출 무적(<see cref="IsInvulnerableExternally"/>)을 보지 않는다. 디버그 무적만 지킨다.
+    ///
+    /// <b>왜 필요한가.</b> 왕관 의식을 막는 법은 대시가 아니라 <b>의식 중에 유물을 부수는 것</b>이다(기획 선택
+    /// "의식 중 때려서 저지"). 결과가 나오는 순간 마침 대시 중이었다는 이유로 빈사를 피하면, 10초 동안 유물을
+    /// 부순 판과 안 부순 판의 차이가 사라진다.
+    ///
+    /// <b>"예고를 읽고 피한다"는 규칙을 깨지 않는다.</b> 예고(시전 바 10초)와 대응(부수기)이 다 끝난 뒤에
+    /// 확정되는 결과라서다. 그래서 공격이 이 함수를 쓰면 안 된다 — 날아오는 공격은 늘 <see cref="TakeDamage(int, Vector2?)"/>로
+    /// 들어가 대시로 피할 수 있어야 한다.
+    /// </summary>
+    /// <returns>실제로 피해가 들어갔으면 true.</returns>
+    public bool TakeUnavoidableDamage(int amount, Vector2? sourcePosition)
+    {
+        if (amount <= 0 || IsDead) return false;
+#if UNITY_EDITOR
+        // 디버그 무적은 "시험하는 동안 죽지 않게" 켠 것이라 여기서도 지킨다.
+        if (IsInvulnerableForDebug) return false;
+#endif
+
+        ApplyDamage(amount, sourcePosition, true);
+        return true;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 피해를 실제로 넣고 알린다. 무적 검사는 부르는 쪽이 끝낸 뒤다.
+    /// 본문은 원래 <see cref="TakeDamage(int, Vector2?, bool)"/>에 있던 것을 그대로 옮겼다.
+    /// </summary>
+    private void ApplyDamage(int amount, Vector2? sourcePosition, bool grantInvulnerability)
+    {
         // 방향은 데미지가 실제로 들어갈 때만 갱신한다. 무적 중에 스친 공격까지 방향을 바꾸면,
         // 다음에 진짜로 맞았을 때 엉뚱한 쪽으로 밀려난다.
         if (sourcePosition.HasValue)
@@ -181,7 +218,7 @@ public class Health : MonoBehaviour
 
         Current = Mathf.Max(0, Current - amount);
 
-        // 수정(2026-09-17) — 스킬이 원할 때는 무적을 걸지 않는다. 이유는 이 함수의 설명에 있다.
+        // 수정(2026-09-17) — 스킬이 원할 때는 무적을 걸지 않는다. 이유는 TakeDamage(세 인자 판)의 설명에 있다.
         if (grantInvulnerability) invulnerableTimer = invulnerableSecondsAfterHit;
 
         Damaged?.Invoke(Current, Max);
@@ -189,8 +226,6 @@ public class Health : MonoBehaviour
 
         if (Current <= 0)
             Died?.Invoke();
-
-        return true;
     }
 
     /// <summary>

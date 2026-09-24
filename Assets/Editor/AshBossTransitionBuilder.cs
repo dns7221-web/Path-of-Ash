@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 재의 왕 2페이즈 전환 연출의 시트 이펙트 3개를 만든다.
-/// 메뉴: Tools → 재의 길 → 보스 전환 이펙트 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 보스 전환 이펙트 생성
 ///
 /// <b>이 셋이 맡는 것은 "중심의 형상"이다.</b> 전환 연출은 둘로 나뉘어 있다 —
 /// 넓은 공간에 흩어지는 재는 파티클이, 발밑 한 자리에서 벌어지는 <b>모양</b>은 이 시트가
@@ -38,7 +38,7 @@ public static class AshBossTransitionBuilder
     // 하나로 묶는 이유: 보스 프리팹 루트에 이펙트 3개가 바로 붙으면 GroundShadow 같은
     // 원래 자식과 섞여서 <b>어디까지가 연출용인지</b>가 계층에서 안 읽힌다. 그리고 이
     // 컨테이너를 통째로 지웠다 다시 만드는 것이 곧 이 도구의 "다시 만들기"가 된다.
-    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemy/BossAshKing.prefab";
+    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemies/BossAshKing.prefab";
     private const string ContainerName = "Transition";
 
     /// <summary>
@@ -49,6 +49,15 @@ public static class AshBossTransitionBuilder
     /// 이전 시트가 아직 돌고 있다. 프레임 수와 구간 길이가 fps를 이미 정해놓은 셈이다.
     /// </summary>
     private const float TransitionFps = 8f;
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 흐름 B) — 깨짐 시트만 12fps. 6장 ÷ 12 = 0.5초.
+    ///
+    /// 흐름 B에서 모임·알 구간은 예전처럼 0.75초씩이지만, 깨짐 구간은 알이 깨지는 2.0초부터
+    /// 끝(2.5초)까지 <b>0.5초</b>로 줄었다. 8fps 그대로면 마지막 두 장을 보기 전에 타임라인이 끈다.
+    /// 위 TransitionFps 주석의 규칙("프레임 수와 구간 길이가 fps를 정한다")을 그대로 따른 값이다.
+    /// </summary>
+    private const float ShatterFps = 12f;
 
     /// <summary>
     /// 추가 생성 — 시트 3장의 배율. 자세한 근거는 아래 <see cref="Effects"/> 주석에 있다.
@@ -130,20 +139,21 @@ public static class AshBossTransitionBuilder
     /// 알보다 넓어야 하는 것은 맞지만, 그건 시트에 이미 그렇게 그려져 있다. 여기서 배율로
     /// 또 벌리면 같은 의도가 두 곳에 적히고, 시트를 다시 뽑을 때마다 배율도 같이 맞춰야 한다.
     /// </summary>
+    // 수정(2026-09-21) — 시트마다 fps 칸을 더했다(깨짐만 12fps). 이유는 ShatterFps 주석 참고.
     private static readonly (string sheet, string prefix, string output,
-                             bool loop, bool destroyWhenFinished, float scale)[] Effects =
+                             bool loop, bool destroyWhenFinished, float scale, float fps)[] Effects =
     {
         ("vfx_ashking_transition_gather_6frames_1536x256", "vfx_boss_transition_gather",
-         "BossTransitionGather", false, false, SheetScale),
+         "BossTransitionGather", false, false, SheetScale, TransitionFps),
 
         ("vfx_ashking_transition_egg_6frames_1536x256", "vfx_boss_transition_egg",
-         "BossTransitionEgg", true, false, SheetScale),
+         "BossTransitionEgg", true, false, SheetScale, TransitionFps),
 
         ("vfx_ashking_transition_shatter_6frames_1536x256", "vfx_boss_transition_shatter",
-         "BossTransitionShatter", false, false, SheetScale),
+         "BossTransitionShatter", false, false, SheetScale, ShatterFps),
     };
 
-    [MenuItem("Tools/재의 길/보스 전환 이펙트 생성")]
+    [MenuItem("Tools/재의 길/프리팹/보스 전환 이펙트 생성")]
     public static void Build()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);
@@ -191,6 +201,33 @@ public static class AshBossTransitionBuilder
                         "켜고 끄는 시각은 전환 타임라인의 Activation Track이 정한다.\n"
                       : "보스 프리팹에는 못 넣었다. 위 로그를 봐라.\n") +
                   "배율은 AshBossTransitionBuilder.Effects 표에서 고친다.");
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 흐름 B) — 타임라인까지 계획표 값으로 새로 만든다.
+    ///
+    /// 위 <see cref="Build"/>는 타임라인이 이미 있으면 트랙 시각을 건드리지 않는다(Timeline 창에서
+    /// 손으로 맞춘 값을 지키려고). 그 규칙 때문에 <b>계획표 자체가 바뀌면</b>(09-21 흐름 B, 3.125초 → 2.5초)
+    /// 새 시각이 들어갈 길이 없다. 그래서 옛 타임라인을 휴지통으로 보내고 Build를 다시 돌리는 메뉴를
+    /// 따로 둔다. 확인 창을 띄우는 이유는 손으로 맞춘 값이 새 타임라인에 안 들어가기 때문이다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/프리팹/보스 전환 다시 만들기 (타임라인 포함)")]
+    public static void RebuildWithTimeline()
+    {
+        bool ok = EditorUtility.DisplayDialog(
+            "보스 전환 다시 만들기",
+            "전환 타임라인을 휴지통으로 보내고 계획표 값으로 새로 만듭니다.\n" +
+            "Timeline 창에서 손으로 맞춘 시각은 새 타임라인에 들어가지 않습니다.",
+            "다시 만들기", "취소");
+        if (!ok) return;
+
+        if (!AshBossTransitionTimelineBuilder.TrashTimeline())
+        {
+            Debug.LogError("[보스 전환] 옛 타임라인을 휴지통으로 보내지 못했다. 다른 창에서 열려 있는지 확인해라.");
+            return;
+        }
+
+        Build();
     }
 
     /// <summary>
@@ -255,7 +292,7 @@ public static class AshBossTransitionBuilder
     /// </summary>
     private static bool BuildOne(
         GameObject source,
-        (string sheet, string prefix, string output, bool loop, bool destroyWhenFinished, float scale) effect)
+        (string sheet, string prefix, string output, bool loop, bool destroyWhenFinished, float scale, float fps) effect)
     {
         string sheetPath = $"{SheetFolder}/{effect.sheet}.png";
 
@@ -265,8 +302,8 @@ public static class AshBossTransitionBuilder
             Debug.LogError(
                 $"[보스 전환] {effect.output}: {sheetPath}에서 프레임을 {frames.Count}개만 " +
                 $"찾았다 (필요: {FrameCount}).\n" +
-                "Tools → 재의 길 → 원본 시트 정규화 (고른 것만) 과 " +
-                "Tools → 재의 길 → VFX 스프라이트 슬라이스 를 차례로 먼저 실행해라.");
+                "Tools → 재의 길 → 그림 → 원본 시트 정규화 (고른 것만) 과 " +
+                "Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 차례로 먼저 실행해라.");
             return false;
         }
 
@@ -280,7 +317,7 @@ public static class AshBossTransitionBuilder
             instance.name = effect.output;
             instance.transform.localScale = Vector3.one * effect.scale;
 
-            ApplyFrames(instance, frames, effect.loop, effect.destroyWhenFinished);
+            ApplyFrames(instance, frames, effect.loop, effect.destroyWhenFinished, effect.fps);
 
             string outputPath = $"{OutputFolder}/{effect.output}.prefab";
             PrefabUtility.SaveAsPrefabAsset(instance, outputPath, out bool saved);
@@ -349,7 +386,7 @@ public static class AshBossTransitionBuilder
     /// 화면이 조용해진 순간에 나오므로 특히 눈에 띈다.
     /// </summary>
     private static void ApplyFrames(
-        GameObject instance, List<Sprite> frames, bool loop, bool destroyWhenFinished)
+        GameObject instance, List<Sprite> frames, bool loop, bool destroyWhenFinished, float fps)
     {
         var renderer = instance.GetComponentInChildren<SpriteRenderer>(true);
         if (renderer != null)
@@ -375,7 +412,8 @@ public static class AshBossTransitionBuilder
         for (int i = 0; i < frames.Count; i++)
             list.GetArrayElementAtIndex(i).objectReferenceValue = frames[i];
 
-        serialized.FindProperty("fps").floatValue = TransitionFps;
+        // 수정(2026-09-21) — 고정값 TransitionFps 대신 시트마다 받은 값.
+        serialized.FindProperty("fps").floatValue = fps;
         serialized.FindProperty("loop").boolValue = loop;
         serialized.FindProperty("destroyWhenFinished").boolValue = destroyWhenFinished;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 캐릭터 프리팹에 접지 그림자를 붙인다.
 ///
-/// 메뉴: Tools → 재의 길 → 접지 그림자 추가
+/// 메뉴: Tools → 재의 길 → 프리팹 → 접지 그림자 추가
 ///
 /// 왜 필요한가:
 /// 플레이어·보스·망령 어느 프리팹에도 발밑 그림자가 없었다. 캐릭터가 바닥에 "붙어 있다"고
@@ -36,11 +36,11 @@ public static class AshGroundShadowBuilder
     private static readonly string[] CharacterPrefabs =
     {
         "Assets/Project/Prefabs/Player/Player.prefab",
-        "Assets/Project/Prefabs/Enemy/BossAshKing.prefab",
+        "Assets/Project/Prefabs/Enemies/BossAshKing.prefab",
         "Assets/Project/Prefabs/Enemies/AshEmberWraith.prefab",
     };
 
-    [MenuItem("Tools/재의 길/접지 그림자 추가")]
+    [MenuItem("Tools/재의 길/프리팹/접지 그림자 추가")]
     public static void Build()
     {
         var shadowSprite = AssetDatabase.LoadAssetAtPath<Sprite>(ShadowSpritePath);

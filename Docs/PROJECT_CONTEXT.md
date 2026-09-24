@@ -121,7 +121,7 @@
 - 판정은 그림(좌우 2방향)이 아니라 **실제 방향**을 따름 — 내려찍기 상자를 조준 방향으로 회전
 - 공격 시간은 **클립 길이 그대로**, 2페이즈는 `phase2MotionScale`(0.8)로 줄임 (2P 클립이 15fps)
 - 2페이즈에서 몸통 콜라이더 **폭만** 0.87배로 줄임 (시트를 재보면 높이는 같고 폭만 줄었다)
-- 보스 프리팹: `Assets/Project/Prefabs/Enemy/BossAshKing.prefab`
+- 보스 프리팹: `Assets/Project/Prefabs/Enemies/BossAshKing.prefab`
 - 보스 로직: `Assets/Project/Scripts/Enemy/EnemyBoss.cs`
 - `EnemyBoss.OnValidate`가 인스펙터 값의 모순을 경고한다 — 시전 사거리가 물러나는 거리보다
   작으면 그 패턴은 영영 안 나오고, 닿는 거리보다 크면 시전해도 헛친다
@@ -185,7 +185,7 @@
 - `AshProjectSetup` — 레이어, 충돌, 카메라와 프로젝트 기본 설정
 - `AshSpriteImportRules` — PPU, 필터, 압축 등 임포트 규칙 강제.
   **규칙을 바꾸면 `GetVersion()`의 숫자를 같이 올려야** 기존 에셋이 다시 임포트됩니다
-- `AshTextureFormatAudit` — `Tools → 재의 길 → 텍스처 포맷 감사`. 임포터 설정이 아니라
+- `AshTextureFormatAudit` — `Tools → 재의 길 → 조사 → 텍스처 포맷 감사`. 임포터 설정이 아니라
   **임포트된 텍스처의 실제 포맷**을 읽어 포맷별 장수·메모리와 "4의 배수가 아니라 압축이
   막힌 것"을 뽑습니다. 압축 관련 작업을 하면 이걸로 확인합니다
 - `AshRoomProgressionBuilder` — 방 진행 구성
@@ -458,7 +458,7 @@ Q 2단은 판정 폭(18.9)에 가깝게 2.4로 두면 균열선 왼쪽 끝이 �
 
 ### 유니티에서 할 일 (09-17)
 
-1. 스크립트 컴파일이 끝난 뒤 **Tools → 재의 길 → 플레이어 파티클 만들기** 한 번. 콘솔에 만든 것 목록이 나온다
+1. 스크립트 컴파일이 끝난 뒤 **Tools → 재의 길 → 파티클 → 플레이어 파티클 만들기** 한 번. 콘솔에 만든 것 목록이 나온다
    (이미 있는 자식은 안 건드린다 — 처음 값으로 되돌리려면 그 자식을 지우고 다시 돌린다)
 2. 플레이 확인 — 콘솔에 확인할 것 네 가지가 같이 찍힌다
    - 기본 공격 명중 불똥이 적 몸통 높이에서 공격 방향으로 튀는가(아니면 `Player/AttackHitbox` → Hit Spark Spawner → Spark Height)
@@ -489,7 +489,7 @@ Q 2단은 판정 폭(18.9)에 가깝게 2.4로 두면 균열선 왼쪽 끝이 �
   `Projectile.visual`·`SetVisualLift`, `EnemyMarksman.bowHeight`. 유니티에서 **잿불 사수 화살 프리팹 생성** 메뉴를 다시 돌려야 그림이 자식으로 옮겨진다
 - **몬스터 파티클 결정**(페이지 https://claude.ai/artifact/LrUxgRgfHMKVYxmxRjLeAi): 망령-1·2, 사수-1·2·3, 자폭병-1·2·3·4, 공통-1, 양 화려하게, 적 불티는 흰 심 없이.
   구현은 09-18. `EnemyBase.deathEffectPrefab`과 `EnemyBomber` 점화 파티클 코드는 먼저 들어가 있다(프리팹 연결 전이라 동작 없음)
-  → 갱신(09-19): 10개 코드와 빌더(`Tools → 재의 길 → 몬스터 파티클 만들기`, `AshMonsterParticleBuilder`)까지 끝. 유니티에서 메뉴를 한 번 돌리면 연결된다.
+  → 갱신(09-19): 10개 코드와 빌더(`Tools → 재의 길 → 파티클 → 몬스터 파티클 만들기`, `AshMonsterParticleBuilder`)까지 끝. 유니티에서 메뉴를 한 번 돌리면 연결된다.
   적 프리팹을 적 프리팹 빌더로 새로 구우면 붙인 자식·참조가 빠지므로 이 메뉴를 다시 돌린다
 
 ## 오늘 완료한 작업 — 2026-09-04

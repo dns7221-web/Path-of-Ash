@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Game 씬에 보스 방을 구성한다.
 ///
-/// 메뉴: Tools → 재의 길 → 보스 방 생성
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 보스 방 생성
 ///
 /// 씬을 새로 만들지 않고 Game 씬 안에 방 하나로 넣는 이유:
 /// 방 진행이 이미 "씬 전환 없이 방 루트를 켜고 끄는" 구조다. 씬을 나누면 HP바·스태미나·재 게이지·
@@ -22,7 +22,7 @@ using UnityEngine;
 /// </summary>
 public static class AshBossRoomBuilder
 {
-    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemy/BossAshKing.prefab";
+    private const string BossPrefabPath = "Assets/Project/Prefabs/Enemies/BossAshKing.prefab";
 
     /// <summary>
     /// 보스 방 배경(문 닫힘).
@@ -69,7 +69,7 @@ public static class AshBossRoomBuilder
     /// <summary>벽 충돌체 두께(유닛). 플레이어가 대시로 뚫지 못할 만큼만 있으면 된다.</summary>
     private const float WallThickness = 2f;
 
-    [MenuItem("Tools/재의 길/보스 방 생성")]
+    [MenuItem("Tools/재의 길/씬·세팅/보스 방 생성")]
     public static void Build()
     {
         var sequence = Object.FindFirstObjectByType<RoomSequenceController>();
@@ -85,7 +85,7 @@ public static class AshBossRoomBuilder
         if (bossPrefab == null)
         {
             Debug.LogError($"[보스 방] 보스 프리팹을 못 찾았다: {BossPrefabPath}\n" +
-                           "Tools → 재의 길 → 보스 프리팹 생성 을 먼저 실행해라.");
+                           "Tools → 재의 길 → 프리팹 → 보스 프리팹 생성 을 먼저 실행해라.");
             return;
         }
 
@@ -492,7 +492,7 @@ public static class AshBossRoomBuilder
     /// 방을 지웠다 다시 만들면 인스펙터에서 손으로 조정한 값이 날아간다.
     /// 배경 그림을 바꿨거나 배치가 어긋난 경우를 위해 따로 뺀 메뉴다.
     /// </summary>
-    [MenuItem("Tools/재의 길/보스 방 배경·배치 맞추기")]
+    [MenuItem("Tools/재의 길/씬·세팅/보스 방 배경·배치 맞추기")]
     public static void MatchBossRoom()
     {
         var sequence = Object.FindFirstObjectByType<RoomSequenceController>();

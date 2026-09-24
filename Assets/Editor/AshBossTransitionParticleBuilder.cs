@@ -37,13 +37,27 @@ public static class AshBossTransitionParticleBuilder
     /// 인스펙터에 있는 값이라 타임라인이 대신 정해줄 방법이 없다. 대신 아래 시각들을 전부
     /// 이 상수에서 <b>나눠서</b> 쓰기 때문에, 길이를 바꾸면 곡선과 버스트가 같이 따라간다.
     /// </summary>
-    private const float TotalSeconds = 3.125f;
+    // 수정(2026-09-21, 흐름 B) — 3.125 → 타임라인 빌더의 계획표를 읽는다(지금 2.5초).
+    // 위 주석대로 예전에는 이 숫자가 타임라인 에셋과 여기 두 곳에 적혀 있었다. 흐름을 바꾸면서
+    // 한쪽만 고치면 파편이 옛 시각(알이 깨진 0.375초 뒤)에 터지므로, 시각의 주인을 하나로 모았다.
+    private static readonly float TotalSeconds = (float)AshBossTransitionTimelineBuilder.TotalTime;
 
     /// <summary>장막이 멎는 시각. 계획표의 "방출 정지 + 힘의 장 ON"과 같은 자리다.</summary>
-    private const float VeilStopSeconds = 0.875f;
+    // 수정(2026-09-21) — 0.875 → 계획표의 갑옷 붕괴 시각(지금 0.5초).
+    private static readonly float VeilStopSeconds = (float)AshBossTransitionTimelineBuilder.ArmorBrokenTime;
 
     /// <summary>껍질이 깨지는 시각. 파편 버스트가 여기서 한 번 터진다.</summary>
-    private const float ShatterSeconds = 2.375f;
+    // 수정(2026-09-21) — 2.375 → 계획표의 깨짐 시각(지금 2.0초).
+    private static readonly float ShatterSeconds = (float)AshBossTransitionTimelineBuilder.ShatterTime;
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 흐름 B) — 장막이 떠 있게 할 재의 수. 방출량은 이 값을 장막 시간으로 나눠 정한다.
+    ///
+    /// 예전에는 방출량 900을 직접 적었고 장막이 0.875초 돌아 약 790개가 떴다. 흐름 B는 장막이
+    /// 0.5초뿐이라 900 그대로면 450개로 줄어 <b>장막이 아니라 티끌</b>이 된다(아래 방출량 주석의
+    /// 140 → 900 때와 같은 문제). 떠 있는 양을 기준으로 적어 두면 장막 길이를 바꿔도 밀도가 유지된다.
+    /// </summary>
+    private const float VeilParticleCount = 790f;
 
     /// <summary>
     /// 장막이 태어나는 상자의 크기(유닛). <b>화면보다 넉넉히 크다.</b>
@@ -169,7 +183,8 @@ public static class AshBossTransitionParticleBuilder
 
         // 수정 — 140에서 900으로. 140이면 0.875초 동안 겨우 120개가 나오는데, 그걸
         // 화면(50×28유닛)에 흩으면 <b>1600제곱유닛에 120개</b>다. 장막이 아니라 티끌이다.
-        emission.rateOverTime = new ParticleSystem.MinMaxCurve(900f, VeilRateCurve());
+        // 수정(2026-09-21) — 900 고정 → 떠 있을 재의 수 ÷ 장막 시간(흐름 B에서 약 1,580).
+        emission.rateOverTime = new ParticleSystem.MinMaxCurve(VeilParticleCount / VeilStopSeconds, VeilRateCurve());
 
         var shape = particles.shape;
         shape.enabled = true;
@@ -239,7 +254,10 @@ public static class AshBossTransitionParticleBuilder
         // 수명을 0.7초 위로 안 올리는 이유: 버스트가 2.375초에 터지는데 연출은 3.125초에
         // 끝나고, 그때 타임라인이 이 오브젝트를 끈다. 수명이 0.75초를 넘으면 <b>아직 날아가는
         // 중인 파편이 허공에서 통째로 사라진다.</b> 남은 시간(0.75초)이 수명의 상한이다.
-        main.startLifetime = new ParticleSystem.MinMaxCurve(0.4f, 0.7f);
+        // 수정(2026-09-21, 흐름 B) — 0.4~0.7 → 0.3~0.5. 깨짐(2.0)에서 끝(2.5)까지 남은 시간이 0.5초라
+        // 위 주석의 규칙("남은 시간이 수명의 상한")대로 줄였다. 7~15유닛/초로 날아가므로 0.5초면
+        // 알 크기(7.5유닛)를 한참 벗어난다 — 짧아져도 "깨졌다"는 그대로 읽힌다.
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.3f, 0.5f);
 
         // 껍질이 터져 나가는 속도. 알(보스 몸집 6.25유닛)을 한 번에 벗어나야 "깨졌다"가 된다.
         main.startSpeed = new ParticleSystem.MinMaxCurve(7f, 15f);

@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 잿불 망령 프리팹을 코드로 조립한다.
-/// 메뉴: Tools → 재의 길 → 잿불 망령 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 잿불 망령 프리팹 생성
 /// </summary>
 public static class AshEnemyPrefabBuilder
 {
@@ -34,7 +34,7 @@ public static class AshEnemyPrefabBuilder
     /// </summary>
     private const float BodyWidth = 4f;
 
-    [MenuItem("Tools/재의 길/잿불 망령 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/잿불 망령 프리팹 생성")]
     public static void Build()
     {
         RuntimeAnimatorController controller =

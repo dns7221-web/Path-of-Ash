@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// GPT가 뽑아준 원본 그림을 프로젝트 규격의 스프라이트 시트로 바꾸는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 원본 시트 정규화
+/// 메뉴: Tools → 재의 길 → 그림 → 원본 시트 정규화
 ///
 /// <b>왜 만들었나.</b> 프롬프트에 좌표 규칙(셀 256, 발끝 y=216, 중심 x=128)을 적어 GPT가
 /// 맞춰주기를 기대했지만, 캔버스 비율·배경·시점·좌표가 한꺼번에 어긋나는 일이 반복됐다.
@@ -43,10 +43,41 @@ public static class AshSpriteSheetNormalizer
         new System.Collections.Generic.HashSet<string>
         {
             "ash-king-phase2-hit-death.png",
+
+            // 수정(2026-09-21) — 전환 이펙트 셋(gather·egg·shatter)은 여기서 빼서 CellGridSheets로 옮겼다.
+            // 이유는 CellGridSheets 주석에 적었다.
+        };
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 알·깨짐 잘림) — <b>원본 칸 격자대로</b> 자르고, 칸 안의 자리를 그대로 지키는 시트.
+    ///
+    /// 전환 이펙트 원본은 2172×724 그림에 <b>362px 칸 여섯 개</b>로 그려져 있다. 예전에는 위
+    /// ForceEqualSplit으로 "그림이 있는 범위"(예: x 79~2154)를 6등분했는데, 그 범위는 칸 격자와
+    /// 시작점이 다르고 폭도 달라서 경계가 칸마다 16~30px씩 밀렸다. 그래서 알·깨짐의 공이
+    /// <b>한쪽이 곧게 잘리고, 옆 칸 조각이 칸 오른쪽에 비쳤다.</b>
+    ///
+    /// 여기 적힌 시트는 두 가지가 다르다.
+    /// <list type="bullet">
+    /// <item><b>자르기</b> — 칸 경계(width/프레임 수의 배수) 근처 ±<see cref="CellCutSearch"/>px에서
+    /// 그림이 가장 적은 세로줄을 찾아 자른다. 소용돌이 팔이 칸 경계를 살짝 넘어도 안 잘린다.</item>
+    /// <item><b>자리</b> — 프레임마다 그림 크기로 가운데를 다시 잡지 않고, <b>원본 칸 안의 자리를
+    /// 그대로</b> 옮긴다(가로는 칸 가운데 기준, 세로는 모든 프레임 공통 바닥 기준). 예전에는 팔이 한쪽으로
+    /// 뻗을 때마다 중심이 밀려 모임 효과가 6장 동안 54px 흘러갔다.</item>
+    /// </list>
+    ///
+    /// 칸을 지켜 그린 원본에만 맞는 방식이라 목록으로 적어 둔다. 자동으로 판정하면 캐릭터 시트처럼
+    /// 칸 없이 그려진 원본까지 흔들 수 있다.
+    /// </summary>
+    private static readonly System.Collections.Generic.HashSet<string> CellGridSheets =
+        new System.Collections.Generic.HashSet<string>
+        {
             "vfx_ashking_transition_gather_6frames_1536x256.png",
             "vfx_ashking_transition_egg_6frames_1536x256.png",
             "vfx_ashking_transition_shatter_6frames_1536x256.png",
         };
+
+    /// <summary>추가 생성(2026-09-21) — 칸 경계에서 가장 빈 줄을 찾을 거리(px). 원본 칸(362px)의 약 1/8.</summary>
+    private const int CellCutSearch = 48;
 
     /// <summary>
     /// 배치 방식. 기준점이 서로 다르다.
@@ -135,6 +166,11 @@ public static class AshSpriteSheetNormalizer
         (VfxFolder, "vfx_ashking_transition_shatter_6frames_raw.png",
                     "vfx_ashking_transition_shatter_6frames_1536x256.png", 6, Mode.GroundCenter, 0),
 
+        // 추가 생성(2026-09-20) — 보스의 재의 창. 앞으로 날아가는 투사체라 화살과 같은 TipRight다.
+        // 촉을 같은 x에 고정해야 6프레임이 흔들리지 않고, 회전시켰을 때 촉이 진행 방향에 온다.
+        (VfxFolder, "vfx_ashking_ash_spear_6frames_raw.png",
+                    "vfx_ashking_ash_spear_6frames_1536x256.png", 6, Mode.TipRight, 0),
+
         (PlayerFolder, "player_bow_6frames_raw.png",
                        "player_bow_6frames_1536x256.png", 6, Mode.Character, 0),
 
@@ -152,7 +188,7 @@ public static class AshSpriteSheetNormalizer
 
         // 스킬 아이콘 5개. 캐릭터도 이펙트도 아니지만 처리는 같다 — 초록 배경을 걷고
         // 균등한 칸에 가운데 정렬해서 담는다. 아이콘은 바닥 개념이 없으므로 FloatCenter.
-        ("Assets/Art/Generated", "skill-icons-ember-set.png",
+        ("Assets/Project/Art/UI", "skill-icons-ember-set.png",
                                  "skill_icons_5frames_1280x256.png", 5, Mode.FloatCenter, 0),
 
         // 수정(2026-09-15, 일반 몬스터 새 그림) — 사수 4줄·자폭병 3줄을 걷어냈다. 결과 파일 이름은 그대로 쓰지만
@@ -341,7 +377,7 @@ public static class AshSpriteSheetNormalizer
     /// </summary>
     private const float LegBandRatio = 0.2f;
 
-    [MenuItem("Tools/재의 길/원본 시트 정규화")]
+    [MenuItem("Tools/재의 길/그림/원본 시트 정규화")]
     public static void NormalizeAll()
     {
         foreach (var (folder, source, output, frames, mode, targetHeight) in Jobs)
@@ -358,7 +394,107 @@ public static class AshSpriteSheetNormalizer
     /// 확인해야 한다. 정렬 규칙을 고친 직후에는 특히 나쁘다 — 무엇이 왜 달라진 건지
     /// 구별할 수 없다. PowerShell 정규화 도구에 -Only를 넣었던 것과 같은 판단이다.
     /// </summary>
-    [MenuItem("Tools/재의 길/원본 시트 정규화 (고른 것만)")]
+    /// <summary>
+    /// 추가 생성(2026-09-21, 페이즈 전환 고치기) — 보스 1페이즈 시트들. 초록 번짐만 빼고 배치는 그대로 둔다.
+    /// </summary>
+    private static readonly string[] BossPhase1Sheets =
+    {
+        "ash-king-idle.png",
+        "ash-king-walk.png",
+        "ash-king-slam.png",
+        "ash-king-ember-wave.png",
+        "ash-king-hit-death.png",
+        "ash-king-phase-transition.png",
+    };
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 페이즈 전환 고치기) — 전환에 필요한 그림만 한 번에 고친다.
+    ///
+    /// <list type="bullet">
+    /// <item><b>전환 이펙트 3장</b>(모임·알·깨짐) — 원본에서 새 방식(칸 격자로 자르기·칸 안 자리 지키기·
+    /// 초록 번짐 빼기)으로 다시 만든다.</item>
+    /// <item><b>보스 1페이즈 시트 6장</b> — 이미 만들어진 결과 시트에서 <b>초록 번짐만</b> 뺀다.
+    /// 칼날 전체가 초록이던 1페이즈 칼이 잿빛이 된다(사용자 선택 "번진 것이라 회색으로").</item>
+    /// </list>
+    ///
+    /// 1페이즈 시트를 원본부터 다시 정규화하지 않는 이유: 배치까지 다시 하면 발 위치·크기가 조금이라도
+    /// 달라질 수 있고, 그러면 애니메이션·콜라이더를 전부 다시 확인해야 한다. 색만 고치면 그 걱정이 없다.
+    /// 전체 정규화 메뉴를 안 쓰는 이유는 NormalizeSelected 주석과 같다 — 오늘 한 일과 상관없는 시트까지 바뀐다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/그림/보스 전환 그림 고치기")]
+    public static void FixBossTransitionArt()
+    {
+        int remade = 0;
+        foreach (var (folder, source, output, frames, mode, targetHeight) in Jobs)
+        {
+            if (!CellGridSheets.Contains(output)) continue;
+
+            Normalize(folder, source, output, frames, mode, targetHeight);
+            remade++;
+        }
+
+        int cleaned = 0;
+        foreach (string sheet in BossPhase1Sheets)
+        {
+            if (DespillInPlace($"{AshKingFolder}/{sheet}")) cleaned++;
+        }
+
+        AssetDatabase.Refresh();
+        Debug.Log($"[시트 정규화] 보스 전환 그림 고치기: 전환 이펙트 {remade}/{CellGridSheets.Count}장을 다시 만들고, " +
+                  $"보스 1페이즈 시트 {cleaned}/{BossPhase1Sheets.Length}장에서 초록 번짐을 뺐다.\n" +
+                  "다음: Tools → 재의 길 → 애니메이션 → 보스 애니메이션만 생성 → " +
+                  "프리팹 → 보스 전환 다시 만들기 (타임라인 포함)");
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 이미 만들어진 시트 PNG에서 초록 번짐만 빼서 같은 자리에 다시 쓴다.
+    /// 슬라이스 정보는 .meta에 있어서 그대로 남는다. 바뀐 픽셀이 없으면 파일을 건드리지 않는다.
+    /// </summary>
+    /// <returns>파일을 다시 썼으면 true.</returns>
+    private static bool DespillInPlace(string path)
+    {
+        if (!File.Exists(path))
+        {
+            Debug.LogWarning($"[시트 정규화] 초록 번짐을 뺄 시트를 못 찾았다: {path}");
+            return false;
+        }
+
+        var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        if (!texture.LoadImage(File.ReadAllBytes(path)))
+        {
+            Object.DestroyImmediate(texture);
+            Debug.LogError($"[시트 정규화] PNG 디코딩 실패: {path}");
+            return false;
+        }
+
+        Color32[] pixels = texture.GetPixels32();
+        Color32[] before = (Color32[])pixels.Clone();
+        Despill(pixels);
+
+        bool changed = false;
+        for (int i = 0; i < pixels.Length && !changed; i++)
+        {
+            if (pixels[i].g != before[i].g) changed = true;
+        }
+
+        if (!changed)
+        {
+            Object.DestroyImmediate(texture);
+            return false;
+        }
+
+        texture.SetPixels32(pixels);
+        texture.Apply();
+        byte[] png = texture.EncodeToPNG();
+        Object.DestroyImmediate(texture);
+
+        if (!WritePng(path, png)) return false;
+
+        AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+        return true;
+    }
+
+    [MenuItem("Tools/재의 길/그림/원본 시트 정규화 (고른 것만)")]
     public static void NormalizeSelected()
     {
         var picked = new HashSet<string>();
@@ -417,10 +553,36 @@ public static class AshSpriteSheetNormalizer
         Color32[] pixels = texture.GetPixels32();
         Object.DestroyImmediate(texture);
 
-        RemoveBackground(pixels);
+        // 수정(2026-09-21, 투명 원본) — 원본이 이미 투명 배경이면 초록 빼기를 건너뛴다.
+        //
+        // 이 도구는 초록 배경 원본만 생각하고 만들어졌다. RemoveBackground는 "초록이 아닌 픽셀은
+        // 전부 그림"으로 보고 불투명하게 칠하는데, 투명 배경 원본의 빈 칸은 색이 (0,0,0)이라
+        // 초록이 아니다. 그래서 <b>빈 칸 전체가 불투명한 검정</b>이 됐다. 재의 창 원본이 그렇게
+        // 망가졌다 — 창마다 검은 네모가 붙고, 칸 전체가 그림으로 잡혀서 그걸 셀에 맞춰 줄이느라
+        // 창이 1/3 크기가 됐다.
+        //
+        // 초록 빼기를 고치지 않고 원본 종류를 먼저 가르는 이유: 투명 원본은 배경을 뺄 필요가
+        // 애초에 없다. 이미 있는 투명도가 정답이고, 거기에 초록 판정을 덧씌우면 그림 속 초록기
+        // 있는 픽셀에 구멍만 뚫린다. 초록 배경 원본은 전부 불투명이라 이 검사를 통과하지 못하므로
+        // 지금까지 만든 시트는 결과가 그대로다.
+        if (HasTransparentBackground(pixels))
+        {
+            Debug.Log($"[시트 정규화] {sourceName}은 이미 투명 배경이다 — 초록 빼기를 건너뛰고 원본 투명도를 쓴다.");
+        }
+        else
+        {
+            RemoveBackground(pixels);
+
+            // 추가 생성(2026-09-21, 초록 번짐) — 초록 배경을 뺀 뒤 가장자리에 남은 초록기를 누른다.
+            Despill(pixels);
+        }
+
+        // 수정(2026-09-21) — 칸 격자 시트인지 한 번만 판단해서 자르기와 배치 양쪽에 같이 넘긴다.
+        // 둘 중 한쪽만 칸 기준이면 자른 조각을 엉뚱한 자리에 놓게 된다.
+        bool cellGrid = CellGridSheets.Contains(outputName);
 
         var figures = FindFigures(pixels, width, height, expectedFrames,
-                                  ForceEqualSplit.Contains(outputName));
+                                  ForceEqualSplit.Contains(outputName), cellGrid);
         if (figures.Count != expectedFrames)
         {
             Debug.LogError($"[시트 정규화] {sourceName}에서 프레임을 {figures.Count}개 만들었는데 " +
@@ -428,10 +590,36 @@ public static class AshSpriteSheetNormalizer
             return;
         }
 
-        Compose(pixels, width, height, figures, folder, outputName, mode, targetHeight);
+        Compose(pixels, width, height, figures, folder, outputName, mode, targetHeight, cellGrid);
     }
 
     // ── 1단계: 배경 제거 ──────────────────────────────────────────────────
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 이 픽셀 비율보다 많이 투명하면 "이미 투명 배경인 원본"으로 본다.
+    ///
+    /// 비율로 가르는 이유: 초록 배경 원본은 PNG여도 알파가 전부 255라 투명 픽셀이 0개다.
+    /// 투명 원본은 그림 사이 빈 칸이 대부분이라 보통 80~95%가 투명하다(재의 창 원본은 92.8%).
+    /// 둘 사이가 이렇게 멀어서 기준을 20%에 두면 어느 쪽도 헷갈리지 않는다.
+    /// </summary>
+    private const float TransparentBackgroundRatio = 0.2f;
+
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 원본이 이미 투명 배경인가.
+    ///
+    /// 거의 투명한 픽셀(알파 8 미만)을 센다. 생성 그림은 빈 칸에 알파 1~2짜리 먼지가 섞여
+    /// 나오기도 해서, 0만 세면 투명 배경인데도 비율이 낮게 나올 수 있다.
+    /// </summary>
+    private static bool HasTransparentBackground(Color32[] pixels)
+    {
+        int transparent = 0;
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            if (pixels[i].a < 8) transparent++;
+        }
+
+        return transparent > pixels.Length * TransparentBackgroundRatio;
+    }
 
     /// <summary>
     /// 초록 배경을 알파로 바꾼다.
@@ -461,10 +649,39 @@ public static class AshSpriteSheetNormalizer
             float alpha = (BackgroundGreenness - greenness) /
                           (float)(BackgroundGreenness - OpaqueGreenness);
 
+            // 수정(2026-09-21) 메모 — 아래 두 줄은 계산하면 <b>아무것도 안 바꾼다.</b>
+            // (g − (1−α)·g) / α = α·g / α = g. 섞인 초록을 빼려던 식인데, 빼는 양을 배경 초록이 아니라
+            // 이 픽셀 자신의 g로 잡아서 항등식이 됐다. 전환 그림의 보이는 픽셀 10~21%에 초록기가 남은
+            // 원인이다. 실제로 초록을 누르는 일은 이 함수 다음에 불리는 Despill이 한다 — 식을 고치는
+            // 대신 따로 둔 이유는 Despill 주석에 적었다.
             float bleed = (1f - alpha) * p.g;
             byte g = (byte)Mathf.Clamp((p.g - bleed) / alpha, 0f, 255f);
 
             pixels[i] = new Color32(p.r, g, p.b, (byte)Mathf.RoundToInt(alpha * 255f));
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-21, 초록 번짐) — G를 R·B 중 큰 값 아래로 누른다.
+    ///
+    /// 초록 배경 앞에서 그린 그림은 가장자리와 반사광에 초록이 스민다. 배경색을 역산해 빼는
+    /// 정석은 배경 초록이 정확히 한 색이어야 하는데, 생성 그림의 배경은 칸마다 조금씩 다르다.
+    /// <b>이 게임 팔레트에는 초록이 없으므로</b> "초록이 R·B보다 튀어나온 만큼은 전부 번진 것"으로
+    /// 보고 잘라내는 쪽이 어떤 배경에서도 맞는다. 회색·주황·흰색은 G가 원래 max(R,B) 이하라
+    /// 바뀌지 않는다.
+    ///
+    /// 1페이즈 칼(칼날 전체가 초록이던 것)도 여기서 잿빛 돌칼이 된다 — 2026-09-21 사용자가
+    /// "번진 것이라 회색으로"를 골랐다.
+    /// </summary>
+    private static void Despill(Color32[] pixels)
+    {
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            Color32 p = pixels[i];
+            if (p.a == 0) continue;
+
+            byte limit = (byte)Mathf.Max(p.r, p.b);
+            if (p.g > limit) pixels[i] = new Color32(p.r, limit, p.b, p.a);
         }
     }
 
@@ -475,6 +692,10 @@ public static class AshSpriteSheetNormalizer
         public int MinX, MaxX, MinY, MaxY;
         public int LegCenterX;
 
+        // 추가 생성(2026-09-21) — 칸 격자 시트에서 이 프레임이 원래 있던 원본 칸의 가운데(x).
+        // 배치할 때 "칸 가운데에서 얼마나 떨어져 있었나"를 그대로 옮기는 데 쓴다.
+        public float CellCenterX;
+
         public int Width => MaxX - MinX + 1;
         public int Height => MaxY - MinY + 1;
     }
@@ -484,7 +705,8 @@ public static class AshSpriteSheetNormalizer
     /// 원하는 프레임 수가 N이면 경계는 N-1개다. 빈 구간을 넓은 순서로 정렬해 위쪽 N-1개를 쓴다.
     /// </summary>
     private static List<Figure> FindFigures(
-        Color32[] pixels, int width, int height, int expectedFrames, bool forceEqualSplit)
+        Color32[] pixels, int width, int height, int expectedFrames, bool forceEqualSplit,
+        bool cellGrid = false)
     {
         var columnCounts = new int[width];
         for (int y = 0; y < height; y++)
@@ -508,6 +730,10 @@ public static class AshSpriteSheetNormalizer
 
         var figures = new List<Figure>();
         if (contentStart < 0) return figures;
+
+        // 추가 생성(2026-09-21) — 칸 격자 시트는 원본 칸 경계 근처의 가장 빈 줄에서 자른다.
+        // 이유는 CellGridSheets 주석 참고.
+        if (cellGrid) return SplitByCellGrid(pixels, width, height, expectedFrames, columnCounts);
 
         var gaps = new List<(int start, int end)>();
         int gapStart = -1;
@@ -566,6 +792,56 @@ public static class AshSpriteSheetNormalizer
         return figures;
     }
 
+    /// <summary>
+    /// 추가 생성(2026-09-21) — 원본 칸 격자대로 자른다(<see cref="CellGridSheets"/>).
+    ///
+    /// 경계는 칸의 배수(width × k ÷ 프레임 수) 근처 ±<see cref="CellCutSearch"/>px 안에서 그림이 가장
+    /// 적은 세로줄이다. 딱 배수에서 자르지 않는 이유: 소용돌이 팔이 칸 경계를 몇 px 넘어 그려진
+    /// 프레임이 있다. 배수에서 곧장 자르면 그 팔 끝이 옆 칸으로 넘어가 다시 "잘린 조각"이 된다.
+    ///
+    /// 자른 뒤에는 조각 안에서 실제 그림이 있는 가로 범위로 좁힌다. 배율은 가장 큰 프레임을
+    /// 기준으로 정하는데, 빈 여백까지 포함한 칸 폭(362px)으로 재면 그림이 필요 이상 작아진다.
+    /// </summary>
+    private static List<Figure> SplitByCellGrid(
+        Color32[] pixels, int width, int height, int frames, int[] columnCounts)
+    {
+        var figures = new List<Figure>();
+        float cellWidth = width / (float)frames;
+
+        var cuts = new int[frames + 1];
+        cuts[0] = 0;
+        cuts[frames] = width;
+        for (int k = 1; k < frames; k++)
+        {
+            int center = Mathf.RoundToInt(k * cellWidth);
+            int best = center;
+            int from = Mathf.Max(1, center - CellCutSearch);
+            int to = Mathf.Min(width - 2, center + CellCutSearch);
+            for (int x = from; x <= to; x++)
+            {
+                if (columnCounts[x] < columnCounts[best]) best = x;
+            }
+
+            cuts[k] = best;
+        }
+
+        for (int i = 0; i < frames; i++)
+        {
+            int from = cuts[i];
+            int to = cuts[i + 1] - 1;
+
+            // 조각 안의 실제 그림 범위로 좁힌다. 티끌을 거르는 기준은 다른 경로와 같은 MinColumnPixels다.
+            while (from < to && columnCounts[from] < MinColumnPixels) from++;
+            while (to > from && columnCounts[to] < MinColumnPixels) to--;
+
+            Figure figure = MeasureFigure(pixels, width, height, from, to);
+            figure.CellCenterX = (i + 0.5f) * cellWidth;
+            figures.Add(figure);
+        }
+
+        return figures;
+    }
+
     /// <summary>프레임 하나의 세로 범위와 다리 중심을 잰다.</summary>
     private static Figure MeasureFigure(
         Color32[] pixels, int width, int height, int minX, int maxX)
@@ -617,7 +893,8 @@ public static class AshSpriteSheetNormalizer
     // ── 3단계: 재배치 ─────────────────────────────────────────────────────
 
     private static void Compose(Color32[] pixels, int width, int height, List<Figure> figures,
-                                string folder, string outputName, Mode mode, int targetHeight)
+                                string folder, string outputName, Mode mode, int targetHeight,
+                                bool cellGrid = false)
     {
         int cell = AshPlayerSpriteSheets.CellSize;
         int groundY = AshPlayerSpriteSheets.GroundLineY - 1; // 발끝이 놓일 행(216)
@@ -648,6 +925,15 @@ public static class AshSpriteSheetNormalizer
 
         int outWidth = cell * figures.Count;
         var output = new Color32[outWidth * cell];
+
+        // 추가 생성(2026-09-21) — 칸 격자 시트는 <b>모든 프레임이 바닥 하나를 같이 쓴다.</b>
+        // 가장 낮게 그려진 프레임의 바닥이 지면선에 닿고, 나머지는 원본에서 그만큼 떠 있던 높이를 지킨다.
+        // 프레임마다 자기 바닥을 지면선에 붙이면 공이 커질 때마다 위로 들썩인다.
+        int unionBottom = int.MaxValue;
+        if (cellGrid)
+        {
+            foreach (var f in figures) unionBottom = Mathf.Min(unionBottom, f.MinY);
+        }
 
         // 배치 좌표를 여기서 계산해 넘긴다. 계산과 그리기가 한 함수에 섞여 있으면
         // 결과가 어긋났을 때 어느 쪽이 틀린 건지 밖에서 볼 수가 없다.
@@ -699,6 +985,17 @@ public static class AshSpriteSheetNormalizer
             else
             {
                 destLeft = (cell - drawWidth) / 2;
+            }
+
+            // 추가 생성(2026-09-21, 효과가 흘러감) — 칸 격자 시트는 원본 칸 안의 자리를 그대로 옮긴다.
+            //
+            // 위의 가운데 맞춤은 <b>그림 크기</b>로 가운데를 잡아서, 소용돌이 팔이 한쪽으로 뻗은 프레임은
+            // 중심이 반대로 밀린다. 원본은 칸 가운데를 기준으로 제자리에 그려져 있으므로
+            // "칸 가운데에서 얼마나 떨어져 있었나"를 배율만 곱해 옮기면 흔들림이 사라진다.
+            if (cellGrid)
+            {
+                destLeft = (cell / 2) + Mathf.RoundToInt((figure.MinX - figure.CellCenterX) * scale);
+                destTop = groundFromBottom + Mathf.RoundToInt((figure.MinY - unionBottom) * scale);
             }
 
             DrawFigure(pixels, width, height, figure, output, outWidth, cell, i,

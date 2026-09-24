@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 유물 에셋을 만들고, 씬의 보상 상자에 유물 보상을 붙이는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 유물 생성 + 상자에 연결
+/// 메뉴: Tools → 재의 길 → 프리팹 → 유물 생성 + 상자에 연결
 ///
 /// 값은 전부 "판이 진행될수록 조금씩 강해진다" 정도로 잡았다. 한 번 먹고 판이 뒤집히면
 /// 그 뒤로는 유물을 먹는 재미가 없어진다. 상자 회복량을 1~2로 확정한 것과 같은 기조다.
@@ -156,7 +156,7 @@ public static class AshRelicBuilder
         "relic-path-of-ash",
     };
 
-    [MenuItem("Tools/재의 길/유물 생성 + 상자에 연결")]
+    [MenuItem("Tools/재의 길/프리팹/유물 생성 + 상자에 연결")]
     public static void Build()
     {
         var relics = CreateRelics();

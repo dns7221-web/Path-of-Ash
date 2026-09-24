@@ -167,7 +167,7 @@ public class RoomSequenceController : MonoBehaviour
         if (bossRoom == null)
         {
             Debug.LogWarning("[방 진행] 보스 방이 등록되지 않아 건너뛸 수 없다.\n" +
-                             "Tools → 재의 길 → 보스 방 생성 을 먼저 실행해라.", this);
+                             "Tools → 재의 길 → 씬·세팅 → 보스 방 생성 을 먼저 실행해라.", this);
             return;
         }
 

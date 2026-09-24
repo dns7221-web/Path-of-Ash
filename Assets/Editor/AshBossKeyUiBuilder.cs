@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 보스 열쇠 화면을 씬에 만든다.
 ///
-/// 메뉴: Tools → 재의 길 → 보스 열쇠 화면 생성
+/// 메뉴: Tools → 재의 길 → 화면 → 보스 열쇠 화면 생성
 ///
 /// <see cref="AshInventoryUiBuilder"/>와 따로 둔 이유는 그 도구가 HUD 빌더와 갈라진 이유와 같다.
 /// 한 도구에 넣으면 인벤토리를 손볼 때마다 이 화면까지 다시 만들게 되어, 손으로 맞춰둔
@@ -57,7 +57,7 @@ public static class AshBossKeyUiBuilder
     // 팔각형 안쪽 지름(패널 폭 대비). 측정값이 0.240이라 칸 그림이 테두리를 덮지 않게 살짝 줄였다.
     private const float SlotSize = 0.215f;
 
-    [MenuItem("Tools/재의 길/보스 열쇠 화면 생성")]
+    [MenuItem("Tools/재의 길/화면/보스 열쇠 화면 생성")]
     public static void Build()
     {
         var panelSprite = AssetDatabase.LoadAssetAtPath<Sprite>(PanelPath);

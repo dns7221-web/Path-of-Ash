@@ -111,6 +111,6 @@ MonoBehaviour:
   - {fileID: -617051676, guid: 90d4b000739a024438c3a9709ad18048, type: 3}
   - {fileID: 1187880947, guid: 90d4b000739a024438c3a9709ad18048, type: 3}
   - {fileID: -1966259014, guid: 90d4b000739a024438c3a9709ad18048, type: 3}
-  fps: 8
+  fps: 12
   loop: 0
   destroyWhenFinished: 0

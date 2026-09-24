@@ -5,7 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성(2026-09-15) — 잿불 망령의 돌진 예고선 프리팹을 만들고 망령 프리팹에 연결한다.
-/// 메뉴: Tools → 재의 길 → 망령 돌진 예고선 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 망령 돌진 예고선 생성
 ///
 /// 순서: 원본 정규화(Tools/NormalizeVfxStrip.ps1 -AnchorX LeftEdge -PivotX 28) → VFX 스프라이트 슬라이스 → 이 메뉴.
 ///
@@ -74,7 +74,7 @@ public static class AshWraithTelegraphBuilder
     /// </summary>
     private const int SortingOrder = 1;
 
-    [MenuItem("Tools/재의 길/망령 돌진 예고선 생성")]
+    [MenuItem("Tools/재의 길/프리팹/망령 돌진 예고선 생성")]
     public static void Build()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);
@@ -89,7 +89,7 @@ public static class AshWraithTelegraphBuilder
         if (frames.Count != FrameCount)
         {
             Debug.LogError($"[망령 예고선] {SheetPath}에서 프레임을 {frames.Count}개만 찾았다 " +
-                           $"(필요: {FrameCount}). Tools → 재의 길 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
+                           $"(필요: {FrameCount}). Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
             return;
         }
 
@@ -133,13 +133,13 @@ public static class AshWraithTelegraphBuilder
 
     /// <summary>
     /// 추가 생성(2026-09-15) — 망령 돌진 출발 자국 프리팹을 만들고 망령 프리팹에 연결한다.
-    /// 메뉴: Tools → 재의 길 → 망령 돌진 출발 자국 생성
+    /// 메뉴: Tools → 재의 길 → 프리팹 → 망령 돌진 출발 자국 생성
     ///
     /// 예고선과 달리 <b>끝나면 스스로 지운다.</b> 망령에 붙어 재사용되는 것이 아니라 돌진마다 출발 자리에 새로 놓이는 자국이라서다
     /// (복제 원본인 대시 자국과 같은 설정). 정렬은 예고선과 같은 Decal 1이다 — 바닥이 갈라져 터진 자리라 캐릭터 밑에 깔려야 하고,
     /// VFX 레이어면 튀어 나가는 망령의 몸 위에 갈라진 바닥이 그려진다. 선이 걷히는 순간 자국이 나오므로 둘이 같은 자리를 다투지 않는다.
     /// </summary>
-    [MenuItem("Tools/재의 길/망령 돌진 출발 자국 생성")]
+    [MenuItem("Tools/재의 길/프리팹/망령 돌진 출발 자국 생성")]
     public static void BuildLaunch()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);
@@ -153,7 +153,7 @@ public static class AshWraithTelegraphBuilder
         if (frames.Count != FrameCount)
         {
             Debug.LogError($"[망령 출발 자국] {LaunchSheetPath}에서 프레임을 {frames.Count}개만 찾았다 " +
-                           $"(필요: {FrameCount}). Tools → 재의 길 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
+                           $"(필요: {FrameCount}). Tools → 재의 길 → 그림 → VFX 스프라이트 슬라이스 를 먼저 실행해라.");
             return;
         }
 

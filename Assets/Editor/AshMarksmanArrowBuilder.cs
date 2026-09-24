@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 잿불 사수가 쏘는 화살 프리팹을 만들고 사수 프리팹에 연결한다.
-/// 메뉴: Tools → 재의 길 → 잿불 사수 화살 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 잿불 사수 화살 프리팹 생성
 ///
 /// <b>왜 전용 화살이 필요한가.</b> 플레이어의 EmberArrow를 그대로 꽂으면 두 곳이 어긋난다.
 /// 히트박스의 대상이 Enemy라 <b>적이 적을 쏘고</b>, 오브젝트 레이어가 PlayerAttack이라
@@ -11,7 +11,7 @@ using UnityEngine;
 /// 화살은 멀쩡히 날아가고 아무 일도 안 생긴다.
 ///
 /// 빈 오브젝트부터 쌓지 않고 EmberArrow를 <b>복제해서</b> 만드는 이유는 잿불 파도
-/// (<see cref="AshBossWaveBuilder"/>)와 같다. 투사체 하나에 Rigidbody2D, 트리거 콜라이더,
+/// (<see cref="AshAshSpearBuilder"/>)와 같다. 투사체 하나에 Rigidbody2D, 트리거 콜라이더,
 /// DamageHitbox, Projectile, 레이어가 서로 맞물려 있어서, 손으로 다시 조립하면 어긋난 곳이
 /// 에러가 아니라 "가끔 안 맞는다"로만 드러난다. 이미 도는 것을 복제하면 그 사고가 없다.
 ///
@@ -39,7 +39,7 @@ public static class AshMarksmanArrowBuilder
     /// <summary>살아 있는 시간. 22 x 1 = 22유닛이라 사수의 최대 사거리(14)를 넉넉히 넘는다.</summary>
     private const float ArrowLifetime = 1f;
 
-    [MenuItem("Tools/재의 길/잿불 사수 화살 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/잿불 사수 화살 프리팹 생성")]
     public static void Build()
     {
         var source = AssetDatabase.LoadAssetAtPath<GameObject>(SourcePath);

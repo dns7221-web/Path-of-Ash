@@ -30,6 +30,12 @@ public class BossEncounter : RoomEncounter
     [Tooltip("처치 수를 기록할 RunManager. 비우면 씬에서 찾는다.")]
     [SerializeField] private RunManager runManager;
 
+    // 추가 생성(2026-09-22) — 보스 궁극기 "왕관 의식"의 연출.
+    [Header("왕관 의식")]
+    [Tooltip("보스 궁극기 연출. 비우면 같은 오브젝트에서 찾는다. 없으면 보스가 의식 없이 이어 싸운다. " +
+             "Tools → 재의 길 → 씬·세팅 → 왕관 의식 구성 이 붙인다.")]
+    [SerializeField] private CrownRitual crownRitual;
+
     private EnemyBoss activeBoss;
     private Health bossHealth;
     private bool encounterStarted;
@@ -45,9 +51,19 @@ public class BossEncounter : RoomEncounter
     // 둘 다 실행 중에 방이 찾아서 연결한다.
     private BossHealthBar healthBar;
 
+    // 추가 생성(2026-09-20) — 보스 시전 바. 체력바와 같은 이유로 여기서 잇는다.
+    private BossCastBar castBar;
+
+    // 추가 생성(2026-09-22) — 유물을 뽑힐 플레이어. 플레이어도 프리팹이라 씬에 미리 못 걸어서,
+    // 의식이 시작될 때 한 번 찾는다(판마다 한 번이라 찾는 비용은 무시할 수 있다).
+    private PlayerController player;
+
     private void Awake()
     {
         if (runManager == null) runManager = FindFirstObjectByType<RunManager>();
+
+        // 추가 생성(2026-09-22) — 구성 도구가 같은 오브젝트에 붙이므로, 비어 있으면 거기서 찾는다.
+        if (crownRitual == null) crownRitual = GetComponent<CrownRitual>();
     }
 
     private void OnDisable()
@@ -111,8 +127,88 @@ public class BossEncounter : RoomEncounter
             // 경고에 그친다. 체력바가 없어도 보스전은 성립한다 — 화면에 안 보일 뿐이다.
             // 여기서 return하면 HUD를 아직 안 만든 테스트 씬에서 보스가 아예 안 나온다.
             Debug.LogWarning("[보스 방] 씬에서 BossHealthBar를 못 찾았다. " +
-                             "Tools → 재의 길 → 게임 HUD 생성 을 실행해라.", this);
+                             "Tools → 재의 길 → 화면 → 게임 HUD 생성 을 실행해라.", this);
         }
+
+        // 추가 생성(2026-09-20) — 시전 바를 보스의 시전 신호에 잇는다.
+        //
+        // 체력바와 달리 없어도 경고하지 않는다. 시전 바는 예고용이라 없으면 예고만 사라지고,
+        // 패턴은 그대로 돈다 — HUD를 안 만든 테스트 씬에서 콘솔만 시끄러워질 이유가 없다.
+        if (castBar == null) castBar = FindFirstObjectByType<BossCastBar>();
+
+        if (castBar != null)
+        {
+            castBar.HideImmediate();
+            activeBoss.CastStarted += OnBossCastStarted;
+            activeBoss.CastEnded += OnBossCastEnded;
+        }
+
+        // 추가 생성(2026-09-22) — 왕관 의식을 보스의 신호에 잇는다.
+        //
+        // 의식이 없는 방에서는 <b>구독하지 않는다.</b> 보스는 듣는 쪽이 없으면 경고를 남기고 의식 없이
+        // 이어 싸운다. 구독만 해 두고 아무것도 안 하면 보스가 무적인 채로 영영 서 있어서, 에러 없이
+        // "보스가 안 죽는다"로만 보이는 막힘이 된다.
+        if (crownRitual != null)
+        {
+            activeBoss.CrownRitualStarted += OnCrownRitualStarted;
+            crownRitual.Finished += OnCrownRitualFinished;
+
+            // 추가 생성(2026-09-22, 보스 파티클 1부) — 의식의 순간들을 보스 동작으로 전한다(손 뻗기 → 의식 자세, 움찔).
+            crownRitual.RelicsTorn += OnRitualRelicsTorn;
+            crownRitual.RelicBroken += OnRitualRelicBroken;
+        }
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 유물이 뽑혔다. 보스를 손 뻗기에서 의식 자세로 넘긴다.</summary>
+    private void OnRitualRelicsTorn()
+    {
+        if (activeBoss != null) activeBoss.RitualRelicsTorn();
+    }
+
+    /// <summary>추가 생성(2026-09-22) — 유물 하나가 깨졌다. 보스가 움찔한다.</summary>
+    private void OnRitualRelicBroken()
+    {
+        if (activeBoss != null) activeBoss.RitualFlinch();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 보스가 왕관 의식을 시작했을 때. 연출을 돌린다.
+    ///
+    /// 보스가 의식을 직접 돌리지 않고 방이 받아 넘기는 이유는 시전 바와 같다. 의식에 필요한 것 —
+    /// 네 귀퉁이, 유물, 시전 바, 플레이어 — 이 전부 방 쪽에 있다. 보스는 "시작했다"만 알린다.
+    /// </summary>
+    private void OnCrownRitualStarted()
+    {
+        if (player == null) player = FindFirstObjectByType<PlayerController>();
+
+        // 플레이어를 못 찾아도 넘긴다. 의식 쪽이 연출 없이 곧바로 끝내고 Finished를 울려,
+        // 보스가 무적인 채로 멈춰 있지 않게 한다.
+        // 수정(2026-09-22) — 보스 가슴 자리를 같이 넘긴다. 유물 실이 닿고, 못 막았을 때 유물이 빨려 들어가는 곳이다.
+        crownRitual.Begin(player, castBar, activeBoss != null ? activeBoss.RitualChest : (Vector3?)null);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 의식이 끝났을 때. 보스를 싸움으로 돌려보낸다.
+    /// 유물을 다 부숴 의식을 막았으면 보스를 그로기로 보낸다 — 의식은 보스를 모르므로 방이 전한다.
+    /// </summary>
+    /// <param name="bossGroggy">유물을 다 부숴 의식을 막았는가.</param>
+    private void OnCrownRitualFinished(bool bossGroggy)
+    {
+        if (activeBoss != null) activeBoss.EndCrownRitual(bossGroggy);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 보스가 예고가 필요한 패턴을 시작했을 때. 그대로 시전 바에 넘긴다.
+    /// </summary>
+    private void OnBossCastStarted(string patternName, float seconds)
+    {
+        castBar?.Show(patternName, seconds);
+    }
+
+    /// <summary>추가 생성(2026-09-20) — 시전이 끝났거나 끊겼을 때.</summary>
+    private void OnBossCastEnded()
+    {
+        castBar?.Hide();
     }
 
     /// <summary>
@@ -185,6 +281,28 @@ public class BossEncounter : RoomEncounter
         // 이미 파괴된 보스의 이벤트를 해제하게 된다.
         if (activeBoss != null) activeBoss.EnteredPhase2 -= OnBossEnteredPhase2;
         if (healthBar != null) healthBar.Unbind();
+
+        // 추가 생성(2026-09-20) — 시전 바도 같은 순서로 뗀다. 방이 끝나는 순간 시전 중이었다면
+        // 가득 차다 만 바가 화면에 남으므로 즉시 감춘다.
+        if (activeBoss != null)
+        {
+            activeBoss.CastStarted -= OnBossCastStarted;
+            activeBoss.CastEnded -= OnBossCastEnded;
+        }
+
+        if (castBar != null) castBar.HideImmediate();
+
+        // 추가 생성(2026-09-22) — 왕관 의식도 같은 순서로 뗀다. 도는 중이었다면 끊는다 — 떠 있는 유물을
+        // 지우고 붙잡힌 플레이어를 놓아준다. 끊을 때는 Finished가 안 울리므로 보스를 풀어 줄 일도 없다
+        // (보스는 바로 아래에서 지운다).
+        if (activeBoss != null) activeBoss.CrownRitualStarted -= OnCrownRitualStarted;
+        if (crownRitual != null)
+        {
+            crownRitual.Finished -= OnCrownRitualFinished;
+            crownRitual.RelicsTorn -= OnRitualRelicsTorn;
+            crownRitual.RelicBroken -= OnRitualRelicBroken;
+            crownRitual.Abort();
+        }
 
         if (activeBoss != null)
         {

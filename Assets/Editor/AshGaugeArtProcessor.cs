@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// GPT가 흰 배경 위에 그려준 게이지 원본을 실제로 쓸 수 있는 스프라이트로 다듬는 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 게이지 원본 이미지 다듬기
+/// 메뉴: Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기
 ///
 /// 하는 일 두 가지:
 /// 1) <b>흰 배경을 투명으로.</b> HealthGaugeFrame_raw는 전체가 불투명(#FDFDFD 배경)이라
@@ -70,7 +70,7 @@ public static class AshGaugeArtProcessor
 
     private const int GreenOpaqueThreshold = 45;
 
-    [MenuItem("Tools/재의 길/게이지 원본 이미지 다듬기")]
+    [MenuItem("Tools/재의 길/그림/게이지 원본 이미지 다듬기")]
     public static void ProcessAll()
     {
         foreach (var (source, output) in Targets)

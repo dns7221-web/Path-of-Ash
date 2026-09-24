@@ -18,7 +18,7 @@ using UnityEngine;
 /// </summary>
 public static class AshFontAtlasPointFilter
 {
-    [MenuItem("Tools/재의 길/선택한 폰트 아틀라스를 Point 필터로")]
+    [MenuItem("Tools/재의 길/그림/선택한 폰트 아틀라스를 Point 필터로")]
     public static void ApplyToSelection()
     {
         int fontCount = 0;
@@ -59,7 +59,7 @@ public static class AshFontAtlasPointFilter
     }
 
     /// <summary>TMP 폰트 에셋을 하나 이상 골랐을 때만 메뉴가 활성화되게 한다.</summary>
-    [MenuItem("Tools/재의 길/선택한 폰트 아틀라스를 Point 필터로", true)]
+    [MenuItem("Tools/재의 길/그림/선택한 폰트 아틀라스를 Point 필터로", true)]
     private static bool ValidateSelection()
     {
         foreach (Object selected in Selection.objects)

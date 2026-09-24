@@ -25,7 +25,7 @@ public static class AshPlayerSpriteSlicer
     // 메뉴를 캐릭터마다 따로 만들지 않은 이유: 세트가 늘 때마다 메뉴 항목과 그걸 부르는
     // 함수를 같이 추가해야 하는데, 표에만 추가하고 메뉴를 잊는 실수가 반드시 생긴다.
     // 전부 도는 쪽이 몇 초 더 걸릴 뿐 빠뜨릴 수가 없다.
-    [MenuItem("Tools/재의 길/캐릭터 스프라이트 슬라이스")]
+    [MenuItem("Tools/재의 길/그림/캐릭터 스프라이트 슬라이스")]
     public static void SliceAll()
     {
         int sheetOk = 0;

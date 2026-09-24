@@ -1,0 +1,28 @@
+[재의 창 투사체 — 6프레임 시트 / GPT 이미지 생성용 (2026-09-20)]
+보스의 원거리 공격 "재의 창"에 쓸 투사체 그림이다. 잿불 파도를 빼고 이 패턴으로 갈아탔다.
+받은 파일은 vfx_ashking_ash_spear_6frames_raw.png 로 이 폴더에 넣고,
+Tools → 재의 길 → 원본 시트 정규화 → VFX 스프라이트 슬라이스 → 재의 창 투사체 생성 순서로 실행한다.
+
+One horizontal sprite sheet for a 2D action game VFX: 6 frames in a single row, left to right, on a fully transparent background (PNG with alpha).
+
+Subject: the Ash King's thrown spear. A long, slender spear whose head and shaft are cracked charcoal-black stone with molten ember-orange cracks running through them. Leaf-shaped serrated spearhead, dark iron binding rings on the shaft, small flakes of ash and sparks peeling off the tail end.
+
+Orientation: side view, perfectly horizontal, pointing RIGHT. The tip touches the right edge of its cell and the tail runs toward the left edge. The spear stays in exactly the same place, at the same size and the same angle, in all 6 frames.
+
+Animation: the 6 frames are a seamless loop of the fire only. The molten cracks pulse brighter and dimmer, small flames lick along the head, ash flakes drift off the tail. Nothing else moves, and frame 6 flows back into frame 1.
+
+Style: subculture (Japanese/Korean anime game) VFX art. Crisp dark outlines, 2-3 hard shade steps, glowing rim light from the embers. No soft painterly gradients, no photorealism, no 3D render look, no lens flare, no motion blur.
+
+Palette (strict): charcoal #1A1718, ash gray #4A4648, deep ember #8A2A10, ember orange #F06000, amber #FFB000, and a little white-hot #FFF2C0 only at the hottest cracks. No green, no blue, no purple.
+
+Layout: 6 equal square cells in one row, the spear centered vertically in each cell. No separator lines, no frame numbers, no borders, no grid, no background, no ground, no drop shadow, no text, no watermark, no UI.
+
+Output: one image, 1536 x 256 pixels (six 256 x 256 cells), transparent background.
+
+
+[투명 배경이 안 될 때]
+Use a pure black (#000000) background instead of transparency, with no other dark objects in the frame.
+→ 검은 배경으로 받으면 알파를 따로 빼야 한다. 그때는 파일을 그대로 두고 말해 달라.
+
+[크기가 1536x256이 아니어도 된다]
+6프레임이 한 줄로 들어 있고 배경만 비어 있으면, 원본 시트 정규화가 256x256 칸에 맞춰 다시 그린다.

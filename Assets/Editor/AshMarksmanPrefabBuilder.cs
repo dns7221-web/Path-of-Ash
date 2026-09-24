@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 추가 생성 — 잿불 사수 프리팹을 코드로 조립한다.
-/// 메뉴: Tools → 재의 길 → 잿불 사수 프리팹 생성
+/// 메뉴: Tools → 재의 길 → 프리팹 → 잿불 사수 프리팹 생성
 ///
 /// 망령 빌더(<see cref="AshEnemyPrefabBuilder"/>)와 거의 같지만 두 가지가 다르다.
 /// - 돌진 히트박스가 없다. 이 적은 붙어서 때리지 않고 화살을 쏜다.
@@ -35,7 +35,7 @@ public static class AshMarksmanPrefabBuilder
     private static float Height =>
         AshPlayerSpriteSheets.EnemyPixelHeight / AshSpriteImportRules.CharacterPixelsPerUnit;
 
-    [MenuItem("Tools/재의 길/잿불 사수 프리팹 생성")]
+    [MenuItem("Tools/재의 길/프리팹/잿불 사수 프리팹 생성")]
     public static void Build()
     {
         RuntimeAnimatorController controller =
@@ -44,7 +44,7 @@ public static class AshMarksmanPrefabBuilder
         if (controller == null)
         {
             Debug.LogError($"[사수 프리팹] 컨트롤러가 없다: {Set.ControllerPath}\n" +
-                           "Tools → 재의 길 → 캐릭터 스프라이트 슬라이스 → 캐릭터 애니메이션 생성 " +
+                           "Tools → 재의 길 → 그림 → 캐릭터 스프라이트 슬라이스 → 캐릭터 애니메이션 생성 " +
                            "순서로 먼저 실행해라.");
             return;
         }
@@ -83,7 +83,7 @@ public static class AshMarksmanPrefabBuilder
             {
                 string arrowNote = keptArrow != null
                     ? $"화살: {keptArrow.name}"
-                    : "남은 일: Tools → 재의 길 → 잿불 사수 화살 프리팹 생성 을 먼저 실행해라. " +
+                    : "남은 일: Tools → 재의 길 → 프리팹 → 잿불 사수 화살 프리팹 생성 을 먼저 실행해라. " +
                       "지금 상태의 사수는 조준만 하고 아무것도 안 쏜다.";
 
                 Debug.Log($"[사수 프리팹] 생성 완료 → {PrefabPath}\n{arrowNote}");

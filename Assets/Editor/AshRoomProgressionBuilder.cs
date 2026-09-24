@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 /// 추가 생성 — 현재 Game 씬에 반복 전투방을 구성하고 무한 진행 시스템을 연결한다.
 ///
 /// 메뉴:
-/// - Tools → 재의 길 → 상자 문 방 진행 구성 : 처음 한 번, RoomSequence 전체를 만든다
-/// - Tools → 재의 길 → 방 진행 연결 복구   : 이미 만든 RoomSequence의 참조만 다시 잇는다
+/// - Tools → 재의 길 → 씬·세팅 → 상자 문 방 진행 구성 : 처음 한 번, RoomSequence 전체를 만든다
+/// - Tools → 재의 길 → 씬·세팅 → 방 진행 연결 복구   : 이미 만든 RoomSequence의 참조만 다시 잇는다
 ///
 /// 수정(자동 실행 제거): 예전에는 <c>[InitializeOnLoadMethod]</c>로 에디터가 켜질 때,
 /// 스크립트가 재컴파일될 때, Play Mode를 빠져나올 때마다 복구가 자동으로 돌고
@@ -69,7 +69,7 @@ public static class AshRoomProgressionBuilder
     /// 기존 Room_raw, Props, EnemyEncounter를 첫 방으로 묶고 같은 구성을 두 번째 방으로 복제한다.
     /// 이미 RoomSequence가 있으면 새로 만들지 않고 복구 쪽으로 넘긴다 — 수동 배치를 보호한다.
     /// </summary>
-    [MenuItem("Tools/재의 길/상자 문 방 진행 구성")]
+    [MenuItem("Tools/재의 길/씬·세팅/상자 문 방 진행 구성")]
     public static void Build()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -166,7 +166,7 @@ public static class AshRoomProgressionBuilder
     /// 예전 도구가 남긴 None 참조를 고칠 때, 또는 방을 손으로 추가/삭제한 뒤에 부른다.
     /// 자동으로 돌지 않으므로 사람이 원하는 시점에만 실행된다.
     /// </summary>
-    [MenuItem("Tools/재의 길/방 진행 연결 복구")]
+    [MenuItem("Tools/재의 길/씬·세팅/방 진행 연결 복구")]
     public static void Repair()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -177,7 +177,7 @@ public static class AshRoomProgressionBuilder
         {
             Debug.LogError(
                 $"[방 진행 복구] 씬에 {SequenceRootName}이 없다. " +
-                "먼저 'Tools/재의 길/상자 문 방 진행 구성'으로 만들어라.");
+                "먼저 'Tools/재의 길/씬·세팅/상자 문 방 진행 구성'으로 만들어라.");
             return;
         }
 

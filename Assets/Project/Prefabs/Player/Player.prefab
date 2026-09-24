@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 6910044889210517486}
   - component: {fileID: 1211769067937263836}
   - component: {fileID: 7226679298851804760}
+  - component: {fileID: 1016473069606953268}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -413,6 +414,18 @@ MonoBehaviour:
   meleeHitbox: {fileID: 9199690728552902439}
   ashGauge: {fileID: 0}
   globalCooldownSeconds: 0.4
+--- !u!114 &1016473069606953268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287329469376772141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac40726be3e5574a9f912aeca6369e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationEvents
 --- !u!1 &5144407593660514556
 GameObject:
   m_ObjectHideFlags: 0

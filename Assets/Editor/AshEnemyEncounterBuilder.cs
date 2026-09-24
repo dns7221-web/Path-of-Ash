@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 추가 생성 — 현재 Game 씬에 잿불 망령 스포너와 기본 스폰 지점을 배치한다.
-/// 메뉴: Tools → 재의 길 → 잿불 망령 전투 배치
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 잿불 망령 전투 배치
 /// </summary>
 public static class AshEnemyEncounterBuilder
 {
@@ -33,7 +33,7 @@ public static class AshEnemyEncounterBuilder
     };
 
     /// <summary>현재 Game 씬에 기존 배치를 교체하고 새 전투 구성을 만든다.</summary>
-    [MenuItem("Tools/재의 길/잿불 망령 전투 배치")]
+    [MenuItem("Tools/재의 길/씬·세팅/잿불 망령 전투 배치")]
     public static void Build()
     {
         Scene scene = SceneManager.GetActiveScene();

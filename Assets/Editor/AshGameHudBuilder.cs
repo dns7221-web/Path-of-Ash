@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Game 씬의 HUD(지금은 스태미나 게이지 하나)를 조립하는 에디터 도구.
 ///
-/// 메뉴: Tools → 재의 길 → 게임 HUD 생성
+/// 메뉴: Tools → 재의 길 → 화면 → 게임 HUD 생성
 ///
 /// UI를 손으로 만들지 않고 스크립트로 둔 이유는 프리팹 빌더와 같다. RectTransform은 앵커,
 /// 피벗, 오프셋, sizeDelta가 서로 얽혀 있어서 창에서 끌어 맞추면 "내 화면에서는 맞는데
@@ -196,7 +196,7 @@ public static class AshGameHudBuilder
     /// <summary>이름 글자색. 흰색보다 살짝 죽여서 게이지가 먼저 읽히게 한다.</summary>
     private static readonly Color BossNameColor = new Color(0.88f, 0.85f, 0.83f, 1f);
 
-    [MenuItem("Tools/재의 길/게임 HUD 생성")]
+    [MenuItem("Tools/재의 길/화면/게임 HUD 생성")]
     public static void BuildHud()
     {
         var scene = SceneManager.GetActiveScene();
@@ -248,7 +248,7 @@ public static class AshGameHudBuilder
     /// 이유가 그것이다(숫자가 코드에 있으면 언제 다시 돌려도 같다). 씬에만 있는 값은 다음에
     /// 누가 전체 생성을 한 번 누르는 순간 사라진다.
     /// </summary>
-    [MenuItem("Tools/재의 길/보스 체력바만 생성 (나머지 HUD 유지)")]
+    [MenuItem("Tools/재의 길/화면/보스 체력바만 생성 (나머지 HUD 유지)")]
     public static void BuildBossHealthBarOnly()
     {
         var scene = SceneManager.GetActiveScene();
@@ -267,7 +267,7 @@ public static class AshGameHudBuilder
             // 있을 때 캔버스가 둘이 되어, 어느 쪽이 그려지는지 보는 사람이 알 수 없게 된다.
             Debug.LogError(
                 $"[게임 HUD] 씬에서 {HudRootName}을 못 찾았다. " +
-                "HUD가 아직 없으면 'Tools → 재의 길 → 게임 HUD 생성'을 먼저 실행해라.");
+                "HUD가 아직 없으면 'Tools → 재의 길 → 화면 → 게임 HUD 생성'을 먼저 실행해라.");
             return;
         }
 
@@ -465,7 +465,7 @@ public static class AshGameHudBuilder
         else
         {
             Debug.LogWarning($"[게임 HUD] 체력 Fill 스프라이트를 못 읽었다: {HealthFillPath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
         }
 
         // ── 프레임 (나중에 = 위에 얹힘) ──
@@ -483,7 +483,7 @@ public static class AshGameHudBuilder
             frame.enabled = false;
 
             Debug.LogWarning($"[게임 HUD] 체력 프레임 스프라이트를 못 읽었다: {HealthFramePath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
         }
 
         var bar = barObject.AddComponent<HealthBar>();
@@ -557,7 +557,7 @@ public static class AshGameHudBuilder
         else
         {
             Debug.LogWarning($"[게임 HUD] 보스 Fill 스프라이트를 못 읽었다: {BossFillPath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", fill);
         }
 
         // 수정(눈금을 걷어냈다) — 여기에 2페이즈 전환 지점을 알리는 눈금이 있었다.
@@ -580,7 +580,7 @@ public static class AshGameHudBuilder
             frame.enabled = false;
 
             Debug.LogWarning($"[게임 HUD] 보스 프레임 스프라이트를 못 읽었다: {BossFramePath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.", frame);
         }
 
         // ── 이름표 (프레임 아래) ──
@@ -621,6 +621,103 @@ public static class AshGameHudBuilder
         serialized.FindProperty("fillImage").objectReferenceValue = fill;
         serialized.FindProperty("fillRect").objectReferenceValue = fill.rectTransform;
         serialized.FindProperty("nameLabel").objectReferenceValue = nameLabel;
+        serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        // 추가 생성(2026-09-20) — 시전 바를 보스 바의 자식으로 매단다.
+        CreateBossCastBar(barRect);
+
+        return barObject;
+    }
+
+    // ── 보스 시전 바 ───────────────────────────────────────────────────────
+
+    private const string CastBarName = "CastBar";
+
+    /// 시전 바 크기. 체력바(600)보다 좁게 둔다 — 같은 폭이면 둘이 한 덩어리로 보여서
+    /// 어느 쪽이 체력이고 어느 쪽이 시전인지 한눈에 안 갈린다.
+    private static readonly Vector2 CastBarSize = new Vector2(420f, 16f);
+
+    /// 이름표 아래로 띄우는 간격(px).
+    private const float CastBarGap = 8f;
+
+    private const float CastLabelFontSize = 22f;
+    private const float CastLabelHeight = 28f;
+
+    private static readonly Color CastBackColor = new Color(0.06f, 0.05f, 0.05f, 0.85f);
+    private static readonly Color CastFillColor = new Color(1f, 0.45f, 0.1f, 0.95f);
+    private static readonly Color CastLabelColor = new Color(0.95f, 0.85f, 0.7f, 1f);
+
+    /// <summary>
+    /// 추가 생성(2026-09-20) — 보스가 무엇을 준비하는지 알리는 시전 바.
+    ///
+    /// <b>자리를 보스 체력바 아래로 정한 것은 기획 선택이다.</b> 보스 머리 위에 띄우는 안도
+    /// 있었지만, 그러면 플레이어가 보스와 자기 캐릭터와 바까지 세 곳을 번갈아 봐야 한다.
+    /// 체력바 아래면 이미 보고 있는 자리에 붙는다.
+    ///
+    /// <b>전용 스프라이트를 쓰지 않는다.</b> 체력 게이지는 액자와 용암 무늬 그림이 있지만
+    /// 시전 바는 1초 남짓 떴다 사라지는 물건이라, 그림을 새로 그리기 전에도 단색 사각형으로
+    /// 충분히 돌아간다. <see cref="BossCastBar"/>는 채움 스프라이트가 없으면 앵커로 늘리는
+    /// 방식으로 알아서 넘어간다.
+    /// </summary>
+    private static GameObject CreateBossCastBar(RectTransform parent)
+    {
+        var barObject = new GameObject(CastBarName, typeof(RectTransform), typeof(CanvasGroup));
+        barObject.layer = parent.gameObject.layer;
+        var barRect = barObject.GetComponent<RectTransform>();
+        barRect.SetParent(parent, false);
+
+        // 보스 바의 아래 변에 매단다. 이름표(BossNameHeight)만큼 더 내려서 겹치지 않게 한다.
+        barRect.anchorMin = new Vector2(0.5f, 0f);
+        barRect.anchorMax = new Vector2(0.5f, 0f);
+        barRect.pivot = new Vector2(0.5f, 1f);
+        barRect.anchoredPosition = new Vector2(0f, -(BossNameGap + BossNameHeight + CastBarGap));
+        barRect.sizeDelta = CastBarSize;
+
+        CreateStretchedImage("Background", barRect, CastBackColor);
+
+        // 채움 자리. 배경보다 2px 안쪽으로 넣어 테두리가 남게 한다 — 테두리가 없으면
+        // 바가 가득 찼을 때 배경이 안 보여서 얼마나 찼는지 기준이 사라진다.
+        var fillArea = new GameObject("FillArea", typeof(RectTransform));
+        fillArea.layer = barObject.layer;
+        var fillAreaRect = fillArea.GetComponent<RectTransform>();
+        fillAreaRect.SetParent(barRect, false);
+        fillAreaRect.anchorMin = Vector2.zero;
+        fillAreaRect.anchorMax = Vector2.one;
+        fillAreaRect.offsetMin = new Vector2(2f, 2f);
+        fillAreaRect.offsetMax = new Vector2(-2f, -2f);
+
+        var fill = CreateStretchedImage("Fill", fillAreaRect, CastFillColor);
+
+        // 이름표는 바 아래. 보스 이름이 바 위에 있으므로 위아래로 나눠 두면 둘이 안 겹친다.
+        var labelObject = new GameObject("NameLabel", typeof(RectTransform));
+        labelObject.layer = barObject.layer;
+        var labelRect = labelObject.GetComponent<RectTransform>();
+        labelRect.SetParent(barRect, false);
+        labelRect.anchorMin = new Vector2(0f, 0f);
+        labelRect.anchorMax = new Vector2(1f, 0f);
+        labelRect.pivot = new Vector2(0.5f, 1f);
+        labelRect.anchoredPosition = new Vector2(0f, -2f);
+        labelRect.sizeDelta = new Vector2(0f, CastLabelHeight);
+
+        var label = labelObject.AddComponent<TMPro.TextMeshProUGUI>();
+
+        // 보스 이름표와 같은 이유로 한글 폰트를 반드시 지정한다. 안 하면 "재의 창"이 두부가 된다.
+        TMPro.TMP_FontAsset font = GetFont();
+        if (font != null) label.font = font;
+
+        // 실제 문구는 실행 중에 보스가 넘겨준다. 여기서는 자리 확인용이다.
+        label.text = "재의 창";
+        label.fontSize = CastLabelFontSize;
+        label.alignment = TMPro.TextAlignmentOptions.Top;
+        label.color = CastLabelColor;
+        label.raycastTarget = false;
+
+        var castBar = barObject.AddComponent<BossCastBar>();
+        var serialized = new SerializedObject(castBar);
+        serialized.FindProperty("group").objectReferenceValue = barObject.GetComponent<CanvasGroup>();
+        serialized.FindProperty("fillImage").objectReferenceValue = fill;
+        serialized.FindProperty("fillRect").objectReferenceValue = fill.rectTransform;
+        serialized.FindProperty("nameLabel").objectReferenceValue = label;
         serialized.ApplyModifiedPropertiesWithoutUndo();
 
         return barObject;
@@ -788,7 +885,7 @@ public static class AshGameHudBuilder
         else
         {
             Debug.LogWarning($"[게임 HUD] 재 게이지 채움을 못 읽었다: {AshFillPath}\n" +
-                             "Tools → 재의 길 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.");
+                             "Tools → 재의 길 → 그림 → 게이지 원본 이미지 다듬기 를 먼저 실행해라.");
         }
 
         // 프레임을 나중에 = 위에 얹힌다.

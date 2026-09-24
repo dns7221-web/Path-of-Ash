@@ -6,7 +6,7 @@ using UnityEngine.Video;
 
 /// <summary>
 /// 추가 생성(2026-09-19, 보스 궁극기 영상) — 영상 테스트 씬(Assets/Scenes/Video.unity)에 컷인 재생 장치를 꾸린다.
-/// 메뉴: Tools → 재의 길 → 영상 테스트 씬 구성
+/// 메뉴: Tools → 재의 길 → 씬·세팅 → 영상 테스트 씬 구성
 ///
 /// 씬을 손으로 조립하지 않고 도구로 두는 이유는 다른 빌더들과 같다. 캔버스·띠·화면·VideoPlayer·RenderTexture 사이의
 /// 연결이 열 개 가까이 되는데, 하나만 빠져도 "검은 화면만 나온다"처럼 원인이 안 보이는 모양으로 드러난다.
@@ -23,9 +23,8 @@ public static class AshVideoTestSceneBuilder
 {
     private const string ScenePath = "Assets/Scenes/Video.unity";
     private const string Folder = "Assets/Project/Art/BossUltimateVideo";
-    // 수정(2026-09-19) — v1 → v2. v1은 High 프로필·색 정보 없음이라 유니티(Media Foundation)에서 화면이 검게 나왔다.
-    // v2는 Baseline 프로필 + BT.709 색 정보로 다시 뽑았다(Tools/make_boss_ultimate_video.py 주석 참고).
-    // 수정(2026-09-24) — v2 → v3(사이 그림을 넣은 최신판). 형식(인코딩 설정)은 v2와 같다.
+    // 수정(2026-09-20) — v2 → v3. 사이 그림 12장을 넣어 다시 뽑은 판이다(컷 하나 안에서 자세가 바뀐다).
+    // v1·v2는 지웠다. 형식(Baseline + BT.709)은 그대로다 — 유니티가 못 푸는 판을 피하려는 설정이라 v3도 같다.
     private const string ClipPath = Folder + "/boss_ultimate_v3.mp4";
     private const string TexturePath = Folder + "/BossUltimateVideo.renderTexture";
     private const string BackgroundPath = "Assets/Project/Art/Sprites/Dungeon/Room_v2.png";
@@ -37,10 +36,10 @@ public static class AshVideoTestSceneBuilder
     /// 추가 생성(2026-09-19) — 플레이 중에는 메뉴를 흐리게 막는다. 씬을 열고 저장하는 일은 플레이 모드에서 할 수 없어서
     /// (EditorSceneManager가 InvalidOperationException을 던진다) 눌러도 오류만 난다.
     /// </summary>
-    [MenuItem("Tools/재의 길/영상 테스트 씬 구성", true)]
+    [MenuItem("Tools/재의 길/씬·세팅/영상 테스트 씬 구성", true)]
     private static bool CanBuild() => !EditorApplication.isPlayingOrWillChangePlaymode;
 
-    [MenuItem("Tools/재의 길/영상 테스트 씬 구성")]
+    [MenuItem("Tools/재의 길/씬·세팅/영상 테스트 씬 구성")]
     public static void Build()
     {
         // 추가 생성(2026-09-19) — 단축키 등으로 막힌 메뉴를 우회해 불렸을 때를 위한 두 번째 문. 이유는 CanBuild 참고.
