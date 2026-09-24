@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 /// <summary>
 /// 날아가는 투사체. 잿가루 화살이 이것이다.
@@ -58,6 +60,21 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 direction = Vector2.right;
 
+    // ── 추가 생성(2026-09-24, 투사체 풀링) ─────────────────────────────
+    // 돌아갈 풀. ProjectilePool.Spawn으로 만든 것만 들고 있다 — 없으면(예전처럼 Instantiate로 만든 것) 끝에 지운다.
+    private IObjectPool<Projectile> pool;
+
+    // 사거리 끝을 지나 반납을 기다리는 중인가(꼬리 불티가 꺼지기를 기다린다).
+    private bool expiring;
+
+    // 반납 대기 중에 끄고, 다시 꺼낼 때 켤 그림들과 곁들임 파티클. Awake에서 한 번만 모아 둔다(매번 찾으면 할당).
+    private SpriteRenderer[] renderers;
+    private bool[] rendererWasEnabled;
+    private ParticleSystem[] garnishes;
+
+    /// <summary>추가 생성 — 풀이 새로 만든 직후 한 번 부른다. 이게 있으면 사거리 끝에서 지우지 않고 풀에 돌려놓는다.</summary>
+    public void AssignPool(IObjectPool<Projectile> owner) => pool = owner;
+
     /// <summary>
     /// 추가 생성(2026-09-17, 사수 화살 높이) — 그림을 판정보다 화면에서 얼마나 위에 그릴지 정한다.
     /// <see cref="Launch"/>보다 먼저 부른다. 그림 자식(visual)이 없으면 아무 일도 안 한다.
@@ -75,6 +92,15 @@ public class Projectile : MonoBehaviour
         body.bodyType = RigidbodyType2D.Kinematic;
 
         if (hitbox == null) hitbox = GetComponentInChildren<DamageHitbox>();
+
+        // 추가 생성(2026-09-24, 풀링) — 반납 대기 때 끌 것들을 모아 둔다.
+        renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        rendererWasEnabled = new bool[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++) rendererWasEnabled[i] = renderers[i].enabled;
+
+        var garnishMarks = GetComponentsInChildren<ParticleGarnish>(true);
+        garnishes = new ParticleSystem[garnishMarks.Length];
+        for (int i = 0; i < garnishMarks.Length; i++) garnishes[i] = garnishMarks[i].GetComponent<ParticleSystem>();
     }
 
     // 추가 생성(화살 명중 VFX) — 히트박스의 "맞혔다"를 듣는다.
@@ -82,11 +108,18 @@ public class Projectile : MonoBehaviour
     // 껐다 켜기를 반복한다. 그때도 구독이 한 겹으로 유지되어 한 번 맞혔는데 불꽃이 둘 생기지 않는다.
     private void OnEnable()
     {
+        // 추가 생성(2026-09-24, 풀링) — 풀에서 다시 꺼낸 것이면 지난번 반납 대기 때 꺼 둔 것을 되살린다.
+        if (expiring) ResetForReuse();
+        visualLift = 0f;
+
         if (hitbox != null) hitbox.HitLanded += OnHitLanded;
     }
 
     private void OnDisable()
     {
+        // 추가 생성(2026-09-24, 풀링) — 꺼진 채 예약된 사거리 끝이 나중에 불리지 않게 끊는다(재사용 때 두 번 불린다).
+        CancelInvoke(nameof(Expire));
+
         if (hitbox != null) hitbox.HitLanded -= OnHitLanded;
     }
 
@@ -164,12 +197,66 @@ public class Projectile : MonoBehaviour
             Destroy(effect, ImpactEffectMaxLifetime);
         }
 
+        // 추가 생성(2026-09-24, 풀링) — 풀에서 온 것이면 지우지 않고 돌려놓는다. 이유는 ReturnToPool 참고.
+        if (pool != null)
+        {
+            StartCoroutine(ReturnToPool());
+            return;
+        }
+
         ParticleGarnish.ReleaseAll(gameObject);
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 추가 생성(2026-09-24, 풀링) — 화살을 숨기고, 꼬리 불티가 다 꺼진 뒤에 풀에 돌려놓는다.
+    ///
+    /// 풀이 아닐 때는 꼬리를 월드에 떼어 내고(ParticleGarnish.ReleaseAll) 화살을 지웠다. 풀에서는 그러면 안 된다 —
+    /// 떼어 낸 꼬리는 스스로 사라지므로 <b>다시 꺼낸 화살에는 꼬리가 없다.</b>
+    /// 그래서 꼬리를 붙인 채로 방출만 멈추고, 남은 불티가 다 꺼질 때까지(보통 1초 안) 그림과 판정만 끈 채 기다린다.
+    /// 곁들임 파티클은 월드 공간이라 화살이 멈춰 있어도 이미 나간 불티는 제자리에서 꺼진다.
+    /// </summary>
+    private IEnumerator ReturnToPool()
+    {
+        expiring = true;
+        body.linearVelocity = Vector2.zero;
+        if (hitbox != null) hitbox.Deactivate();
+
+        foreach (SpriteRenderer spriteRenderer in renderers) spriteRenderer.enabled = false;
+        foreach (ParticleSystem particles in garnishes) particles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
+        while (AnyGarnishAlive()) yield return null;
+
+        pool.Release(this);
+    }
+
+    private bool AnyGarnishAlive()
+    {
+        foreach (ParticleSystem particles in garnishes)
+            if (particles != null && particles.IsAlive(true)) return true;
+        return false;
+    }
+
+    /// <summary>추가 생성(2026-09-24, 풀링) — 다시 꺼냈을 때 처음 만든 모습으로 되돌린다.</summary>
+    private void ResetForReuse()
+    {
+        expiring = false;
+
+        for (int i = 0; i < renderers.Length; i++) renderers[i].enabled = rendererWasEnabled[i];
+
+        // 지난번 불티를 지우고 처음부터 다시 뿜는다. 켜질 때 저절로 도는(Play On Awake) 것만 — 원래 그렇게 쓰이던 것만 되살린다.
+        foreach (ParticleSystem particles in garnishes)
+        {
+            particles.Clear(true);
+            if (particles.main.playOnAwake) particles.Play(true);
+        }
+    }
+
     private void FixedUpdate()
     {
+        // 추가 생성(2026-09-24, 풀링) — 반납을 기다리는 동안은 제자리에 둔다.
+        if (expiring) return;
+
         body.linearVelocity = direction * speed;
     }
 }
