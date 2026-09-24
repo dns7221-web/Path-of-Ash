@@ -22,6 +22,10 @@ public static class AshBossParticleBuilder
 {
     private const string BossPrefabPath = "Assets/Project/Prefabs/Enemies/BossAshKing.prefab";
     private const string RelicPrefabPath = "Assets/Project/Prefabs/VFX/FlyingRelic.prefab";
+
+    // 추가 생성(2026-09-23, 2부) — 재의 창 투사체. 꼬리(보스-3)를 단다. 재의 창 투사체 생성 메뉴가 프리팹을 새로 구우면
+    // 꼬리가 빠지므로(곁들임을 걷어 낸다) 그 뒤에 이 메뉴를 다시 돌린다.
+    private const string SpearPrefabPath = "Assets/Project/Prefabs/VFX/BossAshSpear.prefab";
     private const string SheetFolder = "Assets/Project/Art/Characters/Boss/AshKing/";
 
     /// <summary>개수가 아닌 초당 방출량에 곱할 양 배율. Count()가 쓰는 1.5와 같다(기획 "화려하게").</summary>
@@ -33,6 +37,7 @@ public static class AshBossParticleBuilder
         var report = new List<string>();
         EditPrefab(BossPrefabPath, root => EnsureBoss(root, report));
         EditPrefab(RelicPrefabPath, root => EnsureRelic(root, report));
+        EditPrefab(SpearPrefabPath, root => EnsureSpear(root, report));
         AssetDatabase.SaveAssets();
 
         Debug.Log(report.Count == 0
@@ -62,6 +67,16 @@ public static class AshBossParticleBuilder
         changed |= Child(root.transform, "CollapseAsh", new Vector2(1.25f, 5.4f), BuildCollapseAsh, so, "collapseAsh", "의식-6 무너짐 재", report);
         changed |= Child(root.transform, "DizzyEmbers", new Vector2(0.2f, 5.6f), BuildDizzyEmbers, so, "dizzyEmbers", "의식-6 맴도는 불씨", report);
         changed |= Child(root.transform, "RitualBlast", new Vector2(0f, 0.2f), BuildBlast, so, "ritualBlast", "의식-7 충격파", report);
+
+        // 추가 생성(2026-09-23, 2부 보스 평소). 자리를 코드가 매번 다시 잡는 것(내려찍기·창 조준)은 여기 값이 처음 자리일 뿐이다.
+        changed |= Child(root.transform, "EmberAura", new Vector2(0f, 3.75f), BuildEmberAura, so, "emberAura", "보스-1 잿불 기운", report);
+        changed |= Child(root.transform, "FootDust", new Vector2(0f, 0.1f), BuildFootDust, so, "footDust", "보스-5 걸음 재 먼지", report);
+        changed |= Child(root.transform, "SlamImpact", new Vector2(2.3f, 0.1f), BuildSlamImpact, so, "slamImpact", "보스-2 내려찍기 파편", report);
+        changed |= Child(root.transform, "SpearGather", new Vector2(0f, 1.6f), BuildSpearGather, so, "spearGather", "보스-3 창 조준 불씨", report);
+        changed |= Child(root.transform, "BurstGather", new Vector2(0f, 0.2f), BuildBurstGather, so, "burstGather", "보스-4 재 폭발 모으기", report);
+        changed |= Child(root.transform, "BurstRing", new Vector2(0f, 0.2f), BuildBurstRing, so, "burstRing", "보스-4 재 폭발 고리", report);
+        changed |= Child(root.transform, "HitShards", new Vector2(0f, 4f), BuildHitShards, so, "hitShards", "보스-6 피격 조각", report);
+        changed |= Child(root.transform, "DeathAsh", new Vector2(0f, 2.4f), BuildDeathAsh, so, "deathAsh", "보스-7 사망 재", report);
 
         // 자세 그림 — 새 그림 없이 지금 시트에서 한 장씩(이름은 보스 슬라이서가 붙인 것).
         changed |= SpriteField(so, "ritualReachSprite", "ash-king-phase2-ultimate.png", "ashking2_ultimate_03", "동작-1 손 뻗기", report);
@@ -241,6 +256,234 @@ public static class AshBossParticleBuilder
         CodeDriven(ps, 1.2f, 0.14f, 0.22f, 300);
         SetColor(ps, EnemyColors(), FadeAlpha(1f, 0.05f, 0.75f));
         SetRenderer(ps, "VFX", 2);
+    }
+
+    // ── 2부 보스 평소 (2026-09-23 추가 생성) ─────────────────────────────────
+
+    /// <summary>
+    /// 재의 창 투사체 — 보스-3 꼬리. 날아간 거리만큼 뿌린다(사수 화살 꼬리와 같은 방식). 곁들임(ParticleGarnish)이라
+    /// 창이 사라질 때 월드에 떼어져 남은 불티가 끝까지 산다.
+    /// </summary>
+    private static bool EnsureSpear(GameObject root, List<string> report)
+    {
+        if (root.GetComponent<Projectile>() == null)
+        {
+            Debug.LogWarning("[보스 파티클] 재의 창 프리팹에 Projectile이 없다. 프리팹 → 재의 창 투사체 생성 을 먼저 돌려라.");
+            return false;
+        }
+
+        Transform parent = root.transform.Find("Visual") ?? root.transform;
+        if (parent.Find("SpearTrail") != null) return false;
+
+        Vector3 scale = parent.lossyScale;
+        ParticleSystem ps = CreateChildSystem(parent, "SpearTrail", new Vector3(-1.2f / SafeScale(scale.x), 0f, 0f));
+        ps.gameObject.AddComponent<ParticleGarnish>();
+
+        var main = ps.main;
+        main.loop = true;
+        main.playOnAwake = true;
+        main.duration = 1f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(0.25f, 0.4f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.14f, 0.22f);
+        main.startRotation = RandomRotation();
+        main.maxParticles = 200;
+
+        var emission = ps.emission;
+        emission.rateOverDistance = 1.6f * RateAmount;
+
+        SetColor(ps, EnemyColors(), FadeAlpha(1f, 0f, 0.5f));
+        SetRenderer(ps, "VFX", 2);
+
+        report.Add("보스-3 창 꼬리");
+        return true;
+    }
+
+    /// <summary>보스-1 잿불 기운. 몸통 크기(2.8 x 5.5)에서 불티가 천천히 피어오른다. 월드 공간 — 걸으면 꼬리처럼 남는다.</summary>
+    private static void BuildEmberAura(ParticleSystem ps)
+    {
+        Looping(ps, 16f, 0.8f, 1.4f, 0.12f, 0.2f, 200);
+        var shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Box;
+        shape.scale = new Vector3(2.8f, 5.5f, 0f);
+        Velocity(ps, new ParticleSystem.MinMaxCurve(-0.3f, 0.3f), new ParticleSystem.MinMaxCurve(0.8f, 1.7f));
+        SetColor(ps, EnemyColors(), FadeAlpha(1f, 0.15f, 0.6f));
+        SetRenderer(ps, "VFX", 1);
+    }
+
+    /// <summary>보스-5 걸음 재 먼지(한 번 터짐). 발밑에서 옆으로 퍼지며 부푼다.</summary>
+    private static void BuildFootDust(ParticleSystem ps)
+    {
+        OneShot(ps, 6, 0.4f, 0.6f, 1f, 2f, 0.28f, 0.42f, 0.8f);
+        var shape = ps.shape;
+        shape.scale = new Vector3(1f, 0.4f, 1f);
+        SetDrag(ps, 3f);
+        SetColor(ps, AshColors(), FadeAlpha(0.8f, 0f, 0.5f));
+        SetRenderer(ps, "Decal", 1);
+    }
+
+    /// <summary>
+    /// 보스-2 내려찍기 파편(한 번 터짐). 이 시스템이 돌 파편이고, 자식 둘이 재 먼지 고리와 솟는 불티다 —
+    /// 부모를 Play하면 자식도 같이 터진다.
+    /// </summary>
+    private static void BuildSlamImpact(ParticleSystem ps)
+    {
+        OneShot(ps, 18, 0.6f, 0.9f, 5f, 11f, 0.28f, 0.46f, 0.3f);
+        UpArc(ps, 140f);
+        var main = ps.main;
+        main.gravityModifier = 2.2f;
+        SetColor(ps, StoneColors(), FadeAlpha(1f, 0f, 0.8f));
+        SetRenderer(ps, "VFX", 2);
+
+        ParticleSystem dust = CreateChildSystem(ps.transform, "Dust", Vector3.zero);
+        OneShot(dust, 26, 0.5f, 0.7f, 4f, 5f, 0.3f, 0.45f, 1f);
+        var dustShape = dust.shape;
+        dustShape.radiusThickness = 0f;
+        dustShape.scale = new Vector3(1f, 0.4f, 1f);
+        SetDrag(dust, 4f);
+        SetColor(dust, AshColors(), FadeAlpha(0.85f, 0f, 0.5f));
+        SetRenderer(dust, "Decal", 1);
+
+        ParticleSystem embers = CreateChildSystem(ps.transform, "Embers", new Vector3(0f, 0.3f, 0f));
+        OneShot(embers, 22, 0.3f, 0.55f, 3f, 9f, 0.14f, 0.22f, 0.3f);
+        UpArc(embers, 120f);
+        var emberMain = embers.main;
+        emberMain.gravityModifier = 0.9f;
+        SetColor(embers, EnemyColors(), FadeAlpha(1f, 0f, 0.5f));
+        SetRenderer(embers, "VFX", 3);
+    }
+
+    /// <summary>
+    /// 보스-3 창 조준 불씨. 반지름 1.8~2.8 둘레에서 태어나 0.3초에 가운데(창이 나갈 자리)로 빨려 든다(로컬 공간 radial).
+    /// </summary>
+    private static void BuildSpearGather(ParticleSystem ps)
+    {
+        Looping(ps, 44f, 0.3f, 0.3f, 0.14f, 0.22f, 150);
+        var main = ps.main;
+        main.simulationSpace = ParticleSystemSimulationSpace.Local;
+        var shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.radius = 2.8f;
+        shape.radiusThickness = 0.36f;
+        Radial(ps, -7.7f, 0f);
+        SetColor(ps, Colors((Deep, 0f), (Ember, 0.5f), (Amber, 1f)), FadeAlpha(1f, 0.2f, 0.8f));
+        SetRenderer(ps, "VFX", 3);
+    }
+
+    /// <summary>
+    /// 보스-4 재 폭발 모으기. 판정 반경 둘레에서 태어나 소용돌이치며 보스에게 모인다(로컬 공간 — 보스가 달려들어도 따라간다).
+    /// 반경은 EnemyBoss가 시전 때 ultimateRadius로 다시 맞춘다.
+    /// </summary>
+    private static void BuildBurstGather(ParticleSystem ps)
+    {
+        Looping(ps, 150f, 0.35f, 0.5f, 0.24f, 0.36f, 400);
+        var main = ps.main;
+        main.simulationSpace = ParticleSystemSimulationSpace.Local;
+        var shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.radius = 12.5f;
+        shape.radiusThickness = 0.28f;
+        shape.scale = new Vector3(1f, 0.5f, 1f);
+        Radial(ps, -26f, 0.8f);
+        SetColor(ps, AshColors(), FadeAlpha(0.9f, 0.2f, 0.7f));
+        SetRenderer(ps, "Decal", 1);
+    }
+
+    /// <summary>
+    /// 보스-4 재 폭발 고리(한 번 터짐) + 자식 바닥 잔불. 고리 속도는 EnemyBoss가 판정 반경에서 구해 넣는다(여기 값은 반경 12 기준).
+    /// </summary>
+    private static void BuildBurstRing(ParticleSystem ps)
+    {
+        OneShot(ps, 120, 0.3f, 0.36f, 33f, 40f, 0.26f, 0.4f, 1f);
+        var shape = ps.shape;
+        shape.radiusThickness = 0f;
+        shape.scale = new Vector3(1f, 0.5f, 1f);
+        var main = ps.main;
+        main.maxParticles = 400;
+        SetColor(ps, EnemyColors(), FadeAlpha(1f, 0f, 0.5f));
+        SetRenderer(ps, "VFX", 3);
+
+        ParticleSystem cinders = CreateChildSystem(ps.transform, "Cinders", Vector3.zero);
+        OneShot(cinders, 46, 0.8f, 1.2f, 0f, 0.3f, 0.14f, 0.22f, 12f);
+        FilledEllipse(cinders, new Vector2(12f, 6f));
+        Velocity(cinders, new ParticleSystem.MinMaxCurve(-0.3f, 0.3f), new ParticleSystem.MinMaxCurve(0.2f, 0.8f));
+        SetColor(cinders, EnemyColors(), FlickerAlpha(0f, 0.6f));
+        SetRenderer(cinders, "Decal", 2);
+    }
+
+    /// <summary>
+    /// 보스-6 피격 조각(한 번 터짐). +X 쪽 부채꼴로 튀게 만들고, EnemyBoss가 맞은 방향으로 돌려서 터뜨린다.
+    /// 무적일 때는 피해 알림이 안 오므로 안 튄다(막힌 공격에 타격감이 나지 않는 규칙과 같다).
+    /// </summary>
+    private static void BuildHitShards(ParticleSystem ps)
+    {
+        OneShot(ps, 14, 0.4f, 0.6f, 2f, 6f, 0.2f, 0.4f, 0.3f);
+        ForwardCone(ps, 0.3f);
+        var main = ps.main;
+        main.gravityModifier = 1.6f;
+        SetColor(ps, StoneColors(), FadeAlpha(1f, 0f, 0.7f));
+        SetRenderer(ps, "VFX", 2);
+    }
+
+    /// <summary>보스-7 사망 재. 1.1초 동안 몸통 크기에서 재와 불티가 피어오르고, 방출량은 처음이 가장 많고 줄어든다.</summary>
+    private static void BuildDeathAsh(ParticleSystem ps)
+    {
+        var main = ps.main;
+        main.loop = false;
+        main.playOnAwake = false;
+        main.duration = 1.1f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(1.0f, 1.8f);
+        main.startSize = new ParticleSystem.MinMaxCurve(0.2f, 0.34f);
+        main.startRotation = RandomRotation();
+        main.maxParticles = 400;
+
+        var emission = ps.emission;
+        emission.rateOverTime = new ParticleSystem.MinMaxCurve(110f * RateAmount, Curve((0f, 1f), (1f, 0f)));
+
+        var shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Box;
+        shape.scale = new Vector3(4f, 4.5f, 0f);
+
+        Velocity(ps, new ParticleSystem.MinMaxCurve(-0.6f, 1.2f), new ParticleSystem.MinMaxCurve(0.8f, 2.4f));
+        SetColor(ps, EnemyColors(), FadeAlpha(1f, 0.1f, 0.5f));
+        SetRenderer(ps, "VFX", 2);
+    }
+
+    /// <summary>계속 뿌리는 시스템(켜고 끄는 것은 코드). 초당 방출량에는 양 배율을 곱한다.</summary>
+    private static void Looping(ParticleSystem ps, float rate, float lifeMin, float lifeMax, float sizeMin, float sizeMax, int maxParticles)
+    {
+        var main = ps.main;
+        main.loop = true;
+        main.playOnAwake = false;
+        main.duration = 1f;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(lifeMin, lifeMax);
+        main.startSize = new ParticleSystem.MinMaxCurve(sizeMin, sizeMax);
+        main.startRotation = RandomRotation();
+        main.maxParticles = maxParticles;
+
+        var emission = ps.emission;
+        emission.rateOverTime = rate * RateAmount;
+    }
+
+    /// <summary>위쪽 부채꼴(가운데가 위)로 튀게 한다. 원 모양의 호를 위로 돌린다.</summary>
+    private static void UpArc(ParticleSystem ps, float arc)
+    {
+        var shape = ps.shape;
+        shape.shapeType = ParticleSystemShapeType.Circle;
+        shape.arc = arc;
+        shape.rotation = new Vector3(0f, 0f, 90f - arc / 2f);
+    }
+
+    /// <summary>가운데로 빨려 드는 속도(radial, 음수)와 도는 속도(orbital). 로컬 공간 기준.</summary>
+    private static void Radial(ParticleSystem ps, float radial, float orbital)
+    {
+        var velocity = ps.velocityOverLifetime;
+        velocity.enabled = true;
+        velocity.space = ParticleSystemSimulationSpace.Local;
+        velocity.x = new ParticleSystem.MinMaxCurve(0f);
+        velocity.y = new ParticleSystem.MinMaxCurve(0f);
+        velocity.z = new ParticleSystem.MinMaxCurve(0f);
+        velocity.orbitalZ = new ParticleSystem.MinMaxCurve(orbital);
+        velocity.radial = new ParticleSystem.MinMaxCurve(radial);
     }
 
     // ── 도우미 ───────────────────────────────────────────────────────────

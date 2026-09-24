@@ -21,6 +21,12 @@ using UnityEngine;
 ///    1개면 체력 2칸만, 2개면 3칸만 남긴다. 넷을 다 부수면 피해 없이 보스가 그로기에 빠진다.
 ///    숫자는 인스펙터 결과표에서 조정한다. 궁극기 영상(다음 단계)은 결과 바로 앞에 들어온다.
 ///
+/// 수정(2026-09-23, 사용자 기획) — 시간과 결과를 바꿨다.
+/// 4. 시전 바는 유물마다 새로 찬다: 첫 바 10초, 하나 부술 때마다 처음으로 돌아가 1.5배·2배로 빨라진다.
+///    <b>3개를 부수면 막는다</b> — 곧바로 끝나고 남은 하나는 사라진다.
+/// 5. 막으면 피해 없이 보스가 그로기. 못 막으면(2개 이하) 체력을 2칸까지만 남긴다(궁극기 영상은 이 앞에).
+///    위 09-22의 개수별 결과표와 "이미 1이면 사망"은 걷어냈다.
+///
 /// <b>왜 보스가 아니라 방에 붙나.</b> 의식에 필요한 것 — 네 귀퉁이, 유물 목록, 시전 바, 플레이어 —
 /// 이 전부 방 쪽 사정이다. 보스는 "의식을 시작했다"는 신호만 내고(<see cref="EnemyBoss.CrownRitualStarted"/>),
 /// 이 컴포넌트는 보스를 모른다. 전환 연출(<see cref="BossTransitionSequence"/>)이 보스 몸에서 일어나는
@@ -63,8 +69,14 @@ public class CrownRitual : MonoBehaviour
     [Header("의식")]
     [Tooltip("시전 바에 뜰 이름.")]
     [SerializeField] private string ritualName = "왕관 의식";
-    [Tooltip("유물을 부술 수 있는 시간(초). 시전 바가 이 시간 동안 찬다.")]
-    [SerializeField, Min(1f)] private float ritualSeconds = 10f;
+    // 수정(2026-09-23) — ritualSeconds(의식 전체 10초)를 유물마다 주는 시간으로 바꿨다(사용자 기획: 하나 부술 때마다
+    // 바가 처음으로 돌아가고 점점 빨리 찬다). 첫 바는 25초로 시작했다가, 3개로 막게 바꾸면서 영상이 나오도록 10초로 줄였다.
+    // 이름을 두 번 바꾼 까닭은 같다 — 씬에 저장됐거나 열린 씬이 들고 있는 옛 값(10, 25)이 새 기본값을 덮지 않게.
+    [Tooltip("첫 유물을 부술 때까지 주는 시간(초). 하나 부술 때마다 시전 바가 처음으로 돌아가 다시 찬다.")]
+    [SerializeField, Min(1f)] private float firstBarSeconds = 10f;
+    [Tooltip("부순 개수(0·1·2…개)마다 시전 바가 차는 빠르기(배). 1·1.5·2면 10초 → 6.7초 → 5초. 막는 개수(Broken To Block)에 " +
+             "닿으면 끝나므로 그 뒤 칸은 막는 개수를 올릴 때만 쓴다. 부순 개수가 칸 수보다 많으면 마지막 칸을 쓴다.")]
+    [SerializeField, Min(0.1f)] private float[] barSpeedByBroken = { 1f, 1.5f, 2f, 3f };
     [Tooltip("의식이 끝날 때 남은 유물이 사라지는 시간(초).")]
     [SerializeField, Min(0f)] private float relicVanishSeconds = 0.4f;
     [Tooltip("유물이 부서질 때의 화면 흔들림 세기(0~1)와 시간(초). 공격 자체의 흔들림 위에 한 번 더 얹는다.")]
@@ -72,13 +84,13 @@ public class CrownRitual : MonoBehaviour
     [SerializeField, Min(0f)] private float breakShakeSeconds = 0.25f;
 
     // 추가 생성(2026-09-22) — 결과표. 기획 메모(09-19)의 숫자를 기본값으로 넣었다. 플레이하며 조정한다.
-    [Header("결과 (부순 개수별)")]
-    [Tooltip("부순 개수(0·1·2·3·4개)마다 플레이어에게 남길 체력. 지금 체력이 더 많으면 이 값까지 깎고, " +
-             "같거나 적으면 그대로 둔다. 0이면 깎지 않는다. 기획 메모: 못 부숨 → 빈사(1), 1개 → 2칸, 2개 → 3칸, " +
-             "넷 → 피해 없이 보스 그로기. 3개는 메모에 없어서 깎지 않게 두었다.")]
-    [SerializeField] private int[] healthLeftByBroken = { 1, 2, 3, 0, 0 };
-    [Tooltip("하나도 못 부쉈는데 체력이 이미 남길 체력(빈사 1) 이하면 죽는다(기획 선택 \"체력 1, 이미 1이면 사망\").")]
-    [SerializeField] private bool killIfNoneBrokenAtOne = true;
+    // 수정(2026-09-23) — 부순 개수별 결과표(healthLeftByBroken)와 "이미 1이면 사망"(killIfNoneBrokenAtOne)을 걷어내고
+    // "막았다/못 막았다" 둘로 줄였다(사용자 기획: 2개까지만 부수면 영상 + 체력 2칸까지만 남김, 3개 부수면 그로기).
+    [Header("결과")]
+    [Tooltip("이만큼 부수면 의식을 막는다 — 곧바로 끝나고, 남은 유물은 사라지고, 보스는 그로기. 뿌린 유물 수보다 크면 전부 부숴야 한다.")]
+    [SerializeField, Min(1)] private int brokenToBlock = 3;
+    [Tooltip("못 막았을 때 플레이어에게 남길 체력. 지금 체력이 더 많으면 이 값까지 깎고, 같거나 적으면 그대로 둔다. 0이면 깎지 않는다.")]
+    [SerializeField, Min(0)] private int failHealthLeft = 2;
     [Tooltip("결과가 들어가는 순간의 화면 흔들림 세기(0~1)와 시간(초).")]
     [SerializeField, Range(0f, 1f)] private float resultShake = 0.9f;
     [SerializeField, Min(0f)] private float resultShakeSeconds = 0.5f;
@@ -127,8 +139,11 @@ public class CrownRitual : MonoBehaviour
     [Tooltip("추가 생성(2026-09-22, 의식-7) — 못 막았을 때 남은 유물이 보스에게 빨려 들어가는 시간(초). 이 뒤에 결과가 들어간다.")]
     [SerializeField, Min(0f)] private float absorbSeconds = 0.5f;
 
-    /// <summary>추가 생성(2026-09-22) — 뿌린 유물을 전부 부쉈는가. 하나도 못 뿌렸으면 거짓이다.</summary>
-    private bool AllBroken => spawned.Count > 0 && brokenCount >= spawned.Count;
+    /// <summary>
+    /// 추가 생성(2026-09-22) — 의식을 막았는가. 하나도 못 뿌렸으면 거짓이다.
+    /// 수정(2026-09-23) — AllBroken(전부 부숨)에서 바꿨다. 이제 <see cref="brokenToBlock"/>개면 막는다(유물이 더 적으면 전부).
+    /// </summary>
+    private bool Blocked => spawned.Count > 0 && brokenCount >= Mathf.Min(brokenToBlock, spawned.Count);
 
     // 플레이어 모션이 보낸 신호. 코루틴이 이 값을 보고 다음 단계로 넘어간다.
     private bool tornOut;
@@ -236,13 +251,25 @@ public class CrownRitual : MonoBehaviour
         ReleasePlayer();
 
         // 4. 의식. 시전 바가 차는 동안 유물을 부술 수 있다.
-        castBar?.Show(ritualName, ritualSeconds);
-
-        // 수정(2026-09-22) — 넷을 다 부수면 시간이 남아도 곧바로 끝낸다(기획 "의식 중 때려서 저지").
+        // 수정(2026-09-23) — 하나 부술 때마다 바가 처음으로 돌아가고 다음 바는 더 빨리 찬다(WindowSeconds).
+        // 바가 다 차면 못 막은 것이다. 10초를 한 번에 주던 때는 네 모서리를 다 돌 수 없었다.
+        // 수정(2026-09-22) — 막으면 시간이 남아도 곧바로 끝낸다(기획 "의식 중 때려서 저지"). 09-23부터 막는 기준은 넷 전부가 아니라 brokenToBlock개다.
         // 끝까지 기다리게 하면 다 부순 뒤 몇 초 동안 아무 일도 없는 빈 시간이 생기고, 막았다는 느낌이 흐려진다.
+        int windowFor = -1;
+        float window = 0f;
         float elapsed = 0f;
-        while (elapsed < ritualSeconds && !AllBroken)
+        while (!Blocked)
         {
+            if (brokenCount != windowFor)
+            {
+                windowFor = brokenCount;
+                window = WindowSeconds(brokenCount);
+                elapsed = 0f;
+                castBar?.Show(ritualName, window);
+            }
+
+            if (elapsed >= window) break;
+
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -251,8 +278,8 @@ public class CrownRitual : MonoBehaviour
 
         // 5. 결과.
         // 수정(2026-09-22) — 결과표를 붙였다. 남은 유물만 거두고(부서진 것은 스스로 흩어지는 중이다) 결과를 넣는다.
-        // 궁극기 영상(다음 단계)은 여기, 결과를 넣기 바로 앞에 들어온다.
-        bool bossGroggy = AllBroken;
+        // 궁극기 영상(다음 단계)은 못 막았을 때 여기, 결과를 넣기 바로 앞에 들어온다.
+        bool bossGroggy = Blocked;
 
         // 수정(2026-09-22, 의식-7) — 못 막았으면 남은 유물이 보스에게 빨려 들어간 뒤 결과가 들어간다.
         // 실이 닿을 곳을 못 받았으면(방이 안 넘김) 예전처럼 제자리에서 사라진다.
@@ -353,24 +380,35 @@ public class CrownRitual : MonoBehaviour
         RelicBroken?.Invoke();
 
         Debug.Log($"[왕관 의식] 유물을 부쉈다 — {brokenCount}/{spawned.Count}" +
-                  (relic.Relic != null ? $" ({relic.Relic.DisplayName})" : ""), this);
+                  (relic.Relic != null ? $" ({relic.Relic.DisplayName})" : "") +
+                  (!Blocked ? $", 다음 바 {WindowSeconds(brokenCount):0.#}초" : ""), this);
+    }
+
+    /// <summary>추가 생성(2026-09-23) — 유물을 broken개 부순 뒤 시전 바가 차는 시간(초).</summary>
+    private float WindowSeconds(int broken)
+    {
+        float speed = 1f;
+        if (barSpeedByBroken != null && barSpeedByBroken.Length > 0)
+            speed = barSpeedByBroken[Mathf.Clamp(broken, 0, barSpeedByBroken.Length - 1)];
+
+        return firstBarSeconds / Mathf.Max(0.1f, speed);
     }
 
     /// <summary>
-    /// 추가 생성(2026-09-22) — 부순 개수로 결과를 넣는다. 결과표(<see cref="healthLeftByBroken"/>)는 "남길 체력"이다.
+    /// 추가 생성(2026-09-22) — 결과를 넣는다. 못 막았으면 플레이어 체력을 <see cref="failHealthLeft"/>까지 깎는다.
+    /// 수정(2026-09-23) — 부순 개수별 결과표를 "막았다/못 막았다" 둘로 줄였다(필드 주석 참고).
     ///
-    /// <b>피해량이 아니라 남길 체력으로 적은 이유.</b> 기획 메모가 "2칸 남을 정도로만"처럼 남길 양으로 적혀 있고,
-    /// 그래야 "많이 부술수록 덜 아프다"가 체력과 상관없이 지켜진다. 피해량으로 적으면 체력이 낮을 때
-    /// 1개를 부순 쪽이 하나도 못 부순 쪽(빈사)보다 먼저 죽는 뒤집힘이 생긴다.
+    /// <b>피해량이 아니라 남길 체력으로 적은 이유.</b> 기획이 "2칸까지만 남게"처럼 남길 양으로 적혀 있고,
+    /// 유물로 최대 체력이 늘어난 플레이어에게도 같은 무게("2칸만 남기고 깎인다")로 들어간다.
     ///
     /// 피해는 <see cref="Health.TakeUnavoidableDamage"/>로 넣는다. 막는 법은 부수기였고 그 시간이 끝났으니,
     /// 이 순간 마침 대시 중이라고 결과를 피하면 안 된다(자세한 이유는 그 함수 주석).
     /// </summary>
-    /// <param name="bossGroggy">넷을 다 부쉈는가. 로그에만 쓴다 — 그로기는 방이 보스에게 전한다.</param>
+    /// <param name="bossGroggy">막았는가. 로그에만 쓴다 — 그로기는 방이 보스에게 전한다.</param>
     private void ApplyResult(bool bossGroggy)
     {
         // 유물을 하나도 못 뿌렸으면(프리팹이 비었거나 자리가 없을 때) 부술 기회 자체가 없었다. 그걸 "하나도 못 부숨"으로
-        // 치면 설정 실수 하나로 플레이어가 빈사가 된다. 경고는 뿌릴 때 이미 남겼다.
+        // 치면 설정 실수 하나로 플레이어가 크게 다친다. 경고는 뿌릴 때 이미 남겼다.
         if (spawned.Count == 0)
         {
             Debug.LogWarning("[왕관 의식] 뿌린 유물이 없어 결과를 건너뛴다.", this);
@@ -384,22 +422,8 @@ public class CrownRitual : MonoBehaviour
             return;
         }
 
-        int leave = 0;
-        if (healthLeftByBroken != null && healthLeftByBroken.Length > 0)
-            leave = healthLeftByBroken[Mathf.Clamp(brokenCount, 0, healthLeftByBroken.Length - 1)];
-
         int before = health.Current;
-        int damage = 0;
-
-        if (leave > 0 && before > leave)
-        {
-            damage = before - leave;
-        }
-        else if (leave > 0 && brokenCount == 0 && killIfNoneBrokenAtOne)
-        {
-            // 하나도 못 부쉈는데 이미 빈사(남길 체력 이하)다 — 기획 선택 "이미 1이면 사망".
-            damage = before;
-        }
+        int damage = !bossGroggy && failHealthLeft > 0 && before > failHealthLeft ? before - failHealthLeft : 0;
 
         if (damage > 0 && health.TakeUnavoidableDamage(damage, null))
         {

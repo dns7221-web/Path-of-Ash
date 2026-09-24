@@ -100,7 +100,7 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private float crownRitualHealthRatio = 0.35f;
 
     // 추가 생성(2026-09-22, 기획 "넷을 다 부수면 보스 그로기") — 의식을 막았을 때의 보상.
-    [Tooltip("유물 넷을 다 부숴 왕관 의식을 막으면 이 시간(초) 동안 멈춰 서서 맞기만 한다. 무적은 아니다. 0이면 그로기 없이 바로 싸운다.")]
+    [Tooltip("유물을 부숴(기본 3개) 왕관 의식을 막으면 이 시간(초) 동안 멈춰 서서 맞기만 한다. 무적은 아니다. 0이면 그로기 없이 바로 싸운다.")]
     [SerializeField, Min(0f)] private float groggySeconds = 5f;
 
     [Tooltip("그로기 동안 시전 바에 띄울 이름. 바가 차는 동안이 마음껏 때릴 수 있는 시간이다.")]
@@ -131,7 +131,7 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField, Min(0f)] private float ritualTetherRate = 105f;
     [Tooltip("의식-2 왕관 점화. 의식 자세 동안 켜고 점점 세진다.")]
     [SerializeField] private ParticleSystem crownFire;
-    [Tooltip("의식-2 왕관 불이 가장 세지기까지의 시간(초). 의식 시간(10초)과 같게 둔다.")]
+    [Tooltip("의식-2 왕관 불이 가장 세지기까지의 시간(초). 유물이 부서질 때마다 처음부터 다시 커진다.")]
     [SerializeField, Min(0.1f)] private float crownIgniteSeconds = 10f;
     [Tooltip("의식-3 재 소용돌이. 의식 자세 동안 켠다.")]
     [SerializeField] private ParticleSystem ashVortex;
@@ -143,6 +143,32 @@ public class EnemyBoss : MonoBehaviour
     [SerializeField] private ParticleSystem dizzyEmbers;
     [Tooltip("의식-7 못 막았을 때 방으로 퍼지는 충격파(한 번 터진다).")]
     [SerializeField] private ParticleSystem ritualBlast;
+
+    // 추가 생성(2026-09-23, 보스 파티클 기획 2부 "보스 평소") — 평소 동작의 파티클. 보스 파티클 만들기가 채운다. 비어 있으면 그 연출만 빠진다.
+    [Header("보스 평소 파티클 (보스 파티클 만들기가 채운다)")]
+    [Tooltip("보스-1 잿불 기운 — 2페이즈에 들어서는 순간 켜서 죽을 때까지 몸에서 불티가 피어오른다.")]
+    [SerializeField] private ParticleSystem emberAura;
+    [Tooltip("보스-5 걸음 재 먼지 — 걷는 동안 걸음 간격마다 한 번 터진다.")]
+    [SerializeField] private ParticleSystem footDust;
+    [Tooltip("걸음 간격(초). 걷기 클립 6장·10fps = 0.6초에 두 걸음.")]
+    [SerializeField, Min(0.05f)] private float footstepInterval = 0.3f;
+    [Tooltip("보스-2 내려찍기 파편 — 칼이 바닥에 닿는 판정 순간에 터진다(돌 파편·재 먼지·불티).")]
+    [SerializeField] private ParticleSystem slamImpact;
+    [Tooltip("내려찍기 파편이 터지는 자리(발밑 기준, 오른쪽을 볼 때). 칼끝이 닿는 곳이다.")]
+    [SerializeField] private Vector2 slamImpactOffset = new Vector2(2.3f, 0.1f);
+    [Tooltip("보스-3 재의 창 조준 불씨 — 겨누는 동안 창이 나갈 자리로 불씨가 빨려 든다.")]
+    [SerializeField] private ParticleSystem spearGather;
+    [Tooltip("보스-4 재 폭발 모으기 — 시전 동안 판정 반경 밖에서 재가 소용돌이치며 모인다.")]
+    [SerializeField] private ParticleSystem burstGather;
+    [Tooltip("보스-4 재 폭발 고리 — 판정 순간 판정 반경까지 퍼진다. 반경은 ultimateRadius를 읽어 속도를 맞춘다.")]
+    [SerializeField] private ParticleSystem burstRing;
+    [Tooltip("보스-6 피격 조각 — 맞을 때 때린 반대쪽으로 갑옷 조각과 재가 튄다.")]
+    [SerializeField] private ParticleSystem hitShards;
+    [Tooltip("보스-7 사망 재 — 무너지는 동안 몸에서 재와 불티가 피어오른다.")]
+    [SerializeField] private ParticleSystem deathAsh;
+
+    // 추가 생성(2026-09-23) — 다음 걸음 먼지까지 남은 시간.
+    private float footstepTimer;
 
     // 추가 생성(2026-09-22) — 손 뻗기 줄기를 뿌리는 중인가, 의식 자세까지 갔는가(못 막았을 때만 충격파를 터뜨리려고),
     // 줄기 방출의 소수점 누적, 왕관 불을 켠 시각.
@@ -732,6 +758,16 @@ public class EnemyBoss : MonoBehaviour
 
         body.linearVelocity = direction * speed;
         if (animator != null) animator.SetFloat(SpeedHash, speed);
+
+        // 추가 생성(2026-09-23, 보스-5) — 걷는 동안 걸음 간격마다 발밑에 재 먼지를 터뜨린다.
+        // 애니메이션 이벤트 대신 시간으로 세는 이유: 걷기 클립은 보스 애니메이션 빌더가 매번 새로 굽는다.
+        // 이벤트를 박으면 빌더까지 고쳐야 하는데, 먼지는 발과 한두 프레임 어긋나도 눈에 안 띈다.
+        footstepTimer -= Time.deltaTime;
+        if (footDust != null && footstepTimer <= 0f)
+        {
+            footDust.Play();
+            footstepTimer = footstepInterval;
+        }
     }
 
     /// <summary>플레이어에게 다가간다. 원거리 패턴이 쿨다운일 때 먼 거리에서 쓴다.</summary>
@@ -790,6 +826,13 @@ public class EnemyBoss : MonoBehaviour
         if (animator != null) animator.SetTrigger(SlamHash);
 
         yield return new WaitForSeconds(hitDelay);
+
+        // 추가 생성(2026-09-23, 보스-2) — 칼끝이 닿는 자리에서 파편·먼지·불티가 터진다(판정과 같은 순간).
+        if (slamImpact != null)
+        {
+            slamImpact.transform.localPosition = new Vector3(slamImpactOffset.x * FacingSign(), slamImpactOffset.y, 0f);
+            slamImpact.Play();
+        }
 
         // 판정을 모션 시작이 아니라 여기서 내는 이유: 검이 아직 머리 위에 있는데 맞으면
         // 플레이어는 "안 맞았는데 데미지가 들어왔다"고 느낀다. 예비동작을 보고 피할 수 있어야
@@ -869,6 +912,13 @@ public class EnemyBoss : MonoBehaviour
 
         BossAimFan fan = EnsureAimFan();
         fan.Show(count, spearSpreadDegrees, spearRange, spearSpawnHeight);
+
+        // 추가 생성(2026-09-23, 보스-3) — 겨누는 동안 창이 나갈 자리로 불씨를 모은다. 조준선이 사라질 때 같이 멈춘다.
+        if (spearGather != null)
+        {
+            spearGather.transform.localPosition = new Vector3(0f, spearSpawnHeight, 0f);
+            spearGather.Play();
+        }
         fan.Aim(aim);
 
         CastStarted?.Invoke(spearCastName, spearAimSeconds);
@@ -901,6 +951,7 @@ public class EnemyBoss : MonoBehaviour
         // 첫 창이 나가는 순간 조준선을 끈다. 남겨두면 이미 날아간 뒤에도 선이 떠 있어서
         // "아직 안 쐈다"로 읽힌다.
         fan.Hide();
+        if (spearGather != null) spearGather.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         Vector2 spawn = (Vector2)transform.position + Vector2.up * spearSpawnHeight;
         Projectile prefab = SpearPrefab;
@@ -996,6 +1047,9 @@ public class EnemyBoss : MonoBehaviour
     {
         if (aimFan != null) aimFan.Hide();
 
+        // 추가 생성(2026-09-23) — 조준 불씨도 같이 끊는다. 코루틴이 잘리면 멈추는 줄까지 잘린다.
+        if (spearGather != null) spearGather.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+
         CastEnded?.Invoke();
     }
 
@@ -1028,6 +1082,14 @@ public class EnemyBoss : MonoBehaviour
 
         if (animator != null) animator.SetTrigger(UltimateHash);
 
+        // 추가 생성(2026-09-23, 보스-4) — 시전 동안 판정 반경 밖에서 재가 소용돌이치며 모인다. 반경은 코드 값을 읽는다.
+        if (burstGather != null)
+        {
+            var gatherShape = burstGather.shape;
+            gatherShape.radius = ultimateRadius + 0.5f;
+            burstGather.Play();
+        }
+
         // 예비동작 동안 달려든다. Stop()이 속도를 0으로 만든 뒤라 여기서 다시 넣는다.
         body.linearVelocity = aim * ultimateLungeSpeed;
 
@@ -1042,6 +1104,17 @@ public class EnemyBoss : MonoBehaviour
         // 무슨 연출을 하든 이펙트는 이미 나와 있어야 하기 때문이다. 판정 결과에 따라
         // 이펙트가 달라지면 플레이어는 "맞았을 때만 터지는" 것으로 배운다.
         SpawnUltimateEffect();
+
+        // 추가 생성(2026-09-23, 보스-4) — 판정 순간 고리가 판정 반경까지 퍼진다. 수명(0.3~0.36초)에 맞춰 속도를 반경에서 구한다 —
+        // 숫자를 따로 적어 두면 반경을 고쳤을 때 고리가 판정과 다른 데서 멈춘다.
+        if (burstGather != null) burstGather.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (burstRing != null)
+        {
+            var ringMain = burstRing.main;
+            ringMain.startLifetime = new ParticleSystem.MinMaxCurve(0.3f, 0.36f);
+            ringMain.startSpeed = new ParticleSystem.MinMaxCurve(ultimateRadius / 0.36f, ultimateRadius / 0.3f);
+            burstRing.Play();
+        }
 
         // 원 하나로 판정한다. 상자를 돌려 쓰는 내려찍기와 달리 회전이 필요 없어서
         // OverlapCircle이 그대로 맞는 도구다.
@@ -1110,6 +1183,15 @@ public class EnemyBoss : MonoBehaviour
     private void OnDamaged(int current, int max)
     {
         if (state == State.Dead || state == State.Transition) return;
+
+        // 추가 생성(2026-09-23, 보스-6) — 맞은 순간 때린 반대쪽으로 갑옷 조각이 튄다. 죽는 한 대에도 튄다(아래 return보다 먼저).
+        // 조각은 +X로 튀게 만들어 두고 맞은 방향으로 돌린다(명중 불똥과 같은 방식).
+        if (hitShards != null)
+        {
+            Vector2 away = health.LastHitDirection;
+            hitShards.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(away.y, away.x) * Mathf.Rad2Deg);
+            hitShards.Play();
+        }
 
         // 수정(죽는 한 대가 페이즈 전환을 켜고 갔다) — 이 피해로 이미 죽었으면 여기서 끝낸다.
         //
@@ -1364,6 +1446,9 @@ public class EnemyBoss : MonoBehaviour
 
         isPhase2 = true;
 
+        // 추가 생성(2026-09-23, 보스-1) — 2페이즈 모습이 드러나는 순간부터 몸에서 불티가 피어오른다.
+        if (emberAura != null) emberAura.Play();
+
         // 추가 생성 — 몸이 줄었으니 맞는 자리도 줄인다.
         ShrinkColliderForPhase2();
 
@@ -1508,6 +1593,9 @@ public class EnemyBoss : MonoBehaviour
 
         if (ritualChestSparks != null) ritualChestSparks.Play();
         if (ritualFlinchSprites.Length > 0) StartCoroutine(RitualFlinchRoutine());
+
+        // 추가 생성(2026-09-23) — 유물이 부서지면 시전 바가 처음으로 돌아간다. 왕관 불도 약해졌다가 다시 커진다.
+        if (ritualHoldReached) crownFireStartTime = Time.time;
     }
 
     /// <summary>추가 생성(2026-09-22) — 유물 실이 닿을 보스 가슴(월드 좌표).</summary>
@@ -1693,6 +1781,11 @@ public class EnemyBoss : MonoBehaviour
 
         // 추가 생성(2026-09-22) — 그로기 도중에 죽으면 무릎 꿇은 자세(애니메이터 꺼짐)가 남아 사망 모션이 안 나온다. 먼저 놓는다.
         StopRitualEffects();
+
+        // 추가 생성(2026-09-23, 보스-7·보스-1) — 무너지는 몸에서 재가 피어오르고, 잿불 기운은 꺼진다.
+        if (emberAura != null) emberAura.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (burstGather != null) burstGather.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (deathAsh != null) deathAsh.Play();
 
         StopAllCoroutines();
 
