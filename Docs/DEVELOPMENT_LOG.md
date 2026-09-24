@@ -2279,3 +2279,10 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - `CrownRitual`: 못 막았을 때 유물이 빨려 든 뒤 → 궁극기 영상(`CutsceneVideo`)을 PauseGate로 게임을 멈춘 채 재생 → 끝나면 결과. 막으면(그로기) 영상 없음.
   씬에 컷인이 없으면 경고만 남기고 결과로 간다. Finished가 안 오면 실제 시간 15초에서 끊는다.
 - 메뉴 `Tools → 재의 길 → 씬·세팅 → 궁극기 컷인 게임 씬에 추가`: 지금 열린 씬에 컷인을 테스터 없이 넣는다(저장은 직접).
+
+## 2026-09-24 — 풀링 재사용 예외, 의식 중 보스가 밀려나던 것
+
+- **MissingReferenceException(Projectile.ResetForReuse)**: 곁들임 파티클의 Stop Action이 Destroy라, 반납하려고 방출을 멈추면 불티가 꺼질 때
+  파티클 오브젝트가 스스로 지워졌다. 풀에 속한 투사체는 `AssignPool`에서 Stop Action을 None으로 바꾼다. 지워진 것은 건너뛰는 안전망도 넣었다.
+- **의식 중 보스가 방 끝으로 밀려남**: 보스는 Dynamic(질량 1), 탑다운이라 마찰이 없다. 멈춘 상태에서는 속도를 한 번만 0으로 만들어,
+  플레이어가 몸으로 밀면 그대로 미끄러졌다. 의식·그로기·전환 동안 `Rigidbody2D.constraints = FreezeAll`, 끝나면 원래 값(`PinWhileHeld`).

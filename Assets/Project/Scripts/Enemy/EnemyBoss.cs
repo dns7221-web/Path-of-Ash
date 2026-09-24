@@ -572,6 +572,9 @@ public class EnemyBoss : MonoBehaviour
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+
+        // 추가 생성(2026-09-24) — 평소 제약(회전 고정)을 기억해 둔다. 멈춰 선 상태가 끝나면 이 값으로 되돌린다(PinWhileHeld).
+        freeConstraints = body.constraints;
         health = GetComponent<Health>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -650,6 +653,9 @@ public class EnemyBoss : MonoBehaviour
 
         // 추가 생성(2026-09-22) — 의식 연출은 아래 상태 검사(의식 중이면 return)보다 위에서 돈다.
         UpdateRitualEffects();
+
+        // 추가 생성(2026-09-24, 의식 중 보스가 밀려나던 것) — 멈춰 선 상태에서는 몸을 제자리에 고정한다.
+        PinWhileHeld();
 
         // 수정(2026-09-21) — 의식 중(Ritual)에도 아무것도 안 한다.
         // 수정(2026-09-22) — 그로기(Groggy) 중에도 아무것도 안 한다.
@@ -1772,6 +1778,26 @@ public class EnemyBoss : MonoBehaviour
         // 그로기에서 풀리자마자 공격이 날아오면 억울하다. 의식 뒤와 같은 짧은 쉼을 둔다.
         cooldownTimer = 0.6f;
         state = State.Idle;
+    }
+
+    // 추가 생성(2026-09-24) — 평소 Rigidbody2D 제약. Awake에서 기억한다.
+    private RigidbodyConstraints2D freeConstraints;
+
+    /// <summary>
+    /// 추가 생성(2026-09-24, 의식 중 보스가 밀려나던 것) — 의식·그로기·전환 동안 몸을 제자리에 못 박는다.
+    ///
+    /// 원인: 보스는 Dynamic 몸(질량 1)이고 탑다운이라 중력·마찰이 없다. 평소에는 Update가 매 프레임 속도를 정해서
+    /// 티가 안 났지만, 멈춰 선 상태에서는 속도를 <b>한 번만</b> 0으로 만들고 손을 놓는다. 그 사이 플레이어가 몸으로 밀면
+    /// 받은 속도가 줄지 않아 보스가 방 끝까지 미끄러졌다(의식 중 유물을 부수러 지나가다 부딪힌 경우).
+    ///
+    /// 유니티 내장 Rigidbody2D.constraints(FreezeAll)로 고정한다. 매 프레임 속도를 0으로 덮는 방법은 물리 한 스텝씩
+    /// 밀리는 것까지는 못 막는다. 바뀔 때만 대입한다 — 같은 값을 매 프레임 넣으면 몸이 계속 깨어난다.
+    /// </summary>
+    private void PinWhileHeld()
+    {
+        bool held = state == State.Ritual || state == State.Groggy || state == State.Transition;
+        RigidbodyConstraints2D wanted = held ? RigidbodyConstraints2D.FreezeAll : freeConstraints;
+        if (body.constraints != wanted) body.constraints = wanted;
     }
 
     private void OnDied()
