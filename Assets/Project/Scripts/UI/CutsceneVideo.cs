@@ -68,6 +68,15 @@ public class CutsceneVideo : MonoBehaviour
             videoPlayer.playOnAwake = false;
             videoPlayer.isLooping = false;
             videoPlayer.timeUpdateMode = VideoTimeUpdateMode.UnscaledGameTime;
+
+            // 추가 생성(2026-09-24, 검은 화면의 진짜 원인) — 늦은 프레임을 버리지 않는다.
+            // 켜 두면(Skip On Drop) 게임이 멈춘(timeScale 0) 실시간 재생에서 모든 중간 프레임이 "늦었다"고 버려져
+            // 검은 화면만 보이다가 마지막 흰 프레임만 그려졌다. 레코더로 녹화할 때는 게임이 고정 프레임으로
+            // 한 칸씩 돌아서(Time.captureDeltaTime) 버릴 프레임이 없었기 때문에 나왔다 — 그래서 원인이 가려졌다.
+            // 소리 없는 5초 컷인이라 맞출 소리가 없으니, 버리는 것보다 조금 늦더라도 전부 그리는 편이 맞다.
+            // 인스펙터 값에 기대지 않고 코드에서 못 박는다(손으로 만든 판을 붙여도 같은 결과가 나오게).
+            videoPlayer.skipOnDrop = false;
+
             videoPlayer.loopPointReached += OnVideoEnded;
 
             // 추가 생성(2026-09-19) — 해독 실패를 콘솔에 남긴다. 영상이 안 풀리면 화면은 검은색일 뿐 아무 말이 없어서,

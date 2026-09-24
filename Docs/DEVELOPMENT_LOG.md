@@ -2021,3 +2021,14 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - **유니티 재생** — 사용자가 손으로 꾸린 판(VideoPlayer → RenderTexture `BossUltimateRT` → 전체 화면 RawImage)은 그림이 나온다.
   도구로 꾸린 `UltimateCutscene`(`CutsceneVideo`)는 여전히 검다 — 원인은 아직 모른다(보고만, 고치지 않음).
   씬에 `UltimateCutscene`이라는 이름이 둘이라, `영상 테스트 씬 구성` 메뉴를 다시 누르면 손으로 만든 쪽이 지워질 수 있다.
+
+## 2026-09-24 — 궁극기 영상 검은 화면의 진짜 원인: Skip On Drop
+
+- **증상**: 그냥 플레이하면 검은 화면 → 마지막 흰(크림색) 프레임만 보임 → 던전. **유니티 레코더로 녹화하면 제대로 나온다.**
+- **원인**: VideoPlayer의 `Skip On Drop`(늦은 프레임 버리기). 게임이 멈춘(timeScale 0) 실시간 재생에서 중간 프레임이 전부 "늦었다"고 버려졌다.
+  레코더는 녹화 중 게임을 고정 프레임으로 한 칸씩 돌려(`Time.captureDeltaTime`) 버릴 프레임이 없어서 문제가 가려졌다.
+- **가린 과정**: 손으로 만든 판(나옴)과 도구 판(검정)은 영상·렌더 텍스처·timeScale·재생 순서 등 7가지가 달라 비교가 안 됐다.
+  v2·v3 mp4의 디코더 설정(SPS·PPS)을 바이트 비교해 같음을 확인하고, 레코더 결과로 RT·UI·영상 파일을 제외, 한 설정씩 꺼서 Skip On Drop으로 확정(사용자 확인).
+- **수정**: `CutsceneVideo.Awake`에서 `skipOnDrop = false`를 못 박고, 빌더도 false로 만든다. 빌더 영상 경로 v2 → v3.
+- **빌더 버그 수정**: `GameObject.Find`(켜진 오브젝트만 찾음)로 이름을 찾아 지우던 것을 `FindObjectsByType<CutsceneVideo>(FindObjectsInactive.Include)`로 바꿨다.
+  예전 방식이면 같은 이름의 손으로 만든 판(켜짐)이 지워지고 옛 도구 판(꺼짐)이 남았다.
