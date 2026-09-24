@@ -122,7 +122,15 @@ public class ResultScreen : MonoBehaviour
         }
 
         if (titleText != null)
+        {
+            // 추가 생성(2026-09-24, 결과 화면 줄바꿈) — "재가 되었다"가 "재가 되었" / "다"로 잘렸다. 제목 상자 폭보다 글자가 조금 넓어서
+            // 마지막 한 글자만 다음 줄로 넘어갔다. 제목은 늘 한 줄이어야 하므로 줄바꿈을 끄고, 넘치는 만큼은 상자 밖으로 그린다
+            // (가운데 정렬이라 양쪽으로 고르게 넘친다). 상자 폭을 씬에서 맞추는 대신 코드로 박는 이유: 문구가 바뀌어도 다시 안 깨진다.
+            titleText.textWrappingMode = TextWrappingModes.NoWrap;
+            titleText.overflowMode = TextOverflowModes.Overflow;
+
             titleText.text = result.Cleared ? "탈출했다" : "재가 되었다";
+        }
 
         if (survivedText != null)
             survivedText.text = $"생존 {result.FormatSurvivedTime()}";
