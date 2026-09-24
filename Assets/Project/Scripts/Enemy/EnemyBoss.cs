@@ -959,7 +959,8 @@ public class EnemyBoss : MonoBehaviour
 
         foreach (int index in FireOrder(count))
         {
-            var spear = Instantiate(prefab, spawn, Quaternion.identity);
+            // 수정(2026-09-24, 투사체 풀링) — Instantiate → 풀에서 꺼낸다. 창은 한 번에 여러 발이라 매번 만들면 할당이 몰린다.
+            var spear = ProjectilePool.Spawn(prefab, spawn);
             spear.Launch(directions[index], spearDamage);
 
             if (spearFireInterval <= 0f) continue;

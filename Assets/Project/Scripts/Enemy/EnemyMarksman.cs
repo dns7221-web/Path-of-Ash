@@ -311,7 +311,8 @@ public class EnemyMarksman : EnemyBase
                          + (Vector3)(shotDirection * forwardOffset)
                          + new Vector3(0f, launchHeight, 0f);
 
-        var arrow = Instantiate(arrowPrefab, origin, Quaternion.identity);
+        // 수정(2026-09-24, 투사체 풀링) — Instantiate → 풀에서 꺼낸다. 사수는 방마다 여럿이 연사해서 풀링 이득이 크다.
+        var arrow = ProjectilePool.Spawn(arrowPrefab, origin);
 
         // 추가 생성(2026-09-17) — 판정은 launchHeight에 두고 그림만 활 높이로 띄운다. Launch 전에 넣어야 회전 뒤에 적용된다.
         arrow.SetVisualLift(Mathf.Max(0f, bowHeight - launchHeight));

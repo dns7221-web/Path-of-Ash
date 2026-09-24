@@ -301,10 +301,48 @@ public class CrownRitual : MonoBehaviour
 
         if (absorbed) yield return new WaitForSeconds(absorbSeconds);
 
+        // 추가 생성(2026-09-24) — 못 막았으면 궁극기 영상을 게임을 멈춘 채 틀고, 끝난 뒤에 결과를 넣는다(위 "다음 단계" 자리).
+        // 막았으면(그로기) 영상 없이 바로 결과로 간다.
+        if (!bossGroggy) yield return PlayUltimateVideo();
+
         ApplyResult(bossGroggy);
         spawned.Clear();
 
         Finish(bossGroggy);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-24) — 궁극기 영상(CutsceneVideo)을 게임을 멈춘 채 재생하고 끝날 때까지 기다린다.
+    ///
+    /// 게임 시간은 PauseGate만 만진다(규칙) — 여기서도 Open/Close로 멈춘다. 컷인은 실제 시간으로 돈다.
+    /// 씬에 컷인이 없으면 경고만 남기고 넘어간다 — 영상이 없어도 결과(피해)는 들어가야 한다.
+    /// 컷인이 끝났다는 신호(Finished)가 안 오면 게임이 멈춘 채 갇히므로 실제 시간 15초에서 끊는다(안전망).
+    /// </summary>
+    private IEnumerator PlayUltimateVideo()
+    {
+        var cutscene = FindFirstObjectByType<CutsceneVideo>(FindObjectsInactive.Include);
+        if (cutscene == null)
+        {
+            Debug.LogWarning("[왕관 의식] 씬에 궁극기 컷인이 없다 — 영상 없이 결과만 넣는다. " +
+                             "Tools → 재의 길 → 씬·세팅 → 궁극기 컷인 게임 씬에 추가 를 실행해라.", this);
+            yield break;
+        }
+
+        bool finished = false;
+        void OnFinished() => finished = true;
+
+        cutscene.gameObject.SetActive(true);
+        cutscene.Finished += OnFinished;
+
+        PauseGate.Open(this);
+        cutscene.Play();
+
+        float giveUpAt = Time.unscaledTime + 15f;
+        while (!finished && Time.unscaledTime < giveUpAt) yield return null;
+        if (!finished) Debug.LogError("[왕관 의식] 컷인이 끝났다는 신호가 안 왔다 — 15초에서 끊고 넘어간다.", this);
+
+        cutscene.Finished -= OnFinished;
+        PauseGate.Close(this);
     }
 
     /// <summary>

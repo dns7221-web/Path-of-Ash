@@ -2262,3 +2262,20 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - **수정**: `CutsceneVideo.Awake`에서 `skipOnDrop = false`를 못 박고, 빌더도 false로 만든다. 빌더 영상 경로 v2 → v3.
 - **빌더 버그 수정**: `GameObject.Find`(켜진 오브젝트만 찾음)로 이름을 찾아 지우던 것을 `FindObjectsByType<CutsceneVideo>(FindObjectsInactive.Include)`로 바꿨다.
   예전 방식이면 같은 이름의 손으로 만든 판(켜짐)이 지워지고 옛 도구 판(꺼짐)이 남았다.
+
+
+
+## 2026-09-24 — 투사체 풀링
+
+- 플레이어 화살(`ProjectileSkillData`), 사수 화살(`EnemyMarksman`), 보스 재의 창(`EnemyBoss`)가 Instantiate/Destroy 대신 `ProjectilePool.Spawn`을 쓴다.
+- `ProjectilePool`: 유니티 내장 `ObjectPool<Projectile>`를 프리팹마다 하나씩(최대 64개 보관). 씬 재시작으로 지워진 것은 꺼낼 때 버리고,
+  도메인 리로드를 꺼도 되게 `RuntimeInitializeOnLoadMethod`로 플레이마다 비운다.
+- `Projectile`: 풀에서 온 것은 사거리 끝에서 지우지 않고 **그림·판정을 끈 채 꼬리 불티가 다 꺼진 뒤** 반납한다.
+  예전처럼 꼬리를 월드에 떼어 내면 다시 꺼낸 화살에 꼬리가 없기 때문. 다시 꺼내면 그림을 켜고 불티를 처음부터 다시 뿜는다.
+- 데미지 팝업은 사용자 결정으로 뺐다.
+
+## 2026-09-24 — 왕관 의식에 궁극기 영상 연결
+
+- `CrownRitual`: 못 막았을 때 유물이 빨려 든 뒤 → 궁극기 영상(`CutsceneVideo`)을 PauseGate로 게임을 멈춘 채 재생 → 끝나면 결과. 막으면(그로기) 영상 없음.
+  씬에 컷인이 없으면 경고만 남기고 결과로 간다. Finished가 안 오면 실제 시간 15초에서 끊는다.
+- 메뉴 `Tools → 재의 길 → 씬·세팅 → 궁극기 컷인 게임 씬에 추가`: 지금 열린 씬에 컷인을 테스터 없이 넣는다(저장은 직접).

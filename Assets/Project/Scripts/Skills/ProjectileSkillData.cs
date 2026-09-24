@@ -50,7 +50,8 @@ public class ProjectileSkillData : SkillData
 
         SpawnEffect(context);
 
-        var projectile = Object.Instantiate(projectilePrefab, spawn, Quaternion.identity);
+        // 수정(2026-09-24, 투사체 풀링) — Instantiate → 풀에서 꺼낸다. 사거리 끝에서 스스로 풀에 돌아간다.
+        var projectile = ProjectilePool.Spawn(projectilePrefab, spawn);
         projectile.Launch(facing, Damage + context.BonusDamage);
     }
 }

@@ -50,3 +50,7 @@ _ArtReview/
 
 # 이미지 생성 초안 — 쓰는 그림은 Assets/Project/Art/New*Images로 옮겨 둔다
 /output/
+
+# 유니티가 비정상 종료 때 만드는 복구용 임시 씬 — 커밋하지 않는다
+/[Aa]ssets/_Recovery/
+/[Aa]ssets/_Recovery.meta
