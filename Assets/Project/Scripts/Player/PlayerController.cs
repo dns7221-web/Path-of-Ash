@@ -481,6 +481,9 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(motionSeconds);
 
+        // 추가 생성(2026-09-24) — 자세를 붙잡고 있는 동안(R 무릎 꿇기)은 움직이지 못하게 계속 기다린다. HoldPoseWhile 참고.
+        while (holdingPose) yield return null;
+
         // 대기하는 동안 죽었을 수 있다. 그 경우 Normal로 되돌리면 시체가 다시 움직인다.
         if (actionState == ActionState.Attacking)
             actionState = ActionState.Normal;
@@ -580,8 +583,51 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>추가 생성 — 실제 데미지가 들어간 경우에만 피격 모션을 시작한다.</summary>
+    // ── 추가 생성(2026-09-24, R 무릎 꿇기 유지) ─────────────────────────
+    // 궁극기 모션(0.6초)은 무릎을 꿇는 순간 폭발이 터지는데, 폭발(0.75초)이 끝나기 전에 모션이 끝나 곧장 일어났다.
+    // 폭발이 살아 있는 동안 마지막 프레임(무릎 꿇은 그림)에 멈춰 두고, 그동안은 움직이지 못하게 한다.
+    private bool holdingPose;
+
+    /// <summary>
+    /// 추가 생성 — delay초 뒤 애니메이터를 멈춰(Animator.speed = 0) 지금 자세를 붙잡고, effect가 사라지면 풀어 준다.
+    ///
+    /// 클립을 늘리거나 전이를 바꾸지 않고 애니메이터 속도로 멈추는 이유: 클립과 컨트롤러는 빌더가 다시 굽는 에셋이라
+    /// 거기에 넣으면 빌더를 돌릴 때마다 사라진다. 이 방식은 "이펙트가 끝날 때까지"라는 길이를 실행 중에 정할 수 있다.
+    /// delay는 클립의 마지막 프레임이 보이는 동안 멈추도록 부르는 쪽(AreaSkillData)이 계산한다 —
+    /// 클립이 끝까지 가면 Exit Time 전이로 Idle(서 있는 그림)로 넘어가 버린다.
+    /// 맞거나 죽으면 바로 푼다(ReleasePose) — 멈춘 애니메이터는 피격·사망 그림도 멈춰 버린다. 안전 상한 3초.
+    /// </summary>
+    public void HoldPoseWhile(GameObject effect, float delay)
+    {
+        if (effect == null || actionState == ActionState.Dead) return;
+        StartCoroutine(HoldPoseRoutine(effect, delay));
+    }
+
+    private IEnumerator HoldPoseRoutine(GameObject effect, float delay)
+    {
+        holdingPose = true;
+        yield return new WaitForSeconds(delay);
+
+        if (holdingPose && animator != null) animator.speed = 0f;
+
+        float giveUpAt = Time.time + 3f;
+        while (holdingPose && effect != null && Time.time < giveUpAt) yield return null;
+
+        ReleasePose();
+    }
+
+    /// <summary>추가 생성 — 붙잡은 자세를 푼다. 피격·사망에서도 부른다.</summary>
+    private void ReleasePose()
+    {
+        holdingPose = false;
+        if (animator != null) animator.speed = 1f;
+    }
+
     private void OnHealthDamaged(int current, int max)
     {
+        // 추가 생성(2026-09-24) — 맞으면 무릎 꿇기를 풀어야 피격 그림이 움직인다.
+        ReleasePose();
+
         if (current > 0) TakeHitReaction();
     }
 
@@ -614,6 +660,9 @@ public class PlayerController : MonoBehaviour
         // 추가 생성(2026-09-17) — 대시 도중에 죽으면 대시 코루틴이 끄기 전에 끊긴다. 여기서 꺼야
         // 쓰러진 몸이 밀려나는 동안(넉백 등) 바닥 불씨가 계속 깔리지 않는다.
         SetDashTrail(false);
+
+        // 추가 생성(2026-09-24) — 무릎 꿇기를 붙잡은 채 죽으면 사망 그림이 멈춰 있지 않게 푼다.
+        ReleasePose();
 
         actionState = ActionState.Dead;
         moveInput = Vector2.zero;
