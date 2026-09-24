@@ -70,7 +70,7 @@ public static class AshVideoTestSceneBuilder
         foreach (var old in Object.FindObjectsByType<CutsceneVideo>(FindObjectsInactive.Include, FindObjectsSortMode.None))
             Object.DestroyImmediate(old.gameObject);
 
-        BuildCutscene(clip, texture);
+        BuildCutscene(clip, texture, withTester: true);
         EnsureBackground();
 
         EditorSceneManager.MarkSceneDirty(scene);
@@ -79,6 +79,32 @@ public static class AshVideoTestSceneBuilder
         Debug.Log("[영상 테스트] Video 씬 구성 완료. 플레이하면 1초 뒤 한 번 재생된다 — 스페이스 = 다시 재생, Esc = 건너뛰기.\n" +
                   "확인할 것: 띠가 들어온 뒤 영상이 끊김 없이 시작하는지, 마지막 흰 화면이 걷히며 방 그림이 다시 보이는지, " +
                   "재생하는 동안 게임 시간이 멈춰 있어도(timeScale 0) 영상이 도는지.");
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-24) — 지금 열린 씬(보통 Game)에 궁극기 컷인을 넣는다. 테스터와 배경은 빼고 넣는다.
+    /// 왕관 의식(CrownRitual)이 못 막았을 때 씬에서 CutsceneVideo를 찾아 재생한다.
+    /// 이미 있으면 지우고 새로 만든다(이름이 아니라 컴포넌트로 찾는다). 저장은 사용자가 직접 한다(Ctrl+S).
+    /// </summary>
+    [MenuItem("Tools/재의 길/씬·세팅/궁극기 컷인 게임 씬에 추가", true)]
+    private static bool CanAddToScene() => !EditorApplication.isPlayingOrWillChangePlaymode;
+
+    [MenuItem("Tools/재의 길/씬·세팅/궁극기 컷인 게임 씬에 추가")]
+    public static void AddToCurrentScene()
+    {
+        var clip = AssetDatabase.LoadAssetAtPath<VideoClip>(ClipPath);
+        if (clip == null)
+        {
+            Debug.LogError($"[궁극기 컷인] 영상을 못 찾았다: {ClipPath}");
+            return;
+        }
+
+        foreach (var old in Object.FindObjectsByType<CutsceneVideo>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            Object.DestroyImmediate(old.gameObject);
+
+        BuildCutscene(clip, EnsureRenderTexture(), withTester: false);
+        EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+        Debug.Log("[궁극기 컷인] 지금 씬에 넣었다. Ctrl+S로 저장해라. 왕관 의식을 못 막으면 이 컷인이 재생된다.");
     }
 
     /// <summary>1920×1080 RenderTexture. 이미 있으면 그대로 쓴다.</summary>
@@ -95,7 +121,7 @@ public static class AshVideoTestSceneBuilder
     }
 
     /// <summary>캔버스 · 어둠 · 화면 · 띠 · VideoPlayer · 재생 컴포넌트를 만들고 서로 잇는다.</summary>
-    private static void BuildCutscene(VideoClip clip, RenderTexture texture)
+    private static void BuildCutscene(VideoClip clip, RenderTexture texture, bool withTester)
     {
         var root = new GameObject(RootName);
 
@@ -153,6 +179,9 @@ public static class AshVideoTestSceneBuilder
         serialized.FindProperty("topBar").objectReferenceValue = topBar;
         serialized.FindProperty("bottomBar").objectReferenceValue = bottomBar;
         serialized.ApplyModifiedPropertiesWithoutUndo();
+
+        // 수정(2026-09-24) — 게임 씬에 넣을 때는 테스터(스페이스 재생·timeScale 조작)를 뺀다.
+        if (!withTester) return;
 
         var tester = root.AddComponent<CutsceneVideoTester>();
         var testerSerialized = new SerializedObject(tester);
