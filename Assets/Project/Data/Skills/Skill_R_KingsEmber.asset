@@ -39,3 +39,4 @@ MonoBehaviour:
   explodeDelay: 0.15
   castEffectPrefab: {fileID: 7632445254580359906, guid: b9cd267f0f8d52c43889105a78197bdf, type: 3}
   castEffectHeight: 2.6
+  drawCasterAboveEffect: 1
