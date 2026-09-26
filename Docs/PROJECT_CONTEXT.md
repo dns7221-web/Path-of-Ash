@@ -862,7 +862,7 @@ Q 스킬은 이미 이펙트를 프리팹으로 분리한 구조라 그대로 �
 | 고리 | 상태 |
 | --- | --- |
 | `Room_Boss.encounter` → `BossEncounter` | OK |
-| `Room_Boss.reward` → `BossRelicReward` | OK (`clearRelic` = `Relic_AshKingHeart`, role 2 = RunEnd) |
+| `Room_Boss.reward` → `BossRelicReward` | OK (`clearRelic` = `Relic_RoadKnot` "길의 매듭"(09-26까지 `Relic_AshKingHeart` "재의 왕의 심장"), role 2 = RunEnd) |
 | `Room_Boss.roomDoor` → `RoomDoorState` | OK |
 | `Room_Boss.exitTrigger` → `RoomExitTrigger` | OK |
 | `RoomSequenceController.bossRoom` → `Room_Boss` | OK (`bossClearEndsRun: 1`) |

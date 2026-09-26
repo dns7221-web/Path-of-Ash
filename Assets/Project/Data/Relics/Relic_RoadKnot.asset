@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 035e357db809e8e48af7e487e4d798ad, type: 3}
-  m_Name: Relic_AshKingHeart
+  m_Name: Relic_RoadKnot
   m_EditorClassIdentifier: Assembly-CSharp::RelicData
-  displayName: 재의 왕의 심장
-  description: 재의 왕이 끝내 태우지 못한 것. 이것을 쥐면 잿더미의 길이 끝난다.
+  displayName: 길의 매듭
+  description: 타고 남은 길의 끝을 묶는 매듭. 이것을 쥐면 재의 길이 끝난다.
   icon: {fileID: 21300000, guid: 539ac56ea51540fd912642d9a2d7f18e, type: 3}
   effect: 7
   role: 2

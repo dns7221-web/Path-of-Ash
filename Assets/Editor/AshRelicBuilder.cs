@@ -155,10 +155,12 @@ public static class AshRelicBuilder
         "relic-ash-key",
         "relic-path-of-ash",
 
-        // 추가 생성(2026-09-26) — 14번: 클리어 유물 "재의 왕의 심장"(Relic_AshKingHeart). 그림은 불씨를 품은 밧줄 매듭이다.
+        // 추가 생성(2026-09-26) — 14번: 클리어 유물 "길의 매듭"(Relic_RoadKnot). 그림은 불씨를 품은 밧줄 매듭이다.
         // 이 유물은 아래 CreateRelics가 만드는 목록에 없고(보스 방 빌더가 읽기만 한다), 아이콘은 에셋에 직접 연결돼 있다.
         // 그 전에는 "왕의 주사위"와 같은 relic_icon_03을 빌려 쓰고 있었다.
-        "relic-ash-king-heart",
+        // 수정(2026-09-26) — 이름을 "재의 왕의 심장"에서 "길의 매듭"으로 바꾸면서 원본 파일도 relic-ash-king-heart에서 relic-road-knot으로 옮겼다.
+        // "매듭짓다"가 "끝맺다"라서 판을 끝내는 유물에 맞춘 이름이다. 파일 이름과 그림 내용이 다르면 나중에 헷갈린다.
+        "relic-road-knot",
     };
 
     [MenuItem("Tools/재의 길/프리팹/유물 생성 + 상자에 연결")]
