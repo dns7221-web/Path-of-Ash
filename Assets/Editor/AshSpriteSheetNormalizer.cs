@@ -498,6 +498,167 @@ public static class AshSpriteSheetNormalizer
                   "0장이면 전부 이미 빠져 있다는 뜻이다. 슬라이스는 그대로라 다른 메뉴를 돌릴 필요가 없다.");
     }
 
+    // ── 추가 생성(2026-09-26, 대기 모션에서 발이 뜨던 것) ─────────────────────────
+
+    /// <summary>추가 생성(2026-09-26) — 발을 땅에 고정할 플레이어 대기 시트. 6장 × 8방향, 칸 256px.</summary>
+    private const string PlayerIdleSheet = "Assets/Project/Art/Sprites/Player/Topdown35/Production8Dir/player_idle.png";
+
+    /// <summary>
+    /// 추가 생성(2026-09-26, 대기 모션에서 발이 뜨던 것) — 대기 시트에서 "몸 전체를 들어 올린" 장을
+    /// "발은 땅에 붙이고 몸만 늘인" 장으로 바꾼다.
+    ///
+    /// 앞모습(S)을 뺀 일곱 방향의 대기 2~6번째 장은 첫 장을 통째로 0·1·2·2·1·0px 올린 복사본이었다(픽셀 차이 0).
+    /// 숨쉬기를 몸 전체 이동으로 만들어서 발까지 같이 떴고, 바닥의 접지 그림자와 틈이 생겨 공중에 뜬 것처럼 보였다.
+    /// 걷기 시트는 이미 "전체를 올리면 발바닥이 벗어나니 상체만 올린다"(Tools/FixWalkCycleSheet.ps1)를 지키고 있었다.
+    ///
+    /// 고치는 방식: 방향(줄)마다 가장 낮은 발을 땅으로 삼는다. 떠 있는 장은 발을 땅에 붙이고 머리 높이는 그대로 둔다.
+    /// 그 사이의 몸은 떠 있던 만큼(1~2px) 세로로 늘인다. 늘어나는 줄은 몸 높이에 고르게 나눠 넣는다 —
+    /// 한 곳에 몰면 칼 같은 대각선에 2px 계단이 생긴다. 앞모습은 숨쉬기를 따로 그린 장이라 발이 이미 같은 줄에 있어 안 바뀐다.
+    ///
+    /// 여러 번 돌려도 결과가 같다 — 발이 전부 땅에 붙은 시트는 고칠 장이 없어 파일을 건드리지 않는다.
+    /// 그래서 "0장"이 찍히면 이미 고쳐져 있다는 확인이 된다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/그림/대기 모션 발 고정")]
+    public static void PlantPlayerIdleFeet()
+    {
+        int changed = PlantFeetInPlace(PlayerIdleSheet, 6, 8, 256);
+
+        AssetDatabase.Refresh();
+        Debug.Log($"[시트 정규화] 대기 모션 발 고정: {changed}장을 고쳤다. 0장이면 발이 이미 전부 땅에 붙어 있다는 뜻이다. " +
+                  "슬라이스·피벗은 .meta 그대로라 애니메이션을 다시 만들 필요가 없다.");
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-26) — 격자 시트의 줄(방향)마다 떠 있는 장의 발을 땅에 고정한다.
+    /// 좌표는 텍스처 기준이다(아래가 0). 바뀐 장이 없으면 파일을 건드리지 않는다.
+    /// </summary>
+    /// <returns>고친 장 수.</returns>
+    private static int PlantFeetInPlace(string path, int columns, int rows, int cell)
+    {
+        if (!File.Exists(path))
+        {
+            Debug.LogWarning($"[시트 정규화] 발을 고정할 시트를 못 찾았다: {path}");
+            return 0;
+        }
+
+        var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        if (!texture.LoadImage(File.ReadAllBytes(path)))
+        {
+            Object.DestroyImmediate(texture);
+            Debug.LogError($"[시트 정규화] PNG 디코딩 실패: {path}");
+            return 0;
+        }
+
+        int width = texture.width;
+        int height = texture.height;
+        Color32[] source = texture.GetPixels32();
+        Color32[] output = (Color32[])source.Clone();
+        int changed = 0;
+
+        for (int row = 0; row < rows; row++)
+        {
+            // 이미지의 맨 위 줄이 row 0이다. 텍스처는 아래가 0이라 뒤집어서 이 줄의 아래 끝을 구한다.
+            int originY = height - (row + 1) * cell;
+
+            // 1. 장마다 발(가장 낮은 줄)과 머리(가장 높은 줄)를 찾고, 가장 낮은 발을 이 방향의 땅으로 삼는다.
+            var feet = new int[columns];
+            var heads = new int[columns];
+            int ground = int.MaxValue;
+            for (int column = 0; column < columns; column++)
+            {
+                FindFeetAndHead(source, width, column * cell, originY, cell, out feet[column], out heads[column]);
+                if (feet[column] >= 0) ground = Mathf.Min(ground, feet[column]);
+            }
+
+            if (ground == int.MaxValue) continue; // 빈 줄
+
+            // 2. 떠 있는 장만 고친다.
+            for (int column = 0; column < columns; column++)
+            {
+                int foot = feet[column];
+                int head = heads[column];
+                int lift = foot - ground; // 이 장이 땅에서 뜬 높이(px)
+                if (foot < 0 || lift <= 0) continue;
+
+                int bodyHeight = head - foot;
+                int originX = column * cell;
+
+                for (int y = 0; y < cell; y++)
+                {
+                    int sourceY;
+                    if (y < ground)
+                    {
+                        // 발 아래(빈 곳)는 발과 같이 내린다.
+                        sourceY = y + lift;
+                    }
+                    else if (y <= head)
+                    {
+                        // 몸: 땅(t = 0)에서는 발 줄을, 머리(t = 몸 높이 + lift)에서는 머리 줄을 가져오고,
+                        // 그 사이는 몸 높이를 lift만큼 늘인 비율로 가져온다. (2t + 1) / 2는 가운데 반올림이다 —
+                        // 그냥 내림하면 늘어나는 줄이 전부 발 쪽 한 곳에 몰린다.
+                        // 정수로만 계산해서 어느 환경에서 돌려도 같은 결과가 나온다.
+                        int t = y - ground;
+                        sourceY = foot + ((2 * t + 1) * bodyHeight) / (2 * (bodyHeight + lift));
+                    }
+                    else
+                    {
+                        // 머리 위(빈 곳)는 그대로.
+                        sourceY = y;
+                    }
+
+                    for (int x = 0; x < cell; x++)
+                    {
+                        int to = (originY + y) * width + originX + x;
+                        output[to] = sourceY >= 0 && sourceY < cell
+                            ? source[(originY + sourceY) * width + originX + x]
+                            : new Color32(0, 0, 0, 0);
+                    }
+                }
+
+                changed++;
+            }
+        }
+
+        if (changed == 0)
+        {
+            Object.DestroyImmediate(texture);
+            return 0;
+        }
+
+        texture.SetPixels32(output);
+        texture.Apply();
+        byte[] png = texture.EncodeToPNG();
+        Object.DestroyImmediate(texture);
+
+        if (!WritePng(path, png)) return 0;
+
+        AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+        return changed;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-26) — 한 칸에서 알파가 40을 넘는 가장 낮은 줄(발)과 가장 높은 줄(머리)을 칸 안 좌표로 돌려준다.
+    /// 빈 칸이면 둘 다 -1이다. 40 이하는 가장자리의 옅은 번짐이라 발로 치지 않는다.
+    /// </summary>
+    private static void FindFeetAndHead(Color32[] pixels, int width, int originX, int originY, int cell,
+                                        out int feet, out int head)
+    {
+        feet = -1;
+        head = -1;
+        for (int y = 0; y < cell; y++)
+        {
+            for (int x = 0; x < cell; x++)
+            {
+                if (pixels[(originY + y) * width + originX + x].a <= 40) continue;
+
+                // 아래에서부터 올라가므로 처음 찾은 줄이 발, 마지막으로 찾은 줄이 머리다.
+                if (feet < 0) feet = y;
+                head = y;
+                break;
+            }
+        }
+    }
+
     /// <summary>
     /// 추가 생성(2026-09-21) — 이미 만들어진 시트 PNG에서 초록 번짐만 빼서 같은 자리에 다시 쓴다.
     /// 슬라이스 정보는 .meta에 있어서 그대로 남는다. 바뀐 픽셀이 없으면 파일을 건드리지 않는다.
