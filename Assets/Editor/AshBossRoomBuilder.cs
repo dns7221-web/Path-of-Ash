@@ -45,7 +45,9 @@ public static class AshBossRoomBuilder
     private const string BossRoomOpenSpritePath =
         "Assets/Project/Art/Environment/BossRooms/ash-king-boss-room-orthographic-open-1920x1080-v1.png";
 
-    private const string ClearRelicPath = "Assets/Project/Data/Relics/Relic_AshKingHeart.asset";
+    // 수정(2026-09-26) — 클리어 유물 이름을 "길의 매듭"으로 바꾸면서 에셋 파일도 Relic_AshKingHeart에서 Relic_RoadKnot으로 옮겼다.
+    // 씬은 이 유물을 GUID로 가리키므로(.meta를 같이 옮김) 연결은 그대로다. 이 경로는 빌더가 다시 연결할 때만 쓴다.
+    private const string ClearRelicPath = "Assets/Project/Data/Relics/Relic_RoadKnot.asset";
     private const string RelicPickupPath = "Assets/Project/Prefabs/Items/RelicPickup.prefab";
 
     private const string BossRoomName = "Room_Boss";
