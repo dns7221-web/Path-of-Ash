@@ -408,6 +408,26 @@ public static class AshSpriteSheetNormalizer
     };
 
     /// <summary>
+    /// 추가 생성(2026-09-26, 2페이즈 초록 번짐) — 보스 2페이즈 시트들. 1페이즈와 같은 이유로 색만 고친다.
+    ///
+    /// 09-21에 초록 번짐을 뺄 때 위 목록에 1페이즈 여섯 장만 넣어서, Despill이 생기기 전(09-02)에 만든
+    /// 2페이즈 시트 다섯 장은 초록 테두리를 그대로 달고 있었다(장마다 12,000~16,000픽셀).
+    /// 망토 끝·머리카락 가장자리와 발밑 그림자가 초록 선으로 보였고, 왕관 의식처럼 보스가
+    /// 한 자세로 멈춰 있을 때 특히 잘 보였다(의식 자세 = 내려찍기 3번째 장 ashking2_slam_02).
+    ///
+    /// 넣지 않은 것: 궁극기 시트(ash-king-phase2-ultimate.png)는 처음부터 초록이 없다.
+    /// ash-king-phase2-ultimate-playerlike.png는 씬·프리팹·애니메이션 어디서도 안 쓰는 시안이다.
+    /// </summary>
+    private static readonly string[] BossPhase2Sheets =
+    {
+        "ash-king-phase2-idle.png",
+        "ash-king-phase2-walk.png",
+        "ash-king-phase2-slam.png",
+        "ash-king-phase2-ember-wave.png",
+        "ash-king-phase2-hit-death.png",
+    };
+
+    /// <summary>
     /// 추가 생성(2026-09-21, 페이즈 전환 고치기) — 전환에 필요한 그림만 한 번에 고친다.
     ///
     /// <list type="bullet">
@@ -444,6 +464,38 @@ public static class AshSpriteSheetNormalizer
                   $"보스 1페이즈 시트 {cleaned}/{BossPhase1Sheets.Length}장에서 초록 번짐을 뺐다.\n" +
                   "다음: Tools → 재의 길 → 애니메이션 → 보스 애니메이션만 생성 → " +
                   "프리팹 → 보스 전환 다시 만들기 (타임라인 포함)");
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-26, 2페이즈 초록 번짐) — 보스 시트 전부(1·2페이즈)에서 <b>초록 번짐만</b> 뺀다.
+    ///
+    /// "보스 전환 그림 고치기"와 따로 둔 이유: 그 메뉴는 전환 이펙트 3장을 원본부터 다시 만든다.
+    /// 색만 고치려는 날에 상관없는 그림까지 다시 쓰지 않도록 색 고치기만 하는 입구를 하나 더 둔다.
+    ///
+    /// 여러 번 돌려도 결과가 같다 — 이미 뺀 시트는 바뀌는 픽셀이 없어서 DespillInPlace가 파일을
+    /// 건드리지 않는다. 그래서 "0장"이 찍히면 전부 이미 깨끗하다는 확인이 된다.
+    /// 슬라이스는 .meta에 그대로 남으므로 애니메이션·프리팹을 다시 만들 필요가 없다.
+    /// </summary>
+    [MenuItem("Tools/재의 길/그림/보스 초록 번짐 빼기")]
+    public static void DespillBossSheets()
+    {
+        int cleaned = 0;
+        int total = 0;
+
+        // 1페이즈 목록과 2페이즈 목록을 차례로 돈다. 목록을 합치지 않은 이유는 각 목록 주석에 적은
+        // "언제, 왜 들어갔나"를 따로 남기기 위해서다.
+        foreach (string[] sheets in new[] { BossPhase1Sheets, BossPhase2Sheets })
+        {
+            foreach (string sheet in sheets)
+            {
+                total++;
+                if (DespillInPlace($"{AshKingFolder}/{sheet}")) cleaned++;
+            }
+        }
+
+        AssetDatabase.Refresh();
+        Debug.Log($"[시트 정규화] 보스 초록 번짐 빼기: 보스 시트 {cleaned}/{total}장을 다시 썼다. " +
+                  "0장이면 전부 이미 빠져 있다는 뜻이다. 슬라이스는 그대로라 다른 메뉴를 돌릴 필요가 없다.");
     }
 
     /// <summary>
