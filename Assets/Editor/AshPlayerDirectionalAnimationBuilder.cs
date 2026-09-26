@@ -75,6 +75,11 @@ public static class AshPlayerDirectionalAnimationBuilder
 
         // 추가 생성(2026-09-21) — 클립이 끝나는 순간에 부를 애니메이션 이벤트(비우면 없음).
         public string EndFunction;
+
+        // 추가 생성(2026-09-26, 클리어 연출) — 끝나도 Idle로 돌아가지 않고 마지막 장을 붙든다.
+        // 나가는 전환이 없는 상태는 비반복 클립의 마지막 장에서 멈춘다(사망 모션과 같은 원리, 애니메이터 기본 동작).
+        // 연출 뒤 곧바로 장면이 바뀌는 모션에 쓴다 — 돌아가면 결과 화면 직전에 대기 그림이 한 번 튀어나온다.
+        public bool HoldLastFrame;
     }
 
     private static readonly ActionDef[] Actions =
@@ -106,6 +111,19 @@ public static class AshPlayerDirectionalAnimationBuilder
             Sheet = "player_relic_torn", State = "RelicTorn", Trigger = "RelicTorn", Fps = 60f, Loop = false,
             FrameSeconds = new[] { 0.15f, 0.15f, 0.3f, 0.5f, 0.2f, 0.8f },
             EventFrame = 4, EventFunction = "RelicsTornOut", EndFunction = "ScriptedPoseEnd",
+        },
+
+        // 추가 생성(2026-09-26, 클리어 연출 「손을 펴다」) — 보스 방 문을 나가면 결과 화면 전에 한 번 튼다(ClearCutscene).
+        // 8방향 모두 같은 앞모습이다(유물 뽑힘처럼 화면 쪽으로 돌아선다). 프레임별 시간:
+        // 멈춰 섬 0.3 · 가슴으로 0.5 · 바라봄 0.6 · 내밂 0.4 · 펼침 0.5 · 풀린 자세 0.4 = 2.7초.
+        // 바라봄을 가장 길게 둔 이유: 핵심 동작(쥔 손을 펴는 것) 앞에 멈춤이 있어야 펴는 순간이 산다.
+        // 끝 이벤트(ScriptedPoseEnd)를 달지 않는다 — 그 이벤트는 조작을 돌려주는데, 이 뒤에는 결과 화면으로 가야 한다.
+        // 끝났는지는 ClearCutscene이 애니메이터 상태로 확인하고, 마지막 장은 HoldLastFrame으로 붙든다.
+        new ActionDef
+        {
+            Sheet = "player_clear_open_hand", State = "ClearOpenHand", Trigger = "ClearOpenHand", Fps = 60f, Loop = false,
+            FrameSeconds = new[] { 0.3f, 0.5f, 0.6f, 0.4f, 0.5f, 0.4f },
+            HoldLastFrame = true,
         },
     };
 
@@ -382,6 +400,9 @@ public static class AshPlayerDirectionalAnimationBuilder
 
             // 사망은 돌아오지 않는다. 마지막 프레임에서 멈춰야 시체가 남는다.
             if (action.State == "Die") continue;
+
+            // 추가 생성(2026-09-26, 클리어 연출) — 마지막 장을 붙들고 끝나는 연출도 돌아오지 않는다(HoldLastFrame 주석 참고).
+            if (action.HoldLastFrame) continue;
 
             if (idle != null)
             {
