@@ -154,6 +154,11 @@ public static class AshRelicBuilder
         "relic-kings-signet",
         "relic-ash-key",
         "relic-path-of-ash",
+
+        // 추가 생성(2026-09-26) — 14번: 클리어 유물 "재의 왕의 심장"(Relic_AshKingHeart). 그림은 불씨를 품은 밧줄 매듭이다.
+        // 이 유물은 아래 CreateRelics가 만드는 목록에 없고(보스 방 빌더가 읽기만 한다), 아이콘은 에셋에 직접 연결돼 있다.
+        // 그 전에는 "왕의 주사위"와 같은 relic_icon_03을 빌려 쓰고 있었다.
+        "relic-ash-king-heart",
     };
 
     [MenuItem("Tools/재의 길/프리팹/유물 생성 + 상자에 연결")]
