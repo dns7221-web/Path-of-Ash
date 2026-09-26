@@ -79,6 +79,14 @@ public class RunManager : MonoBehaviour
     /// <summary>현재 판 상태. 다른 시스템이 "지금 조작을 받아도 되는지" 판단할 때 읽는다.</summary>
     public RunState State => state;
 
+    /// <summary>
+    /// 추가 생성(2026-09-26, 클리어 연출) — 이번 판이 클리어로 끝났는가. 끝나기 전에는 false다.
+    ///
+    /// State만으로는 "끝났다"만 알 수 있고 어떻게 끝났는지는 모른다. PlayerController가 "판이 끝나면 죽는다"를
+    /// 패배일 때만 하도록 가르는 데 쓴다 — 가르지 않으면 클리어 직후 결과 대기 동안 사망 모션이 나온다.
+    /// </summary>
+    public bool IsCleared { get; private set; }
+
     private void Awake()
     {
         // 결과 에셋을 먼저 비운다. 에디터에서는 이전 판의 값이 그대로 남아 있기 때문에,
@@ -155,6 +163,7 @@ public class RunManager : MonoBehaviour
         if (state == RunState.GameOver) return;
 
         state = RunState.GameOver;
+        IsCleared = isCleared; // 추가 생성(2026-09-26) — 어떻게 끝났는지도 남긴다(IsCleared 주석 참고)
         ElapsedSeconds = Time.time - runStartTime;
 
         // 수정(무한 방 진행 도입): 층 수를 1로 하드코딩하던 자리에 실제 방 수를 넣는다.

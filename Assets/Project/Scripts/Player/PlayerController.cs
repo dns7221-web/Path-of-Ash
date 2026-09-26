@@ -199,6 +199,11 @@ public class PlayerController : MonoBehaviour
     // 추가 생성 — 8방향 애니메이션이 쓰는 실제 방향. 아래(정면)에서 시작한다.
     private Vector2 facingDirection = Vector2.down;
 
+    // 추가 생성(2026-09-26, 클리어 연출) — 연출(Scripted) 중에 연출이 시킨 걷기 속도. 평소에는 0이다.
+    // 입력(moveInput)과 따로 두는 이유: 연출 중에는 입력을 막아야 하는데, 같은 변수를 쓰면 Update가 매 프레임
+    // 입력으로 덮어써서(연출 중이면 0) 연출이 시킨 걸음이 한 프레임도 못 간다.
+    private Vector2 scriptedVelocity;
+
 
     // 애니메이터 파라미터 이름을 매 프레임 문자열로 넘기면 내부에서 해시를 다시 계산한다.
     // 미리 해시로 만들어두면 그 비용과 문자열 할당이 사라진다.
@@ -357,8 +362,13 @@ public class PlayerController : MonoBehaviour
     {
         // 추가 생성 — RunManager가 먼저 판을 끝낸 경우(디버그 사망 키 등)를 따라잡는다.
         // 사망 진입점을 Die() 하나로 두되, 외부에서 EndRun이 먼저 불린 경로도 여기서 흡수한다.
+        //
+        // 수정(2026-09-26, 클리어 때 부서지던 것) — 클리어로 끝난 판은 따라잡지 않는다(!IsCleared).
+        // 이 검사는 "판이 끝났다 = 죽었다"라고 가정했는데, 클리어도 판을 끝낸다(EndRun(true)). 그래서 클리어 연출이 끝나고
+        // 결과 화면을 기다리는 1.4초 동안 사망 모션(몸이 재로 부서짐)이 나왔다. 이긴 판에서 죽을 이유는 없다.
         if (actionState != ActionState.Dead &&
-            runManager != null && runManager.State != RunManager.RunState.Playing)
+            runManager != null && runManager.State != RunManager.RunState.Playing &&
+            !runManager.IsCleared)
         {
             Die();
         }
@@ -426,6 +436,12 @@ public class PlayerController : MonoBehaviour
                 // 대시 중에는 입력을 무시하고 시작할 때 정한 방향으로만 간다.
                 // 대시 도중 방향을 꺾을 수 있으면 회피기가 아니라 그냥 빠른 이동이 된다.
                 rb.linearVelocity = dashDirection * dashSpeed;
+                break;
+
+            // 추가 생성(2026-09-26, 클리어 연출) — 연출 중에는 연출이 시킨 속도로 걷는다(SetScriptedMove).
+            // 시키지 않았으면 0이라 예전처럼 제자리에 선다(왕관 의식은 그대로다).
+            case ActionState.Scripted:
+                rb.linearVelocity = scriptedVelocity;
                 break;
 
             default:
@@ -706,6 +722,7 @@ public class PlayerController : MonoBehaviour
         actionState = ActionState.Scripted;
         moveInput = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
+        scriptedVelocity = Vector2.zero; // 추가 생성(2026-09-26) — 붙잡히면 일단 멈춘다. 걷기는 연출이 SetScriptedMove로 따로 시킨다.
 
         if (face.sqrMagnitude > 0.0001f) facingDirection = face.normalized;
         UpdateVisuals();
@@ -722,8 +739,25 @@ public class PlayerController : MonoBehaviour
     {
         if (actionState != ActionState.Scripted) return;
 
+        scriptedVelocity = Vector2.zero; // 추가 생성(2026-09-26) — 연출이 시킨 걸음을 풀려난 뒤로 끌고 가지 않는다.
         actionState = ActionState.Normal;
         ScriptedPoseEnded?.Invoke();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-26, 클리어 연출) — 연출 중인 플레이어를 걷게 한다(0을 주면 멈춘다). 연출 중이 아니면 무시한다.
+    ///
+    /// 위치를 직접 옮기지 않고 속도를 주는 이유: 평소 이동과 같은 길(FixedUpdate → Rigidbody2D)을 타야 벽·소품 충돌이
+    /// 그대로 먹고, 애니메이터의 Speed도 실제 속도에서 나와서 걷기 모션이 저절로 나온다(UpdateVisuals).
+    /// 속도가 있으면 그 방향을 바라보게 한다 — 8방향 걷기 그림이 걷는 방향과 맞아야 한다.
+    /// </summary>
+    /// <param name="velocity">걷는 속도(유닛/초). 방향과 빠르기를 같이 담는다.</param>
+    public void SetScriptedMove(Vector2 velocity)
+    {
+        if (actionState != ActionState.Scripted) return;
+
+        scriptedVelocity = velocity;
+        if (velocity.sqrMagnitude > 0.0001f) facingDirection = velocity.normalized;
     }
 
     /// <summary>추가 생성(2026-09-21) — 애니메이션 이벤트 "RelicsTornOut"을 받는다. <see cref="PlayerAnimationEvents"/>가 부른다.</summary>
