@@ -2350,3 +2350,19 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
   클라우드에는 유니티가 없어서 시트 다섯 장은 같은 규칙(a > 0이고 G > max(R,B)면 G = max(R,B))을 파이썬으로 적용해 넣었다. 알파·R·B는 그대로다.
 - **확인**: 유니티에서 메뉴를 한 번 돌리면 `0/11장`이 찍혀야 한다(전부 이미 빠졌다는 뜻). 보스 2페이즈를 띄워 테두리를 본다.
 - 남은 것: `ash-king-phase2-ultimate-playerlike.png`는 어디서도 안 쓰는 시안인데 배경이 통째로 초록이다 — 정리 대상.
+
+## 2026-09-26 — 왕관 의식에서 플레이어가 "유물 뽑힘" 첫 장에 굳던 것
+
+- **증상**(사용자): 의식이 시작되면 플레이어 그림이 한 장에 멈추고, 풀려난 뒤 이동해도 그 그림 그대로 미끄러졌다. 공격 등을 하면 풀렸다.
+- **근거**: 스크린샷의 플레이어는 `RelicTorn_S_00`(첫 장, 머리카락·망토가 양옆으로 퍼져 선 자세)과 같았다. 마지막 장(무릎)도, 대기(`Idle_S`)도 아니다.
+  모션이 끝나서 멈춘 게 아니라 **시작하자마자 시간이 안 흐른** 것이다. 컨트롤러 전이(RelicTorn → Idle, Exit Time 1)·블렌드 트리·클립 바인딩은
+  잘 되는 Ultimate와 똑같았다. 플레이어 애니메이터를 멈추는 코드는 R 무릎 꿇기(`HoldPoseRoutine`, `animator.speed = 0`) 하나뿐이다.
+- **원인**: `BeginScripted`가 `StopAllCoroutines()`로 `HoldPoseRoutine`을 끊으면서 `ReleasePose()`를 부르지 않았다. 09-24에 무릎 꿇기를 넣을 때
+  같은 모양의 `Die`·`OnHealthDamaged`에는 넣었는데, 09-21에 먼저 있던 `BeginScripted`는 빠졌다.
+  R 폭발(8 피해)이 보스 체력 35%를 넘기는 한 방이 되면 의식이 무릎 꿇기 도중에 시작된다 → 속도 0인 채 뽑힘 상태로 들어가 첫 장에서 멈춤 →
+  모션 이벤트(RelicsTornOut·ScriptedPoseEnd)가 안 와서 의식은 시간 초과로 진행 → 풀린 뒤에도 속도 0.
+  남은 `holdingPose = true` 때문에 그 뒤 스킬 모션 코루틴은 `while (holdingPose)`에서 못 빠져나온다. 푸는 길은 맞기·죽기·R 다시 쓰기뿐이었다.
+- **수정**: `BeginScripted`에서 `StopAllCoroutines()` 다음에 `ReleasePose()`. `HoldPoseWhile` 주석에 "이 코루틴을 끊는 곳은 전부 ReleasePose를 같이 부른다"를 적었다.
+- **확인**: 보스를 체력 35% 바로 위까지 깎고 R로 넘긴다 → 뽑힘 모션이 무릎까지 이어지고 끝나면 대기로 돌아오는지,
+  콘솔에 `[왕관 의식] ... 이벤트가 안 왔다` 경고가 더는 안 찍히는지 본다.
+- 교훈: 끊는 코드(`StopAllCoroutines`)와 정리 코드(`ReleasePose`)는 짝인데, 세 곳에 따로 적혀 있어서 새 상태를 넣을 때 하나가 빠졌다.

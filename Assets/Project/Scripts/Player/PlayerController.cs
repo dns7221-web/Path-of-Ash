@@ -596,6 +596,8 @@ public class PlayerController : MonoBehaviour
     /// delay는 클립의 마지막 프레임이 보이는 동안 멈추도록 부르는 쪽(AreaSkillData)이 계산한다 —
     /// 클립이 끝까지 가면 Exit Time 전이로 Idle(서 있는 그림)로 넘어가 버린다.
     /// 맞거나 죽으면 바로 푼다(ReleasePose) — 멈춘 애니메이터는 피격·사망 그림도 멈춰 버린다. 안전 상한 3초.
+    /// 수정(2026-09-26) — 연출에 붙잡힐 때(BeginScripted)도 푼다. <b>StopAllCoroutines로 이 코루틴을 끊는 곳은
+    /// 전부 ReleasePose를 같이 불러야 한다</b> — 끊긴 코루틴은 끝의 ReleasePose와 안전 상한 3초까지 같이 잃는다.
     /// </summary>
     public void HoldPoseWhile(GameObject effect, float delay)
     {
@@ -693,6 +695,13 @@ public class PlayerController : MonoBehaviour
         StopAllCoroutines();
         attackHitbox?.Deactivate();
         SetDashTrail(false);
+
+        // 추가 생성(2026-09-26, 유물 뽑힘 모션이 첫 장에 굳던 것) — R 무릎 꿇기를 붙잡은 채 붙잡히면 푼다. Die와 같은 이유다.
+        // 위 StopAllCoroutines가 HoldPoseRoutine을 끝까지 못 가게 끊으면 ReleasePose가 안 불려 애니메이터가 속도 0으로 남는다.
+        // 그러면 "유물 뽑힘" 모션이 첫 장에서 멈추고, 그 모션의 이벤트(RelicsTornOut·ScriptedPoseEnd)도 안 와서 의식이
+        // 시간 초과로 넘어간다. 풀려난 뒤에도 그 그림 그대로 미끄러져 다닌다(맞거나 R을 다시 써야 풀렸다).
+        // R 폭발(8 피해)은 보스 체력 35%를 넘기는 한 방이 되기 쉬워서, 의식은 무릎 꿇기 도중에 시작되는 일이 흔하다.
+        ReleasePose();
 
         actionState = ActionState.Scripted;
         moveInput = Vector2.zero;
