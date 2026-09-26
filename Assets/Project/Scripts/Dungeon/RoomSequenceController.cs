@@ -1,3 +1,4 @@
+using System.Collections; // 추가 생성(2026-09-26) — 클리어 연출을 기다리는 코루틴(IEnumerator)
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,6 +49,11 @@ public class RoomSequenceController : MonoBehaviour
     // 그때는 여기만 끄면 보스를 잡고도 일반 방 순환으로 돌아간다.
     [Tooltip("켜면 보스 방 문을 나갈 때 판이 클리어로 끝난다. 끄면 다음 방으로 계속 이어진다.")]
     [SerializeField] private bool bossClearEndsRun = true;
+
+    // 추가 생성(2026-09-26, 클리어 연출 「손을 펴다」) — 보스 방 문을 나가면 결과 화면 전에 트는 연출.
+    // 비워 두면 같은 오브젝트에서 찾고, 그래도 없으면 기본값으로 붙인다(EndRunAfterClearCutscene).
+    [Tooltip("보스 방 문을 나갈 때 트는 클리어 연출. 비우면 같은 오브젝트에서 찾고, 없으면 기본값으로 붙인다.")]
+    [SerializeField] private ClearCutscene clearCutscene;
 
     [Header("테스트")]
     // 추가 생성 — 보스 패턴을 확인할 때 일반 방을 매번 클리어하고 오는 게 너무 느려서 넣었다.
@@ -234,7 +240,9 @@ public class RoomSequenceController : MonoBehaviour
         // "보스를 잡고 전리품을 챙겨 제 발로 걸어 나왔다"는 뜻이다.
         if (room == bossRoom && bossClearEndsRun)
         {
-            currentRoom.gameObject.SetActive(false);
+            // 수정(2026-09-26, 클리어 연출) — 방을 끄고 곧바로 판을 끝내던 것을, 클리어 연출을 튼 뒤 끝내도록 바꿨다.
+            // 방은 끄지 않는다 — 연출 동안 플레이어가 보스 방 문 앞에 서 있어야 한다. 결과 화면으로 넘어가면 씬째 사라진다.
+            // currentRoom만 비워서, 연출 중에 같은 문 판정에 또 닿아도 맨 위 검사에서 걸러져 두 번 끝나지 않는다.
             currentRoom = null;
 
             if (runManager == null) runManager = FindFirstObjectByType<RunManager>();
@@ -244,8 +252,8 @@ public class RoomSequenceController : MonoBehaviour
                 return;
             }
 
-            Debug.Log("[방 진행] 보스 방을 나갔다 — 클리어로 판을 끝낸다.", this);
-            runManager.EndRun(true);
+            Debug.Log("[방 진행] 보스 방을 나갔다 — 클리어 연출 뒤 판을 끝낸다.", this);
+            StartCoroutine(EndRunAfterClearCutscene());
             return;
         }
 
@@ -269,6 +277,30 @@ public class RoomSequenceController : MonoBehaviour
         }
 
         AdvanceToNextRoom();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-26, 클리어 연출 「손을 펴다」) — 클리어 연출을 튼 뒤 판을 클리어로 끝낸다.
+    ///
+    /// 연출 컴포넌트가 씬에 없으면 이 오브젝트에 기본값으로 붙인다. 씬을 따로 고치지 않아도 연출이 나오게 하려는 것이다.
+    /// 값(카메라 확대 비율·시간 등)을 바꾸고 싶으면 이 오브젝트에 ClearCutscene을 직접 붙여 인스펙터에서 조정하면
+    /// 그쪽을 쓴다. 판을 끝내는 일(EndRun)은 여기에 남긴다 — 연출은 보여 주기만 하고, 판의 끝은 방 진행이 정한다.
+    /// </summary>
+    private IEnumerator EndRunAfterClearCutscene()
+    {
+        if (clearCutscene == null) clearCutscene = GetComponent<ClearCutscene>();
+        if (clearCutscene == null)
+        {
+            clearCutscene = gameObject.AddComponent<ClearCutscene>();
+            Debug.Log("[방 진행] 클리어 연출 컴포넌트가 없어 기본값으로 붙였다. " +
+                      "값을 바꾸려면 이 오브젝트에 ClearCutscene을 붙여 인스펙터에서 조정해라.", this);
+        }
+
+        // 연출(모션이 끝날 때까지)을 기다린다. 연출이 실패해도 Play는 시간 초과로 반드시 돌아온다.
+        yield return clearCutscene.Play();
+
+        // 결과 화면으로 넘어가기까지 RunManager의 결과 대기(1.4초)가 더 있다. 그동안 마지막 장(풀린 자세)이 유지된다.
+        runManager.EndRun(true);
     }
 
     /// <summary>
