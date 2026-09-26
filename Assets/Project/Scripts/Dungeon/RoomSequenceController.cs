@@ -297,9 +297,13 @@ public class RoomSequenceController : MonoBehaviour
         }
 
         // 연출(모션이 끝날 때까지)을 기다린다. 연출이 실패해도 Play는 시간 초과로 반드시 돌아온다.
-        yield return clearCutscene.Play();
+        // 수정(2026-09-26, 연출 v2) — 보스 방을 넘긴다. 연출이 카메라를 이 방 그림 밖으로 내보내지 않는 데 쓴다.
+        // 연출은 이제 "문에서 걸어 나옴 → 손을 펴다 → 문으로 걸어 들어가 사라짐"까지 하고 돌아온다.
+        yield return clearCutscene.Play(bossRoom != null ? bossRoom.transform : null);
 
-        // 결과 화면으로 넘어가기까지 RunManager의 결과 대기(1.4초)가 더 있다. 그동안 마지막 장(풀린 자세)이 유지된다.
+        // 결과 화면으로 넘어가기까지 RunManager의 결과 대기(1.4초)가 더 있다.
+        // 수정(2026-09-26, 연출 v2) — 옛 주석 "그동안 마지막 장(풀린 자세)이 유지된다"는 더 이상 맞지 않는다.
+        // 이제 그동안 플레이어가 사라진 빈 문이 보인다. 판이 끝나도 사망 모션은 나오지 않는다(PlayerController가 IsCleared를 본다).
         runManager.EndRun(true);
     }
 
