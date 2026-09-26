@@ -885,8 +885,12 @@ public static class AshSpriteSheetNormalizer
     ///
     /// 1페이즈 칼(칼날 전체가 초록이던 것)도 여기서 잿빛 돌칼이 된다 — 2026-09-21 사용자가
     /// "번진 것이라 회색으로"를 골랐다.
+    ///
+    /// 수정(2026-09-26) — private → internal. 유물 아이콘 다듬기(AshRelicIconProcessor)도 같은 초록 배경 원본을 다루는데
+    /// 이 단계가 없어서 아이콘마다 가장자리에 초록 픽셀이 100~600개씩 남아 있었다. 규칙을 두 벌로 적으면 한쪽만 고치게 되므로
+    /// 이 함수 하나를 같이 쓴다.
     /// </summary>
-    private static void Despill(Color32[] pixels)
+    internal static void Despill(Color32[] pixels)
     {
         for (int i = 0; i < pixels.Length; i++)
         {

@@ -92,6 +92,11 @@ public static class AshRelicIconProcessor
         for (int i = 0; i < pixels.Length; i++)
             pixels[i] = RemoveGreenBackground(pixels[i]);
 
+        // 추가 생성(2026-09-26, 유물 아이콘 초록 테두리) — 반투명 가장자리의 초록을 뺀다.
+        // RemoveGreenBackground의 가장자리 보정 식 (g − (1 − α)·g) / α는 g 그대로라(항등식) 초록이 안 빠진다.
+        // 시트 정규화가 09-21에 같은 문제를 Despill로 풀었으므로 같은 함수를 부른다(규칙을 한 곳에만 둔다).
+        AshSpriteSheetNormalizer.Despill(pixels);
+
         // ── 2단계: 그림이 실제로 차지하는 사각형 ──
         if (!TryGetOpaqueBounds(pixels, width, height,
                 out int minX, out int maxX, out int minY, out int maxY))
