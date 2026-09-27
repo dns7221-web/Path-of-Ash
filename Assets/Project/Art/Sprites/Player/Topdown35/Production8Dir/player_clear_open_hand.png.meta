@@ -1,0 +1,1570 @@
+fileFormatVersion: 2
+guid: 6833c0e3760c370478b917eaad69c963
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3966906688043120646
+    second: player_clear_open_hand_0
+  - first:
+      213: 4050656223749129467
+    second: player_clear_open_hand_1
+  - first:
+      213: 3895899921379326523
+    second: player_clear_open_hand_2
+  - first:
+      213: -6909685546167051714
+    second: player_clear_open_hand_3
+  - first:
+      213: 6048036432223795967
+    second: player_clear_open_hand_4
+  - first:
+      213: -2435375731032655806
+    second: player_clear_open_hand_5
+  - first:
+      213: 6994461236783057451
+    second: player_clear_open_hand_6
+  - first:
+      213: -4121955815109582578
+    second: player_clear_open_hand_7
+  - first:
+      213: -7084995962135922604
+    second: player_clear_open_hand_8
+  - first:
+      213: -4097688137153229817
+    second: player_clear_open_hand_9
+  - first:
+      213: 6016657966777652439
+    second: player_clear_open_hand_10
+  - first:
+      213: -7506203022245921746
+    second: player_clear_open_hand_11
+  - first:
+      213: 6094029050527594781
+    second: player_clear_open_hand_12
+  - first:
+      213: -5617303811093875906
+    second: player_clear_open_hand_13
+  - first:
+      213: -7299008802523046780
+    second: player_clear_open_hand_14
+  - first:
+      213: -1590212598243622950
+    second: player_clear_open_hand_15
+  - first:
+      213: 7573778366051147988
+    second: player_clear_open_hand_16
+  - first:
+      213: 4912098911202940911
+    second: player_clear_open_hand_17
+  - first:
+      213: -2137080978394911987
+    second: player_clear_open_hand_18
+  - first:
+      213: 6092186854238267796
+    second: player_clear_open_hand_19
+  - first:
+      213: 7322521173653429111
+    second: player_clear_open_hand_20
+  - first:
+      213: 4739277859979960787
+    second: player_clear_open_hand_21
+  - first:
+      213: 1416027620951166365
+    second: player_clear_open_hand_22
+  - first:
+      213: -775327203999258571
+    second: player_clear_open_hand_23
+  - first:
+      213: 6457031226202437805
+    second: player_clear_open_hand_24
+  - first:
+      213: 5918562851646860473
+    second: player_clear_open_hand_25
+  - first:
+      213: 5208929369389773511
+    second: player_clear_open_hand_26
+  - first:
+      213: 6467476873408348081
+    second: player_clear_open_hand_27
+  - first:
+      213: -7677134434514911651
+    second: player_clear_open_hand_28
+  - first:
+      213: -7788737259192185506
+    second: player_clear_open_hand_29
+  - first:
+      213: 5648928276880102736
+    second: player_clear_open_hand_30
+  - first:
+      213: -1276748652040104768
+    second: player_clear_open_hand_31
+  - first:
+      213: 8602741611903908886
+    second: player_clear_open_hand_32
+  - first:
+      213: 2657647039854465463
+    second: player_clear_open_hand_33
+  - first:
+      213: 2054262923759455430
+    second: player_clear_open_hand_34
+  - first:
+      213: -8548488252730139035
+    second: player_clear_open_hand_35
+  - first:
+      213: -5047717743588039190
+    second: player_clear_open_hand_36
+  - first:
+      213: 1700723616769862948
+    second: player_clear_open_hand_37
+  - first:
+      213: -2866688649778089522
+    second: player_clear_open_hand_38
+  - first:
+      213: -5658901704740757037
+    second: player_clear_open_hand_39
+  - first:
+      213: -386192404259884478
+    second: player_clear_open_hand_40
+  - first:
+      213: -4571767048203699916
+    second: player_clear_open_hand_41
+  - first:
+      213: 8519767312068884853
+    second: player_clear_open_hand_42
+  - first:
+      213: 667478100950769681
+    second: player_clear_open_hand_43
+  - first:
+      213: 8134716146712267248
+    second: player_clear_open_hand_44
+  - first:
+      213: -3633976566121730015
+    second: player_clear_open_hand_45
+  - first:
+      213: 2818951252048817355
+    second: player_clear_open_hand_46
+  - first:
+      213: -706967925777621189
+    second: player_clear_open_hand_47
+  - first:
+      213: 2405982290674398482
+    second: player_clear_open_hand_S_00
+  - first:
+      213: 346340016251110723
+    second: player_clear_open_hand_S_01
+  - first:
+      213: -2905568119338582168
+    second: player_clear_open_hand_S_02
+  - first:
+      213: -2118828021154352700
+    second: player_clear_open_hand_S_03
+  - first:
+      213: 856584992071176184
+    second: player_clear_open_hand_S_04
+  - first:
+      213: 4413363136463886177
+    second: player_clear_open_hand_S_05
+  - first:
+      213: -3341600044321825399
+    second: player_clear_open_hand_SW_00
+  - first:
+      213: -3616900091941576309
+    second: player_clear_open_hand_SW_01
+  - first:
+      213: 1813084806563739834
+    second: player_clear_open_hand_SW_02
+  - first:
+      213: 7257979036792912002
+    second: player_clear_open_hand_SW_03
+  - first:
+      213: 2081178919335575306
+    second: player_clear_open_hand_SW_04
+  - first:
+      213: -656882437509778498
+    second: player_clear_open_hand_SW_05
+  - first:
+      213: 8584544535279171267
+    second: player_clear_open_hand_W_00
+  - first:
+      213: -6560316413142232204
+    second: player_clear_open_hand_W_01
+  - first:
+      213: 8571359588704013027
+    second: player_clear_open_hand_W_02
+  - first:
+      213: -506292365450491461
+    second: player_clear_open_hand_W_03
+  - first:
+      213: 7617531306476247543
+    second: player_clear_open_hand_W_04
+  - first:
+      213: -5261055454345106945
+    second: player_clear_open_hand_W_05
+  - first:
+      213: -6157912530453189453
+    second: player_clear_open_hand_NW_00
+  - first:
+      213: -2307435763586315062
+    second: player_clear_open_hand_NW_01
+  - first:
+      213: 6252339953086876935
+    second: player_clear_open_hand_NW_02
+  - first:
+      213: -2006569825657739400
+    second: player_clear_open_hand_NW_03
+  - first:
+      213: 8516981248643261294
+    second: player_clear_open_hand_NW_04
+  - first:
+      213: 5027339662091149918
+    second: player_clear_open_hand_NW_05
+  - first:
+      213: -875459919137075655
+    second: player_clear_open_hand_N_00
+  - first:
+      213: 1582709012364564537
+    second: player_clear_open_hand_N_01
+  - first:
+      213: 5853916589647766813
+    second: player_clear_open_hand_N_02
+  - first:
+      213: -8838498863857031278
+    second: player_clear_open_hand_N_03
+  - first:
+      213: 2496943540691760204
+    second: player_clear_open_hand_N_04
+  - first:
+      213: 3526825576081221465
+    second: player_clear_open_hand_N_05
+  - first:
+      213: 7613004139476956976
+    second: player_clear_open_hand_NE_00
+  - first:
+      213: 1481223786948943092
+    second: player_clear_open_hand_NE_01
+  - first:
+      213: -7974663596618843402
+    second: player_clear_open_hand_NE_02
+  - first:
+      213: 7708629820567941033
+    second: player_clear_open_hand_NE_03
+  - first:
+      213: -9130036762480267892
+    second: player_clear_open_hand_NE_04
+  - first:
+      213: 8600632389983777569
+    second: player_clear_open_hand_NE_05
+  - first:
+      213: 735016232495145316
+    second: player_clear_open_hand_E_00
+  - first:
+      213: 1671260268510016014
+    second: player_clear_open_hand_E_01
+  - first:
+      213: -630226229204120577
+    second: player_clear_open_hand_E_02
+  - first:
+      213: -8609880158292050574
+    second: player_clear_open_hand_E_03
+  - first:
+      213: 207300697060569570
+    second: player_clear_open_hand_E_04
+  - first:
+      213: -1591081090999417015
+    second: player_clear_open_hand_E_05
+  - first:
+      213: 4024956624743408503
+    second: player_clear_open_hand_SE_00
+  - first:
+      213: -1396818869739587386
+    second: player_clear_open_hand_SE_01
+  - first:
+      213: -3164417120074001598
+    second: player_clear_open_hand_SE_02
+  - first:
+      213: 1264335319871666116
+    second: player_clear_open_hand_SE_03
+  - first:
+      213: 7003956716800032397
+    second: player_clear_open_hand_SE_04
+  - first:
+      213: -1840720787154342701
+    second: player_clear_open_hand_SE_05
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 100
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_clear_open_hand_S_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215378b5524c36120800000000000000
+      internalID: 2405982290674398482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_S_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3458628e8627ec400800000000000000
+      internalID: 346340016251110723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_S_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86fbf1890395da7d0800000000000000
+      internalID: -2905568119338582168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_S_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c173fa04296892e0800000000000000
+      internalID: -2118828021154352700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_S_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff455c038333eb00800000000000000
+      internalID: 856584992071176184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_S_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1792
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 167dbbdb36a6f3d30800000000000000
+      internalID: 4413363136463886177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d94c8d67040a1d0800000000000000
+      internalID: -3341600044321825399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b81aebf87803ecdc0800000000000000
+      internalID: -3616900091941576309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8b3e2860f592910800000000000000
+      internalID: 1813084806563739834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 288f543ca7589b460800000000000000
+      internalID: 7257979036792912002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0f37095335d1ec10800000000000000
+      internalID: 2081178919335575306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb3790547e842e6f0800000000000000
+      internalID: -656882437509778498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_W_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6f5df95cd622770800000000000000
+      internalID: 8584544535279171267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_W_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4731e74faf215f4a0800000000000000
+      internalID: -6560316413142232204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_W_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ea47d6022693f670800000000000000
+      internalID: 8571359588704013027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_W_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9c4dca6c949f8f0800000000000000
+      internalID: -506292365450491461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_W_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f91fe32d58e6b960800000000000000
+      internalID: 7617531306476247543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_W_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9e02440f9fcf6b0800000000000000
+      internalID: -5261055454345106945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NW_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bc2968fd23ba8aa0800000000000000
+      internalID: -6157912530453189453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NW_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: accc769f5675affd0800000000000000
+      internalID: -2307435763586315062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NW_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70dc9be9f06c4c650800000000000000
+      internalID: 6252339953086876935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NW_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87727a4ff5b3724e0800000000000000
+      internalID: -2006569825657739400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NW_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e636b0c1255623670800000000000000
+      internalID: 8516981248643261294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NW_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e52ec2469c2b4c540800000000000000
+      internalID: 5027339662091149918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_N_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e0eb887ddb9d3f0800000000000000
+      internalID: -875459919137075655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_N_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9389cc01679e6f510800000000000000
+      internalID: 1582709012364564537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_N_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d15a8b67f1a4d3150800000000000000
+      internalID: 5853916589647766813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_N_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 297ab189c18575580800000000000000
+      internalID: -8838498863857031278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_N_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c44732fbbece6a220800000000000000
+      internalID: 2496943540691760204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_N_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 957651fec2dc1f030800000000000000
+      internalID: 3526825576081221465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0373a1fede2d6a960800000000000000
+      internalID: 7613004139476956976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fc53f5bf2d5e8410800000000000000
+      internalID: 1481223786948943092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fa7b40e5bd445190800000000000000
+      internalID: -7974663596618843402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9af6fefcafd8afa60800000000000000
+      internalID: 7708629820567941033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d2b1200f79b4180800000000000000
+      internalID: -9130036762480267892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_NE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 123b3b037959b5770800000000000000
+      internalID: 8600632389983777569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_E_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 461e4028e5d433a00800000000000000
+      internalID: 735016232495145316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_E_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0273c70c52813710800000000000000
+      internalID: 1671260268510016014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_E_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb8728659cf047f0800000000000000
+      internalID: -630226229204120577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_E_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27d7156fc9f838880800000000000000
+      internalID: -8609880158292050574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_E_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e17cf9b2ea70e200800000000000000
+      internalID: 207300697060569570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_E_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 947832a7d285be9e0800000000000000
+      internalID: -1591081090999417015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SE_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 773af2e99b48bd730800000000000000
+      internalID: 4024956624743408503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SE_01
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c8fb9d73a08d9ce0800000000000000
+      internalID: -1396818869739587386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SE_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24313d4256bb514d0800000000000000
+      internalID: -3164417120074001598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SE_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c73ee15642db8110800000000000000
+      internalID: 1264335319871666116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SE_04
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8eb31f768d033160800000000000000
+      internalID: 7003956716800032397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_clear_open_hand_SE_05
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.15234375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dcecf652327476e0800000000000000
+      internalID: -1840720787154342701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      player_clear_open_hand_0: 3966906688043120646
+      player_clear_open_hand_1: 4050656223749129467
+      player_clear_open_hand_10: 6016657966777652439
+      player_clear_open_hand_11: -7506203022245921746
+      player_clear_open_hand_12: 6094029050527594781
+      player_clear_open_hand_13: -5617303811093875906
+      player_clear_open_hand_14: -7299008802523046780
+      player_clear_open_hand_15: -1590212598243622950
+      player_clear_open_hand_16: 7573778366051147988
+      player_clear_open_hand_17: 4912098911202940911
+      player_clear_open_hand_18: -2137080978394911987
+      player_clear_open_hand_19: 6092186854238267796
+      player_clear_open_hand_2: 3895899921379326523
+      player_clear_open_hand_20: 7322521173653429111
+      player_clear_open_hand_21: 4739277859979960787
+      player_clear_open_hand_22: 1416027620951166365
+      player_clear_open_hand_23: -775327203999258571
+      player_clear_open_hand_24: 6457031226202437805
+      player_clear_open_hand_25: 5918562851646860473
+      player_clear_open_hand_26: 5208929369389773511
+      player_clear_open_hand_27: 6467476873408348081
+      player_clear_open_hand_28: -7677134434514911651
+      player_clear_open_hand_29: -7788737259192185506
+      player_clear_open_hand_3: -6909685546167051714
+      player_clear_open_hand_30: 5648928276880102736
+      player_clear_open_hand_31: -1276748652040104768
+      player_clear_open_hand_32: 8602741611903908886
+      player_clear_open_hand_33: 2657647039854465463
+      player_clear_open_hand_34: 2054262923759455430
+      player_clear_open_hand_35: -8548488252730139035
+      player_clear_open_hand_36: -5047717743588039190
+      player_clear_open_hand_37: 1700723616769862948
+      player_clear_open_hand_38: -2866688649778089522
+      player_clear_open_hand_39: -5658901704740757037
+      player_clear_open_hand_4: 6048036432223795967
+      player_clear_open_hand_40: -386192404259884478
+      player_clear_open_hand_41: -4571767048203699916
+      player_clear_open_hand_42: 8519767312068884853
+      player_clear_open_hand_43: 667478100950769681
+      player_clear_open_hand_44: 8134716146712267248
+      player_clear_open_hand_45: -3633976566121730015
+      player_clear_open_hand_46: 2818951252048817355
+      player_clear_open_hand_47: -706967925777621189
+      player_clear_open_hand_5: -2435375731032655806
+      player_clear_open_hand_6: 6994461236783057451
+      player_clear_open_hand_7: -4121955815109582578
+      player_clear_open_hand_8: -7084995962135922604
+      player_clear_open_hand_9: -4097688137153229817
+      player_clear_open_hand_E_00: 735016232495145316
+      player_clear_open_hand_E_01: 1671260268510016014
+      player_clear_open_hand_E_02: -630226229204120577
+      player_clear_open_hand_E_03: -8609880158292050574
+      player_clear_open_hand_E_04: 207300697060569570
+      player_clear_open_hand_E_05: -1591081090999417015
+      player_clear_open_hand_NE_00: 7613004139476956976
+      player_clear_open_hand_NE_01: 1481223786948943092
+      player_clear_open_hand_NE_02: -7974663596618843402
+      player_clear_open_hand_NE_03: 7708629820567941033
+      player_clear_open_hand_NE_04: -9130036762480267892
+      player_clear_open_hand_NE_05: 8600632389983777569
+      player_clear_open_hand_NW_00: -6157912530453189453
+      player_clear_open_hand_NW_01: -2307435763586315062
+      player_clear_open_hand_NW_02: 6252339953086876935
+      player_clear_open_hand_NW_03: -2006569825657739400
+      player_clear_open_hand_NW_04: 8516981248643261294
+      player_clear_open_hand_NW_05: 5027339662091149918
+      player_clear_open_hand_N_00: -875459919137075655
+      player_clear_open_hand_N_01: 1582709012364564537
+      player_clear_open_hand_N_02: 5853916589647766813
+      player_clear_open_hand_N_03: -8838498863857031278
+      player_clear_open_hand_N_04: 2496943540691760204
+      player_clear_open_hand_N_05: 3526825576081221465
+      player_clear_open_hand_SE_00: 4024956624743408503
+      player_clear_open_hand_SE_01: -1396818869739587386
+      player_clear_open_hand_SE_02: -3164417120074001598
+      player_clear_open_hand_SE_03: 1264335319871666116
+      player_clear_open_hand_SE_04: 7003956716800032397
+      player_clear_open_hand_SE_05: -1840720787154342701
+      player_clear_open_hand_SW_00: -3341600044321825399
+      player_clear_open_hand_SW_01: -3616900091941576309
+      player_clear_open_hand_SW_02: 1813084806563739834
+      player_clear_open_hand_SW_03: 7257979036792912002
+      player_clear_open_hand_SW_04: 2081178919335575306
+      player_clear_open_hand_SW_05: -656882437509778498
+      player_clear_open_hand_S_00: 2405982290674398482
+      player_clear_open_hand_S_01: 346340016251110723
+      player_clear_open_hand_S_02: -2905568119338582168
+      player_clear_open_hand_S_03: -2118828021154352700
+      player_clear_open_hand_S_04: 856584992071176184
+      player_clear_open_hand_S_05: 4413363136463886177
+      player_clear_open_hand_W_00: 8584544535279171267
+      player_clear_open_hand_W_01: -6560316413142232204
+      player_clear_open_hand_W_02: 8571359588704013027
+      player_clear_open_hand_W_03: -506292365450491461
+      player_clear_open_hand_W_04: 7617531306476247543
+      player_clear_open_hand_W_05: -5261055454345106945
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
