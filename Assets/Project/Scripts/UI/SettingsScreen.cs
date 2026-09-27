@@ -13,8 +13,10 @@ using UnityEngine.UI;
 /// 씬마다 다른 화면을 만들지 않는 이유는 이 프로젝트가 보스 방을 별도 씬으로 안 나눈 것과 같다.
 /// 복제본은 언젠가 반드시 원본과 어긋나고, 그때 어느 쪽이 맞는지 알 방법이 없다.
 ///
-/// 수정(2026-09-27) — Game 씬에는 아래 줄에 [타이틀로 나가기]가 하나 더 있다(판을 그만두는 유일한 길).
-/// 화면은 그대로 하나고, 버튼이 있는지만 다르다 — 빌더가 Game 씬에서만 만들고 필드에 꽂는다.
+/// 수정(2026-09-27) — Title 씬의 설정 창에는 아래 줄에 [게임 나가기]가 하나 더 있다. 누르면 바로 꺼지지 않고
+/// "게임을 종료하시겠습니까?" 확인 창(<see cref="QuitConfirmDialog"/>)이 뜬다. 버튼과 확인 창은 창을 처음 열 때 코드가
+/// 만든다 — 빌더를 다시 돌리지 않아도 되게(사용자 결정). 화면은 그대로 하나고, 타이틀에서만 버튼이 하나 더 생길 뿐이다.
+/// (한때 Game 씬에 [타이틀로 나가기]를 두었다가 걷어냈다 — 게임 중에 판을 그만두려면 중간 저장이 먼저 있어야 한다. 사용자 결정.)
 ///
 /// <b>시간은 직접 안 멈춘다.</b> <see cref="PauseGate"/>에 "나 열렸다"고 알리기만 하고,
 /// Time.timeScale은 그쪽이 판단한다. 인벤토리 같은 다른 화면과 겹쳐도 스택이 안 비므로
@@ -67,9 +69,9 @@ public class SettingsScreen : MonoBehaviour
     [SerializeField] private Button resetButton;
     [SerializeField] private Button closeButton;
 
-    // 추가 생성(2026-09-27) — 게임 중에만 있는 [타이틀로 나가기]. 타이틀 씬에서는 비어 있다(이미 타이틀이다).
-    [Tooltip("판을 그만두고 타이틀로 나가는 버튼. Game 씬에만 있다. 한 번 누르면 확인 문구로 바뀌고, 곧바로 한 번 더 누르면 나간다.")]
-    [SerializeField] private Button quitToTitleButton;
+    // 수정(2026-09-27) — 여기 있던 quitToTitleButton(게임 중 [타이틀로 나가기], 빌더가 꽂던 필드)을 걷어냈다.
+    // 게임 중에 판을 그만두게 하려면 중간 저장이 먼저 있어야 한다(사용자 결정). 나가기는 타이틀 설정 창에만 두고,
+    // 그 버튼은 인스펙터 필드가 아니라 창을 열 때 코드가 만든다(EnsureQuitButton).
 
     [Tooltip("이 화면을 여는 바깥 버튼. 타이틀 화면의 '설정' 버튼이 여기 들어간다. " +
              "게임 안에서는 일시정지 메뉴가 대신 열어주므로 비워둔다.")]
@@ -125,12 +127,15 @@ public class SettingsScreen : MonoBehaviour
     // 그게 다시 GameSettings에 쓰면서 Changed를 띄워 Refresh를 부르는 고리가 생긴다.
     private bool refreshing;
 
-    // 추가 생성(2026-09-27) — 나가기 확인. 잘못 눌러 판을 날리지 않게, 한 번 더 눌러야 나간다.
-    private const float QuitConfirmSeconds = 3f;
-    private const string QuitConfirmText = "한 번 더 누르면 나가요";
-    private float quitConfirmUntil;      // 이 실시간(Time.unscaledTime) 전에 다시 누르면 나간다. 0이면 확인 대기가 아니다
-    private TMPro.TMP_Text quitLabel;    // 나가기 버튼 글자. 확인 문구로 바꿨다가 되돌린다
-    private string quitLabelDefault;     // 원래 글자(빌더가 넣은 "타이틀로 나가기")
+    // 추가 생성(2026-09-27) — 타이틀 설정 창의 [게임 나가기]와 확인 창. 둘 다 코드가 만든다.
+    // 수정(2026-09-27) — "두 번 누르면 나간다"(글자를 바꿔 한 번 더 누르게 하던 방식)를 확인 창으로 바꿨다(사용자 요청:
+    // 바로 끄지 말고 "게임을 종료하시겠습니까?"를 한 번 보여 주고 [게임 종료]로 끄기).
+    private const string QuitButtonText = "게임 나가기";
+    private const string QuitMessage = "게임을 종료하시겠습니까?";
+    private const string QuitConfirmLabel = "게임 종료";
+    private const string QuitCancelLabel = "취소";
+    private Button quitButton;               // 창을 처음 열 때 만든다(EnsureQuitButton). 타이틀이 아니면 끝까지 비어 있다
+    private QuitConfirmDialog quitDialog;    // [게임 나가기]를 처음 누를 때 만든다(OnQuitClicked)
 
     /// <summary>지금 열려 있는가.</summary>
     public bool IsOpen => isOpen;
@@ -189,13 +194,7 @@ public class SettingsScreen : MonoBehaviour
         if (closeButton != null)
             closeButton.onClick.AddListener(Close);
 
-        // 추가 생성(2026-09-27) — 타이틀로 나가기(Game 씬에만 있다). 원래 글자를 기억해 둬야 확인 문구에서 되돌릴 수 있다.
-        if (quitToTitleButton != null)
-        {
-            quitLabel = quitToTitleButton.GetComponentInChildren<TMPro.TMP_Text>();
-            if (quitLabel != null) quitLabelDefault = quitLabel.text;
-            quitToTitleButton.onClick.AddListener(OnQuitToTitleClicked);
-        }
+        // 수정(2026-09-27) — [게임 나가기]는 여기서 잇지 않는다. 창을 열 때 만들면서 바로 잇는다(EnsureQuitButton).
 
         // 바깥에서 이 화면을 여는 버튼(타이틀의 '설정'). 게임 안에서는 ESC가 직접
         // Open()을 부르므로 비어 있는 것이 정상이다.
@@ -349,9 +348,7 @@ public class SettingsScreen : MonoBehaviour
 
     private void Update()
     {
-        // 추가 생성(2026-09-27) — 나가기 확인 시간이 지나면 버튼 글자를 되돌린다.
-        // 실시간(unscaledTime)으로 재는 이유: 설정 창이 열려 있으면 timeScale이 0이라 게임 시간은 흐르지 않는다.
-        if (quitConfirmUntil > 0f && Time.unscaledTime >= quitConfirmUntil) CancelQuitConfirm();
+        // 수정(2026-09-27) — 여기 있던 "나가기 확인 시간이 지나면 버튼 글자를 되돌린다"를 걷어냈다(두 번 누르기 → 확인 창).
 
         // 키를 받는 중에는 ESC가 "그만두기"다. 여기서도 ESC를 보면 같은 누름으로
         // 화면까지 닫혀서, 그만두려던 사람이 설정 밖으로 튕겨 나간다.
@@ -365,7 +362,13 @@ public class SettingsScreen : MonoBehaviour
             // "누가 키를 먹는가"를 스택 순서 하나로 정하면 화면이 늘어나도 규칙이 그대로다.
             if (!PauseGate.IsTop(this)) return;
 
-            if (InputBindings.SettingsAction.WasPressedThisFrame()) Close();
+            if (InputBindings.SettingsAction.WasPressedThisFrame())
+            {
+                // 추가 생성(2026-09-27) — 확인 창이 떠 있으면 그것만 닫는다(취소). 설정 창까지 한 번에 닫히면
+                // "취소"가 아니라 창 두 겹에서 한꺼번에 튕겨 나가는 것이 된다.
+                if (quitDialog != null && quitDialog.IsOpen) quitDialog.Hide();
+                else Close();
+            }
             return;
         }
 
@@ -390,6 +393,10 @@ public class SettingsScreen : MonoBehaviour
         // 열림 표시와 실제 멈춤 사이에 한 프레임이라도 틈이 생기면 그 프레임에 게임이 흐른다.
         PauseGate.Open(this);
 
+        // 추가 생성(2026-09-27) — 타이틀 설정 창이면 처음 열 때 [게임 나가기]를 만든다(사용자 요청: 설정 창을 열면 나가기 버튼이 생기게).
+        // 창을 켜기 전에 만들어서, 켜지는 첫 프레임부터 버튼 두 개 배치로 보이게 한다.
+        EnsureQuitButton();
+
         if (root != null) root.SetActive(true);
 
         // 항상 일반 탭부터 보여준다. 지난번에 보던 탭을 기억하면, 볼륨을 만지러 연
@@ -406,8 +413,8 @@ public class SettingsScreen : MonoBehaviour
 
         isOpen = false;
 
-        // 추가 생성(2026-09-27) — 확인 문구를 띄운 채 닫으면, 다음에 열었을 때 첫 누름에 바로 나가 버린다. 닫을 때 푼다.
-        CancelQuitConfirm();
+        // 추가 생성(2026-09-27) — 확인 창을 띄운 채 닫으면 다음에 설정 창을 열 때 확인 창부터 보인다. 닫을 때 같이 닫는다.
+        if (quitDialog != null) quitDialog.Hide();
 
         if (root != null) root.SetActive(false);
 
@@ -418,48 +425,69 @@ public class SettingsScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// 추가 생성(2026-09-27) — [타이틀로 나가기]를 눌렀다. 첫 누름은 확인 문구로 바꾸기만 하고, 3초 안에 한 번 더 누르면 나간다.
+    /// 추가 생성(2026-09-27) — 타이틀 설정 창이면, 아래 줄에 [게임 나가기]를 만든다. 이미 있거나 타이틀이 아니면 아무것도 안 한다.
     ///
-    /// 확인 창을 따로 띄우지 않는 이유: 창을 하나 더 열면 PauseGate에 한 겹이 더 쌓이고 ESC가 어느 창을 닫을지
-    /// 정해야 한다(탭을 창으로 나누지 않은 것과 같은 이유). 같은 버튼을 두 번 누르게 하면 실수로 판을 날리는 일은
-    /// 막으면서 화면 구조는 그대로다.
+    /// 게임 중(Game 씬)에는 만들지 않는다 — 중간 저장이 없어서 나가면 판을 통째로 잃는다(사용자 결정).
+    /// 씬 이름은 GameFlow의 상수로 비교한다. 씬을 이름으로 부르는 규칙이 GameFlow 한 곳에 있어서, 이름이 바뀌면 같이 바뀐다.
+    ///
+    /// 닫기 버튼을 <b>복제</b>하는 이유: 색·눌림 색·글꼴이 저절로 같아진다. 새로 만들면 빌더의 색표를 여기에 또 적어야 한다.
+    /// 복제본에는 닫기의 동작이 따라오지 않는다 — 닫기는 코드(AddListener)로 붙였고, 그런 리스너는 저장되지 않아 복제되지 않는다.
     /// </summary>
-    private void OnQuitToTitleClicked()
+    private void EnsureQuitButton()
     {
-        if (quitConfirmUntil > 0f && Time.unscaledTime < quitConfirmUntil)
-        {
-            QuitToTitle();
-            return;
-        }
+        if (quitButton != null || closeButton == null) return;
+        if (gameObject.scene.name != GameFlow.TitleScene) return;
 
-        quitConfirmUntil = Time.unscaledTime + QuitConfirmSeconds;
-        if (quitLabel != null) quitLabel.text = QuitConfirmText;
+        GameObject copy = Instantiate(closeButton.gameObject, closeButton.transform.parent);
+        copy.name = "QuitGameButton";
+        quitButton = copy.GetComponent<Button>();
+
+        TMPro.TMP_Text label = copy.GetComponentInChildren<TMPro.TMP_Text>(true);
+        if (label != null) label.text = QuitButtonText;
+
+        // 아래 줄을 둘로 나눈다: [게임 나가기 0.16~0.48] [닫기 0.56~0.84].
+        // 자주 누르는 닫기를 오른쪽에 두고 사이를 띄워, 닫으려다 나가기를 누르는 일을 줄인다(눌러도 확인 창이 한 번 더 묻는다).
+        // 줄 폭 872px의 32%(약 279px)라 22pt "게임 나가기"가 넉넉히 들어간다.
+        PlaceInRow((RectTransform)copy.transform, 0.16f, 0.48f);
+        PlaceInRow((RectTransform)closeButton.transform, 0.56f, 0.84f);
+
+        quitButton.onClick.AddListener(OnQuitClicked);
     }
 
-    /// <summary>추가 생성(2026-09-27) — 나가기 확인 대기를 풀고 버튼 글자를 원래대로 되돌린다.</summary>
-    private void CancelQuitConfirm()
+    /// <summary>추가 생성(2026-09-27) — 아래 줄(Buttons) 안에서 가로 자리만 정한다. 세로는 줄을 꽉 채운다(빌더의 Sub와 같은 방식).</summary>
+    private static void PlaceInRow(RectTransform rect, float xMin, float xMax)
     {
-        quitConfirmUntil = 0f;
-        if (quitLabel != null && quitLabelDefault != null) quitLabel.text = quitLabelDefault;
+        rect.anchorMin = new Vector2(xMin, 0f);
+        rect.anchorMax = new Vector2(xMax, 1f);
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
     }
 
     /// <summary>
-    /// 추가 생성(2026-09-27) — 판을 그만두고 타이틀로 간다. 결과는 남기지 않는다(죽은 것도 이긴 것도 아니다).
-    ///
-    /// <b>PauseGate.CloseAll을 먼저 부르는 이유.</b> 설정 창이 열려 있어 timeScale이 0이다. 그대로 씬을 넘기면
-    /// 오브젝트가 파괴되는 순서에 따라 이 화면이 스택에 남은 채로 타이틀이 시작될 수 있다. 그러면 타이틀은
-    /// "화면이 열려 있다"고 보고 입력을 전부 무시한다(TitleScreen.Update 맨 위의 PauseGate.IsPaused 검사).
-    /// CloseAll 주석의 규칙대로 넘기는 쪽에서 먼저 비운다.
+    /// 추가 생성(2026-09-27) — [게임 나가기]를 눌렀다. 바로 끄지 않고 "게임을 종료하시겠습니까?" 확인 창을 띄운다(사용자 요청).
+    /// 확인 창은 처음 누를 때 한 번만 만든다 — 대부분의 판에서는 한 번도 안 누르므로 미리 만들 이유가 없다.
     /// </summary>
-    private void QuitToTitle()
+    private void OnQuitClicked()
     {
-        // 창을 닫지 않고 나가므로 Close가 하던 저장을 여기서 한다. isOpen을 먼저 내려,
-        // 씬이 바뀌며 불리는 OnDisable이 이미 비운 스택에서 한 번 더 빼려 하지 않게 한다.
-        isOpen = false;
-        GameSettings.Flush();
+        if (quitDialog == null)
+        {
+            // 설정 창의 root 밑에 만든다 — 설정 창을 닫으면 같이 꺼지고, 다른 설정 요소들 위에 겹쳐 뜬다.
+            RectTransform parent = root != null ? (RectTransform)root.transform : (RectTransform)transform;
+            quitDialog = QuitConfirmDialog.Create(parent, closeButton, QuitMessage, QuitConfirmLabel, QuitCancelLabel, QuitGame);
+        }
 
-        PauseGate.CloseAll();
-        GameFlow.LoadTitle();
+        quitDialog.Show();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-27) — 게임을 끈다. 확인 창의 [게임 종료]가 부른다.
+    /// 설정 창을 닫지 않고 끄므로 Close가 하던 저장(GameSettings.Flush)을 여기서 한다 — 안 하면 방금 만진 볼륨·화면 설정이 날아간다.
+    /// 에디터에서는 GameFlow.Quit이 플레이 모드를 멈춘다(Application.Quit은 에디터에서 아무 일도 안 한다).
+    /// </summary>
+    private void QuitGame()
+    {
+        GameSettings.Flush();
+        GameFlow.Quit();
     }
 
     /// <summary>창 크기를 한 칸 옮긴다.</summary>

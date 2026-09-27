@@ -205,8 +205,10 @@ public static class AshSettingsUiBuilder
         // - Game: ESC로 연다. 전투 화면에 늘 떠 있는 버튼을 두지 않는다.
         // - Title: 구석의 '설정' 버튼으로 연다. 타이틀에서 ESC는 예전부터 게임 종료라,
         //   같은 키를 두 곳이 먹으면 설정이 열리면서 게임도 같이 꺼진다.
-        // 수정(2026-09-27) — [타이틀로 나가기]도 Game 씬에만 만든다(showQuitToTitle). 타이틀에서는 이미 타이틀이다.
-        SettingsScreen settings = BuildSettingsScreen(canvas.transform, openWithKey: isGame, showQuitToTitle: isGame);
+        // 수정(2026-09-27) — 한때 여기서 Game 씬에 [타이틀로 나가기]를 같이 만들었다(showQuitToTitle). 걷어냈다 —
+        // 게임 중에 판을 그만두려면 중간 저장이 먼저 있어야 한다(사용자 결정). 타이틀 설정 창의 [게임 나가기]는
+        // 이 도구가 아니라 SettingsScreen이 창을 열 때 직접 만든다(빌더를 다시 돌리지 않아도 되게).
+        SettingsScreen settings = BuildSettingsScreen(canvas.transform, openWithKey: isGame);
 
         if (isTitle) BuildTitleButton(canvas.transform, settings);
 
@@ -224,10 +226,7 @@ public static class AshSettingsUiBuilder
 
     /// <summary>설정 화면 전체를 만들고 참조를 배선한다.</summary>
     /// <param name="openWithKey">ESC로 열 수 있게 할지. Game 씬만 켠다.</param>
-    /// <param name="showQuitToTitle">추가 생성(2026-09-27) — 아래 줄에 [타이틀로 나가기]를 만들지. Game 씬만 켠다.
-    /// ESC 여부(openWithKey)와 따로 받는 이유: 둘 다 지금은 "Game 씬인가"와 같지만 뜻이 다르다. 한 값에 두 뜻을 실으면
-    /// 나중에 한쪽만 바꾸고 싶을 때 다른 쪽이 같이 바뀐다.</param>
-    private static SettingsScreen BuildSettingsScreen(Transform canvas, bool openWithKey, bool showQuitToTitle)
+    private static SettingsScreen BuildSettingsScreen(Transform canvas, bool openWithKey)
     {
         // 항상 켜져 있는 껍데기. 키 입력을 듣는 컴포넌트가 여기 붙는다.
         // 컴포넌트를 켜고 끄는 오브젝트에 붙이면, 꺼진 순간 Update가 안 돌아서
@@ -296,21 +295,9 @@ public static class AshSettingsUiBuilder
         // ── 두 탭이 함께 쓰는 아래 버튼 ──
         RectTransform buttonRow = CreateRow(panel, "Buttons", 748f, 52f);
 
-        // 수정(2026-09-27) — Game 씬에서는 [타이틀로 나가기]를 닫기 왼쪽에 나란히 둔다. 타이틀 씬은 예전처럼 닫기 하나가 가운데다.
-        // 닫기를 오른쪽에 두는 이유: 판을 끝내는 버튼과 자주 누르는 닫기 사이를 띄워, 닫으려다 나가기를 누르는 일을 줄인다
-        // (그래도 누르면 한 번 더 물어본다 — SettingsScreen.OnQuitToTitleClicked).
-        // 나가기 버튼 폭(줄 872px의 32% = 약 279px)은 확인 문구 "한 번 더 누르면 나가요"(22pt, 약 240px)가 들어가게 잡았다.
-        Button quitToTitleButton = null;
-        Button closeButton;
-        if (showQuitToTitle)
-        {
-            quitToTitleButton = CreateButton(Sub(buttonRow, "QuitToTitleButton", 0.16f, 0.48f), "타이틀로 나가기", 22f);
-            closeButton = CreateButton(Sub(buttonRow, "CloseButton", 0.56f, 0.84f), "닫기", 22f);
-        }
-        else
-        {
-            closeButton = CreateButton(Sub(buttonRow, "CloseButton", 0.36f, 0.64f), "닫기", 22f);
-        }
+        // 수정(2026-09-27) — Game 씬에서 줄을 [타이틀로 나가기][닫기]로 나누던 것을 되돌렸다(위 Build의 수정 주석 참고).
+        // 닫기는 두 씬 모두 가운데 하나다. 타이틀에서는 SettingsScreen이 창을 열 때 [게임 나가기]를 복제해 넣으며 줄을 나눈다.
+        Button closeButton = CreateButton(Sub(buttonRow, "CloseButton", 0.36f, 0.64f), "닫기", 22f);
 
         // 조작 탭은 꺼진 채로 시작한다. 실행 중에는 SelectTab이 다시 정하지만,
         // 에디터에서 씬을 열었을 때 두 탭이 겹쳐 보이면 위치를 못 맞춘다.
@@ -331,7 +318,7 @@ public static class AshSettingsUiBuilder
         serialized.FindProperty("windowScaleNextButton").objectReferenceValue = nextButton;
         serialized.FindProperty("resetButton").objectReferenceValue = resetButton;
         serialized.FindProperty("closeButton").objectReferenceValue = closeButton;
-        serialized.FindProperty("quitToTitleButton").objectReferenceValue = quitToTitleButton; // 추가 생성(2026-09-27) — 타이틀 씬은 null
+        // 수정(2026-09-27) — quitToTitleButton 배선을 걷어냈다. 필드가 없어져서 남겨 두면 FindProperty가 null을 돌려줘 여기서 멈춘다.
         serialized.FindProperty("noticeLabel").objectReferenceValue = notice;
         serialized.FindProperty("openWithKey").boolValue = openWithKey;
         serialized.FindProperty("generalTabContent").objectReferenceValue = generalTab.gameObject;
