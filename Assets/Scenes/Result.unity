@@ -978,7 +978,10 @@ MonoBehaviour:
   killText: {fileID: 209128730}
   background: {fileID: 1862271395}
   deathBackground: {fileID: 0}
-  clearedBackground: {fileID: 0}
+  clearedBackground: {fileID: -6304086982601555247, guid: 64d7cda0441b6914eb647483012e1a36, type: 3}
+  clearedLoop: {fileID: 32900000, guid: 7ccd92cb73d74d6bbef421782a4e8c7d, type: 3}
+  clearedScrimLeft: 0.62
+  clearedScrimBottom: 0.55
   restartKey: 32
   titleKey: 60
 --- !u!4 &1822914435
