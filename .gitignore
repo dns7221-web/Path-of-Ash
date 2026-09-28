@@ -54,3 +54,6 @@ _ArtReview/
 # 유니티가 비정상 종료 때 만드는 복구용 임시 씬 — 커밋하지 않는다
 /[Aa]ssets/_Recovery/
 /[Aa]ssets/_Recovery.meta
+
+# 예전 그림 백업 — 로컬에만 둔다(2026-09-28 추적 해제, 포트폴리오 0단계)
+/_ArtBackup/
