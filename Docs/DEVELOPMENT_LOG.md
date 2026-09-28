@@ -2508,3 +2508,43 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - **`AshSettingsUiBuilder`**: PR #19의 `showQuitToTitle`과 줄 나누기, `quitToTitleButton` 배선을 되돌렸다(필드가 없어져 남기면 FindProperty가 null).
 - **확인**: 타이틀 → 설정 → 아래 줄에 [게임 나가기][닫기] → [게임 나가기] → 확인 창 → [취소]·ESC는 확인 창만 닫힘 → [게임 종료]로 꺼짐(에디터는 플레이 정지).
   PR #19 뒤에 `설정 화면 전체 구성`을 이미 돌렸다면 게임 씬에 쓰이지 않는 [타이틀로 나가기]가 남아 있으니 한 번 더 돌린다.
+
+## 2026-09-28 — 인벤토리가 안 열리던 것: 설정 화면 빌더가 캔버스째 지웠다
+
+- **증상**: I/Tab을 눌러도 인벤토리가 안 열린다. 오류는 없다.
+- **원인**: Game 씬에 `InventoryScreen`이 아예 없었다. 인벤토리 화면은 `SettingsCanvas` 밑에 있었는데(예전 화면 중복 정리 때 그쪽을 남김),
+  `AshSettingsUiBuilder.CreateSettingsCanvas`가 `DestroyByName("SettingsCanvas")`로 캔버스를 통째로 지우고 다시 만든다.
+  09-27 안내대로 `화면 → 설정 화면 전체 구성 (Title + Game)`을 돌리면서 같이 사라졌다.
+- **고침**: 사용자가 `화면 → 인벤토리 화면 생성`을 다시 돌려 저장. 이제 `GameHUD` 밑이다(보스 열쇠 화면과 같이).
+- **남은 위험**: `게임 HUD 생성`도 `GameHUD`를 통째로 지운다 → 돌렸다면 `인벤토리 화면 생성`·`보스 열쇠 화면 생성`을 다시 돌린다.
+  근본 해결(화면마다 전용 캔버스, 빌더는 자기 것만 지우기)은 하지 않았다.
+
+## 2026-09-28 — 저장소 정리 (포트폴리오 0단계)
+
+- 사용자 결정: 궁극기 영상 건너뛰기는 넣지 않는다(못 막은 대가를 끝까지 보여 주는 장면). 곁들임·불타는 방은 빼고 마감으로 간다.
+- `_ArtBackup/`(9개, 5.4MB) git 추적 해제 + `.gitignore`. 로컬 파일은 그대로다.
+- 안 쓰는 패키지 제거: Visual Scripting, Multiplayer Center, Unity Version Control(collab-proxy). 쓰는 것은 남김 — Timeline(보스 전환), Recorder(녹화), Test Framework(테스트 예정).
+- **안 쓰는 그림 171개(163.8MB) + 빈 폴더 28개를 `.meta`와 함께 휴지통으로.** 찾는 법: 추적 중인 그림·영상마다 GUID가 어느 텍스트 에셋에도 없고,
+  파일 이름이 어느 코드(.cs/.py/.json)에도 안 나오는 것. 사용자가 목록을 보고 둘 다 지우라고 했다.
+  - 옛 플레이어 시트를 고치는 도구가 떠 둔 백업 `Production8Dir/Raw/Pre*` 13개 폴더(37개, 74.9MB)
+  - 어디서도 안 쓰는 그림 133개 — 옛 8방향 시트 `Production8Dir/Directional`(80개), 옛 플레이어 원본, 보스·보스 방 원본, UI·결과 화면 시안,
+    궁극기 영상 키프레임 2장 등 — 과 초록 배경 보스 시안 `ash-king-phase2-ultimate-playerlike.png`
+  - 남긴 것: 도구가 이름으로 부르는 원본(시트 정리·영상 만들기 입력), New* 폴더, TMP 예제(09-20 사용자 결정).
+- 결과(작업본 기준): 추적 파일 2545개 648.7MB → 2167개 475.6MB. git 기록은 다시 쓰지 않아서(계획대로) 클론 크기는 그대로다.
+- 커밋은 아직. 지운 경로를 부르는 코드는 없다(grep 확인).
+- 다음 정리 후보: 한글 폰트가 Dynamic이라 플레이할 때마다 폰트 에셋이 바뀐 것으로 떠서 커밋에 섞인다.
+
+## 2026-09-28 — 한글 폰트가 커밋에 섞이던 것, asmdef 분리 (포트폴리오 0·1단계)
+
+- **폰트**: Dynamic TMP 폰트는 편집기에서 구운 글자를 에셋에 그대로 남긴다 — 플레이하면 한글 폰트가 +3831줄(104KB → 8.6MB)로 바뀌어 커밋에 섞였다.
+  새 `AshDynamicFontSaveGuard`(`AssetModificationProcessor.OnWillSaveAssets`)가 **저장 직전**에 `ClearFontAssetData(true)`로 비운다.
+  대상은 Dynamic이면서 "Clear Dynamic Data On Build"가 켜진 폰트만. TMP는 글자를 구운 뒤 스스로 저장하지 않아서
+  (`TMP_EditorResourceManager`의 SaveAssets가 주석 처리) 비우기가 되풀이되지 않는다. 커밋된 판이 이미 빈 상태(글자 0, 아틀라스 1×1)라
+  저장해도 차이가 안 생긴다. 바뀌어 있던 폰트 파일은 커밋 판으로 되돌렸다.
+- **asmdef**(PORTFOLIO 1단계, 테스트의 전제): `PathOfAsh`(Assets/Project/Scripts) — Input System, TMP, UGUI, Timeline, URP Core·Universal·2D.
+  `PathOfAsh.Editor`(Assets/Editor, 편집기 전용) — PathOfAsh + 같은 목록 + 2D Sprite Editor.
+  - 확인: 유니티 csproj 틀에서 asmdef에 적은 참조만 남기고(ProjectReference와 ScriptAssemblies dll 둘 다) 컴파일 → 둘 다 오류 0·경고 0.
+    TMP를 일부러 빼면 `TMPro`를 못 찾고 깨지는 것까지 봐서 검사가 엄격한 것도 확인했다.
+  - 옮겨도 안전한 이유: 런타임의 `UnityEditor` 사용은 전부 `#if UNITY_EDITOR` 안, `SerializeReference`·어셈블리 이름 리플렉션 없음 →
+    씬·프리팹은 스크립트 GUID로 붙어 있어 그대로다. TMP 예제 스크립트만 Assembly-CSharp에 남는다.
+- 남은 것: 유니티에서 컴파일 확인 → 테스트 3종(유물 재계산·방 순환·보스 페이즈 전환) → 처음~재시작 루프 점검.
