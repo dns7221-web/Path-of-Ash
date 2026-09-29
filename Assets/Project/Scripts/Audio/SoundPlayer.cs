@@ -146,6 +146,22 @@ public class SoundPlayer : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    /// <summary>
+    /// 추가 생성(2026-09-29, 타이틀 음악 안 나옴) — 첫 씬의 곡을 한 번 더 확실히 튼다.
+    ///
+    /// 이 오브젝트는 첫 씬을 불러오기 <b>전</b>(BeforeSceneLoad)에 만들어지고, 첫 씬의 곡은 sceneLoaded 이벤트에 기대고 있었다.
+    /// 그런데 타이틀에서 Play를 눌렀을 때 음악 AudioSource 둘 다 클립이 빈 채로 남았다. 목록(SoundBank)은 정상이라
+    /// 첫 씬에 대한 호출이 빠졌을 가능성이 가장 크다. 이벤트 하나에만 기대지 않도록 여기서 한 번 더 확인한다.
+    /// Start는 첫 씬이 다 열린 뒤 첫 프레임에 불리므로 그때의 활성 씬으로 한 번 더 부른다.
+    /// 이벤트가 정상으로 왔다면 이미 같은 곡이라 ChangeMusic이 바로 return한다 — 두 번 틀리지 않는다.
+    /// </summary>
+    private void Start()
+    {
+        if (bank == null) return;
+
+        ChangeMusic(bank.MusicForScene(SceneManager.GetActiveScene().name), 1.5f);
+    }
+
     private void OnDestroy()
     {
         if (instance != this) return;
@@ -271,6 +287,16 @@ public class SoundPlayer : MonoBehaviour
         // 목록에 없거나 클립이 비었으면 "끄기"로 친다.
         SoundBank.MusicEntry entry = id != MusicId.None && bank != null ? bank.Find(id) : null;
         if (entry != null && entry.clip == null) entry = null;
+
+        // 추가 생성(2026-09-29, 타이틀 음악 안 나옴) — 곡을 틀라고 했는데 못 찾으면 이유를 남긴다.
+        // 예전에는 조용히 "끄기"로 넘어가서, 음악이 안 나올 때 목록 문제인지 호출 문제인지 콘솔만으로 구별할 수 없었다.
+        if (id != MusicId.None && entry == null)
+        {
+            string reason = bank == null ? "소리 목록(SoundBank)이 없다"
+                          : bank.Find(id) == null ? "소리 목록의 music에 이 곡이 없다"
+                          : "소리 목록에 곡은 있는데 clip이 비어 있다";
+            Debug.LogWarning($"[소리] 배경음악 {id}을(를) 못 틀었다 — {reason}.", this);
+        }
 
         currentMusic = entry != null ? id : MusicId.None;
         currentMusicVolume = entry != null ? entry.volume : 0f;
