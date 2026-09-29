@@ -2548,3 +2548,20 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
   - 옮겨도 안전한 이유: 런타임의 `UnityEditor` 사용은 전부 `#if UNITY_EDITOR` 안, `SerializeReference`·어셈블리 이름 리플렉션 없음 →
     씬·프리팹은 스크립트 GUID로 붙어 있어 그대로다. TMP 예제 스크립트만 Assembly-CSharp에 남는다.
 - 남은 것: 유니티에서 컴파일 확인 → 테스트 3종(유물 재계산·방 순환·보스 페이즈 전환) → 처음~재시작 루프 점검.
+
+## 2026-09-28 — 핵심 테스트 3종 (포트폴리오 1단계)
+
+- **테스트 어셈블리** `PathOfAsh.Tests.EditMode`(Assets/Tests/EditMode, 편집기 전용, NUnit) — EditMode라 플레이 모드·씬 없이 몇 초 안에 끝난다.
+- **유물 재계산**(`RelicInventoryTests`, 4개) — 게임 코드 수정 없음. 빈 오브젝트에 Health·SkillController·RelicInventory만 붙이고,
+  EditMode에서 Awake가 안 도니 참조와 테스트용 유물 값은 SerializedObject로 넣는다(인스펙터와 같은 길, 게임 코드에 테스트 입구 없음).
+  끼웠다 빼기 10번에도 최대 체력이 안 쌓임 / 쿨타임 12%×2 = 0.7744, 다 빼면 정확히 1 / 보관함 유물은 효과 없음 / 보스 열쇠는 전용 칸·능력치 불변.
+- **방 순환**(`RoomRouteTests`, 10개) — `RoomSequenceController`의 판단을 새 `RoomRoute`(정적 클래스)로 옮김: `ForExit`(문을 나가면 어디로),
+  `NextIndex`(마지막 다음은 첫 방), `FindNextValid`(빈 칸 건너뛰기, 한 바퀴만). 컨트롤러는 결과대로 실행만 하고 기존 주석은 그대로 뒀다.
+- **보스 페이즈 전환**(`BossPhaseGateTests`, 11개) — `EnemyBoss.OnDamaged`의 판단(죽음 → 전환 → 의식)을 새 `BossPhaseGate.Decide`로 옮김.
+  예전 버그 둘(죽이는 한 대가 전환을 켬, 신호 유실로 전환 두 번)을 다시 막는다.
+- **확인**: 세 어셈블리를 각 asmdef 참조만 남겨 오프라인 컴파일 — 오류 0·경고 0. 유니티 Test Runner(EditMode) 25개 모두 통과(09-28 사용자 확인).
+- **보고만(안 고침)**: 실제 비율 0.7·0.35는 2진수로 딱 떨어지지 않아, 정확히 경계(예: 체력 90의 63)에서 켜지는지가 부동소수점 계산
+  방식에 달릴 수 있다. 테스트는 이 흔들림을 피하려고 0.75·0.25로 규칙만 본다. 게임에는 한 칸 차이라 영향이 거의 없다.
+- **폰트 가드 첫 저장(09-28 밤)**: 글자뿐 아니라 합자·커닝 표(`m_LigatureSubstitutionRecords`·`m_GlyphPairAdjustmentRecords`)까지 비워져
+  커밋 판(104KB, 표가 남아 있던 변환 결과)과 한 번 달라졌다(−3582줄, 6KB). 동적 폰트는 글자를 구울 때 표도 다시 채우므로 문제없고,
+  이 빈 상태로 한 번 커밋하면 그 뒤로는 저장해도 같은 파일이 나온다.
