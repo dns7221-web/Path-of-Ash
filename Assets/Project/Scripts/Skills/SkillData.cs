@@ -123,6 +123,18 @@ public abstract class SkillData : ScriptableObject
     [Tooltip("이펙트가 스스로 사라지지 않을 때 강제로 지우기까지의 시간(초).")]
     [SerializeField, Min(0.1f)] private float effectLifetime = 1f;
 
+    // 추가 생성(2026-09-29, 소리) — 시전할 때 낼 효과음. 기본은 소리 없음이라 값을 넣은 스킬만 소리가 난다.
+    // 스킬이 이름표만 들고 클립은 소리 목록(SoundBank)이 들고 있다 — 클립을 바꿀 때 스킬 에셋을 하나하나 열지 않게.
+    [Header("소리 (없어도 동작한다)")]
+    [Tooltip("시전이 확정되는 순간 낼 효과음 이름표. None이면 소리 없음. 클립은 소리 목록(SoundBank)에서 이 이름으로 찾는다.")]
+    [SerializeField] private SfxId castSfx = SfxId.None;
+
+    // 추가 생성(2026-09-29, 소리 2차) — 스킬이 실제로 터지는(판정이 들어가는) 순간 낼 효과음.
+    // 시전 소리와 따로 둔 이유: R처럼 힘을 모았다가 한참 뒤 터지는 스킬은 누를 때 폭발음을 내면 그림보다 소리가 먼저 난다.
+    // 언제 터지는지는 스킬 종류마다 달라서, 하위 클래스가 그 순간에 PlayImpactSound를 부른다(투사체는 맞았을 때).
+    [Tooltip("스킬이 터지는(판정이 들어가는) 순간 낼 효과음 이름표. 투사체 스킬은 맞았을 때 난다. None이면 소리 없음.")]
+    [SerializeField] private SfxId impactSfx = SfxId.None;
+
     public string DisplayName => displayName;
     public string Description => description;
 
@@ -137,6 +149,15 @@ public abstract class SkillData : ScriptableObject
 
     /// <summary>재 게이지를 가득 채워야 쓸 수 있는가.</summary>
     public bool RequiresFullAshGauge => requiresFullAshGauge;
+
+    /// <summary>추가 생성(2026-09-29, 소리) — 시전이 확정되는 순간 낼 효과음. None이면 소리 없음.</summary>
+    public SfxId CastSfx => castSfx;
+
+    /// <summary>추가 생성(2026-09-29, 소리 2차) — 스킬이 터지는 순간 낼 효과음. None이면 소리 없음.</summary>
+    public SfxId ImpactSfx => impactSfx;
+
+    /// <summary>추가 생성(2026-09-29, 소리 2차) — 하위 스킬이 판정을 넣는 바로 그 순간에 부른다. 소리가 없으면 아무 일도 없다.</summary>
+    protected void PlayImpactSound() => SoundPlayer.Play(impactSfx);
 
     /// <summary>
     /// 이펙트 프리팹. 하위 클래스가 직접 위치를 정해 만들 때 쓴다.

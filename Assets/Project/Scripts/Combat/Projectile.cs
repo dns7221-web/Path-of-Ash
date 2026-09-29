@@ -32,6 +32,9 @@ public class Projectile : MonoBehaviour
     [Tooltip("무언가를 맞혔을 때 화살촉 자리에 만들 이펙트. 비우면 아무것도 안 남긴다.")]
     [SerializeField] private GameObject impactEffectPrefab;
 
+    // 추가 생성(2026-09-29, 소리 2차) — 이번 발사에서 맞았을 때 낼 효과음. Launch가 매번 새로 넣는다.
+    private SfxId impactSfx;
+
     // 추가 생성(2026-09-19, 사수-3 화살 재 부서짐) — 사거리 끝에서 사라질 때 남길 이펙트.
     // 아무것도 못 맞힌 화살이 허공에서 그냥 꺼지면 "사라졌다"가 아니라 "안 보이게 됐다"로 읽힌다. 비우면 예전처럼 조용히 사라진다.
     [Tooltip("사거리 끝에서 사라질 때 화살촉 자리에 만들 이펙트. 비우면 아무것도 안 남긴다.")]
@@ -151,6 +154,9 @@ public class Projectile : MonoBehaviour
     /// </summary>
     private void OnHitLanded(Health target)
     {
+        // 추가 생성(2026-09-29, 소리 2차) — 쏜 스킬이 넘겨준 소리를 낸다. 이펙트가 없어도 소리는 나야 해서 아래 검사보다 앞에 둔다.
+        SoundPlayer.Play(impactSfx);
+
         if (impactEffectPrefab == null) return;
 
         // 수정(2026-09-17) — transform.position → VisualPosition. 그림을 띄운 화살(사수)은 보이는 촉 자리에서 터져야 한다.
@@ -165,8 +171,13 @@ public class Projectile : MonoBehaviour
     /// 히트박스를 여기서 켜는 이유: 프리팹 상태에서는 꺼져 있어야 한다. 켜진 채로 생성되면
     /// 생성 위치에 겹쳐 있던 적이 화살이 날아가기도 전에 맞는다.
     /// </summary>
-    public void Launch(Vector2 launchDirection, int damage)
+    /// <param name="impactSfx">추가 생성(2026-09-29, 소리 2차) — 맞았을 때 낼 효과음. 적(사수)이 쏘는 화살처럼 넘기지 않으면 소리가 없다
+    /// (플레이어가 맞는 소리는 CombatSounds가 따로 낸다). 풀에서 다시 꺼낼 때마다 새로 받으므로 지난 소리가 남지 않는다.</param>
+    public void Launch(Vector2 launchDirection, int damage, SfxId impactSfx = SfxId.None)
     {
+        // 추가 생성(2026-09-29, 소리 2차)
+        this.impactSfx = impactSfx;
+
         direction = launchDirection.sqrMagnitude > 0.0001f
             ? launchDirection.normalized
             : Vector2.right;
