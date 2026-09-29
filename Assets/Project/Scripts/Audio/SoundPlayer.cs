@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -14,6 +15,10 @@ using UnityEngine.SceneManagement;
 /// 손으로 만들어야 하는데, 효과음·배경음 두 묶음만 조절하는 데는 곱셈으로 충분하다. 들리는 결과도 같다 —
 /// <see cref="GameSettings"/>가 믹서에 넣던 dB(20·log10)는 진폭에 슬라이더 값을 곱한 것과 같다.
 /// 마스터 볼륨은 GameSettings가 AudioListener로 이미 적용한다.
+///
+/// 수정(2026-09-29, 믹서) — 믹서 에셋(Resources/GameAudioMixer)을 손으로 만들어 두면 그쪽을 쓴다.
+/// AudioSource를 믹서의 BGM·SFX 그룹에 물리고(<see cref="RouteToMixer"/>) 위 곱셈은 끈다(<see cref="BgmScale"/>·<see cref="SfxScale"/>).
+/// 둘 다 하면 슬라이더 절반에서 소리가 1/4로 줄기 때문이다. 믹서가 없거나 그룹 이름이 다르면 예전 곱셈 경로로 돈다.
 ///
 /// <b>효과음 겹침을 막는다.</b> 같은 효과음은 최소 간격 안에 다시 내지 않고, 동시에 날 수 있는 개수도 제한한다.
 /// 광역기가 적 다섯을 한 프레임에 때리면 같은 소리가 다섯 겹으로 커져 귀가 아프고 다른 소리를 덮는다.
@@ -40,6 +45,21 @@ public class SoundPlayer : MonoBehaviour
     private MusicId currentMusic = MusicId.None;
     private float currentMusicVolume;     // 목록에 적힌 곡 볼륨(설정 볼륨을 곱하기 전)
     private Coroutine fadeRoutine;
+
+    // 추가 생성(2026-09-29, 믹서) — 믹서 그룹에 물렸는가. 물렸으면 볼륨 조절은 믹서가 맡는다.
+    private bool mixerRouted;
+
+    // 추가 생성(2026-09-29, 믹서) — 믹서에서 찾을 그룹 이름. 믹서 창에서 그룹 이름을 이것과 똑같이 짓는다.
+    private const string BgmGroupName = "BGM";
+    private const string SfxGroupName = "SFX";
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 믹서) — AudioSource 볼륨에 곱할 설정값. 믹서에 물렸으면 믹서가 dB로 줄이므로 1이다.
+    /// </summary>
+    private float BgmScale => mixerRouted ? 1f : GameSettings.BgmVolume;
+
+    /// <summary>추가 생성(2026-09-29, 믹서) — 효과음 쪽. 이유는 <see cref="BgmScale"/>과 같다.</summary>
+    private float SfxScale => mixerRouted ? 1f : GameSettings.SfxVolume;
 
     // ── 부르는 쪽 ─────────────────────────────────────────────────────────
 
@@ -119,6 +139,9 @@ public class SoundPlayer : MonoBehaviour
 
         musicSources = new[] { CreateSource(true), CreateSource(true) };
 
+        // 추가 생성(2026-09-29, 믹서) — 믹서가 있으면 방금 만든 자리들을 그룹에 물린다.
+        mixerRouted = RouteToMixer(GameSettings.Mixer);
+
         GameSettings.Changed += OnSettingsChanged;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -130,6 +153,45 @@ public class SoundPlayer : MonoBehaviour
         GameSettings.Changed -= OnSettingsChanged;
         SceneManager.sceneLoaded -= OnSceneLoaded;
         instance = null;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 믹서) — 효과음 자리는 SFX 그룹, 배경음 자리는 BGM 그룹으로 보낸다.
+    ///
+    /// AudioSource.outputAudioMixerGroup에 그룹을 넣으면 그 소리는 믹서를 거쳐 나간다. 그러면 GameSettings가
+    /// 믹서의 노출 파라미터(BgmVolume·SfxVolume)를 바꾸는 것만으로 묶음 전체의 볼륨이 바뀐다.
+    /// 나중에 BGM 그룹에 로우패스(먹먹하게)나 덕킹(효과음이 날 때 음악 줄이기)을 걸 때도 코드는 그대로다.
+    /// </summary>
+    /// <returns>두 그룹을 다 찾아 물렸으면 true. 하나라도 없으면 아무것도 안 바꾸고 false(곱셈 경로 유지).</returns>
+    private bool RouteToMixer(AudioMixer mixer)
+    {
+        if (mixer == null) return false;
+
+        AudioMixerGroup bgmGroup = FindGroup(mixer, BgmGroupName);
+        AudioMixerGroup sfxGroup = FindGroup(mixer, SfxGroupName);
+        if (bgmGroup == null || sfxGroup == null)
+        {
+            // 절반만 물리면 한쪽은 믹서, 한쪽은 곱셈이 돼서 슬라이더마다 동작이 달라진다. 둘 다 있을 때만 쓴다.
+            Debug.LogWarning($"[소리] 믹서에 '{BgmGroupName}'·'{SfxGroupName}' 그룹이 둘 다 있어야 한다. " +
+                             "믹서 없이(볼륨 곱셈으로) 계속한다.", this);
+            return false;
+        }
+
+        foreach (AudioSource voice in voices) voice.outputAudioMixerGroup = sfxGroup;
+        foreach (AudioSource music in musicSources) music.outputAudioMixerGroup = bgmGroup;
+        return true;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 믹서) — 이름이 정확히 같은 그룹을 찾는다.
+    /// FindMatchingGroups는 경로 일부로 찾아서 "SFX"로 "SFX_UI" 같은 것도 걸리므로 이름을 한 번 더 비교한다.
+    /// </summary>
+    private static AudioMixerGroup FindGroup(AudioMixer mixer, string groupName)
+    {
+        foreach (AudioMixerGroup group in mixer.FindMatchingGroups(groupName))
+            if (group.name == groupName) return group;
+
+        return null;
     }
 
     /// <summary>재생 자리 하나를 만든다. 전부 2D다 — 카메라가 방 하나를 다 비추는 게임이라 소리 위치를 따로 두지 않는다.</summary>
@@ -163,7 +225,7 @@ public class SoundPlayer : MonoBehaviour
         int voice = PickVoice();
         AudioSource source = voices[voice];
         source.clip = clip;
-        source.volume = entry.volume * GameSettings.SfxVolume;
+        source.volume = entry.volume * SfxScale;   // 수정(2026-09-29, 믹서) — 믹서가 있으면 곱하지 않는다
         source.pitch = 1f + Random.Range(-entry.pitchJitter, entry.pitchJitter);
         source.Play();
 
@@ -243,7 +305,7 @@ public class SoundPlayer : MonoBehaviour
             from.volume = Mathf.Lerp(fromStart, 0f, u);
 
             // 목표 볼륨을 매 프레임 다시 읽는다 — 페이드 중에 설정 창에서 볼륨을 바꿔도 따라간다.
-            if (to != null) to.volume = Mathf.Lerp(0f, currentMusicVolume * GameSettings.BgmVolume, u);
+            if (to != null) to.volume = Mathf.Lerp(0f, currentMusicVolume * BgmScale, u);
             yield return null;
         }
 
@@ -251,7 +313,7 @@ public class SoundPlayer : MonoBehaviour
         from.Stop();
         from.clip = null;
 
-        if (to != null) to.volume = currentMusicVolume * GameSettings.BgmVolume;
+        if (to != null) to.volume = currentMusicVolume * BgmScale;
         fadeRoutine = null;
     }
 
@@ -263,7 +325,7 @@ public class SoundPlayer : MonoBehaviour
     {
         if (fadeRoutine != null || currentMusic == MusicId.None) return;
 
-        musicSources[activeMusic].volume = currentMusicVolume * GameSettings.BgmVolume;
+        musicSources[activeMusic].volume = currentMusicVolume * BgmScale;
     }
 
     /// <summary>씬이 열리면 그 씬에 정해 둔 곡으로 바꾼다(같은 곡이면 끊지 않고 이어진다).</summary>

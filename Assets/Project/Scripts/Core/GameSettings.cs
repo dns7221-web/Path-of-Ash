@@ -24,6 +24,9 @@ using UnityEngine.Audio;
 /// 마스터는 위 대체 경로(AudioListener)가 그대로 맡는다. <b>나중에 믹서를 넣으려면</b> SoundPlayer의 곱셈을 빼고
 /// AudioSource를 믹서 그룹에 물려야 한다 — 안 그러면 소리가 두 번 줄거나, 믹서가 있을 때 리스너를 1로 두는
 /// 아래 코드 때문에 마스터 슬라이더가 안 먹는다.
+///
+/// 수정(2026-09-29, 믹서) — 위 "나중에"를 했다. 믹서 에셋(Resources/GameAudioMixer)이 있으면 SoundPlayer가
+/// AudioSource를 BGM·SFX 그룹에 물리고 곱셈을 끈다(<see cref="Mixer"/>). 없으면 예전 곱셈 경로 그대로 동작한다.
 /// </summary>
 public static class GameSettings
 {
@@ -187,6 +190,23 @@ public static class GameSettings
 
     /// <summary>믹서 에셋이 연결돼 있는가. 설정 화면이 안내 문구를 띄울 때 쓴다.</summary>
     public static bool HasMixer => mixer != null;
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 믹서) — 불러온 믹서 에셋. 없으면 null.
+    /// <see cref="SoundPlayer"/>가 자기 AudioSource를 이 믹서의 BGM·SFX 그룹에 물릴 때 쓴다.
+    ///
+    /// 필드를 그대로 내주지 않고 EnsureLoaded를 거치는 이유: SoundPlayer와 이 클래스의 Boot는 둘 다
+    /// BeforeSceneLoad라 어느 쪽이 먼저 불릴지 유니티가 정해 주지 않는다. SoundPlayer가 먼저 불리면
+    /// 아직 안 읽은 상태라 null을 받게 되므로, 여기서 필요할 때 읽는다.
+    /// </summary>
+    public static AudioMixer Mixer
+    {
+        get
+        {
+            EnsureLoaded();
+            return mixer;
+        }
+    }
 
     // ── 불러오기와 적용 ───────────────────────────────────────────────────
 
