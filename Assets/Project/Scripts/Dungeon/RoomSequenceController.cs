@@ -214,11 +214,22 @@ public class RoomSequenceController : MonoBehaviour
     {
         if (currentRoom == null || currentRoom != room) return;
 
+        // 추가 생성(2026-09-28, 테스트) — 어디로 갈지는 RoomRoute.ForExit가 정한다. 아래 세 갈래의 조건을 그대로 옮긴 것이고,
+        // 여기서는 결과대로 실행만 한다(방 끄기·보스 방 열기·판 끝내기). 규칙은 RoomRouteTests가 지킨다.
+        // 각 갈래의 이유는 원래 자리의 주석에 그대로 남겨 둔다.
+        RoomRoute.ExitDestination destination = RoomRoute.ForExit(
+            isTutorial: room == tutorialRoom,
+            isBossRoom: room == bossRoom,
+            bossClearEndsRun: bossClearEndsRun,
+            hasBossRoom: bossRoom != null,
+            bossGateOpen: room.IsBossGateOpen);
+
         // 추가 생성 — 튜토리얼을 나가면 던전 첫 방부터 시작한다.
         //
         // 튜토리얼은 rooms 배열 밖에 있어서 순환에 끼지 않는다. 그래서 한 번 나가면
         // 이 판에서 다시 나오지 않는다 — 무한 순환 중에 튜토리얼이 또 나오면 흐름이 끊긴다.
-        if (room == tutorialRoom)
+        // 수정(2026-09-28) — 조건 room == tutorialRoom을 RoomRoute의 결과로 바꿨다(뜻은 같다).
+        if (destination == RoomRoute.ExitDestination.FirstDungeonRoom)
         {
             tutorialRoom.gameObject.SetActive(false);
 
@@ -238,7 +249,8 @@ public class RoomSequenceController : MonoBehaviour
         // 여기가 이 게임의 유일한 승리 조건이다. 지금까지 결과 화면으로 가는 길은 사망뿐이었다.
         // 보스 방 문은 클리어 유물을 주워야만 열리므로, 이 지점에 온 것 자체가
         // "보스를 잡고 전리품을 챙겨 제 발로 걸어 나왔다"는 뜻이다.
-        if (room == bossRoom && bossClearEndsRun)
+        // 수정(2026-09-28) — 조건 room == bossRoom && bossClearEndsRun을 RoomRoute의 결과로 바꿨다(뜻은 같다).
+        if (destination == RoomRoute.ExitDestination.EndRun)
         {
             // 수정(2026-09-26, 클리어 연출) — 방을 끄고 곧바로 판을 끝내던 것을, 클리어 연출을 튼 뒤 끝내도록 바꿨다.
             // 방은 끄지 않는다 — 연출 동안 플레이어가 보스 방 문 앞에 서 있어야 한다. 결과 화면으로 넘어가면 씬째 사라진다.
@@ -265,7 +277,8 @@ public class RoomSequenceController : MonoBehaviour
         //
         // 문 상태를 여기서 다시 판단하지 않고 방에게 묻는 이유: 문을 연 것은 방이다.
         // 두 곳에서 같은 조건을 각자 판단하면 반드시 어긋난다.
-        bool toBoss = bossRoom != null && room.IsBossGateOpen;
+        // 수정(2026-09-28) — bossRoom != null && room.IsBossGateOpen을 RoomRoute의 결과로 바꿨다(뜻은 같다).
+        bool toBoss = destination == RoomRoute.ExitDestination.BossRoom;
 
         currentRoom.gameObject.SetActive(false);
 
@@ -325,7 +338,9 @@ public class RoomSequenceController : MonoBehaviour
             return;
         }
 
-        ActivateRoom((currentRoomIndex + 1) % rooms.Length);
+        // 수정(2026-09-28, 테스트) — (currentRoomIndex + 1) % rooms.Length를 RoomRoute.NextIndex로 옮겼다(같은 식).
+        // "마지막 방 다음은 첫 방"을 RoomRouteTests가 지킨다.
+        ActivateRoom(RoomRoute.NextIndex(currentRoomIndex, rooms.Length));
     }
 
 
@@ -439,22 +454,20 @@ public class RoomSequenceController : MonoBehaviour
     /// <param name="roomIndex">시작 위치. 실제로 찾은 방의 인덱스로 갱신된다.</param>
     private RoomController FindNextValidRoom(ref int roomIndex)
     {
-        for (int step = 0; step < rooms.Length; step++)
+        // 수정(2026-09-28, 테스트) — 한 바퀴만 돌며 빈 칸을 건너뛰는 규칙을 RoomRoute.FindNextValid로 옮겼다(같은 동작).
+        // 빈 칸 경고는 방 배열을 아는 이쪽에서 그대로 찍는다. "빈 칸 건너뛰기·전부 비면 멈춤"은 RoomRouteTests가 지킨다.
+        int found = RoomRoute.FindNextValid(roomIndex, rooms.Length, candidateIndex =>
         {
-            int candidateIndex = (roomIndex + step) % rooms.Length;
-            RoomController candidate = rooms[candidateIndex];
+            if (rooms[candidateIndex] != null) return true;
 
-            if (candidate == null)
-            {
-                Debug.LogWarning($"[방 진행] {candidateIndex + 1}번 칸의 방 참조가 비어 있다 — 건너뛴다.", this);
-                continue;
-            }
+            Debug.LogWarning($"[방 진행] {candidateIndex + 1}번 칸의 방 참조가 비어 있다 — 건너뛴다.", this);
+            return false;
+        });
 
-            roomIndex = candidateIndex;
-            return candidate;
-        }
+        if (found < 0) return null;
 
-        return null;
+        roomIndex = found;
+        return rooms[found];
     }
 
     /// <summary>

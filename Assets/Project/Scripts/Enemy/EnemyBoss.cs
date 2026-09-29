@@ -1200,6 +1200,16 @@ public class EnemyBoss : MonoBehaviour
             hitShards.Play();
         }
 
+        // 추가 생성(2026-09-28, 테스트) — 아래 세 판단(죽음 → 전환 → 의식)은 BossPhaseGate.Decide로 옮겼다.
+        // 순서와 조건은 그대로이고, 여기서는 결과대로 실행만 한다(코루틴 멈추기·연출 시작). 규칙은 BossPhaseGateTests가 지킨다.
+        // 각 판단의 이유(실제로 났던 버그)는 원래 자리의 주석에 그대로 남겨 둔다.
+        BossPhaseGate.Step phaseStep = BossPhaseGate.Decide(
+            current, max, phase2HealthRatio, crownRitualHealthRatio,
+            canTransition: phase2Controller != null,
+            transitionStarted: transitionStarted,
+            isPhase2: isPhase2,
+            ritualStarted: crownRitualStarted);
+
         // 수정(죽는 한 대가 페이즈 전환을 켜고 갔다) — 이 피해로 이미 죽었으면 여기서 끝낸다.
         //
         // Health는 Damaged → Changed → Died 순으로 알린다. 그래서 <b>죽인 한 대도 먼저
@@ -1214,7 +1224,8 @@ public class EnemyBoss : MonoBehaviour
         // 확인하려던 것을 망가뜨리는 셈이다.
         //
         // 죽음은 OnDied가 처리한다. 여기서 할 일이 없다.
-        if (current <= 0) return;
+        // 수정(2026-09-28) — 조건 current <= 0을 BossPhaseGate의 결과로 바꿨다(뜻은 같다).
+        if (phaseStep == BossPhaseGate.Step.Dead) return;
 
         // 절반이 되면 페이즈 전환. 공격 도중이어도 끼어든다 — 반쯤 진행된 패턴보다
         // 페이즈가 바뀌었다는 신호가 훨씬 중요하다.
@@ -1228,7 +1239,9 @@ public class EnemyBoss : MonoBehaviour
         //
         // 두 값의 뜻이 다르다. isPhase2는 "지금 2페이즈인가"이고 transitionStarted는
         // "전환을 한 번이라도 시작했는가"다. <b>다시 하지 않을 이유는 뒤쪽</b>이다.
-        if (!transitionStarted && phase2Controller != null && current <= max * phase2HealthRatio)
+        // 수정(2026-09-28) — 조건 !transitionStarted && phase2Controller != null && current <= max * phase2HealthRatio를
+        // BossPhaseGate의 결과로 바꿨다(뜻은 같다).
+        if (phaseStep == BossPhaseGate.Step.StartTransition)
         {
             transitionStarted = true;
 
@@ -1245,7 +1258,9 @@ public class EnemyBoss : MonoBehaviour
         //
         // 페이즈 전환처럼 공격 도중이어도 끼어든다. 의식은 판의 절정이라 반쯤 진행된 패턴보다 중요하다.
         // 시전 중이던 창은 끊고(조준선·시전 바가 남지 않게) 코루틴을 전부 멈춘다.
-        if (isPhase2 && !crownRitualStarted && current <= max * crownRitualHealthRatio)
+        // 수정(2026-09-28) — 조건 isPhase2 && !crownRitualStarted && current <= max * crownRitualHealthRatio를
+        // BossPhaseGate의 결과로 바꿨다(뜻은 같다).
+        if (phaseStep == BossPhaseGate.Step.StartRitual)
         {
             crownRitualStarted = true;
             CancelCast();
