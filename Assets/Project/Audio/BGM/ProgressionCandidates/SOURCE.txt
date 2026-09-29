@@ -1,0 +1,64 @@
+튜토리얼 / 본 던전 음악 후보 — 재의 길 (Path of Ash)
+Downloaded and license pages checked: 2026-09-29
+Status: Candidate audio files only. No scene or SoundBank assignment has been made.
+Selection basis: Creator descriptions and project art direction, not an auditory review.
+License on all four original creator pages: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+CC0 permits commercial use, copying, modification and redistribution without mandatory attribution.
+Voluntary credits retain the title, author and source below.
+Verification: All four game-ready Ogg files fully decoded successfully with FFmpeg.
+
+tutorial_01_the_one_who_stands_distant.ogg
+Title: The one who stands Distant
+Author: Centurion_of_war
+Source: https://opengameart.org/content/the-one-who-stands-distant
+Download URL: https://opengameart.org/sites/default/files/the_one_who_stands_distant_0.ogg
+Intended audition: Tutorial — recommended first audition; creator describes it as sad, lonely, mysterious and tags it relaxed/loopable.
+Duration: 51.200000 seconds
+Loop information: Creator tags: loopable, loop.
+Processing: Original Ogg audio preserved unchanged; local filename renamed for easy selection.
+Voluntary credit: The one who stands Distant by Centurion_of_war, via OpenGameArt.org (CC0).
+
+tutorial_02_vampires_piano.ogg
+Title: Vampire's Piano
+Author: TAD
+Source: https://opengameart.org/content/vampires-piano
+Download URL: https://opengameart.org/sites/default/files/vampires_piano_1.wav
+Intended audition: Tutorial alternative — sad piano for dark fantasy.
+Duration: 89.379297 seconds
+Loop information: Creator explicitly states Loop-able.
+Processing: Converted original vampires_piano.wav to Ogg Vorbis with FFmpeg (-c:a libvorbis -q:a 7), preserving duration, sample rate and stereo. No fade, trimming or volume change. Original cached locally under _ArtReview/20260929-progression-music/originals/.
+Voluntary credit: Vampire's Piano by TAD, via OpenGameArt.org (CC0).
+
+dungeon_01_inside_the_overlords_domain.ogg
+Title: Inside the Overlords Domain
+Author: KarateStudios / Karate Studios
+Source: https://opengameart.org/content/inside-the-overlords-domain
+Download URL: https://opengameart.org/sites/default/files/Creepy%20Dungeon.flac
+Intended audition: Dungeon — recommended first audition; creator describes a castle-themed loop with a persistent bass note intended to create stress/urgency.
+Duration: 41.550000 seconds
+Loop information: Creator explicitly describes a loop.
+Processing: Converted original creepy_dungeon.flac to Ogg Vorbis with FFmpeg (-c:a libvorbis -q:a 7), preserving duration, sample rate and stereo. No fade, trimming or volume change. Original cached locally under _ArtReview/20260929-progression-music/originals/.
+Voluntary credit: Inside the Overlords Domain by KarateStudios / Karate Studios, via OpenGameArt.org (CC0).
+
+dungeon_02_dungeon_ambience.ogg
+Title: Dungeon Ambience
+Author: yd
+Source: https://opengameart.org/content/dungeon-ambience
+Download URL: https://opengameart.org/sites/default/files/dungeon002_0.ogg
+Intended audition: Dungeon alternative — creator describes background music for exploring a dark dungeon.
+Duration: 206.000181 seconds
+Loop information: Creator description does not explicitly guarantee a seamless loop; listener comments describe looping use. Audition the join before final assignment.
+Processing: Original Ogg audio preserved unchanged; local filename renamed for easy selection.
+Voluntary credit: Dungeon Ambience by yd, via OpenGameArt.org (CC0).
+
+현재 프로젝트에서 확인한 전환 구조:
+- RoomSequenceController.Start에서 튜토리얼이 있으면 EnterRoom(tutorialRoom)으로 시작한다.
+- 튜토리얼 출구는 FirstDungeonRoom 분기를 통해 ActivateRoom(0)으로 이동한다.
+- 튜토리얼과 본 던전은 서로 다른 씬이 아니라 같은 Game 씬의 방이다.
+- 따라서 씬 음악 설정만으로 두 구간을 구분할 수 없고, 방 입장 시 음악을 지정해야 한다.
+- SoundPlayer.PlayMusic에는 교차 페이드가 있고, 같은 MusicId 요청은 곡을 다시 시작하지 않는다.
+- 후속 연결 시 MusicId에 Tutorial / Dungeon 등을 기존 숫자를 바꾸지 않고 추가한 후
+  방 입장 지점과 SoundBank에 선택한 곡을 연결한다.
+- 보스 음악은 BossEncounter에서 처리하고 있어 일반 던전 곡으로 다시 덮지 않도록 구분한다.
+- 이번 작업은 음원 후보 준비와 구조 확인까지만 수행했다.

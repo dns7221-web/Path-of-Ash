@@ -1,0 +1,49 @@
+Path of Ash - Quiet tension music candidates
+Retrieved: 2026-09-29
+
+Selection intent
+Tutorial: calm foreground with a subtle sense of unease; avoid revealing the
+tower/dungeon journey through an overt adventure or battle theme.
+Dungeon: more noticeable tension while remaining restrained background music.
+Boss music is outside this selection.
+These are audition candidates selected from creator descriptions, not an
+auditory review. No SoundBank or playback code was changed for this selection.
+
+1. tutorial_safe_room.ogg
+Title: Save sound (suspense)
+Author: allen yatsura
+Source: https://opengameart.org/content/save-sound-suspense
+Download: https://opengameart.org/sites/default/files/safe_room_wav_and_mp3.zip
+Original archive entry: safe_room_soundtrack.wav
+License: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Creator explicitly permits free and commercial projects and modifications;
+credit is not required but is appreciated.
+Creator describes calm music for rescue rooms and calm or suspenseful spaces.
+Processing: original WAV converted to Ogg Vorbis with FFmpeg, quality 7.
+No trimming, gain changes, fades, or other arrangement edits were applied.
+Duration: 75.468821 seconds. Stereo, 44100 Hz.
+Loop status: creator page does not explicitly guarantee a seamless loop;
+audition the repeat boundary before wiring it into looping playback.
+
+2. dungeon_dark_place.ogg
+Title: Dark Place (loop)
+Author: SkyleTheFrench
+Source: https://opengameart.org/content/dark-place-loop
+Download: https://opengameart.org/sites/default/files/dark_place.ogg
+License: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Creator states attribution is not required but is appreciated.
+Creator describes the track as dark ambient loop music.
+Processing: original OGG downloaded unchanged; only its local name differs.
+Duration: 54.857143 seconds. Stereo, 44100 Hz.
+Loop status: explicitly described as a loop by its creator; no auditory
+verification of the seam has been performed here.
+
+Technical verification
+Both files passed ffprobe and a complete FFmpeg decode without errors.
+Unity AudioImporter settings copied from the existing DarkCavernAmbient BGM
+template with fresh asset GUIDs where Unity had not already created metadata.
+Licenses and credits are retained here even though CC0 does not require credit.
+Original tutorial ZIP and WAV are preserved locally under:
+_ArtReview/20260929-quiet-tension-music/originals/
