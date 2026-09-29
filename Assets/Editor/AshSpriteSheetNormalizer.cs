@@ -133,8 +133,8 @@ public static class AshSpriteSheetNormalizer
         // (실측 로그에 "세로 0~216"으로 찍혀서 알았다). 여유 2px은 슬라이스 경계용이다.
         (AshKingFolder, "Raw/PlayerLike/ash-king-idle-raw.png",
                         "ash-king-idle.png", 6, Mode.Character, 200),
-        (AshKingFolder, "Raw/PlayerLike/ash-king-walk-raw.png",
-                        "ash-king-walk.png", 6, Mode.Character, 200),
+        // 추가 생성(2026-09-29) — 1페이즈 걷기는 Raw/WalkCycle20260929 원본과
+        // Tools/PrepareBossWalkSheet.ps1로 패킹한다. 예전 원본으로 새 보행 모션을 덮지 않게 제외한다.
         (AshKingFolder, "Raw/PlayerLike/ash-king-slam-raw.png",
                         "ash-king-slam.png", 6, Mode.Character, 214),
         (AshKingFolder, "Raw/PlayerLike/ash-king-ember-wave-raw.png",

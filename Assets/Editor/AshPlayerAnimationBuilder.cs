@@ -238,11 +238,25 @@ public static class AshPlayerAnimationBuilder
             value = keys[segment.FrameCount - 1].value,
         };
 
+        // 추가 생성(2026-09-29, 1페이즈 걷기 재제작) — 이 이동 루프는 여섯 장을 똑같이 1/8초씩 쓴다.
+        // 기존 끝 키(0.75초)까지 넣으면 스프라이트 마지막 샘플 구간이 더해져 길이가 0.875초가 되고,
+        // 마지막 발 자세만 두 배 오래 멈춘다. 이 클립만 중복 키를 빼고 아래에서 끝 시간을 명시한다.
+        // 다른 액션의 길이는 공격 판정과 연결되어 있으므로 이번 이동 모션 수정에 포함하지 않는다.
+        bool isPhase1Walk = set.ControllerPath == AshPlayerSpriteSheets.AshKingPhase1.ControllerPath
+                            && segment.Name == "walk";
+        if (isPhase1Walk) System.Array.Resize(ref keys, segment.FrameCount);
+
         AnimationUtility.SetObjectReferenceCurve(clip, binding, keys);
 
         // 루프 여부는 커브가 아니라 클립 설정에 들어 있어서 따로 건드려야 한다.
         var settings = AnimationUtility.GetAnimationClipSettings(clip);
         settings.loopTime = segment.Loop;
+        // 추가 생성 — 에셋에 남아 있는 옛 0.875초 설정도 재생성 시 함께 고친다.
+        if (isPhase1Walk)
+        {
+            settings.startTime = 0f;
+            settings.stopTime = segment.FrameCount / (float)segment.Fps;
+        }
         AnimationUtility.SetAnimationClipSettings(clip, settings);
 
         if (isNew) AssetDatabase.CreateAsset(clip, clipPath);

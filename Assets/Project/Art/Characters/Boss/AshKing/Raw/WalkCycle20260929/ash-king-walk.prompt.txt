@@ -1,0 +1,28 @@
+Generation tool: built-in image_gen (transparent_background=true)
+
+Base generation prompt:
+Use case: identity-preserve. Create a NEW production walk animation sprite sheet for the EXACT armored boss in the attached reference. The reference is for APPEARANCE ONLY, NOT POSE.
+Preserve the dark iron Ash King design: jagged tall black crown helmet, slit orange eyes, layered massive black/gray shoulder armor, restrained orange ember cracks, full armored boots, black ragged cape, huge straight thick chipped gray greatsword with orange cracks. Preserve the detailed pixel-textured hand-painted game rendering and body proportions. Do not turn him into a skeleton or redesign him.
+
+PRIMARY MOTION REQUIREMENT: A REAL CYCLIC WALK, alternating which leg is ahead. His feet MUST EXCHANGE fore/aft positions during the six poses. Frame 1 and frame 4 MUST BE OPPOSITE STRIDES. Do not make six similar standing poses or six poses with the same boot forward. Both legs should be clearly readable beneath the waist.
+Output 1536x1024 transparent PNG. EXACTLY 6 sprites in a REGULAR 3 columns x 2 rows contact sheet, 512x512 cells, sequential frames left-to-right/top-to-bottom. One whole body per cell, same scale and local center. Local crown top y=65; floor contact y=445. No labels or gridlines.
+Fixed 3/4 SIDE view facing screen RIGHT, the face and chest still slightly visible, with the NEAR hip and shoulder identifiable. All 6 frames have the exact same camera and heading. Continuous slow deliberate armored forward walk IN PLACE, hips barely bobbing, slight constant forward lean. Each leg independently bends at hip/knee/ankle, articulated not sliding rigidly. Feet roll heel-to-toe and swing feet leave the floor. No giant high kicks.
+Frame 1 TOP LEFT: NEAR LEG FORWARD: nearest thigh angles FORWARD down-right, nearest boot at local x=335 on ground. Far leg angles back down-left, far boot at x=220 rear toe touching. Wide but plausible stride.
+Frame 2 TOP CENTER: NEAR LEG SUPPORTS beneath the pelvis, grounded near boot at x=278. FAR LEG SWINGS THROUGH beside it, bent knee and boot lifted off ground; feet close together.
+Frame 3 TOP RIGHT: NEAR LEG PUSHES BACK, near boot behind pelvis x=220 with heel raised, FAR LEG swings forward, far boot x=324 raised slightly before heel strike.
+Frame 4 BOTTOM LEFT: FAR LEG FORWARD, far boot x=335 on ground. NEAR LEG BACK, nearest thigh angles BACK down-left, nearest boot x=215 rear toe touching. This is explicitly the OPPOSITE LEG CONFIGURATION from frame 1, not a copy.
+Frame 5 BOTTOM CENTER: FAR LEG SUPPORTS beneath pelvis, grounded far boot x=278. NEAR LEG swings through, bent knee, nearest boot lifted off ground; feet close together.
+Frame 6 BOTTOM RIGHT: FAR LEG PUSHES BACK, far boot x=220 rear heel raised. NEAR LEG swings forward, near boot x=324 slightly above ground before heel strike. Flows into frame 1.
+Hip position local x=270, torso remains consistently aligned. Continuous body volume, no shrinking/rotation between frames. All body parts connected.
+Keep the greatsword held in the same nearest hand near the waist through all frames. Carry its blade diagonally down-forward to the right with the blade tip lifted to y=380, well ABOVE the boots, so it NEVER conceals the footfalls. Sword rigid constant length and shape, not swinging as attack. The free armored arm counter-swings gently. Cape follows the body with modest cloth lag, no smoke/particles.
+No weapon floor impact, no shadow, no text, no frame numbers, no effects. Leave empty cell margins; don't crop cape or sword or crown. Truly transparent background, preserve alpha. Sprites only.
+
+Final correction prompt:
+Edit this six-frame armored king WALK sprite sheet. Preserve exact character, scale, style, camera, sword and grid. Fix only the bad leg animation. Top row and bottom row currently repeat the SAME step. They must be TWO OPPOSITE steps.
+TOP ROW remains a stride with the FAR leg forward and NEAR leg trailing.
+BOTTOM ROW must be rebuilt with the NEAR leg forward and FAR leg trailing:
+Bottom-left sprite: the nearest leg starts at the hip on SCREEN LEFT (beneath the sword hand), its thigh and shin angle FORWARD toward SCREEN RIGHT, with its large foreground boot planted ahead of the body on the right. The far leg starts at the hip on SCREEN RIGHT and angles BACK toward SCREEN LEFT with its boot behind. These legs overlap/cross in depth beneath the waist, the near thigh OVERLAPS the far thigh. THIS IS ESSENTIAL. Do NOT repeat the splayed legs from top left. The near knee must be on the right side of the waist, NOT on the left.
+Bottom-middle sprite: supporting FAR leg straight under the hip, NEAR thigh swings forward toward right, near knee bent, near boot off the floor and passing in front of the far leg. Keep the armor and leg volume identical to top row.
+Bottom-right sprite: NEAR leg extended forward toward right with raised boot ready for heel strike, FAR leg behind left with heel raised. Nearest leg passes IN FRONT of the other. Flow naturally back to the first frame.
+Keep all boots pointing screen RIGHT throughout, the body faces screen right in all six frames. No full character mirroring. No changing which hand holds the sword. Small natural up/down weight shift only. Feet should look like a human alternating legs, not sliding or repeatedly kicking the same leg.
+Same precisely equal 3-column by 2-row grid, 1536x1024 PNG with truly transparent alpha background. Keep upper body consistent and centered. No text, effects, shadows, floor or grid lines.
