@@ -102,6 +102,26 @@ public class Health : MonoBehaviour
     public event Action Died;
 
     /// <summary>
+    /// 추가 생성(2026-09-29, 소리) — 어느 Health든 실제로 맞았을 때 한 곳으로 알린다(인자: 맞은 쪽).
+    ///
+    /// 인스턴스 이벤트(<see cref="Damaged"/>)와 따로 둔 이유: 전투 효과음처럼 "누가 맞든" 들어야 하는 쪽은
+    /// 적이 생기고 풀로 돌아갈 때마다 구독을 걸고 풀 수 없다. 한 곳에서 듣고 대상을 보고 판단한다(<see cref="CombatSounds"/>).
+    /// 무적으로 막힌 공격은 여기까지 오지 않는다.
+    /// </summary>
+    public static event Action<Health> AnyDamaged;
+
+    /// <summary>추가 생성(2026-09-29, 소리) — 어느 Health든 죽었을 때 한 곳으로 알린다. 이유는 <see cref="AnyDamaged"/>와 같다.</summary>
+    public static event Action<Health> AnyDied;
+
+    /// <summary>추가 생성(2026-09-29) — 도메인 리로드를 끈 플레이 설정에서도 지난 플레이의 구독이 남지 않게 비운다.</summary>
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStaticEvents()
+    {
+        AnyDamaged = null;
+        AnyDied = null;
+    }
+
+    /// <summary>
     /// 추가 생성 — 마지막으로 맞은 방향(때린 쪽 → 나). 넉백을 어느 쪽으로 밀지에 쓴다.
     ///
     /// 방향만 기록하고 <b>넉백을 여기서 적용하지 않는 이유</b>: 밀려나는 방식이 대상마다 다르다.
@@ -224,8 +244,16 @@ public class Health : MonoBehaviour
         Damaged?.Invoke(Current, Max);
         Changed?.Invoke(Current, Max);
 
+        // 추가 생성(2026-09-29, 소리) — 한 곳으로도 알린다. 인스턴스 알림 뒤에 둬서, 맞은 쪽의 반응(움찔 등)이 먼저 돈다.
+        AnyDamaged?.Invoke(this);
+
         if (Current <= 0)
+        {
             Died?.Invoke();
+
+            // 추가 생성(2026-09-29, 소리)
+            AnyDied?.Invoke(this);
+        }
     }
 
     /// <summary>
@@ -247,6 +275,9 @@ public class Health : MonoBehaviour
         Current = 0;
         Changed?.Invoke(Current, Max);
         Died?.Invoke();
+
+        // 추가 생성(2026-09-29, 소리) — 스스로 끝난 죽음도 한 곳으로 알린다(맞은 게 아니라 AnyDamaged는 안 쏜다).
+        AnyDied?.Invoke(this);
     }
 
     /// <summary>
