@@ -9,8 +9,11 @@ param(
     [Parameter(Mandatory = $true)] [string]$OutputPath,
     [int]$TargetHeight = 200,
     [int]$GroundLine = 216,
-    # 추가 생성 — 교체 전 이동 시트의 왕관 중심 실측값. 새 그림으로 다시 측정하면 재실행 때 기준이 바뀐다.
-    [double]$HeadCenterX = 158.5
+    # 추가 생성 — 머리 중심을 둘 x 좌표. 원래 값은 옛 시트의 왕관 위치(158.5)였는데,
+    # 새 그림은 상체가 앞으로 숙여져 있어서 발 중심이 피벗(x=128)보다 24px(=1유닛, PPU 24)
+    # 오른쪽에 찍혔다. 그러면 idle↔walk 전환 때 1유닛, flipX로 돌아설 때 2유닛씩 몸이 튄다.
+    # 여섯 프레임의 발 중심 중앙값이 128이 되도록 24px 당긴 134.5를 쓴다.
+    [double]$HeadCenterX = 134.5
 )
 
 $ErrorActionPreference = 'Stop'
