@@ -147,6 +147,6 @@ MonoBehaviour:
   - sceneName: Title
     music: 3
   - sceneName: Game
-    music: 1
+    music: 0
   - sceneName: Result
     music: 0

@@ -108,13 +108,16 @@ public static class AshSoundBankBuilder
         (MusicId.Boss, BgmFolder + "HeavyDungeon/heavy_dungeon_bpm160.ogg", 0.35f),
         // 추가 생성(2026-09-29, 타이틀 음악) — 후보 셋 중 루프가 보장된 3번. 출처는 TitleCandidates/SOURCE.txt.
         (MusicId.Title, BgmFolder + "TitleCandidates/03_dark_shrine_loop.ogg", 0.35f),
+        // 추가 생성(2026-09-29, 방 음악) — Game 씬 안에서는 방에 들어갈 때 RoomSequenceController가 고른다.
+        (MusicId.Tutorial, BgmFolder + "QuietTensionCandidates/tutorial_safe_room.ogg", 0.35f),
+        (MusicId.Dungeon, BgmFolder + "QuietTensionCandidates/dungeon_dark_place.ogg", 0.35f),
     };
 
     /// <summary>씬별 곡 기본값. 결과 화면은 조용히 둔다.</summary>
     private static readonly (string scene, MusicId music)[] SceneDefaults =
     {
         ("Title", MusicId.Title),   // 수정(2026-09-29, 타이틀 음악) — Ambient → Title. 이미 적힌 씬은 빌더가 안 바꾸므로 SoundBank.asset도 같이 고쳤다.
-        ("Game", MusicId.Ambient),
+        ("Game", MusicId.None),   // 수정(2026-09-29, 방 음악) — Ambient → None. Game 안의 곡은 방이 정한다(RoomSequenceController).
         ("Result", MusicId.None),
     };
 

@@ -75,4 +75,10 @@ public enum MusicId
     /// 게임을 시작하면 곡이 바뀌며 "들어섰다"는 느낌이 나게 한다.
     /// </summary>
     Title = 3,
+
+    /// <summary>추가 생성(2026-09-29, 방 음악) — 튜토리얼 방(Safe Room). 싸움이 없는 방이라 조용한 곡.</summary>
+    Tutorial = 4,
+
+    /// <summary>추가 생성(2026-09-29, 방 음악) — 일반 던전 방(Dark Place). 튜토리얼을 나가면 이 곡으로 바뀐다.</summary>
+    Dungeon = 5,
 }
