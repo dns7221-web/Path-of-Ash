@@ -106,12 +106,14 @@ public static class AshSoundBankBuilder
     {
         (MusicId.Ambient, BgmFolder + "DarkCavernAmbient/dark_cavern_ambient_002.ogg", 0.35f),
         (MusicId.Boss, BgmFolder + "HeavyDungeon/heavy_dungeon_bpm160.ogg", 0.35f),
+        // 추가 생성(2026-09-29, 타이틀 음악) — 후보 셋 중 루프가 보장된 3번. 출처는 TitleCandidates/SOURCE.txt.
+        (MusicId.Title, BgmFolder + "TitleCandidates/03_dark_shrine_loop.ogg", 0.35f),
     };
 
     /// <summary>씬별 곡 기본값. 결과 화면은 조용히 둔다.</summary>
     private static readonly (string scene, MusicId music)[] SceneDefaults =
     {
-        ("Title", MusicId.Ambient),
+        ("Title", MusicId.Title),   // 수정(2026-09-29, 타이틀 음악) — Ambient → Title. 이미 적힌 씬은 빌더가 안 바꾸므로 SoundBank.asset도 같이 고쳤다.
         ("Game", MusicId.Ambient),
         ("Result", MusicId.None),
     };
