@@ -159,6 +159,11 @@ public class SoundPlayer : MonoBehaviour
     {
         if (bank == null) return;
 
+        // 추가 생성(2026-09-29, 방 음악) — 누가 이미 곡을 틀었으면 건드리지 않는다.
+        // Game 씬에서 바로 Play하면 RoomSequenceController.Start가 튜토리얼 곡을 틀 수 있는데, Start 순서는 정해져 있지 않아서
+        // 이 줄이 없으면 뒤이어 불린 여기가 씬 곡(None)으로 덮어 음악을 꺼 버린다.
+        if (currentMusic != MusicId.None) return;
+
         ChangeMusic(bank.MusicForScene(SceneManager.GetActiveScene().name), 1.5f);
     }
 

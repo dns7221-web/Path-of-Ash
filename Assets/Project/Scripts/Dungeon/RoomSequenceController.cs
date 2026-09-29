@@ -42,6 +42,18 @@ public class RoomSequenceController : MonoBehaviour
     [Tooltip("보스 방. 비우면 일반 방만 반복한다.")]
     [SerializeField] private RoomController bossRoom;
 
+    [Header("방별 배경음악")]
+    // 추가 생성(2026-09-29, 방 음악) — 튜토리얼과 던전은 같은 Game 씬 안의 "방"이라, 씬별 곡(SoundBank의 sceneMusic)으로는
+    // 나눌 수 없다. 그래서 방에 들어가는 순간(EnterRoom) 방 종류에 맞는 곡으로 바꾼다.
+    //
+    // 인스펙터 칸으로 둔 이유: 곡을 바꾸고 싶을 때 코드를 안 고치고 드롭다운만 바꾸면 된다.
+    // 씬에 이미 저장된 오브젝트라도 새 필드는 여기 적은 초기값으로 채워지므로 씬을 따로 손댈 필요가 없다.
+    [Tooltip("튜토리얼 방에 들어가면 틀 곡.")]
+    [SerializeField] private MusicId tutorialMusic = MusicId.Tutorial;
+
+    [Tooltip("일반 던전 방에 들어가면 틀 곡. 같은 곡이면 방을 옮겨도 끊기지 않고 이어진다.")]
+    [SerializeField] private MusicId dungeonMusic = MusicId.Dungeon;
+
 
     // 추가 생성 — 보스 방 문을 나가는 것이 이 게임의 승리 조건이다.
     //
@@ -443,6 +455,26 @@ public class RoomSequenceController : MonoBehaviour
 #endif
 
         Debug.Log($"[방 진행] {enteredRoomCount}번째 방 입장 — {room.name}", this);
+
+        // 추가 생성(2026-09-29, 방 음악) — 방 종류에 맞는 곡으로 바꾼다.
+        PlayRoomMusic(room);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 방 음악) — 들어간 방에 맞는 배경음악을 튼다.
+    /// <list type="bullet">
+    /// <item>튜토리얼 방 → <see cref="tutorialMusic"/></item>
+    /// <item>일반 던전 방 → <see cref="dungeonMusic"/>. 방마다 같은 곡이라 SoundPlayer가 "이미 그 곡"으로 보고 끊지 않는다.</item>
+    /// <item>보스 방 → <b>바꾸지 않는다.</b> 보스가 나타나는 순간 BossEncounter가 보스전 곡으로 바꾸므로,
+    /// 그 전까지는 던전 곡이 이어지다가 등장과 함께 전환되는 편이 연출상 자연스럽다.</item>
+    /// </list>
+    /// 곡 전환(교차 페이드)과 "같은 곡이면 무시"는 SoundPlayer가 이미 하므로 여기서는 무엇을 틀지만 정한다.
+    /// </summary>
+    private void PlayRoomMusic(RoomController room)
+    {
+        if (room == bossRoom) return;
+
+        SoundPlayer.PlayMusic(room == tutorialRoom ? tutorialMusic : dungeonMusic);
     }
 
     /// <summary>
