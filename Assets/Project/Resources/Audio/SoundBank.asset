@@ -143,6 +143,12 @@ MonoBehaviour:
   - id: 3
     clip: {fileID: 8300000, guid: 714473f9616644859404cbdc6f5211e3, type: 3}
     volume: 0.35
+  - id: 4
+    clip: {fileID: 8300000, guid: 9a369a9d62dd46729b48666a71aaf482, type: 3}
+    volume: 0.35
+  - id: 5
+    clip: {fileID: 8300000, guid: 48a2cb3c0dff4704b9cb5427a7057f76, type: 3}
+    volume: 0.35
   sceneMusic:
   - sceneName: Title
     music: 3
