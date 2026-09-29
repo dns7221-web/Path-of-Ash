@@ -448,7 +448,19 @@ public class EnemyBoss : MonoBehaviour
 
     [SerializeField] private LayerMask playerLayer;
 
+    // 추가 생성(2026-09-29, 소품 끼임) — 발 충돌체 크기. 몸통 캡슐(키의 90%)은 피격 판정 전용 트리거로 돌리고,
+    // 벽·소품·플레이어와 실제로 부딪히는 건 발밑 얇은 상자만 맡는다. 자세한 이유는 CreateFootCollider 주석.
+    [Header("발 충돌 (소품·벽과 부딪히는 부분)")]
+    [Tooltip("발 상자 폭 = 몸통 캡슐 폭 × 이 값. 캡슐 폭을 따라가야 2페이즈에서 몸이 줄 때 발도 같이 준다.")]
+    [SerializeField] private float footWidthRatio = 0.8f;
+
+    [Tooltip("발 상자 높이(유닛). 탑다운에서 '바닥에 닿은 면적'의 앞뒤 두께다. 소품 충돌체(높이 1~1.2)와 비슷하게 둔다.")]
+    [SerializeField] private float footHeight = 1.0f;
+
     private Rigidbody2D body;
+
+    // 추가 생성(2026-09-29, 소품 끼임) — 실제 물리 충돌을 맡는 발 상자.
+    private BoxCollider2D footCollider;
     private Health health;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -581,6 +593,9 @@ public class EnemyBoss : MonoBehaviour
 
         // 추가 생성 — 몸통 콜라이더. 없어도 동작하지만 2페이즈에서 몸이 안 줄어든다.
         bodyCollider = GetComponent<CapsuleCollider2D>();
+
+        // 추가 생성(2026-09-29, 소품 끼임) — 몸통은 피격 판정만, 부딪힘은 발이 맡도록 나눈다.
+        CreateFootCollider();
 
         // 추가 생성 — 전환 연출. 없으면 연출 없이 페이즈만 바뀐다(EnterPhase2 참고).
         transitionSequence = GetComponent<BossTransitionSequence>();
@@ -1513,6 +1528,60 @@ public class EnemyBoss : MonoBehaviour
 
         Vector2 size = bodyCollider.size;
         bodyCollider.size = new Vector2(size.x * phase2ColliderWidthScale, size.y);
+
+        // 추가 생성(2026-09-29, 소품 끼임) — 발 상자도 같은 배율로 줄인다. 몸만 줄고 발이 그대로면
+        // 2페이즈에서 "보이는 몸보다 넓은 발"로 소품 틈을 못 지나간다.
+        if (footCollider != null)
+        {
+            Vector2 foot = footCollider.size;
+            footCollider.size = new Vector2(foot.x * phase2ColliderWidthScale, foot.y);
+        }
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 소품 끼임) — 몸통 캡슐을 피격 전용 트리거로 바꾸고, 발밑에 물리 충돌용 상자를 만든다.
+    ///
+    /// <b>왜 끼였나.</b> 몸통 캡슐은 발부터 머리까지(키의 90%, 약 7.5유닛) 세워져 있고 트리거가 아니었다.
+    /// 탑다운(위에서 비스듬히 보는) 화면에서 캡슐의 위쪽 절반은 '바닥'이 아니라 '공중의 몸'인데, 물리에서는
+    /// 그 전체가 바닥 위의 벽처럼 취급됐다. 그래서 보스 머리 높이에 있는 항아리·기둥(Wall 레이어)에 몸 윗부분이
+    /// 걸려서, 눈으로는 멀리 떨어져 있는데 못 지나가는 일이 생겼다.
+    ///
+    /// <b>어떻게 고쳤나.</b> 역할을 둘로 나눴다(유니티의 트리거/충돌체 구분을 그대로 쓴다).
+    /// <list type="bullet">
+    /// <item>몸통 캡슐 → <c>isTrigger = true</c>. 피격 판정(플레이어 히트박스의 OnTriggerEnter2D,
+    /// 스킬의 Physics2D.Overlap*)은 트리거도 잡으므로 맞는 범위는 그대로다(Physics2D 설정 Queries Hit Triggers가 켜져 있다).</item>
+    /// <item>발 상자(자식 "FootCollider") → 트리거가 아닌 실제 충돌체. 같은 Rigidbody2D에 붙은 자식 충돌체는
+    /// 유니티가 한 몸(복합 충돌체)으로 움직여 주므로, 이동 코드는 손대지 않는다.</item>
+    /// </list>
+    ///
+    /// <b>마찰 0 재질.</b> 기본 마찰(0.4)이면 소품 모서리에 비스듬히 닿았을 때 미끄러지지 않고 달라붙는다.
+    /// PhysicsMaterial2D의 마찰을 0으로 두면 모서리를 타고 옆으로 흘러가서 돌아 나온다.
+    /// Rigidbody2D.sharedMaterial에 넣으면 재질이 없는 모든 자식 충돌체에 적용된다.
+    ///
+    /// <b>프리팹이 아니라 코드에서 만드는 이유.</b> AshBossPrefabBuilder는 이미 있는 프리팹의 콜라이더를 건드리지 않는다
+    /// (isNew일 때만 크기를 넣는다). 프리팹에 자식을 손으로 넣으면 빌더로 새로 만들 때 빠진다. 여기서 만들면
+    /// 프리팹을 어떻게 만들었든 항상 같은 구성이 되고, 크기는 몸통 캡슐에서 계산하므로 두 값이 어긋날 일이 없다.
+    /// </summary>
+    private void CreateFootCollider()
+    {
+        if (bodyCollider == null) return;
+
+        // 몸통은 이제 맞는 범위만 표시한다. 부딪힘은 아래 발 상자가 맡는다.
+        bodyCollider.isTrigger = true;
+
+        var foot = new GameObject("FootCollider");
+        foot.layer = gameObject.layer;   // Enemy 레이어 — 충돌 매트릭스(Enemy x Wall, Enemy x Player)를 그대로 탄다
+        foot.transform.SetParent(transform, false);
+
+        footCollider = foot.AddComponent<BoxCollider2D>();
+        float width = bodyCollider.size.x * footWidthRatio;
+
+        // 피벗이 발바닥(지면선)이라 상자 중심을 높이의 절반만큼 올려야 바닥 위에 선다.
+        footCollider.size = new Vector2(width, footHeight);
+        footCollider.offset = new Vector2(bodyCollider.offset.x, footHeight * 0.5f);
+
+        // 마찰 0 — 모서리에 달라붙지 않고 미끄러져 돌아 나오게 한다.
+        body.sharedMaterial = new PhysicsMaterial2D("BossFootNoFriction") { friction = 0f, bounciness = 0f };
     }
 
     /// <summary>
