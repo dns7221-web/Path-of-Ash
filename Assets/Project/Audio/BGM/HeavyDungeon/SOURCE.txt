@@ -1,0 +1,11 @@
+Title: Heavy Dungeon
+Author: MintoDog
+Creator page: https://opengameart.org/content/heavy-dungeon
+Download URL: https://opengameart.org/sites/default/files/heavy_dungeon_bpm160_0.ogg
+Original filename: heavy_dungeon_bpm160.ogg
+License shown on creator page: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Attribution requirement: None under CC0; voluntary credit is welcome.
+Downloaded: 2026-09-29
+Loop information: The creator states this composition is loopable. The displayed original filename identifies BPM 160. The host adds _0 to the download URL; the local filename preserves the creator-page display name.
+Verification: nonempty file with OggS container signature. Audio content has not been listened to.

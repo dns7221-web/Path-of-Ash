@@ -22,17 +22,25 @@ MonoBehaviour:
   motionSeconds: 0.55
   damage: 0
   animatorTrigger: SwordSlam
+  requiresFullAshGauge: 0
   effectPrefab: {fileID: 0}
   effectForwardOffset: 2
+  effectHeight: 0
+  verticalSquash: 0.55
   effectLifetime: 1
+  castSfx: 0
+  impactSfx: 7
   targetLayers:
     serializedVersion: 2
     m_Bits: 512
+  hitStopSeconds: 0.08
+  verticalReach: 1
   nearDelay: 0.25
   nearDistance: 4
   nearSize: {x: 8.4, y: 6.3}
   nearDamage: 2
   nearEffect: {fileID: 3432516596608516316, guid: 5a7a62a896ef98244bc00c6dcd7fafd8, type: 3}
+  nearSfx: 6
   farDelay: 0.42
   farDistance: 8.1
   farSize: {x: 18.9, y: 8.4}

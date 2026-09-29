@@ -1,0 +1,17 @@
+Title: Druid Spell Impacts [Free/CC0]
+Author: lentikula
+Creator page: https://lentikula.itch.io/druid-spell-impacts
+License: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Attribution: Not required by the creator or CC0.
+Downloaded: 2026-09-29
+Original archive: Druid Spell Impacts Pack.7z
+Archive size: 9472561 bytes
+Archive SHA256: 
+C91FEE4253D32C6FFCC4A936C08D6259484DC7723288EE5493C2C1A176200065
+Contents: Earth Spell Impacts (5 WAV), Plant Spell Impacts (5 WAV), Wind Spell Impacts (5 WAV).
+Creator format description: 48 kHz / 24-bit WAV.
+Original audio and meaningful folder/file names are preserved without editing.
+These assets are downloaded only. They are not linked to skill playback or SoundBank.
+Verification: 7-Zip archive test passed; all 15 files have RIFF/WAVE headers and copied SHA256 hashes match.
+Audio has not been listened to.

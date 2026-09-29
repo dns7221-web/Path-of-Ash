@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b82a6f2e296e3c43b97e42a75029605, type: 3}
+  m_Name: SoundBank
+  m_EditorClassIdentifier: PathOfAsh::SoundBank
+  sfx:
+  - id: 1
+    clips:
+    - {fileID: 8300000, guid: 9c358333f50e7964a86c0b04eec4727c, type: 3}
+    - {fileID: 8300000, guid: 21bab757fd8caf440aaa54271f87b729, type: 3}
+    - {fileID: 8300000, guid: 5ac2e9b050452084fb6082f23ad3fe39, type: 3}
+    volume: 0.8
+    pitchJitter: 0.06
+    minInterval: 0.05
+    maxVoices: 2
+  - id: 2
+    clips:
+    - {fileID: 8300000, guid: e2c1b486b44d017479415037334a0376, type: 3}
+    - {fileID: 8300000, guid: 0d83fc9b55d414a45af977cc66ee8013, type: 3}
+    - {fileID: 8300000, guid: a9eae4dbf35f4614eb0153ba7983a8c1, type: 3}
+    volume: 0.9
+    pitchJitter: 0.06
+    minInterval: 0.05
+    maxVoices: 3
+  - id: 3
+    clips:
+    - {fileID: 8300000, guid: bb6ae9c933b31c04480b704444da8aa9, type: 3}
+    - {fileID: 8300000, guid: c372e9031aaaa954391c41e71e79e646, type: 3}
+    - {fileID: 8300000, guid: a3a9298f7bda5c64da7d560c6aca17c4, type: 3}
+    volume: 1
+    pitchJitter: 0.04
+    minInterval: 0.2
+    maxVoices: 1
+  - id: 4
+    clips:
+    - {fileID: 8300000, guid: 0b0fa852bc393c847a6cde5958264b08, type: 3}
+    volume: 1
+    pitchJitter: 0
+    minInterval: 1
+    maxVoices: 1
+  - id: 5
+    clips:
+    - {fileID: 8300000, guid: 9708908fa007e57468af4334f8b0eb7c, type: 3}
+    - {fileID: 8300000, guid: a2a7ff2896dc35c4dbf1bc71badcd7c8, type: 3}
+    - {fileID: 8300000, guid: b6d6b215d6d4b1c45a1e2028d0244b23, type: 3}
+    - {fileID: 8300000, guid: 11004ca2d08ea184dbad438dddfa2ffd, type: 3}
+    volume: 1
+    pitchJitter: 0.03
+    minInterval: 0.1
+    maxVoices: 1
+  - id: 6
+    clips:
+    - {fileID: 8300000, guid: bebde4d544a2d0647b7bff2725c21066, type: 3}
+    - {fileID: 8300000, guid: 616742098ffc8c343b0c48e3d52afc3d, type: 3}
+    volume: 0.4
+    pitchJitter: 0.05
+    minInterval: 0.1
+    maxVoices: 1
+  - id: 7
+    clips:
+    - {fileID: 8300000, guid: 8bceb7cae6677fd4fa694bef31d61764, type: 3}
+    - {fileID: 8300000, guid: 57bf9c1726eab0c4b9f0533b953d8f74, type: 3}
+    volume: 0.45
+    pitchJitter: 0.04
+    minInterval: 0.1
+    maxVoices: 1
+  - id: 8
+    clips:
+    - {fileID: 8300000, guid: 2f4c85135b281d2498d7f52e7a5d57e5, type: 3}
+    - {fileID: 8300000, guid: 57f4e4deeca36ce4b970e957033d80ec, type: 3}
+    volume: 0.3
+    pitchJitter: 0.08
+    minInterval: 0.1
+    maxVoices: 1
+  - id: 9
+    clips:
+    - {fileID: 8300000, guid: bbaf4a8fb7638904c8917798096791cb, type: 3}
+    - {fileID: 8300000, guid: b6d2d8393a9e0c54297ae43344e9034c, type: 3}
+    - {fileID: 8300000, guid: 37cad0eaa2c08894fae0367fc0ccf2ed, type: 3}
+    volume: 0.35
+    pitchJitter: 0.06
+    minInterval: 0.08
+    maxVoices: 2
+  - id: 10
+    clips:
+    - {fileID: 8300000, guid: 91147a719b13e3a46b27f2135dc97335, type: 3}
+    - {fileID: 8300000, guid: bd832a65e08f38f4c8a45ccde51a3a60, type: 3}
+    - {fileID: 8300000, guid: 1e16d1d509b1b3c4baa0cd9e2b1ed5de, type: 3}
+    volume: 0.45
+    pitchJitter: 0.04
+    minInterval: 0.1
+    maxVoices: 1
+  - id: 11
+    clips:
+    - {fileID: 8300000, guid: faf9ebbeb3b044746a8a5d1eb279b2f8, type: 3}
+    - {fileID: 8300000, guid: b51909a2be26b9246a2e90361b4a37be, type: 3}
+    volume: 0.35
+    pitchJitter: 0.03
+    minInterval: 0.5
+    maxVoices: 1
+  - id: 12
+    clips:
+    - {fileID: 8300000, guid: aa440197eef905d47996996b823dd24d, type: 3}
+    - {fileID: 8300000, guid: ee9727a9ffc6e224795d0e2fc2873756, type: 3}
+    - {fileID: 8300000, guid: d50c805e8a8c34249bd1cca56caf8545, type: 3}
+    volume: 0.5
+    pitchJitter: 0.03
+    minInterval: 0.5
+    maxVoices: 1
+  - id: 13
+    clips:
+    - {fileID: 8300000, guid: b67aee7df9ee3b14cb995d3df87a92b2, type: 3}
+    - {fileID: 8300000, guid: d368782704b40e7418d4a8c6a9405491, type: 3}
+    - {fileID: 8300000, guid: de1549af45d1a654eb8da0db6f358d80, type: 3}
+    volume: 1
+    pitchJitter: 0.08
+    minInterval: 0.1
+    maxVoices: 2
+  - id: 14
+    clips:
+    - {fileID: 8300000, guid: 5916358b4052dac469bf3d124216f636, type: 3}
+    - {fileID: 8300000, guid: 2793b4cb0e8f2ad44939417e4dc6f41f, type: 3}
+    volume: 0.9
+    pitchJitter: 0.05
+    minInterval: 0.1
+    maxVoices: 1
+  music:
+  - id: 1
+    clip: {fileID: 8300000, guid: 92c7412cbcbfa4847b40814c338b5b78, type: 3}
+    volume: 0.35
+  - id: 2
+    clip: {fileID: 8300000, guid: e2502295bf5ce6849b339ef1af4d397d, type: 3}
+    volume: 0.35
+  sceneMusic:
+  - sceneName: Title
+    music: 1
+  - sceneName: Game
+    music: 1
+  - sceneName: Result
+    music: 0

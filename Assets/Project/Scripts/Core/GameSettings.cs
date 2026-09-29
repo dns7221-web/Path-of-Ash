@@ -18,6 +18,12 @@ using UnityEngine.Audio;
 /// 만들기 전이라면 마스터 볼륨은 <see cref="AudioListener.volume"/>로 대신 적용하고,
 /// 배경음·효과음 값은 저장만 해둔다. 나중에 소리를 붙일 때 믹서만 만들어 넣으면
 /// 설정 화면은 손댈 것 없이 그대로 이어진다.
+///
+/// 수정(2026-09-29, 소리) — 소리를 붙이면서 믹서는 만들지 않았다. 믹서 에셋은 코드로 안정적으로 만들 수 없어서다.
+/// 대신 <see cref="SoundPlayer"/>가 배경음·효과음 값을 AudioSource 볼륨에 곱하고(<see cref="Changed"/>를 듣는다),
+/// 마스터는 위 대체 경로(AudioListener)가 그대로 맡는다. <b>나중에 믹서를 넣으려면</b> SoundPlayer의 곱셈을 빼고
+/// AudioSource를 믹서 그룹에 물려야 한다 — 안 그러면 소리가 두 번 줄거나, 믹서가 있을 때 리스너를 1로 두는
+/// 아래 코드 때문에 마스터 슬라이더가 안 먹는다.
 /// </summary>
 public static class GameSettings
 {

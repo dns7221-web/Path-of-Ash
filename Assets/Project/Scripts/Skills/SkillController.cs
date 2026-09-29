@@ -171,6 +171,10 @@ public class SkillController : MonoBehaviour
         cooldownTimers[slot] = skill.CooldownSeconds * CooldownScale;
         globalCooldownTimer = globalCooldownSeconds;
 
+        // 추가 생성(2026-09-29, 소리) — 시전이 확정된 뒤에 낸다. 앞에서 거절될 수 있어서(쿨타임·대시 중·게이지 부족)
+        // 누르기만 하고 안 나간 스킬이 소리를 내면 안 된다. 스킬에 소리가 없으면(None) 아무 일도 없다.
+        SoundPlayer.Play(skill.CastSfx);
+
         StartCoroutine(Run(skill));
     }
 

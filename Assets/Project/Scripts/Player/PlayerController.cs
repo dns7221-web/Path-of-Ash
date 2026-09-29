@@ -175,6 +175,17 @@ public class PlayerController : MonoBehaviour
     [Tooltip("검 히트박스. 좌우 반전과 강제 해제에만 쓴다. 실제 켜고 끄기는 SkillController가 한다.")]
     [SerializeField] private DamageHitbox attackHitbox;
 
+    // 추가 생성(2026-09-29, 소리 2차) — 발소리 간격. 걷기 모션 한 바퀴(8칸 / 12fps = 0.67초)에 두 걸음이라 0.33초다.
+    [Header("소리")]
+    [Tooltip("걷는 동안 발소리 간격(초). 걷기 모션 한 바퀴(8칸 / 12fps = 0.67초)에 두 걸음이라 0.33초. 발이 닿는 그림과 어긋나면 여기서 맞춘다.")]
+    [SerializeField, Min(0.05f)] private float footstepInterval = 0.33f;
+
+    // 추가 생성(2026-09-29, 소리 2차) — 멈췄다 걷기 시작할 때 첫 발소리까지의 시간(초). TickFootsteps 참고.
+    private const float FirstFootstepDelay = 0.08f;
+
+    // 추가 생성(2026-09-29, 소리 2차) — 다음 발소리까지 남은 시간(초).
+    private float footstepTimer = FirstFootstepDelay;
+
     private Rigidbody2D rb;
 
     // 이번 프레임의 이동 입력. Update에서 읽고 FixedUpdate에서 쓴다.
@@ -430,6 +441,9 @@ public class PlayerController : MonoBehaviour
         {
             case ActionState.Normal:
                 rb.linearVelocity = moveInput * (moveSpeed + BonusMoveSpeed);
+
+                // 추가 생성(2026-09-29, 소리 2차) — 걷는 동안만 발소리를 센다. 공격·대시·피격 중에는 여기 안 온다.
+                TickFootsteps(Time.fixedDeltaTime);
                 break;
 
             case ActionState.Dashing:
@@ -454,6 +468,31 @@ public class PlayerController : MonoBehaviour
 
     // 수정(달리기 삭제): UpdateRunState를 지웠다. 이동 속도가 하나뿐이라 "지금 달리는가"를
     // 판정할 이유가 없어졌고, 스태미나는 대시에서만 소모된다.
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 소리 2차) — 걷는 동안 일정한 간격으로 발소리를 낸다.
+    ///
+    /// <b>애니메이션 이벤트 대신 시간으로 세는 이유:</b> 걷기 클립은 빌더(8방향 플레이어 애니메이션 생성)가 돌 때마다
+    /// 새로 구워져서, 클립에 이벤트를 달아 두면 다음 생성 때 사라진다. 보스 걸음 먼지도 같은 이유로 시간으로 센다.
+    /// 걷기 모션은 이동 속도와 상관없이 같은 빠르기(12fps)로 돌기 때문에, 거리보다 시간이 그림과 더 잘 맞는다.
+    ///
+    /// 멈췄다가 다시 걸으면 첫 발을 곧바로(<see cref="FirstFootstepDelay"/>) 낸다. 한 걸음 간격을 다 기다리면
+    /// 걷기 시작했는데 소리가 늦게 따라온다.
+    /// </summary>
+    private void TickFootsteps(float deltaTime)
+    {
+        if (moveInput.sqrMagnitude <= 0.0001f)
+        {
+            footstepTimer = FirstFootstepDelay;
+            return;
+        }
+
+        footstepTimer -= deltaTime;
+        if (footstepTimer > 0f) return;
+
+        footstepTimer += footstepInterval;
+        SoundPlayer.Play(SfxId.Footstep);
+    }
 
     /// <summary>추가 생성 — 공격/대시 입력을 받아 해당 코루틴을 시작한다.</summary>
     private void HandleActionInput()
@@ -525,6 +564,9 @@ public class PlayerController : MonoBehaviour
 
         // 추가 생성(대시 VFX) — 방향이 정해진 직후, 몸이 움직이기 전의 자리에 남긴다.
         SpawnDashEffect();
+
+        // 추가 생성(2026-09-29, 소리 2차) — 대시 소리. 이펙트와 같은 순간이다.
+        SoundPlayer.Play(SfxId.Dash);
 
         // 추가 생성(2026-09-17) — 몸이 미끄러지는 동안만 바닥 불씨를 뿌린다.
         SetDashTrail(true);

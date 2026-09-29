@@ -162,6 +162,10 @@ public class RewardChest : RoomReward
             interactionTrigger.enabled = false;
 
         ApplyVisual();
+
+        // 추가 생성(2026-09-29, 소리) — 열린 그림으로 바뀌는 바로 그 순간에 낸다.
+        SoundPlayer.Play(SfxId.ChestOpen);
+
         ApplyRandomHealing(player);
         Debug.Log("[보상 상자] F 상호작용 — 상자를 열었다.", this);
 

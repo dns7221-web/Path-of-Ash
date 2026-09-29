@@ -57,3 +57,8 @@ _ArtReview/
 
 # 예전 그림 백업 — 로컬에만 둔다(2026-09-28 추적 해제, 포트폴리오 0단계)
 /_ArtBackup/
+
+# 효과음 팩(Leohpaz, Minifantasy Dungeon SFX) — CC0이 아니고 팩 재배포가 금지라 공개 저장소에 올리지 않는다(2026-09-29).
+# 로컬 작업과 빌드에는 들어간다. 출처: https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack
+/Assets/Project/Audio/SFX/MinifantasyDungeon/
+/Assets/Project/Audio/SFX/MinifantasyDungeon.meta

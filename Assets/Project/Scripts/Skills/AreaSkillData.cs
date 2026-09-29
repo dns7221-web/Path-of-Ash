@@ -132,6 +132,10 @@ public class AreaSkillData : SkillData
 
         yield return new WaitForSeconds(explodeDelay);
 
+        // 추가 생성(2026-09-29, 소리 2차) — 판정이 들어가는 바로 그 순간에 터지는 소리를 낸다.
+        // 이펙트를 까는 순간(위)은 "여기가 터진다"는 예고라서, 거기서 폭발음을 내면 소리가 폭발보다 먼저 난다.
+        PlayImpactSound();
+
         int damage = Damage + context.BonusDamage;
 
         // 추가 생성(2026-09-17) — 판정 중심. E는 그림의 고리 중심으로 올리고, R은 그대로다(오프셋 0).

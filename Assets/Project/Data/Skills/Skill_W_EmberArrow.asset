@@ -20,11 +20,16 @@ MonoBehaviour:
   motionSeconds: 0.5
   damage: 2
   animatorTrigger: Bow
+  requiresFullAshGauge: 0
   effectPrefab: {fileID: 7201995689302752745, guid: 61ae5d4cc9ac4039bfdc22372fd5f9e9, type: 3}
   effectForwardOffset: 2.5
   effectHeight: 1.2
+  verticalSquash: 0.55
   effectLifetime: 1
+  castSfx: 0
+  impactSfx: 9
   projectilePrefab: {fileID: 2123806455390599290, guid: 4c741d700ae97e44f8ca56bbdd4e4dda, type: 3}
   releaseDelay: 0.286
   forwardOffset: 2.5
   launchHeight: 1.2
+  releaseSfx: 8

@@ -101,6 +101,11 @@ public class GroundSlamSkillData : SkillData
     [Tooltip("검이 박히는 지점의 충격파 이펙트.")]
     [SerializeField] private GameObject nearEffect;
 
+    // 추가 생성(2026-09-29, 소리 2차) — 1단 소리. 2단(주 폭발)은 스킬 공통 칸(터지는 소리)이 맡는다.
+    // 한 동작에 두 번 터지는 스킬이라, 두 번째 소리를 같은 칸으로 쓰면 1단과 2단이 똑같이 들린다.
+    [Tooltip("1단(검이 바닥에 박히는 순간) 효과음 이름표. 2단 폭발 소리는 '터지는 소리' 칸에 넣는다. None이면 소리 없음.")]
+    [SerializeField] private SfxId nearSfx = SfxId.None;
+
     [Header("2단 — 전방 폭발 (5프레임)")]
     [Tooltip("앞으로 터지는 시점(초). 5번 프레임 = 4/14.")]
     [SerializeField, Min(0f)] private float farDelay = 0.286f;
@@ -142,6 +147,9 @@ public class GroundSlamSkillData : SkillData
         // 대검을 바닥에 내려찍는데 충격파가 가슴 높이에 떠서 따로 논다.
         Spawn(nearEffect, nearGround + new Vector2(0f, EffectGroundLift), pose);
 
+        // 추가 생성(2026-09-29, 소리 2차) — 충격파 그림과 같은 순간에 낸다.
+        SoundPlayer.Play(nearSfx);
+
         // 수정(2026-09-17, 사용자 결정) — 1단은 멈추지 않는다. 멈춤은 2단에서 한 번.
         // 수정(2026-09-17, 사용자 결정) — 1단은 피격 무적도 걸지 않는다. 걸면 붙어 있던 적이 0.17초 뒤의 2단을 무시한다.
         ApplyDamage(nearGround, nearSize, pose, nearDamage + context.BonusDamage,
@@ -155,6 +163,10 @@ public class GroundSlamSkillData : SkillData
         // Forward를 안 쓰면 위/아래로 쓸 때만 2단이 몸에서 훨씬 멀리 떨어져 따로 논다.
         Vector2 farGround = feet + Reach(facing) * farDistance;
         Spawn(farEffect, farGround + new Vector2(0f, EffectGroundLift), pose);
+
+        // 추가 생성(2026-09-29, 소리 2차) — 2단 폭발 소리(스킬 공통 칸). 폭발 그림과 같은 순간이다.
+        PlayImpactSound();
+
         ApplyDamage(farGround, farSize, pose, farDamage + context.BonusDamage,
                     hitStop: true, grantInvulnerability: true);
     }

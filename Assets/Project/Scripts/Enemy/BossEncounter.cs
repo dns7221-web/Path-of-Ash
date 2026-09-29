@@ -110,6 +110,9 @@ public class BossEncounter : RoomEncounter
 
         bossHealth.Died += OnBossDied;
 
+        // 추가 생성(2026-09-29, 소리) — 보스가 나오는 순간 보스전 음악으로 바꾼다(던전 음악에서 교차 페이드).
+        SoundPlayer.PlayMusic(MusicId.Boss);
+
         // 추가 생성 — 화면 위 보스 체력바를 이 보스에 물린다.
         //
         // 눈금 위치를 보스에게 물어서 넘긴다. 여기에 0.5를 적어두면 보스의 전환 비율을
@@ -244,6 +247,10 @@ public class BossEncounter : RoomEncounter
         ashGauge?.AddKillCharge();
 
         Debug.Log("[보스 방] 보스 처치 — 잠시 뒤 보상 상자.", this);
+
+        // 추가 생성(2026-09-29, 소리) — 보스를 잡으면 음악을 천천히 끈다. 클리어 유물과 클리어 연출을 조용히 보여 주려는 것이다.
+        SoundPlayer.StopMusic(2f);
+
         StartCoroutine(FinishAfterDeathMotion());
     }
 

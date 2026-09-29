@@ -25,6 +25,11 @@ public class ProjectileSkillData : SkillData
     [Tooltip("발사 높이(유닛). 피벗이 발밑이라 0이면 바닥에서 쏜다. 적 몸통 높이에 맞춘다.")]
     [SerializeField] private float launchHeight = 1.2f;
 
+    // 추가 생성(2026-09-29, 소리 2차) — 활을 놓는 순간의 소리. 시전 소리(누를 때)와 따로 둔 이유: 활을 당기는 0.29초 동안은
+    // 아직 안 쐈다. 맞았을 때의 소리는 스킬 공통 칸(터지는 소리)을 투사체에 넘겨 투사체가 낸다.
+    [Tooltip("화살을 놓는 순간 낼 효과음 이름표. 맞았을 때 소리는 '터지는 소리' 칸에 넣는다. None이면 소리 없음.")]
+    [SerializeField] private SfxId releaseSfx = SfxId.None;
+
     public override IEnumerator Execute(SkillContext context)
     {
         if (projectilePrefab == null)
@@ -50,8 +55,12 @@ public class ProjectileSkillData : SkillData
 
         SpawnEffect(context);
 
+        // 추가 생성(2026-09-29, 소리 2차) — 놓는 소리. 발사 그림(SpawnEffect)과 같은 순간이다.
+        SoundPlayer.Play(releaseSfx);
+
         // 수정(2026-09-24, 투사체 풀링) — Instantiate → 풀에서 꺼낸다. 사거리 끝에서 스스로 풀에 돌아간다.
+        // 수정(2026-09-29, 소리 2차) — 맞았을 때 낼 소리(스킬 공통 칸)를 같이 넘긴다. 투사체는 누가 쐈는지 모르니 들고 가게 한다.
         var projectile = ProjectilePool.Spawn(projectilePrefab, spawn);
-        projectile.Launch(facing, Damage + context.BonusDamage);
+        projectile.Launch(facing, Damage + context.BonusDamage, ImpactSfx);
     }
 }
