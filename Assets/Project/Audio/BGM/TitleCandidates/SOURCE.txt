@@ -1,0 +1,47 @@
+타이틀 음악 후보 — 재의 길 / Path of Ash
+Downloaded and license pages checked: 2026-09-29
+Status: Candidate assets only; not assigned to SoundBank or scenes.
+Selection basis: Creator descriptions and project art direction; not an auditory review.
+Verification: All three files fully decoded successfully with FFmpeg; stereo Vorbis, 44.1 kHz.
+All three source pages offer CC0 1.0 Universal. CC0 selected for the dual-licensed first track.
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+Attribution is not required under CC0; voluntary credits below preserve provenance.
+
+01_tragic_ambient_main_menu.ogg
+Title: Tragic ambient main menu
+Author: brandon75689 (submitted by HaelDB)
+Source: https://opengameart.org/content/tragic-ambient-main-menu
+Download: https://opengameart.org/sites/default/files/ambientmain_0.ogg
+Duration: 100.000 seconds
+Source licenses: CC0 and OGA-BY 3.0 (CC0 selected)
+Creator description: Main-menu music for an evil space or post-apocalyptic game.
+Suggested role: First title-screen audition for a bleak, ruined-world mood.
+Loop status: Source page does not explicitly guarantee a seamless loop; audition the join before final integration.
+Voluntary credit: Tragic ambient main menu by brandon75689, via OpenGameArt.org (CC0).
+
+02_cathedral_in_the_forest.ogg
+Title: Cathedral in the forest (ambient loop)
+Author: congusbongus
+Source: https://opengameart.org/content/cathedral-in-the-forest-ambient-loop
+Download: https://opengameart.org/sites/default/files/forest_2_0.ogg
+Duration: 136.974331 seconds
+Source license: CC0
+Creator description: Pads and bells, intended for space or dark games.
+Suggested role: Quiet, mysterious title-screen ambience.
+Loop status: Creator explicitly identifies a seamless loop.
+Voluntary credit: Cathedral in the forest by congusbongus, via OpenGameArt.org (CC0).
+
+03_dark_shrine_loop.ogg
+Title: Dark Shrine Loop
+Author: qubodup, remix of Shrine by yd
+Source: https://opengameart.org/content/dark-shrine-loop
+Download: https://opengameart.org/sites/default/files/qubodup-yd-DarkShrineLoop-OpenGameArt.ogg
+Duration: 56.572517 seconds
+Source license: CC0
+Source tags: dark, calm, shrine, cathedral, temple, mystery, loop.
+Suggested role: Dark shrine / ancient-ruins title-screen ambience.
+Loop status: Offered as a loop.
+Voluntary credit: Dark Shrine Loop by qubodup and yd, via OpenGameArt.org (CC0).
+
+Unity import matches the project's existing BGM: streaming, stereo preserved.
+Original audio data is unchanged. No trimming, normalization or re-encoding was applied.
