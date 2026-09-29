@@ -1,0 +1,11 @@
+Title: Dark Cavern Ambient
+Author: Paul Wortmann
+Creator page: https://opengameart.org/content/dark-cavern-ambient
+Download URL: https://opengameart.org/sites/default/files/dark_cavern_ambient_002.ogg
+Original filename: dark_cavern_ambient_002.ogg
+License shown on creator page: CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Attribution requirement: None under CC0; voluntary credit is welcome.
+Downloaded: 2026-09-29
+Loop information: Chosen version 002: the creator explicitly identifies it as a continuous loop. Version 001 fades in and out.
+Verification: nonempty file with OggS container signature. Audio content has not been listened to.

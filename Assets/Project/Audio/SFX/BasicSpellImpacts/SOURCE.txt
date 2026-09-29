@@ -1,0 +1,21 @@
+Basic Spell Impacts [Free/CC0]
+제작자: lentikula
+출처: https://lentikula.itch.io/freecc0-basic-spell-impacts-sfx
+라이선스: CC0 1.0 Universal
+라이선스 원문: https://creativecommons.org/publicdomain/zero/1.0/
+다운로드 날짜: 2026-09-29
+원본 압축 파일: Basic Spell Impacts.zip
+구성: Fire 5개, Ice 5개, Lightning 5개, Water 5개 (총 20개 WAV)
+제작자 안내: 48 kHz / 24-bit WAV. 직접 녹음한 소재와 CC0 소재를 사용해 제작.
+
+개인 및 상업 프로젝트에 사용할 수 있으며, 출처 표기는 필수가 아닙니다.
+선택 크레딧: Basic Spell Impacts by lentikula (CC0)
+
+첫 청음 후보:
+Fire Spell Impacts/Fire Spell Impact 1.wav ~ Fire Spell Impact 5.wav
+Q 후속 잿불 폭발, W 명중, E 불기둥, R 폭발에 쓸 수 있는지 비교합니다.
+이는 구성 목록에 따른 후보이며 실제 청음으로 최종 선택하지 않았습니다.
+
+원본 폴더와 파일명, 음원 내용을 그대로 보존했습니다.
+임팩트 음원 팩으로, 시전 충전음이나 지속 화염 루프의 포함은 확인되지 않았습니다.
+이 단계에서는 음원만 배치했으며 게임 스킬 재생 코드에는 연결하지 않았습니다.
