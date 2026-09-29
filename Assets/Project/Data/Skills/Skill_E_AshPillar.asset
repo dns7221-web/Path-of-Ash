@@ -27,6 +27,8 @@ MonoBehaviour:
   effectHeight: 0
   verticalSquash: 0.55
   effectLifetime: 1
+  castSfx: 0
+  impactSfx: 10
   forwardDistance: 10
   radius: 4.5
   verticalScale: 0.66
@@ -39,3 +41,5 @@ MonoBehaviour:
   explodeDelay: 0.5
   castEffectPrefab: {fileID: 0}
   castEffectHeight: 2.6
+  drawCasterAboveEffect: 0
+  holdCasterPose: 0

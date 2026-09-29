@@ -27,6 +27,8 @@ MonoBehaviour:
   effectHeight: 0
   verticalSquash: 0.55
   effectLifetime: 1
+  castSfx: 11
+  impactSfx: 12
   forwardDistance: 0
   radius: 14
   verticalScale: 1

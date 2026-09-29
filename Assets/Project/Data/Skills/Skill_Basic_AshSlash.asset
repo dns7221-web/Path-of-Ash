@@ -26,5 +26,8 @@ MonoBehaviour:
   effectHeight: 3
   verticalSquash: 0.55
   effectLifetime: 1
+  castSfx: 1
+  impactSfx: 0
   hitboxDelay: 0.12
   hitboxDuration: 0.18
+  hitSfx: 2
