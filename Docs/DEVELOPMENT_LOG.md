@@ -2565,3 +2565,39 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
 - **폰트 가드 첫 저장(09-28 밤)**: 글자뿐 아니라 합자·커닝 표(`m_LigatureSubstitutionRecords`·`m_GlyphPairAdjustmentRecords`)까지 비워져
   커밋 판(104KB, 표가 남아 있던 변환 결과)과 한 번 달라졌다(−3582줄, 6KB). 동적 폰트는 글자를 구울 때 표도 다시 채우므로 문제없고,
   이 빈 상태로 한 번 커밋하면 그 뒤로는 저장해도 같은 파일이 나온다.
+
+## 2026-09-29 — 소리 1차: 소리 시스템, 효과음 4종, 배경음악 (포트폴리오 3단계를 빌드 앞으로)
+
+- 사용자 결정: 한 판 점검은 개발하며 계속 돌려 봐서 건너뛰고, **소리 → 빌드** 순서로 간다.
+- **음원**(사용자가 받아 둠, 각 폴더 SOURCE.txt): 배경음악 2곡은 CC0(OpenGameArt) — Dark Cavern Ambient(120초 루프),
+  Heavy Dungeon(96초 = 160BPM 64마디 루프). 효과음은 Leohpaz의 Minifantasy Dungeon SFX 62개 — **CC0이 아니고 팩 재배포 금지**라,
+  저장소가 공개(PUBLIC)여서 `.gitignore`로 뺐다(로컬·빌드에만). 출처는 README·크레딧에 적을 것.
+- **구조**(Assets/Project/Scripts/Audio)
+  - `SfxId`·`MusicId`: 이름표(열거형, 숫자 고정 — 에셋에 숫자로 저장되므로 새 이름은 끝에만).
+  - `SoundBank`(ScriptableObject, Resources/Audio): 이름표별 클립 여러 개·볼륨·피치 흔들림·최소 간격·동시 수, 곡, 씬별 곡.
+  - `SoundPlayer`: 게임이 켜질 때 스스로 생기고(DontDestroyOnLoad) 씬이 바뀌어도 남는다 — 씬을 다시 만드는 빌더가 못 지운다.
+    효과음 자리 12개(겹침 막기), 배경음악 자리 2개(교차 페이드), 전부 실제 시간. 씬이 열리면 씬별 곡으로 바꾼다.
+  - 볼륨: **믹서 없이** AudioSource 볼륨에 설정값을 곱한다(믹서 에셋은 코드로 안정적으로 못 만든다, dB 변환과 같은 결과).
+    마스터는 GameSettings의 AudioListener 경로 그대로. `GameSettings.Changed`를 들어 배경음 볼륨을 바로 반영.
+  - `CombatSounds` + `Health.AnyDamaged/AnyDied`(정적 알림): 누가 맞고 죽었는지 보고 소리를 고른다 — 프리팹마다 소리 컴포넌트를
+    붙이면 프리팹 빌더가 돌 때 빠지므로. 플레이어 피격·사망, 그 밖(적·보스·유물·허수아비)은 칼 명중. 무적으로 막힌 공격은 소리 없음.
+  - 스킬: `SkillData.castSfx`(기본 None) → `SkillController.TryUse`에서 시전 확정 뒤 재생. 기본 공격만 휘두름.
+  - 상자: `RewardChest.Open`에서 열린 그림으로 바뀌는 순간. 보스: 등장 때 보스 곡, 처치 때 2초에 걸쳐 끔.
+- **도구**: `Tools → 재의 길 → 씬·세팅 → 소리 구성` — 소리 목록을 만들고 빈 칸만 채움, 기본 공격 휘두름 이름표, 배경음악 스트리밍 읽기.
+- 컴파일(게임·도구·테스트 각 asmdef 참조만): 오류 0·경고 0. 남은 일: 도구 실행 → 플레이로 듣기 → 볼륨 조정 → 2차(대시·문·발소리·보스·스킬·UI).
+
+## 2026-09-29 — 소리 2차: QWER 스킬, 칼 소리 자리 옮김, 대시·발소리
+
+- 사용자 확인: 1차의 공격 휘두름·던전 배경음은 잘 난다. 발소리가 없다는 물음 — 1차 범위(효과음 4종)를 지키느라 2차로 미뤘던 것.
+- **새 음원**(사용자가 받음, CC0 — 저장소에 올림): lentikula의 Basic Spell Impacts(불·얼음·번개·물 ×5), Druid Spell Impacts(땅·식물·바람 ×5).
+  48kHz·24bit, 1.9~3.7초, Minifantasy보다 10~15dB 커서 볼륨을 0.3~0.5로 둔다.
+- **스킬 소리는 터지는 순간에**: `SkillData.impactSfx`(+ `PlayImpactSound`)를 더해 하위 스킬이 판정 순간에 부른다 — R처럼 모았다가
+  터지는 스킬을 누를 때 폭발음을 내면 그림보다 소리가 먼저 난다. Q(`GroundSlamSkillData`)는 1단 `nearSfx`·2단 공통 칸,
+  W(`ProjectileSkillData`)는 놓을 때 `releaseSfx`·맞을 때 공통 칸을 `Projectile.Launch`로 넘겨 투사체가 낸다, E·R(`AreaSkillData`)은
+  이펙트를 까는 예고가 아니라 판정 순간. 첫 배정(들어 보기 전): Q 땅+불, W 바람+불(짧은 것), E 땅 울림, R 바람(모으기)+번개(폭발).
+- **칼 소리 자리 옮김**: 1차는 "누가 맞든" 칼 소리(`CombatSounds`)라 Q·E·R에 맞아도 칼 소리가 났다. 이제 `MeleeSkillData.hitSfx` —
+  기본 공격 판정이 맞혔을 때만. `CombatSounds`는 플레이어 피격·사망만 맡는다.
+- **대시·발소리**(`PlayerController`): 대시는 이펙트와 같은 순간, 발소리는 걷는 동안 0.33초마다(걷기 8칸 / 12fps = 0.67초에 두 걸음,
+  인스펙터 `footstepInterval`). 애니메이션 이벤트 대신 시간으로 센다 — 걷기 클립은 빌더가 매번 새로 구워 이벤트가 사라진다(보스 먼지와 같은 이유).
+  발소리 파일은 아주 작아 볼륨 1.
+- **소리 구성 도구**: 새 이름표 9개 기본값과 스킬 다섯의 소리 칸(빈 칸만)을 채운다. 컴파일(게임·도구·테스트) 오류 0·경고 0.
