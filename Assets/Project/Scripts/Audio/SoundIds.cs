@@ -69,4 +69,10 @@ public enum MusicId
 
     /// <summary>보스전(Heavy Dungeon).</summary>
     Boss = 2,
+
+    /// <summary>
+    /// 추가 생성(2026-09-29, 타이틀 음악) — 타이틀 화면(Dark Shrine Loop). 던전 곡(Ambient)과 나눠서,
+    /// 게임을 시작하면 곡이 바뀌며 "들어섰다"는 느낌이 나게 한다.
+    /// </summary>
+    Title = 3,
 }
