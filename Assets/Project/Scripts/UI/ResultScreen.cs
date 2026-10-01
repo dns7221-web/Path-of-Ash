@@ -290,16 +290,12 @@ public class ResultScreen : MonoBehaviour
     /// <summary>재시작. UI 버튼의 OnClick에 연결한다.</summary>
     public void OnRestart()
     {
-        // 추가 생성(2026-10-01, 소리 3차) — 재시작 결정 소리. 타이틀의 시작과 같은 소리라 "새 판"이 같은 소리로 기억된다.
-        SoundPlayer.Play(SfxId.UiConfirm);
         GameFlow.StartNewRun();
     }
 
     /// <summary>타이틀로. UI 버튼의 OnClick에 연결한다.</summary>
     public void OnTitle()
     {
-        // 추가 생성(2026-10-01, 소리 3차) — 타이틀로 나가는 결정 소리.
-        SoundPlayer.Play(SfxId.UiConfirm);
         GameFlow.LoadTitle();
     }
 }

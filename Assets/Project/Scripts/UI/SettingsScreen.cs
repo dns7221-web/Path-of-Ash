@@ -224,29 +224,6 @@ public class SettingsScreen : MonoBehaviour
 
         if (controlsResetButton != null)
             controlsResetButton.onClick.AddListener(OnControlsResetClicked);
-
-        // 추가 생성(2026-10-01, 소리 3차) — 버튼 클릭 소리. [닫기]·여는 버튼은 뺐다 — 창을 여닫는 데는 소리를 내지 않기로 했다
-        // (수정 2026-10-01: 예전 이유는 "Open·Close가 열기·닫기 소리를 내서 겹친다"였는데, 그 소리를 뺐다). [게임 나가기]는 창을 열 때 만들어지므로 EnsureQuitButton에서 따로 단다.
-        AddClickSound(windowScalePrevButton);
-        AddClickSound(windowScaleNextButton);
-        AddClickSound(resetButton);
-        AddClickSound(generalTabButton);
-        AddClickSound(controlsTabButton);
-        AddClickSound(controlsResetButton);
-
-        if (controlRebindButtons != null)
-            foreach (Button button in controlRebindButtons) AddClickSound(button);
-    }
-
-    /// <summary>
-    /// 추가 생성(2026-10-01, 소리 3차) — 버튼에 클릭 소리를 단다. 비어 있는 칸은 건너뛴다.
-    ///
-    /// 버튼마다 소리 컴포넌트를 붙이지 않고 onClick에 코드로 거는 이유는 WireControls 설명과 같다 —
-    /// 화면은 빌더가 다시 만들어서 손으로 붙인 컴포넌트는 사라지고, 코드로 건 것은 컴파일 때 확인된다.
-    /// </summary>
-    private static void AddClickSound(Button button)
-    {
-        if (button != null) button.onClick.AddListener(() => SoundPlayer.Play(SfxId.UiClick));
     }
 
     /// <summary>
@@ -481,10 +458,6 @@ public class SettingsScreen : MonoBehaviour
         PlaceInRow((RectTransform)closeButton.transform, 0.56f, 0.84f);
 
         quitButton.onClick.AddListener(OnQuitClicked);
-
-        // 추가 생성(2026-10-01, 소리 3차) — Instantiate는 코드로 단 리스너(AddListener)를 복사하지 않는다.
-        // [닫기]를 복제해 만든 버튼이라도 소리는 여기서 새로 달아야 한다.
-        AddClickSound(quitButton);
     }
 
     /// <summary>추가 생성(2026-09-27) — 아래 줄(Buttons) 안에서 가로 자리만 정한다. 세로는 줄을 꽉 채운다(빌더의 Sub와 같은 방식).</summary>

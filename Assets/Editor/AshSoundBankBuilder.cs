@@ -27,7 +27,6 @@ public static class AshSoundBankBuilder
     private const string SwishFolder = "Assets/Project/Audio/SFX/Swishes/";                     // OpenGameArt, CC0
     private const string GhostFolder = "Assets/Project/Audio/SFX/Ghost/";                       // OpenGameArt, CC0
     private const string KenneyImpactFolder = "Assets/Project/Audio/SFX/KenneyImpactSounds/Audio/";       // Kenney, CC0
-    private const string KenneyInterfaceFolder = "Assets/Project/Audio/SFX/KenneyInterfaceSounds/Audio/"; // Kenney, CC0
     private const string BgmFolder = "Assets/Project/Audio/BGM/";
     private const string SkillFolder = "Assets/Project/Data/Skills/";
 
@@ -41,7 +40,6 @@ public static class AshSoundBankBuilder
     private static string Cc0(string file) => Cc0SfxFolder + file;
     private static string Swish(int n) => $"{SwishFolder}swish-{n}.wav";
     private static string Impact(string kind, int n) => $"{KenneyImpactFolder}{kind}_{n:000}.ogg";
-    private static string Ui(string kind, int n) => $"{KenneyInterfaceFolder}{kind}_{n:000}.ogg";
 
     /// <summary>효과음 하나의 기본값. 파일은 효과음 팩 안의 이름이다. 볼륨·흔들림·간격·동시 수는 들어 보고 인스펙터에서 바꾼다.</summary>
     private readonly struct SfxDefault
@@ -117,10 +115,8 @@ public static class AshSoundBankBuilder
         new SfxDefault(SfxId.BossReturn, 1f, 0f, 1f, 1, GhostFolder + "ghostbreath.flac"),   // 평균 -34dB로 아주 작다
         new SfxDefault(SfxId.BossDeath, 0.9f, 0f, 1f, 1, Cc0("gong_02.ogg")),
 
-        // UI. 클릭은 작게 녹음돼 있고(-26dB) 열기·결정은 크다(-11~-15dB). UI는 게임 소리보다 한 단계 작게 둔다.
-        new SfxDefault(SfxId.UiClick, 0.8f, 0.05f, 0.05f, 2, Ui("click", 1), Ui("click", 2), Ui("click", 3)),
-        // 수정(2026-10-01, 소리 3차 조정) — UiOpen·UiClose 기본값을 뺐다. 창 열기·닫기 소리를 쓰지 않기로 해서 목록에 빈 칸만 남는다.
-        new SfxDefault(SfxId.UiConfirm, 0.35f, 0f, 0.3f, 1, Ui("confirmation", 1)),
+        // 수정(2026-10-01, 소리 3차 조정) — UI 소리(클릭·열기·닫기·결정) 기본값을 전부 뺐다. Kenney Interface Sounds는 앱·SF풍 전자음이라
+        // 서브컬처 판타지 로그라이크 분위기와 장르가 어긋났다(사용자 청음). UI는 당분간 소리 없이 둔다.
     };
 
     /// <summary>
