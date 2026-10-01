@@ -36,6 +36,13 @@
 - 설정 화면(일반/조작)과 **키 리바인딩** — 모든 조작 액션을 `InputBindings` 하나가 소유하고,
   스킬바·튜토리얼·결과 화면 문구가 실제 바인딩에서 키를 읽습니다
 
+- **소리** — 효과음은 그림·판정과 같은 순간에 납니다(보스 내려찍기는 예비동작이 아니라 칼이 닿을 때).
+  적·보스 사망 소리는 적마다 넣지 않고 `Health`의 사망 알림 한 곳에서 고르고,
+  보스 2페이즈 전환 소리는 Timeline 시그널에 붙어 있어 연출 시간표를 고치면 소리도 따라갑니다.
+  방마다 배경음악이 바뀌고, 결과 화면은 클리어/사망에 따라 다른 곡이 나옵니다
+- 궁극기 컷인 동안에는 게임 시간과 배경음악이 **같은 자리에서 멈췄다가 멈춘 지점부터 이어집니다**
+  (`PauseGate` 옆에서 `AudioSource.Pause/UnPause`)
+
 세부 구현 상태와 다음 작업은 [프로젝트 컨텍스트](Docs/PROJECT_CONTEXT.md)를 기준으로 확인합니다.
 
 ## 조작
@@ -82,5 +89,27 @@
 - [PROJECT_CONTEXT.md](Docs/PROJECT_CONTEXT.md) — 현재 상태, 중요한 규칙, 다음 작업을 빠르게 파악하는 문서
 - [DEVELOPMENT_LOG.md](Docs/DEVELOPMENT_LOG.md) — 날짜별 작업 과정과 설계 근거 전체 기록
 - [PORTFOLIO.md](Docs/PORTFOLIO.md) — 포트폴리오 전체 구성과 마감 작업 순서
+
+## 크레딧 — 소리
+
+모든 음원은 **CC0(퍼블릭 도메인)** 입니다. 출처 표기 의무는 없지만 감사의 뜻으로 적습니다.
+각 폴더의 `SOURCE.txt`에 받은 날짜와 원본 주소가 있습니다.
+
+| 쓰는 곳 | 곡·팩 | 제작자 |
+| --- | --- | --- |
+| 타이틀 | [Dark Shrine Loop](https://opengameart.org/content/dark-shrine-loop) | qubodup (remix of Shrine by yd) |
+| 튜토리얼 | [Save sound (suspense)](https://opengameart.org/content/save-sound-suspense) | allen yatsura |
+| 던전 | [Dark Place (loop)](https://opengameart.org/content/dark-place-loop) | SkyleTheFrench |
+| 보스전 | Heavy Dungeon | MintoDog |
+| 결과(클리어) | [Cathedral in the forest](https://opengameart.org/content/cathedral-in-the-forest-ambient-loop) | congusbongus |
+| 결과(사망) | [Vampire's Piano](https://opengameart.org/content/vampires-piano) | TAD |
+| 스킬 | [Basic Spell Impacts](https://lentikula.itch.io/freecc0-basic-spell-impacts-sfx), [Druid Spell Impacts](https://lentikula.itch.io/druid-spell-impacts) | lentikula |
+| 문·보스·폭발 | [100 CC0 SFX](https://opengameart.org/content/100-cc0-sfx) | rubberduck |
+| 보스 전환 | [Impact Sounds](https://kenney.nl/assets/impact-sounds) | Kenney |
+| 적 공격 | [Swishes Sound Pack](https://opengameart.org/content/swishes-sound-pack) | OpenGameArt |
+| 적 사망·보스 등장 | [Ghost](https://opengameart.org/content/ghost), [Ghost breath](https://opengameart.org/content/ghost-breath) | OpenGameArt |
+
+공격·피격·상자·발소리·대시는 [Minifantasy Dungeon SFX](https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack)(Leohpaz)를 씁니다.
+CC0가 아니고 팩 재배포가 금지라 **저장소에는 없고 빌드에만 들어갑니다.**
 
 README에는 프로젝트 소개와 현재 기능만 유지합니다. 긴 문제 해결 과정과 날짜별 기록은 개발 로그에 추가하고, 현재 사실이 바뀌면 프로젝트 컨텍스트를 갱신합니다.
