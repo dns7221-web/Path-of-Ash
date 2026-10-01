@@ -323,6 +323,10 @@ public class EnemyWraith : EnemyBase
 
         // 추가 생성(2026-09-19, 망령-2) — 몸이 미끄러지는 동안만 바닥 불씨를 뿌린다.
         SetChargeTrail(true);
+
+        // 추가 생성(2026-10-01, 소리 3차) — 몸이 튀어 나가는 바로 이 순간에 바람 가르는 소리. 예비동작(선)이 아니라 돌진에 붙이는 이유:
+        // 선은 이미 눈으로 경고하고 있고, 망령은 방에 여럿이라 예비동작마다 소리를 내면 경고음이 겹쳐 무엇이 오는지 오히려 안 들린다.
+        SoundPlayer.Play(SfxId.WraithCharge);
     }
 
     /// <summary>

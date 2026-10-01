@@ -72,6 +72,8 @@ public class TitleScreen : MonoBehaviour
     /// <summary>새 판 시작. UI 버튼의 OnClick에도 연결할 수 있다.</summary>
     public void OnStart()
     {
+        // 추가 생성(2026-10-01, 소리 3차) — 시작 결정 소리. 씬 전환 전에 내도 소리 재생기가 씬과 함께 지워지지 않아 끝까지 들린다.
+        SoundPlayer.Play(SfxId.UiConfirm);
         GameFlow.StartNewRun();
     }
 

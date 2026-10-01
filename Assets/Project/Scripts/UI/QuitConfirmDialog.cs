@@ -82,6 +82,11 @@ public class QuitConfirmDialog : MonoBehaviour
         Button cancel = CloneButton(buttonTemplate, inner, "CancelButton", cancelLabel, 0.54f, 0.90f);
         cancel.onClick.AddListener(dialog.Hide);
 
+        // 추가 생성(2026-10-01, 소리 3차) — 취소는 클릭, 확인(타이틀로 나가기)은 화면이 넘어가는 결정이라 결정 소리.
+        // 소리 재생기는 씬이 바뀌어도 남으므로(DontDestroyOnLoad) 바로 씬이 넘어가도 소리가 끊기지 않는다.
+        cancel.onClick.AddListener(() => SoundPlayer.Play(SfxId.UiClick));
+        confirm.onClick.AddListener(() => SoundPlayer.Play(SfxId.UiConfirm));
+
         root.gameObject.SetActive(false);
         return dialog;
     }

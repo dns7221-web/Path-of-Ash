@@ -130,6 +130,10 @@ public class BossTransitionSequence : MonoBehaviour, INotificationReceiver
         if (firedArmorBroken) return;
         firedArmorBroken = true;
 
+        // 추가 생성(2026-10-01, 소리 3차) — 소리도 시그널에 붙인다. 시간을 코드에 따로 적지 않으니 타임라인 시간표를 고쳐도
+        // 그림·흔들림·소리가 함께 움직인다(0.75 대 0.875 사고를 구조로 막은 것과 같은 이유).
+        SoundPlayer.Play(SfxId.BossArmorBreak);
+
         ArmorBroken?.Invoke();
     }
 
@@ -140,6 +144,8 @@ public class BossTransitionSequence : MonoBehaviour, INotificationReceiver
         firedRevealed = true;
 
         cameraShake?.Shake(revealShakeStrength, revealShakeSeconds);
+        // 추가 생성(2026-10-01, 소리 3차) — 화면이 흔들리는 순간과 껍질 깨지는 소리를 같은 줄에 묶는다.
+        SoundPlayer.Play(SfxId.BossShellBreak);
         Revealed?.Invoke();
     }
 
@@ -148,6 +154,9 @@ public class BossTransitionSequence : MonoBehaviour, INotificationReceiver
     {
         if (firedBossReturns) return;
         firedBossReturns = true;
+
+        // 추가 생성(2026-10-01, 소리 3차) — 진체가 나타나는 순간의 숨소리. 이유는 RaiseArmorBroken의 소리 설명과 같다.
+        SoundPlayer.Play(SfxId.BossReturn);
 
         BossReturns?.Invoke();
     }

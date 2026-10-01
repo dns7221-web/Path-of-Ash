@@ -116,6 +116,14 @@ public class ResultScreen : MonoBehaviour
     private void Start()
     {
         Refresh();
+
+        // 추가 생성(2026-10-01, 결과 음악) — 클리어와 사망이 다른 곡을 튼다.
+        //
+        // 씬별 곡 표(SoundBank의 sceneMusic)에 적지 않고 여기서 고르는 이유: 그 표는 "씬 이름 → 곡" 하나뿐이라
+        // 같은 Result 씬에서 결과에 따라 곡을 나눌 수 없다. 표에는 Result = None(조용히)로 두고, 씬이 열린 뒤
+        // 결과를 아는 이 화면이 곡을 정한다. sceneLoaded(표)는 Start보다 먼저 불리므로 여기서 고른 곡이 이긴다.
+        // Game 씬의 방 음악을 방(RoomSequenceController)이 정하는 것과 같은 구조다.
+        if (result != null) SoundPlayer.PlayMusic(result.Cleared ? MusicId.ResultClear : MusicId.ResultDeath);
     }
 
     private void Update()
@@ -282,12 +290,16 @@ public class ResultScreen : MonoBehaviour
     /// <summary>재시작. UI 버튼의 OnClick에 연결한다.</summary>
     public void OnRestart()
     {
+        // 추가 생성(2026-10-01, 소리 3차) — 재시작 결정 소리. 타이틀의 시작과 같은 소리라 "새 판"이 같은 소리로 기억된다.
+        SoundPlayer.Play(SfxId.UiConfirm);
         GameFlow.StartNewRun();
     }
 
     /// <summary>타이틀로. UI 버튼의 OnClick에 연결한다.</summary>
     public void OnTitle()
     {
+        // 추가 생성(2026-10-01, 소리 3차) — 타이틀로 나가는 결정 소리.
+        SoundPlayer.Play(SfxId.UiConfirm);
         GameFlow.LoadTitle();
     }
 }

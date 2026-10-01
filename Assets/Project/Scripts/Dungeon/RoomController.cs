@@ -147,6 +147,12 @@ public class RoomController : MonoBehaviour
             : RoomDoorState.DoorState.Open);
 
         exitTrigger?.SetPassageEnabled(true);
+
+        // 추가 생성(2026-10-01, 소리 3차) — 문 소리는 RoomDoorState.SetState가 아니라 여기서 낸다. SetState는 방에 들어갈 때
+        // 초기화(닫기)와 처음부터 열린 방(startUnlocked)에서도 불려서, 거기 넣으면 아무 일도 없었는데 문 소리가 난다.
+        // "보상을 챙겨서 문이 열렸다"는 사건은 이 함수 하나뿐이다.
+        SoundPlayer.Play(bossGate ? SfxId.BossGateOpen : SfxId.DoorOpen);
+
         Debug.Log($"[방 진행] {name} 보상 획득 — {(bossGate ? "부서진 문 개방(보스로)" : "문 개방")}.", this);
     }
 

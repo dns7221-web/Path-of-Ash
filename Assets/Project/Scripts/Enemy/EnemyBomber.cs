@@ -272,6 +272,10 @@ public class EnemyBomber : EnemyBase
         // 터지는 것"으로 배운다. 보스의 재 폭발에서 한 판단과 같다.
         SpawnExplosionEffect();
 
+        // 추가 생성(2026-10-01, 소리 3차) — 이펙트와 같은 순간, 판정보다 먼저. 이유는 바로 위 이펙트 설명과 같다
+        // (맞았든 안 맞았든 폭발은 늘 같은 소리로 들려야 한다).
+        SoundPlayer.Play(SfxId.BomberExplode);
+
         // 원 하나로 판정한다. 사방으로 나가는 폭발이라 방향이 없고, OverlapCircle이 그대로 맞다.
         var hit = Physics2D.OverlapCircle(transform.position, explosionRadius, PlayerLayer);
         if (hit != null)

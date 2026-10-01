@@ -317,6 +317,9 @@ public class EnemyMarksman : EnemyBase
         // 추가 생성(2026-09-17) — 판정은 launchHeight에 두고 그림만 활 높이로 띄운다. Launch 전에 넣어야 회전 뒤에 적용된다.
         arrow.SetVisualLift(Mathf.Max(0f, bowHeight - launchHeight));
         arrow.Launch(shotDirection, arrowDamage);
+
+        // 추가 생성(2026-10-01, 소리 3차) — 화살이 실제로 나간 뒤에 낸다. 프리팹이 비어 return한 경우엔 소리도 없어야 맞다.
+        SoundPlayer.Play(SfxId.MarksmanShoot);
     }
 
     private void BeginCooldown()

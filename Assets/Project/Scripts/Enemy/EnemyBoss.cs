@@ -855,6 +855,9 @@ public class EnemyBoss : MonoBehaviour
             slamImpact.Play();
         }
 
+        // 추가 생성(2026-10-01, 소리 3차) — 파편과 같은 순간(판정 순간). 예비동작에 붙이면 칼이 아직 머리 위인데 쾅 소리가 난다.
+        SoundPlayer.Play(SfxId.BossSlam);
+
         // 판정을 모션 시작이 아니라 여기서 내는 이유: 검이 아직 머리 위에 있는데 맞으면
         // 플레이어는 "안 맞았는데 데미지가 들어왔다"고 느낀다. 예비동작을 보고 피할 수 있어야
         // 패턴을 읽는 재미가 생긴다.
@@ -983,6 +986,10 @@ public class EnemyBoss : MonoBehaviour
             // 수정(2026-09-24, 투사체 풀링) — Instantiate → 풀에서 꺼낸다. 창은 한 번에 여러 발이라 매번 만들면 할당이 몰린다.
             var spear = ProjectilePool.Spawn(prefab, spawn);
             spear.Launch(directions[index], spearDamage);
+
+            // 추가 생성(2026-10-01, 소리 3차) — 한 발마다 낸다. 간격이 0이라 여러 발이 한 프레임에 나가도
+            // 소리 목록의 최소 간격·동시 수(SoundBank)가 한두 번으로 줄여 준다 — 여기서 따로 세지 않는다.
+            SoundPlayer.Play(SfxId.BossSpear);
 
             if (spearFireInterval <= 0f) continue;
 
@@ -1137,6 +1144,9 @@ public class EnemyBoss : MonoBehaviour
             ringMain.startSpeed = new ParticleSystem.MinMaxCurve(ultimateRadius / 0.36f, ultimateRadius / 0.3f);
             burstRing.Play();
         }
+
+        // 추가 생성(2026-10-01, 소리 3차) — 고리가 퍼지는 판정 순간. if 밖에 두는 이유: 고리 파티클이 빠진 프리팹이어도 폭발 소리는 나야 한다.
+        SoundPlayer.Play(SfxId.BossBurst);
 
         // 원 하나로 판정한다. 상자를 돌려 쓰는 내려찍기와 달리 회전이 필요 없어서
         // OverlapCircle이 그대로 맞는 도구다.

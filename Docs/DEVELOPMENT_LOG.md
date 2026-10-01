@@ -2601,3 +2601,24 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
   인스펙터 `footstepInterval`). 애니메이션 이벤트 대신 시간으로 센다 — 걷기 클립은 빌더가 매번 새로 구워 이벤트가 사라진다(보스 먼지와 같은 이유).
   발소리 파일은 아주 작아 볼륨 1.
 - **소리 구성 도구**: 새 이름표 9개 기본값과 스킬 다섯의 소리 칸(빈 칸만)을 채운다. 컴파일(게임·도구·테스트) 오류 0·경고 0.
+
+## 2026-10-01 — 소리 3차: 문·적·보스·UI 효과음, 결과 화면 곡 (전부 CC0)
+
+- **음원**(사용자가 받아 main에 올림, 각 폴더 SOURCE.txt): Kenney Interface Sounds·Impact Sounds·Music Jingles, 100 CC0 SFX(rubberduck),
+  Swishes Sound Pack, Ghost·Ghost breath(OpenGameArt). 전부 CC0라 공개 저장소에 둔다. 폴더 이름을 기존 규칙(PascalCase)으로 맞추고
+  압축 해제 찌꺼기 `__MACOSX`(맥 리소스 포크)를 지운 뒤 `.gitignore`에 넣었다 — 유니티가 `._swish-1.wav`를 오디오로 읽으려 한다.
+  FLAC은 유니티 6이 그대로 읽어서(.meta가 AudioImporter) 변환하지 않았다.
+- **새 이름표 17개**(`SfxId` 15~31, 끝에만 붙임)와 곡 2개(`MusicId.ResultClear/ResultDeath`).
+- **넣은 자리** — 원칙은 "그림·판정과 같은 순간":
+  - 적·보스 사망: `CombatSounds.OnAnyDied` 한 곳에서 `EnemyBoss`/`EnemyBase`를 보고 고른다(적마다 넣지 않음, 1차와 같은 이유).
+  - 망령 `BeginCharge`(예비동작 아님 — 선이 이미 눈으로 경고하고, 여럿이 동시에 내면 경고가 묻힌다), 사수 `FireArrow`, 자폭병 `Explode`.
+  - 보스: 내려찍기 파편 순간, 재의 창 한 발마다(겹침은 SoundBank 간격·동시 수가 줄인다), 재 폭발 고리 순간.
+    2페이즈 전환 셋은 **타임라인 시그널 함수 안**에 — 시간을 코드에 다시 적지 않으므로 시간표를 고쳐도 소리가 따라간다.
+  - 문: `RoomDoorState.SetState`가 아니라 `RoomController.OnRewardClaimed`. SetState는 방 초기화·처음부터 열린 방에서도 불린다.
+    보스 열쇠로 열리는 부서진 문은 징(BossGateOpen)으로 구분.
+  - UI: 인벤토리·보스 열쇠·설정 창 열기/닫기, 설정 버튼 클릭(`AddClickSound`), 확인 창, 타이틀 시작·결과 재시작/타이틀(UiConfirm).
+    인벤토리 ↔ 열쇠 전환(`CloseForSwitch`)은 닫는 소리를 안 낸다. 복제 버튼은 코드 리스너가 복사되지 않아 따로 단다.
+  - 결과 곡: 씬별 곡 표는 씬 하나에 곡 하나라 클리어/사망을 못 나눈다 → 표는 None, `ResultScreen.Start`가 결과를 보고 고른다
+    (sceneLoaded가 Start보다 먼저라 Start가 이긴다). 곡은 저장소에 있던 CC0 후보 중 안 쓰던 두 곡.
+- **볼륨 첫 값**은 ffmpeg volumedetect로 파일별 평균 음량을 재서, 기존 스킬 소리(약 -23dB)에 맞춰 잡았다. 들어 보지는 못했다.
+- 남은 일: 유니티에서 `씬·세팅 → 소리 구성` 실행 → 컴파일 확인 → 플레이로 듣고 클립·볼륨 조정. sad_game_over.wav는 아직 저장소에 없다.

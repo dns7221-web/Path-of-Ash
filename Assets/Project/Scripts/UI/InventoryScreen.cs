@@ -156,6 +156,10 @@ public class InventoryScreen : MonoBehaviour
         // 나중에 화면을 더 붙였을 때 안전하다.
         isOpen = open;
 
+        // 추가 생성(2026-10-01, 소리 3차) — 키로 열고 닫을 때만 낸다. 상대 화면을 닫는 CloseForSwitch에는 넣지 않았다 —
+        // 인벤토리 ↔ 보스 열쇠 전환은 "하나를 연다" 한 번의 동작이라, 닫는 소리까지 나면 두 번 누른 것처럼 들린다.
+        SoundPlayer.Play(open ? SfxId.UiOpen : SfxId.UiClose);
+
         if (open) PauseGate.Open(this);
 
         if (open && bossKeyScreen != null) bossKeyScreen.CloseForSwitch();

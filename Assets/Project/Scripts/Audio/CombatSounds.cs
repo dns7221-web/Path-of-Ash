@@ -36,7 +36,20 @@ public static class CombatSounds
     private static void OnAnyDied(Health health)
     {
         // 적 사망 소리는 아직 없다 — 받아 둔 팩의 후보(오크 목소리)가 재의 망령과 어울리는지 들어 보고 정한다.
-        if (IsPlayer(health)) SoundPlayer.Play(SfxId.PlayerDeath);
+        // 수정(2026-10-01, 소리 3차) — 위 메모는 옛 상태다. 오크 목소리 대신 CC0 유령 소리(ghost.wav)로 정했고, 아래에서 고른다.
+        if (health == null) return;
+
+        if (IsPlayer(health))
+        {
+            SoundPlayer.Play(SfxId.PlayerDeath);
+            return;
+        }
+
+        // 추가 생성(2026-10-01, 소리 3차) — 적·보스 사망. 적 스크립트마다 사망 소리를 넣지 않고 여기 한 곳에서 고르는 이유는
+        // 이 클래스 맨 위의 설명과 같다. 사망은 한 판에 몇십 번뿐이라 TryGetComponent 비용은 신경 쓸 크기가 아니다.
+        // 유물·허수아비처럼 적이 아닌 Health는 둘 다 아니라서 소리가 나지 않는다(부서지는 소리는 따로 정할 일이다).
+        if (health.TryGetComponent(out EnemyBoss _)) SoundPlayer.Play(SfxId.BossDeath);
+        else if (health.TryGetComponent(out EnemyBase _)) SoundPlayer.Play(SfxId.EnemyDeath);
     }
 
     /// <summary>플레이어인가. 태그 대신 컴포넌트로 본다 — 태그는 문자열이라 틀려도 조용히 넘어간다.</summary>
