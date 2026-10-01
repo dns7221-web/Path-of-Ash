@@ -225,8 +225,8 @@ public class SettingsScreen : MonoBehaviour
         if (controlsResetButton != null)
             controlsResetButton.onClick.AddListener(OnControlsResetClicked);
 
-        // 추가 생성(2026-10-01, 소리 3차) — 버튼 클릭 소리. [닫기]·여는 버튼은 뺐다 — Open·Close가 열기·닫기 소리를 내므로
-        // 여기서도 걸면 클릭과 닫기 소리가 겹친다. [게임 나가기]는 창을 열 때 만들어지므로 EnsureQuitButton에서 따로 단다.
+        // 추가 생성(2026-10-01, 소리 3차) — 버튼 클릭 소리. [닫기]·여는 버튼은 뺐다 — 창을 여닫는 데는 소리를 내지 않기로 했다
+        // (수정 2026-10-01: 예전 이유는 "Open·Close가 열기·닫기 소리를 내서 겹친다"였는데, 그 소리를 뺐다). [게임 나가기]는 창을 열 때 만들어지므로 EnsureQuitButton에서 따로 단다.
         AddClickSound(windowScalePrevButton);
         AddClickSound(windowScaleNextButton);
         AddClickSound(resetButton);
@@ -412,8 +412,8 @@ public class SettingsScreen : MonoBehaviour
 
         isOpen = true;
 
-        // 추가 생성(2026-10-01, 소리 3차) — 창 여는 소리. 위의 isOpen 검사 뒤라 이미 열린 창에 다시 불려도 소리가 겹치지 않는다.
-        SoundPlayer.Play(SfxId.UiOpen);
+        // 수정(2026-10-01, 소리 3차 조정) — 열기·닫기 소리를 뺐다(사용자 판단: 들어 보니 어색함).
+        // 창은 자주 여닫는 조작이라 매번 소리가 나면 거슬린다. 이름표(UiOpen·UiClose)는 숫자가 에셋에 저장되는 규칙 때문에 지우지 않고 남겨 둔다.
 
         // 화면을 켜기 전에 스택에 먼저 넣는다. 순서를 지키는 이유는 아래 Close와 짝이다 —
         // 열림 표시와 실제 멈춤 사이에 한 프레임이라도 틈이 생기면 그 프레임에 게임이 흐른다.
@@ -439,8 +439,8 @@ public class SettingsScreen : MonoBehaviour
 
         isOpen = false;
 
-        // 추가 생성(2026-10-01, 소리 3차) — 창 닫는 소리. [닫기] 버튼과 ESC가 모두 이 함수로 오므로 한 곳에만 둔다.
-        SoundPlayer.Play(SfxId.UiClose);
+        // 수정(2026-10-01, 소리 3차 조정) — 열기·닫기 소리를 뺐다(사용자 판단: 들어 보니 어색함).
+        // 창은 자주 여닫는 조작이라 매번 소리가 나면 거슬린다. 이름표(UiOpen·UiClose)는 숫자가 에셋에 저장되는 규칙 때문에 지우지 않고 남겨 둔다.
 
         // 추가 생성(2026-09-27) — 확인 창을 띄운 채 닫으면 다음에 설정 창을 열 때 확인 창부터 보인다. 닫을 때 같이 닫는다.
         if (quitDialog != null) quitDialog.Hide();

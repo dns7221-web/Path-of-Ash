@@ -119,8 +119,7 @@ public static class AshSoundBankBuilder
 
         // UI. 클릭은 작게 녹음돼 있고(-26dB) 열기·결정은 크다(-11~-15dB). UI는 게임 소리보다 한 단계 작게 둔다.
         new SfxDefault(SfxId.UiClick, 0.8f, 0.05f, 0.05f, 2, Ui("click", 1), Ui("click", 2), Ui("click", 3)),
-        new SfxDefault(SfxId.UiOpen, 0.4f, 0.03f, 0.1f, 1, Ui("open", 1), Ui("open", 2)),
-        new SfxDefault(SfxId.UiClose, 0.4f, 0.03f, 0.1f, 1, Ui("close", 1), Ui("close", 2)),
+        // 수정(2026-10-01, 소리 3차 조정) — UiOpen·UiClose 기본값을 뺐다. 창 열기·닫기 소리를 쓰지 않기로 해서 목록에 빈 칸만 남는다.
         new SfxDefault(SfxId.UiConfirm, 0.35f, 0f, 0.3f, 1, Ui("confirmation", 1)),
     };
 
