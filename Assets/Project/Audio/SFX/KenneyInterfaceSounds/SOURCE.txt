@@ -1,0 +1,8 @@
+Interface Sounds (1.0)
+제작자: Kenney (www.kenney.nl)
+출처: https://kenney.nl/assets/interface-sounds
+라이선스: CC0 1.0 Universal (같은 폴더 License.txt 원문)
+출처 표기: 필수 아님. 선택 크레딧: Interface Sounds by Kenney (CC0)
+받은 날짜: 2026-10-01
+쓰는 곳(첫 배정, 들어 보기 전): 버튼 클릭(click), 창 열기·닫기(open·close), 시작·재시작(confirmation).
+폴더 이름만 kenney_interface-sounds → KenneyInterfaceSounds로 바꿨다. 파일은 원본 그대로.

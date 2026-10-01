@@ -62,3 +62,6 @@ _ArtReview/
 # 로컬 작업과 빌드에는 들어간다. 출처: https://leohpaz.itch.io/minifantasy-dungeon-sfx-pack
 /Assets/Project/Audio/SFX/MinifantasyDungeon/
 /Assets/Project/Audio/SFX/MinifantasyDungeon.meta
+
+# macOS 압축 해제 찌꺼기(리소스 포크). 유니티가 ._*.wav를 오디오로 읽으려다 경고를 낸다(2026-10-01).
+__MACOSX/

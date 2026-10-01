@@ -1,0 +1,7 @@
+Music Jingles (1.0)
+제작자: Kenney (www.kenney.nl)
+출처: https://kenney.nl/assets/music-jingles
+라이선스: CC0 1.0 Universal (같은 폴더 License.txt 원문)
+받은 날짜: 2026-10-01
+상태: 아직 어디에도 연결하지 않았다. 밝은 곡조(8비트·색소폰·스틸드럼 등)라 재의 길 분위기와 맞는지 들어 보고 정한다.
+결과 화면 곡은 저장소에 이미 있던 CC0 후보곡(TitleCandidates·ProgressionCandidates)으로 먼저 잡았다.

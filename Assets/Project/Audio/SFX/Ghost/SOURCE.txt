@@ -1,0 +1,8 @@
+Ghost / Ghost breath
+제작자: (각 OpenGameArt 페이지에서 확인해 적을 것)
+출처: https://opengameart.org/content/ghost (ghost.wav)
+      https://opengameart.org/content/ghost-breath (ghostbreath.flac)
+라이선스: CC0 1.0 Universal — https://creativecommons.org/publicdomain/zero/1.0/
+받은 날짜: 2026-10-01
+쓰는 곳(첫 배정, 들어 보기 전): 일반 적 사망(ghost.wav), 2페이즈 보스 등장 숨소리(ghostbreath.flac).
+FLAC은 유니티 6이 그대로 읽는다(.meta가 AudioImporter로 만들어졌다). 변환하지 않았다.

@@ -1,0 +1,8 @@
+Impact Sounds (1.0)
+제작자: Kenney (www.kenney.nl)
+출처: https://kenney.nl/assets/impact-sounds
+라이선스: CC0 1.0 Universal (같은 폴더 License.txt 원문)
+출처 표기: 필수 아님. 선택 크레딧: Impact Sounds by Kenney (CC0)
+받은 날짜: 2026-10-01
+쓰는 곳(첫 배정, 들어 보기 전): 보스 2페이즈 전환 — 갑옷 붕괴(impactMetal_heavy), 껍질 깨짐(impactGlass_heavy).
+폴더 이름만 kenney_impact-sounds → KenneyImpactSounds로 바꿨다. 파일은 원본 그대로.

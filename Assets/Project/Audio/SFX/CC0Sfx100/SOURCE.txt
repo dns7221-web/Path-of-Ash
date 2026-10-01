@@ -1,0 +1,8 @@
+100 CC0 SFX
+제작자: rubberduck (OpenGameArt)
+출처: https://opengameart.org/content/100-cc0-sfx
+라이선스: CC0 1.0 Universal — https://creativecommons.org/publicdomain/zero/1.0/
+출처 표기: 필수 아님. 선택 크레딧: 100 CC0 SFX by rubberduck, via OpenGameArt.org (CC0)
+받은 날짜: 2026-10-01
+쓰는 곳(첫 배정, 들어 보기 전): 방 문 열림(door_01·02), 부서진 문 열림·보스 사망(gong), 보스 내려찍기(slam), 자폭병 폭발(explosion).
+폴더 이름만 100-CC0-SFX → CC0Sfx100으로 바꿨다. 파일은 원본 그대로.
