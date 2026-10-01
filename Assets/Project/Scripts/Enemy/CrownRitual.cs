@@ -335,6 +335,9 @@ public class CrownRitual : MonoBehaviour
         cutscene.Finished += OnFinished;
 
         PauseGate.Open(this);
+        // 추가 생성(2026-10-01, 컷인 정적) — 게임 시간을 멈추는 바로 옆에서 음악도 멈춘다. 영상에는 소리 트랙이 없어서
+        // 보스전 곡이 그대로 흐르면 "멈춘 순간"인 화면과 달리는 음악이 어긋난다. 짝(ResumeMusic)은 PauseGate.Close 옆에 둔다.
+        SoundPlayer.PauseMusic();
         cutscene.Play();
 
         float giveUpAt = Time.unscaledTime + 15f;
@@ -343,6 +346,8 @@ public class CrownRitual : MonoBehaviour
 
         cutscene.Finished -= OnFinished;
         PauseGate.Close(this);
+        // 추가 생성(2026-10-01, 컷인 정적) — 15초 안전망으로 끊긴 경우에도 여기를 지나므로 음악이 멈춘 채 남지 않는다.
+        SoundPlayer.ResumeMusic();
     }
 
     /// <summary>

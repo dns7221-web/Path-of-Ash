@@ -45,6 +45,7 @@ public class SoundPlayer : MonoBehaviour
     private MusicId currentMusic = MusicId.None;
     private float currentMusicVolume;     // 목록에 적힌 곡 볼륨(설정 볼륨을 곱하기 전)
     private Coroutine fadeRoutine;
+    private bool musicPaused;             // 추가 생성(2026-10-01, 컷인 정적) — PauseMusic으로 멈춰 둔 상태인가
 
     // 추가 생성(2026-09-29, 믹서) — 믹서 그룹에 물렸는가. 물렸으면 볼륨 조절은 믹서가 맡는다.
     private bool mixerRouted;
@@ -84,6 +85,26 @@ public class SoundPlayer : MonoBehaviour
 
     /// <summary>배경음악을 서서히 끈다.</summary>
     public static void StopMusic(float fadeSeconds = 1.5f) => PlayMusic(MusicId.None, fadeSeconds);
+
+    /// <summary>
+    /// 추가 생성(2026-10-01, 컷인 정적) — 지금 곡을 서서히 줄인 뒤 <b>그 자리에서 일시정지</b>한다. <see cref="ResumeMusic"/>와 짝이다.
+    ///
+    /// StopMusic(끄기)과 다른 점: 끄면 다시 틀 때 곡이 처음부터 시작해서 전투 흐름이 끊긴 것처럼 들린다.
+    /// 컷인은 "잠깐 시간이 멈춘 것"이라 멈춘 자리에서 이어져야 한다. 그래서 AudioSource.Pause/UnPause(유니티 내장)를 쓴다 —
+    /// Pause는 재생 위치를 그대로 기억한다.
+    /// </summary>
+    public static void PauseMusic(float fadeSeconds = 0.3f)
+    {
+        SoundPlayer player = Instance;
+        if (player != null) player.FadeAndPauseMusic(fadeSeconds);
+    }
+
+    /// <summary>추가 생성(2026-10-01, 컷인 정적) — <see cref="PauseMusic"/>로 멈춘 곡을 멈춘 자리부터 이어 틀고 서서히 키운다.</summary>
+    public static void ResumeMusic(float fadeSeconds = 0.5f)
+    {
+        SoundPlayer player = Instance;
+        if (player != null) player.ResumeAndFadeInMusic(fadeSeconds);
+    }
 
     // ── 만들기 ────────────────────────────────────────────────────────────
 
@@ -306,6 +327,10 @@ public class SoundPlayer : MonoBehaviour
         currentMusic = entry != null ? id : MusicId.None;
         currentMusicVolume = entry != null ? entry.volume : 0f;
 
+        // 추가 생성(2026-10-01, 컷인 정적) — 멈춰 둔 사이에 곡이 바뀌면 멈춤 상태는 끝난다. 앞 곡은 아래 교차 페이드가
+        // Stop으로 정리한다(일시정지된 AudioSource도 Stop이 먹는다). 이걸 안 풀면 나중 ResumeMusic이 새 곡을 다시 건드린다.
+        musicPaused = false;
+
         AudioSource from = musicSources[activeMusic];
         AudioSource to = null;
 
@@ -348,6 +373,49 @@ public class SoundPlayer : MonoBehaviour
         fadeRoutine = null;
     }
 
+    /// <summary>추가 생성(2026-10-01, 컷인 정적) — 지금 곡을 seconds 동안 0까지 줄이고 일시정지한다. 곡이 없거나 이미 멈췄으면 아무것도 안 한다.</summary>
+    private void FadeAndPauseMusic(float seconds)
+    {
+        if (musicPaused || currentMusic == MusicId.None) return;
+
+        musicPaused = true;
+        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+        fadeRoutine = StartCoroutine(FadeActiveMusic(0f, seconds, pauseAtEnd: true));
+    }
+
+    /// <summary>추가 생성(2026-10-01, 컷인 정적) — 멈춘 곡을 이어 틀고 seconds 동안 원래 볼륨까지 키운다. 멈춘 적이 없으면 아무것도 안 한다.</summary>
+    private void ResumeAndFadeInMusic(float seconds)
+    {
+        if (!musicPaused) return;
+
+        musicPaused = false;
+        musicSources[activeMusic].UnPause();
+        if (fadeRoutine != null) StopCoroutine(fadeRoutine);
+        fadeRoutine = StartCoroutine(FadeActiveMusic(currentMusicVolume, seconds, pauseAtEnd: false));
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-01, 컷인 정적) — 지금 곡 하나의 볼륨만 목표까지 옮긴다(교차 페이드의 한쪽만 있는 버전).
+    /// 컷인 중에는 PauseGate가 timeScale을 0으로 두므로 CrossFade처럼 실제 시간(unscaledDeltaTime)으로 센다 —
+    /// 게임 시간으로 세면 멈춘 동안 페이드가 영영 안 끝난다.
+    /// </summary>
+    /// <param name="targetVolume">목록에 적힌 곡 볼륨 기준(설정 볼륨은 매 프레임 곱한다). 0이면 줄이기.</param>
+    private IEnumerator FadeActiveMusic(float targetVolume, float seconds, bool pauseAtEnd)
+    {
+        AudioSource source = musicSources[activeMusic];
+        float start = source.volume;
+
+        for (float t = 0f; t < seconds; t += Time.unscaledDeltaTime)
+        {
+            source.volume = Mathf.Lerp(start, targetVolume * BgmScale, t / seconds);
+            yield return null;
+        }
+
+        source.volume = targetVolume * BgmScale;
+        if (pauseAtEnd) source.Pause();
+        fadeRoutine = null;
+    }
+
     /// <summary>
     /// 설정 창에서 배경음 볼륨을 움직이면 바로 들려야 한다. 효과음은 짧아서 다음 재생부터 적용돼도 충분하다.
     /// 페이드 중이면 페이드가 매 프레임 새 값을 읽으므로 여기서 건드리지 않는다.
@@ -355,6 +423,9 @@ public class SoundPlayer : MonoBehaviour
     private void OnSettingsChanged()
     {
         if (fadeRoutine != null || currentMusic == MusicId.None) return;
+
+        // 추가 생성(2026-10-01, 컷인 정적) — 멈춰 둔 곡은 0에 둔다. 여기서 볼륨을 올려 두면 이어 틀 때 페이드 없이 툭 튀어나온다.
+        if (musicPaused) return;
 
         musicSources[activeMusic].volume = currentMusicVolume * BgmScale;
     }

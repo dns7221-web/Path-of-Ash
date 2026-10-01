@@ -2622,3 +2622,13 @@ SlamImpact 1.05 → 1.8, SlamBurst 2.4 → 2, AshPillar 2.25 → 2.5, EmberArrow
     (sceneLoaded가 Start보다 먼저라 Start가 이긴다). 곡은 저장소에 있던 CC0 후보 중 안 쓰던 두 곡.
 - **볼륨 첫 값**은 ffmpeg volumedetect로 파일별 평균 음량을 재서, 기존 스킬 소리(약 -23dB)에 맞춰 잡았다. 들어 보지는 못했다.
 - 남은 일: 유니티에서 `씬·세팅 → 소리 구성` 실행 → 컴파일 확인 → 플레이로 듣고 클립·볼륨 조정. sad_game_over.wav는 아직 저장소에 없다.
+
+## 2026-10-01 — 궁극기 컷인 동안 음악 멈춤, UI 소리 제거
+
+- **UI 소리 전부 제거**: Kenney Interface Sounds가 앱·SF풍 전자음이라 서브컬처 판타지 로그라이크와 장르가 어긋났다(사용자 청음).
+  재생 코드와 소리 구성 기본값을 지우고 이름표(SfxId 28~31)는 숫자 규칙 때문에 남겼다.
+- **궁극기 컷인 정적**: 컷인 영상(5초)에는 소리 트랙이 없어서 보스전 곡(160BPM)이 그대로 흐르며 "멈춘 순간"인 화면과 어긋났다.
+  전용 음성·BGM은 영상 품질과 작업량을 보고 넣지 않기로 했다(사용자 결정) — 소리를 얹을수록 영상에 시선이 몰린다.
+  `SoundPlayer.PauseMusic/ResumeMusic`을 더해 `CrownRitual`이 `PauseGate.Open/Close` 바로 옆에서 부른다 — 게임 시간과 음악이 한 자리에서 멈추고 풀린다.
+  끄기(Stop)가 아니라 `AudioSource.Pause/UnPause`라서 멈춘 자리부터 이어진다. 페이드는 실제 시간(timeScale 0 동안에도 돈다).
+  멈춘 사이 곡이 바뀌면(보스 사망·씬 전환) 멈춤 상태를 푼다.
