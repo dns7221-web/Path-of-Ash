@@ -1,0 +1,8 @@
+Swishes Sound Pack
+제작자: (OpenGameArt 페이지에서 확인해 적을 것)
+출처: https://opengameart.org/content/swishes-sound-pack
+라이선스: CC0 1.0 Universal — https://creativecommons.org/publicdomain/zero/1.0/
+받은 날짜: 2026-10-01
+구성: 13개 WAV (가벼운 것 4, 무거운 것 9 — 제작자 설명)
+쓰는 곳(첫 배정, 들어 보기 전): 사수 화살 발사(1~4), 보스 재의 창 발사(5~9), 망령 돌진(10~13).
+압축 해제 때 딸려 온 __MACOSX(맥 리소스 포크 찌꺼기)는 지웠고, 안쪽 swishes 폴더를 한 단계 올렸다. 파일은 원본 그대로.
