@@ -138,9 +138,8 @@ public class BossKeyScreen : MonoBehaviour
         // 스택이 잠깐 비어 시간이 풀렸다 다시 멈추는 모양이 된다. 인벤토리 쪽과 같은 순서다.
         isOpen = open;
 
-        // 추가 생성(2026-10-01, 소리 3차) — 키로 열고 닫을 때만 낸다. 상대 화면을 닫는 CloseForSwitch에는 넣지 않았다 —
-        // 인벤토리 ↔ 보스 열쇠 전환은 "하나를 연다" 한 번의 동작이라, 닫는 소리까지 나면 두 번 누른 것처럼 들린다.
-        SoundPlayer.Play(open ? SfxId.UiOpen : SfxId.UiClose);
+        // 수정(2026-10-01, 소리 3차 조정) — 열기·닫기 소리를 뺐다(사용자 판단: 들어 보니 어색함).
+        // 창은 자주 여닫는 조작이라 매번 소리가 나면 거슬린다. 이름표(UiOpen·UiClose)는 숫자가 에셋에 저장되는 규칙 때문에 지우지 않고 남겨 둔다.
 
         if (open) PauseGate.Open(this);
 

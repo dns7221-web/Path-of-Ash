@@ -96,16 +96,16 @@ public enum SfxId
     /// <summary>보스 사망.</summary>
     BossDeath = 27,
 
-    /// <summary>UI 버튼 누름.</summary>
+    /// <summary>UI 버튼 누름. 수정(2026-10-01) — SF풍이라 지금은 안 쓴다. 숫자 규칙 때문에 이름표만 남긴다.</summary>
     UiClick = 28,
 
-    /// <summary>창 열기(인벤토리·보스 열쇠·설정).</summary>
+    /// <summary>창 열기(인벤토리·보스 열쇠·설정). 수정(2026-10-01) — 어색해서 지금은 안 쓴다. 숫자 규칙 때문에 이름표만 남긴다.</summary>
     UiOpen = 29,
 
-    /// <summary>창 닫기.</summary>
+    /// <summary>창 닫기. 수정(2026-10-01) — UiOpen과 같은 이유로 지금은 안 쓴다.</summary>
     UiClose = 30,
 
-    /// <summary>게임 시작·재시작처럼 화면이 넘어가는 결정.</summary>
+    /// <summary>게임 시작·재시작처럼 화면이 넘어가는 결정. 수정(2026-10-01) — UiClick과 같은 이유로 지금은 안 쓴다.</summary>
     UiConfirm = 31,
 }
 
