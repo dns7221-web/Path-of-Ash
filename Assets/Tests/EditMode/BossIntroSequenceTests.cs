@@ -16,6 +16,21 @@ public class BossIntroSequenceTests
     private const string BossPath = "Assets/Project/Prefabs/Enemies/BossAshKing.prefab";
     private const string PlayerPath = "Assets/Project/Prefabs/Player/Player.prefab";
 
+    // 추가 생성(2026-10-02) — 게임 시간 대기가 끝나지 않을 때 테스트가 영원히 돌지 않게 하는 실제 시간 상한(초).
+    private const float RealTimeLimit = 60f;
+
+    /// <summary>
+    /// 추가 생성(2026-10-02) — 게임 시간(Time.time) 기준으로 아직 기다려야 하는가.
+    ///
+    /// WaitForSeconds를 쓰지 않는 이유: 이 테스트는 EditMode 테스트 안에서 EnterPlayMode로 들어간다.
+    /// 이때 테스트의 대기와 게임 시계가 같이 흐르지 않았다. 실측으로 5.5초를 기다렸는데 Timeline(GameTime)은
+    /// 0.56초밖에 안 흘러서, 연출은 멀쩡히 재생 중인데 "완료 신호가 안 왔다"고 실패했다.
+    /// 그래서 Timeline과 같은 시계(Time.time)로 마감을 재고, 한 프레임씩(yield return null) 넘기며 확인한다.
+    /// 실제 시간 상한은 게임 시간이 멈춰 버린 경우의 안전장치다.
+    /// </summary>
+    private static bool KeepWaiting(float gameDeadline, float realDeadline) =>
+        Time.time < gameDeadline && Time.realtimeSinceStartup < realDeadline;
+
     /// <summary>추가 생성(2026-10-02) — 전체 재생·반복 단축·확인 취소·확정 스킵·중단을 실제 재생 중 검사한다.</summary>
     [UnityTest]
     public IEnumerator Intro_Completes_SkipsAndAborts_WithoutLeavingLocks()
@@ -52,10 +67,17 @@ public class BossIntroSequenceTests
             Assert.That(boss.IsInIntro && player.IsScripted, Is.True);
             Assert.That(health.TakeDamage(1, null), Is.False, "석상은 피해를 받지 않는다.");
             Assert.That(playerHealth.TakeDamage(1, null), Is.False, "첫 프레임부터 플레이어도 무적이다.");
-            yield return new WaitForSeconds(1f);
+            // 수정(2026-10-02) — WaitForSeconds 대신 게임 시간으로 1초를 잰다(이유는 KeepWaiting 주석).
+            float gameDeadline = Time.time + 1f;
+            float realDeadline = Time.realtimeSinceStartup + RealTimeLimit;
+            while (KeepWaiting(gameDeadline, realDeadline)) yield return null;
             Assert.That(sequence.IsPlaying, Is.True, "첫 관람은 짧은 버전으로 끝나면 안 된다.");
             Assert.That(boss.IsInIntro, Is.True, "Start가 뒤늦게 실행돼도 AI가 잠겨 있어야 한다.");
-            yield return new WaitForSeconds((float)sequence.TotalSeconds);
+
+            // 수정(2026-10-02) — 남은 연출 길이 + 여유 0.5초를 게임 시간으로 기다리되, 완료 신호가 오면 바로 넘어간다.
+            gameDeadline = Time.time + (float)sequence.TotalSeconds + 0.5f;
+            realDeadline = Time.realtimeSinceStartup + RealTimeLimit;
+            while (completed == 0 && KeepWaiting(gameDeadline, realDeadline)) yield return null;
             // 수정(2026-10-02) — 실패하면 Director가 멈췄는지·몇 초에 있는지를 메시지에 남긴다.
             // "Expected 1 But was 0"만으로는 이벤트 누락인지 재생이 안 흐른 것인지 구분할 수 없었다.
             var introDirector = sequence.GetComponent<PlayableDirector>();
@@ -74,7 +96,10 @@ public class BossIntroSequenceTests
             boss = bossObject.GetComponent<EnemyBoss>();
             sequence = bossObject.GetComponentInChildren<BossIntroSequence>();
             sequence.Begin(boss, player, bar);
-            yield return new WaitForSeconds(2f);
+            // 수정(2026-10-02) — 단축 길이(1.5초)보다 넉넉한 2초를 게임 시간으로 기다린다. 끝나면 바로 넘어간다.
+            gameDeadline = Time.time + 2f;
+            realDeadline = Time.realtimeSinceStartup + RealTimeLimit;
+            while (sequence.IsPlaying && KeepWaiting(gameDeadline, realDeadline)) yield return null;
             Assert.That(sequence.IsPlaying, Is.False, "관람 기록이 있으면 Timeline 마커의 단축 길이를 따른다.");
             Object.Destroy(bossObject);
             yield return null;
