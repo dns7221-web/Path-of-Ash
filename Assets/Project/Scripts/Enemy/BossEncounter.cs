@@ -40,6 +40,10 @@ public class BossEncounter : RoomEncounter
     private Health bossHealth;
     private bool encounterStarted;
 
+    // 추가 생성(2026-10-02) — 등장 완료와 전투 시작을 분리해, 정상 종료·스킵이 겹쳐도 구독을 두 번 걸지 않는다.
+    private BossIntroSequence introSequence;
+    private bool fightStarted;
+
     // 추가 생성 — 처치 시 채울 재 게이지. 플레이어가 프리팹 인스턴스라 미리 못 걸어둔다.
     // EnemySpawner가 쓰는 방식과 같다.
     private AshGauge ashGauge;
@@ -96,6 +100,19 @@ public class BossEncounter : RoomEncounter
 
         encounterStarted = true;
 
+        // 추가 생성(2026-10-02) — 생성·연출·전투를 나눠 보스가 이름 카드보다 먼저 공격하는 길을 막는다.
+        if (!SpawnBoss()) return;
+        PlayIntro();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-02) — 보스를 배치하고 AI·피격을 먼저 막는다.
+    /// 연출에 에셋이 빠져도 사망 구독과 정리가 성립하도록 생성 단계가 체력 참조를 책임진다.
+    /// </summary>
+    private bool SpawnBoss()
+    {
+        fightStarted = false;
+
         Transform point = spawnPoint != null ? spawnPoint : transform;
         activeBoss = Instantiate(bossPrefab, point.position, Quaternion.identity, transform);
 
@@ -105,12 +122,48 @@ public class BossEncounter : RoomEncounter
         if (bossHealth == null)
         {
             Debug.LogError("[보스 방] 보스 프리팹에 Health가 없다. 전투가 끝나지 않는다.", activeBoss);
+            Cleanup();
+            return false;
+        }
+
+        activeBoss.BeginIntro();
+        bossHealth.Died += OnBossDied;
+
+        if (player == null) player = FindFirstObjectByType<PlayerController>();
+        if (healthBar == null) healthBar = FindFirstObjectByType<BossHealthBar>();
+        introSequence = activeBoss.GetComponentInChildren<BossIntroSequence>(true);
+        return true;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-02) — Timeline 연출이 끝날 때 전투를 시작한다.
+    /// 연출이 없는 테스트 프리팹도 무적 상태에 갇히지 않도록 곧바로 전투로 이어 준다.
+    /// </summary>
+    private void PlayIntro()
+    {
+        if (introSequence == null || !introSequence.isActiveAndEnabled)
+        {
+            StartFight();
             return;
         }
 
-        bossHealth.Died += OnBossDied;
+        // Begin이 잘못된 Timeline을 만나 즉시 끝날 수도 있으므로, 먼저 완료 신호를 연결한다.
+        introSequence.Finished += StartFight;
+        introSequence.Begin(activeBoss, player, healthBar);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-02) — 연출 종료 경로 하나에서 HUD·음악·AI를 모두 전투 상태로 확정한다.
+    /// 시그널 수신 여부와 무관하므로 스킵으로 이름 카드 신호를 건너뛰어도 전투가 시작된다.
+    /// </summary>
+    private void StartFight()
+    {
+        if (fightStarted || !encounterStarted || activeBoss == null || bossHealth == null || bossHealth.IsDead) return;
+        fightStarted = true;
+        if (introSequence != null) introSequence.Finished -= StartFight;
 
         // 추가 생성(2026-09-29, 소리) — 보스가 나오는 순간 보스전 음악으로 바꾼다(던전 음악에서 교차 페이드).
+        // 수정(2026-10-02) — 정상 재생은 이름 카드 때 먼저 시작하며, 이 호출은 스킵·에셋 누락도 보장한다.
         SoundPlayer.PlayMusic(MusicId.Boss);
 
         // 추가 생성 — 화면 위 보스 체력바를 이 보스에 물린다.
@@ -123,6 +176,8 @@ public class BossEncounter : RoomEncounter
         if (healthBar != null)
         {
             healthBar.Bind(bossHealth, activeBoss.Phase2HealthRatio);
+            // 추가 생성(2026-10-02) — 건너뛴 채움 커브의 마지막 값도 확정하여 빈 바가 남지 않게 한다.
+            healthBar.CompleteIntroFill();
             activeBoss.EnteredPhase2 += OnBossEnteredPhase2;
         }
         else
@@ -160,6 +215,9 @@ public class BossEncounter : RoomEncounter
             crownRitual.RelicsTorn += OnRitualRelicsTorn;
             crownRitual.RelicBroken += OnRitualRelicBroken;
         }
+
+        // 추가 생성(2026-10-02) — 전투 구독을 모두 연결한 뒤 AI를 풀어 첫 패턴의 신호도 놓치지 않는다.
+        activeBoss.EndIntro();
     }
 
     /// <summary>추가 생성(2026-09-22) — 유물이 뽑혔다. 보스를 손 뻗기에서 의식 자세로 넘긴다.</summary>
@@ -240,6 +298,13 @@ public class BossEncounter : RoomEncounter
     /// </summary>
     private void OnBossDied()
     {
+        // 추가 생성(2026-10-02) — 디버그 처치 등으로 연출 도중 죽어도 완료 신호가 죽은 보스를 다시 깨우지 않는다.
+        if (introSequence != null)
+        {
+            introSequence.Finished -= StartFight;
+            introSequence.Abort();
+        }
+
         runManager?.AddKill();
 
         // 추가 생성 — 보스도 처치 시 재 게이지를 채운다. 잡몹과 규칙을 맞춘다.
@@ -278,6 +343,15 @@ public class BossEncounter : RoomEncounter
     /// </summary>
     private void Cleanup()
     {
+        // 추가 생성(2026-10-02) — 플레이어 잠금·조명·Timeline을 먼저 되돌리고 나서 보스와 HUD를 없앤다.
+        // Abort는 전투 시작 신호를 내지 않으며, 구독을 먼저 끊어 컴포넌트 종료 순서에도 안전하게 한다.
+        if (introSequence != null)
+        {
+            introSequence.Finished -= StartFight;
+            introSequence.Abort();
+            introSequence = null;
+        }
+
         if (bossHealth != null)
         {
             bossHealth.Died -= OnBossDied;
@@ -318,5 +392,6 @@ public class BossEncounter : RoomEncounter
         }
 
         encounterStarted = false;
+        fightStarted = false;
     }
 }

@@ -126,6 +126,9 @@ public class BossKeyScreen : MonoBehaviour
     // 이제는 <b>여는 쪽이 상대를 닫는다</b>는 규칙 하나로 양쪽이 같게 동작한다.
     private void Update()
     {
+        // 추가 생성(2026-10-02) — 스킵 확인은 모달이므로 뒤쪽 열쇠 화면을 열어 멈춤 스택을 더 쌓지 않는다.
+        if (BossIntroSkipDialog.IsOpen || BossIntroSkipDialog.InputConsumedThisFrame) return;
+
         // timeScale이 0이어도 입력은 실제 시간으로 들어온다. 그래서 멈춘 상태에서도 닫을 수 있다.
         if (InputBindings.BossKeysAction.WasPressedThisFrame()) SetOpen(!isOpen);
     }

@@ -379,6 +379,11 @@ public class SettingsScreen : MonoBehaviour
         // 플레이어는 화면 두 겹을 각각 다른 키로 닫아야 한다.
         if (PauseGate.IsPaused) return;
 
+        // 추가 생성(2026-10-02) — 등장 중 ESC는 연출의 스킵 확인이 맡는다. 설정 창도 같은 키로 열리면
+        // Update 실행 순서에 따라 스킵 창이 가려지므로, 연출이 살아 있는 동안 이쪽은 입력을 양보한다.
+        if (BossIntroSequence.Active != null && BossIntroSequence.Active.IsPlaying) return;
+        if (BossIntroSkipDialog.InputConsumedThisFrame) return;
+
         if (InputBindings.SettingsAction.WasPressedThisFrame()) Open();
     }
 

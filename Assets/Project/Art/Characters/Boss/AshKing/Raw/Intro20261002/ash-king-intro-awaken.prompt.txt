@@ -1,0 +1,20 @@
+Generation tool: built-in image_gen (transparent_background=true)
+Attach: ash-king-idle.png (appearance reference AND the exact pose of the last frame)
+
+Use case: identity-preserve. Create a NEW production "awakening" intro animation sprite sheet for the EXACT armored boss in the attached reference.
+Preserve the dark iron Ash King design: jagged tall black crown helmet, slit orange eyes, layered massive black/gray shoulder armor, restrained orange ember cracks, full armored boots, black ragged cape, huge straight thick chipped gray greatsword with orange cracks. Preserve the detailed pixel-textured hand-painted game rendering and body proportions. Do not turn him into a skeleton or redesign him.
+
+PRIMARY MOTION: a dormant king kneeling on one knee behind his planted greatsword slowly rises to his full standing idle pose. Heavy and deliberate, like a statue coming back to life.
+Output 1536x1024 transparent PNG. EXACTLY 6 sprites in a REGULAR 3 columns x 2 rows contact sheet, 512x512 cells, sequential frames left-to-right/top-to-bottom. One whole body per cell.
+SAME SCALE in every frame; kneeling frames are shorter only because he kneels, NOT because he is drawn smaller. Floor contact y=445 in every frame. Crown top y=65 in frames 5-6.
+VIEW: FRONT view matching the idle reference exactly (same camera, same slight turn). NOT a side view.
+SWORD: the greatsword stays planted point-down vertically in the floor on his right side (screen LEFT) in ALL frames, same position x=150, blade tip on the floor. It never leaves the floor.
+
+Frame 1 TOP LEFT: DORMANT. Kneeling on his left knee (screen right), right foot planted, BOTH hands stacked on the sword hilt, head bowed until the crown nearly touches his hands. Eyes DARK, ember cracks DARK, cape pooled on the floor.
+Frame 2 TOP CENTER: IDENTICAL body to frame 1. ONLY the eye slits ignite thin orange and the cracks glow faintly.
+Frame 3 TOP RIGHT: head lifts to stare at the viewer, shoulders rise, still kneeling.
+Frame 4 BOTTOM LEFT: pushing up on the hilt, left knee leaving the floor, torso half raised.
+Frame 5 BOTTOM CENTER: nearly upright, left hand releasing the hilt and dropping to his side.
+Frame 6 BOTTOM RIGHT: EXACT copy of the reference idle frame 1. Must be interchangeable with the idle sprite.
+
+Cape follows with modest cloth lag. No ash particles, no smoke, no floor, no shadow, no text, no frame numbers, no effects (all effects are added in-engine). Leave empty cell margins; don't crop cape, sword or crown. Truly transparent background, preserve alpha. Sprites only.

@@ -3,6 +3,8 @@
     그림을 새로 그리거나 배경색으로 지우지 않는다. 생성된 알파를 그대로 보존하고,
     공통 배율로 줄인 뒤 머리 중심과 발바닥을 맞춘다. 프레임마다 키를 맞추면 보행 중
     웅크림까지 늘어나므로 여섯 장의 중앙값으로 배율을 한 번만 구한다.
+    추가 생성(2026-10-02) — ReferenceFrame이 있으면 지정 프레임의 키와 머리 중심만 사용해
+    일어서기 동작에서도 배율과 x 이동을 일정하게 유지한다. 기준 번호는 1부터 시작한다.
 #>
 param(
     [Parameter(Mandatory = $true)] [string]$SourcePath,
@@ -13,7 +15,14 @@ param(
     # 새 그림은 상체가 앞으로 숙여져 있어서 발 중심이 피벗(x=128)보다 24px(=1유닛, PPU 24)
     # 오른쪽에 찍혔다. 그러면 idle↔walk 전환 때 1유닛, flipX로 돌아설 때 2유닛씩 몸이 튄다.
     # 여섯 프레임의 발 중심 중앙값이 128이 되도록 24px 당긴 134.5를 쓴다.
-    [double]$HeadCenterX = 134.5
+    [double]$HeadCenterX = 134.5,
+    # 추가 생성(2026-10-02) — 일어서기처럼 키가 크게 변하는 동작은 지정한 서 있는 프레임(1~6)으로
+    # 배율과 x 이동을 한 번만 계산한다. 0은 기존 걷기 시트의 중앙값/개별 머리 정렬을 유지한다.
+    [ValidateRange(0, 6)] [int]$ReferenceFrame = 0,
+    # 추가 생성(2026-10-02) — 생성 그림은 idle을 픽셀 단위로 재현할 수 없으므로 지정 프레임을
+    # 기존 256px idle 첫 셀로 복사하여 연출 종료 시 자세와 실루엣이 바뀌는 현상을 막는다.
+    [string]$EndpointReferencePath,
+    [ValidateRange(1, 6)] [int[]]$EndpointFrames = @(6)
 )
 
 $ErrorActionPreference = 'Stop'
@@ -64,14 +73,22 @@ try {
         $metrics += Measure-Sprite $source $region
     }
     $heights = @($metrics | ForEach-Object { $_.Height } | Sort-Object)
-    $scale = $TargetHeight / (($heights[2] + $heights[3]) / 2.0)
+    # 추가 생성(2026-10-02) — 무릎 꿇은 프레임의 작은 키가 전체 배율을 키우지 않도록
+    # 서 있는 기준 프레임 하나를 사용하고, 고개 움직임이 좌우 이동으로 보이지 않게 x도 고정한다.
+    $scaleHeight = if ($ReferenceFrame -gt 0) { $metrics[$ReferenceFrame - 1].Height }
+                   else { ($heights[2] + $heights[3]) / 2.0 }
+    $scale = $TargetHeight / $scaleHeight
+    $commonOffsetX = if ($ReferenceFrame -gt 0) {
+        [int][Math]::Round($HeadCenterX - $metrics[$ReferenceFrame - 1].HeadX * $scale)
+    } else { 0 }
     $graphics.Clear([System.Drawing.Color]::Transparent)
     $graphics.CompositingMode = [System.Drawing.Drawing2D.CompositingMode]::SourceCopy
     $graphics.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::NearestNeighbor
     $graphics.PixelOffsetMode = [System.Drawing.Drawing2D.PixelOffsetMode]::Half
     for ($i = 0; $i -lt 6; $i++) {
         $m = $metrics[$i]
-        $offsetX = [int][Math]::Round($HeadCenterX - $m.HeadX * $scale)
+        $offsetX = if ($ReferenceFrame -gt 0) { $commonOffsetX }
+                   else { [int][Math]::Round($HeadCenterX - $m.HeadX * $scale) }
         $offsetY = [int][Math]::Round($GroundLine - $m.Bottom * $scale)
         if ($offsetX + $m.Left * $scale -lt 1 -or $offsetX + $m.Right * $scale -gt 254 -or
             $offsetY + $m.Top * $scale -lt 1) {
@@ -93,6 +110,25 @@ try {
         finally { $fg.Dispose(); $frame.Dispose() }
         Write-Output ('frame {0}: height={1}, foot={2}, headX={3}, offset={4},{5}' -f
             $i, $m.Height, $m.Bottom, $m.HeadX, $offsetX, $offsetY)
+    }
+    # 추가 생성(2026-10-02) — 리샘플링 없이 픽셀을 그대로 복사해야 마지막 프레임이 기존 idle과
+    # 완전히 같아진다. 기존 시트는 수정하지 않고 새 시트의 전환 지점에만 복사한다.
+    if ($EndpointReferencePath) {
+        $endpoint = [System.Drawing.Bitmap]::FromFile([System.IO.Path]::GetFullPath($EndpointReferencePath))
+        try {
+            if ($endpoint.Width -lt 256 -or $endpoint.Height -ne 256) {
+                throw '끝 자세 기준 시트는 256x256 셀을 사용하는 가로 시트여야 한다.'
+            }
+            foreach ($endpointFrame in $EndpointFrames) {
+                for ($y = 0; $y -lt 256; $y++) {
+                    for ($x = 0; $x -lt 256; $x++) {
+                        $sheet.SetPixel(($endpointFrame - 1) * 256 + $x, $y, $endpoint.GetPixel($x, $y))
+                    }
+                }
+                Write-Output ('frame {0}: exact endpoint copied from {1}' -f ($endpointFrame - 1), $EndpointReferencePath)
+            }
+        }
+        finally { $endpoint.Dispose() }
     }
     $destination = [System.IO.Path]::GetFullPath($OutputPath)
     [System.IO.Directory]::CreateDirectory([System.IO.Path]::GetDirectoryName($destination)) | Out-Null

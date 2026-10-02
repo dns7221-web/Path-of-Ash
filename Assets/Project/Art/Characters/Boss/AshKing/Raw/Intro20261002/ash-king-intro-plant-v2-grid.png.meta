@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: 1898c6e48baecaa4ba03c3c509dcb409
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7721075178764439892
+    second: ash-king-intro-plant-v2-grid_0
+  - first:
+      213: 2736962645654217574
+    second: ash-king-intro-plant-v2-grid_1
+  - first:
+      213: 5439543963097296468
+    second: ash-king-intro-plant-v2-grid_2
+  - first:
+      213: 4075257449700891471
+    second: ash-king-intro-plant-v2-grid_3
+  - first:
+      213: 764147033353945439
+    second: ash-king-intro-plant-v2-grid_4
+  - first:
+      213: -5031651895731730410
+    second: ash-king-intro-plant-v2-grid_5
+  - first:
+      213: 3386604771399342578
+    second: ash-king-intro-plant-v2-grid_6
+  - first:
+      213: -6877942504381077588
+    second: ash-king-intro-plant-v2-grid_7
+  - first:
+      213: 4078520493791911082
+    second: ash-king-intro-plant-v2-grid_8
+  - first:
+      213: -2690977966034728014
+    second: ash-king-intro-plant-v2-grid_9
+  - first:
+      213: -570302451430702860
+    second: ash-king-intro-plant-v2-grid_10
+  - first:
+      213: 9053787331088779623
+    second: ash-king-intro-plant-v2-grid_11
+  - first:
+      213: 2665345798708886653
+    second: ash-king-intro-plant-v2-grid_12
+  - first:
+      213: -5071130125260716072
+    second: ash-king-intro-plant-v2-grid_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 575
+        height: 674
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 451175297f4c62b60800000000000000
+      internalID: 7721075178764439892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_1
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 465
+        width: 444
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 663abb17605abf520800000000000000
+      internalID: 2736962645654217574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_2
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 977
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ee88c1a642d7b40800000000000000
+      internalID: 5439543963097296468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_3
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 503
+        width: 387
+        height: 491
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b9fa11f093e8830800000000000000
+      internalID: 4075257449700891471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_4
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 881
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f510b3f9dabca9a00800000000000000
+      internalID: 764147033353945439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_5
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 899
+        width: 47
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6184d79724bfb2ab0800000000000000
+      internalID: -5031651895731730410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_6
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 711
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f996e9b813affe20800000000000000
+      internalID: 3386604771399342578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_7
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 561
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca72ec0bbb3ac80a0800000000000000
+      internalID: -6877942504381077588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 29
+        width: 539
+        height: 413
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aac1e99b7c0d99830800000000000000
+      internalID: 4078520493791911082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_9
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 439
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bbc81c1cc9b7aad0800000000000000
+      internalID: -2690977966034728014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_10
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 15
+        width: 437
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f040f721f0e518f0800000000000000
+      internalID: -570302451430702860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_11
+      rect:
+        serializedVersion: 2
+        x: 1118
+        y: 29
+        width: 397
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7698a7dcb9385ad70800000000000000
+      internalID: 9053787331088779623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_12
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 351
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c7f9fd1e53df420800000000000000
+      internalID: 2665345798708886653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-plant-v2-grid_13
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 351
+        width: 35
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d78d02e40abf99b0800000000000000
+      internalID: -5071130125260716072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-intro-plant-v2-grid_0: 7721075178764439892
+      ash-king-intro-plant-v2-grid_1: 2736962645654217574
+      ash-king-intro-plant-v2-grid_10: -570302451430702860
+      ash-king-intro-plant-v2-grid_11: 9053787331088779623
+      ash-king-intro-plant-v2-grid_12: 2665345798708886653
+      ash-king-intro-plant-v2-grid_13: -5071130125260716072
+      ash-king-intro-plant-v2-grid_2: 5439543963097296468
+      ash-king-intro-plant-v2-grid_3: 4075257449700891471
+      ash-king-intro-plant-v2-grid_4: 764147033353945439
+      ash-king-intro-plant-v2-grid_5: -5031651895731730410
+      ash-king-intro-plant-v2-grid_6: 3386604771399342578
+      ash-king-intro-plant-v2-grid_7: -6877942504381077588
+      ash-king-intro-plant-v2-grid_8: 4078520493791911082
+      ash-king-intro-plant-v2-grid_9: -2690977966034728014
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

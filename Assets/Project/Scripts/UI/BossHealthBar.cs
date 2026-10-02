@@ -108,6 +108,31 @@ public class BossHealthBar : MonoBehaviour
     // 추가 생성 — 지금 차오르는 중인가. 켜져 있는 동안만 일정 속도로 채운다.
     private bool refilling;
 
+    // 추가 생성(2026-10-02) — 등장 채움은 Timeline이 소유한다. 평소 보간이 같은 값을 덮어쓰지 않게 구분한다.
+    private bool introFilling;
+    public string Phase1Name => phase1Name;
+
+    /// <summary>추가 생성(2026-10-02) — 이름 카드와 전투 시작이 같은 보스를 중복 연결하지 않게 한다.</summary>
+    public bool IsBoundTo(Health bossHealth) => health != null && health == bossHealth;
+
+    /// <summary>추가 생성(2026-10-02) — 실제 체력을 바꾸지 않고 등장 때 보여줄 채움만 Timeline에서 받는다.</summary>
+    public void SetIntroFill(float amount)
+    {
+        introFilling = true;
+        refilling = false;
+        displayed = target * Mathf.Clamp01(amount);
+        ApplyFill(displayed);
+    }
+
+    /// <summary>추가 생성(2026-10-02) — 스킵으로 채움 곡선을 건너뛰어도 전투는 실제 체력이 가득 표시된 상태로 시작한다.</summary>
+    public void CompleteIntroFill()
+    {
+        introFilling = false;
+        refilling = false;
+        displayed = target;
+        ApplyFill(displayed);
+    }
+
     private void Awake()
     {
         // 다른 게이지와 같은 이유로 Image 설정을 코드에서 강제한다.
@@ -170,6 +195,7 @@ public class BossHealthBar : MonoBehaviour
         // 색과 환산 기준이 그대로 남아, 아직 1페이즈인 보스가 2페이즈처럼 보인다.
         isPhase2 = false;
         refilling = false;
+        introFilling = false; // 추가 생성(2026-10-02) — 새 대상에 이전 등장 채움을 이어붙이지 않는다.
 
         phase2Ratio = phase2HealthRatio;
         hasPhaseSplit = phase2Ratio > 0f && phase2Ratio < 1f;
@@ -197,6 +223,7 @@ public class BossHealthBar : MonoBehaviour
     public void Unbind()
     {
         Unsubscribe();
+        introFilling = false; // 추가 생성(2026-10-02) — 방 중단 뒤에도 평소 바가 멈춰 있지 않게 한다.
         refilling = false;
         visible = false;
     }
@@ -217,6 +244,7 @@ public class BossHealthBar : MonoBehaviour
     public void MarkPhase2()
     {
         isPhase2 = true;
+        introFilling = false; // 추가 생성(2026-10-02) — 기존 2페이즈 재충전이 항상 우선한다.
 
         // 같은 체력을 2페이즈 기준으로 다시 환산한다. 경계를 넘겨 때렸다면(예: 55%에서
         // 45%로) 목표가 1.0이 아니라 0.9가 된다. 그게 맞다 — 넘겨서 깎은 만큼은 2페이즈
@@ -295,8 +323,12 @@ public class BossHealthBar : MonoBehaviour
 
     private void Update()
     {
-        if (refilling) StepRefill();
-        else StepFollow();
+        // 추가 생성(2026-10-02) — 등장 중에는 Timeline 값을 유지하고 기존 2페이즈 동작은 그대로 둔다.
+        if (!introFilling)
+        {
+            if (refilling) StepRefill();
+            else StepFollow();
+        }
 
         ApplyFill(displayed);
         ApplyColor();

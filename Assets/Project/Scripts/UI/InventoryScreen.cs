@@ -138,6 +138,9 @@ public class InventoryScreen : MonoBehaviour
 
     private void Update()
     {
+        // 추가 생성(2026-10-02) — 스킵 확인 뒤로 인벤토리가 열리면 보이지 않는 창이 시간을 계속 잡으므로 입력을 막는다.
+        if (BossIntroSkipDialog.IsOpen || BossIntroSkipDialog.InputConsumedThisFrame) return;
+
         // timeScale이 0이어도 입력은 실제 시간으로 들어온다. 그래서 멈춘 상태에서도 닫을 수 있다.
         if (InputBindings.InventoryAction.WasPressedThisFrame()) SetOpen(!isOpen);
     }

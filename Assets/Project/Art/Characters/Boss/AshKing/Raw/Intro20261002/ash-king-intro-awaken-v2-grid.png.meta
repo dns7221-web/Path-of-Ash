@@ -1,0 +1,442 @@
+fileFormatVersion: 2
+guid: b952e0c29424fd940b987095ea40d07d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2536111150146894697
+    second: ash-king-intro-awaken-v2-grid_0
+  - first:
+      213: 3568993684787762203
+    second: ash-king-intro-awaken-v2-grid_1
+  - first:
+      213: 3952132539445808778
+    second: ash-king-intro-awaken-v2-grid_2
+  - first:
+      213: 8157713587570128751
+    second: ash-king-intro-awaken-v2-grid_3
+  - first:
+      213: -491587894299177968
+    second: ash-king-intro-awaken-v2-grid_4
+  - first:
+      213: -7416048741088047454
+    second: ash-king-intro-awaken-v2-grid_5
+  - first:
+      213: 6167892877320331018
+    second: ash-king-intro-awaken-v2-grid_6
+  - first:
+      213: 9207122366545272990
+    second: ash-king-intro-awaken-v2-grid_7
+  - first:
+      213: 2278465239423869398
+    second: ash-king-intro-awaken-v2-grid_8
+  - first:
+      213: 3158315397498844155
+    second: ash-king-intro-awaken-v2-grid_9
+  - first:
+      213: 8320373983938141374
+    second: ash-king-intro-awaken-v2-grid_10
+  - first:
+      213: 728444150085629666
+    second: ash-king-intro-awaken-v2-grid_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_0
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 913
+        width: 29
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96bb96777a3123320800000000000000
+      internalID: 2536111150146894697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_1
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 558
+        width: 437
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b141363d8dc978130800000000000000
+      internalID: 3568993684787762203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_2
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 558
+        width: 388
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e0ee6fa9bc8d630800000000000000
+      internalID: 3952132539445808778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_3
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 929
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67be765945063170800000000000000
+      internalID: 8157713587570128751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_4
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 502
+        width: 435
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c4a682a678d29f0800000000000000
+      internalID: -491587894299177968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_5
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 464
+        width: 65
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aec67e36f6e41990800000000000000
+      internalID: -7416048741088047454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_6
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 33
+        width: 403
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0f175d94e1c89550800000000000000
+      internalID: 6167892877320331018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 471
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e902c7dc20546cf70800000000000000
+      internalID: 9207122366545272990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_8
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 32
+        width: 450
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d16fec301cbe9f10800000000000000
+      internalID: 2278465239423869398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_9
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 31
+        width: 501
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf3b09cde1794db20800000000000000
+      internalID: 3158315397498844155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_10
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 415
+        width: 51
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebcd80f1e08e77370800000000000000
+      internalID: 8320373983938141374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ash-king-intro-awaken-v2-grid_11
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 354
+        width: 30
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6b0945814fb1a00800000000000000
+      internalID: 728444150085629666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ash-king-intro-awaken-v2-grid_0: 2536111150146894697
+      ash-king-intro-awaken-v2-grid_1: 3568993684787762203
+      ash-king-intro-awaken-v2-grid_10: 8320373983938141374
+      ash-king-intro-awaken-v2-grid_11: 728444150085629666
+      ash-king-intro-awaken-v2-grid_2: 3952132539445808778
+      ash-king-intro-awaken-v2-grid_3: 8157713587570128751
+      ash-king-intro-awaken-v2-grid_4: -491587894299177968
+      ash-king-intro-awaken-v2-grid_5: -7416048741088047454
+      ash-king-intro-awaken-v2-grid_6: 6167892877320331018
+      ash-king-intro-awaken-v2-grid_7: 9207122366545272990
+      ash-king-intro-awaken-v2-grid_8: 2278465239423869398
+      ash-king-intro-awaken-v2-grid_9: 3158315397498844155
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

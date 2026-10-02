@@ -405,8 +405,10 @@ public static class AshBossRoomBuilder
         // 플레이어는 아래쪽에서 들어오고 보스는 위쪽에 선다. 마주 보는 배치라 입장하자마자
         // 보스가 화면에 들어오고, 첫 패턴이 오기 전에 움직일 거리가 생긴다.
         MoveChild(room, "PlayerEntryPoint", new Vector2(center.x, bottom + innerHeight * 0.15f));
+        // 추가 생성(2026-10-02) — 석상은 출구 아치 앞이 아니라 빈 바닥 중앙에서 깨어난다.
+        // 예전 75% 배치를 다시 적용하면 등장 연출과 방 구도가 달라지므로 빌더도 같은 기준을 쓴다.
         if (bossSpawnPoint != null)
-            bossSpawnPoint.position = new Vector3(center.x, bottom + innerHeight * 0.75f, bossSpawnPoint.position.z);
+            bossSpawnPoint.position = new Vector3(center.x, center.y, bossSpawnPoint.position.z);
 
         // 보상은 방 한가운데, 출구는 위쪽 벽 앞에 둔다.
         //

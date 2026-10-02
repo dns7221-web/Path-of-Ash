@@ -1,0 +1,18 @@
+Generation tool: built-in image_gen (transparent_background=true)
+Attach: ash-king-idle.png (appearance reference AND the pose of frames 1 and 6)
+
+Use case: identity-preserve. Create a NEW production "declaration" intro animation sprite sheet for the EXACT armored boss in the attached reference.
+Preserve the dark iron Ash King design: jagged tall black crown helmet, slit orange eyes, layered massive black/gray shoulder armor, restrained orange ember cracks, full armored boots, black ragged cape, huge straight thick chipped gray greatsword with orange cracks. Preserve the detailed pixel-textured hand-painted game rendering and body proportions. Do not redesign him.
+
+PRIMARY MOTION: from idle he lifts the planted greatsword slightly with both hands and drives it back down into the floor, a heavy small declaration gesture, NOT an attack. No step forward, no lunge.
+Output 1536x1024 transparent PNG. EXACTLY 6 sprites in a REGULAR 3 columns x 2 rows contact sheet, 512x512 cells, sequential frames left-to-right/top-to-bottom. Same scale in every frame. Floor contact y=445. Crown top y=65.
+VIEW: FRONT view matching the idle reference exactly. Sword stays on his right side (screen LEFT), vertical, x=150.
+
+Frame 1 TOP LEFT: EXACT copy of the reference idle frame 1.
+Frame 2 TOP CENTER: both hands on the hilt, sword lifted slightly so the tip just leaves the floor.
+Frame 3 TOP RIGHT: sword raised higher, tip at knee height, shoulders tensed.
+Frame 4 BOTTOM LEFT: sword driven back down into the floor, knees slightly bent, head pushed forward.
+Frame 5 BOTTOM CENTER: HOLD of frame 4, only the cape settles.
+Frame 6 BOTTOM RIGHT: EXACT copy of the reference idle frame 1.
+
+Sword rigid, constant length and shape. No shockwave, sparks, crown fire, smoke, shadow, floor, text or frame numbers (added in-engine). Leave empty cell margins; don't crop cape, sword or crown. Truly transparent background, preserve alpha. Sprites only.

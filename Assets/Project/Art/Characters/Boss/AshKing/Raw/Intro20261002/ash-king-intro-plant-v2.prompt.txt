@@ -1,0 +1,13 @@
+Use case: identity-preserve.
+Asset type: transparent 6-frame game sprite sheet, exactly 1536x1024, regular 3 columns x 2 rows of 512x512 cells.
+Inputs: Image 1 is the AUTHORITATIVE CHARACTER AND PIXEL SCALE reference, the existing idle first frame enlarged exactly 2x. Image 2 is the edit target; keep its 6-frame small sword-plant motion. Image 3 is the original idle sheet corroborating the identity.
+Primary request: Correct the edit target's body silhouette and sword position to match Image 1 exactly. The previous sheet wrongly broadened the chest and shoulders and moved the sword toward the center. The corrected knight must have the narrow waist, massive but not wider shoulders, longer-looking legs, small crown helmet, precise armor plate arrangement, restrained ember cracks and ORIGINAL slight turn toward screen LEFT from image 1. Do NOT square his chest front-on; keep the same near-front 3/4 camera as Image 1 throughout.
+Lock the sprite scale, head size and armor sizes in all cells to Image 1 at 512x512. Full standing height is 400px, foot ground y=432, crown top y=34. The knight's crown center is x=227. Sword is held vertically on SCREEN LEFT at x=150, outside the chest silhouette, never between his legs. The sword and right hand must stay in the same x position across the whole gesture, with only vertical sword motion. Feet stay exactly in their idle positions; no step, attack, lunge or turn.
+Frame 1 top left: exact Image 1 idle pose, right hand on planted sword, left arm down.
+Frame 2 top middle: same torso silhouette and idle foot positions, left hand reaches across onto sword hilt, sword raised slightly with tip at y=400.
+Frame 3 top right: same body scale and x positions, both hands raise sword vertically, sword tip at y=350. Do not inflate upper body.
+Frame 4 bottom left: sword planted again, tip at y=432, only a SMALL knee compression. Both hands on hilt. No wide squat.
+Frame 5 bottom middle: same as frame 4 but cape settles and left hand starts releasing.
+Frame 6 bottom right: exact Image 1 idle pose, right hand on planted sword, left arm down.
+Pixel-textured low-resolution hand-painted game sprite rendering, matching Image 1, not a new high-detail design. Preserve the reference's dark muted armor colors. No background, floor, halo, smoke, particles, shadow, flame, text, frame numbering or effects. Keep true transparent alpha. Do not crop anything. This is a narrow heavy small declaration gesture, not a battle attack.
+

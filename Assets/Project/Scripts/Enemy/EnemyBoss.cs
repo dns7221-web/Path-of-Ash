@@ -28,7 +28,8 @@ public class EnemyBoss : MonoBehaviour
 {
     // 수정(2026-09-21, 왕관 의식) — Ritual을 더했다. 의식 동안 보스는 멈춰 서서 무적이고 아무 패턴도 안 쓴다.
     // 수정(2026-09-22) — Groggy를 더했다. 유물 넷을 다 부숴 의식을 막으면, 정해 둔 시간 동안 멈춰 서서 맞기만 한다(무적 아님).
-    private enum State { Idle, Chase, Attack, Transition, Hit, Dead, Ritual, Groggy }
+    // 추가 생성(2026-10-02) — Timeline이 그림을 재생하는 동안에도 AI와 물리는 별도로 잠가야 한다.
+    private enum State { Idle, Chase, Attack, Transition, Hit, Dead, Ritual, Groggy, Intro }
 
     [Header("페이즈")]
     [Tooltip("2페이즈에서 쓸 컨트롤러. 체력이 절반이 되면 갈아 끼운다.")]
@@ -482,6 +483,12 @@ public class EnemyBoss : MonoBehaviour
     private State state = State.Idle;
     private bool isPhase2;
 
+    // 추가 생성(2026-10-02) — 등장 연출이 걸기 전의 무적을 보관해 다른 시스템의 보호 상태를 지우지 않는다.
+    private bool invulnerableBeforeIntro;
+
+    /// <summary>추가 생성(2026-10-02) — 등장 중인지 공개해 연출 종료·정리 경로에서 상태를 확인한다.</summary>
+    public bool IsInIntro => state == State.Intro;
+
     // 추가 생성(전환이 두 번 돌았다) — 전환 연출을 한 번이라도 시작했는가.
     //
     // isPhase2와 나눠둔 이유는 OnDamaged의 검사 자리에 적어뒀다. 한 줄로 줄이면:
@@ -623,6 +630,9 @@ public class EnemyBoss : MonoBehaviour
         health.Damaged -= OnDamaged;
         health.Died -= OnDied;
 
+        // 추가 생성(2026-10-02) — 컴포넌트만 껐다 켜도 등장 무적과 고정된 Rigidbody가 남지 않게 복원한다.
+        EndIntro();
+
         if (transitionSequence == null) return;
 
         transitionSequence.ArmorBroken -= OnTransitionArmorBroken;
@@ -655,8 +665,51 @@ public class EnemyBoss : MonoBehaviour
             Debug.LogWarning("[보스] 플레이어를 못 찾았다. 그 자리에 서 있게 된다.", this);
     }
 
+    /// <summary>
+    /// 추가 생성(2026-10-02) — 생성 직후 등장 상태로 잠근다. Start보다 먼저 불려도 Awake 참조로 안전하게 처리한다.
+    /// 애니메이션은 Timeline이 맡고, 공격 코루틴·피격·충돌 이동은 AI가 막아 그림과 게임 규칙을 분리한다.
+    /// </summary>
+    public void BeginIntro()
+    {
+        if (state == State.Intro || state == State.Dead || health == null || health.IsDead) return;
+
+        invulnerableBeforeIntro = health.IsInvulnerableExternally;
+        CancelCast();
+        StopAllCoroutines();
+        state = State.Intro;
+        health.IsInvulnerableExternally = true;
+        body.linearVelocity = Vector2.zero;
+        body.angularVelocity = 0f;
+        if (animator != null) animator.SetFloat(SpeedHash, 0f);
+
+        // 다음 Update를 기다리면 그 전에 물리 한 스텝이 돌 수 있으므로 생성 프레임부터 고정한다.
+        PinWhileHeld();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-02) — 정상 종료·스킵·중단에서 공통으로 등장 잠금을 푼다.
+    /// 상태를 먼저 검사하므로 완료 신호와 OnDisable이 겹쳐도 다른 전투 상태나 무적을 덮어쓰지 않는다.
+    /// </summary>
+    public void EndIntro()
+    {
+        if (state != State.Intro) return;
+
+        health.IsInvulnerableExternally = invulnerableBeforeIntro;
+        state = State.Idle;
+        body.linearVelocity = Vector2.zero;
+        body.angularVelocity = 0f;
+        PinWhileHeld();
+    }
+
     private void Update()
     {
+        // 추가 생성(2026-10-02) — 등장 중에는 쿨다운도 흐르지 않게 해서 첫 전투의 패턴 순서를 보존한다.
+        if (state == State.Intro)
+        {
+            PinWhileHeld();
+            return;
+        }
+
         // 패턴 전용 쿨다운은 상태 검사보다 <b>위</b>에서 흐른다.
         //
         // 아래 return 뒤에 두면 공격·경직·전환 중에 멈춘다. 그러면 인스펙터에 적은 9초가
@@ -1214,7 +1267,8 @@ public class EnemyBoss : MonoBehaviour
 
     private void OnDamaged(int current, int max)
     {
-        if (state == State.Dead || state == State.Transition) return;
+        // 추가 생성(2026-10-02) — 외부 디버그 피해도 등장 도중 페이즈 전환이나 경직 코루틴을 시작하지 않는다.
+        if (state == State.Dead || state == State.Transition || state == State.Intro) return;
 
         // 추가 생성(2026-09-23, 보스-6) — 맞은 순간 때린 반대쪽으로 갑옷 조각이 튄다. 죽는 한 대에도 튄다(아래 return보다 먼저).
         // 조각은 +X로 튀게 만들어 두고 맞은 방향으로 돌린다(명중 불똥과 같은 방식).
@@ -1889,13 +1943,17 @@ public class EnemyBoss : MonoBehaviour
     /// </summary>
     private void PinWhileHeld()
     {
-        bool held = state == State.Ritual || state == State.Groggy || state == State.Transition;
+        // 추가 생성(2026-10-02) — 석상도 발 충돌에 밀리면 마지막 idle 위치가 튀므로 같은 물리 고정을 적용한다.
+        bool held = state == State.Ritual || state == State.Groggy || state == State.Transition || state == State.Intro;
         RigidbodyConstraints2D wanted = held ? RigidbodyConstraints2D.FreezeAll : freeConstraints;
         if (body.constraints != wanted) body.constraints = wanted;
     }
 
     private void OnDied()
     {
+        // 추가 생성(2026-10-02) — 강제 처치가 등장 무적을 우회했어도 사망 상태로 넘어가기 전에 잠금을 복원한다.
+        EndIntro();
+
         // 추가 생성(2026-09-20) — 시전 중에 죽으면 조준선과 시전 바가 그대로 남는다.
         // 코루틴을 멈추기 전에 끊어야 한다.
         CancelCast();

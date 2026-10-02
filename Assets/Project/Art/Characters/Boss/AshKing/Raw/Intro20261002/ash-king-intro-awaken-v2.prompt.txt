@@ -1,0 +1,12 @@
+Use case: identity-preserve. Create a production animation of the exact EXISTING PIXEL SPRITE in the attached image, NOT an illustration or redesigned character. Image 1 is an exact 2x nearest-neighbor enlargement of the original 256x256 sprite. Image 2 is the original six-frame idle sheet. Preserve its low-resolution pixel clusters, color palette, slightly sideways posture, narrow chest/waist, short tapered crown helmet, asymmetrical layered shoulder plates, slender armored legs and ragged cape. The original sprite has a heavy sword but a relatively slender body; DO NOT broaden or bulk up the chest, shoulders, arms or head. You are animating the original pixels.
+Output exactly 1536x1024 transparent PNG, 3 columns x 2 rows, each cell 512x512. No floor, no background, no shadow, glow aura, particles, text, labels, grid lines or effects. Transparent alpha, complete sprites.
+SAME BODY SCALE in every frame: standing sprite occupies EXACTLY the silhouette size from Image 1; 400px from crown to boots and around 290px total width including sword and cape. Standing boots at y=432; crown top y=34; helmet center x=227. Do not adjust per frame scale. Kneeling reduces pose height only.
+Always SAME near-front slight turn toward screen LEFT from reference; do not rotate toward a straight frontal view. Sword always vertical on SCREEN LEFT, x=150, rigid identical shape and length, blade tip planted on y=432 in all frames. Sword never moves sideways. Foot baseline stays y=432. All hands and armor keep original size.
+6 frames ordered left to right, top to bottom:
+1 dormant king kneeling on his left knee (screen right), right foot planted. Both hands stacked on the low planted sword hilt. Head bowed toward hands. Eyes and armor cracks completely dark. Cape pooled. Body scale identical to standing.
+2 exactly same kneeling pose as frame1, only thin orange eyes ignite.
+3 still kneeling but head looks up, shoulders begin to rise; body still slender.
+4 slowly pushes up on sword hilt, left knee halfway lifted.
+5 standing in almost EXACT image1 idle pose, narrow armor silhouette and reference slant unchanged, left hand almost back at his side. This frame should look nearly identical to frame6.
+6 EXACT image1 existing idle pose, the right hand grips the planted sword and the left arm hangs down. Preserve every detail and proportion. Must be seamlessly interchangeable with original idle, not a different wider knight.
+Match image1's dark subtle amber cracks and game texture. No white hair, exposed face, skeleton or design change.
