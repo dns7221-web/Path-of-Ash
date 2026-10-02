@@ -3,6 +3,7 @@ using NUnit.Framework;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
@@ -30,7 +31,9 @@ public class BossIntroSequenceTests
         try
         {
             PlayerPrefs.DeleteKey(BossIntroSequence.SeenPreferenceKey);
-            cameraObject = new GameObject("Intro test camera", typeof(Camera), typeof(CameraShake));
+            // 수정(2026-10-02) — AudioListener를 함께 붙인다. 없으면 연출 효과음마다
+            // "There are no audio listeners" 경고가 쌓여 실제 실패 원인을 찾기 어려워진다.
+            cameraObject = new GameObject("Intro test camera", typeof(Camera), typeof(AudioListener), typeof(CameraShake));
             cameraObject.tag = "MainCamera";
             playerObject = Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(PlayerPath));
             playerObject.transform.position = new Vector3(0f, -7f, 0f);
@@ -53,7 +56,12 @@ public class BossIntroSequenceTests
             Assert.That(sequence.IsPlaying, Is.True, "첫 관람은 짧은 버전으로 끝나면 안 된다.");
             Assert.That(boss.IsInIntro, Is.True, "Start가 뒤늦게 실행돼도 AI가 잠겨 있어야 한다.");
             yield return new WaitForSeconds((float)sequence.TotalSeconds);
-            Assert.That(completed, Is.EqualTo(1));
+            // 수정(2026-10-02) — 실패하면 Director가 멈췄는지·몇 초에 있는지를 메시지에 남긴다.
+            // "Expected 1 But was 0"만으로는 이벤트 누락인지 재생이 안 흐른 것인지 구분할 수 없었다.
+            var introDirector = sequence.GetComponent<PlayableDirector>();
+            Assert.That(completed, Is.EqualTo(1),
+                $"연출이 끝나면 완료 신호가 한 번 와야 한다. Director state={introDirector.state}, " +
+                $"time={introDirector.time:0.00}/{sequence.TotalSeconds:0.00}");
             Assert.That(player.IsScripted || boss.IsInIntro, Is.False);
             Assert.That(bar.IsBoundTo(health), Is.True);
             Assert.That(PlayerPrefs.GetInt(BossIntroSequence.SeenPreferenceKey), Is.EqualTo(1));

@@ -177,9 +177,34 @@ public sealed class BossIntroSequence : MonoBehaviour, INotificationReceiver
         if (!running) return;
         ApplyPresentation();
         if (PauseGate.IsPaused || Time.timeScale <= 0f) return;
+
+        // 추가 생성(2026-10-02, 종료 감지 보강) — 전투 시작을 Director의 stopped 이벤트 하나에만 맡기지 않는다.
+        // EditMode 테스트에서 연출 길이만큼 기다려도 Finished가 한 번도 오지 않았다(BossIntroSequenceTests 56번 줄).
+        // 이벤트가 오지 않으면 보스가 무적·AI 정지 상태로 영영 남으므로, 재생이 끝났는지를 매 프레임 직접 확인한다.
+        // Finish는 running 플래그로 한 번만 실행되므로 stopped 이벤트와 이 검사가 겹쳐도 전투는 한 번만 시작된다.
+        if (HasPlaybackEnded())
+        {
+            // 정상이라면 stopped가 먼저 와서 running이 내려가 이 줄까지 오지 않는다. 찍히면 이벤트가 빠졌다는 뜻이다.
+            Debug.Log("[보스 등장] stopped 이벤트 없이 재생 종료를 감지해 전투를 시작한다.", this);
+            Finish(true);
+            return;
+        }
+
         bool escape = Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame;
         if ((escape || InputBindings.SettingsAction.WasPressedThisFrame())
             && !BossIntroSkipDialog.InputConsumedThisFrame) RequestSkipConfirmation();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-02, 종료 감지 보강) — Timeline 재생이 실제로 끝났는가.
+    /// WrapMode가 None이면 끝에서 Director가 스스로 멈춰 state가 Playing이 아니게 된다.
+    /// 끝 시각에 멈춘 채 남는 경우도 시각 비교로 함께 잡는다. 길이는 여전히 Timeline 에셋에서만 읽는다.
+    /// 일시정지(timeScale 0)는 state가 Playing으로 남으므로 끝난 것으로 오판하지 않는다.
+    /// </summary>
+    private bool HasPlaybackEnded()
+    {
+        if (director == null || director.playableAsset == null) return true;
+        return director.state != PlayState.Playing || director.time >= TotalSeconds;
     }
 
     /// <summary>추가 생성(2026-10-02) — ESC만으로 건너뛰지 않고 사용자가 스킵 버튼을 누를 기회를 준다.</summary>
