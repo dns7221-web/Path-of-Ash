@@ -42,8 +42,15 @@ public class AshGauge : MonoBehaviour
     /// <summary>추가 생성 — 유물로 얻은 처치당 충전량 보정.</summary>
     public float BonusChargePerKill { get; set; }
 
+    /// <summary>
+    /// 추가 생성(2026-10-02, 능력치 창) — 처치 한 번에 실제로 차오르는 양(기본값 + 유물 보정).
+    /// 능력치 창과 AddKillCharge가 같은 식을 쓰게 하려고 한 곳에 모았다.
+    /// </summary>
+    public float ChargePerKill => chargePerKill + BonusChargePerKill;
+
+    // 수정(2026-10-02, 능력치 창) — 식을 ChargePerKill 한 곳으로 모았다.
     /// <summary>적을 처치했을 때 부른다.</summary>
-    public void AddKillCharge() => Add(chargePerKill + BonusChargePerKill);
+    public void AddKillCharge() => Add(ChargePerKill);
 
     /// <summary>
     /// 가득 찼으면 전부 쓰고 true. 아니면 아무것도 하지 않고 false.

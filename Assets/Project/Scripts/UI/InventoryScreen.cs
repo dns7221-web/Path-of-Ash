@@ -43,6 +43,10 @@ public class InventoryScreen : MonoBehaviour
     [Tooltip("보스 열쇠 화면. I/Tab을 누르면 저 화면에서 이 화면으로 전환된다.")]
     [SerializeField] private BossKeyScreen bossKeyScreen;
 
+    // 추가 생성(2026-10-02) — 능력치 창(C). 보스 열쇠 화면과 같은 이유로, 이 화면을 열 때 저쪽을 닫는다.
+    [Tooltip("능력치 창. I/Tab을 누르면 저 화면에서 이 화면으로 전환된다.")]
+    [SerializeField] private StatsScreen statsScreen;
+
     // 실행 중에 만든 보관함 칸들. 다시 그릴 때 재사용한다.
     private readonly System.Collections.Generic.List<RelicSlotView> bagSlots =
         new System.Collections.Generic.List<RelicSlotView>();
@@ -68,6 +72,12 @@ public class InventoryScreen : MonoBehaviour
         if (bossKeyScreen == null)
         {
             bossKeyScreen = FindFirstObjectByType<BossKeyScreen>(FindObjectsInactive.Include);
+        }
+
+        // 추가 생성(2026-10-02) — 능력치 창도 같은 방식으로 찾는다.
+        if (statsScreen == null)
+        {
+            statsScreen = FindFirstObjectByType<StatsScreen>(FindObjectsInactive.Include);
         }
 
         if (bagSlotTemplate != null) bagSlotTemplate.gameObject.SetActive(false);
@@ -165,6 +175,7 @@ public class InventoryScreen : MonoBehaviour
         if (open) PauseGate.Open(this);
 
         if (open && bossKeyScreen != null) bossKeyScreen.CloseForSwitch();
+        if (open && statsScreen != null) statsScreen.CloseForSwitch(); // 추가 생성(2026-10-02) — 능력치 창
 
         if (root != null) root.SetActive(open);
 

@@ -38,6 +38,7 @@ public static class InputBindings
     public const string BossKeys = "BossKeys";
     public const string Settings = "Settings";
     public const string Restart = "Restart";
+    public const string Stats = "Stats"; // 추가 생성(2026-10-02) — 능력치 창
 
     /// <summary>
     /// 스킬 슬롯 순서. <see cref="SkillController"/>의 슬롯 번호와 같은 순서여야 한다 —
@@ -85,6 +86,7 @@ public static class InputBindings
     public static InputAction BossKeysAction => Get(BossKeys);
     public static InputAction SettingsAction => Get(Settings);
     public static InputAction RestartAction => Get(Restart);
+    public static InputAction StatsAction => Get(Stats); // 추가 생성(2026-10-02)
 
     /// <summary>
     /// 바인딩이 바뀌었을 때 알린다. 키를 글자로 보여주는 UI가 이걸 듣고 다시 그린다.
@@ -180,6 +182,11 @@ public static class InputBindings
         // 결과 화면 재시작. 스킬 4와 같은 R이지만 <b>쓰이는 화면이 달라</b> 겹치지 않는다.
         // 겹침 검사는 같은 맥락(InputCatalog의 Context)끼리만 하므로 서로를 지우지 않는다.
         AddButton(Restart, "<Keyboard>/r", "<Gamepad>/start");
+
+        // 추가 생성(2026-10-02) — 능력치 창. C는 이동(방향키)·스킬(QWER)·상자(F)·화면(I/Tab/T)과 겹치지 않는다.
+        // <b>맨 끝에 붙인 이유</b>: 위 OverridesKey 주석대로, 중간에 끼우면 저장된 키 변경이 엉뚱한 자리에
+        // 붙을 수 있다. 끝에 더하면 기존 액션의 바인딩 순서가 그대로라 저장값을 버리지 않아도 된다.
+        AddButton(Stats, "<Keyboard>/c", null);
     }
 
     /// <summary>버튼 액션 하나를 만든다. 패드 경로가 없으면 키보드만 붙인다.</summary>

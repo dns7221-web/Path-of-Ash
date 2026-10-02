@@ -44,6 +44,10 @@ public class BossKeyScreen : MonoBehaviour
     [Tooltip("인벤토리 화면. T를 누르면 저 화면에서 이 화면으로 전환된다.")]
     [SerializeField] private InventoryScreen inventoryScreen;
 
+    // 추가 생성(2026-10-02) — 능력치 창(C). 인벤토리와 같은 이유로, 이 화면을 열 때 저쪽을 닫는다.
+    [Tooltip("능력치 창. T를 누르면 저 화면에서 이 화면으로 전환된다.")]
+    [SerializeField] private StatsScreen statsScreen;
+
     // 수정(입력 중앙화): 액션을 직접 만들지 않고 InputBindings에서 꺼내 쓴다.
     private bool isOpen;
 
@@ -62,6 +66,12 @@ public class BossKeyScreen : MonoBehaviour
         if (inventoryScreen == null)
         {
             inventoryScreen = FindFirstObjectByType<InventoryScreen>(FindObjectsInactive.Include);
+        }
+
+        // 추가 생성(2026-10-02) — 능력치 창도 같은 방식으로 찾는다.
+        if (statsScreen == null)
+        {
+            statsScreen = FindFirstObjectByType<StatsScreen>(FindObjectsInactive.Include);
         }
 
         for (int i = 0; i < bossSlots.Length; i++)
@@ -147,6 +157,7 @@ public class BossKeyScreen : MonoBehaviour
         if (open) PauseGate.Open(this);
 
         if (open && inventoryScreen != null) inventoryScreen.CloseForSwitch();
+        if (open && statsScreen != null) statsScreen.CloseForSwitch(); // 추가 생성(2026-10-02) — 능력치 창
 
         if (root != null) root.SetActive(open);
 

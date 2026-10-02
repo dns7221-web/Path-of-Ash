@@ -76,6 +76,16 @@ public class PlayerStamina : MonoBehaviour
     /// </summary>
     public float BonusRegenPerSecond { get; set; }
 
+    /// <summary>추가 생성(2026-10-02, 능력치 창) — 유물로 더해진 최대 스태미나.</summary>
+    public float BonusMax => bonusMax;
+
+    /// <summary>
+    /// 추가 생성(2026-10-02, 능력치 창) — 실제로 적용되는 초당 회복량(기본값 + 유물 보정).
+    /// Update의 회복 계산도 이 값을 쓴다. 화면에 보이는 숫자와 실제 회복량이 한 식에서 나와야
+    /// 둘이 어긋날 수 없다.
+    /// </summary>
+    public float RegenPerSecond => regenPerSecond + BonusRegenPerSecond;
+
     /// <summary>
     /// 값이 바뀔 때마다 불린다. 인자는 정규화된 현재량(0~1).
     ///
@@ -100,7 +110,8 @@ public class PlayerStamina : MonoBehaviour
 
         if (Current >= Max) return;
 
-        SetCurrent(Current + (regenPerSecond + BonusRegenPerSecond) * Time.deltaTime);
+        // 수정(2026-10-02, 능력치 창) — 식을 RegenPerSecond 한 곳으로 모았다. 능력치 창도 같은 값을 읽는다.
+        SetCurrent(Current + RegenPerSecond * Time.deltaTime);
     }
 
     /// <summary>

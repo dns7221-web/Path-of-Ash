@@ -280,6 +280,12 @@ public class PlayerController : MonoBehaviour
     public float BonusMoveSpeed { get; set; }
 
     /// <summary>
+    /// 추가 생성(2026-10-02, 능력치 창) — 실제로 적용되는 이동 속도(기본값 + 유물 보정, 유닛/초).
+    /// 이동 처리(FixedUpdate)와 능력치 창이 같은 값을 읽게 해서, 화면 숫자와 실제 속도가 어긋날 수 없게 한다.
+    /// </summary>
+    public float MoveSpeed => moveSpeed + BonusMoveSpeed;
+
+    /// <summary>
     /// 추가 생성 — 스킬 시전 모션을 시작한다. 시전할 수 있는 상태였으면 true.
     ///
     /// <b>이 함수가 PlayerController와 SkillController의 경계다.</b>
@@ -440,7 +446,8 @@ public class PlayerController : MonoBehaviour
         switch (actionState)
         {
             case ActionState.Normal:
-                rb.linearVelocity = moveInput * (moveSpeed + BonusMoveSpeed);
+                // 수정(2026-10-02, 능력치 창) — 식을 MoveSpeed 한 곳으로 모았다. 능력치 창도 같은 값을 읽는다.
+                rb.linearVelocity = moveInput * MoveSpeed;
 
                 // 추가 생성(2026-09-29, 소리 2차) — 걷는 동안만 발소리를 센다. 공격·대시·피격 중에는 여기 안 온다.
                 TickFootsteps(Time.fixedDeltaTime);

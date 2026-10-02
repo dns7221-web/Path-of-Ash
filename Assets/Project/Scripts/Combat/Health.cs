@@ -36,6 +36,9 @@ public class Health : MonoBehaviour
     /// <summary>최대 체력. UI가 하트 개수를 그릴 때 읽는다.</summary>
     public int Max => maxHealth + bonusMax;
 
+    /// <summary>추가 생성(2026-10-02, 능력치 창) — 유물로 더해진 최대 체력. 능력치 창이 "(+N)"으로 보여준다.</summary>
+    public int BonusMax => bonusMax;
+
     /// <summary>죽었는가. 죽은 뒤에는 더 이상 데미지를 받지 않는다.</summary>
     public bool IsDead => Current <= 0;
 
