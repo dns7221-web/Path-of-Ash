@@ -165,7 +165,8 @@ public static class AshBossIntroBuilder
     }
 
     /// <summary>값 사이에는 부드러운 보간을 써서 재와 조명, 이름 카드가 갑자기 튀지 않게 한다.</summary>
-    private static AnimationCurve Curve(params (float time, float value)[] values)
+    // 수정(2026-10-03) — private → internal. 2페이즈 전환 빌더가 같은 곡선 규칙을 쓴다.
+    internal static AnimationCurve Curve(params (float time, float value)[] values)
     {
         var curve = new AnimationCurve(values.Select(value => new Keyframe(value.time, value.value)).ToArray());
         for (int i = 0; i < curve.length; i++)
@@ -295,7 +296,15 @@ public static class AshBossIntroBuilder
     }
 
     /// <summary>보스 렌더러 레이어만 밝히므로 방 전체를 밝게 되돌리지 않고 석상을 강조할 수 있다.</summary>
+    // 수정(2026-10-03) — 본문을 아래 배열판으로 옮기고 이 함수는 한 레이어짜리 입구로 남겼다. 등장 연출의 동작은 같다.
     private static Light2D EnsureBossLight(Transform parent, int sortingLayer)
+        => EnsureBossLight(parent, new[] { sortingLayer });
+
+    /// <summary>
+    /// 추가 생성(2026-10-03) — 비출 정렬 레이어를 여러 개 받는다.
+    /// 2페이즈 전환은 보스가 사라진 동안(재의 알) 바닥에 빛이 뛰어야 하므로 보스 레이어만 비추면 안 된다.
+    /// </summary>
+    internal static Light2D EnsureBossLight(Transform parent, int[] sortingLayers)
     {
         Transform existing = parent.Find("BossLight");
         if (existing != null) return existing.GetComponent<Light2D>();
@@ -309,14 +318,18 @@ public static class AshBossIntroBuilder
         light.pointLightOuterRadius = 7.5f;
         var serialized = new SerializedObject(light);
         SerializedProperty layers = serialized.FindProperty("m_ApplyToSortingLayers");
-        layers.arraySize = 1;
-        layers.GetArrayElementAtIndex(0).intValue = sortingLayer;
+        // 수정(2026-10-03) — 레이어 하나 → 받은 레이어 전부.
+        layers.arraySize = sortingLayers.Length;
+        for (int i = 0; i < sortingLayers.Length; i++)
+            layers.GetArrayElementAtIndex(i).intValue = sortingLayers[i];
         serialized.ApplyModifiedPropertiesWithoutUndo();
         return light;
     }
 
     /// <summary>이름은 런타임 체력바에서 채우며 부제만 이 카드에 저장해 본명 공개를 막는다.</summary>
-    private static CanvasGroup EnsureCard(Transform parent)
+    // 수정(2026-10-03) — private → internal, 부제를 매개변수로 받는다. 2페이즈 전환이 같은 모양의 카드를 쓴다.
+    // 기본값이 예전 부제라서 등장 연출 쪽 호출(EnsureCard(intro))은 그대로다.
+    internal static CanvasGroup EnsureCard(Transform parent, string subtitle = "재를 두른 자")
     {
         Transform existing = parent.Find("NameCard");
         if (existing != null) return existing.GetComponent<CanvasGroup>();
@@ -344,7 +357,7 @@ public static class AshBossIntroBuilder
         line.raycastTarget = false;
         TMP_FontAsset font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FontPath);
         CreateText(panel, "Name", "", font, 62f, new Vector2(0f, 53f), new Color(0.94f, 0.89f, 0.80f));
-        CreateText(panel, "Subtitle", "재를 두른 자", font, 28f, new Vector2(0f, -56f), new Color(0.71f, 0.64f, 0.55f));
+        CreateText(panel, "Subtitle", subtitle, font, 28f, new Vector2(0f, -56f), new Color(0.71f, 0.64f, 0.55f));
         card.SetActive(false);
         return group;
     }

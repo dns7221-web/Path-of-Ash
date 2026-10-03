@@ -382,6 +382,8 @@ public class SettingsScreen : MonoBehaviour
         // 추가 생성(2026-10-02) — 등장 중 ESC는 연출의 스킵 확인이 맡는다. 설정 창도 같은 키로 열리면
         // Update 실행 순서에 따라 스킵 창이 가려지므로, 연출이 살아 있는 동안 이쪽은 입력을 양보한다.
         if (BossIntroSequence.Active != null && BossIntroSequence.Active.IsPlaying) return;
+        // 추가 생성(2026-10-03) — 2페이즈 전환 중에도 ESC는 스킵 확인이 맡는다. 이유는 위 등장과 같다.
+        if (BossTransitionSequence.Active != null && BossTransitionSequence.Active.IsPlaying) return;
         if (BossIntroSkipDialog.InputConsumedThisFrame) return;
 
         if (InputBindings.SettingsAction.WasPressedThisFrame()) Open();

@@ -180,6 +180,12 @@ public class BossEncounter : RoomEncounter
             healthBar.CompleteIntroFill();
             activeBoss.EnteredPhase2 += OnBossEnteredPhase2;
         }
+
+        // 추가 생성(2026-10-03) — 2페이즈 전환 연출에도 플레이어(조작 잠금)와 체력바(채움 곡선)를 넘긴다.
+        // 등장 연출에 Begin으로 넘기는 것과 같은 이유다. 보스가 HUD를 직접 찾으면 적 스크립트가 화면 구조를 알게 된다.
+        // 체력바가 없는 씬이어도 넘긴다(null). 연출은 체력바 없이도 돈다.
+        BossTransitionSequence transition = activeBoss.GetComponentInChildren<BossTransitionSequence>(true);
+        if (transition != null) transition.Prepare(player, healthBar);
         else
         {
             // 경고에 그친다. 체력바가 없어도 보스전은 성립한다 — 화면에 안 보일 뿐이다.

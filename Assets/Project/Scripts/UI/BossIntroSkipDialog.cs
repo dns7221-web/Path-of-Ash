@@ -6,6 +6,22 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 /// <summary>
+/// 추가 생성(2026-10-03) — 스킵 확인 창이 연출에게 묻는 두 가지. 1페이즈 등장과 2페이즈 전환이 함께 쓴다.
+///
+/// 인터페이스로 뺀 이유: 확인 창이 <see cref="BossIntroSequence"/>만 알면 2페이즈 전환에는 같은 창을
+/// 못 쓰고, 창을 하나 더 복사하게 된다. 창이 "건너뛸 수 있나?"와 "건너뛰어라" 두 마디만 알면
+/// 어떤 연출이든 같은 창 하나로 처리된다.
+/// </summary>
+public interface ISkippableCutscene
+{
+    /// <summary>지금 건너뛸 수 있는가(재생 중인가).</summary>
+    bool CanSkip { get; }
+
+    /// <summary>연출을 끝으로 보내고 결과를 확정한다.</summary>
+    void Skip();
+}
+
+/// <summary>
 /// 추가 생성(2026-10-02) — 등장 중 ESC를 누르면 스킵 의사를 확인한다.
 /// 설정 창과 같은 색·한글 글꼴을 쓰고 PauseGate에 올라가므로, 취소하면 멈춘 지점부터 연출이 이어진다.
 /// </summary>
@@ -19,7 +35,9 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
 
     private static BossIntroSkipDialog current;
     private static int inputConsumedFrame = -1;
-    private BossIntroSequence owner;
+    // 수정(2026-10-03) — BossIntroSequence → MonoBehaviour. 2페이즈 전환도 같은 창을 쓴다.
+    // ISkippableCutscene이 아니라 MonoBehaviour로 들고 있는 이유: 파괴된 연출을 유니티의 null 검사(==)로 걸러야 한다.
+    private MonoBehaviour owner;
     private EventSystem eventSystem;
     private GameObject previousSelection;
     private int openedFrame;
@@ -44,6 +62,13 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
     /// 씬 재구성 없이도 기존 Game HUD에서 바로 작동하도록 캔버스와 버튼은 실행 중 생성한다.
     /// </summary>
     public static BossIntroSkipDialog Show(BossIntroSequence sequence)
+        => Show(sequence, "인트로를 스킵하시겠습니까?");
+
+    /// <summary>
+    /// 추가 생성(2026-10-03) — 연출 종류와 상관없이 확인 창을 연다. 문구만 연출마다 다르다.
+    /// 제네릭 제약(MonoBehaviour + ISkippableCutscene)으로 "씬에 있는 컴포넌트이면서 건너뛸 수 있는 것"만 받는다.
+    /// </summary>
+    public static BossIntroSkipDialog Show<T>(T sequence, string message) where T : MonoBehaviour, ISkippableCutscene
     {
         if (IsOpen) return current;
         if (sequence == null || !sequence.CanSkip || PauseGate.IsPaused || InputConsumedThisFrame) return null;
@@ -67,7 +92,8 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
         dialog.openedFrame = Time.frameCount;
         current = dialog;
         inputConsumedFrame = Time.frameCount;
-        dialog.BuildContents(FindFont(sequence));
+        // 수정(2026-10-03) — 문구를 받아서 쓴다.
+        dialog.BuildContents(FindFont(sequence), message);
 
         // 입력을 막는 등록을 마친 다음 화면을 내보내야 연출이 확인 창 뒤에서 한 프레임 더 진행하지 않는다.
         PauseGate.Open(dialog);
@@ -75,7 +101,8 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
     }
 
     /// <summary>추가 생성(2026-10-02) — 현재 HUD/설정의 한글 TMP 글꼴을 재사용해 별도 Resources 경로를 요구하지 않는다.</summary>
-    private static TMP_FontAsset FindFont(BossIntroSequence sequence)
+    // 수정(2026-10-03) — 매개변수 BossIntroSequence → Component. 자식의 글꼴만 보면 되므로 연출 종류를 몰라도 된다.
+    private static TMP_FontAsset FindFont(Component sequence)
     {
         SettingsScreen settings = FindFirstObjectByType<SettingsScreen>(FindObjectsInactive.Include);
         if (settings != null)
@@ -94,7 +121,8 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
     }
 
     /// <summary>추가 생성(2026-10-02) — 뒤쪽 클릭을 막는 막과 가운데 확인·취소 버튼을 구성한다.</summary>
-    private void BuildContents(TMP_FontAsset font)
+    // 수정(2026-10-03) — 확인 문구를 매개변수로 받는다(인트로 / 2페이즈 전환).
+    private void BuildContents(TMP_FontAsset font, string message)
     {
         RectTransform dim = NewRect("Dim", transform);
         SetSlot(dim, 0f, 1f, 0f, 1f);
@@ -111,7 +139,7 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
         panel.offsetMax = new Vector2(-4f, -4f);
         panel.gameObject.AddComponent<Image>().color = PanelColor;
 
-        CreateLabel(panel, "Message", "인트로를 스킵하시겠습니까?", font, 30f,
+        CreateLabel(panel, "Message", message, font, 30f,
             0.06f, 0.94f, 0.43f, 0.91f);
         Button confirm = CreateButton(panel, "Skip", "스킵", font, 0.10f, 0.46f);
         Button cancel = CreateButton(panel, "CancelButton", "취소", font, 0.54f, 0.90f);
@@ -150,9 +178,10 @@ public sealed class BossIntroSkipDialog : MonoBehaviour
     private void Confirm()
     {
         if (closed || !PauseGate.IsTop(this)) return;
-        BossIntroSequence sequence = owner;
+        // 수정(2026-10-03) — 어떤 연출이든 ISkippableCutscene.Skip 하나로 끝낸다.
+        MonoBehaviour target = owner;
         Close();
-        if (sequence != null) sequence.Skip();
+        if (target != null && target is ISkippableCutscene cutscene) cutscene.Skip();
     }
 
     /// <summary>추가 생성(2026-10-02) — 취소·전투 시작·방 종료가 겹쳐도 PauseGate 해제는 한 번만 한다.</summary>

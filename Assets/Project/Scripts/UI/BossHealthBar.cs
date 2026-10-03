@@ -112,6 +112,9 @@ public class BossHealthBar : MonoBehaviour
     private bool introFilling;
     public string Phase1Name => phase1Name;
 
+    /// <summary>추가 생성(2026-10-03) — 2페이즈 전환의 이름 카드가 체력바와 같은 이름을 쓰게 한다(이름을 한 곳에만 적는다).</summary>
+    public string Phase2Name => phase2Name;
+
     /// <summary>추가 생성(2026-10-02) — 이름 카드와 전투 시작이 같은 보스를 중복 연결하지 않게 한다.</summary>
     public bool IsBoundTo(Health bossHealth) => health != null && health == bossHealth;
 

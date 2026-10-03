@@ -12,8 +12,10 @@ using UnityEngine.Timeline;
 /// 시각은 에셋에서만 읽고, 정상 종료와 스킵은 같은 Finish를 거쳐 신호 유실로 전투가 막히지 않게 한다.
 /// 2페이즈 Director와 그래프가 충돌하지 않도록 보스의 Intro 자식에 별도로 붙인다.
 /// </summary>
+// 수정(2026-10-03) — ISkippableCutscene을 붙였다. 2페이즈 전환과 같은 스킵 확인 창을 쓰기 위해서다.
+// CanSkip과 Skip은 이미 있던 public 멤버라 동작은 바뀌지 않는다.
 [DisallowMultipleComponent, RequireComponent(typeof(PlayableDirector))]
-public sealed class BossIntroSequence : MonoBehaviour, INotificationReceiver
+public sealed class BossIntroSequence : MonoBehaviour, INotificationReceiver, ISkippableCutscene
 {
     public const string SeenPreferenceKey = "Ash.BossIntro.Seen.v1";
 

@@ -474,6 +474,12 @@ public class EnemyBoss : MonoBehaviour
     // 이 클래스는 "시작해라"와 "얼마나 걸리냐"만 주고받는다.
     private BossTransitionSequence transitionSequence;
 
+    // 추가 생성(2026-10-03) — 지금 돌고 있는 투명도 코루틴. 새 페이드를 시작할 때 앞의 것을 멈춘다.
+    //
+    // 왜 필요한가: 전환을 스킵하면 갑옷 붕괴(흐려지며 끄기)와 2페이즈 등장(떠오르기)이 같은 프레임에 온다.
+    // 둘이 동시에 돌면 0.3초 뒤 먼저 시작한 쪽이 렌더러를 꺼 버려서 <b>2페이즈 보스가 안 보이는 채</b>로 싸운다.
+    private Coroutine spriteFade;
+
     // 추가 생성 — 조준할 때 겨눌 플레이어 콜라이더. 발밑(Transform)이 아니라 이쪽을 노린다.
     //
     // 왜 필요한가: 이 게임은 발바닥을 원점으로 쓴다. 그래서 Transform 위치는 <b>맞아야 할 몸이
@@ -605,7 +611,9 @@ public class EnemyBoss : MonoBehaviour
         CreateFootCollider();
 
         // 추가 생성 — 전환 연출. 없으면 연출 없이 페이즈만 바뀐다(EnterPhase2 참고).
-        transitionSequence = GetComponent<BossTransitionSequence>();
+        // 수정(2026-10-03) — GetComponent → GetComponentInChildren. 연출이 보스 루트에서 TransitionCinematic 자식으로
+        // 옮겨 갔다(Animation Track이 보스 본체 Animator를 덮지 않게). 예전 프리팹처럼 루트에 있어도 찾는다.
+        transitionSequence = GetComponentInChildren<BossTransitionSequence>(true);
     }
 
     private void OnEnable()
@@ -1404,7 +1412,14 @@ public class EnemyBoss : MonoBehaviour
         if (seconds > 0f)
         {
             transitionSequence.Play();
-            yield return new WaitForSeconds(seconds);
+
+            // 수정(2026-10-03) — WaitForSeconds(seconds) → WaitWhile(재생 중).
+            //
+            // 연출에 스킵이 생겼다. 시간을 직접 세면 스킵해서 연출이 0.5초 만에 끝나도 보스는 4초를
+            // 다 기다리며 무적으로 서 있다. "얼마나 기다릴까" 대신 "끝났다는 상태"를 기다리면 정상 종료와
+            // 스킵이 같은 길을 탄다. WaitWhile은 유니티 내장 대기로, 조건이 false가 될 때까지 매 프레임 검사한다.
+            // 게임 시간이 멈추면(인벤토리 등) 타임라인도 멈추므로 대기도 같이 길어진다 — 예전과 같은 동작이다.
+            yield return new WaitWhile(() => transitionSequence.IsPlaying);
         }
         else
         {
@@ -1466,7 +1481,8 @@ public class EnemyBoss : MonoBehaviour
     {
         // 수정(2026-09-21, 흐름 B) — 한 프레임에 끄던 것을 흐리며 끄게 바꿨다. 이유는
         // transitionFadeOutSeconds 주석 참고. 다 흐려진 뒤에는 예전처럼 렌더러를 끈다.
-        if (spriteRenderer != null) StartCoroutine(FadeSprite(1f, 0f, transitionFadeOutSeconds, true));
+        // 수정(2026-10-03) — StartCoroutine → StartSpriteFade. 스킵 때 등장 페이드와 겹치지 않게(spriteFade 주석 참고).
+        if (spriteRenderer != null) StartSpriteFade(1f, 0f, transitionFadeOutSeconds, true);
     }
 
     /// <summary>
@@ -1495,6 +1511,16 @@ public class EnemyBoss : MonoBehaviour
             // 꺼 둔 뒤에는 투명도를 되돌려 둔다. 다음에 켜는 쪽(2페이즈 등장·사망)이 투명한 채로 켜지지 않게.
             SetSpriteAlpha(1f);
         }
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-03) — 투명도 코루틴을 하나만 돌린다. 앞의 것이 남아 있으면 멈추고 새로 시작한다.
+    /// 유니티 내장 StopCoroutine을 쓴다. 이미 끝난 코루틴을 멈춰도 아무 일도 없다.
+    /// </summary>
+    private void StartSpriteFade(float from, float to, float seconds, bool hideAtEnd)
+    {
+        if (spriteFade != null) StopCoroutine(spriteFade);
+        spriteFade = StartCoroutine(FadeSprite(from, to, seconds, hideAtEnd));
     }
 
     /// <summary>추가 생성(2026-09-21) — 그림의 투명도만 바꾼다.</summary>
@@ -1568,7 +1594,8 @@ public class EnemyBoss : MonoBehaviour
         {
             SetSpriteAlpha(0f);
             spriteRenderer.enabled = true;
-            StartCoroutine(FadeSprite(0f, 1f, transitionFadeInSeconds, false));
+            // 수정(2026-10-03) — StartCoroutine → StartSpriteFade. 아직 돌고 있는 붕괴 페이드를 멈추고 시작한다.
+            StartSpriteFade(0f, 1f, transitionFadeInSeconds, false);
         }
     }
 
