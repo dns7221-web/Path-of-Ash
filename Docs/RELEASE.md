@@ -26,18 +26,43 @@
 
 ## 1. 아이콘
 
+소재: **재 위에 꽂힌 잉걸 검** (10-05 결정). 그림체는 타이틀(`Art/Title/Title.png`)과 같은 어두운 회화풍을 단순화한 엠블럼입니다.
+타이틀의 무덤 검, 보스 등장의 검을 꽂는 장면과 이어지고, 세로 막대 + 손잡이라 16px에서도 형태가 남습니다.
+
 GPT 이미지 생성에 넣을 프롬프트(영문이 결과가 안정적입니다):
 
 ```text
-Game app icon, 1024x1024, square, pixel art style with crisp hard pixels.
-A cracked iron crown half-buried in grey ash, glowing orange embers rising from the cracks.
-Palette: charcoal black, ash grey, and a single accent of ember orange (#FF7A1A). No other colors.
-One bold centered silhouette that stays readable at 32x32 pixels.
-Dark charcoal background with a subtle orange glow behind the crown.
-No text, no letters, no border, no frame.
+Square game icon, 1024x1024, 1:1.
+A single heavy longsword planted upright in a small mound of grey ash, centered.
+The blade is thick and bold, about one eighth of the image width, dark iron with
+glowing ember-orange cracks running along it, brightest where it enters the ash.
+Simple wide crossguard and pommel, forming a clear cross silhouette like a grave marker.
+A few large orange embers drift upward from the base.
+
+Style: dark fantasy digital painting, simplified into a bold emblem.
+Muted desaturated greys, high contrast between the sword and the background.
+Palette: charcoal black, ash grey, pale grey highlights, and ember orange (#FF6A2A) as the only accent color.
+
+Background: plain dark charcoal (#141414) filling the whole square, with a soft orange glow behind the base of the sword.
+Composition: the whole sword fits inside the frame with about 10% empty margin on every side.
+It must stay readable when shrunk to 32x32 pixels: one clear silhouette, no fine details.
+
+No text, no letters, no logo, no border, no frame, no rounded corners, no characters, no hands,
+no other swords, no scenery, no stairs, not photorealistic.
 ```
 
+결과가 어긋날 때 이어서 보낼 수정 문장:
+
+| 증상 | 수정 문장 |
+| --- | --- |
+| 너무 복잡함 | `Simplify: remove small details, make the sword thicker, fewer embers. Keep one bold silhouette.` |
+| 배경에 풍경이 들어감 | `Remove all scenery. Plain dark charcoal background only.` |
+| 주황이 너무 많음 | `Keep orange only on the blade cracks and at the base. Everything else grey.` |
+| 검이 잘림 | `Leave 10% empty margin on all sides. The whole sword must be inside the frame.` |
+| 글자가 들어감 | `Remove all text and letters.` |
+
 - 게임 규칙(회색·숯색 바탕 + 주황 잉걸만 강조색)을 그대로 따릅니다.
+- 배경을 투명이 아니라 어두운 색으로 꽉 채웁니다. 회색 실루엣이 투명 배경이면 어두운 작업 표시줄에서 사라집니다.
 - **32×32로 줄여서 알아볼 수 있는지**가 기준입니다. 작업 표시줄과 탐색기에서는 그 크기로 보입니다.
 - 결과물을 `Assets/Project/Art/UI/Icon/GameIcon.png`에 넣고 **Tools → 재의 길 → 배포 → 게임 아이콘 적용**.
 - itch.io 표지 이미지(630×500)는 같은 그림을 넓게 다시 뽑거나 게임 스크린샷을 씁니다.
