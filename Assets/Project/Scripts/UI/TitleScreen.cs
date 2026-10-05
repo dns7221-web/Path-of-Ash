@@ -20,6 +20,9 @@ public class TitleScreen : MonoBehaviour
     [Tooltip("게임을 종료하는 키. '아무 키'로 시작하게 해두면 이 키는 예외로 빠져야 한다.")]
     [SerializeField] private Key quitKey = Key.Escape;
 
+    // 추가 생성(2026-10-05, 이어하기) — "이어하기 / 처음부터" 질문 창. 저장한 판이 있을 때 시작을 누르면 처음 한 번 만든다.
+    private QuitConfirmDialog continueDialog;
+
     private void Update()
     {
         // 추가 생성 — 설정 같은 화면이 열려 있는 동안 타이틀은 입력에서 손을 뗀다.
@@ -28,6 +31,16 @@ public class TitleScreen : MonoBehaviour
         // 누른 아무 키나 "아무 키로 시작"에 걸려 게임이 시작되고, 설정을 닫으려고 누른
         // Esc는 아래 종료 키에 걸려 게임이 꺼진다. 둘 다 되돌릴 수 없는 동작이다.
         if (PauseGate.IsPaused) return;
+
+        // 추가 생성(2026-10-05, 이어하기) — 이어하기 질문이 떠 있으면 타이틀은 입력에서 손을 뗀다(설정 창과 같은 이유).
+        // 이게 없으면 질문을 보며 누른 아무 키가 "아무 키로 시작"에 다시 걸리고, ESC는 게임 종료에 걸린다.
+        // ESC는 질문만 닫는다 — 아무것도 고르지 않은 것이라 [처음부터] 같은 동작을 하지 않는다.
+        if (continueDialog != null && continueDialog.IsOpen)
+        {
+            Keyboard dialogKeyboard = Keyboard.current;
+            if (dialogKeyboard != null && dialogKeyboard[quitKey].wasPressedThisFrame) continueDialog.Hide();
+            return;
+        }
 
         if (!startOnAnyInput) return;
 
@@ -69,10 +82,48 @@ public class TitleScreen : MonoBehaviour
         return false;
     }
 
-    /// <summary>새 판 시작. UI 버튼의 OnClick에도 연결할 수 있다.</summary>
+    /// <summary>
+    /// 새 판 시작. UI 버튼의 OnClick에도 연결할 수 있다.
+    /// 수정(2026-10-05, 이어하기) — 저장한 판이 있으면 바로 시작하지 않고 "이어하기 / 처음부터"를 묻는다.
+    /// </summary>
     public void OnStart()
     {
+        if (RunSaveStore.TryLoad(out RunSaveData save))
+        {
+            AskContinue(save);
+            return;
+        }
+
         GameFlow.StartNewRun();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 저장한 판이 어디까지 갔는지 보여 주고 이어할지 묻는다.
+    ///
+    /// 창은 설정 창이 만든다(<see cref="SettingsScreen.CreateDialog"/>) — 버튼 모양의 원본을 설정 창이 갖고 있어서, 같은 모양이 저절로 나온다.
+    /// 설정 창을 못 찾아 질문을 못 띄우면 <b>이어하기로</b> 간다. 새 판으로 가면 저장한 판이 말없이 지워진다 —
+    /// 되돌릴 수 없는 쪽을 기본값으로 두지 않는다.
+    /// </summary>
+    private void AskContinue(RunSaveData save)
+    {
+        if (continueDialog == null)
+        {
+            SettingsScreen settings = FindFirstObjectByType<SettingsScreen>();
+            if (settings != null)
+                continueDialog = settings.CreateDialog("", "이어하기", "처음부터", GameFlow.ContinueRun, GameFlow.StartNewRun);
+        }
+
+        if (continueDialog == null)
+        {
+            Debug.LogWarning("[타이틀] 이어하기 질문 창을 만들 수 없어 바로 이어한다(설정 창을 못 찾음).", this);
+            GameFlow.ContinueRun();
+            return;
+        }
+
+        // 어디서 이어지는지를 보여 준다. 숫자가 있어야 "이 판을 살릴 가치가 있나"를 고를 수 있다.
+        string where = save.inBossRoom ? "보스 방" : $"{save.enteredRoomCount}번째 방";
+        continueDialog.SetMessage($"진행 중인 기록이 있습니다\n{where} · 열쇠 {save.BossKeyCount}/{RelicInventory.BossSlotCount}");
+        continueDialog.Show();
     }
 
     /// <summary>게임 종료. UI 버튼의 OnClick에도 연결할 수 있다.</summary>

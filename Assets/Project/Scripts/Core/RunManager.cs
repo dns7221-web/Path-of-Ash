@@ -99,10 +99,13 @@ public class RunManager : MonoBehaviour
         {
             Debug.LogError("[RunManager] RunResultData가 비어 있다. 인스펙터에서 에셋을 연결해라.", this);
         }
-    }
 
-    private void Start()
-    {
+        // 수정(2026-10-05, 이어하기) — 아래 초기화를 Start에서 Awake로 옮겼다(값과 뜻은 그대로).
+        //
+        // 이어하기는 RoomSequenceController.Start가 저장한 시간·처치 수를 RestoreProgress로 넣는다. 그런데 유니티는
+        // <b>서로 다른 오브젝트의 Start 순서를 보장하지 않는다.</b> 초기화가 Start에 있으면 이 Start가 나중에 돌 때
+        // 넣어 둔 값을 0으로 덮어쓸 수 있다. Awake는 씬의 모든 Start보다 먼저 끝나므로 순서 문제가 없다.
+        // Time.time은 같은 프레임이라 Awake에서 읽어도 Start와 같다.
         runStartTime = Time.time;
         state = RunState.Playing;
         KillCount = 0;
@@ -145,12 +148,27 @@ public class RunManager : MonoBehaviour
     ///   어긋났을 때 어느 쪽이 맞는지 판단할 근거가 없다. 번호를 통째로 받으면 답이 하나다.
     /// - Awake/Start 실행 순서는 오브젝트마다 보장되지 않는다. RunManager.Start가 나중에
     ///   돌아 1로 초기화해도, 이미 더 큰 번호가 들어왔으면 그 값이 살아남는다.
+    ///   (수정 2026-10-05 — 초기화를 Awake로 옮겨서 Start 순서 걱정은 이제 없다. 최댓값 규칙은 그대로 둔다.)
     /// </summary>
     /// <param name="roomNumber">이번 판에서 몇 번째로 들어간 방인지. 첫 방이 1.</param>
     public void ReportRoomEntered(int roomNumber)
     {
         if (state != RunState.Playing) return;
         if (roomNumber > RoomsEntered) RoomsEntered = roomNumber;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 저장해 둔 판 기록으로 맞춘다. <see cref="RunSaveController.ApplyToRun"/>가 부른다.
+    ///
+    /// 시간은 "시작 시각"을 그만큼 앞으로 당겨서 맞춘다. ElapsedSeconds를 직접 넣으면 다음 Update가
+    /// Time.time - runStartTime으로 다시 계산하면서 덮어쓴다. 시간의 주인은 runStartTime 하나다.
+    /// </summary>
+    public void RestoreProgress(float elapsedSeconds, int killCount, int roomsEntered)
+    {
+        runStartTime = Time.time - Mathf.Max(0f, elapsedSeconds);
+        ElapsedSeconds = Mathf.Max(0f, elapsedSeconds);
+        KillCount = Mathf.Max(0, killCount);
+        RoomsEntered = Mathf.Max(1, roomsEntered);
     }
 
     /// <summary>
@@ -163,6 +181,11 @@ public class RunManager : MonoBehaviour
         if (state == RunState.GameOver) return;
 
         state = RunState.GameOver;
+
+        // 추가 생성(2026-10-05, 이어하기) — 끝난 판의 저장을 지운다. 로그라이크라 죽은 판·깬 판은 이어할 수 없어야 한다.
+        // 여기서 지우는 이유: 판이 끝나는 길(사망·클리어·조사용 사망 키)이 전부 이 함수를 지난다.
+        RunSaveStore.Delete();
+
         IsCleared = isCleared; // 추가 생성(2026-09-26) — 어떻게 끝났는지도 남긴다(IsCleared 주석 참고)
         ElapsedSeconds = Time.time - runStartTime;
 
