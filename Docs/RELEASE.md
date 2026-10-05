@@ -26,29 +26,42 @@
 
 ## 1. 아이콘
 
-소재: **재 위에 꽂힌 잉걸 검** (10-05 결정). 그림체는 타이틀(`Art/Title/Title.png`)과 같은 어두운 회화풍을 단순화한 엠블럼입니다.
+소재: **재 위에 꽂힌 잉걸 검** (10-05 결정). 그림체는 **2D 애니메이션풍(셀 셰이딩·선화)** 입니다. 처음엔 타이틀처럼 회화풍으로 뽑았더니 베벨·돌 질감·연기가 들어간 3D 렌더처럼 나와서 2D 서브컬처 로그라이크와 어긋났습니다(10-05).
 타이틀의 무덤 검, 보스 등장의 검을 꽂는 장면과 이어지고, 세로 막대 + 손잡이라 16px에서도 형태가 남습니다.
 
 GPT 이미지 생성에 넣을 프롬프트(영문이 결과가 안정적입니다):
 
 ```text
 Square game icon, 1024x1024, 1:1.
-A single heavy longsword planted upright in a small mound of grey ash, centered.
-The blade is thick and bold, about one eighth of the image width, dark iron with
-glowing ember-orange cracks running along it, brightest where it enters the ash.
+2D anime-style illustration for a Japanese-style subculture roguelike game. Hand-drawn look, NOT 3D.
+
+Subject: a single longsword planted upright in a small mound of grey ash, centered.
+The blade is bold, about one tenth of the image width, dark steel with glowing ember-orange
+crack lines drawn as clean strokes, brightest where it enters the ash.
 Simple wide crossguard and pommel, forming a clear cross silhouette like a grave marker.
-A few large orange embers drift upward from the base.
+A few diamond-shaped orange ember sparks float upward.
 
-Style: dark fantasy digital painting, simplified into a bold emblem.
-Muted desaturated greys, high contrast between the sword and the background.
+Rendering: cel shading with flat colors and only two or three tone steps, clean confident lineart,
+a thick dark outline around the whole sword so it pops from the background.
+Soft glow only around the orange cracks.
+No 3D rendering, no bevels, no stone texture, no realistic lighting, no smoke, no photorealism, no depth of field.
+
 Palette: charcoal black, ash grey, pale grey highlights, and ember orange (#FF6A2A) as the only accent color.
-
-Background: plain dark charcoal (#141414) filling the whole square, with a soft orange glow behind the base of the sword.
+Background: flat dark charcoal (#141414) filling the whole square, with a soft orange glow behind the base of the sword.
 Composition: the whole sword fits inside the frame with about 10% empty margin on every side.
-It must stay readable when shrunk to 32x32 pixels: one clear silhouette, no fine details.
+One clear silhouette that stays readable when shrunk to 32x32 pixels.
 
 No text, no letters, no logo, no border, no frame, no rounded corners, no characters, no hands,
-no other swords, no scenery, no stairs, not photorealistic.
+no other swords, no scenery.
+```
+
+같은 대화에서 3D처럼 나온 결과를 고칠 때(구도는 유지):
+
+```text
+Keep this exact composition, but redraw it as a 2D anime-style illustration:
+cel shading with flat colors, clean lineart, a thick dark outline around the sword.
+Remove the 3D bevels, the stone texture and the realistic smoke.
+Draw the ember cracks as clean glowing strokes.
 ```
 
 결과가 어긋날 때 이어서 보낼 수정 문장:
@@ -60,6 +73,7 @@ no other swords, no scenery, no stairs, not photorealistic.
 | 주황이 너무 많음 | `Keep orange only on the blade cracks and at the base. Everything else grey.` |
 | 검이 잘림 | `Leave 10% empty margin on all sides. The whole sword must be inside the frame.` |
 | 글자가 들어감 | `Remove all text and letters.` |
+| 3D처럼 보임 | `Make it flat 2D: cel shading, clean lineart, no bevels, no texture, no realistic lighting.` |
 
 - 게임 규칙(회색·숯색 바탕 + 주황 잉걸만 강조색)을 그대로 따릅니다.
 - 배경을 투명이 아니라 어두운 색으로 꽉 채웁니다. 회색 실루엣이 투명 배경이면 어두운 작업 표시줄에서 사라집니다.
