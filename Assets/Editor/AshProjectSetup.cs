@@ -486,6 +486,9 @@ public static class AshProjectSetup
     private static void ApplyPlayerSettings()
     {
         PlayerSettings.productName = "재의 길";
+        // 추가 생성(2026-10-05) — 회사 이름도 여기서 고정한다. 제품명과 함께 설정 저장 위치(HKCU\Software\회사\제품)를 정하므로
+        // 첫 배포 뒤에는 바꾸지 않는다. DefaultCompany로는 빌드가 막힌다(AshReleaseBuildGuard).
+        PlayerSettings.companyName = "Gaksultang";
         PlayerSettings.defaultScreenWidth = 1920;
         PlayerSettings.defaultScreenHeight = 1080;
 

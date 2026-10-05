@@ -89,6 +89,7 @@
 - [PROJECT_CONTEXT.md](Docs/PROJECT_CONTEXT.md) — 현재 상태, 중요한 규칙, 다음 작업을 빠르게 파악하는 문서
 - [DEVELOPMENT_LOG.md](Docs/DEVELOPMENT_LOG.md) — 날짜별 작업 과정과 설계 근거 전체 기록
 - [PORTFOLIO.md](Docs/PORTFOLIO.md) — 포트폴리오 전체 구성과 마감 작업 순서
+- [RELEASE.md](Docs/RELEASE.md) — 빌드·itch.io 배포·PV 영상 순서와 정해 둔 값
 
 ## 크레딧 — 소리
 
