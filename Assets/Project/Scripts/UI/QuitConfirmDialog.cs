@@ -27,6 +27,13 @@ public class QuitConfirmDialog : MonoBehaviour
 
     private Action onConfirm;
 
+    // 추가 생성(2026-10-05, 이어하기) — 두 번째 버튼에 맡긴 일. 비어 있으면 두 번째 버튼은 그냥 닫기(취소)다.
+    // 이어하기 질문은 두 버튼이 모두 동작이다([이어하기] / [처음부터]).
+    private Action onCancel;
+
+    // 추가 생성(2026-10-05) — 문구 글자. 게임 중 나가기는 튜토리얼이냐 던전이냐에 따라 문구가 달라서 띄울 때마다 바꾼다.
+    private TMPro.TMP_Text messageText;
+
     /// <summary>지금 떠 있는가. 설정 창이 ESC를 확인 창과 자기 중 누구에게 줄지 정할 때 쓴다.</summary>
     public bool IsOpen => gameObject.activeSelf;
 
@@ -39,8 +46,10 @@ public class QuitConfirmDialog : MonoBehaviour
     /// <param name="confirmLabel">확인 버튼 글자.</param>
     /// <param name="cancelLabel">취소 버튼 글자.</param>
     /// <param name="onConfirm">확인을 눌렀을 때 할 일.</param>
+    /// <param name="onCancel">추가 생성(2026-10-05) — 두 번째 버튼을 눌렀을 때 할 일. 생략하면 닫기만 한다(기존 동작 그대로).</param>
     public static QuitConfirmDialog Create(RectTransform parent, Button buttonTemplate, string message,
-                                           string confirmLabel, string cancelLabel, Action onConfirm)
+                                           string confirmLabel, string cancelLabel, Action onConfirm,
+                                           Action onCancel = null)
     {
         // 1) 뒤를 어둡게 덮는 막. Image는 기본으로 클릭을 받아서(raycastTarget) 뒤에 있는 설정 창 버튼이 눌리지 않는다.
         RectTransform root = NewRect("QuitConfirmDialog", parent);
@@ -62,6 +71,7 @@ public class QuitConfirmDialog : MonoBehaviour
 
         // 3) 문구: 버튼 글자(TMP)를 복제해 한글 글꼴·색·정렬을 그대로 쓴다. 판의 위쪽.
         TMPro.TMP_Text templateLabel = buttonTemplate.GetComponentInChildren<TMPro.TMP_Text>(true);
+        TMPro.TMP_Text messageLabel = null; // 추가 생성(2026-10-05) — SetMessage가 바꿀 글자를 기억해 둔다
         if (templateLabel != null)
         {
             TMPro.TMP_Text text = Instantiate(templateLabel.gameObject, inner).GetComponent<TMPro.TMP_Text>();
@@ -69,10 +79,13 @@ public class QuitConfirmDialog : MonoBehaviour
             SetSlot((RectTransform)text.transform, 0.06f, 0.94f, 0.42f, 0.92f);
             text.text = message;
             text.fontSize = MessageFontSize;
+            messageLabel = text; // 추가 생성(2026-10-05)
         }
 
         var dialog = root.gameObject.AddComponent<QuitConfirmDialog>();
         dialog.onConfirm = onConfirm;
+        dialog.onCancel = onCancel; // 추가 생성(2026-10-05)
+        dialog.messageText = messageLabel; // 추가 생성(2026-10-05)
 
         // 4) 버튼 둘: 닫기 버튼을 복제한다. 확인은 왼쪽, 취소는 오른쪽 — 설정 창 아래 줄의 [게임 나가기][닫기]와 같은 쪽이라
         // 방금 누른 자리에 확인이 온다. 복제본에는 닫기의 동작이 따라오지 않는다(코드로 붙인 리스너는 저장되지 않아 복제되지 않는다).
@@ -80,7 +93,8 @@ public class QuitConfirmDialog : MonoBehaviour
         confirm.onClick.AddListener(dialog.Confirm);
 
         Button cancel = CloneButton(buttonTemplate, inner, "CancelButton", cancelLabel, 0.54f, 0.90f);
-        cancel.onClick.AddListener(dialog.Hide);
+        // 수정(2026-10-05) — Hide 대신 Cancel. 맡긴 일이 없으면 Cancel은 Hide와 똑같다.
+        cancel.onClick.AddListener(dialog.Cancel);
 
         root.gameObject.SetActive(false);
         return dialog;
@@ -97,6 +111,24 @@ public class QuitConfirmDialog : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05) — 물어볼 문구를 바꾼다. 같은 창을 상황마다 다른 문구로 다시 쓸 때.
+    /// </summary>
+    public void SetMessage(string message)
+    {
+        if (messageText != null) messageText.text = message;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05) — 두 번째 버튼을 눌렀다. 창을 닫고, 맡긴 일이 있으면 한다.
+    /// ESC로 닫을 때는 이것이 아니라 <see cref="Hide"/>를 부른다 — ESC는 "아무것도 고르지 않음"이라 [처음부터] 같은 동작이 따라오면 안 된다.
+    /// </summary>
+    private void Cancel()
+    {
+        Hide();
+        onCancel?.Invoke();
     }
 
     /// <summary>확인을 눌렀다. 창을 닫고 맡겨 둔 일을 한다.</summary>

@@ -67,6 +67,16 @@ public class AshGauge : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 저장해 둔 게이지 값으로 맞춘다.
+    /// Add를 쓰지 않는 이유: Add는 "처치해서 찼다"는 뜻이라 처치 보너스(ChargePerKill)와 섞인다. 여기는 값을 그대로 넣는다.
+    /// </summary>
+    public void RestoreCharge(float value)
+    {
+        Current = Mathf.Clamp(value, 0f, maxCharge);
+        Changed?.Invoke(Normalized);
+    }
+
     private void Add(float amount)
     {
         if (amount <= 0f) return;

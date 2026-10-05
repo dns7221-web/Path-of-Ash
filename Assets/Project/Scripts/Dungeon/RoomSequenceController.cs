@@ -90,6 +90,9 @@ public class RoomSequenceController : MonoBehaviour
     // 추가 생성 — 지금 열려 있는 방. 보스 방은 rooms 배열 밖에 있어서 인덱스만으로는 못 가리킨다.
     private RoomController currentRoom;
 
+    // 추가 생성(2026-10-05, 이어하기) — 방에 들어갈 때마다 판을 저장하고, 이어하기 때 되돌리는 쪽. Awake에서 이 오브젝트에 붙인다.
+    private RunSaveController saveController;
+
     /// <summary>이번 런에서 반복 입장을 포함해 들어간 총 방 수.</summary>
     public int EnteredRoomCount => enteredRoomCount;
 
@@ -125,10 +128,25 @@ public class RoomSequenceController : MonoBehaviour
             tutorialRoom.ExitRequested += OnRoomExitRequested;
             tutorialRoom.gameObject.SetActive(false);
         }
+
+        // 추가 생성(2026-10-05, 이어하기) — 저장 담당을 붙인다. 씬에 없으면 기본값으로 붙인다(ClearCutscene과 같은 방식).
+        // 씬에 미리 배치하지 않는 이유: Game.unity를 고치거나 빌더를 다시 돌리지 않아도 저장이 살아나게 하려는 것이다.
+        saveController = GetComponent<RunSaveController>();
+        if (saveController == null) saveController = gameObject.AddComponent<RunSaveController>();
+        saveController.Init(player, runManager);
     }
 
     private void Start()
     {
+        // 추가 생성(2026-10-05, 이어하기) — 타이틀에서 [이어하기]로 왔으면 튜토리얼을 건너뛰고 저장한 방으로 들어간다.
+        // 조사용 보스 시작보다 먼저 본다 — 이어하기는 플레이어가 고른 것이고, 테스트 토글보다 우선이다.
+        // 파일이 그 사이 깨졌거나 형식이 바뀌었으면(TryLoad 실패) 아래 평소 시작으로 흘러간다.
+        if (GameFlow.ConsumeContinueRequest() && RunSaveStore.TryLoad(out RunSaveData save))
+        {
+            ContinueFrom(save);
+            return;
+        }
+
         // 추가 생성 — 보스 확인용 시작. 일반 방 배열이 비어 있어도 보스 방만으로 돌아간다.
         if (debugStartAtBossRoom && bossRoom != null)
         {
@@ -156,6 +174,44 @@ public class RoomSequenceController : MonoBehaviour
         }
 
         ActivateRoom(0);
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 저장한 판을 되돌리고, 저장한 방의 <b>처음부터</b> 들어간다(사용자 결정).
+    ///
+    /// 방을 여는 길은 평소와 똑같이 <see cref="ActivateRoom"/>·<see cref="EnterRoom"/>를 쓴다. 이어하기 전용 입장 코드를 따로 두면
+    /// 방 초기화·전투 시작·플레이어 이동 중 하나를 빠뜨리기 쉽다. 같은 길을 지나면 평소 입장과 완전히 같은 상태가 된다.
+    /// 방 순서가 고정 순환(RoomRoute.NextIndex)이라 위치 번호 하나로 다음 방들까지 저장 전과 똑같이 이어진다.
+    /// </summary>
+    private void ContinueFrom(RunSaveData save)
+    {
+        // 유물 → 체력 → 재 게이지 → 판 기록 순서로 되돌린다(순서 이유는 ApplyToRun 주석).
+        saveController.ApplyToRun(save);
+
+        // EnterRoom이 입장할 때 1을 더하므로 하나 덜어 둔다 — 그래야 저장할 때와 같은 번호로 들어간다.
+        enteredRoomCount = Mathf.Max(0, save.enteredRoomCount - 1);
+
+        bool hasRooms = rooms != null && rooms.Length > 0;
+
+        // 방 개수가 줄어든 판(게임을 고친 뒤 옛 저장)이면 위치가 배열 밖일 수 있다. 첫 방으로 되돌린다.
+        int index = hasRooms && save.roomIndex >= 0 && save.roomIndex < rooms.Length ? save.roomIndex : 0;
+
+        if (save.inBossRoom && bossRoom != null)
+        {
+            // 보스 방은 배열 밖이라 위치 번호가 없다. 그래도 직전 방 위치를 되돌려 둔다 — 보스를 판의 끝이 아니게 바꾸면(bossClearEndsRun 끔)
+            // 보스 방을 나간 뒤 그 다음 방으로 이어져야 한다.
+            currentRoomIndex = hasRooms ? index : -1;
+            EnterRoom(bossRoom);
+            return;
+        }
+
+        if (!hasRooms)
+        {
+            Debug.LogError("[방 진행] 이어하기 — 던전 방이 등록되지 않았다.", this);
+            return;
+        }
+
+        ActivateRoom(index);
     }
 
     /// <summary>
@@ -264,6 +320,10 @@ public class RoomSequenceController : MonoBehaviour
         // 수정(2026-09-28) — 조건 room == bossRoom && bossClearEndsRun을 RoomRoute의 결과로 바꿨다(뜻은 같다).
         if (destination == RoomRoute.ExitDestination.EndRun)
         {
+            // 추가 생성(2026-10-05, 이어하기) — 보스 방 문을 나간 순간 판은 끝났다. 클리어 연출 도중에 끄면
+            // 보스 방 입구 저장으로 이어져 보스를 또 잡게 되므로, 연출을 틀기 전에 저장을 지운다.
+            saveController?.Discard();
+
             // 수정(2026-09-26, 클리어 연출) — 방을 끄고 곧바로 판을 끝내던 것을, 클리어 연출을 튼 뒤 끝내도록 바꿨다.
             // 방은 끄지 않는다 — 연출 동안 플레이어가 보스 방 문 앞에 서 있어야 한다. 결과 화면으로 넘어가면 씬째 사라진다.
             // currentRoom만 비워서, 연출 중에 같은 문 판정에 또 닿아도 맨 위 검사에서 걸러져 두 번 끝나지 않는다.
@@ -458,6 +518,15 @@ public class RoomSequenceController : MonoBehaviour
 
         // 추가 생성(2026-09-29, 방 음악) — 방 종류에 맞는 곡으로 바꾼다.
         PlayRoomMusic(room);
+
+        // 추가 생성(2026-10-05, 이어하기) — 던전 방(보스 방 포함)에 들어갈 때마다 저장한다. 튜토리얼은 저장하지 않는다.
+        //
+        // 방 입구가 저장 시점인 이유: 이어하기는 방의 처음부터 다시 한다(사용자 결정). 입구에서 남긴 값이 곧 "다시 설 자리"다.
+        // 전투 도중에는 저장하지 않는다 — 적 위치·투사체까지 되돌려야 해서 복잡하고, 되돌리다 틀린 상태가 되면 판을 망친다.
+        // 끌 때 체력만 낮은 쪽으로 고친다(RunSaveController.SaveOnQuit).
+        // 맨 끝에 두는 이유: 플레이어 이동·방 기록까지 끝난 뒤의 상태를 저장해야 한다.
+        if (room != tutorialRoom && saveController != null)
+            saveController.SaveCheckpoint(currentRoomIndex, room == bossRoom, enteredRoomCount);
     }
 
     /// <summary>

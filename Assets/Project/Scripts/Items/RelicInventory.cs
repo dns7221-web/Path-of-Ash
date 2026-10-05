@@ -291,6 +291,37 @@ public class RelicInventory : MonoBehaviour
         Changed?.Invoke();
     }
 
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 저장해 둔 보관함·장착 칸·열쇠 칸을 통째로 되돌린다. <see cref="RunSaveController"/>가 부른다.
+    ///
+    /// <see cref="Acquire"/>를 여러 번 부르지 않고 칸에 바로 넣는 이유:
+    /// <list type="bullet">
+    /// <item>Acquire는 수치를 <b>다시 굴린다</b>(RelicInstance.Roll). 저장한 수치를 지켜야 끄고 켜서 주사위를 다시 굴릴 수 없다.</item>
+    /// <item>Acquire는 빈 칸에 자동 장착한다. 플레이어가 일부러 빼 둔 배치가 바뀌면 안 된다.</item>
+    /// <item>Gained를 띄우지 않는다. 그 알림은 "방금 주웠다" 연출(획득 문구·소리)용이라 이어하기 때 열다섯 번 울리면 안 된다.</item>
+    /// </list>
+    /// 효과는 이 클래스의 규칙대로 <see cref="Recalculate"/>가 장착 목록에서 처음부터 다시 계산한다 — 저장 파일에 보정치를 따로 담지 않는 이유다.
+    /// </summary>
+    public void Restore(IReadOnlyList<RelicInstance> bagItems, IReadOnlyList<RelicInstance> equippedItems, IReadOnlyList<RelicInstance> keyItems)
+    {
+        bag.Clear();
+        if (bagItems != null)
+        {
+            foreach (RelicInstance item in bagItems)
+                if (!item.IsEmpty) bag.Add(item);
+        }
+
+        // 칸 번호를 지킨다 — 2번 칸에 끼워 둔 유물은 2번 칸으로 돌아온다. 모자라면 빈 칸.
+        for (int i = 0; i < SlotCount; i++)
+            equipped[i] = equippedItems != null && i < equippedItems.Count ? equippedItems[i] : RelicInstance.None;
+
+        for (int i = 0; i < BossSlotCount; i++)
+            bossKeys[i] = keyItems != null && i < keyItems.Count ? keyItems[i] : RelicInstance.None;
+
+        Recalculate();
+        Changed?.Invoke();
+    }
+
     /// <summary>추가 생성 — 비어 있는 보스 열쇠 칸 번호. 없으면 -1.</summary>
     public int FindEmptyBossSlot()
     {

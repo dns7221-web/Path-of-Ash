@@ -134,7 +134,11 @@ public class SettingsScreen : MonoBehaviour
     private const string QuitMessage = "게임을 종료하시겠습니까?";
     private const string QuitConfirmLabel = "게임 종료";
     private const string QuitCancelLabel = "취소";
-    private Button quitButton;               // 창을 처음 열 때 만든다(EnsureQuitButton). 타이틀이 아니면 끝까지 비어 있다
+    // 추가 생성(2026-10-05, 이어하기) — 게임 중 나가기 문구. 던전에 들어간 뒤면 저장하고 끄고, 튜토리얼이면 저장할 것이 없다고 알린다.
+    // 한 줄이 판(640px) 안에 들어가도록 짧게 두 줄로 나눴다(30pt 한글 약 17자까지).
+    private const string GameQuitSaveMessage = "저장하고 종료할까요?\n다음엔 이 방 처음부터 이어집니다.";
+    private const string GameQuitTutorialMessage = "튜토리얼은 저장되지 않습니다.\n게임을 종료할까요?";
+    private Button quitButton;               // 창을 처음 열 때 만든다(EnsureQuitButton). 타이틀·게임 씬이 아니면 끝까지 비어 있다
     private QuitConfirmDialog quitDialog;    // [게임 나가기]를 처음 누를 때 만든다(OnQuitClicked)
 
     /// <summary>지금 열려 있는가.</summary>
@@ -441,6 +445,7 @@ public class SettingsScreen : MonoBehaviour
     /// 추가 생성(2026-09-27) — 타이틀 설정 창이면, 아래 줄에 [게임 나가기]를 만든다. 이미 있거나 타이틀이 아니면 아무것도 안 한다.
     ///
     /// 게임 중(Game 씬)에는 만들지 않는다 — 중간 저장이 없어서 나가면 판을 통째로 잃는다(사용자 결정).
+    /// 수정(2026-10-05, 이어하기) — 중간 저장(RunSaveController)이 생겨서 Game 씬에도 만든다. 위 결정의 전제("저장이 먼저")가 채워졌다.
     /// 씬 이름은 GameFlow의 상수로 비교한다. 씬을 이름으로 부르는 규칙이 GameFlow 한 곳에 있어서, 이름이 바뀌면 같이 바뀐다.
     ///
     /// 닫기 버튼을 <b>복제</b>하는 이유: 색·눌림 색·글꼴이 저절로 같아진다. 새로 만들면 빌더의 색표를 여기에 또 적어야 한다.
@@ -449,7 +454,9 @@ public class SettingsScreen : MonoBehaviour
     private void EnsureQuitButton()
     {
         if (quitButton != null || closeButton == null) return;
-        if (gameObject.scene.name != GameFlow.TitleScene) return;
+        // 수정(2026-10-05, 이어하기) — 타이틀만 → 타이틀과 게임. 결과 화면 등 다른 씬에는 여전히 만들지 않는다.
+        string sceneName = gameObject.scene.name;
+        if (sceneName != GameFlow.TitleScene && sceneName != GameFlow.GameScene) return;
 
         GameObject copy = Instantiate(closeButton.gameObject, closeButton.transform.parent);
         copy.name = "QuitGameButton";
@@ -489,6 +496,8 @@ public class SettingsScreen : MonoBehaviour
             quitDialog = QuitConfirmDialog.Create(parent, closeButton, QuitMessage, QuitConfirmLabel, QuitCancelLabel, QuitGame);
         }
 
+        // 추가 생성(2026-10-05, 이어하기) — 띄울 때마다 문구를 고른다. 같은 판에서도 튜토리얼 → 던전으로 바뀌기 때문이다.
+        quitDialog.SetMessage(CurrentQuitMessage());
         quitDialog.Show();
     }
 
@@ -500,7 +509,48 @@ public class SettingsScreen : MonoBehaviour
     private void QuitGame()
     {
         GameSettings.Flush();
+
+        // 추가 생성(2026-10-05, 이어하기) — 게임 중이면 판을 저장하고 끈다.
+        // Application.quitting에서도 같은 저장이 불리지만 여기서 먼저 부른다 — 종료 이벤트에만 기대면 저장이 되는지가 플랫폼·상황에 달린다.
+        // 두 번 저장돼도 같은 내용이라 괜찮다.
+        RunSaveController save = FindFirstObjectByType<RunSaveController>();
+        if (save != null) save.SaveOnQuit();
+
         GameFlow.Quit();
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 지금 나가면 어떻게 되는지에 맞는 문구.
+    /// 타이틀이면 원래 문구, 게임 중이면 저장할 것(던전 진입 뒤)이 있는지로 가른다.
+    /// 저장 담당을 버튼을 누를 때 찾는다 — 한 판에 몇 번 안 누르는 버튼이라 미리 들고 있을 이유가 없다.
+    /// </summary>
+    private string CurrentQuitMessage()
+    {
+        if (gameObject.scene.name != GameFlow.GameScene) return QuitMessage;
+
+        RunSaveController save = FindFirstObjectByType<RunSaveController>();
+        return save != null && save.HasCheckpoint ? GameQuitSaveMessage : GameQuitTutorialMessage;
+    }
+
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 설정 창과 같은 모양의 확인 창을 <b>설정 창 밖</b>에 만든다. 타이틀의 이어하기 질문이 쓴다.
+    ///
+    /// 설정 창이 만드는 이유: 버튼 모양의 원본(닫기 버튼)과 캔버스를 이 창이 갖고 있다. 타이틀에 원본을 따로 두면 모양이 갈라진다.
+    /// root 밑이 아니라 캔버스 맨 위에 붙인다 — root 밑이면 설정 창이 닫혀 있을 때 같이 꺼져서 안 보인다.
+    /// </summary>
+    /// <returns>만든 창(숨긴 상태). 원본 버튼이나 캔버스가 없으면 null.</returns>
+    public QuitConfirmDialog CreateDialog(string message, string confirmLabel, string cancelLabel,
+                                          System.Action onConfirm, System.Action onCancel)
+    {
+        if (closeButton == null) return null;
+
+        // 닫기 버튼은 꺼진 root 안에 있어서 includeInactive가 필요하다.
+        Canvas canvas = closeButton.GetComponentInParent<Canvas>(true);
+        if (canvas == null) return null;
+
+        // 캔버스의 RectTransform은 화면 전체를 덮는다 — 뒤를 어둡게 덮는 막이 화면 전체에 깔린다.
+        var parent = (RectTransform)canvas.rootCanvas.transform;
+        return QuitConfirmDialog.Create(parent, closeButton, message, confirmLabel, cancelLabel, onConfirm, onCancel);
     }
 
     /// <summary>창 크기를 한 칸 옮긴다.</summary>

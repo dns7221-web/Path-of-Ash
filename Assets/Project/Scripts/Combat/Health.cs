@@ -313,6 +313,19 @@ public class Health : MonoBehaviour
         Changed?.Invoke(Current, Max);
     }
 
+    /// <summary>
+    /// 추가 생성(2026-10-05, 이어하기) — 저장해 둔 체력으로 맞춘다. 플레이어의 이어하기에서만 쓴다.
+    ///
+    /// <see cref="Heal"/>이나 <see cref="TakeDamage(int)"/>로 맞추지 않는 이유: 그 둘은 피격 연출·무적 시간·Damaged 알림이 따라온다.
+    /// 이어하기는 "원래 이 값이었다"이지 맞거나 회복한 것이 아니다.
+    /// 1 아래로는 내리지 않는다 — 0으로 이어하면 들어가자마자 죽는다(죽은 판은 애초에 저장되지 않는다).
+    /// </summary>
+    public void RestoreCurrent(int value)
+    {
+        Current = Mathf.Clamp(value, 1, Max);
+        Changed?.Invoke(Current, Max);
+    }
+
     /// <summary>회복. 최대치를 넘지 않는다. 죽은 뒤에는 살아나지 않는다.</summary>
     public void Heal(int amount)
     {
