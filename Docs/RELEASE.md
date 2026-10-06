@@ -256,3 +256,17 @@ IL2CPP가 더 빠르고 역컴파일이 어렵지만 빌드가 느리고 Visual 
 
 **Recorder의 Constant 재생** — 내부적으로 `Time.captureDeltaTime`을 고정해 매 프레임 게임 시간이 정확히 1/60초씩 흐르게 합니다.
 실제 시간과 게임 시간을 떼어 놓는 것이라, PC가 느려도 영상은 매끈하고 대신 녹화 중 게임이 느리게 느껴질 수 있습니다.
+
+## 배포 기록
+
+| 버전 | 날짜 | 내용 |
+| --- | --- | --- |
+| 1.0.0 | 2026-10-06 | 첫 공개. itch.io `windows` 채널 107MB, 트레일러 40초 |
+
+- 게임 페이지: https://gaksultang.itch.io/path-of-ash
+- 트레일러: https://youtu.be/eM5TvuQwl2s
+- 업로드 명령: `powershell -ExecutionPolicy Bypass -File Tools\DeployItch.ps1 -Target gaksultang/path-of-ash`
+- PV는 Unity Recorder가 HDD 개발 PC에서 끊겨서 **Windows 화면 녹화(에디터 Game 뷰)**로 찍고 CapCut으로 편집했습니다.
+  시작·끝 화면(제목, 주소)은 게임 폰트로 만든 이미지를 넣었습니다 — 편집기 텍스트 템플릿은 예시 배경이 딸려 와서 쓰지 않습니다.
+- README의 `Docs/Images/gameplay.gif`는 트레일러 6초를 640px·12fps로 줄인 것입니다(약 2.5MB).
+
