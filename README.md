@@ -2,6 +2,23 @@
 
 > 타고 남은 것은 길뿐이다.
 
+[![전투 장면 — 누르면 트레일러로 이동](Docs/Images/gameplay.gif)](https://youtu.be/eM5TvuQwl2s)
+
+**▶ [itch.io에서 받기 (Windows · 무료)](https://gaksultang.itch.io/path-of-ash)** · **▶ [트레일러 40초](https://youtu.be/eM5TvuQwl2s)**
+
+| | |
+| --- | --- |
+| 장르 | 2D 탑다운 픽셀아트 던전 로그라이크 · 한 판 약 30분 |
+| 엔진 | Unity 6 (6000.3) · URP 2D · C# · Input System · Timeline |
+| 개발 | **1인 개발** — 기획, 프로그래밍, 연출, 에디터 도구, 빌드·배포 |
+| AI 활용 | 그림 일부와 코드 작성에 생성형 AI(GPT, Claude)를 썼고, 설계 판단·통합·검증은 직접 했습니다 |
+| 버전 | 1.0.0 — 2026-10-06 itch.io 공개 |
+
+<p>
+  <img src="Docs/Images/boss.jpg" width="49%" alt="재의 왕 보스전 — 주황 선이 공격 예고">
+  <img src="Docs/Images/stats.jpg" width="49%" alt="능력치 창 — 장착한 유물이 바꾼 실제 값">
+</p>
+
 `재의 길`은 영구 성장 없이 한 판의 아이템 시너지와 전투 숙련으로 진행하는 2D 탑다운 던전 슬래셔 로그라이크입니다.
 
 ## 핵심 방향
